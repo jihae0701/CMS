@@ -70,26 +70,28 @@ s.column_dimensions["C"].width = 12
 s.column_dimensions["D"].width = 12
 s.column_dimensions["E"].width = 44
 
-cell(s, "A4", "① 반 설정", f(True, 11, "1F3864"), align=LEFT, border=False)
-header(s, 5, ["반", "반 이름", "정원(명)"])
-for i, (nm, cap) in enumerate([("심화반", 20), ("정규반", 20), ("기본반", 20)]):
+cell(s, "A4", "① 반 배정 기준 (절대평가)", f(True, 11, "1F3864"), align=LEFT, border=False)
+header(s, 5, ["순서", "반 이름", "공수1 이상", "공수1 미만", "공수2 이상", "공수2 미만"])
+for i, (nm, a1, b1, a2, b2) in enumerate([("TF1반", 60, None, 60, None), ("TF2반", 60, None, None, 40), ("TF3반", None, 40, None, 40)]):
     r = 6 + i
-    cell(s, f"A{r}", f"{i + 1}반(성적순)", fill=GREY)
-    cell(s, f"B{r}", nm, fill=INPUT)
-    cell(s, f"C{r}", cap, fill=INPUT)
-cell(s, "A9", "합계", f(True), GREY)
-cell(s, "B9", "", fill=GREY)
-cell(s, "C9", "=SUM(C6:C8)", f(True), GREY)
-cell(s, "E6", "총점 석차 순으로 1반 정원만큼 → 1반, 다음 정원만큼 → 2반, 나머지 → 3반. "
-     "동점자가 경계에 걸리면 모두 위 반으로 들어갑니다.", f(size=9, color="595959"), align=LEFT, border=False)
-s.merge_cells("E6:F8")
+    cell(s, f"A{r}", f"{i + 1}순위", fill=GREY)
+    cell(s, f"B{r}", nm, f(True), INPUT)
+    for col, v in zip("CDEF", (a1, b1, a2, b2)):
+        cell(s, f"{col}{r}", v, fill=INPUT)
+cell(s, "A9", "그 외", f(True), GREY)
+cell(s, "B9", "보류", f(True), INPUT)
+s.merge_cells("C9:F9")
+cell(s, "C9", "위 조건에 모두 해당하지 않거나 미응시 과목이 있으면 보류 → 상담 후 수동 배정", f(size=9, color="595959"), GREY, align=LEFT)
+cell(s, "H5", "· 점수(100점 만점)로 판정, 빈칸은 조건 없음\n· 위 순위부터 차례로 확인해 처음 맞는 반에 배정\n"
+     "· 예) TF2반: 공수1 60점 이상이고 공수2 40점 미만", f(size=9, color="595959"), align=LEFT, border=False)
+s.merge_cells("H5:L9")
 
 cell(s, "A11", "② 점수 반영", f(True, 11, "1F3864"), align=LEFT, border=False)
 header(s, 12, ["항목", "값"], start=2)
 for r, lab, v, note in [
-    (13, "공통수학1 반영비율", 1, "환산총점 = 공수1 점수×비율 + 공수2 점수×비율"),
-    (14, "공통수학2 반영비율", 1, "예) 공수1을 더 중시하려면 1.5 / 1 처럼 입력"),
-    (15, "경계 범위(점)", 5, "반 컷 점수와의 차이가 이 값 이내면 '경계'로 표시 → 상담·재검토 대상"),
+    (13, "공통수학1 반영비율", 1, "환산총점(석차·참고용) = 공수1 점수×비율 + 공수2 점수×비율"),
+    (14, "공통수학2 반영비율", 1, "반 배정은 ①의 과목별 점수 기준으로만 결정"),
+    (15, "경계 범위(점)", 3, "어느 과목이든 기준 점수(①의 숫자)와 차이가 이 값 이내면 '경계'로 표시 → 상담·재검토 대상"),
 ]:
     cell(s, f"B{r}", lab, fill=GREY)
     cell(s, f"C{r}", v, fill=INPUT)
@@ -154,24 +156,8 @@ cell(s, f"F{REPORT_ROW + 8}", "득점률이 '양호' 기준 미만이면 '보완
 s.row_dimensions[REPORT_ROW + 9].height = 30
 s.column_dimensions["F"].width = 34
 
-CLASS_ROW = REPORT_ROW + 13
-cell(s, f"A{CLASS_ROW}", "⑤ 반 소개 (보고서의 추천 반 설명)", f(True, 11, "1F3864"), align=LEFT, border=False)
-header(s, CLASS_ROW + 1, ["반 이름", "소개 문구"])
-s.merge_cells(f"B{CLASS_ROW + 1}:E{CLASS_ROW + 1}")
-CLASS_DESC = [
-    "공통수학1·2 개념을 빠르게 정리하고, 고난도 문항과 고1 내신 최상위권 대비까지 진행하는 반입니다.",
-    "핵심 개념을 탄탄히 다지면서 내신 기출 유형과 중상위 난도 문항을 체계적으로 훈련하는 반입니다.",
-    "중등 연계 개념부터 차근차근 점검하며, 공통수학의 핵심 개념과 기본 유형을 확실히 완성하는 반입니다.",
-]
-for i, d in enumerate(CLASS_DESC):
-    r = CLASS_ROW + 2 + i
-    cell(s, f"A{r}", f"=B{6 + i}", f(True), GREY)
-    s.merge_cells(f"B{r}:E{r}")
-    cell(s, f"B{r}", d, fill=INPUT, align=LEFT)
-    s.row_dimensions[r].height = 30
-
-ADV_ROW = CLASS_ROW + 6
-cell(s, f"A{ADV_ROW}", "⑥ 단원별 학습 제언 (보완이 필요한 단원에 자동 기재)", f(True, 11, "1F3864"), align=LEFT, border=False)
+ADV_ROW = REPORT_ROW + 13
+cell(s, f"A{ADV_ROW}", "⑤ 단원별 학습 제언 (보완이 필요한 단원에 자동 기재)", f(True, 11, "1F3864"), align=LEFT, border=False)
 header(s, ADV_ROW + 1, ["단원", "학습 제언 문구"])
 s.merge_cells(f"B{ADV_ROW + 1}:E{ADV_ROW + 1}")
 ADVICE = {
@@ -196,19 +182,18 @@ s.column_dimensions["A"].width = 24
 # ---------------- 학생명단 ----------------
 st = wb.create_sheet("학생명단")
 title(st, "학생 명단", "노란 칸에 학생 정보를 입력하세요. 여기 입력한 순서(행)가 공수1·공수2·반배정 시트의 행과 "
-      "그대로 연결됩니다. 7행은 예시이니 지우고 사용하세요. G열 '선생님 한마디'는 학부모 보고서에 그대로 실립니다(비워두면 생략).", "G")
-header(st, 6, ["No", "이름", "학교", "구분", "연락처", "비고(내부용)", "선생님 한마디(보고서용)"])
-for col, w in zip("ABCDEFG", [6, 14, 14, 8, 16, 20, 60]):
+      "그대로 연결됩니다. 7행은 예시이니 지우고 사용하세요.", "F")
+header(st, 6, ["No", "이름", "학교", "구분", "연락처", "비고(내부용)"])
+for col, w in zip("ABCDEF", [6, 14, 14, 8, 16, 30]):
     st.column_dimensions[col].width = w
 dv_kind = DataValidation(type="list", formula1='"재원,외부"', allow_blank=True)
 st.add_data_validation(dv_kind)
 for r in range(FIRST, LAST + 1):
     cell(st, f"A{r}", r - FIRST + 1, fill=GREY)
-    for col in "BCDEFG":
-        cell(st, f"{col}{r}", fill=INPUT, align=LEFT if col in "FG" else C)
+    for col in "BCDEF":
+        cell(st, f"{col}{r}", fill=INPUT, align=LEFT if col == "F" else C)
 dv_kind.add(f"D{FIRST}:D{LAST}")
-for col, v in zip("BCDEFG", ["홍길동(예시)", "OO중", "외부", "010-0000-0000", "예시 행 — 삭제 후 사용",
-                              "수업 태도가 성실하고 끝까지 풀어내려는 끈기가 돋보입니다."]):
+for col, v in zip("BCDEF", ["홍길동(예시)", "OO중", "외부", "010-0000-0000", "예시 행 — 삭제 후 사용"]):
     st[f"{col}{FIRST}"].value = v
 st.freeze_panes = f"C{FIRST}"
 
@@ -304,22 +289,28 @@ score_sheet("공수2", "공통수학2")
 
 # ---------------- 반배정 ----------------
 b = wb.create_sheet("반배정")
-title(b, "반 배정", "자동 계산 시트입니다. 'K열 수동조정'에서만 반을 바꿀 수 있고(상담 결과 반영 등), "
-      "최종반 = 수동조정이 있으면 그 값, 없으면 자동배정. 주황색 행 = 반 경계 점수대 학생.", "U")
+title(b, "반 배정 (절대평가)", "자동 계산 시트입니다. '설정' ①의 과목별 점수 기준으로 자동배정하고, 해당 없으면 '보류'. "
+      "'K열 수동조정'에서 반을 정하면 최종반에 반영(보류 학생 배정, 상담 결과 반영). 주황색 행 = 기준 점수 경계 학생.", "W")
 header(b, 6, ["No", "이름", "학교", "구분", "공수1", "공수2", "환산총점", "석차", "자동배정",
-              "경계", "수동조정", "최종반", "비고", "정렬키"])
-for col, w in zip("ABCDEFGHIJKLMN", [5, 12, 11, 7, 7, 7, 9, 6, 10, 6, 10, 10, 13, 8]):
+              "경계", "수동조정", "최종반", "비고"])
+for col, w in zip("ABCDEFGHIJKLM", [5, 12, 11, 7, 7, 7, 9, 6, 10, 6, 10, 10, 13]):
     b.column_dimensions[col].width = w
-b.column_dimensions["N"].hidden = True
-NAMES = ["'설정'!$B$6", "'설정'!$B$7", "'설정'!$B$8"]
-CAP1, CAP2 = "'설정'!$C$6", "'설정'!$C$7"
+NAMES = ["'설정'!$B$6", "'설정'!$B$7", "'설정'!$B$8", "'설정'!$B$9"]
 G = f"$G${FIRST}:$G${LAST}"
 I = f"$I${FIRST}:$I${LAST}"
 Lr = f"$L${FIRST}:$L${LAST}"
 D = f"$D${FIRST}:$D${LAST}"
-CUT1, CUT2 = "$T$7", "$T$8"
-dv_cls = DataValidation(type="list", formula1="='설정'!$B$6:$B$8", allow_blank=True)
+E_ = f"$E${FIRST}:$E${LAST}"
+F_ = f"$F${FIRST}:$F${LAST}"
+BD = "'설정'!$C$15"
+dv_cls = DataValidation(type="list", formula1="='설정'!$B$6:$B$9", allow_blank=True)
 b.add_data_validation(dv_cls)
+
+def cond(k, r):
+    t = 6 + k
+    return (f"AND(OR('설정'!$C${t}=\"\",E{r}>='설정'!$C${t}),OR('설정'!$D${t}=\"\",E{r}<'설정'!$D${t}),"
+            f"OR('설정'!$E${t}=\"\",F{r}>='설정'!$E${t}),OR('설정'!$F${t}=\"\",F{r}<'설정'!$F${t}))")
+
 for r in range(FIRST, LAST + 1):
     cell(b, f"A{r}", r - FIRST + 1, fill=GREY)
     for col, src in zip("BCD", "BCD"):
@@ -329,9 +320,10 @@ for r in range(FIRST, LAST + 1):
     cell(b, f"G{r}", f"=IF(AND(E{r}=\"\",F{r}=\"\"),\"\",N(E{r})*'설정'!$C$13+N(F{r})*'설정'!$C$14)",
          f(True), fmt="0.#")
     cell(b, f"H{r}", f"=IF(G{r}=\"\",\"\",COUNTIF({G},\">\"&G{r})+1)")
-    cell(b, f"I{r}", f"=IF(H{r}=\"\",\"\",IF(H{r}<={CAP1},{NAMES[0]},IF(H{r}<={CAP1}+{CAP2},{NAMES[1]},{NAMES[2]})))")
-    cell(b, f"J{r}", f"=IF(G{r}=\"\",\"\",IF(OR(AND(ISNUMBER({CUT1}),ABS(G{r}-{CUT1})<='설정'!$C$15),"
-                     f"AND(ISNUMBER({CUT2}),ABS(G{r}-{CUT2})<='설정'!$C$15)),\"경계\",\"\"))", f(True, 10, "C55A11"))
+    cell(b, f"I{r}", f"=IF(G{r}=\"\",\"\",IF(OR(E{r}=\"\",F{r}=\"\"),{NAMES[3]},IF({cond(0, r)},{NAMES[0]},"
+                     f"IF({cond(1, r)},{NAMES[1]},IF({cond(2, r)},{NAMES[2]},{NAMES[3]})))))", f(True))
+    cell(b, f"J{r}", f"=IF(OR(E{r}=\"\",F{r}=\"\"),\"\",IF(SUMPRODUCT(ISNUMBER('설정'!$C$6:$D$8)*(ABS(E{r}-'설정'!$C$6:$D$8)<={BD}))"
+                     f"+SUMPRODUCT(ISNUMBER('설정'!$E$6:$F$8)*(ABS(F{r}-'설정'!$E$6:$F$8)<={BD}))>0,\"경계\",\"\"))", f(True, 10, "C55A11"))
     cell(b, f"K{r}", fill=INPUT)
     cell(b, f"L{r}", f"=IF(K{r}<>\"\",K{r},I{r})", f(True))
     cell(b, f"M{r}", f"=IF(G{r}=\"\",\"\",IF(E{r}=\"\",\"공수1 미응시\",IF(F{r}=\"\",\"공수2 미응시\",\"\")))",
@@ -340,35 +332,37 @@ for r in range(FIRST, LAST + 1):
 dv_cls.add(f"K{FIRST}:K{LAST}")
 b.conditional_formatting.add(f"A{FIRST}:M{LAST}",
                              FormulaRule(formula=[f"$J{FIRST}=\"경계\""], fill=PatternFill("solid", fgColor="FBE5D6")))
-for i, nm in enumerate(NAMES):
-    b.conditional_formatting.add(f"L{FIRST}:L{LAST}",
-                                 FormulaRule(formula=[f"AND($L{FIRST}<>\"\",$L{FIRST}={nm})"],
-                                             fill=PatternFill("solid", fgColor=CLS[i])))
+CLS4 = CLS + ["E7E6E6"]
+for col in "IL":
+    for i, nm in enumerate(NAMES):
+        b.conditional_formatting.add(f"{col}{FIRST}:{col}{LAST}",
+                                     FormulaRule(formula=[f"AND(${col}{FIRST}<>\"\",${col}{FIRST}={nm})"],
+                                                 fill=PatternFill("solid", fgColor=CLS4[i])))
 # 요약표
-cell(b, "P5", "반별 요약", f(True, 11, "1F3864"), align=LEFT, border=False)
-header(b, 6, ["반", "정원", "자동\n인원", "최종\n인원", "자동컷\n(최저점)", "최종\n평균", "재원", "외부"], start=16)
+cell(b, "O5", "반별 요약", f(True, 11, "1F3864"), align=LEFT, border=False)
+header(b, 6, ["반", "자동\n인원", "최종\n인원", "공수1\n평균", "공수2\n평균", "재원", "외부"], start=15)
 for i, nm in enumerate(NAMES):
     r = 7 + i
-    cell(b, f"P{r}", f"={nm}", f(True), PatternFill("solid", fgColor=CLS[i]))
-    cell(b, f"Q{r}", f"='설정'!$C${6 + i}")
-    cell(b, f"R{r}", f"=COUNTIF({I},P{r})")
-    cell(b, f"S{r}", f"=COUNTIF({Lr},P{r})", f(True))
-    cell(b, f"T{r}", f"=IF(R{r}=0,\"\",_xlfn.MINIFS({G},{I},P{r}))", fmt="0.#")
-    cell(b, f"U{r}", f"=IFERROR(AVERAGEIF({Lr},P{r},{G}),\"\")", fmt="0.0")
-    cell(b, f"V{r}", f"=COUNTIFS({Lr},P{r},{D},\"재원\")")
-    cell(b, f"W{r}", f"=COUNTIFS({Lr},P{r},{D},\"외부\")")
-cell(b, "P10", "합계", f(True), GREY)
-for col in "QRSVW":
-    cell(b, f"{col}10", f"=SUM({col}7:{col}9)", f(True), GREY)
-cell(b, "T10", "", fill=GREY)
-cell(b, "U10", f"=IFERROR(AVERAGE({G}),\"\")", f(True), GREY, fmt="0.0")
-cell(b, "P12", "· 경계 = 1·2반 자동컷 점수와 차이가 '설정' 경계 범위 이내인 학생\n"
-     "· 수동조정한 학생은 최종 인원·평균에 반영됩니다(자동컷은 그대로)", f(size=9, color="595959"),
+    cell(b, f"O{r}", f"={nm}", f(True), PatternFill("solid", fgColor=CLS4[i]))
+    cell(b, f"P{r}", f"=COUNTIF({I},O{r})")
+    cell(b, f"Q{r}", f"=COUNTIF({Lr},O{r})", f(True))
+    cell(b, f"R{r}", f"=IFERROR(AVERAGEIF({Lr},O{r},{E_}),\"\")", fmt="0.0")
+    cell(b, f"S{r}", f"=IFERROR(AVERAGEIF({Lr},O{r},{F_}),\"\")", fmt="0.0")
+    cell(b, f"T{r}", f"=COUNTIFS({Lr},O{r},{D},\"재원\")")
+    cell(b, f"U{r}", f"=COUNTIFS({Lr},O{r},{D},\"외부\")")
+cell(b, "O11", "합계", f(True), GREY)
+for col in "PQTU":
+    cell(b, f"{col}11", f"=SUM({col}7:{col}10)", f(True), GREY)
+cell(b, "R11", f"=IFERROR(AVERAGE({E_}),\"\")", f(True), GREY, fmt="0.0")
+cell(b, "S11", f"=IFERROR(AVERAGE({F_}),\"\")", f(True), GREY, fmt="0.0")
+cell(b, "O13", "· 자동배정은 '설정' ①의 과목별 점수 기준(절대평가)\n· 경계 = 어느 과목이든 기준 점수와의 차이가 경계 범위 이내\n"
+     "· 보류 학생은 상담 후 K열 수동조정에서 반을 정하세요\n· 환산총점·석차는 참고용", f(size=9, color="595959"),
      align=LEFT, border=False)
-b.merge_cells("P12:W14")
-for col in "PQRSTUVW":
+b.merge_cells("O13:U17")
+for col in "OPQRSTU":
     b.column_dimensions[col].width = 8
-b.column_dimensions["P"].width = 10
+b.column_dimensions["O"].width = 10
+b.column_dimensions["N"].hidden = True
 b.freeze_panes = f"C{FIRST}"
 
 # ---------------- 석차순 ----------------
@@ -389,12 +383,12 @@ for r in range(FIRST, LAST + 1):
 for i, nm in enumerate(NAMES):
     k.conditional_formatting.add(f"A{FIRST}:J{LAST}",
                                  FormulaRule(formula=[f"AND($H{FIRST}<>\"\",$H{FIRST}={nm})"],
-                                             fill=PatternFill("solid", fgColor=CLS[i])))
+                                             fill=PatternFill("solid", fgColor=CLS4[i])))
 k.freeze_panes = f"A{FIRST}"
 
 # ---------------- 문항분석 ----------------
 a = wb.create_sheet("문항분석")
-title(a, "문항 분석", "변별도 = 1반 정답률 − 3반 정답률 (0.3 이상이면 반을 잘 가르는 문항). "
+title(a, "문항 분석", "변별도 = TF1반 정답률 − TF3반 정답률(자동배정 기준, 0.3 이상이면 상·하위를 잘 가르는 문항). "
       "객관식은 선지별 선택 인원으로 매력적 오답을 확인하세요.", "R")
 cols = ["문항", "유형", "단원", "난이도", "배점", "정답", "응시", "정답자", "정답률",
         "1반\n정답률", "2반\n정답률", "3반\n정답률", "변별도", "진단", "①", "②", "③", "④", "⑤"]
@@ -407,7 +401,7 @@ for sh, subj in [("공수1", "공통수학1"), ("공수2", "공통수학2")]:
     cell(a, f"A{row}", subj, f(True, 11, "1F3864"), align=Alignment(horizontal="left", vertical="center"), border=False)
     row += 1
     header(a, row, cols)
-    for j, nm in enumerate(NAMES):
+    for j, nm in enumerate(NAMES[:3]):
         a[f"{L(10 + j)}{row}"].value = f"={nm}&\" 정답률\""
     a.row_dimensions[row].height = 30
     row += 1
@@ -426,7 +420,7 @@ for sh, subj in [("공수1", "공통수학1"), ("공수2", "공통수학2")]:
         cell(a, f"G{r}", f"=COUNT({tot})")
         cell(a, f"H{r}", f"=IF(F{r}=\"\",\"\",SUMPRODUCT(({col}={key})*({col}<>\"\")))")
         cell(a, f"I{r}", f"=IF(OR(F{r}=\"\",G{r}=0),\"\",H{r}/G{r})", f(True), fmt="0%")
-        for j, nm in enumerate(NAMES):
+        for j, nm in enumerate(NAMES[:3]):
             cls = f"'반배정'!$I${FIRST}:$I${LAST}"
             cell(a, f"{L(10 + j)}{r}",
                  f"=IF(F{r}=\"\",\"\",IFERROR(SUMPRODUCT(({col}={key})*({col}<>\"\")*({cls}={nm}))"

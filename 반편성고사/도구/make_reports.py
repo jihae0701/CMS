@@ -2,7 +2,8 @@
 """채점 엑셀(입력값)을 읽어 학부모 보고서와 상담 카드(PDF)를 만든다.
 
 사용: python make_reports.py 채점파일.xlsx 출력폴더
-  - 학부모보고서_전체.pdf, 학부모보고서/번호_이름.pdf : 석차·백분위 없이 성취 수준, (선택)전체 평균, 추천 반
+  - 학부모보고서_전체.pdf, 학부모보고서/번호_이름.pdf : 석차·백분위 없이 성취 수준, (선택)전체 평균, 추천 반(빈칸)
+  - 학부모보고서_한글/전체.hml, 학부모보고서_한글/번호_이름.hml : 같은 내용의 수정 가능한 한글 파일
   - 상담카드_전체.pdf : 내부용. 석차, 반 컷과의 차이, 경계 여부, 오답 분석
 엑셀의 수식 결과(캐시)에 의존하지 않고 입력값으로 직접 계산한다.
 필요: openpyxl, playwright(Chromium)
@@ -43,16 +44,29 @@ def read(path):
     s = wb["설정"]
     val = lambda ref: s[ref].value
     cfg = {
-        "classes": [val("B6"), val("B7"), val("B8")],
-        "caps": [int(val("C6") or 0), int(val("C7") or 0), int(val("C8") or 0)],
+        "classes": [val("B6"), val("B7"), val("B8"), val("B9") or "보류"],
+        # 절대평가 기준: (반 이름, 공수1 이상, 공수1 미만, 공수2 이상, 공수2 미만), 빈칸은 조건 없음
+        "rules": [(val("B%d" % r), num(val("C%d" % r)), num(val("D%d" % r)), num(val("E%d" % r)), num(val("F%d" % r)))
+                  for r in (6, 7, 8)],
         "w": [float(val("C13") or 1), float(val("C14") or 1)],
         "border": float(val("C15") or 0),
-        "academy": val("B32") or "", "title": val("B33") or "", "date": val("B34") or "",
-        "show_avg": (val("B35") or "표시") != "숨김",
-        "lv": [float(val("B36") or 85), float(val("B37") or 70), float(val("B38") or 50)],
-        "notice": val("B39") or "", "contact": val("B40") or "",
-        "class_desc": {val("B%d" % (6 + i)): (val("B%d" % (45 + i)) or "") for i in range(3)},
     }
+    # 보고서 설정: A열 항목명으로 찾는다
+    lab = {}
+    adv_row = None
+    for r in range(1, s.max_row + 1):
+        a = s.cell(r, 1).value
+        if isinstance(a, str):
+            lab.setdefault(a.strip(), s.cell(r, 2).value)
+            if "학습 제언" in a and a.strip()[0] in "④⑤⑥⑦":
+                adv_row = r
+    g = lambda k, d="": lab.get(k) if lab.get(k) not in (None, "") else d
+    cfg.update({
+        "academy": g("학원명"), "title": g("보고서 제목"), "date": g("시험일"),
+        "show_avg": g("전체 평균 표시", "표시") != "숨김",
+        "lv": [float(g("'매우 우수' 기준(득점률 %)", 85)), float(g("'우수' 기준(득점률 %)", 70)), float(g("'양호' 기준(득점률 %)", 50))],
+        "notice": g("상담 안내 문구"), "contact": g("학원 연락처"),
+    })
     units = {"공수1": [], "공수2": []}
     r = 19
     for key in ("공수1", "공수2"):
@@ -62,7 +76,7 @@ def read(path):
         r += 1
     cfg["units"] = units
     order = units["공수1"] + units["공수2"]
-    cfg["advice"] = {u: (s["B%d" % (51 + i)].value or "") for i, u in enumerate(order)}
+    cfg["advice"] = {u: (s["B%d" % (adv_row + 2 + i)].value or "") for i, u in enumerate(order)} if adv_row else {}
 
     exams = {}
     for key, _ in SUBJ:
@@ -81,7 +95,7 @@ def read(path):
             continue
         students.append(dict(row=r, no=r - FIRST + 1, name=str(name or "(이름 없음)"), school=st.cell(r, 3).value or "",
                              kind=st.cell(r, 4).value or "", phone=st.cell(r, 5).value or "", memo=st.cell(r, 6).value or "",
-                             comment=st.cell(r, 7).value or "", manual=b.cell(r, 11).value, resp=resp))
+                             manual=b.cell(r, 11).value, resp=resp))
     return cfg, exams, students
 
 
@@ -104,18 +118,29 @@ def compute(cfg, exams, students):
         else:
             s["total"] = sum((s["score"][k] or 0) * w for (k, _), w in zip(SUBJ, cfg["w"]))
     ranked = [s for s in students if s["total"] is not None]
-    c1, c2 = cfg["caps"][0], cfg["caps"][0] + cfg["caps"][1]
+    hold = cfg["classes"][3]
+
+    def fits(x, lo, hi):
+        return (lo is None or x >= lo) and (hi is None or x < hi)
+
     for s in ranked:
         s["rank"] = 1 + sum(1 for t in ranked if t["total"] > s["total"])
-        s["auto"] = cfg["classes"][0] if s["rank"] <= c1 else cfg["classes"][1] if s["rank"] <= c2 else cfg["classes"][2]
+        a, b = s["score"]["공수1"], s["score"]["공수2"]
+        s["auto"] = hold
+        if a is not None and b is not None:
+            for name, lo1, hi1, lo2, hi2 in cfg["rules"]:
+                if fits(a, lo1, hi1) and fits(b, lo2, hi2):
+                    s["auto"] = name
+                    break
         s["final"] = s["manual"] or s["auto"]
+        # 경계: 과목 점수가 그 과목의 기준 점수와 경계 범위 이내
+        th1 = [v for r_ in cfg["rules"] for v in r_[1:3] if v is not None]
+        th2 = [v for r_ in cfg["rules"] for v in r_[3:5] if v is not None]
+        s["near"] = (a is not None and b is not None and
+                     (any(abs(a - v) <= cfg["border"] for v in th1) or any(abs(b - v) <= cfg["border"] for v in th2)))
     for s in students:
-        s.setdefault("rank", None); s.setdefault("auto", None); s.setdefault("final", s["manual"])
-    cuts = {}
-    for i in range(2):
-        g = [s["total"] for s in ranked if s["auto"] == cfg["classes"][i]]
-        cuts[i] = min(g) if g else None
-    stats = {"n": len(ranked), "cuts": cuts}
+        s.setdefault("rank", None); s.setdefault("auto", None); s.setdefault("final", s["manual"]); s.setdefault("near", False)
+    stats = {"n": len(ranked)}
     for key, _ in SUBJ:
         takers = [s for s in students if s["took"][key]]
         stats[("avg", key)] = sum(s["score"][key] for s in takers) / len(takers) if takers else None
@@ -226,10 +251,9 @@ table.units .track{margin:0}
 .grid .cells b{display:block;font-size:10pt}
 .o{color:#2F5597}.x{color:#c0504d}.n{color:#9aa3b5}
 .two{display:flex;gap:4mm}
-.reco{width:60mm;border-radius:2.5mm;background:#1F3864;color:#fff;padding:4mm}
-.reco .t{font-size:9pt;opacity:.85}
-.reco .c{font-size:21pt;font-weight:800;margin:1.5mm 0 2mm}
-.reco .d{font-size:8.8pt;line-height:1.6;opacity:.95}
+.reco{display:flex;border:1.2px solid #1F3864;border-radius:2.5mm;overflow:hidden;height:24mm}
+.reco .t{width:30mm;background:#1F3864;color:#fff;font-weight:700;font-size:11pt;display:flex;align-items:center;justify-content:center}
+.reco .w{flex:1}
 .op{flex:1;border:1px solid #d5dced;border-radius:2.5mm;padding:3mm 4mm;font-size:9pt;line-height:1.6}
 .op ul{margin:1.5mm 0 0;padding-left:4.5mm}
 .op li{margin-bottom:.6mm}
@@ -239,16 +263,18 @@ table.units .track{margin:0}
 .foot b{color:#1F3864}
 /* 상담 카드 */
 .int{position:absolute;top:8mm;right:14mm;font-size:8pt;color:#c0504d;font-weight:700;border:1px solid #c0504d;padding:.6mm 2mm;border-radius:1mm}
-.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:2.5mm;margin-bottom:4mm}
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:2.5mm;margin-bottom:3mm}
 .kpi div{border:1px solid #d5dced;border-radius:2mm;padding:2mm 3mm;font-size:8.5pt;color:#6b7588}
 .kpi b{display:block;font-size:14pt;color:#1d2433;margin-top:.5mm}
 .kpi .warn{border-color:#e3a35b;background:#fff6ea}
 table.t{width:100%;border-collapse:collapse;font-size:8.8pt}
-table.t th{background:#eef2f9;color:#1F3864;font-weight:700;padding:1.3mm;border:1px solid #d5dced}
-table.t td{padding:1.2mm 1.5mm;border:1px solid #e1e6ef;text-align:center}
+table.t th{background:#eef2f9;color:#1F3864;font-weight:700;padding:.9mm;border:1px solid #d5dced}
+table.t td{padding:.75mm 1.5mm;border:1px solid #e1e6ef;text-align:center}
 table.t td.L{text-align:left}
 .flag{color:#c0504d;font-weight:700}
-.memo{border:1px solid #d5dced;border-radius:2mm;height:40mm;padding:2mm 3mm;font-size:8.5pt;color:#9aa3b5;
+table.t.s{font-size:7.6pt} table.t.s td,table.t.s th{padding:.3mm 1.2mm;line-height:1.35}
+.wt{font-size:8.5pt;font-weight:700;color:#44506a;margin-bottom:1mm}
+.memo{border:1px solid #d5dced;border-radius:2mm;flex:1;min-height:12mm;padding:2mm 3mm;font-size:8.5pt;color:#9aa3b5;
  background:repeating-linear-gradient(#fff 0 7.6mm,#e6eaf2 7.6mm 7.9mm)}
 """
 
@@ -305,9 +331,6 @@ def parent_page(s, cfg, exams, stats):
         grids.append('<div class="grid"><div class="gl">%s</div><div class="cells">%s</div></div>' % (nm, "".join(cells)))
     text, tips = opinion(s, cfg, stats)
     tip_html = "".join("<li><b>%s</b> — %s</li>" % (e(u), e(t)) for u, t in tips if t)
-    tc = '<div class="tc"><b>선생님 한마디</b> &nbsp;%s</div>' % e(s["comment"]) if s["comment"] else ""
-    cls = s["final"] or "-"
-    desc = cfg["class_desc"].get(cls, "")
     return f"""<div class="page">
 <div class="top"><div><div class="brand">{e(cfg['academy'])}</div><h1>{e(cfg['title'])}</h1></div>
 <div class="meta">시험일 {e(str(cfg['date']))}<br>평가 영역 {subjects}</div></div>
@@ -315,26 +338,29 @@ def parent_page(s, cfg, exams, stats):
 <div class="sec"><h2>과목별 결과</h2><div class="cards">{''.join(cards)}</div></div>
 <div class="sec"><h2>단원별 성취도</h2><table class="units">{''.join(rows)}</table>{legend}</div>
 <div class="sec"><h2>문항별 결과</h2>{''.join(grids)}<div class="legend"><span>○ 정답 · × 오답</span><span>1~14번 객관식 · 15~20번 단답형(음영)</span></div></div>
-<div class="sec two"><div class="reco"><div class="t">추천 반</div><div class="c">{e(cls)}</div><div class="d">{e(desc)}</div></div>
-<div class="op"><h2 style="margin-bottom:1.5mm">종합 의견</h2>{e(text)}{('<ul>' + tip_html + '</ul>') if tip_html else ''}{tc}</div></div>
+<div class="sec"><h2>종합 의견</h2><div class="op">{e(text)}{('<ul>' + tip_html + '</ul>') if tip_html else ''}</div></div>
+<div class="sec"><h2>추천 반</h2><div class="reco"><div class="t">추천 반</div><div class="w"></div></div></div>
 <div class="foot"><div>{e(cfg['notice'])}</div><div style="white-space:nowrap"><b>{e(cfg['academy'])}</b> {e(str(cfg['contact']))}</div></div>
 </div>"""
 
 
 def counsel_page(s, cfg, exams, stats):
     e = html.escape
-    cls = cfg["classes"]
+    # 기준 점수와의 차이
     gap = []
-    if s["total"] is not None:
-        for i in range(2):
-            c = stats["cuts"][i]
-            if c is not None:
-                gap.append("%s 컷 %g점 대비 %+g점" % (cls[i], c, s["total"] - c))
-    near = s["total"] is not None and any(c is not None and abs(s["total"] - c) <= cfg["border"] for c in stats["cuts"].values())
+    for k, (key, nm) in enumerate(SUBJ):
+        sc = s["score"][key]
+        if sc is None:
+            continue
+        ths = sorted({v for r_ in cfg["rules"] for v in (r_[1:3] if k == 0 else r_[3:5]) if v is not None})
+        if ths:
+            v = min(ths, key=lambda t: abs(sc - t))
+            gap.append("%s %g점 (기준 %g점 대비 %+g)" % (nm, sc, v, sc - v))
+    near = s["near"]
     manual = s["manual"] and s["manual"] != s["auto"]
     kpi = [("공통수학1", "-" if s["score"]["공수1"] is None else "%g점" % s["score"]["공수1"], False),
            ("공통수학2", "-" if s["score"]["공수2"] is None else "%g점" % s["score"]["공수2"], False),
-           ("환산총점 / 석차", "-" if s["total"] is None else "%g점 · %d/%d" % (s["total"], s["rank"], stats["n"]), False),
+           ("환산총점 / 석차(참고)", "-" if s["total"] is None else "%g점 · %d/%d" % (s["total"], s["rank"], stats["n"]), False),
            ("자동배정 → 최종반", "%s → %s%s" % (s["auto"] or "-", s["final"] or "-", " (수동)" if manual else ""), near)]
     kp = "".join('<div class="%s">%s<b>%s</b></div>' % ("warn" if w else "", e(a), e(b)) for a, b, w in kpi)
     urows = []
@@ -342,24 +368,35 @@ def counsel_page(s, cfg, exams, stats):
         for u in cfg["units"][key]:
             r = s["unit"][(key, u)]
             urows.append("<tr><td>%s</td><td class='L'>%s</td><td><b>%s</b></td><td>%s</td><td>%s</td><td>%s</td></tr>" % (
-                nm, e(u), pct(r), pct(stats[("uavg", key, u)]), pct(stats[("cavg", key, u, s["final"])]) if s["final"] else "-", level(r, cfg) or "미응시"))
-    wrong = []
+                nm, e(u), pct(r), pct(stats[("uavg", key, u)]), pct(stats.get(("cavg", key, u, s["final"]))) if s["final"] else "-", level(r, cfg) or "미응시"))
+    wrong = {key: [] for key, _ in SUBJ}
     easy_miss = 0
     for key, nm in SUBJ:
         if not s["took"][key]:
             continue
-        for q, o, v in zip(exams[key], s["ok"][key], s["resp"][key]):
+        for q, o in zip(exams[key], s["ok"][key]):
             if o:
                 continue
             flag = q["rate"] is not None and q["rate"] >= 0.7
             easy_miss += flag
-            ans = CIRC[q["key"] - 1] if q["no"] <= 14 and isinstance(q["key"], int) and 1 <= q["key"] <= 5 else q["key"]
-            mine = "무응답" if v is None else (CIRC[v - 1] if q["no"] <= 14 and isinstance(v, int) and 1 <= v <= 5 else v)
-            wrong.append("<tr><td>%s</td><td>%d</td><td>%s</td><td>%s</td><td class='L'>%s</td><td>%s</td><td>%s</td><td class='%s'>%s</td></tr>" % (
-                nm, q["no"], e(str(q["unit"])), q["level"], e(POINT.get((key, q["no"]), "")), mine, ans, "flag" if flag else "", pct(q["rate"])))
+            wrong[key].append("<tr><td>%d</td><td>%s</td><td class='L'>%s</td><td class='%s'>%s</td></tr>" % (
+                q["no"], q["level"], e(POINT.get((key, q["no"]), "") or str(q["unit"])), "flag" if flag else "", pct(q["rate"])))
+    wtables = []
+    for key, nm in SUBJ:
+        body = "".join(wrong[key]) or ("<tr><td colspan=4>%s</td></tr>" % ("미응시" if not s["took"][key] else "틀린 문항 없음"))
+        wtables.append("<div style='flex:1'><div class='wt'>%s</div><table class='t s'><tr><th>번호</th><th>난도</th><th>평가 요소</th><th>정답률</th></tr>%s</table></div>" % (nm, body))
+    grids = []
+    for key, nm in SUBJ:
+        cells = []
+        for q, o in zip(exams[key], s["ok"][key]):
+            mark = '<b class="n">-</b>' if not s["took"][key] else ('<b class="o">○</b>' if o else '<b class="x">×</b>')
+            cells.append('<div class="%s">%d%s</div>' % ("sa" if q["no"] > 14 else "", q["no"], mark))
+        grids.append('<div class="grid"><div class="gl">%s</div><div class="cells">%s</div></div>' % (nm, "".join(cells)))
     pts = []
     if near:
-        pts.append("반 경계 점수대입니다. 단원별 성취와 학습 태도를 함께 보고 반을 확정하세요.")
+        pts.append("기준 점수 경계에 있습니다. 단원별 성취와 학습 태도를 함께 보고 반을 확정하세요.")
+    if s["auto"] == cfg["classes"][3]:
+        pts.insert(0, "자동배정 보류: 과목별 기준에 해당하지 않습니다. 상담 후 반을 정해 엑셀 수동조정 칸에 입력하세요.")
     if easy_miss:
         pts.append("정답률 70%% 이상인 문항에서 %d문항 오답 — 개념 누락 또는 계산 실수 여부를 확인하세요." % easy_miss)
     weak = sorted([(u, s["unit"][(k, u)]) for k, _ in SUBJ for u in cfg["units"][k] if s["unit"][(k, u)] is not None], key=lambda x: x[1])[:2]
@@ -375,9 +412,10 @@ def counsel_page(s, cfg, exams, stats):
 <div style="height:4mm"></div><div class="kpi">{kp}</div>
 <div class="sec"><h2>상담 포인트</h2><ul style="margin:0;padding-left:5mm;font-size:9.3pt;line-height:1.7">{''.join('<li>%s</li>' % e(p) for p in pts) or '<li>특이 사항 없음</li>'}</ul></div>
 <div class="sec"><h2>단원별 득점률</h2><table class="t"><tr><th>과목</th><th>단원</th><th>학생</th><th>전체 평균</th><th>최종반 평균</th><th>수준</th></tr>{''.join(urows)}</table></div>
-<div class="sec"><h2>오답 문항 <span style="font-size:8.5pt;color:#6b7588;font-weight:400">(빨간 정답률 = 70% 이상이 맞힌 문항)</span></h2>
-<table class="t"><tr><th>과목</th><th>번호</th><th>단원</th><th>난도</th><th>평가 요소</th><th>학생 답</th><th>정답</th><th>전체 정답률</th></tr>{''.join(wrong) or '<tr><td colspan=8>오답 없음</td></tr>'}</table></div>
-<div class="sec"><h2>상담 메모</h2><div class="memo"></div></div>
+<div class="sec"><h2>문항별 정오</h2>{''.join(grids)}</div>
+<div class="sec"><h2>틀린 문항 <span style="font-size:8.5pt;color:#6b7588;font-weight:400">(빨간 정답률 = 70% 이상이 맞힌 문항)</span></h2>
+<div style="display:flex;gap:4mm">{''.join(wtables)}</div></div>
+<div class="sec" style="flex:1;display:flex;flex-direction:column;margin-bottom:0"><h2>상담 메모</h2><div class="memo"></div></div>
 </div>"""
 
 
@@ -407,6 +445,14 @@ def main(xlsx, outdir):
         safe = re.sub(r'[\\/:*?"<>|]', "_", s["name"])
         render([pgx], os.path.join(outdir, "학부모보고서", "%02d_%s.pdf" % (s["no"], safe)))
     render([counsel_page(s, cfg, exams, stats) for s in targets], os.path.join(outdir, "상담카드_전체.pdf"))
+    # 수정 가능한 한글(HML) 보고서: 전체 1개 + 학생별
+    import hml_report
+    hdir = os.path.join(outdir, "학부모보고서_한글")
+    os.makedirs(hdir, exist_ok=True)
+    hml_report.build(targets, cfg, exams, stats, SUBJ, level, opinion, os.path.join(hdir, "전체.hml"))
+    for s in targets:
+        safe = re.sub(r'[\\/:*?"<>|]', "_", s["name"])
+        hml_report.build([s], cfg, exams, stats, SUBJ, level, opinion, os.path.join(hdir, "%02d_%s.hml" % (s["no"], safe)))
     print("학생 %d명: 학부모 보고서·상담 카드 생성 완료 → %s" % (len(targets), outdir))
 
 
