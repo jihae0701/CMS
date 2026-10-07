@@ -4,7 +4,6 @@
 사용: python make_reports.py 채점파일.xlsx 출력폴더
   - 학부모보고서_전체.pdf, 학부모보고서/번호_이름.pdf : CMS CLIMATH 스타일 학생당 2쪽.
     석차·백분위 없이 성취 수준, (선택)전체 평균, 수강 추천 반(공통수학반 + 선행 과목반)과 반 소개·추천 근거
-  - 학부모보고서_한글/전체.hml, 학부모보고서_한글/번호_이름.hml : 같은 내용의 수정 가능한 한글 파일
   - 상담카드_전체.pdf : 내부용. 자동배정(보류 여부), 기준 점수와의 차이, 경계 여부, 문항별 정오, 틀린 문항 요약
 엑셀의 수식 결과(캐시)에 의존하지 않고 입력값으로 직접 계산한다.
 필요: openpyxl, playwright(Chromium)
@@ -381,7 +380,7 @@ PCSS = """
 .cl .rc .hd b{font-size:12.5pt;font-weight:800;color:#111}
 .cl .rc .hd span{font-size:7.8pt;color:#2F6FD0;font-weight:700}
 .cl .rc .tx{font-size:8.8pt;color:#444;line-height:1.65;margin-top:1.2mm}
-.cl .rc .blank{height:13mm;border-bottom:1px dashed #c9cfdc}
+.cl .rc .tx.pend{color:#777}
 .cl .rc .why{font-size:7.8pt;color:#2F6FD0;margin-top:1.3mm}
 .cl .rc .why em{font-style:normal;font-weight:700;margin-right:2mm;letter-spacing:.5px}
 .cl .blue .ds b{color:#111}
@@ -482,11 +481,11 @@ def parent_pages(s, cfg, exams, stats):
     b1, b2 = basis(s, cfg)
 
     def rcard(n, kind, std, c, desc, why, first):
-        head = '<div class="hd"><b>%s</b><span>%s · %s</span></div>' % (e(c or ""), kind, std)
+        head = '<div class="hd"><b>%s</b><span>%s · %s</span></div>' % (e(c or kind), kind, std)
         if c:
-            body = head + '<div class="tx">%s</div><div class="why"><em>추천 근거</em>%s</div>' % (e(desc), e(why))
-        else:
-            body = head + '<div class="blank"></div>'
+            body = head + ('<div class="tx">%s</div>' % e(desc) if desc else "") + '<div class="why"><em>추천 근거</em>%s</div>' % e(why)
+        else:  # 아직 정하지 않은 경우
+            body = head + '<div class="tx pend">개별 상담을 통해 안내해 드립니다.</div>'
         return '<div class="rc%s"><div class="no">%d</div><div class="bd">%s</div></div>' % (" first" if first else "", n, body)
     cards2 = (rcard(1, "공통수학반", "진단평가 결과 기준", r1, cfg["class_desc"].get(r1 or "", ""), b1, True) +
               rcard(2, "선행 과목반", "학습 진도 기준", r2, cfg["pre_desc"].get(r2 or "", ""), b2, False))
@@ -625,14 +624,6 @@ def main(xlsx, outdir):
         safe = re.sub(r'[\\/:*?"<>|]', "_", s["name"])
         render([pgx], os.path.join(outdir, "학부모보고서", "%02d_%s.pdf" % (s["no"], safe)))
     render([counsel_page(s, cfg, exams, stats) for s in targets], os.path.join(outdir, "상담카드_전체.pdf"))
-    # 수정 가능한 한글(HML) 보고서: 전체 1개 + 학생별
-    import hml_report
-    hdir = os.path.join(outdir, "학부모보고서_한글")
-    os.makedirs(hdir, exist_ok=True)
-    hml_report.build(targets, cfg, exams, stats, SUBJ, level, opinion, os.path.join(hdir, "전체.hml"), recommended, recommended2, strengths_weaknesses, basis)
-    for s in targets:
-        safe = re.sub(r'[\\/:*?"<>|]', "_", s["name"])
-        hml_report.build([s], cfg, exams, stats, SUBJ, level, opinion, os.path.join(hdir, "%02d_%s.hml" % (s["no"], safe)), recommended, recommended2, strengths_weaknesses, basis)
     print("학생 %d명: 학부모 보고서·상담 카드 생성 완료 → %s" % (len(targets), outdir))
     for label, fn, col in (("공통수학반", recommended, "공통수학반(입력), M열"), ("선행반", recommended2, "선행반(입력), N열")):
         pending = ["%d번 %s" % (s["no"], s["name"]) for s in targets if not fn(s, cfg)]

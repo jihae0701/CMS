@@ -206,19 +206,15 @@ PRE_ROW = CLASS_ROW + 9
 cell(s, f"A{PRE_ROW}", "⑦ 선행 과목반 소개 (학습 진도에 따라 1과목 선택 · 학부모 보고서 문구 · 선택 목록)", f(True, 11, "1F3864"), align=LEFT, border=False)
 header(s, PRE_ROW + 1, ["선행 과목반 이름", "소개 문구"])
 s.merge_cells(f"B{PRE_ROW + 1}:E{PRE_ROW + 1}")
-PRE_DEFAULT = [
-    ("대수반", "지수와 로그, 지수함수와 로그함수, 삼각함수, 수열을 선행하는 반으로, 공통수학을 마친 학생이 다음 단계로 나아가기 좋은 과정입니다."),
-    ("미적분Ⅰ반", "함수의 극한과 연속, 미분, 적분을 선행하는 반으로, 대수 학습을 마친 학생에게 권장하는 과정입니다."),
-    ("확률과 통계반", "순열과 조합, 확률, 통계를 선행하는 반으로, 공통수학의 경우의 수를 바탕으로 개념을 넓혀 가는 과정입니다."),
-    (None, None), (None, None), (None, None),
-]
+PRE_DEFAULT = [(None, None)] * 6  # 선행 과목반 이름·소개는 학원에서 정한 뒤 입력
 for i, (nm, d) in enumerate(PRE_DEFAULT):
     r = PRE_ROW + 2 + i
     cell(s, f"A{r}", nm, f(True), INPUT)
     s.merge_cells(f"B{r}:E{r}")
     cell(s, f"B{r}", d, fill=INPUT, align=LEFT)
     s.row_dimensions[r].height = 30
-cell(s, f"F{PRE_ROW + 2}", "← 실제 운영하는 선행반 이름·소개로 수정, 빈 줄에 추가 가능", f(size=9, color="595959"), align=LEFT, border=False)
+cell(s, f"F{PRE_ROW + 2}", "← 선행 과목반 이름·소개가 정해지면 입력(예: 대수반). 비어 있어도 보고서는 '상담을 통해 안내'로 표시",
+     f(size=9, color="595959"), align=LEFT, border=False)
 PRE_LIST = f"='설정'!$A${PRE_ROW + 2}:$A${PRE_ROW + 7}"
 s.column_dimensions["A"].width = 24
 
