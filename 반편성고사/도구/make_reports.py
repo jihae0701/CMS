@@ -542,11 +542,12 @@ def counsel_page(s, cfg, exams, stats):
            ("자동배정 → 공통수학반", "%s → %s" % (s["auto"] or "-", recommended(s, cfg) or "미정"), near)]
     kp = "".join('<div class="%s">%s<b>%s</b></div>' % ("warn" if w else "", e(a), e(b)) for a, b, w in kpi)
     urows = []
+    fc = recommended(s, cfg)  # 반 미정(보류)이면 최종반 평균은 '-'
     for key, nm in SUBJ:
         for u in cfg["units"][key]:
             r = s["unit"][(key, u)]
             urows.append("<tr><td>%s</td><td class='L'>%s</td><td><b>%s</b></td><td>%s</td><td>%s</td><td>%s</td></tr>" % (
-                nm, e(u), pct(r), pct(stats[("uavg", key, u)]), pct(stats.get(("cavg", key, u, s["final"]))) if s["final"] else "-", level(r, cfg) or "미응시"))
+                nm, e(u), pct(r), pct(stats[("uavg", key, u)]), pct(stats.get(("cavg", key, u, fc))) if fc else "-", level(r, cfg) or "미응시"))
     wrong = {key: [] for key, _ in SUBJ}
     easy_miss = 0
     for key, nm in SUBJ:
