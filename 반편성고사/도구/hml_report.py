@@ -29,19 +29,21 @@ class Styles:
         self.font_id = None
 
     # 글자 모양
-    def char(self, pt, color="#1d2433", bold=False, shade=None):
-        key = ("c", pt, color, bold, shade)
+    def char(self, pt, color="#1d2433", bold=False, shade=None, mono=False, italic=False, underline=False, spacing=0):
+        key = ("c", pt, color, bold, shade, mono, italic, underline, spacing)
         for i, k in enumerate(self.cs):
             if k[0] == key:
                 return self.cs0 + i
         attrs = ('BorderFillId="1" Height="%d" Id="%d" ShadeColor="%d" SymMark="0" TextColor="%d" UseFontSpace="false" UseKerning="false"'
                  % (int(pt * 100), self.cs0 + len(self.cs), rgb(shade) if shade else 4294967295, rgb(color)))
-        f = "FONTID_PLACEHOLDER"
+        f = "FONTID_MONO" if mono else "FONTID_PLACEHOLDER"
+        sp = ('<CHARSPACING Hangul="{0}" Hanja="{0}" Japanese="{0}" Latin="{0}" Other="{0}" Symbol="{0}" User="{0}"/>').format(int(spacing))
+        extra = ("<ITALIC/>" if italic else "") + ("<BOLD/>" if bold else "") + \
+                ('<UNDERLINE Color="%d" Shape="Solid" Type="Bottom"/>' % rgb(color) if underline else "")
         body = ('<CHARSHAPE %s>%s<RATIO Hangul="100" Hanja="100" Japanese="100" Latin="100" Other="100" Symbol="100" User="100"/>'
-                '<CHARSPACING Hangul="0" Hanja="0" Japanese="0" Latin="0" Other="0" Symbol="0" User="0"/>'
-                '<RELSIZE Hangul="100" Hanja="100" Japanese="100" Latin="100" Other="100" Symbol="100" User="100"/>'
+                '%s<RELSIZE Hangul="100" Hanja="100" Japanese="100" Latin="100" Other="100" Symbol="100" User="100"/>'
                 '<CHAROFFSET Hangul="0" Hanja="0" Japanese="0" Latin="0" Other="0" Symbol="0" User="0"/>%s</CHARSHAPE>'
-                % (attrs, f, "<BOLD/>" if bold else ""))
+                % (attrs, f, sp, extra))
         self.cs.append((key, body))
         return self.cs0 + len(self.cs) - 1
 
@@ -84,11 +86,13 @@ class Styles:
         def addfont(m):
             n = int(m.group(2))
             self.font_id = n
-            font = ('<FONT Id="%d" Name="맑은 고딕" Type="ttf"><TYPEINFO ArmStyle="1" Contrast="0" FamilyType="2" Letterform="1" Midline="1" Proportion="0" StrokeVariation="1" Weight="6" XHeight="1"/></FONT>' % n)
-            return m.group(0).replace('Count="%d"' % n, 'Count="%d"' % (n + 1)) + font
-        h = re.sub(r'(<FONTFACE Count="(\d+)" Lang="\w+">)', addfont, h)
+            font = ('<FONT Id="%d" Name="맑은 고딕" Type="ttf"><TYPEINFO ArmStyle="1" Contrast="0" FamilyType="2" Letterform="1" Midline="1" Proportion="0" StrokeVariation="1" Weight="6" XHeight="1"/></FONT>' % n +
+                    '<FONT Id="%d" Name="Consolas" Type="ttf"><TYPEINFO ArmStyle="1" Contrast="0" FamilyType="2" Letterform="1" Midline="1" Proportion="9" StrokeVariation="1" Weight="6" XHeight="1"/></FONT>' % (n + 1))
+            return m.group(1).replace('Count="%d"' % n, 'Count="%d"' % (n + 2)) + m.group(3) + font + m.group(4)
+        h = re.sub(r'(<FONTFACE Count="(\d+)" Lang="\w+">)(.*?)(</FONTFACE>)', addfont, h, flags=re.S)
         fid = ('<FONTID Hangul="{0}" Hanja="{0}" Japanese="{0}" Latin="{0}" Other="{0}" Symbol="{0}" User="{0}"/>').format(self.font_id)
-        cs = "".join(b.replace("FONTID_PLACEHOLDER", fid) for _, b in self.cs)
+        fmono = ('<FONTID Hangul="{0}" Hanja="{0}" Japanese="{0}" Latin="{1}" Other="{0}" Symbol="{0}" User="{0}"/>').format(self.font_id, self.font_id + 1)
+        cs = "".join(b.replace("FONTID_PLACEHOLDER", fid).replace("FONTID_MONO", fmono) for _, b in self.cs)
         h = re.sub(r'<CHARSHAPELIST Count="\d+">', '<CHARSHAPELIST Count="%d">' % (self.cs0 + len(self.cs)), h)
         h = h.replace("</CHARSHAPELIST>", cs + "</CHARSHAPELIST>")
         h = re.sub(r'<BORDERFILLLIST Count="\d+">', '<BORDERFILLLIST Count="%d">' % (self.bf0 - 1 + len(self.bf)), h)
@@ -162,10 +166,9 @@ class Doc:
                % (bf_table, len(widths), nrow, random.randint(10 ** 7, 10 ** 8), zo(), Ht, W, "".join(out)))
         return '<P ParaShape="%d" Style="0"%s><TEXT CharShape="%d">%s<CHAR></CHAR></TEXT></P>' % (self.P_TINY if ps is None else ps, extra, self.C_TINY, tbl)
 
-    def bar(self, rate, avg, width, show_avg):
+    def bar(self, rate, avg, width, show_avg, FILL="#1a1a1a", TRACK="#DEDBCF", DARK="#B3202E", height=420):
         """색칠한 표 칸 막대(평균 위치는 굵은 왼쪽 선)"""
         S = self.st
-        FILL, TRACK, DARK = "#2F5597", "#E3E8F2", "#1d2433"
         if rate is None:
             segs = [(1.0, TRACK, False)]
         else:
@@ -186,7 +189,7 @@ class Doc:
                 if tick and cells:  # 평균선이 끝에 붙은 경우: 마지막 칸 오른쪽 선으로
                     pass
                 continue
-            bf = S.border(col, left=("0.6", DARK) if tick else None)
+            bf = S.border(col, left=("1.0", DARK) if tick else None)
             ws.append(w)
             cells.append(("", bf))
         if not ws:
@@ -194,100 +197,135 @@ class Doc:
         ws[-1] += width - sum(ws)
         empty = '<P ParaShape="%d" Style="0"><TEXT CharShape="%d"/></P>' % (self.P_TINY, self.C_TINY)
         row = [(empty, bf, "Center") for _, bf in cells]
-        return self.table([row], ws, heights=[620], margin=(0, 0, 0, 0))
+        return self.table([row], ws, heights=[height], margin=(0, 0, 0, 0))
 
 
-# ---------------- 보고서 ----------------
-LVCOL = {"매우 우수": "#1F3864", "우수": "#2F5597", "양호": "#3f8a6b", "보완 필요": "#c27b2c", None: "#9aa3b5"}
+# ---------------- 보고서 (CMS CLIMATH 스타일, 학생당 2쪽) ----------------
+PB = {"매우 우수": "#B3202E", "우수": "#2B2B2B", "양호": "#C49A3A", "보완 필요": "#8A8F7A", None: "#B9B6A8"}
+RED, INK, GREY, CREAM = "#B3202E", "#1a1a1a", "#555555", "#FBF8F1"
 
 
-def build(students, cfg, exams, stats, SUBJ, level, opinion, out_path, recommended=lambda s, c: None):
+def build(students, cfg, exams, stats, SUBJ, level, opinion, out_path, recommended=lambda s, c: None,
+          recommended2=lambda s, c: None, strengths_weaknesses=None):
     base = open(BASE_HML, encoding="utf-8").read()
     head = base[:base.index("<BODY>")]
     S = Styles(head)
     D = Doc(S)
+    ch = S.char
     C = dict(
-        brand=S.char(10, "#2F5597", True), title=S.char(19, "#1F3864", True), meta=S.char(9, "#5b6577"),
-        label=S.char(8, "#6b7588"), val=S.char(10.5, "#1d2433", True), valn=S.char(10.5, "#1d2433"),
-        secmark=S.char(11.5, "#2F5597", True), sec=S.char(11.5, "#1F3864", True),
-        sub=S.char(9.5, "#44506a", True), score=S.char(24, "#1F3864", True), scoreu=S.char(10, "#6b7588"),
-        miss=S.char(16, "#9aa3b5", True), cap=S.char(8.5, "#5b6577"),
-        us=S.char(8.5, "#6b7588"), uu=S.char(9.5, "#1d2433", True), pct=S.char(9.5, "#1F3864", True),
-        leg=S.char(8, "#6b7588"), legb=S.char(8, "#2F5597", True), legd=S.char(8, "#1d2433", True),
-        gno=S.char(8, "#44506a"), glab=S.char(8.5, "#44506a", True),
-        o=S.char(10, "#2F5597", True), x=S.char(10, "#c0504d", True), n=S.char(10, "#9aa3b5"),
-        body=S.char(9.5, "#1d2433"), bodyb=S.char(9.5, "#1F3864", True), bul=S.char(9.5, "#2F5597", True),
-        recol=S.char(11, "#ffffff", True), recoc=S.char(20, "#1F3864", True), recod=S.char(9, "#44506a"), foot=S.char(8.5, "#5b6577"), footb=S.char(8.5, "#1F3864", True),
+        logo=ch(14, "#1B2A4A", True), logosep=ch(10, "#9a9a9a"), logo2=ch(7, "#1B2A4A", True, italic=True, underline=True),
+        kicker=ch(7.5, GREY, mono=True, spacing=30), title=ch(24, RED, True), subt=ch(11, "#222222"),
+        code=ch(12, "#8b8b8b", True, mono=True, spacing=45), nm=ch(9.5, "#111111", True), nmr=ch(9.5, "#333333"),
+        sh=ch(12, "#111111", True), shr=ch(7, GREY, mono=True, spacing=20),
+        body=ch(9.5, "#222222"), bodyb=ch(9.5, "#111111", True), tag=ch(7.5, "#3c3c33", mono=True, shade="#E2E0D2", spacing=5),
+        cnm=ch(10.5, "#111111", True), big=ch(22, "#111111", True), bigs=ch(9, "#9b9b9b"), miss=ch(16, "#B9B6A8", True),
+        cap=ch(8, "#666666"), us=ch(7.6, "#888888"), uu=ch(8.6, "#222222"), up=ch(8.6, "#111111", True), uph=ch(8.6, RED, True),
+        leg=ch(7.4, "#777777"), legk=ch(7.4, INK, True), legr=ch(7.4, RED, True),
+        gno=ch(7.4, "#777777"), glab=ch(8.4, "#222222", True), o=ch(9.6, INK, True), x=ch(9.6, RED, True), n=ch(9.6, "#B9B6A8"),
+        mini=ch(9, "#333333"), minib=ch(9, "#111111", True),
+        gh=ch(9.8, "#3f5f49", True), wh=ch(9.8, RED, True), gm=ch(9, "#5E7F68", True), wm=ch(9, RED, True),
+        bx=ch(8.8, "#222222"), bxb=ch(8.8, "#111111", True),
+        bh=ch(12, "#111111", True), bd=ch(8.6, GREY), rno=ch(10, "#ffffff", True), rcls=ch(12.5, "#111111", True),
+        rtag=ch(7.6, "#2F6FD0", True, mono=True, spacing=5), rtx=ch(8.8, "#444444"),
+        nx=ch(8.8, "#333333"), nxb=ch(8.8, "#111111", True), pf=ch(7, "#9a9a9a", mono=True, spacing=5),
     )
-    BADGE = {k: S.char(8.5, "#ffffff", True, shade=v) for k, v in LVCOL.items()}
+    BADGE = {k: ch(7.6, "#ffffff", True, shade=v) for k, v in PB.items()}
     BF = dict(
-        none=1, box=S.box(), card=S.box(fill="#f7f9fd"), head=S.border(bottom=("0.7", "#1F3864")),
-        row=S.border(bottom=("0.12", "#e6eaf2")), grid=S.box("#d5dced"), grids=S.box("#d5dced", fill="#f4f1fa"),
-        navy=S.box("#1F3864", "0.4", fill="#1F3864"), write=S.box("#1F3864", "0.4"),
-        writeL=S.border(None, None, ("0.12", "#d5dced"), ("0.4", "#1F3864"), ("0.4", "#1F3864")),
-        writeR=S.border(None, None, ("0.4", "#1F3864"), ("0.4", "#1F3864"), ("0.4", "#1F3864")), foot=S.border(top=("0.12", "#d5dced")),
+        none=1, rule=S.border(bottom=("0.7", INK)), sh=S.border(bottom=("0.12", "#c9c6b8")),
+        olive=S.box("#cfcdbd", fill="#EFEEE3"), card=S.box("#d8d5c8", fill="#ffffff"),
+        grid=S.box("#d8d5c8", fill="#ffffff"), grids=S.box("#d8d5c8", fill="#F1F0E6"),
+        good=S.border("#F3F4F0", ("1.0", "#5E7F68"), ("0.12", "#d6d8cf"), ("0.12", "#d6d8cf"), ("0.12", "#d6d8cf")),
+        warn=S.border("#FCF0F1", ("1.0", RED), ("0.12", "#ecd2d5"), ("0.12", "#ecd2d5"), ("0.12", "#ecd2d5")),
+        note=S.box("#d8d5c8", fill="#ffffff"), blue=S.border("#F3F7FC", ("1.0", "#2F6FD0")),
+        rno=S.box("#2F6FD0", fill="#2F6FD0"), rc1=S.box("#2F6FD0", "0.4", fill="#ffffff"), rc2=S.box("#d6dbe6", fill="#ffffff"),
+        cream=S.border(CREAM),
     )
+    P_SH = S.para("Left", 140)
+    P_C = S.para("Center", 140)
+    P_C2 = S.para("Center", 140, prev=500)
+    P_R = S.para("Right", 140)
+    P_B = S.para("Left", 165)
+    P_IT = S.para("Left", 150, prev=250, left=900, indent=-900)
+    gap = lambda h=1: "".join(D.p([("", D.C_TINY)], D.P_GAP) for _ in range(h))
 
     def badge(lv):
         return (" %s " % (lv or "미응시"), BADGE.get(lv, BADGE[None]))
 
-    def sec(title, first=False):
-        return D.p([("┃ ", C["secmark"]), (title, C["sec"])], D.P_SEC)
+    def sec(kr, en, first=False):
+        return (D.p([("", C["body"])], S.para("Left", 100, prev=0 if first else 700)) +
+                D.table([[(D.p([(kr, C["sh"])], P_SH), BF["sh"], "Bottom"), (D.p([(en, C["shr"])], P_R), BF["sh"], "Bottom")]],
+                        [30000, 21000], margin=(0, 250, 0, 0)) + gap())
 
-    pages = []
+    def logo():
+        return [("CMS", C["logo"]), ("  │ ", C["logosep"]), ("CLIMATH", C["logo2"])]
+
+    def footer(n):
+        return (gap(2) + D.table([[(D.p([("CMS CLIMATH · PLACEMENT TEST REPORT", C["pf"])]), BF["none"], "Center"),
+                                   (D.p([("%d / 2" % n, C["pf"])], P_R), BF["none"], "Center")]], [36000, 15000], margin=(0, 0, 0, 0)))
+
     show = cfg["show_avg"]
     subjects = " · ".join(n for _, n in SUBJ)
+    title = cfg["title"] or "반편성 진단평가 결과"
+    pages = []
     for idx, s in enumerate(students):
         x = []
-        brk = ' ColumnBreak="false" PageBreak="true"' if idx else ""
-        # 머리말
-        left = D.p([(cfg["academy"], C["brand"])]) + D.p([(cfg["title"], C["title"])], D.P_TIGHT)
-        right = D.p([("시험일 %s" % cfg["date"], C["meta"])], D.P_R) + D.p([("평가 영역 %s" % subjects, C["meta"])], D.P_R)
-        x.append(D.table([[(left, BF["head"], "Bottom"), (right, BF["head"], "Bottom")]], [33000, 18000], margin=(0, 300, 0, 0), extra=brk))
-        x.append(D.p([("", D.C_TINY)], D.P_GAP))
-        # 학생 정보
-        took = " · ".join(n for k, n in SUBJ if s["took"][k]) or "-"
-        info = [(D.p([("이름", C["label"])]) + D.p([(s["name"], C["val"])]), BF["box"]),
-                (D.p([("학교", C["label"])]) + D.p([(str(s["school"]), C["valn"])]), BF["box"]),
-                (D.p([("응시 과목", C["label"])]) + D.p([(took, C["valn"])]), BF["box"])]
-        x.append(D.table([info], [17000, 17000, 17000], margin=(250, 250, 500, 500)))
-        # 과목별 결과
-        x.append(sec("과목별 결과"))
+        brk = ' ColumnBreak="false" PageBreak="true"'
+        text, tips = opinion(s, cfg, stats)
+        strong, weak = strengths_weaknesses(s, cfg) if strengths_weaknesses else ([], [])
+        first_sent = text.split(". ")[0].rstrip(".") + "."
+        # ---- 1쪽 ----
+        x.append(D.p(logo(), P_C, extra=brk if idx else ""))
+        x.append(D.p([("CMS CLIMATH · PLACEMENT TEST REPORT", C["kicker"])], P_C))
+        x.append(D.p([(title, C["title"])], P_C2))
+        x.append(D.p([("%s 학습 진단 리포트" % subjects, C["subt"])], P_C))
+        x.append(D.p([("PRE-HIGH 1", C["code"])], P_C2))
+        x.append(D.p([(s["name"] + "  ", C["nm"]), ("중3 · %s" % s["school"] if s["school"] else "중3", C["nmr"])], P_C))
+        x.append(D.table([[("", BF["rule"])]], [51000], heights=[300], margin=(0, 0, 0, 0)))
+        x.append(sec("진단 요약", "SUMMARY"))
+        tg = []
+        for _, u, _ in strong:
+            tg += [(" ✓ 강점 %s " % u, C["tag"]), ("  ", C["body"])]
+        for _, u, _ in weak:
+            tg += [(" ✓ 보완 %s " % u, C["tag"]), ("  ", C["body"])]
+        x.append(D.table([[(D.p([(first_sent, C["body"])], P_B) + (D.p(tg, P_B) if tg else ""), BF["olive"], "Center")]],
+                         [51000], margin=(400, 400, 700, 700)))
+        x.append(sec("과목별 결과", "SUBJECT SCORE"))
         cards = []
         for key, nm in SUBJ:
             full = stats[("full", key)]
             if not s["took"][key]:
-                c = D.p([(nm, C["sub"])]) + D.p([("미응시", C["miss"])])
+                c = D.p([(nm + "    ", C["cnm"]), badge(None)]) + D.p([("미응시", C["miss"])])
             else:
-                sc = s["score"][key]
-                avg = stats[("avg", key)]
+                sc = s["score"][key]; avg = stats[("avg", key)]
                 lv = level(sc / full if full else 0, cfg)
                 cap = "20문항 중 %d문항 정답" % sum(s["ok"][key]) + (" · 전체 평균 %.1f점" % avg if show and avg is not None else "")
-                c = (D.p([(nm, C["sub"])]) +
-                     D.p([("%g" % sc, C["score"]), (" / %d점    " % full, C["scoreu"]), badge(lv)]) +
-                     D.bar(sc / full if full else 0, (avg / full) if (avg is not None and full) else None, 22600, show) +
+                c = (D.p([(nm + "    ", C["cnm"]), badge(lv)]) + D.p([("%g" % sc, C["big"]), (" / %d" % full, C["bigs"])]) +
+                     D.bar(sc / full if full else 0, (avg / full) if (avg is not None and full) else None, 22400, show) +
                      D.p([(cap, C["cap"])]))
             cards.append((c, BF["card"], "Top"))
-        x.append(D.table([[cards[0], ("", BF["none"]), cards[1]]], [25000, 1000, 25000], margin=(300, 300, 700, 700)))
-        # 단원별 성취도
-        x.append(sec("단원별 성취도"))
+        x.append(D.table([[cards[0], ("", BF["none"]), cards[1]]], [25000, 1000, 25000], margin=(400, 400, 700, 700)))
+        x.append(sec("단원별 성취도", "UNIT PROFILE"))
         rows = []
         for key, nm in SUBJ:
             for u in cfg["units"][key]:
                 r = s["unit"][(key, u)]
-                rows.append([(D.p([(nm, C["us"])]), BF["row"]),
-                             (D.p([(u, C["uu"])]), BF["row"]),
-                             (D.bar(r, stats[("uavg", key, u)], 20500, show), BF["row"]),
-                             (D.p([("-" if r is None else "%d%%" % round(r * 100), C["pct"])], D.P_R), BF["row"]),
-                             (D.p([badge(level(r, cfg))], D.P_C), BF["row"])])
-        x.append(D.table(rows, [6200, 11000, 21300, 4800, 7700], margin=(170, 170, 200, 200)))
-        leg = [("■ ", C["legb"]), ("학생 득점률    ", C["leg"])]
+                lv = level(r, cfg)
+                pct = "-" if r is None else "%d%%" % round(r * 100)
+                rows.append([(D.p([(nm + "  ", C["us"]), (u, C["uu"])]), BF["none"], "Bottom"),
+                             (D.p([(pct + "  ", C["uph"] if lv == "매우 우수" else C["up"]), badge(lv)], P_R), BF["none"], "Bottom")])
+                rows.append([(D.bar(r, stats[("uavg", key, u)], 50400, show), BF["none"], "Top", 2)])
+        x.append(D.table(rows, [33000, 18000], margin=(120, 230, 0, 0)))
+        leg = [("■ ", C["legk"]), ("학생 득점률     ", C["leg"])]
         if show:
-            leg += [("┃ ", C["legd"]), ("전체 평균    ", C["leg"])]
-        leg += [("성취 수준: 매우 우수 %g%% 이상 · 우수 %g%% 이상 · 양호 %g%% 이상" % tuple(cfg["lv"]), C["leg"])]
+            leg += [("┃ ", C["legr"]), ("전체 평균     ", C["leg"])]
+        leg += [("매우 우수 %g%%↑ · 우수 %g%%↑ · 양호 %g%%↑" % tuple(cfg["lv"]), C["leg"])]
         x.append(D.p(leg))
-        # 문항별 결과
-        x.append(sec("문항별 결과"))
+        x.append(footer(1))
+        # ---- 2쪽 ----
+        x.append(D.table([[(D.p(logo()), BF["rule"], "Bottom"),
+                           (D.p([(title + "  ", C["mini"]), (s["name"], C["minib"])], P_R), BF["rule"], "Bottom")]],
+                         [24000, 27000], margin=(0, 250, 0, 0), extra=brk))
+        x.append(sec("문항별 결과", "ITEM CHECK"))
         grows = []
         for key, nm in SUBJ:
             row = [(D.p([(nm, C["glab"])]), BF["none"], "Center")]
@@ -297,43 +335,49 @@ def build(students, cfg, exams, stats, SUBJ, level, opinion, out_path, recommend
             grows.append(row)
         x.append(D.table(grows, [5400] + [2280] * 20, margin=(60, 60, 0, 0)))
         x.append(D.p([("○ 정답 · × 오답      1~14번 객관식 · 15~20번 단답형(음영)", C["leg"])]))
-        # 종합 의견
-        x.append(sec("종합 의견"))
-        text, tips = opinion(s, cfg, stats)
-        op = D.p([(text, C["body"])], D.P_L)
-        for u, t in tips:
-            if t:
-                op += D.p([("•  ", C["bul"]), (u, C["bodyb"]), (" — " + t, C["body"])], D.P_BUL)
-        x.append(D.table([[(op, BF["box"], "Top")]], [51000], margin=(500, 500, 700, 700)))
-        # 추천 반: 최종반(수동조정 우선), 보류·미정이면 직접 쓰는 빈칸
-        x.append(sec("추천 반"))
-        rc = recommended(s, cfg)
-        if rc:
-            right = [(D.p([(rc, C["recoc"])], D.P_C), BF["writeL"], "Center"),
-                     (D.p([(cfg["class_desc"].get(rc, ""), C["recod"])], D.P_L), BF["writeR"], "Center")]
-            widths = [9000, 12000, 30000]
-        else:
-            right = [("".join(D.p([("", C["body"])]) for _ in range(3)), BF["write"], "Center")]
-            widths = [9000, 42000]
-        x.append(D.table([[(D.p([("추천 반", C["recol"])], D.P_C), BF["navy"], "Center")] + right],
-                         widths, heights=[6200], margin=(300, 300, 600, 600)))
-        # 꼬리말
-        x.append(D.p([("", D.C_TINY)], D.P_GAP))
-        x.append(D.table([[(D.p([(cfg["notice"], C["foot"])]), BF["foot"], "Center"),
-                           (D.p([(cfg["academy"] + " ", C["footb"]), (str(cfg["contact"]), C["foot"])], D.P_R), BF["foot"], "Center")]],
-                         [35000, 16000], margin=(250, 0, 0, 0)))
+        x.append(sec("강점과 보완점", "TOP 2 EACH"))
+        gi = "".join(D.p([("✓  ", C["gm"]), (u, C["bxb"]), (" %d%% · %s" % (round(r * 100), level(r, cfg)), C["bx"])], P_IT) for _, u, r in strong) \
+            or D.p([("✓  ", C["gm"]), ("기본 개념을 차근차근 쌓아 가는 중입니다. 꾸준한 복습으로 강점 단원을 만들어 갈 수 있습니다.", C["bx"])], P_IT)
+        wi = "".join(D.p([("!  ", C["wm"]), (u, C["bxb"]), (" — " + cfg["advice"].get(u, ""), C["bx"])], P_IT) for _, u, _ in weak) \
+            or D.p([("!  ", C["wm"]), ("전 단원이 고르게 우수합니다. 고난도 문항으로 실력의 폭을 넓혀 보세요.", C["bx"])], P_IT)
+        x.append(D.table([[(D.p([("✓ 강점 단원", C["gh"])]) + gi, BF["good"], "Top"), ("", BF["none"]),
+                           (D.p([("! 보완할 단원", C["wh"])]) + wi, BF["warn"], "Top")]],
+                         [25000, 1000, 25000], margin=(350, 350, 700, 600)))
+        x.append(sec("종합 의견", "OVERALL COMMENT"))
+        x.append(D.table([[(D.p([(text, C["body"])], P_B), BF["note"], "Center")]], [51000], margin=(400, 400, 700, 700)))
+        x.append(sec("추천 반", "RECOMMENDED CLASS"))
+        r1, r2 = recommended(s, cfg), recommended2(s, cfg)
+
+        def rcard(n, c, first):
+            if c:
+                body = (D.p([(c + "      ", C["rcls"]), ("%d순위 추천" % n, C["rtag"])]) +
+                        D.p([(cfg["class_desc"].get(c, ""), C["rtx"])], P_B))
+            else:
+                body = (D.p([("", C["rcls"]), ("%d순위 추천" % n, C["rtag"])], P_R) + D.p([("", C["rtx"])]) + D.p([("", C["rtx"])]))
+            return D.table([[(D.p([(str(n), C["rno"])], P_C), BF["rno"], "Center"),
+                             (body, BF["rc1"] if first else BF["rc2"], "Center")]],
+                           [2600, 44800], heights=[2600], margin=(300, 300, 600, 600))
+        inner = (D.p([("추천 반 안내", C["bh"])]) + D.p([("진단평가 결과와 학습 진도를 바탕으로 추천하는 반입니다.", C["bd"])]) +
+                 gap() + rcard(1, r1, True) + gap() + rcard(2, r2, False))
+        x.append(D.table([[(inner, BF["blue"], "Top")]], [51000], margin=(500, 500, 900, 700)))
+        x.append(gap(2))
+        x.append(D.table([[(D.p([("상담 안내", C["nxb"])]) + D.p([(cfg["notice"], C["nx"])], P_B), BF["olive"], "Center"),
+                           (D.p([(cfg["academy"], C["nxb"])], P_R) + D.p([(str(cfg["contact"]), C["nx"])], P_R), BF["olive"], "Center")]],
+                         [37000, 14000], margin=(350, 350, 700, 700)))
+        x.append(footer(2))
         pages.append("".join(x))
 
-    # 구역 정의(A4, 1단, 머리말·바탕쪽 없음)
+    # 구역 정의(A4, 1단, 바탕쪽 없음, 크림색 종이)
     secdef = re.search(r"<SECDEF.*?</SECDEF>", base, re.S).group(0)
     secdef = re.sub(r"<MASTERPAGE.*?</MASTERPAGE>", "", secdef, flags=re.S)
     secdef = re.sub(r'<PAGEDEF [^>]*>.*?</PAGEDEF>',
                     '<PAGEDEF GutterType="LeftOnly" Height="84188" Landscape="0" Width="59528">'
-                    '<PAGEMARGIN Bottom="2268" Footer="0" Gutter="0" Header="0" Left="3969" Right="3969" Top="3118"/></PAGEDEF>', secdef, flags=re.S)
+                    '<PAGEMARGIN Bottom="2551" Footer="0" Gutter="0" Header="0" Left="3969" Right="3969" Top="3402"/></PAGEDEF>', secdef, flags=re.S)
     secdef = secdef.replace('MasterPage="true"', 'MasterPage="false"')
+    secdef = re.sub(r'<PAGEBORDERFILL BorferFill="\d+" FillArea="\w+"', '<PAGEBORDERFILL BorferFill="%d" FillArea="Paper"' % BF["cream"], secdef)
     first = ('<P ParaShape="%d" Style="0"><TEXT CharShape="%d"><COLDEF Count="1" Layout="Left" SameGap="0" SameSize="true" Type="Newspaper"/>%s</TEXT></P>'
              % (D.P_TINY, D.C_TINY, secdef))
-    head_xml = S.build_head(cfg["title"])
+    head_xml = S.build_head(title)
     tail = re.sub(r"<BINDATASTORAGE>.*?</BINDATASTORAGE>", "", base[base.index("<TAIL>"):], flags=re.S)
     doc = head_xml + '<BODY><SECTION Id="0">' + first + "".join(pages) + "</SECTION></BODY>" + tail
     open(out_path, "w", encoding="utf-8").write(doc)
