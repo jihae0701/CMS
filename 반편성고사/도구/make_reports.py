@@ -98,7 +98,8 @@ def read(path):
         if name and "(예시)" in str(name):
             continue
         students.append(dict(row=r, no=r - FIRST + 1, name=str(name or "(이름 없음)"), school=st.cell(r, 3).value or "",
-                             kind=st.cell(r, 4).value or "", phone=st.cell(r, 5).value or "", memo=st.cell(r, 6).value or "",
+                             kind=st.cell(r, 4).value or "", prev=st.cell(r, 5).value or "", progress=st.cell(r, 6).value or "",
+                             phone=st.cell(r, 7).value or "", memo=st.cell(r, 8).value or "",
                              manual=b.cell(r, 11).value, resp=resp))
     return cfg, exams, students
 
@@ -269,6 +270,9 @@ table.units .track{margin:0}
 .foot b{color:#1F3864}
 /* 상담 카드 */
 .int{position:absolute;top:8mm;right:14mm;font-size:8pt;color:#c0504d;font-weight:700;border:1px solid #c0504d;padding:.6mm 2mm;border-radius:1mm}
+.bg{display:flex;gap:0;margin-top:3mm;border:1px solid #d5dced;border-radius:2mm;font-size:9.5pt}
+.bg div{padding:1.6mm 3mm}.bg div:first-child{width:45mm;border-right:1px solid #d5dced}.bg div:last-child{flex:1}
+.bg span{color:#6b7588;font-size:8pt;margin-right:2.5mm}
 .kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:2.5mm;margin-bottom:3mm}
 .kpi div{border:1px solid #d5dced;border-radius:2mm;padding:2mm 3mm;font-size:8.5pt;color:#6b7588}
 .kpi b{display:block;font-size:14pt;color:#1d2433;margin-top:.5mm}
@@ -423,7 +427,8 @@ def counsel_page(s, cfg, exams, stats):
     return f"""<div class="page"><div class="int">내부용 · 외부 유출 금지</div>
 <div class="top"><div><div class="brand">{e(cfg['academy'])} · 개별 상담 카드</div><h1>{e(s['name'])} <span style="font-size:11pt;color:#5b6577;font-weight:500">{e(str(s['school']))} · {e(str(s['kind']))} · {e(str(s['phone']))}</span></h1></div>
 <div class="meta">{e(cfg['title'])}<br>{' / '.join(gap) if gap else ''}</div></div>
-<div style="height:4mm"></div><div class="kpi">{kp}</div>
+<div class="bg"><div><span>기존 반</span>{e(str(s['prev'])) or '-'}</div><div><span>학습 진도</span>{e(str(s['progress'])) or '-'}</div></div>
+<div style="height:3mm"></div><div class="kpi">{kp}</div>
 <div class="sec"><h2>상담 포인트</h2><ul style="margin:0;padding-left:5mm;font-size:9.3pt;line-height:1.7">{''.join('<li>%s</li>' % e(p) for p in pts) or '<li>특이 사항 없음</li>'}</ul></div>
 <div class="sec"><h2>단원별 득점률</h2><table class="t"><tr><th>과목</th><th>단원</th><th>학생</th><th>전체 평균</th><th>최종반 평균</th><th>수준</th></tr>{''.join(urows)}</table></div>
 <div class="sec"><h2>문항별 정오</h2>{''.join(grids)}</div>

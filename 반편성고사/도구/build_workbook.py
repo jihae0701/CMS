@@ -198,18 +198,18 @@ s.column_dimensions["A"].width = 24
 # ---------------- 학생명단 ----------------
 st = wb.create_sheet("학생명단")
 title(st, "학생 명단", "노란 칸에 학생 정보를 입력하세요. 여기 입력한 순서(행)가 공수1·공수2·반배정 시트의 행과 "
-      "그대로 연결됩니다. 7행은 예시이니 지우고 사용하세요.", "F")
-header(st, 6, ["No", "이름", "학교", "구분", "연락처", "비고(내부용)"])
-for col, w in zip("ABCDEF", [6, 14, 14, 8, 16, 30]):
+      "그대로 연결됩니다. 7행은 예시이니 지우고 사용하세요. 기존 반명: 재원생은 현재 반, 신규 학생은 '신규'.", "H")
+header(st, 6, ["No", "이름", "학교", "구분", "기존 반명", "학습 진도", "연락처", "비고(내부용)"])
+for col, w in zip("ABCDEFGH", [6, 14, 14, 8, 12, 30, 16, 30]):
     st.column_dimensions[col].width = w
 dv_kind = DataValidation(type="list", formula1='"재원,외부"', allow_blank=True)
 st.add_data_validation(dv_kind)
 for r in range(FIRST, LAST + 1):
     cell(st, f"A{r}", r - FIRST + 1, fill=GREY)
-    for col in "BCDEF":
-        cell(st, f"{col}{r}", fill=INPUT, align=LEFT if col == "F" else C)
+    for col in "BCDEFGH":
+        cell(st, f"{col}{r}", fill=INPUT, align=LEFT if col in "FH" else C)
 dv_kind.add(f"D{FIRST}:D{LAST}")
-for col, v in zip("BCDEF", ["홍길동(예시)", "OO중", "외부", "010-0000-0000", "예시 행 — 삭제 후 사용"]):
+for col, v in zip("BCDEFGH", ["홍길동(예시)", "OO중", "외부", "신규", "공통수학1 1회독 완료, 공통수학2 집합까지", "010-0000-0000", "예시 행 — 삭제 후 사용"]):
     st[f"{col}{FIRST}"].value = v
 st.freeze_panes = f"C{FIRST}"
 
