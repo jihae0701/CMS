@@ -1,7 +1,7 @@
 # 시험지 내용 미리보기(PDF): KaTeX로 수식 렌더링, 2단 A4
 import sys, os, re, html
 from playwright.sync_api import sync_playwright
-from problems import M1, M2, PTS
+from problems import M1, M2, PTS, points
 from hwp2latex import convert
 HERE=os.path.dirname(os.path.abspath(__file__)); K=os.path.join(HERE,'npmk/node_modules/katex/dist')
 FIG=os.path.join(HERE,'figs'); CIRC="①②③④⑤"
@@ -11,7 +11,7 @@ def rich(t):
         out.append('<span class="m" data-t="%s"></span>'%html.escape(convert(p)) if i%2 else html.escape(p))
     return "".join(out)
 def prob(p):
-    tag=" [%d점]"%PTS[p['level']]; body=list(p['body']); b2=list(p.get('body2',[]))
+    tag=" [%d점]"%points(p); body=list(p['body']); b2=list(p.get('body2',[]))
     if b2: b2[-1]+=tag
     else: body[-1]+=tag
     h=['<div class="q"><div class="no">%d.</div>'%p['no']]
@@ -26,7 +26,7 @@ def prob(p):
     h.append('</div>'); return "".join(h)
 def sol(p):
     a=CIRC[p['ans']-1] if p['choices'] else p['ans']
-    return '<div class="s"><b>%d. [정답] %s</b> <small>(%s · %s · %d점 · 변형: %s)</small>%s</div>'%(p['no'],a,p['unit'],p['level'],PTS[p['level']],p['src'],"".join('<p>%s</p>'%rich(l) for l in p['sol']))
+    return '<div class="s"><b>%d. [정답] %s</b> <small>(%s · %s · %d점 · 변형: %s)</small>%s</div>'%(p['no'],a,p['unit'],p['level'],points(p),p['src'],"".join('<p>%s</p>'%rich(l) for l in p['sol']))
 def page(M,subj,out):
     doc='''<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="file://%s/katex.min.css"><script src="file://%s/katex.min.js"></script>
 <style>@page{size:A4;margin:14mm 12mm} body{font-family:"Noto Sans KR",sans-serif;font-size:10.5pt;line-height:1.75}

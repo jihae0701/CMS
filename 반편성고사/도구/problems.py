@@ -5,7 +5,14 @@
 # choices: 객관식 5개 수식(단답형은 None), ans: 정답(객관식은 1~5 번호, 단답형은 정수)
 # sol: 해설 문단 리스트, src: 변형 원본, unit/level/pts: 단원/난도/배점, point: 평가 요소
 
-PTS = {"하": 3, "중": 5, "상": 6, "최상": 8}
+PTS = {"하": 3, "중하": 4, "중": 5, "중상": 6, "상": 7, "최상": 8}
+MC_MAX = 7  # 객관식 최고 배점 (14번은 최상 난도지만 7점)
+
+
+def points(p):
+    """문항 배점: 난도별 배점, 객관식은 최고 7점"""
+    v = PTS[p["level"]]
+    return min(v, MC_MAX) if p["choices"] else v
 
 M1 = [
 dict(no=1, unit="다항식", level="하", src="2025-3월 7번", point="곱셈 공식의 변형",
@@ -31,7 +38,7 @@ dict(no=3, unit="방정식과 부등식", level="하", src="2026-3월 7번", poi
       "$x^{3}-4x^{2}+x+6= left(x+1 right) left(x^{2}-5x+6 right)= left(x+1 right) left(x-2 right) left(x-3 right)$",
       "양의 실근은 $2$ , $3$ 이므로 그 합은 $5$"]),
 
-dict(no=4, unit="방정식과 부등식", level="하", src="2025-3월 8번", point="연립이차부등식의 해",
+dict(no=4, unit="방정식과 부등식", level="중하", src="2025-3월 8번", point="연립이차부등식의 해",
  body=["연립부등식",
        "$cases{ x^{2}-2x-8 ge 0 # x^{2}-36 < 0}$",
        "을 만족시키는 모든 정수 $x$ 의 값의 합은?"],
@@ -41,7 +48,7 @@ dict(no=4, unit="방정식과 부등식", level="하", src="2025-3월 8번", poi
       "공통 범위는 $-6<x le -2$ 또는 $4 le x<6$ 이므로 정수 $x$ 는 $-5,`-4,`-3,`-2,`4,`5$",
       "그 합은 $-14+9=-5$"]),
 
-dict(no=5, unit="다항식", level="중", src="2026-3월 9번", point="나머지정리와 나머지의 결정",
+dict(no=5, unit="다항식", level="중하", src="2026-3월 9번", point="나머지정리와 나머지의 결정",
  body=["다항식 $P left(x right)$ 에 대하여 $P left(x+1 right)$ 을 $x$ 로 나눈 나머지는 $5$ 이고, $P left(x-2 right)$ 를 $x+1$ 로 나눈 나머지는 $-3$ 이다. 다항식 $P left(x right)$ 를 $x^{2}+2x-3$ 으로 나눈 나머지를 $R left(x right)$ 라 할 때, $R left(2 right)$ 의 값은?"],
  choices=["7", "9", "11", "13", "15"], ans=1,
  sol=["나머지정리에 의하여 $P left(1 right)=5$ , $P left(-3 right)=-3$",
@@ -50,7 +57,7 @@ dict(no=5, unit="다항식", level="중", src="2026-3월 9번", point="나머지
       "$a+b=5$ , $-3a+b=-3$ 에서 $a=2$ , $b=3$",
       "따라서 $R left(2 right)=2 TIMES 2+3=7$"]),
 
-dict(no=6, unit="행렬", level="중", src="2026-3월 10번", point="행렬의 곱셈과 성분 비교",
+dict(no=6, unit="행렬", level="중하", src="2026-3월 10번", point="행렬의 곱셈과 성분 비교",
  body=["양수 $k$ 에 대하여 두 행렬 $A$ , $B$ 를 각각",
        "$A= left( rpile{ 1 && 2 # k && 3 } right)$ , $B= left( rpile{ k && 2 # -1 && 1 } right)$",
        "라 하자. $AB= left( rpile{ a && 4 # 6 && b } right)$ 일 때, 두 상수 $a$ , $b$ 에 대하여 $a+b$ 의 값은?"],
@@ -79,7 +86,7 @@ dict(no=8, unit="방정식과 부등식", level="중", src="2025-3월 13번", po
       "$alpha >0$ , $beta >0$ 이므로 $beta = sqrt{3}$ , $alpha =3 sqrt{3}$",
       "따라서 $alpha + beta =4 sqrt{3}$"]),
 
-dict(no=9, unit="경우의 수", level="상", src="2025-3월 16번", point="조합을 이용한 경우의 수",
+dict(no=9, unit="경우의 수", level="중", src="2025-3월 16번", point="조합을 이용한 경우의 수",
  body=["어느 청소년 센터에서는 서로 다른 $4$ 개의 체육 동아리와 서로 다른 $2$ 개의 음악 동아리를 운영한다. 두 청소년 ${rm{A}}$ 와 ${rm{B}}$ 가 이 $6$ 개의 동아리 중에서 다음 조건을 만족시키도록 동아리를 선택하는 경우의 수는?"],
  box=["(가) ${rm{A}}$ 와 ${rm{B}}$ 는 각자 $1$ 개 이상의 체육 동아리와 $1$ 개 이상의 음악 동아리를 포함한 서로 다른 $3$ 개의 동아리를 선택한다.",
       "(나) ${rm{A}}$ 는 선택하고 ${rm{B}}$ 는 선택하지 않은 동아리의 개수는 적어도 $1$ 이다."],
@@ -88,7 +95,7 @@ dict(no=9, unit="경우의 수", level="상", src="2025-3월 16번", point="조�
       "두 사람 모두 $3$ 개씩 고르므로 (나)는 ${rm{A}}$ 와 ${rm{B}}$ 가 고른 동아리의 집합이 서로 다르다는 것과 같다.",
       "따라서 구하는 경우의 수는 $16 TIMES 15=240$"]),
 
-dict(no=10, unit="방정식과 부등식", level="상", src="2026-3월 15번", point="연립이차부등식의 정수해 조건",
+dict(no=10, unit="방정식과 부등식", level="중상", src="2026-3월 15번", point="연립이차부등식의 정수해 조건",
  body=["$x$ 에 대한 연립부등식",
        "$cases{ x^{2}-4x-5 ge 0 # left(x+a right) left(x-a+4 right)<0}$",
        "을 만족시키는 정수 $x$ 의 개수가 $6$ 이 되도록 하는 모든 정수 $a$ 의 값의 합은?"],
@@ -100,7 +107,7 @@ dict(no=10, unit="방정식과 부등식", level="상", src="2026-3월 15번", p
       "$a$ 가 정수이므로 $d=5$ 이고, $left| a-2 right|=5$ 에서 $a=7$ 또는 $a=-3$",
       "따라서 모든 정수 $a$ 의 값의 합은 $4$"]),
 
-dict(no=11, unit="경우의 수", level="상", src="2026-3월 16번", point="조건이 있는 분배의 경우의 수",
+dict(no=11, unit="경우의 수", level="중상", src="2026-3월 16번", point="조건이 있는 분배의 경우의 수",
  body=["서로 다른 동화책 $2$ 권, 서로 다른 시집 $4$ 권이 있다. 이 $6$ 권의 책을 다음 규칙에 따라 $1$ 학년 학생 $2$ 명과 $2$ 학년 학생 $3$ 명에게 남김없이 나누어 주는 경우의 수는? (단, $5$ 명의 학생 중 책을 한 권도 받지 못하는 학생은 없다.)"],
  box=["(가) 동화책은 $2$ 학년 학생에게만 나누어 준다.",
       "(나) 시집을 $2$ 권 이상 받는 학생은 없다."],
@@ -155,7 +162,7 @@ dict(no=15, unit="방정식과 부등식", level="하", src="2026-3월 24번", p
       "${1} over {alpha} + {1} over {beta} = {alpha + beta} over {alpha beta} = {a} over {6} = {3} over {2}$ 이므로 $a=9$",
       "$alpha^{2}+ beta^{2}= left( alpha + beta right)^{2}-2 alpha beta =81-12=69$"]),
 
-dict(no=16, unit="방정식과 부등식", level="하", src="2025-3월 24번", point="계수가 실수인 이차방정식의 허근",
+dict(no=16, unit="방정식과 부등식", level="중하", src="2025-3월 24번", point="계수가 실수인 이차방정식의 허근",
  body=["두 실수 $a$ , $b$ 에 대하여 이차방정식 $x^{2}+ax+b=0$ 의 한 근이 $3-i$ 일 때, $a^{2}+b^{2}$ 의 값을 구하시오. (단, $i= sqrt{-1}$ )"],
  choices=None, ans=136,
  sol=["계수가 실수이므로 다른 한 근은 $3+i$ 이다.",
@@ -182,7 +189,7 @@ dict(no=18, unit="방정식과 부등식", level="중", src="2025-3월 6번", po
       "접하려면 판별식 $D= left(a-2 right)^{2}-4 left(3a-3 right)=a^{2}-16a+16=0$",
       "이 이차방정식의 판별식이 $16^{2}-4 TIMES 16>0$ 이므로 서로 다른 두 실근을 갖고, 근과 계수의 관계에 의하여 모든 $a$ 의 값의 합은 $16$"]),
 
-dict(no=19, unit="행렬", level="상", src="2026-3월 29번", point="행렬의 곱셈과 성분 조건의 추론",
+dict(no=19, unit="행렬", level="중상", src="2026-3월 29번", point="행렬의 곱셈과 성분 조건의 추론",
  body=["영행렬이 아닌 두 행렬 $A= left( rpile{ a_{11} && a_{12} # a_{21} && a_{22} } right)$ , $B= left( rpile{ b_{11} && b_{12} # b_{21} && b_{22} } right)$ 는 $A^{2}=B$ 이고, 각 행렬의 성분은 다음 조건을 만족시킨다."],
  box=["(가) 모든 $i$ , $j~ left(i=1,`2,~j=1,`2 right)$ 에 대하여 $a_{ij} TIMES b_{ij}=0$ 이다.",
       "(나) 모든 $i$ , $j~ left(i=1,`2,~j=1,`2 right)$ 에 대하여 $a_{ij}+b_{ij} ne 0$ 이다."],
@@ -234,13 +241,13 @@ dict(no=3, unit="함수와 그래프", level="하", src="2025-3월 5번", point=
  sol=["$f^{-1} left(5 right)=2$ 이므로 $f left(2 right)=2a-3=5$ , $a=4$",
       "$f^{-1} left(13 right)=k$ 라 하면 $f left(k right)=4k-3=13$ 이므로 $k=4$"]),
 
-dict(no=4, unit="도형의 방정식", level="하", src="2026-3월 23번", point="삼각형의 무게중심",
+dict(no=4, unit="도형의 방정식", level="중하", src="2026-3월 23번", point="삼각형의 무게중심",
  body=["좌표평면 위의 세 점 ${rm{A}} left(1,`4 right)$ , ${rm{B}} left(a,`-2 right)$ , ${rm{C}} left(5,`b right)$ 에 대하여 삼각형 ${rm{ABC}}$ 의 무게중심의 좌표가 $left(3,`2 right)$ 일 때, $a+b$ 의 값은?"],
  choices=["5", "6", "7", "8", "9"], ans=3,
  sol=["${1+a+5} over {3} =3$ 에서 $a=3$ , ${4+ left(-2 right)+b} over {3} =2$ 에서 $b=4$",
       "따라서 $a+b=7$"]),
 
-dict(no=5, unit="도형의 방정식", level="중", src="2025-3월 9번", point="도형의 평행이동과 대칭이동",
+dict(no=5, unit="도형의 방정식", level="중하", src="2025-3월 9번", point="도형의 평행이동과 대칭이동",
  body=["직선 $y=ax+3$ 을 $x$ 축의 방향으로 $2$ 만큼, $y$ 축의 방향으로 $-1$ 만큼 평행이동한 후, $x$ 축에 대하여 대칭이동한 직선이 원 $x^{2}+y^{2}+2x-8y+8=0$ 의 넓이를 이등분할 때, 상수 $a$ 의 값은?"],
  choices=["-2", "-1", "0", "1", "2"], ans=5,
  sol=["평행이동한 직선은 $y+1=a left(x-2 right)+3$ , 즉 $y=a left(x-2 right)+2$",
@@ -248,7 +255,7 @@ dict(no=5, unit="도형의 방정식", level="중", src="2025-3월 9번", point=
       "원 $left(x+1 right)^{2}+ left(y-4 right)^{2}=9$ 의 넓이를 이등분하려면 중심 $left(-1,`4 right)$ 를 지나야 하므로",
       "$4=-a left(-3 right)-2$ , $3a=6$ , $a=2$"]),
 
-dict(no=6, unit="집합과 명제", level="중", src="2026-3월 11번", point="충분조건과 진리집합의 포함 관계",
+dict(no=6, unit="집합과 명제", level="중하", src="2026-3월 11번", point="충분조건과 진리집합의 포함 관계",
  body=["실수 $x$ 에 대한 두 조건",
        "$p`:` left| x-a right| >3$ ,",
        "$q`:`x^{2}-6x+8 le 0$",
@@ -276,7 +283,7 @@ dict(no=8, unit="도형의 방정식", level="중", src="2025-3월 12번", point
       "점 ${rm{P}}$ 와 직선 ${rm{AB}}$ 사이의 거리의 최댓값은 ${23} over {5} +2= {33} over {5}$",
       "따라서 넓이의 최댓값은 ${1} over {2} TIMES 5 TIMES {33} over {5} = {33} over {2}$"]),
 
-dict(no=9, unit="함수와 그래프", level="상", src="2025-3월 10번", point="무리함수의 그래프와 도형의 넓이",
+dict(no=9, unit="함수와 그래프", level="중", src="2025-3월 10번", point="무리함수의 그래프와 도형의 넓이",
  body=["그림과 같이 양수 $k$ 에 대하여 함수 $f left(x right)= sqrt{2x}$ 의 그래프 위의 두 점 ${rm{A}} left(k,`f left(k right) right)$ , ${rm{B}} left(9k,`f left(9k right) right)$ 에서 $x$ 축에 내린 수선의 발을 각각 ${rm{C}}$ , ${rm{D}}$ 라 하자. 사각형 ${rm{ACDB}}$ 의 넓이가 $64$ 일 때, ${ bar{rm{AB}}}$ 의 값은?"],
  fig="sqrt.png",
  choices=["4 sqrt{15}", "6 sqrt{7}", "2 sqrt{65}", "4 sqrt{17}", "12 sqrt{2}"], ans=4,
@@ -285,7 +292,7 @@ dict(no=9, unit="함수와 그래프", level="상", src="2025-3월 10번", point
       "양변을 제곱하면 $2k^{3}=16$ , $k=2$",
       "${rm{A}} left(2,`2 right)$ , ${rm{B}} left(18,`6 right)$ 이므로 ${ bar{rm{AB}}} = sqrt{16^{2}+4^{2}} = sqrt{272} =4 sqrt{17}$"]),
 
-dict(no=10, unit="집합과 명제", level="상", src="2025-3월 15번", point="필요조건과 진리집합의 포함 관계",
+dict(no=10, unit="집합과 명제", level="중상", src="2025-3월 15번", point="필요조건과 진리집합의 포함 관계",
  body=["실수 $x$ 에 대한 두 조건",
        "$p`:` left(x-2a right) left(x+a right)>0$ ,",
        "$q`:` left| x-1 right| le 5$",
@@ -297,7 +304,7 @@ dict(no=10, unit="집합과 명제", level="상", src="2025-3월 15번", point="
       "(iii) $a<0$ 일 때 $P^{C}= left{x left| 2a le x le -a right. right}$ 이므로 $2a ge -4$ , $-a le 6$ 에서 $-2 le a<0$",
       "따라서 $-2 le a le 3$ 이므로 $M=3$ , $m=-2$ , $Mm=-6$"]),
 
-dict(no=11, unit="도형의 방정식", level="상", src="2026-3월 14번", point="대칭이동을 이용한 거리의 최솟값",
+dict(no=11, unit="도형의 방정식", level="중상", src="2026-3월 14번", point="대칭이동을 이용한 거리의 최솟값",
  body=["그림과 같이 좌표평면 위에 원 $C`:` left(x-10 right)^{2}+ left(y-6 right)^{2}=5$ 와 점 ${rm{A}} left(1,`0 right)$ 이 있다. 원 $C$ 위의 점 ${rm{P}}$ , 직선 $y=x$ 위의 점 ${rm{Q}}$ 에 대하여 ${ bar{rm{AQ}}} + { bar{rm{QP}}}$ 의 최솟값은?"],
  fig="reflect.png",
  choices=["3 sqrt{5}", "4 sqrt{5}", "5 sqrt{5}", "6 sqrt{5}", "7 sqrt{5}"], ans=2,
@@ -341,7 +348,7 @@ dict(no=15, unit="함수와 그래프", level="하", src="2025-3월 25번", poin
       "$2= sqrt{0} +a$ 에서 $a=2$ , $b= sqrt{16} +2=6$",
       "따라서 $a+b=8$"]),
 
-dict(no=16, unit="집합과 명제", level="하", src="2026-3월 22번", point="집합의 연산",
+dict(no=16, unit="집합과 명제", level="중하", src="2026-3월 22번", point="집합의 연산",
  body=["두 집합",
        "$A= left{x left| x 는~ 12 의~약수 right. right}$ , $B= left{x left| x 는~ 10 ~이하의~소수 right. right}$",
        "에 대하여 집합 $left(A cup B right)- left(A cap B right)$ 의 모든 원소의 합을 구하시오."],
@@ -357,16 +364,16 @@ dict(no=17, unit="도형의 방정식", level="중", src="2026-3월 25번", poin
       "$x^{2}+ax+a-8=2x-5$ 에서 $x^{2}+ left(a-2 right)x+a-3=0$",
       "판별식 $left(a-2 right)^{2}-4 left(a-3 right)= left(a-4 right)^{2}=0$ 이므로 $a=4$"]),
 
-dict(no=18, unit="도형의 방정식", level="중", src="2025-3월 26번", point="외분점과 두 점 사이의 거리의 최대·최소",
- body=["좌표평면 위의 원점 ${rm{O}}$ 와 점 ${rm{A}} left(2,`1 right)$ 에 대하여 선분 ${rm{OA}}$ 를 $2`:`1$ 로 외분하는 점을 ${rm{P}}$ , 점 ${rm{B}} left(6,`-2 right)$ 에 대하여 선분 ${rm{AB}}$ 위의 한 점을 ${rm{Q}}$ 라 하자. ${ bar{rm{PQ}}}^{2}$ 의 최댓값을 $M$ , 최솟값을 $m$ 이라 할 때, $M+m$ 의 값을 구하시오."],
+dict(no=18, unit="도형의 방정식", level="중", src="2025-3월 26번", point="내분점과 점과 직선 사이의 거리의 최대·최소",
+ body=["좌표평면 위의 원점 ${rm{O}}$ 와 점 ${rm{C}} left(12,`6 right)$ 에 대하여 선분 ${rm{OC}}$ 를 $1`:`2$ 로 내분하는 점을 ${rm{P}}$ 라 하자. 두 점 ${rm{A}} left(2,`1 right)$ , ${rm{B}} left(6,`-2 right)$ 에 대하여 선분 ${rm{AB}}$ 위의 한 점을 ${rm{Q}}$ 라 할 때, ${ bar{rm{PQ}}}^{2}$ 의 최댓값을 $M$ , 최솟값을 $m$ 이라 하자. $M+m$ 의 값을 구하시오."],
  choices=None, ans=24,
- sol=["${rm{P}}$ 는 선분 ${rm{OA}}$ 를 $2`:`1$ 로 외분하므로 ${rm{P}} left(4,`2 right)$",
+ sol=["${rm{P}}$ 는 선분 ${rm{OC}}$ 를 $1`:`2$ 로 내분하므로 ${rm{P}} left({12} over {3},` {6} over {3} right)$ , 즉 ${rm{P}} left(4,`2 right)$",
       "${ bar{rm{PA}}}^{2} =4+1=5$ , ${ bar{rm{PB}}}^{2} =4+16=20$ 이므로 $M=20$",
       "직선 ${rm{AB}}$ 의 방정식은 $3x+4y-10=0$ 이고 점 ${rm{P}}$ 와의 거리는 ${ left| 12+8-10 right|} over {5} =2$",
       "점 ${rm{P}}$ 에서 직선 ${rm{AB}}$ 에 내린 수선의 발 $left({14} over {5},` {2} over {5} right)$ 는 선분 ${rm{AB}}$ 위에 있으므로 $m=4$",
       "따라서 $M+m=24$"]),
 
-dict(no=19, unit="함수와 그래프", level="상", src="2026-3월 28번", point="합성함수와 집합의 조건",
+dict(no=19, unit="함수와 그래프", level="중상", src="2026-3월 28번", point="합성함수와 집합의 조건",
  body=["집합 $X= left{1,`2,`3,`4,`5,`6,`7,`8,`9 right}$ 에 대하여 함수 $f`:`X rarrow X$ 는",
        "$f left(k right)= left(7^{k} 의~일의~자리의~수 right)$",
        "이다. 다음 조건을 만족시키는 집합 $A$ 에 대하여 $A$ 의 모든 원소의 합의 최댓값을 구하시오."],

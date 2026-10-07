@@ -1,6 +1,6 @@
 import sys, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from problems import M1, M2, PTS
+from problems import M1, M2, PTS, points
 from openpyxl import Workbook
 from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
 from openpyxl.utils import get_column_letter as L
@@ -236,7 +236,7 @@ def score_sheet(name, subj):
     for r, lab in [(2, "정답 ▶"), (3, "배점 ▶"), (4, "단원 ▶"), (5, "난이도 ▶")]:
         cell(ws, f"A{r}", lab, f(True), SUB)
     dv_unit = DataValidation(type="list", formula1=f"='설정'!$B${u0}:$B${u1}", allow_blank=True)
-    dv_lv = DataValidation(type="list", formula1='"하,중,상,최상"', allow_blank=True)
+    dv_lv = DataValidation(type="list", formula1='"하,중하,중,중상,상,최상"', allow_blank=True)
     dv_mc = DataValidation(type="whole", operator="between", formula1="1", formula2="5", allow_blank=True,
                            error="객관식은 1~5 사이 정수만 입력", errorTitle="입력 오류", showErrorMessage=True)
     dv_sa = DataValidation(type="whole", operator="between", formula1="0", formula2="999", allow_blank=True,
@@ -246,7 +246,7 @@ def score_sheet(name, subj):
     for i, c in enumerate(QC):
         mc = i < N_MC
         cell(ws, f"{c}2", M[i]["ans"], f(True, 10, "C00000"), INPUT)
-        cell(ws, f"{c}3", PTS[M[i]["level"]], fill=INPUT)
+        cell(ws, f"{c}3", points(M[i]), fill=INPUT)
         cell(ws, f"{c}4", M[i]["unit"], f(size=8), INPUT)
         cell(ws, f"{c}5", M[i]["level"], fill=INPUT)
         cell(ws, f"{c}6", f"{i + 1}\n{'객관식' if mc else '단답형'}", f(True, 9, "FFFFFF"),

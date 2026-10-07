@@ -6,7 +6,7 @@
 import sys, os, re, base64, random, json
 from xml.sax.saxutils import escape
 from PIL import Image
-from problems import M1, M2, PTS
+from problems import M1, M2, PTS, points
 from eqmeasure import measure
 
 TPL, FIGDIR, OUTDIR = sys.argv[1:4]
@@ -152,7 +152,7 @@ def endnote(pr):
             % "".join(ps))
 
 def problem(pr, colbreak):
-    pts = PTS[pr["level"]]
+    pts = points(pr)
     tag = " [%d점]" % pts
     body = list(pr["body"])
     body2 = list(pr.get("body2", []))
@@ -226,7 +226,7 @@ def build(M, subject, short, layout, outname):
         ans = CIRC[p["ans"] - 1] if p["choices"] else str(p["ans"])
         lines.append('<P ParaShape="3" Style="0"><TEXT CharShape="0"><AUTONUM Number="%d" NumberType="Endnote">'
                      '<AUTONUMFORMAT SuffixChar="." Superscript="false" Type="Digit"/></AUTONUM><CHAR> [정답] %s   (%d점, %s)</CHAR></TEXT></P>'
-                     % (p["no"], ans, PTS[p["level"]], p["unit"]))
+                     % (p["no"], ans, points(p), p["unit"]))
     tail = ('<P ParaShape="1" Style="0" ColumnBreak="false" PageBreak="true"><TEXT CharShape="0"/></P>' + qa + "".join(lines) + so)
     body_end = rest[rest.index("</SECTION>"):rest.index("<TAIL>")]
 

@@ -100,7 +100,7 @@ mv=ms[0]; d2=(4*mv-2)**2/(mv**2+1); assert sp.simplify((20-d2)/(4-d2))==9; R[(2,
 av=2; bv=sp.sqrt(2*5+6)+av; assert sp.sqrt(2*(-3)+6)+av==2; R[(2,15)]=av+bv
 A_={d for d in range(1,13) if 12%d==0}; B_={2,3,5,7}; R[(2,16)]=sum((A_|B_)-(A_&B_))
 xt=sp.Rational(2); yt=-1; assert xt**2+yt**2==5; D=sp.discriminant(x**2+a*x+a-8-(2*x-5),x); R[(2,17)]=sp.solve(D,a)
-Pp=(4,2); Ap=(2,1); Bp=(6,-2)
+Pp=(12/3,6/3); Ap=(2,1); Bp=(6,-2)
 vals=[(Pp[0]-(Ap[0]+(Bp[0]-Ap[0])*i/10000))**2+(Pp[1]-(Ap[1]+(Bp[1]-Ap[1])*i/10000))**2 for i in range(10001)]
 R[(2,18)]=round(max(vals)+min(vals),6)
 fu={kk_: pow(7,kk_,10) for kk_ in range(1,10)}
