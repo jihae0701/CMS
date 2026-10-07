@@ -15,14 +15,14 @@ from openpyxl import load_workbook
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 try:
     from problems import M1, M2
-    POINT = {("공젘1", p["no"]): p["point"] for p in M1}
-    POINT.update({("공젘2", p["no"]): p["point"] for p in M2})
+    POINT = {("공수1", p["no"]): p["point"] for p in M1}
+    POINT.update({("공수2", p["no"]): p["point"] for p in M2})
 except Exception:
     POINT = {}
 
 FIRST, LAST = 7, 86
 QCOLS = list(range(4, 24))  # D..W
-SUBJ = [("공젘1", "공통수학1"), ("공젘2", "공통수학2")]
+SUBJ = [("공수1", "공통수학1"), ("공수2", "공통수학2")]
 CHROME = os.environ.get("CHROME_PATH", "/opt/pw-browsers/chromium-1194/chrome-linux/chrome")
 CIRC = "①②③④⑤"
 
@@ -46,7 +46,7 @@ def read(path):
     val = lambda ref: s[ref].value
     cfg = {
         "classes": [val("B6"), val("B7"), val("B8"), val("B9") or "보류"],
-        # 절대평가 기준: (반 이름, 공젘1 이상, 공젘1 미만, 공젘2 이상, 공젘2 미만), 빈칸은 조건 없음
+        # 절대평가 기준: (반 이름, 공수1 이상, 공수1 미만, 공수2 이상, 공수2 미만), 빈칸은 조건 없음
         "rules": [(val("B%d" % r), num(val("C%d" % r)), num(val("D%d" % r)), num(val("E%d" % r)), num(val("F%d" % r)))
                   for r in (6, 7, 8)],
         "w": [float(val("C13") or 1), float(val("C14") or 1)],
@@ -72,15 +72,15 @@ def read(path):
         "lv": [float(g("'매우 우수' 기준(득점률 %)", 85)), float(g("'우수' 기준(득점률 %)", 70)), float(g("'양호' 기준(득점률 %)", 50))],
         "notice": g("상담 안내 문구"), "contact": g("학원 연락처"),
     })
-    units = {"공젘1": [], "공젘2": []}
+    units = {"공수1": [], "공수2": []}
     r = 19
-    for key in ("공젘1", "공젘2"):
+    for key in ("공수1", "공수2"):
         while s["B%d" % r].value != "합계":
             units[key].append(s["B%d" % r].value)
             r += 1
         r += 1
     cfg["units"] = units
-    order = units["공젘1"] + units["공젘2"]
+    order = units["공수1"] + units["공수2"]
     cfg["advice"] = {u: (s["B%d" % (adv_row + 2 + i)].value or "") for i, u in enumerate(order)} if adv_row else {}
     cfg["class_desc"] = {}
     if cls_row:
@@ -145,7 +145,7 @@ def compute(cfg, exams, students):
 
     for s in ranked:
         s["rank"] = 1 + sum(1 for t in ranked if t["total"] > s["total"])
-        a, b = s["score"]["공젘1"], s["score"]["공젘2"]
+        a, b = s["score"]["공수1"], s["score"]["공수2"]
         s["auto"] = hold
         if a is not None and b is not None:
             for name, lo1, hi1, lo2, hi2 in cfg["rules"]:
@@ -537,8 +537,8 @@ def counsel_page(s, cfg, exams, stats):
             gap.append("%s %g점 (기준 %g점 대비 %+g)" % (nm, sc, v, sc - v))
     near = s["near"]
     manual = s["manual"] and s["manual"] != s["auto"]
-    kpi = [("공통수학1", "-" if s["score"]["공젘1"] is None else "%g점" % s["score"]["공젘1"], False),
-           ("공통수학2", "-" if s["score"]["공젘2"] is None else "%g점" % s["score"]["공젘2"], False),
+    kpi = [("공통수학1", "-" if s["score"]["공수1"] is None else "%g점" % s["score"]["공수1"], False),
+           ("공통수학2", "-" if s["score"]["공수2"] is None else "%g점" % s["score"]["공수2"], False),
            ("환산총점 / 석차(참고)", "-" if s["total"] is None else "%g점 · %d/%d" % (s["total"], s["rank"], stats["n"]), False),
            ("자동배정 → 공통수학반", "%s → %s" % (s["auto"] or "-", recommended(s, cfg) or "미정"), near)]
     kp = "".join('<div class="%s">%s<b>%s</b></div>' % ("warn" if w else "", e(a), e(b)) for a, b, w in kpi)
