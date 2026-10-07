@@ -2,7 +2,8 @@
 """채점 엑셀(입력값)을 읽어 학부모 보고서와 상담 카드(PDF)를 만든다.
 
 사용: python make_reports.py 채점파일.xlsx 출력폴더
-  - 학부모보고서_전체.pdf, 학부모보고서/번호_이름.pdf : 석차·백분위 없이 성취 수준, (선택)전체 평균, 추천 반(빈칸)
+  - 학부모보고서_전체.pdf, 학부모보고서/번호_이름.pdf : 석차·백분위 없이 성취 수준, (선택)전체 평균,
+    추천 반(반배정 시트의 최종반 = 수동조정 또는 자동배정, 보류·미정이면 빈칸)과 반 소개
   - 학부모보고서_한글/전체.hml, 학부모보고서_한글/번호_이름.hml : 같은 내용의 수정 가능한 한글 파일
   - 상담카드_전체.pdf : 내부용. 자동배정(보류 여부), 기준 점수와의 차이, 경계 여부, 문항별 정오, 틀린 문항 요약
 엑셀의 수식 결과(캐시)에 의존하지 않고 입력값으로 직접 계산한다.
@@ -53,13 +54,15 @@ def read(path):
     }
     # 보고서 설정: A열 항목명으로 찾는다
     lab = {}
-    adv_row = None
+    adv_row = cls_row = None
     for r in range(1, s.max_row + 1):
         a = s.cell(r, 1).value
         if isinstance(a, str):
             lab.setdefault(a.strip(), s.cell(r, 2).value)
             if "학습 제언" in a and a.strip()[0] in "④⑤⑥⑦":
                 adv_row = r
+            if "반 소개" in a and a.strip()[0] in "④⑤⑥⑦":
+                cls_row = r
     g = lambda k, d="": lab.get(k) if lab.get(k) not in (None, "") else d
     cfg.update({
         "academy": g("학원명"), "title": g("보고서 제목"), "date": g("시험일"),
@@ -77,6 +80,7 @@ def read(path):
     cfg["units"] = units
     order = units["공수1"] + units["공수2"]
     cfg["advice"] = {u: (s["B%d" % (adv_row + 2 + i)].value or "") for i, u in enumerate(order)} if adv_row else {}
+    cfg["class_desc"] = {cfg["classes"][i]: (s["B%d" % (cls_row + 2 + i)].value or "") for i in range(3)} if cls_row else {}
 
     exams = {}
     for key, _ in SUBJ:
@@ -253,7 +257,9 @@ table.units .track{margin:0}
 .two{display:flex;gap:4mm}
 .reco{display:flex;border:1.2px solid #1F3864;border-radius:2.5mm;overflow:hidden;height:24mm}
 .reco .t{width:30mm;background:#1F3864;color:#fff;font-weight:700;font-size:11pt;display:flex;align-items:center;justify-content:center}
-.reco .w{flex:1}
+.reco .w{flex:1;display:flex;align-items:center;gap:6mm;padding:0 6mm}
+.reco .c{font-size:21pt;font-weight:800;color:#1F3864;white-space:nowrap;letter-spacing:-.3px}
+.reco .d{font-size:9pt;line-height:1.65;color:#44506a;border-left:1px solid #d5dced;padding-left:5mm}
 .op{flex:1;border:1px solid #d5dced;border-radius:2.5mm;padding:3mm 4mm;font-size:9pt;line-height:1.6}
 .op ul{margin:1.5mm 0 0;padding-left:4.5mm}
 .op li{margin-bottom:.6mm}
@@ -330,6 +336,8 @@ def parent_page(s, cfg, exams, stats):
             cells.append('<div class="%s">%d%s</div>' % ("sa" if q["no"] > 14 else "", q["no"], mark))
         grids.append('<div class="grid"><div class="gl">%s</div><div class="cells">%s</div></div>' % (nm, "".join(cells)))
     text, tips = opinion(s, cfg, stats)
+    rc = recommended(s, cfg)
+    reco_html = ('<div class="c">%s</div><div class="d">%s</div>' % (e(rc), e(cfg["class_desc"].get(rc, "")))) if rc else ""
     tip_html = "".join("<li><b>%s</b> — %s</li>" % (e(u), e(t)) for u, t in tips if t)
     return f"""<div class="page">
 <div class="top"><div><div class="brand">{e(cfg['academy'])}</div><h1>{e(cfg['title'])}</h1></div>
@@ -339,9 +347,15 @@ def parent_page(s, cfg, exams, stats):
 <div class="sec"><h2>단원별 성취도</h2><table class="units">{''.join(rows)}</table>{legend}</div>
 <div class="sec"><h2>문항별 결과</h2>{''.join(grids)}<div class="legend"><span>○ 정답 · × 오답</span><span>1~14번 객관식 · 15~20번 단답형(음영)</span></div></div>
 <div class="sec"><h2>종합 의견</h2><div class="op">{e(text)}{('<ul>' + tip_html + '</ul>') if tip_html else ''}</div></div>
-<div class="sec"><h2>추천 반</h2><div class="reco"><div class="t">추천 반</div><div class="w"></div></div></div>
+<div class="sec"><h2>추천 반</h2><div class="reco"><div class="t">추천 반</div><div class="w">{reco_html}</div></div></div>
 <div class="foot"><div>{e(cfg['notice'])}</div><div style="white-space:nowrap"><b>{e(cfg['academy'])}</b> {e(str(cfg['contact']))}</div></div>
 </div>"""
+
+
+def recommended(s, cfg):
+    """보고서 추천 반: 최종반(수동조정 우선). 보류·미정이면 None(빈칸)"""
+    f = s.get("final")
+    return f if f and f != cfg["classes"][3] else None
 
 
 def counsel_page(s, cfg, exams, stats):
@@ -449,11 +463,15 @@ def main(xlsx, outdir):
     import hml_report
     hdir = os.path.join(outdir, "학부모보고서_한글")
     os.makedirs(hdir, exist_ok=True)
-    hml_report.build(targets, cfg, exams, stats, SUBJ, level, opinion, os.path.join(hdir, "전체.hml"))
+    hml_report.build(targets, cfg, exams, stats, SUBJ, level, opinion, os.path.join(hdir, "전체.hml"), recommended)
     for s in targets:
         safe = re.sub(r'[\\/:*?"<>|]', "_", s["name"])
-        hml_report.build([s], cfg, exams, stats, SUBJ, level, opinion, os.path.join(hdir, "%02d_%s.hml" % (s["no"], safe)))
+        hml_report.build([s], cfg, exams, stats, SUBJ, level, opinion, os.path.join(hdir, "%02d_%s.hml" % (s["no"], safe)), recommended)
     print("학생 %d명: 학부모 보고서·상담 카드 생성 완료 → %s" % (len(targets), outdir))
+    pending = ["%d번 %s" % (s["no"], s["name"]) for s in targets if not recommended(s, cfg)]
+    if pending:
+        print("추천 반 미정(보고서에 빈칸) %d명: %s" % (len(pending), ", ".join(pending)))
+        print("  → 반배정 시트 K열 수동조정에서 반을 고른 뒤 다시 생성하면 채워집니다.")
 
 
 if __name__ == "__main__":

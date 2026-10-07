@@ -177,6 +177,22 @@ for i, ur in enumerate(unit_src_rows):
     s.merge_cells(f"B{r}:E{r}")
     cell(s, f"B{r}", ADVICE[s[f"B{ur}"].value], fill=INPUT, align=LEFT)
     s.row_dimensions[r].height = 30
+
+CLASS_ROW = ADV_ROW + 2 + len(unit_src_rows) + 1
+cell(s, f"A{CLASS_ROW}", "⑥ 반 소개 (학부모 보고서의 추천 반 아래 문구)", f(True, 11, "1F3864"), align=LEFT, border=False)
+header(s, CLASS_ROW + 1, ["반 이름", "소개 문구"])
+s.merge_cells(f"B{CLASS_ROW + 1}:E{CLASS_ROW + 1}")
+CLASS_DESC = [
+    "공통수학1·2 모두 탄탄한 기초를 갖춘 학생을 위한 반으로, 개념 심화와 고난도 문항 해결력, 고1 내신 상위권 대비까지 진행합니다.",
+    "공통수학1의 강점을 살리면서 공통수학2의 개념을 처음부터 체계적으로 다져, 두 과목의 균형을 맞추는 반입니다.",
+    "중등 연계 개념부터 차근차근 점검하며, 공통수학1·2의 핵심 개념과 기본 유형을 확실히 완성하는 반입니다.",
+]
+for i, d in enumerate(CLASS_DESC):
+    r = CLASS_ROW + 2 + i
+    cell(s, f"A{r}", f"=B{6 + i}", f(True), GREY)
+    s.merge_cells(f"B{r}:E{r}")
+    cell(s, f"B{r}", d, fill=INPUT, align=LEFT)
+    s.row_dimensions[r].height = 30
 s.column_dimensions["A"].width = 24
 
 # ---------------- 학생명단 ----------------
@@ -290,7 +306,7 @@ score_sheet("공수2", "공통수학2")
 # ---------------- 반배정 ----------------
 b = wb.create_sheet("반배정")
 title(b, "반 배정 (절대평가)", "자동 계산 시트입니다. '설정' ①의 과목별 점수 기준으로 자동배정하고, 해당 없으면 '보류'. "
-      "'K열 수동조정'에서 반을 정하면 최종반에 반영(보류 학생 배정, 상담 결과 반영). 주황색 행 = 기준 점수 경계 학생.", "W")
+      "'K열 수동조정'에서 반을 정하면 최종반에 반영(보류 학생 배정, 상담 결과 반영). 최종반이 학부모 보고서의 추천 반으로 들어갑니다. 주황색 행 = 기준 점수 경계 학생.", "W")
 header(b, 6, ["No", "이름", "학교", "구분", "공수1", "공수2", "환산총점", "석차", "자동배정",
               "경계", "수동조정", "최종반", "비고"])
 for col, w in zip("ABCDEFGHIJKLM", [5, 12, 11, 7, 7, 7, 9, 6, 10, 6, 10, 10, 13]):

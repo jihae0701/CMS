@@ -201,7 +201,7 @@ class Doc:
 LVCOL = {"매우 우수": "#1F3864", "우수": "#2F5597", "양호": "#3f8a6b", "보완 필요": "#c27b2c", None: "#9aa3b5"}
 
 
-def build(students, cfg, exams, stats, SUBJ, level, opinion, out_path):
+def build(students, cfg, exams, stats, SUBJ, level, opinion, out_path, recommended=lambda s, c: None):
     base = open(BASE_HML, encoding="utf-8").read()
     head = base[:base.index("<BODY>")]
     S = Styles(head)
@@ -217,13 +217,15 @@ def build(students, cfg, exams, stats, SUBJ, level, opinion, out_path):
         gno=S.char(8, "#44506a"), glab=S.char(8.5, "#44506a", True),
         o=S.char(10, "#2F5597", True), x=S.char(10, "#c0504d", True), n=S.char(10, "#9aa3b5"),
         body=S.char(9.5, "#1d2433"), bodyb=S.char(9.5, "#1F3864", True), bul=S.char(9.5, "#2F5597", True),
-        recol=S.char(11, "#ffffff", True), foot=S.char(8.5, "#5b6577"), footb=S.char(8.5, "#1F3864", True),
+        recol=S.char(11, "#ffffff", True), recoc=S.char(20, "#1F3864", True), recod=S.char(9, "#44506a"), foot=S.char(8.5, "#5b6577"), footb=S.char(8.5, "#1F3864", True),
     )
     BADGE = {k: S.char(8.5, "#ffffff", True, shade=v) for k, v in LVCOL.items()}
     BF = dict(
         none=1, box=S.box(), card=S.box(fill="#f7f9fd"), head=S.border(bottom=("0.7", "#1F3864")),
         row=S.border(bottom=("0.12", "#e6eaf2")), grid=S.box("#d5dced"), grids=S.box("#d5dced", fill="#f4f1fa"),
-        navy=S.box("#1F3864", "0.4", fill="#1F3864"), write=S.box("#1F3864", "0.4"), foot=S.border(top=("0.12", "#d5dced")),
+        navy=S.box("#1F3864", "0.4", fill="#1F3864"), write=S.box("#1F3864", "0.4"),
+        writeL=S.border(None, None, ("0.12", "#d5dced"), ("0.4", "#1F3864"), ("0.4", "#1F3864")),
+        writeR=S.border(None, None, ("0.4", "#1F3864"), ("0.4", "#1F3864"), ("0.4", "#1F3864")), foot=S.border(top=("0.12", "#d5dced")),
     )
 
     def badge(lv):
@@ -303,11 +305,18 @@ def build(students, cfg, exams, stats, SUBJ, level, opinion, out_path):
             if t:
                 op += D.p([("•  ", C["bul"]), (u, C["bodyb"]), (" — " + t, C["body"])], D.P_BUL)
         x.append(D.table([[(op, BF["box"], "Top")]], [51000], margin=(500, 500, 700, 700)))
-        # 추천 반 (직접 작성)
+        # 추천 반: 최종반(수동조정 우선), 보류·미정이면 직접 쓰는 빈칸
         x.append(sec("추천 반"))
-        blank = "".join(D.p([("", C["body"])]) for _ in range(3))
-        x.append(D.table([[(D.p([("추천 반", C["recol"])], D.P_C), BF["navy"], "Center"), (blank, BF["write"], "Center")]],
-                         [9000, 42000], heights=[6200], margin=(300, 300, 600, 600)))
+        rc = recommended(s, cfg)
+        if rc:
+            right = [(D.p([(rc, C["recoc"])], D.P_C), BF["writeL"], "Center"),
+                     (D.p([(cfg["class_desc"].get(rc, ""), C["recod"])], D.P_L), BF["writeR"], "Center")]
+            widths = [9000, 12000, 30000]
+        else:
+            right = [("".join(D.p([("", C["body"])]) for _ in range(3)), BF["write"], "Center")]
+            widths = [9000, 42000]
+        x.append(D.table([[(D.p([("추천 반", C["recol"])], D.P_C), BF["navy"], "Center")] + right],
+                         widths, heights=[6200], margin=(300, 300, 600, 600)))
         # 꼬리말
         x.append(D.p([("", D.C_TINY)], D.P_GAP))
         x.append(D.table([[(D.p([(cfg["notice"], C["foot"])]), BF["foot"], "Center"),
