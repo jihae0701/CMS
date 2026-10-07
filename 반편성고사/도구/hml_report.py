@@ -311,7 +311,6 @@ def build(students, cfg, exams, stats, SUBJ, level, opinion, out_path, recommend
         x.append(D.p(logo(), P_C, extra=brk if idx else ""))
         x.append(D.p([(title, C["title"])], P_C2))
         x.append(D.p([("%s 학습 진단 리포트" % subjects, C["subt"])], P_C))
-        x.append(D.p([("PRE-HIGH 1", C["code"])], P_C2))
         x.append(D.p([(s["name"] + "  ", C["nm"]), ("중3 · %s" % s["school"] if s["school"] else "중3", C["nmr"])], P_C))
         x.append(D.table([[("", BF["rule"])]], [51000], heights=[300], margin=(0, 0, 0, 0)))
         x.append(sec("진단 요약", "SUMMARY"))
