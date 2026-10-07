@@ -3,7 +3,7 @@
 
 사용: python make_reports.py 채점파일.xlsx 출력폴더
   - 학부모보고서_전체.pdf, 학부모보고서/번호_이름.pdf : CMS CLIMATH 스타일 학생당 2쪽.
-    석차·백분위 없이 성취 수준, (선택)전체 평균, 추천 반 1·2순위(반배정 시트 최종반·추천 반 2)와 반 소개
+    석차·백분위 없이 성취 수준, (선택)전체 평균, 수강 추천 반(공통수학반 + 선행 과목반)과 반 소개·추천 근거
   - 학부모보고서_한글/전체.hml, 학부모보고서_한글/번호_이름.hml : 같은 내용의 수정 가능한 한글 파일
   - 상담카드_전체.pdf : 내부용. 자동배정(보류 여부), 기준 점수와의 차이, 경계 여부, 문항별 정오, 틀린 문항 요약
 엑셀의 수식 결과(캐시)에 의존하지 않고 입력값으로 직접 계산한다.
@@ -54,15 +54,17 @@ def read(path):
     }
     # 보고서 설정: A열 항목명으로 찾는다
     lab = {}
-    adv_row = cls_row = None
+    adv_row = cls_row = pre_row = None
     for r in range(1, s.max_row + 1):
         a = s.cell(r, 1).value
         if isinstance(a, str):
             lab.setdefault(a.strip(), s.cell(r, 2).value)
             if "학습 제언" in a and a.strip()[0] in "④⑤⑥⑦":
                 adv_row = r
-            if "반 소개" in a and a.strip()[0] in "④⑤⑥⑦":
+            if "공통수학반 소개" in a or ("반 소개" in a and a.strip()[0] == "⑥"):
                 cls_row = r
+            if "선행 과목반 소개" in a:
+                pre_row = r
     g = lambda k, d="": lab.get(k) if lab.get(k) not in (None, "") else d
     cfg.update({
         "academy": g("학원명"), "title": g("보고서 제목"), "date": g("시험일"),
@@ -87,6 +89,13 @@ def read(path):
             name = cfg["classes"][i] if i < 3 else s["A%d" % r].value
             if name:
                 cfg["class_desc"][str(name).strip()] = s["B%d" % r].value or ""
+    cfg["pre_desc"] = {}
+    if pre_row:
+        for i in range(6):
+            r = pre_row + 2 + i
+            name = s["A%d" % r].value
+            if name:
+                cfg["pre_desc"][str(name).strip()] = s["B%d" % r].value or ""
 
     exams = {}
     for key, _ in SUBJ:
@@ -274,7 +283,8 @@ table.units .track{margin:0}
 /* 상담 카드 */
 .int{position:absolute;top:8mm;right:14mm;font-size:8pt;color:#c0504d;font-weight:700;border:1px solid #c0504d;padding:.6mm 2mm;border-radius:1mm}
 .bg{display:flex;gap:0;margin-top:3mm;border:1px solid #d5dced;border-radius:2mm;font-size:9.5pt}
-.bg div{padding:1.6mm 3mm}.bg div:first-child{width:45mm;border-right:1px solid #d5dced}.bg div:last-child{flex:1}
+.bg div{padding:1.6mm 3mm}.bg div:first-child{width:38mm;border-right:1px solid #d5dced}.bg div:nth-child(2){flex:1}
+.bg div.pre{width:48mm;border-left:1px solid #d5dced;font-weight:700}
 .bg span{color:#6b7588;font-size:8pt;margin-right:2.5mm}
 .kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:2.5mm;margin-bottom:3mm}
 .kpi div{border:1px solid #d5dced;border-radius:2mm;padding:2mm 3mm;font-size:8.5pt;color:#6b7588}
@@ -302,6 +312,9 @@ PCSS = """
 .cl,.cl *{font-family:"Noto Sans KR","Malgun Gothic","Apple SD Gothic Neo",sans-serif}
 .cl .mono,.cl .mono *{font-family:"IBM Plex Mono","Consolas","DejaVu Sans Mono",monospace!important}
 .cl .logo{text-align:center;font-size:14pt;font-weight:800;color:#1B2A4A;letter-spacing:.5px}
+.cl .logo .sep{display:inline-block;width:1px;height:4.2mm;background:#9a9a9a;margin:0 2.4mm;vertical-align:-0.5mm}
+.cl .logo img{height:4.4mm;vertical-align:-0.6mm}
+.cl .mini .logo img{height:3.8mm}
 .cl .logo i{font-size:7pt;font-weight:800;font-style:italic;color:#1B2A4A;border-bottom:1.5px solid #1B2A4A;margin-left:2mm;padding-left:2mm;border-left:1px solid #9a9a9a;letter-spacing:.3px;vertical-align:2px}
 .cl .kicker{text-align:center;font-size:7.5pt;letter-spacing:2.6px;color:#555;margin-top:2.2mm}
 .cl h1{text-align:center;color:#B3202E;font-size:25pt;font-weight:800;margin:3.5mm 0 1mm;letter-spacing:-.5px}
@@ -366,9 +379,12 @@ PCSS = """
 .cl .rc .bd{flex:1}
 .cl .rc .hd{display:flex;justify-content:space-between;align-items:baseline}
 .cl .rc .hd b{font-size:12.5pt;font-weight:800;color:#111}
-.cl .rc .hd span{font-size:7.6pt;color:#2F6FD0;font-weight:700;letter-spacing:.8px}
+.cl .rc .hd span{font-size:7.8pt;color:#2F6FD0;font-weight:700}
 .cl .rc .tx{font-size:8.8pt;color:#444;line-height:1.65;margin-top:1.2mm}
 .cl .rc .blank{height:13mm;border-bottom:1px dashed #c9cfdc}
+.cl .rc .why{font-size:7.8pt;color:#2F6FD0;margin-top:1.3mm}
+.cl .rc .why em{font-style:normal;font-weight:700;margin-right:2mm;letter-spacing:.5px}
+.cl .blue .ds b{color:#111}
 .cl .next{margin-top:auto;background:#EFEEE3;border:1px solid #cfcdbd;padding:3.2mm 4.5mm;font-size:8.8pt;line-height:1.7;color:#333;display:flex;justify-content:space-between;gap:5mm}
 .cl .next b{color:#111}
 .cl.p2 .sh{margin:4.6mm 0 2.6mm}
@@ -380,6 +396,9 @@ PCSS = """
 .cl.p2 .next{margin-top:4mm}
 .cl .pf{display:flex;justify-content:space-between;font-size:7pt;color:#9a9a9a;margin-top:2mm;letter-spacing:.6px}
 """
+
+_LOGO = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "climath_logo.png")
+LOGO_URI = ("data:image/png;base64," + __import__("base64").b64encode(open(_LOGO, "rb").read()).decode()) if os.path.exists(_LOGO) else ""
 
 PB = {"매우 우수": "b0", "우수": "b1", "양호": "b2", "보완 필요": "b3"}
 
@@ -406,7 +425,7 @@ def parent_pages(s, cfg, exams, stats):
     """CMS CLIMATH 학습유형 보고서와 같은 디자인의 2쪽 보고서"""
     e = html.escape
     show = cfg["show_avg"]
-    brand = '<div class="logo">CMS<i>CLIMATH</i></div>'
+    brand = '<div class="logo">CMS<span class="sep"></span><img src="%s" alt="CLIMATH"></div>' % LOGO_URI
     subjects = " · ".join(n for _, n in SUBJ)
     text, tips = opinion(s, cfg, stats)
     strong, weak = strengths_weaknesses(s, cfg)
@@ -444,10 +463,10 @@ def parent_pages(s, cfg, exams, stats):
             cells.append('<div class="%s">%d%s</div>' % ("sa" if q["no"] > 14 else "", q["no"], mark))
         grids.append('<div class="grid"><div class="gl">%s</div><div class="cells">%s</div></div>' % (nm, "".join(cells)))
     who = '<div class="nml"><b>%s</b>%s</div>' % (e(s["name"]), e("중3 · %s" % s["school"] if s["school"] else "중3"))
-    foot = lambda n: '<div class="pf mono"><span>CMS CLIMATH · PLACEMENT TEST REPORT</span><span>%d / 2</span></div>' % n
+    foot = lambda n: '<div class="pf mono"><span>CMS CLIMATH</span><span>%d / 2</span></div>' % n
     p1 = f"""<div class="cl"><div class="panel">
-{brand}<div class="kicker mono">CMS CLIMATH · PLACEMENT TEST REPORT</div>
-<h1>{e(cfg['title'] or '반편성 진단평가 결과')}</h1><div class="subt">{subjects} 학습 진단 리포트</div>
+{brand}
+<h1>{e(cfg['title'] or '예비고1 진단평가 결과 보고서')}</h1><div class="subt">{subjects} 학습 진단 리포트</div>
 <div class="code mono">PRE-HIGH 1</div>{who}<div class="rule"></div>
 <div class="sh"><b>진단 요약</b><span class="mono">SUMMARY</span></div>
 <div class="olive">{e(first_sent)}<div class="tags">{tags}</div></div>
@@ -460,37 +479,48 @@ def parent_pages(s, cfg, exams, stats):
     wi = "".join('<div class="it"><span class="m">!</span><span><b>%s</b> — %s</span></div>' % (e(u), e(cfg["advice"].get(u, ""))) for _, u, _ in weak) \
         or '<div class="it"><span class="m">!</span><span>전 단원이 고르게 우수합니다. 고난도 문항으로 실력의 폭을 넓혀 보세요.</span></div>'
     r1, r2 = recommended(s, cfg), recommended2(s, cfg)
+    b1, b2 = basis(s, cfg)
 
-    def rcard(n, c, first):
+    def rcard(n, kind, std, c, desc, why, first):
+        head = '<div class="hd"><b>%s</b><span>%s · %s</span></div>' % (e(c or ""), kind, std)
         if c:
-            body = '<div class="hd"><b>%s</b><span class="mono">%d순위 추천</span></div><div class="tx">%s</div>' % (e(c), n, e(cfg["class_desc"].get(c, "")))
+            body = head + '<div class="tx">%s</div><div class="why"><em>추천 근거</em>%s</div>' % (e(desc), e(why))
         else:
-            body = '<div class="hd"><b></b><span class="mono">%d순위 추천</span></div><div class="blank"></div>' % n
+            body = head + '<div class="blank"></div>'
         return '<div class="rc%s"><div class="no">%d</div><div class="bd">%s</div></div>' % (" first" if first else "", n, body)
+    cards2 = (rcard(1, "공통수학반", "진단평가 결과 기준", r1, cfg["class_desc"].get(r1 or "", ""), b1, True) +
+              rcard(2, "선행 과목반", "학습 진도 기준", r2, cfg["pre_desc"].get(r2 or "", ""), b2, False))
     p2 = f"""<div class="cl p2"><div class="panel">
-<div class="mini">{brand}<div class="rt">{e(cfg['title'] or '반편성 진단평가 결과')}<b>{e(s['name'])}</b></div></div>
+<div class="mini">{brand}<div class="rt">{e(cfg['title'] or '예비고1 진단평가 결과 보고서')}<b>{e(s['name'])}</b></div></div>
 <div class="sh"><b>문항별 결과</b><span class="mono">ITEM CHECK</span></div>{''.join(grids)}
 <div class="leg"><span>○ 정답 · × 오답</span><span>1~14번 객관식 · 15~20번 단답형(음영)</span></div>
 <div class="sh"><b>강점과 보완점</b><span class="mono">TOP 2 EACH</span></div>
 <div class="two"><div class="box good"><h4>✓ 강점 단원</h4>{gi}</div><div class="box warn"><h4>! 보완할 단원</h4>{wi}</div></div>
 <div class="sh"><b>종합 의견</b><span class="mono">OVERALL COMMENT</span></div><div class="note">{e(text)}</div>
-<div class="sh"><b>추천 반</b><span class="mono">RECOMMENDED CLASS</span></div>
-<div class="blue"><h3>추천 반 안내</h3><div class="ds">진단평가 결과와 학습 진도를 바탕으로 추천하는 반입니다.</div>{rcard(1, r1, True)}{rcard(2, r2, False)}</div>
+<div class="sh"><b>수강 추천 반</b><span class="mono">RECOMMENDED CLASSES</span></div>
+<div class="blue"><div class="ds">진단평가 결과에 따른 <b>공통수학반 1개</b>와 현재 학습 진도에 맞춘 <b>선행 과목반 1개</b>, 총 2개 반을 함께 수강합니다.</div>{cards2}</div>
 <div class="next"><div><b>상담 안내</b><br>{e(cfg['notice'])}</div><div style="white-space:nowrap;text-align:right"><b>{e(cfg['academy'])}</b><br>{e(str(cfg['contact']))}</div></div>
 </div>{foot(2)}</div>"""
     return p1 + p2
 
 
 def recommended(s, cfg):
-    """보고서 추천 반 1순위: 최종반(추천 반 1 우선, 없으면 자동배정). 보류·미정이면 None(빈칸)"""
+    """공통수학반: 최종(입력한 공통수학반 우선, 없으면 자동배정). 보류·미정이면 None(빈칸)"""
     f = s.get("final")
     return str(f) if f and f != cfg["classes"][3] else None
 
 
 def recommended2(s, cfg):
-    """추천 반 2순위(엑셀 추천 반 2). 1순위와 같거나 비어 있으면 None"""
+    """선행 과목반(엑셀 반배정 '선행반'). 비어 있으면 None(빈칸)"""
     r2 = s.get("reco2")
-    return str(r2) if r2 and r2 != cfg["classes"][3] and str(r2) != recommended(s, cfg) else None
+    return str(r2).strip() if r2 else None
+
+
+def basis(s, cfg):
+    """추천 근거 문구: (공통수학반, 선행반)"""
+    sc = " · ".join("%s %s" % (nm, "미응시" if s["score"][k] is None else "%g점" % s["score"][k]) for k, nm in SUBJ)
+    pr = ("학습 진도: %s" % s["progress"]) if s.get("progress") else "현재 학습 진도"
+    return "진단평가 " + sc, pr
 
 
 def counsel_page(s, cfg, exams, stats):
@@ -510,8 +540,7 @@ def counsel_page(s, cfg, exams, stats):
     kpi = [("공통수학1", "-" if s["score"]["공수1"] is None else "%g점" % s["score"]["공수1"], False),
            ("공통수학2", "-" if s["score"]["공수2"] is None else "%g점" % s["score"]["공수2"], False),
            ("환산총점 / 석차(참고)", "-" if s["total"] is None else "%g점 · %d/%d" % (s["total"], s["rank"], stats["n"]), False),
-           ("자동배정 → 추천 반", "%s → %s%s" % (s["auto"] or "-", recommended(s, cfg) or "미정",
-                                               (" / 2순위 " + recommended2(s, cfg)) if recommended2(s, cfg) else ""), near)]
+           ("자동배정 → 공통수학반", "%s → %s" % (s["auto"] or "-", recommended(s, cfg) or "미정"), near)]
     kp = "".join('<div class="%s">%s<b>%s</b></div>' % ("warn" if w else "", e(a), e(b)) for a, b, w in kpi)
     urows = []
     for key, nm in SUBJ:
@@ -546,20 +575,20 @@ def counsel_page(s, cfg, exams, stats):
     if near:
         pts.append("기준 점수 경계에 있습니다. 단원별 성취와 학습 태도를 함께 보고 반을 확정하세요.")
     if s["auto"] == cfg["classes"][3] and not s["manual"]:
-        pts.insert(0, "자동배정 보류: 과목별 기준에 해당하지 않습니다. 상담 후 반을 정해 엑셀 반배정 시트 '추천 반 1'에 입력하세요.")
+        pts.insert(0, "자동배정 보류: 과목별 기준에 해당하지 않습니다. 상담 후 엑셀 반배정 시트 '공통수학반(입력)'에 반을 입력하세요.")
     if easy_miss:
         pts.append("정답률 70%% 이상인 문항에서 %d문항 오답 — 개념 누락 또는 계산 실수 여부를 확인하세요." % easy_miss)
     weak = sorted([(u, s["unit"][(k, u)]) for k, _ in SUBJ for u in cfg["units"][k] if s["unit"][(k, u)] is not None], key=lambda x: x[1])[:2]
     if weak:
         pts.append("상대적 취약 단원: " + ", ".join("%s(%s)" % (u, pct(r)) for u, r in weak))
     if manual:
-        pts.append("추천 반 1을 직접 지정: 자동배정 %s → %s" % (s["auto"], s["final"]))
+        pts.append("공통수학반 직접 지정: 자동배정 %s → %s" % (s["auto"], s["final"]))
     if s["memo"]:
         pts.append("비고: %s" % s["memo"])
     return f"""<div class="page"><div class="int">내부용 · 외부 유출 금지</div>
 <div class="top"><div><div class="brand">{e(cfg['academy'])} · 개별 상담 카드</div><h1>{e(s['name'])} <span style="font-size:11pt;color:#5b6577;font-weight:500">{e(str(s['school']))} · {e(str(s['kind']))} · {e(str(s['phone']))}</span></h1></div>
 <div class="meta">{e(cfg['title'])}<br>{' / '.join(gap) if gap else ''}</div></div>
-<div class="bg"><div><span>기존 반</span>{e(str(s['prev'])) or '-'}</div><div><span>학습 진도</span>{e(str(s['progress'])) or '-'}</div></div>
+<div class="bg"><div><span>기존 반</span>{e(str(s['prev'])) or '-'}</div><div><span>학습 진도</span>{e(str(s['progress'])) or '-'}</div><div class="pre"><span>선행반</span>{e(recommended2(s, cfg) or '미정')}</div></div>
 <div style="height:3mm"></div><div class="kpi">{kp}</div>
 <div class="sec"><h2>상담 포인트</h2><ul style="margin:0;padding-left:5mm;font-size:9.3pt;line-height:1.7">{''.join('<li>%s</li>' % e(p) for p in pts) or '<li>특이 사항 없음</li>'}</ul></div>
 <div class="sec"><h2>단원별 득점률</h2><table class="t"><tr><th>과목</th><th>단원</th><th>학생</th><th>전체 평균</th><th>최종반 평균</th><th>수준</th></tr>{''.join(urows)}</table></div>
@@ -600,15 +629,16 @@ def main(xlsx, outdir):
     import hml_report
     hdir = os.path.join(outdir, "학부모보고서_한글")
     os.makedirs(hdir, exist_ok=True)
-    hml_report.build(targets, cfg, exams, stats, SUBJ, level, opinion, os.path.join(hdir, "전체.hml"), recommended, recommended2, strengths_weaknesses)
+    hml_report.build(targets, cfg, exams, stats, SUBJ, level, opinion, os.path.join(hdir, "전체.hml"), recommended, recommended2, strengths_weaknesses, basis)
     for s in targets:
         safe = re.sub(r'[\\/:*?"<>|]', "_", s["name"])
-        hml_report.build([s], cfg, exams, stats, SUBJ, level, opinion, os.path.join(hdir, "%02d_%s.hml" % (s["no"], safe)), recommended, recommended2, strengths_weaknesses)
+        hml_report.build([s], cfg, exams, stats, SUBJ, level, opinion, os.path.join(hdir, "%02d_%s.hml" % (s["no"], safe)), recommended, recommended2, strengths_weaknesses, basis)
     print("학생 %d명: 학부모 보고서·상담 카드 생성 완료 → %s" % (len(targets), outdir))
-    pending = ["%d번 %s" % (s["no"], s["name"]) for s in targets if not recommended(s, cfg)]
-    if pending:
-        print("추천 반 미정(보고서에 빈칸) %d명: %s" % (len(pending), ", ".join(pending)))
-        print("  → 반배정 시트 '추천 반 1'(M열)에서 반을 고른 뒤 다시 생성하면 채워집니다.")
+    for label, fn, col in (("공통수학반", recommended, "공통수학반(입력), M열"), ("선행반", recommended2, "선행반(입력), N열")):
+        pending = ["%d번 %s" % (s["no"], s["name"]) for s in targets if not fn(s, cfg)]
+        if pending:
+            print("%s 미정(보고서에 빈칸) %d명: %s" % (label, len(pending), ", ".join(pending)))
+            print("  → 반배정 시트 %s에서 반을 고른 뒤 다시 생성하면 채워집니다." % col)
 
 
 if __name__ == "__main__":

@@ -133,7 +133,7 @@ header(s, REPORT_ROW + 1, ["항목", "값"], start=1)
 s.merge_cells(f"B{REPORT_ROW + 1}:E{REPORT_ROW + 1}")
 REPORT_ITEMS = [
     ("학원명", "OO수학학원"),
-    ("보고서 제목", "예비고1 반편성 진단평가 결과 보고서"),
+    ("보고서 제목", "예비고1 진단평가 결과 보고서"),
     ("시험일", "2026년 12월 00일"),
     ("전체 평균 표시", "표시"),
     ("'매우 우수' 기준(득점률 %)", 85),
@@ -179,8 +179,8 @@ for i, ur in enumerate(unit_src_rows):
     s.row_dimensions[r].height = 30
 
 CLASS_ROW = ADV_ROW + 2 + len(unit_src_rows) + 1
-cell(s, f"A{CLASS_ROW}", "⑥ 반 소개 (학부모 보고서 추천 반 카드 문구 · 추천 반 선택 목록)", f(True, 11, "1F3864"), align=LEFT, border=False)
-header(s, CLASS_ROW + 1, ["반 이름", "소개 문구"])
+cell(s, f"A{CLASS_ROW}", "⑥ 공통수학반 소개 (공통수학 시험 결과로 배정 · 학부모 보고서 문구 · 선택 목록)", f(True, 11, "1F3864"), align=LEFT, border=False)
+header(s, CLASS_ROW + 1, ["공통수학반 이름", "소개 문구"])
 s.merge_cells(f"B{CLASS_ROW + 1}:E{CLASS_ROW + 1}")
 CLASS_DESC = [
     "공통수학1·2 모두 탄탄한 기초를 갖춘 학생을 위한 반으로, 개념 심화와 고난도 문항 해결력, 고1 내신 상위권 대비까지 진행합니다.",
@@ -199,8 +199,27 @@ for i in range(3):  # 추가로 추천할 반(기존 반 등)
     s.merge_cells(f"B{r}:E{r}")
     cell(s, f"B{r}", None, fill=INPUT, align=LEFT)
     s.row_dimensions[r].height = 30
-cell(s, f"F{CLASS_ROW + 5}", "← 추천할 반이 더 있으면 반 이름과 소개를 추가", f(size=9, color="595959"), align=LEFT, border=False)
+cell(s, f"F{CLASS_ROW + 5}", "← 공통수학반이 더 있으면 반 이름과 소개를 추가", f(size=9, color="595959"), align=LEFT, border=False)
 CLASS_LIST = f"='설정'!$A${CLASS_ROW + 2}:$A${CLASS_ROW + 7}"
+
+PRE_ROW = CLASS_ROW + 9
+cell(s, f"A{PRE_ROW}", "⑦ 선행 과목반 소개 (학습 진도에 따라 1과목 선택 · 학부모 보고서 문구 · 선택 목록)", f(True, 11, "1F3864"), align=LEFT, border=False)
+header(s, PRE_ROW + 1, ["선행 과목반 이름", "소개 문구"])
+s.merge_cells(f"B{PRE_ROW + 1}:E{PRE_ROW + 1}")
+PRE_DEFAULT = [
+    ("대수반", "지수와 로그, 지수함수와 로그함수, 삼각함수, 수열을 선행하는 반으로, 공통수학을 마친 학생이 다음 단계로 나아가기 좋은 과정입니다."),
+    ("미적분Ⅰ반", "함수의 극한과 연속, 미분, 적분을 선행하는 반으로, 대수 학습을 마친 학생에게 권장하는 과정입니다."),
+    ("확률과 통계반", "순열과 조합, 확률, 통계를 선행하는 반으로, 공통수학의 경우의 수를 바탕으로 개념을 넓혀 가는 과정입니다."),
+    (None, None), (None, None), (None, None),
+]
+for i, (nm, d) in enumerate(PRE_DEFAULT):
+    r = PRE_ROW + 2 + i
+    cell(s, f"A{r}", nm, f(True), INPUT)
+    s.merge_cells(f"B{r}:E{r}")
+    cell(s, f"B{r}", d, fill=INPUT, align=LEFT)
+    s.row_dimensions[r].height = 30
+cell(s, f"F{PRE_ROW + 2}", "← 실제 운영하는 선행반 이름·소개로 수정, 빈 줄에 추가 가능", f(size=9, color="595959"), align=LEFT, border=False)
+PRE_LIST = f"='설정'!$A${PRE_ROW + 2}:$A${PRE_ROW + 7}"
 s.column_dimensions["A"].width = 24
 
 # ---------------- 학생명단 ----------------
@@ -315,10 +334,10 @@ score_sheet("공수2", "공통수학2")
 # 열: A No, B 이름, C 학교, D 구분, E 기존 반, F 학습 진도, G 공수1, H 공수2, I 환산총점, J 석차,
 #     K 자동배정, L 경계, M 추천 반1(입력), N 추천 반2(입력), O 최종반, P 비고, Q 정렬키(숨김)
 b = wb.create_sheet("반배정")
-title(b, "반 배정 (절대평가)", "자동배정 = '설정' ①의 과목별 점수 기준, 해당 없으면 '보류'. 노란 칸 '추천 반 1·2'에 상담 후 반을 적으면 "
-      "최종반 = 추천 반 1(비어 있으면 자동배정). 학부모 보고서에는 최종반이 1순위, 추천 반 2가 2순위로 들어갑니다. 주황색 행 = 기준 점수 경계.", "Y")
+title(b, "반 배정 (공통수학반 + 선행 과목반)", "학생마다 2개 반 수강: ① 공통수학반 = 시험 결과 기준 자동배정('설정' ①, 해당 없으면 보류). 노란 칸 '공통수학반'에 적으면 그 반이 우선. "
+      "② 선행반 = 학습 진도를 보고 노란 칸 '선행반'에서 1과목 선택('설정' ⑦ 목록). 두 반 모두 학부모 보고서에 들어갑니다. 주황색 행 = 기준 점수 경계.", "Y")
 header(b, 6, ["No", "이름", "학교", "구분", "기존 반", "학습 진도", "공수1", "공수2", "환산총점", "석차", "자동배정",
-              "경계", "추천 반 1", "추천 반 2", "최종반", "비고"])
+              "경계", "공통수학반\n(입력)", "선행반\n(입력)", "공통수학반\n(최종)", "비고"])
 for col, w in zip("ABCDEFGHIJKLMNOP", [5, 11, 10, 6, 9, 22, 7, 7, 8, 6, 10, 6, 10, 10, 10, 12]):
     b.column_dimensions[col].width = w
 NAMES = ["'설정'!$B$6", "'설정'!$B$7", "'설정'!$B$8", "'설정'!$B$9"]
@@ -330,7 +349,9 @@ E_ = f"$G${FIRST}:$G${LAST}"
 F_ = f"$H${FIRST}:$H${LAST}"
 BD = "'설정'!$C$15"
 dv_cls = DataValidation(type="list", formula1=CLASS_LIST, allow_blank=True, showErrorMessage=False)
+dv_pre = DataValidation(type="list", formula1=PRE_LIST, allow_blank=True, showErrorMessage=False)
 b.add_data_validation(dv_cls)
+b.add_data_validation(dv_pre)
 
 def cond(k, r):
     t = 6 + k
@@ -356,7 +377,9 @@ for r in range(FIRST, LAST + 1):
     cell(b, f"P{r}", f"=IF(I{r}=\"\",\"\",IF(G{r}=\"\",\"공수1 미응시\",IF(H{r}=\"\",\"공수2 미응시\",\"\")))",
          f(size=9, color="C00000"))
     cell(b, f"Q{r}", f"=IF(J{r}=\"\",\"\",J{r}+ROW()/100000)")
-dv_cls.add(f"M{FIRST}:N{LAST}")
+dv_cls.add(f"M{FIRST}:M{LAST}")
+dv_pre.add(f"N{FIRST}:N{LAST}")
+b.row_dimensions[6].height = 30
 b.conditional_formatting.add(f"A{FIRST}:P{LAST}",
                              FormulaRule(formula=[f"$L{FIRST}=\"경계\""], fill=PatternFill("solid", fgColor="FBE5D6")))
 CLS4 = CLS + ["E7E6E6"]
@@ -368,7 +391,7 @@ for col in "KO":
 # 요약표
 SX = 19  # S열부터
 cols_ = [L(SX + i) for i in range(7)]
-cell(b, f"{cols_[0]}5", "반별 요약 (최종반 기준)", f(True, 11, "1F3864"), align=LEFT, border=False)
+cell(b, f"{cols_[0]}5", "공통수학반별 요약 (최종 기준)", f(True, 11, "1F3864"), align=LEFT, border=False)
 header(b, 6, ["반", "자동\n인원", "최종\n인원", "공수1\n평균", "공수2\n평균", "재원", "외부"], start=SX)
 for i, nm in enumerate(NAMES):
     r = 7 + i
@@ -387,7 +410,7 @@ for k_ in (1, 2, 5, 6):
 cell(b, f"{cols_[3]}{r}", f"=IFERROR(AVERAGE({E_}),\"\")", f(True), GREY, fmt="0.0")
 cell(b, f"{cols_[4]}{r}", f"=IFERROR(AVERAGE({F_}),\"\")", f(True), GREY, fmt="0.0")
 cell(b, f"{cols_[0]}13", "· 자동배정은 '설정' ①의 과목별 점수 기준(절대평가)\n· 경계 = 어느 과목이든 기준 점수와의 차이가 경계 범위 이내\n"
-     "· 추천 반 1·2는 목록에서 고르거나 직접 입력('설정' ⑥에 반 소개 추가 가능)\n· 환산총점·석차는 참고용", f(size=9, color="595959"),
+     "· 공통수학반·선행반은 목록에서 고르거나 직접 입력('설정' ⑥·⑦에 반 소개 추가 가능)\n· 환산총점·석차는 참고용", f(size=9, color="595959"),
      align=LEFT, border=False)
 b.merge_cells(f"{cols_[0]}13:{cols_[6]}18")
 for c in cols_:
@@ -399,7 +422,7 @@ b.freeze_panes = f"C{FIRST}"
 # ---------------- 석차순 ----------------
 k = wb.create_sheet("석차순")
 title(k, "석차순 명단 (참고·상담용)", "자동 정렬됩니다. 반 배정은 절대평가이며 석차는 참고용입니다.", "L")
-header(k, 6, ["석차", "이름", "학교", "구분", "기존 반", "공수1", "공수2", "환산총점", "최종반", "추천 반 2", "경계", "비고"])
+header(k, 6, ["석차", "이름", "학교", "구분", "기존 반", "공수1", "공수2", "환산총점", "공통수학반", "선행반", "경계", "비고"])
 for col, w in zip("ABCDEFGHIJKL", [6, 12, 12, 7, 9, 7, 7, 9, 10, 10, 6, 13]):
     k.column_dimensions[col].width = w
 k.column_dimensions["M"].hidden = True

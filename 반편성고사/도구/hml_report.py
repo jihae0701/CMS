@@ -80,7 +80,7 @@ class Styles:
         self.ps.append((key, body))
         return self.ps0 + len(self.ps) - 1
 
-    def build_head(self, title):
+    def build_head(self, title, bins=()):
         h = self.head
         # 글꼴: 맑은 고딕을 각 언어 글꼴 목록에 추가
         def addfont(m):
@@ -99,7 +99,8 @@ class Styles:
         h = h.replace("</BORDERFILLLIST>", "".join(b for _, b in self.bf) + "</BORDERFILLLIST>")
         h = re.sub(r'<PARASHAPELIST Count="\d+">', '<PARASHAPELIST Count="%d">' % (self.ps0 + len(self.ps)), h)
         h = h.replace("</PARASHAPELIST>", "".join(b for _, b in self.ps) + "</PARASHAPELIST>")
-        h = re.sub(r"<BINDATALIST.*?</BINDATALIST>", "", h, flags=re.S)
+        items = "".join('<BINITEM BinData="%d" Format="png" Type="Embedding"/>' % (i + 1) for i in range(len(bins)))
+        h = re.sub(r"<BINDATALIST.*?</BINDATALIST>", ('<BINDATALIST Count="%d">%s</BINDATALIST>' % (len(bins), items)) if bins else "", h, flags=re.S)
         h = re.sub(r"<DOCSUMMARY>.*?</DOCSUMMARY>", "<DOCSUMMARY><TITLE>%s</TITLE></DOCSUMMARY>" % escape(title), h, flags=re.S)
         return h
 
@@ -130,7 +131,8 @@ class Doc:
     # 글자 조각: [(텍스트, charshape)]
     def p(self, runs, ps=None, extra=""):
         ps = self.P_L if ps is None else ps
-        body = "".join('<TEXT CharShape="%d"><CHAR>%s</CHAR></TEXT>' % (cs, escape(t)) for t, cs in runs if t)
+        body = "".join(('<TEXT CharShape="%d">%s<CHAR></CHAR></TEXT>' % (cs, t[1])) if isinstance(t, tuple) else
+                       ('<TEXT CharShape="%d"><CHAR>%s</CHAR></TEXT>' % (cs, escape(t))) for t, cs in runs if t)
         if not body:
             body = '<TEXT CharShape="%d"/>' % runs[0][1] if runs else '<TEXT CharShape="%d"/>' % self.C_TINY
         return '<P ParaShape="%d" Style="0"%s>%s</P>' % (ps, extra, body)
@@ -165,6 +167,28 @@ class Doc:
                '<INSIDEMARGIN Bottom="0" Left="0" Right="0" Top="0"/>%s</TABLE>'
                % (bf_table, len(widths), nrow, random.randint(10 ** 7, 10 ** 8), zo(), Ht, W, "".join(out)))
         return '<P ParaShape="%d" Style="0"%s><TEXT CharShape="%d">%s<CHAR></CHAR></TEXT></P>' % (self.P_TINY if ps is None else ps, extra, self.C_TINY, tbl)
+
+    def picture(self, tpl, binid, px_w, px_h, width):
+        """시험지 HML의 그림 개체를 틀로 삼아 글자처럼 취급되는 그림 생성"""
+        oriW, oriH = px_w * 75, px_h * 75
+        curW, curH = int(width), int(width * px_h / px_w)
+        x = tpl
+        x = re.sub(r'<SHAPECOMMENT>.*?</SHAPECOMMENT>', '<SHAPECOMMENT>CLIMATH 로고</SHAPECOMMENT>', x, flags=re.S)
+        x = re.sub(r'InstId="\d+"', 'InstId="%d"' % random.randint(10 ** 7, 10 ** 8), x, count=1)
+        x = re.sub(r'InstID="\d+"', 'InstID="%d"' % random.randint(10 ** 7, 10 ** 8), x, count=1)
+        x = re.sub(r'ZOrder="\d+"', 'ZOrder="%d"' % zo(), x, count=1)
+        x = re.sub(r'<SIZE Height="\d+"', '<SIZE Height="%d"' % curH, x, count=1)
+        x = re.sub(r'Width="\d+" WidthRelTo', 'Width="%d" WidthRelTo' % curW, x, count=1)
+        x = re.sub(r'CurHeight="\d+" CurWidth="\d+"', 'CurHeight="%d" CurWidth="%d"' % (curH, curW), x)
+        x = re.sub(r'OriHeight="\d+" OriWidth="\d+"', 'OriHeight="%d" OriWidth="%d"' % (oriH, oriW), x)
+        x = re.sub(r'CenterX="\d+" CenterY="\d+"', 'CenterX="%d" CenterY="%d"' % (curW // 2, curH // 2), x)
+        x = re.sub(r'(<RENDERINGINFO>.*?)<SCAMATRIX E1="[\d.]+"( E2="[\d.]+" E3="[\d.]+" E4="[\d.]+") E5="[\d.]+"',
+                   lambda m: '%s<SCAMATRIX E1="%.5f"%s E5="%.5f"' % (m.group(1), curW / oriW, m.group(2), curH / oriH), x, count=1, flags=re.S)
+        x = re.sub(r'<IMAGERECT [^>]*/>', '<IMAGERECT X0="0" X1="%d" X2="%d" X3="0" Y0="0" Y1="0" Y2="%d" Y3="%d"/>' % (oriW, oriW, oriH, oriH), x)
+        x = re.sub(r'<IMAGECLIP [^>]*/>', '<IMAGECLIP Bottom="%d" Left="0" Right="%d" Top="0"/>' % (oriH, oriW), x)
+        x = re.sub(r'<IMAGEDIM [^>]*/>', '<IMAGEDIM Height="%d" Width="%d"/>' % (oriH, oriW), x)
+        x = re.sub(r'BinItem="\d+"', 'BinItem="%d"' % binid, x)
+        return x
 
     def bar(self, rate, avg, width, show_avg, FILL="#1a1a1a", TRACK="#DEDBCF", DARK="#B3202E", height=420):
         """색칠한 표 칸 막대(평균 위치는 굵은 왼쪽 선)"""
@@ -206,7 +230,7 @@ RED, INK, GREY, CREAM = "#B3202E", "#1a1a1a", "#555555", "#FBF8F1"
 
 
 def build(students, cfg, exams, stats, SUBJ, level, opinion, out_path, recommended=lambda s, c: None,
-          recommended2=lambda s, c: None, strengths_weaknesses=None):
+          recommended2=lambda s, c: None, strengths_weaknesses=None, basis=None):
     base = open(BASE_HML, encoding="utf-8").read()
     head = base[:base.index("<BODY>")]
     S = Styles(head)
@@ -226,7 +250,7 @@ def build(students, cfg, exams, stats, SUBJ, level, opinion, out_path, recommend
         gh=ch(9.8, "#3f5f49", True), wh=ch(9.8, RED, True), gm=ch(9, "#5E7F68", True), wm=ch(9, RED, True),
         bx=ch(8.8, "#222222"), bxb=ch(8.8, "#111111", True),
         bh=ch(12, "#111111", True), bd=ch(8.6, GREY), rno=ch(10, "#ffffff", True), rcls=ch(12.5, "#111111", True),
-        rtag=ch(7.6, "#2F6FD0", True, mono=True, spacing=5), rtx=ch(8.8, "#444444"),
+        rtag=ch(7.6, "#2F6FD0", True), rtx=ch(8.8, "#444444"), why=ch(7.8, "#2F6FD0"), whyb=ch(7.8, "#2F6FD0", True),
         nx=ch(8.8, "#333333"), nxb=ch(8.8, "#111111", True), pf=ch(7, "#9a9a9a", mono=True, spacing=5),
     )
     BADGE = {k: ch(7.6, "#ffffff", True, shade=v) for k, v in PB.items()}
@@ -256,16 +280,26 @@ def build(students, cfg, exams, stats, SUBJ, level, opinion, out_path, recommend
                 D.table([[(D.p([(kr, C["sh"])], P_SH), BF["sh"], "Bottom"), (D.p([(en, C["shr"])], P_R), BF["sh"], "Bottom")]],
                         [30000, 21000], margin=(0, 250, 0, 0)) + gap())
 
-    def logo():
+    LOGO = os.path.join(HERE, "assets", "climath_logo_cream.png")
+    bins = []
+    pic_tpl = re.search(r"<PICTURE .*?</PICTURE>", base, re.S)
+    if os.path.exists(LOGO) and pic_tpl:
+        from PIL import Image
+        bins.append(LOGO)
+        lw, lh = Image.open(LOGO).size
+
+    def logo(width=3700):
+        if bins:
+            return [("CMS", C["logo"]), ("  │  ", C["logosep"]), (("pic", D.picture(pic_tpl.group(0), 1, lw, lh, width)), C["logo"])]
         return [("CMS", C["logo"]), ("  │ ", C["logosep"]), ("CLIMATH", C["logo2"])]
 
     def footer(n):
-        return (gap(2) + D.table([[(D.p([("CMS CLIMATH · PLACEMENT TEST REPORT", C["pf"])]), BF["none"], "Center"),
+        return (gap(2) + D.table([[(D.p([("CMS CLIMATH", C["pf"])]), BF["none"], "Center"),
                                    (D.p([("%d / 2" % n, C["pf"])], P_R), BF["none"], "Center")]], [36000, 15000], margin=(0, 0, 0, 0)))
 
     show = cfg["show_avg"]
     subjects = " · ".join(n for _, n in SUBJ)
-    title = cfg["title"] or "반편성 진단평가 결과"
+    title = cfg["title"] or "예비고1 진단평가 결과 보고서"
     pages = []
     for idx, s in enumerate(students):
         x = []
@@ -275,7 +309,6 @@ def build(students, cfg, exams, stats, SUBJ, level, opinion, out_path, recommend
         first_sent = text.split(". ")[0].rstrip(".") + "."
         # ---- 1쪽 ----
         x.append(D.p(logo(), P_C, extra=brk if idx else ""))
-        x.append(D.p([("CMS CLIMATH · PLACEMENT TEST REPORT", C["kicker"])], P_C))
         x.append(D.p([(title, C["title"])], P_C2))
         x.append(D.p([("%s 학습 진단 리포트" % subjects, C["subt"])], P_C))
         x.append(D.p([("PRE-HIGH 1", C["code"])], P_C2))
@@ -322,7 +355,7 @@ def build(students, cfg, exams, stats, SUBJ, level, opinion, out_path, recommend
         x.append(D.p(leg))
         x.append(footer(1))
         # ---- 2쪽 ----
-        x.append(D.table([[(D.p(logo()), BF["rule"], "Bottom"),
+        x.append(D.table([[(D.p(logo(3200)), BF["rule"], "Bottom"),
                            (D.p([(title + "  ", C["mini"]), (s["name"], C["minib"])], P_R), BF["rule"], "Bottom")]],
                          [24000, 27000], margin=(0, 250, 0, 0), extra=brk))
         x.append(sec("문항별 결과", "ITEM CHECK"))
@@ -345,20 +378,23 @@ def build(students, cfg, exams, stats, SUBJ, level, opinion, out_path, recommend
                          [25000, 1000, 25000], margin=(350, 350, 700, 600)))
         x.append(sec("종합 의견", "OVERALL COMMENT"))
         x.append(D.table([[(D.p([(text, C["body"])], P_B), BF["note"], "Center")]], [51000], margin=(400, 400, 700, 700)))
-        x.append(sec("추천 반", "RECOMMENDED CLASS"))
+        x.append(sec("수강 추천 반", "RECOMMENDED CLASSES"))
         r1, r2 = recommended(s, cfg), recommended2(s, cfg)
+        b1, b2 = basis(s, cfg) if basis else ("", "")
 
-        def rcard(n, c, first):
+        def rcard(n, kind, std, c, desc, why, first):
             if c:
-                body = (D.p([(c + "      ", C["rcls"]), ("%d순위 추천" % n, C["rtag"])]) +
-                        D.p([(cfg["class_desc"].get(c, ""), C["rtx"])], P_B))
+                body = (D.p([(c + "      ", C["rcls"]), ("%s · %s" % (kind, std), C["rtag"])]) +
+                        D.p([(desc, C["rtx"])], P_B) + D.p([("추천 근거  ", C["whyb"]), (why, C["why"])]))
             else:
-                body = (D.p([("", C["rcls"]), ("%d순위 추천" % n, C["rtag"])], P_R) + D.p([("", C["rtx"])]) + D.p([("", C["rtx"])]))
+                body = (D.p([("", C["rcls"]), ("%s · %s" % (kind, std), C["rtag"])], P_R) + D.p([("", C["rtx"])]) + D.p([("", C["rtx"])]))
             return D.table([[(D.p([(str(n), C["rno"])], P_C), BF["rno"], "Center"),
                              (body, BF["rc1"] if first else BF["rc2"], "Center")]],
                            [2600, 44800], heights=[2600], margin=(300, 300, 600, 600))
-        inner = (D.p([("추천 반 안내", C["bh"])]) + D.p([("진단평가 결과와 학습 진도를 바탕으로 추천하는 반입니다.", C["bd"])]) +
-                 gap() + rcard(1, r1, True) + gap() + rcard(2, r2, False))
+        inner = (D.p([("진단평가 결과에 따른 ", C["bd"]), ("공통수학반 1개", C["bxb"]), ("와 현재 학습 진도에 맞춘 ", C["bd"]),
+                      ("선행 과목반 1개", C["bxb"]), (", 총 2개 반을 함께 수강합니다.", C["bd"])]) +
+                 gap() + rcard(1, "공통수학반", "진단평가 결과 기준", r1, cfg["class_desc"].get(r1 or "", ""), b1, True) + gap() +
+                 rcard(2, "선행 과목반", "학습 진도 기준", r2, cfg.get("pre_desc", {}).get(r2 or "", ""), b2, False))
         x.append(D.table([[(inner, BF["blue"], "Top")]], [51000], margin=(500, 500, 900, 700)))
         x.append(gap(2))
         x.append(D.table([[(D.p([("상담 안내", C["nxb"])]) + D.p([(cfg["notice"], C["nx"])], P_B), BF["olive"], "Center"),
@@ -377,8 +413,15 @@ def build(students, cfg, exams, stats, SUBJ, level, opinion, out_path, recommend
     secdef = re.sub(r'<PAGEBORDERFILL BorferFill="\d+" FillArea="\w+"', '<PAGEBORDERFILL BorferFill="%d" FillArea="Paper"' % BF["cream"], secdef)
     first = ('<P ParaShape="%d" Style="0"><TEXT CharShape="%d"><COLDEF Count="1" Layout="Left" SameGap="0" SameSize="true" Type="Newspaper"/>%s</TEXT></P>'
              % (D.P_TINY, D.C_TINY, secdef))
-    head_xml = S.build_head(title)
-    tail = re.sub(r"<BINDATASTORAGE>.*?</BINDATASTORAGE>", "", base[base.index("<TAIL>"):], flags=re.S)
+    head_xml = S.build_head(title, bins)
+    store = ""
+    for i, pth in enumerate(bins):
+        raw = open(pth, "rb").read()
+        b64 = __import__("base64").b64encode(raw).decode()
+        b64 = "\n".join(b64[k:k + 76] for k in range(0, len(b64), 76))
+        store += '<BINDATA Encoding="Base64" Id="%d" Size="%d">%s</BINDATA>' % (i + 1, len(raw), b64)
+    tail = re.sub(r"<BINDATASTORAGE>.*?</BINDATASTORAGE>", ("<BINDATASTORAGE>%s</BINDATASTORAGE>" % store) if store else "",
+                  base[base.index("<TAIL>"):], flags=re.S)
     doc = head_xml + '<BODY><SECTION Id="0">' + first + "".join(pages) + "</SECTION></BODY>" + tail
     open(out_path, "w", encoding="utf-8").write(doc)
     return out_path
