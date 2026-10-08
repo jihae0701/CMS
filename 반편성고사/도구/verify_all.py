@@ -12,9 +12,7 @@ R[(1,3)]=sum(r for r in sp.solve(x**3-4*x**2+x+6) if r>0)
 R[(1,4)]=sum(v for v in range(-50,51) if v*v-2*v-8>=0 and v*v-36<0)
 # P(1)=5,P(-3)=-3, R=ax+b
 s=sp.solve([a+b-5,-3*a+b+3],[a,b]); R[(1,5)]=2*s[a]+s[b]
-from itertools import combinations as _C
-books_=[('M',i) for i in range(4)]+[('E',i) for i in range(3)]
-R[(1,6)]=sum(1 for c in _C(books_,4) if any(b_[0]=='M' for b_ in c) and any(b_[0]=='E' for b_ in c))
+sol6=sp.solve([x+y-2, x**2-3*x+2*y-10],[x,y],dict=True); R[(1,6)]=max(s_[x]**2+s_[y]**2 for s_ in sol6)
 
 import numpy as np, math
 from fractions import Fraction as Fr
@@ -87,7 +85,15 @@ bs,cs=sp.symbols('bs cs')
 sol=sp.solve([ (bs*cs)**3+1, 2*bs*cs+bs+cs-2],[bs,cs],dict=True)
 R[(1,18)]={sp.nsimplify(sp.simplify(s_[bs]**3+s_[cs]**3)) for s_ in sol if s_[bs].is_real}
 
-R[(1,19)]=sum(1 for t_ in combinations(range(1,10),5) if 2*(t_[1]-t_[0])<t_[4]-t_[1] and (t_[1]+t_[4])%2==1)
+vals19=[]
+for ai in range(1,1201):
+    av=ai/100
+    for ki in range(-300,1201):
+        kv=ki/100
+        f_=lambda xx:(xx-kv)**2+1
+        mn=f_(min(max(kv,0),av)); mx=max(f_(0),f_(av))
+        if abs(mn-1)<1e-9 and abs(mx-10)<1e-9: vals19.append(av+kv)
+R[(1,19)]=round(max(vals19)*min(vals19),6)
 p_,q_=sp.symbols('p q')
 g_=x**2+p_*x+q_; h_=g_-2*x-3
 eqs=sp.Poly(sp.expand(g_*h_-(x**4+(a-2)*x**3+b*x**2+a*x+10)),x).all_coeffs()
