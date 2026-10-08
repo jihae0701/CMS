@@ -51,4 +51,4 @@ h1{text-align:center;font-size:20pt;margin:0 0 2mm;border-bottom:2px solid #000;
         pg.pdf(path=out,format='A4',print_background=True); b.close()
     os.remove(hp)
     print(out,'수식 오류',len(errs),errs[:5])
-OUT=os.path.abspath(sys.argv[1]); page(M1,'공통수학1',OUT+'/미리보기_공통수학1.pdf'); page(M2,'공통수학2',OUT+'/미리보기_공통수학2.pdf')
+OUT=os.path.abspath(sys.argv[1]); os.makedirs(OUT,exist_ok=True); page(M1,'공통수학1',OUT+'/미리보기_공통수학1.pdf'); page(M2,'공통수학2',OUT+'/미리보기_공통수학2.pdf')
