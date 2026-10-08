@@ -4,7 +4,7 @@ from playwright.sync_api import sync_playwright
 from hwp2latex import convert
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-KATEX = os.path.join(HERE, "npmk", "node_modules", "katex", "dist")
+KATEX = os.environ.get("KATEX_DIR", os.path.join(HERE, "npmk", "node_modules", "katex", "dist"))  # npm install katex 위치
 CHROME = "/opt/pw-browsers/chromium-1194/chrome-linux/chrome"
 
 PAGE = """<!doctype html><html><head><meta charset="utf-8">
