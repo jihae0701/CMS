@@ -12,7 +12,9 @@ R[(1,3)]=sum(r for r in sp.solve(x**3-4*x**2+x+6) if r>0)
 R[(1,4)]=sum(v for v in range(-50,51) if v*v-2*v-8>=0 and v*v-36<0)
 # P(1)=5,P(-3)=-3, R=ax+b
 s=sp.solve([a+b-5,-3*a+b+3],[a,b]); R[(1,5)]=2*s[a]+s[b]
-kk=[r for r in sp.solve(k**2-3-6) if r>0][0]; AB=sp.Matrix([[1,2],[kk,3]])*sp.Matrix([[kk,2],[-1,1]]); assert AB[0,1]==4 and AB[1,0]==6; R[(1,6)]=AB[0,0]+AB[1,1]
+from itertools import combinations as _C
+books_=[('M',i) for i in range(4)]+[('E',i) for i in range(3)]
+R[(1,6)]=sum(1 for c in _C(books_,4) if any(b_[0]=='M' for b_ in c) and any(b_[0]=='E' for b_ in c))
 
 import numpy as np, math
 from fractions import Fraction as Fr
@@ -30,8 +32,7 @@ def talk():
     people=[(0,i) for i in range(4)]+[(1,0),(1,1),(2,0)]
     return sum(1 for s_ in permutations(people,5) if all(not(s_[i][0]==0 and s_[i+1][0]==0) for i in range(4)))
 R[(1,8)]=talk()
-A=sp.Matrix(2,2,lambda i,j: 4-(i+1) if i==j else (j+1)+1)
-S_=A+A**2+A**3+A**4; kv=S_[0,0]/A[0,0]; assert S_==kv*A; R[(1,9)]=kv
+zc=(1-sp.I)/(1+sp.I); s9=sp.expand(sp.simplify(sum(n*zc**n for n in range(1,21)))); R[(1,9)]=sp.re(s9)+sp.im(s9)
 Bm=sp.Matrix(2,2,sp.symbols('b0:4')); Cm=sp.Matrix(2,2,sp.symbols('c0:4')); Am=sp.Matrix([[0,12],[0,0]])
 eqs=list(Am*Bm)+list(Cm*Am)+list(Bm*Cm-Am)+[sum(Bm)-4, Cm[0,1]-Cm[1,1]]
 sols=sp.solve(eqs, list(Bm)+list(Cm), dict=True)
