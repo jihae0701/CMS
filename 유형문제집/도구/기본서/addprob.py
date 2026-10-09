@@ -44,8 +44,8 @@ def _scripts(items):
     return out
 
 
-def insert(P, after, template, items, blanks=18):
-    """번호 after인 문항 뒤에 items를 넣는다. 모양은 번호 template인 문항을 따른다."""
+def build(P, template, items, blanks=18):
+    """번호 template인 문항(번호 문단 + 문제 한 문단 + 빈 문단)을 본으로 items 문단 목록을 만든다"""
     eqsize.ensure(_scripts(items))
     doc = fixes.Doc(P)
     ti, tj = _block(P, template)
@@ -63,9 +63,15 @@ def insert(P, after, template, items, blanks=18):
     new = []
     for k, it in enumerate(items):
         en = doc.endnote_body(en0, [it["ans"]] + it["sol"])
-        en = re.sub(r'instId="\d+"', 'instId="%d"' % (1990000000 + 1000 * len(P) % 7919 + k), en, count=1)
+        en = re.sub(r'instId="\d+"', 'instId="%d"' % (1990000000 + 1000 * len(P) % 7919 + 13 * len(new) + k), en, count=1)
         q = ('%s<hp:run charPrIDRef="%s">%s</hp:run><hp:run charPrIDRef="%s"><hp:ctrl>%s</hp:ctrl><hp:t/></hp:run></hp:p>'
              % (q_open, run_cp, qdoc.inline(it["q"]), ctrl_cp, en))
         new += [num_p, q] + spacer * blanks
+    return new
+
+
+def insert(P, after, template, items, blanks=18):
+    """번호 after인 문항 뒤에 items를 넣는다. 모양은 번호 template인 문항을 따른다."""
+    new = build(P, template, items, blanks)
     ai, aj = _block(P, after)
     return P[:aj] + new + P[aj:]
