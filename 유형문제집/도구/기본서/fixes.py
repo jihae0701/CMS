@@ -185,6 +185,14 @@ def apply(P, fixes, label=""):
                             break
                     if ok:
                         break
+            elif kind == "drop":
+                # 문항 전체(번호 문단부터 다음 문항 직전까지, 제목 문단은 남김)를 지운다
+                nxt = segs[k][0] if k < len(segs) else len(P)
+                j = a
+                while j < nxt and not nb.is_heading(P[j]) and not ("<hp:rect" in P[j] and re.search(r"[0-9]\. ", io.text(P[j]))):
+                    drop.add(j)
+                    j += 1
+                ok = 1
             elif kind == "delpara":
                 ok = 0
                 for i in rng:
@@ -194,7 +202,7 @@ def apply(P, fixes, label=""):
                         break
             else:
                 raise ValueError(op)
-            log.append((label, k, kind, op[1] if kind != "sol" else op[1][0], ok))
+            log.append((label, k, kind, op[1] if kind not in ("sol", "drop") else (op[1][0] if kind == "sol" else ""), ok))
             if not ok:
                 print("적용 실패:", label, k, op[:3])
     P = [p for i, p in enumerate(P) if i not in drop]

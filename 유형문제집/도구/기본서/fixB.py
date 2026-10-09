@@ -100,3 +100,7 @@ FIX = {
                   "$x$의 계수를 비교하면 $3a=c-m-3=c$",
                   "$therefore {a} over {c} = {1} over {3}$"])],
 }
+
+# 단원 마무리(STEP 3) 34 -> 20문항: 항등식에서 4문항을 뺀다
+for _k in (19, 21, 23, 25):   # (x+3)^4, (2x^2-x-1)^5, x^10-3, 2x^3+ax^2+bx+5
+    FIX.setdefault(_k, []).append(("drop",))
