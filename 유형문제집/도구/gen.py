@@ -325,37 +325,88 @@ def bogi_xml(lines):
     return renum(fill_rect(BOGI, lines))
 
 
+# 조립제법 표: 학원 표(../조립제법_표.hwpx)의 둘째 표(조립제법 두 번)를 본으로 한다.
+sys.path.insert(0, os.path.join(HERE, "기본서"))
+from hwpxmerge import Merger  # noqa: E402
+
+_SZ = zipfile.ZipFile(os.path.join(HERE, "..", "조립제법_표.hwpx"))
+SYN_M = Merger(FILES["Contents/header.xml"].decode("utf-8"), _SZ.read("Contents/header.xml").decode("utf-8"))
+FILES["Contents/header.xml"] = SYN_M.hA.encode("utf-8")
+_ST = re.findall(r"<hp:tbl .*?</hp:tbl>", _SZ.read("Contents/section0.xml").decode("utf-8"), re.S)[1]
+_STC = re.findall(r"<hp:tc .*?</hp:tc>", _ST, re.S)
+SYN_TBL_OPEN = SYN_M.body(re.match(r"<hp:tbl [^>]*>", _ST).group(0))
+SYN_TBL_HEAD = _ST[len(re.match(r"<hp:tbl [^>]*>", _ST).group(0)):_ST.index("<hp:tr>")]
+SYN_CELL = SYN_M.body(_STC[2])          # 수가 든 칸 (첫 줄 셋째 칸)
+SYN_SEP = SYN_M.body(_STC[12])          # 줄 사이의 얇은 칸
+# 선 모양 -> 표 본의 테두리 번호 (R 오른쪽, L 왼쪽, B 아래, T 위)
+SYN_BF = {k: str(SYN_M.map["borderFill"][v]) for k, v in
+          {"": 11, "R": 12, "L": 14, "BL": 15, "B": 16, "T": 21}.items()}
+SYN_W0, SYN_W1, SYN_W, SYN_H, SYN_SEP_H = 2821, 3104, 3387, 1283, 282
+SYN_BASE = 900
+
+
+def syn_eq(sc):
+    W, H, BL = EQ[sc]
+    k = SYN_BASE / 1100
+    return eq_xml(sc).replace('baseUnit="1100"', 'baseUnit="%d"' % SYN_BASE).replace(
+        '<hp:sz width="%d" widthRelTo="ABSOLUTE" height="%d"' % (W, H),
+        '<hp:sz width="%d" widthRelTo="ABSOLUTE" height="%d"' % (round(W * k), round(H * k)), 1)
+
+
 def syn_xml(rows):
-    """조립제법 표. rows: [[나누는수, 계수...], [빈칸, ...], [빈칸, 몫..., 나머지]] (문자열은 수식)"""
-    ncol = len(rows[0])
-    cw, ch = 2700, 1750
-    trs = []
-    for r, cells in enumerate(rows):
+    """조립제법 표. rows는 2k+1줄 (k번 나눔):
+    [나누는 수, 계수...], [빈칸, 곱한 값...], [다음 나누는 수(마지막은 빈칸), 몫..., 나머지], [곱한 값...], ...
+    문자열은 수식. 선은 학원 표와 같이: 나누는 수 오른쪽 세로선, 곱한 값 줄 아래 가로선, 나머지는 ㄴ자 상자."""
+    ncol = max(len(r) for r in rows)
+    rows = [list(r) + [""] * (ncol - len(r)) for r in rows]
+    k = (len(rows) - 1) // 2
+    assert len(rows) == 2 * k + 1 and k >= 1, rows
+    lines = [[set() for _ in range(ncol)] for _ in rows]
+    for i in range(1, k + 1):
+        t, p, r, last = 2 * i - 2, 2 * i - 1, 2 * i, ncol - i
+        lines[t][0].add("R"); lines[t][1].add("L")
+        lines[p][0].add("R"); lines[p][1].update("BL")
+        for c in range(2, last + 1):
+            lines[p][c].add("B")
+        if i > 1:
+            lines[p][last + 1].add("T")
+        lines[r][last - 1].add("R"); lines[r][last].update("BL")
+    # 열 너비: 표 본의 너비, 수식이 넓으면 넓힘
+    k_eq = SYN_BASE / 1100
+    widths = []
+    for c in range(ncol):
+        base = SYN_W0 if c == 0 else SYN_W1 if c == 1 else SYN_W
+        need = max([round(EQ[r[c].strip()][0] * k_eq) + 1020 + 200 for r in rows if r[c].strip()] or [0])
+        widths.append(max(base, need))
+    trs, heights, ri = [], [], 0
+    for n, row in enumerate(rows):
+        h = max([SYN_H] + [round(EQ[v.strip()][1] * k_eq) + 400 for v in row if v.strip()])
         tcs = []
-        for c in range(ncol):
-            v = cells[c] if c < len(cells) else ""
-            if c == 0:
-                bf = "42"
-            elif r == len(rows) - 1:
-                bf = "43" if c == ncol - 1 else "44"
-            else:
-                bf = "40"
-            body = run("$%s$" % v if v else "", "0")
-            tcs.append(
-                '<hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="%s">' % bf
-                + SUBLIST % "CENTER"
-                + '<hp:p id="0" paraPrIDRef="52" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">%s</hp:p>' % body
-                + "</hp:subList>"
-                + '<hp:cellAddr colAddr="%d" rowAddr="%d"/><hp:cellSpan colSpan="1" rowSpan="1"/>' % (c, r)
-                + '<hp:cellSz width="%d" height="%d"/><hp:cellMargin left="141" right="141" top="141" bottom="141"/></hp:tc>' % (cw, ch))
+        for c, v in enumerate(row):
+            key = "".join(sorted(lines[n][c]))
+            if key not in SYN_BF:
+                raise ValueError("조립제법 선 모양 %s (%d줄 %d칸)" % (key, n, c))
+            cell = re.sub(r'borderFillIDRef="\d+"', 'borderFillIDRef="%s"' % SYN_BF[key], SYN_CELL, count=1)
+            eq = syn_eq(v.strip()) if v.strip() else ""
+            cell = re.sub(r"<hp:equation .*?</hp:equation>", lambda m: eq, cell, count=1, flags=re.S)
+            cell = re.sub(r'<hp:cellAddr colAddr="\d+" rowAddr="\d+"/>', '<hp:cellAddr colAddr="%d" rowAddr="%d"/>' % (c, ri), cell)
+            cell = re.sub(r'<hp:cellSz width="\d+" height="\d+"/>', '<hp:cellSz width="%d" height="%d"/>' % (widths[c], h), cell)
+            tcs.append(cell)
         trs.append("<hp:tr>%s</hp:tr>" % "".join(tcs))
-    return ('<hp:tbl id="%d" zOrder="0" numberingType="TABLE" textWrap="TOP_AND_BOTTOM" textFlow="BOTH_SIDES" lock="0" '
-            'dropcapstyle="None" pageBreak="CELL" repeatHeader="1" rowCnt="%d" colCnt="%d" cellSpacing="0" borderFillIDRef="40" noAdjust="0">'
-            '<hp:sz width="%d" widthRelTo="ABSOLUTE" height="%d" heightRelTo="ABSOLUTE" protect="0"/>'
-            '<hp:pos treatAsChar="1" affectLSpacing="0" flowWithText="1" allowOverlap="0" holdAnchorAndSO="0" vertRelTo="PARA" '
-            'horzRelTo="PARA" vertAlign="TOP" horzAlign="LEFT" vertOffset="0" horzOffset="0"/>'
-            '<hp:outMargin left="283" right="283" top="283" bottom="283"/><hp:inMargin left="141" right="141" top="141" bottom="141"/>%s</hp:tbl>'
-            % (nid(), len(rows), ncol, cw * ncol, ch * len(rows), "".join(trs)))
+        heights.append(h)
+        ri += 1
+        if n % 2 == 1:            # 곱한 값 줄 다음에 얇은 줄
+            sep = re.sub(r'<hp:cellAddr colAddr="\d+" rowAddr="\d+"/>', '<hp:cellAddr colAddr="0" rowAddr="%d"/>' % ri, SYN_SEP)
+            sep = re.sub(r'<hp:cellSpan colSpan="\d+"', '<hp:cellSpan colSpan="%d"' % ncol, sep)
+            sep = re.sub(r'<hp:cellSz width="\d+" height="\d+"/>', '<hp:cellSz width="%d" height="%d"/>' % (sum(widths), SYN_SEP_H), sep)
+            trs.append("<hp:tr>%s</hp:tr>" % sep)
+            heights.append(SYN_SEP_H)
+            ri += 1
+    op = re.sub(r'rowCnt="\d+" colCnt="\d+"', 'rowCnt="%d" colCnt="%d"' % (ri, ncol), SYN_TBL_OPEN)
+    op = re.sub(r'\bid="\d+"', 'id="%d"' % nid(), op, count=1)
+    head = re.sub(r'<hp:sz width="\d+" widthRelTo="ABSOLUTE" height="\d+"',
+                  '<hp:sz width="%d" widthRelTo="ABSOLUTE" height="%d"' % (sum(widths), sum(heights)), SYN_TBL_HEAD, count=1)
+    return op + head + "".join(trs) + "</hp:tbl>"
 
 
 def obj_para(obj_xml, pp="52"):
