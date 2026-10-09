@@ -2,7 +2,9 @@
 """새 단원 기본서 문항이 앞 단원(기본서·유형서) 문항과 같은 꼴인지 찾는다.
 
 python dupcheck.py <새 기본서.hwpx> [--min 0.45]
+python dupcheck.py unit3n.py [--min 0.45]     (새 유형서 단원)
 - 비교 대상: 기본서/*.hwpx 중 새 파일보다 앞 단원 파일, 유형서 단원 파일(unit*n.py)의 문항
+  (새 파일이 유형서 단원이면 같은 단원 기본서까지, 유형서는 다른 단원만)
 - 문제 글의 수식을 '뼈대'(숫자는 #, 문자는 그대로, 띄어쓰기·LEFT/RIGHT 없앰)로 바꾼 뒤
   뼈대 조각의 겹침(자카드)과 문장 낱말 겹침을 더해 점수를 매긴다.
 - 점수가 높은 짝을 보여 줄 뿐이므로, 최종 판단은 사람이 문항을 읽고 한다.
@@ -71,14 +73,18 @@ def unit_items(path):
     return out
 
 
-new_items = gibon_items(NEW)
+IS_UNIT = NEW.endswith(".py")
+new_items = unit_items(NEW) if IS_UNIT else gibon_items(NEW)
 others = []
 base = os.path.join(HERE, "..", "기본서")
-new_unit = os.path.basename(NEW)
+new_unit = os.path.basename(NEW)[4] + "." if IS_UNIT else os.path.basename(NEW)
 for f in sorted(glob.glob(os.path.join(base, "*.hwpx"))):
-    if os.path.basename(f) < new_unit:                # 파일 이름이 단원 번호로 시작한다
-        others += [("기본서 " + os.path.basename(f)[:2].strip(".") + "단원 " + n, q) for n, q in gibon_items(f)]
+    bn = os.path.basename(f)
+    if bn < new_unit or (IS_UNIT and bn.startswith(new_unit)):   # 파일 이름이 단원 번호로 시작한다
+        others += [("기본서 " + bn[:2].strip(".") + "단원 " + n, q) for n, q in gibon_items(f)]
 for f in sorted(glob.glob(os.path.join(HERE, "unit*n.py"))):
+    if IS_UNIT and os.path.samefile(f, NEW):
+        continue
     others += [("유형서 " + os.path.basename(f)[4] + "단원 " + n, q) for n, q in unit_items(f)]
 
 F = {k: feats(q) for k, q in others}
