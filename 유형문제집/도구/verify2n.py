@@ -95,6 +95,11 @@ for n in range(1, 7):
     sols.add((s[0][a], s[0][b]))
 assert len(sols) == 1
 chk("c17", sum(sols.pop()), 14)
+# c33: 예시 f로 두 나머지 조건을 만족하는지 확인한 뒤 R(2)
+Rx = -(x + 2)**2 + 2*x + 5
+f = expand((x + 2)**2*(x - 3)*(x**2 + 7) + Rx)
+assert expand(rem(f, (x + 2)**2, x) - (2*x + 5)) == 0 and f.subs(x, 3) == -14
+chk("c33", rem(f, expand((x + 2)**2*(x - 3)), x).subs(x, 2), -7)
 
 bad = [t for t in R if not t[1]]
 print("검산 %d문항, 불일치 %d" % (len(R), len(bad)))
