@@ -2,7 +2,8 @@
 """답안지 판독 결과(omr_read.py)를 채점 엑셀에 넣는다 (객관식 1~14번만, 단답형 15~20번은 직접 1/0 입력)
 사용: python omr_fill.py <채점엑셀.xlsx> <공수1|공수2> <판독결과.json> <짝맞춤.csv> [수정.csv]
 - 짝맞춤.csv : 쪽,학생   (쪽 = 판독결과의 번호, 학생 = 학생명단의 No 또는 이름)
-- 수정.csv   : 쪽,문항,답 (확인 그림을 보고 고친 답. 답을 비우면 표시 없음, 0이면 오답 처리)
+- 수정.csv   : 쪽,문항,답 (확인 그림을 보고 고친 답. 답을 비우면 표시 없음, 0이면 오답 처리.
+               15~20번은 채점 결과 1/0을 적으면 함께 입력)
 - 표시 없음은 빈칸, 두 개 이상 표시는 0(오답)으로 넣는다. 넣기 전 원본은 *_백업.xlsx 로 저장
 """
 import sys, os, csv, json, shutil
@@ -50,6 +51,9 @@ def main(xlsx, subj, result, pairing, fixes=None):
             if (page, q + 1) in fix:
                 v = fix[(page, q + 1)]
             ws.cell(r, 4 + q).value = v
+        for q in range(N_MC + 1, 21):          # 단답형 15~20번: 수정.csv에 1/0을 적은 경우만
+            if (page, q) in fix:
+                ws.cell(r, 3 + q).value = fix[(page, q)]
         done.append((page, roster.cell(r, 2).value))
     shutil.copy(xlsx, xlsx.replace(".xlsx", "_백업.xlsx"))
     wb.save(xlsx)

@@ -9,6 +9,7 @@ import sys, os, json, subprocess, tempfile, glob
 import numpy as np
 import cv2
 
+LONG = 2339                    # 긴 변을 A4 200dpi(2339px)로 맞춤
 W = 1654                       # 처리 기준 폭(A4 200dpi)
 N_MC = 14
 
@@ -50,50 +51,70 @@ def deskew(gray):
     M = cv2.getRotationMatrix2D((gray.shape[1] / 2, gray.shape[0] / 2), float(best), 1.0)
     return cv2.warpAffine(gray, M, (gray.shape[1], gray.shape[0]), flags=cv2.INTER_CUBIC, borderValue=255)
 
-def tables(b):
-    """표 테두리 → [(x, y, w, h, 가로선 y목록, 세로선 x목록)]"""
-    hl = lines(b, True, 60)
-    vl = lines(b, False, 40)
+def tables(gray):
+    """표 테두리 → [(x, y, w, h, 가로선 y목록, 세로선 x목록)]
+    인쇄가 흐린 스캔도 잡도록 선 찾기에는 더 민감한 이진화를 쓰고, 끊긴 선은 이어 붙인다"""
+    bg = cv2.medianBlur(gray, 51)
+    norm = cv2.divide(gray, bg, scale=255)
+    lb = (norm < 228).astype(np.uint8) * 255
+    hl = cv2.morphologyEx(lines(lb, True, 40), cv2.MORPH_CLOSE, cv2.getStructuringElement(cv2.MORPH_RECT, (41, 1)))
+    vl = cv2.morphologyEx(lines(lb, False, 30), cv2.MORPH_CLOSE, cv2.getStructuringElement(cv2.MORPH_RECT, (1, 31)))
+    hl = lines(hl, True, 90)
+    vl = lines(vl, False, 50)
     grid = cv2.dilate(hl | vl, np.ones((5, 5), np.uint8))
     n, lab, st, _ = cv2.connectedComponentsWithStats(grid)
-    out = []
+    def runs(prof, minlen):
+        idx = np.nonzero(prof > minlen)[0]
+        if not len(idx):
+            return []
+        groups, cur = [], [idx[0]]
+        for v in idx[1:]:
+            if v - cur[-1] <= 3:
+                cur.append(v)
+            else:
+                groups.append(cur); cur = [v]
+        groups.append(cur)
+        return [int(np.mean(g)) for g in groups]
+    out = []                       # 띠: (x0, x1, 가로선 y목록) — 이웃한 세로선 사이의 한 열
     for i in range(1, n):
         x, y, w, h, a = st[i]
-        if w < 200 or h < 40:
+        if w < 120 or h < 40:
             continue
-        def runs(prof, minlen):
-            idx = np.nonzero(prof > minlen)[0]
-            if not len(idx):
-                return []
-            groups, cur = [], [idx[0]]
-            for v in idx[1:]:
-                if v - cur[-1] <= 3:
-                    cur.append(v)
-                else:
-                    groups.append(cur); cur = [v]
-            groups.append(cur)
-            return [int(np.mean(g)) for g in groups]
-        hy = runs(hl[y:y + h, x:x + w].sum(1) / 255, w * 0.6)
-        vx = runs(vl[y:y + h, x:x + w].sum(0) / 255, h * 0.6)
-        out.append((x, y, w, h, [y + v for v in hy], [x + v for v in vx]))
+        vx = [x + v for v in runs(vl[y:y + h, x:x + w].sum(0) / 255, 25)]
+        for x0, x1 in zip(vx, vx[1:]):
+            if x1 - x0 < 30:       # 표와 표 사이 틈
+                continue
+            strip = hl[y:y + h, x0 + 4:x1 - 4]
+            ys = [y + v for v in runs(strip.sum(1) / 255, (x1 - x0 - 8) * 0.6)]
+            if len(ys) >= 2:
+                out.append((x0, x1, ys))
     return out
 
+def orient(gray):
+    """가로·세로로 스캔해도 되도록 0·90·180·270도를 돌려 보고, 머리 칸(이름 등)이 객관식 표 위에 오는 방향을 고름"""
+    for k in (0, 1, 3, 2):
+        g = np.ascontiguousarray(np.rot90(gray, k)) if k else gray
+        s = LONG / max(g.shape)
+        g = cv2.resize(g, (int(g.shape[1] * s), int(g.shape[0] * s)), interpolation=cv2.INTER_AREA)
+        g = deskew(g)
+        T = tables(g)
+        mc = sorted([s for s in T if len(s[2]) == 8 and s[1] - s[0] >= 150], key=lambda s: s[0])
+        head = [s for s in T if len(s[2]) == 2]
+        if len(mc) == 2 and head and min(h[2][0] for h in head) < min(m[2][0] for m in mc):
+            return g, T, mc
+    return None, None, None
+
 def read_page(gray):
-    scale = W / gray.shape[1]
-    gray = cv2.resize(gray, (W, int(gray.shape[0] * scale)), interpolation=cv2.INTER_AREA)
-    gray = deskew(gray)
+    g, T, mc = orient(gray)
+    if g is None:
+        s = W / gray.shape[1]
+        return {"error": "객관식 표를 찾지 못함(스캔이 흐리거나 잘림)"}, cv2.resize(gray, (W, int(gray.shape[0] * s)))
+    gray = g
     b = ink(gray)
-    T = tables(b)
-    mc = sorted([t for t in T if len(t[4]) == 8 and len(t[5]) >= 3], key=lambda t: t[0])
-    if len(mc) != 2:
-        return {"error": "객관식 표를 찾지 못함(찾은 표 %d개)" % len(mc)}, gray
     cells = []
-    for t in mc:
-        xs = t[5]
-        x0, x1 = xs[1], xs[-1]
+    for (x0, x1, ys) in mc:
         for r in range(7):
-            y0, y1 = t[4][r], t[4][r + 1]
-            cells.append((x0, y0, x1, y1))
+            cells.append((x0, ys[r], x1, ys[r + 1]))
     # 칸 크기를 맞춰 겹친 뒤, 행마다 다른 위치에 있는 표시는 중앙값으로 지워져 인쇄된 ①~⑤만 남음
     CW, CH = 420, 48
     crops = []
@@ -144,16 +165,13 @@ def read_page(gray):
             answers.append(int(order[0]) + 1)
             flags.append("흐림·확인" if d1 < 0.35 or d2 > 0.2 else "")
     # 이름 칸(머리 표 중 가장 오른쪽 표의 둘째 칸)
-    head = sorted([t for t in T if len(t[4]) == 2 and t[1] < mc[0][1]], key=lambda t: t[0])
-    name_box = None
-    if head and len(head[-1][5]) >= 3:
-        t = head[-1]
-        name_box = (t[5][1], t[4][0], t[5][-1], t[4][1])
-    return {"answers": answers, "conf": conf, "flags": flags, "cells": cells, "name_box": name_box,
-            "head": [(t[5][1], t[4][0], t[5][-1], t[4][1]) for t in head if len(t[5]) >= 3]}, gray
+    head = sorted([s for s in T if len(s[2]) == 2 and s[2][1] <= mc[0][2][0]], key=lambda s: s[0])
+    boxes = [(s[0], s[2][0], s[1], s[2][1]) for s in head]
+    return {"answers": answers, "conf": conf, "flags": flags, "cells": cells,
+            "name_box": boxes[-1] if boxes else None, "head": boxes}, gray
 
 def review_image(gray, res, label, path):
-    """확인용: 머리 칸(현재반·학교·이름) + 판독 결과를 표시한 객관식 표"""
+    """확인용: 과목 제목·머리 칸(현재반·학교·이름) + 판독 결과를 표시한 객관식 표"""
     vis = cv2.cvtColor(gray, cv2.COLOR_GRAY2BGR)
     for q, (x0, y0, x1, y1) in enumerate(res["cells"]):
         a, fl = res["answers"][q], res["flags"][q]
@@ -162,7 +180,7 @@ def review_image(gray, res, label, path):
         txt = "%s" % (a if a else "-")
         cv2.putText(vis, txt, (x1 + 8, (y0 + y1) // 2 + 12), cv2.FONT_HERSHEY_SIMPLEX, 1.1, col, 3)
     ys = [c[1] for c in res["cells"]] + [c[3] for c in res["cells"]]
-    top = max(0, min([h[1] for h in res["head"]] + [min(ys)]) - 20)
+    top = max(0, min([h[1] for h in res["head"]] + [min(ys)]) - 300)   # 과목 제목까지 보이게
     crop = vis[top:max(ys) + 20, :]
     cv2.putText(crop, label, (10, 40), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (200, 0, 0), 3)
     cv2.imwrite(path, cv2.resize(crop, (crop.shape[1] // 2, crop.shape[0] // 2), interpolation=cv2.INTER_AREA))
