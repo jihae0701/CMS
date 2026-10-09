@@ -86,6 +86,15 @@ Rx = expand(Rx.subs(s[0]))
 f = expand((x**4 + x**2 + 1)*(x**3 - 2*x + 5) + Rx)
 assert rem(f, x**2 + x + 1, x) == 0 and expand(rem(f, x**2 - x + 1, x) + 6*x) == 0
 chk("c13", rem(f, x**4 + x**2 + 1, x).subs(x, 1), -9)
+# c17: n=1~6 모두 나머지 계수 비교로 a, b가 같은지
+sols = set()
+for n in range(1, 7):
+    rr = rem(expand(x**n*(x**2 - a*x + b)), (x - 2)**2, x) + 2**(n + 1)*(x - 2)
+    s = solve(Poly(expand(rr), x).all_coeffs(), [a, b], dict=True)
+    assert len(s) == 1
+    sols.add((s[0][a], s[0][b]))
+assert len(sols) == 1
+chk("c17", sum(sols.pop()), 14)
 
 bad = [t for t in R if not t[1]]
 print("검산 %d문항, 불일치 %d" % (len(R), len(bad)))
