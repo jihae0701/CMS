@@ -217,6 +217,8 @@ Sx = Poly(expand(2*(s_[u_] + s_[v_] + s_[w_])), x); chk("o38", sum(Sx.all_coeffs
 # n9: (a+b+c)(b+c-a)-(a-b+c)(a+b-c) = 2(b^2+c^2-a^2)
 assert expand((a + b + c)*(b + c - a) - (a - b + c)*(a + b - c) - 2*(b**2 + c**2 - a**2)) == 0
 chk("n9", Rational(8, 2), 4)
+# n10: (3+1)(3²+1)(3⁴+1)(3⁸+1) = (3^n-1)/2
+chk("n10", [m for m in range(1, 40) if 4*10*82*6562 == (3**m - 1)//2 and (3**m - 1) % 2 == 0][0], 16)
 
 bad = [r for r in R if not r[1]]
 print("검산 %d문항, 불일치 %d" % (len(R), len(bad)))
