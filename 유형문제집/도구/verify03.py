@@ -109,8 +109,16 @@ chk("w4", expand(X_**3 + Y_**3 + Z_**3), -12)
 assert (3*sqrt(3))**2 == 3*9
 chk("w5", 3*sqrt(3)**4, 27)
 
+e = x**3 - 8*y**3 + 6*x*y + 1
+s = [(p, q, r) for p in range(-5, 6) for q in range(-5, 6) for r in range(-5, 6)
+     if same(e, (x + p*y + 1)*(x**2 + q*x*y + 4*y**2 - x + r*y + 1))]
+assert len(s) == 1; chk("w10", sum(s[0]), 2)
+
 # ---- 인수정리
 fl = roots(x**3 - 2*x**2 - 5*x + 6, x, multiple=True); chk("o08", sum(v**2 for v in fl), 14)
+av = solve((x**3 + a*x**2 - 4*x - 12).subs(x, -2), a)[0]
+fl = factor_list(x**3 + av*x**2 - 4*x - 12)[1]; assert len(fl) == 3
+chk("w11", av*prod(Poly(g, x).all_coeffs()[1] for g, _ in fl if g != x + 2), -18)
 e = x**4 + 7*x**3 + 11*x**2 - x - 6
 sols = [(p, q, r, s_) for p in range(-9, 10) for q in range(p, 10) for r in range(-9, 10) for s_ in range(-9, 10)
         if p*q*s_ == -6 and same(e, (x + p)*(x + q)*(x**2 + r*x + s_))]
