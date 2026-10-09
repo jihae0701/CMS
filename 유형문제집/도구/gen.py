@@ -474,11 +474,81 @@ def build():
     return sec, n
 
 
+# ---------------------------------------------------------------- 다시 그린 그림 / 문단 번호 시작
+PIC_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "그림")
+
+
+def _png_size(path):
+    import struct
+    with open(path, "rb") as f:
+        head = f.read(24)
+    return struct.unpack(">II", head[16:24])
+
+
+def swap_pics(sec, files, order):
+    """그림/imageNN.png가 있으면 폼의 같은 그림 대신 넣는다. 가로 크기는 그대로, 세로는 새 그림 비율로."""
+    hpf = files["Contents/content.hpf"].decode("utf-8")
+    for fn in sorted(os.listdir(PIC_DIR)) if os.path.isdir(PIC_DIR) else []:
+        m = re.match(r"(image\d+)\.png$", fn)
+        if not m or 'binaryItemIDRef="%s"' % m.group(1) not in sec:
+            continue
+        img = m.group(1)
+        pw, ph = _png_size(os.path.join(PIC_DIR, fn))
+        pos = 0
+        while True:
+            i = sec.find('binaryItemIDRef="%s"' % img, pos)
+            if i < 0:
+                break
+            a = sec.rindex("<hp:pic ", 0, i)
+            b = sec.index("</hp:pic>", i) + len("</hp:pic>")
+            x = sec[a:b]
+            W = int(re.search(r'<hp:curSz width="(\d+)"', x).group(1))
+            H = round(W * ph / pw)
+            x = re.sub(r'<hp:orgSz [^>]*/>', '<hp:orgSz width="%d" height="%d"/>' % (W, H), x)
+            x = re.sub(r'<hp:curSz [^>]*/>', '<hp:curSz width="%d" height="%d"/>' % (W, H), x)
+            x = re.sub(r'centerX="\d+" centerY="\d+"', 'centerX="%d" centerY="%d"' % (W // 2, H // 2), x)
+            x = re.sub(r'<hc:scaMatrix [^>]*/>', '<hc:scaMatrix e1="1" e2="0" e3="0" e4="0" e5="1" e6="0"/>', x)
+            x = re.sub(r'<hp:imgRect>.*?</hp:imgRect>',
+                       '<hp:imgRect><hc:pt0 x="0" y="0"/><hc:pt1 x="%d" y="0"/><hc:pt2 x="%d" y="%d"/>'
+                       '<hc:pt3 x="0" y="%d"/></hp:imgRect>' % (W, W, H, H), x, flags=re.S)
+            x = re.sub(r'<hp:imgClip [^>]*/>', '<hp:imgClip left="0" right="%d" top="0" bottom="%d"/>' % (W, H), x)
+            x = re.sub(r'<hp:imgDim [^>]*/>', '<hp:imgDim dimwidth="%d" dimheight="%d"/>' % (W, H), x)
+            x = re.sub(r'<hp:sz width="\d+" widthRelTo="ABSOLUTE" height="\d+"',
+                       '<hp:sz width="%d" widthRelTo="ABSOLUTE" height="%d"' % (W, H), x)
+            x = re.sub(r"<hp:shapeComment>.*?</hp:shapeComment>", "<hp:shapeComment>그림입니다.</hp:shapeComment>", x, flags=re.S)
+            sec = sec[:a] + x + sec[b:]
+            pos = a + len(x)
+        old = [n for n in order if re.match(r"BinData/%s\.\w+$" % img, n)]
+        new = "BinData/%s.png" % img
+        for n in old:
+            files.pop(n, None)
+        files[new] = open(os.path.join(PIC_DIR, fn), "rb").read()
+        order[:] = [new if n in old else n for n in order]
+        if new not in order:
+            order.append(new)
+        hpf = re.sub(r'<opf:item id="%s" href="[^"]+" media-type="[^"]+"' % img,
+                     '<opf:item id="%s" href="%s" media-type="image/png"' % (img, new), hpf)
+    files["Contents/content.hpf"] = hpf.encode("utf-8")
+    return sec
+
+
+def number_start(files, start):
+    """문제 번호(문단 번호 2번)를 start부터: 한글의 '새 번호로 시작'처럼 번호 정의의 시작 번호를 바꾼다."""
+    h = files["Contents/header.xml"].decode("utf-8")
+    m = re.search(r'<hh:numbering id="2" start="\d+">(.*?)</hh:numbering>', h, re.S)
+    body = re.sub(r'<hh:paraHead start="\d+" level="1"', '<hh:paraHead start="%d" level="1"' % start, m.group(1), count=1)
+    h = h[:m.start()] + '<hh:numbering id="2" start="%d">' % start + body + "</hh:numbering>" + h[m.end():]
+    files["Contents/header.xml"] = h.encode("utf-8")
+
+
 def main():
     sec, n = build()
     title, num = U.UNIT
-    used = set(re.findall(r'binaryItemIDRef="(image\d+)"', sec))
     files = dict(FILES)
+    order = list(ORDER)
+    sec = swap_pics(sec, files, order)
+    used = set(re.findall(r'binaryItemIDRef="(image\d+)"', sec))
+    number_start(files, getattr(U, "START", 1))
     files["Contents/section0.xml"] = sec.encode("utf-8")
     for mp in ("Contents/masterpage0.xml", "Contents/masterpage1.xml"):
         files[mp] = files[mp].decode("utf-8").replace("<hp:t>다항식의 연산</hp:t>", "<hp:t>%s</hp:t>" % escape(title)).encode("utf-8")
@@ -491,7 +561,7 @@ def main():
     files["Contents/content.hpf"] = hpf.encode("utf-8")
     files["settings.xml"] = re.sub(rb'paraIDRef="\d+" pos="\d+"', b'paraIDRef="0" pos="0"', files["settings.xml"])
     with zipfile.ZipFile(OUT, "w") as z:
-        for name in ORDER:
+        for name in order:
             if name in drop:
                 continue
             ct = zipfile.ZIP_STORED if name == "mimetype" else zipfile.ZIP_DEFLATED
