@@ -100,6 +100,12 @@ Rx = -(x + 2)**2 + 2*x + 5
 f = expand((x + 2)**2*(x - 3)*(x**2 + 7) + Rx)
 assert expand(rem(f, (x + 2)**2, x) - (2*x + 5)) == 0 and f.subs(x, 3) == -14
 chk("c33", rem(f, expand((x + 2)**2*(x - 3)), x).subs(x, 2), -7)
+# c34: 예시 f로 (x+3)^3으로 나눈 나머지를 맞춘 뒤 xf(x)를 (x+3)^2으로 나눈 나머지
+f = expand((x + 3)**3*(x**2 - 2*x + 5) + x**2 + 4*x - 1)
+assert expand(rem(f, (x + 3)**3, x) - (x**2 + 4*x - 1)) == 0
+chk("c34", rem(expand(x*f), (x + 3)**2, x).subs(x, 1), 20)
+# c35: (x-2)^3으로 나눈 나머지
+chk("c35", rem(x**4 - 3*x**3 + 5*x - 1, (x - 2)**3, x).subs(x, 3), 8)
 
 bad = [t for t in R if not t[1]]
 print("검산 %d문항, 불일치 %d" % (len(R), len(bad)))
