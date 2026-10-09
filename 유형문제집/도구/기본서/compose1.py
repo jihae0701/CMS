@@ -5,7 +5,7 @@
 """
 import sys, os, re, json
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import plain, hwpxio as io, hwpxmerge as hm, fixes, numbering as nb, fixA, fixB
+import plain, shortans, hwpxio as io, hwpxmerge as hm, fixes, numbering as nb, fixA, fixB
 
 A, B, OUT = sys.argv[1:4]   # 다항식의 연산.hwpx, 항등식.hwpx, 출력
 TITLE = "다항식의 연산과 항등식"
@@ -69,11 +69,15 @@ for i, p in enumerate(paras):
         n += 1
         paras[i] = re.sub(r"(<hp:t>)(\d\d)(</hp:t>)", lambda m: m.group(1) + "%02d" % n + m.group(3), p, count=1)
 print("유형", n)
-# 본문에 글자로 적힌 수식을 수식 개체로
+# 설명 문단의 오타
 paras = plain.rewrite(paras, plain.TABLE1, fixes.Doc(paras))
+# 5지선다 -> 단답형 (003 간단히 하기, 024 삼각형 모양은 5지선다 유지)
+paras, slog = shortans.convert(paras, fixes.Doc(paras), keep=(3, 24))
+print("단답형", sum(1 for l in slog if l[1] == "단답형"), [l for l in slog if l[1] != "단답형"])
 # 문항 번호: 대표문제 상자가 없는 번호 문단을 본보기로
 tmpl = next(p for p in paras if nb.num_text(p) and "<hp:container" not in p)
 paras, nprob, nins = nb.renumber(paras, tmpl)
+paras = nb.note_start(paras, 1)    # 두 파일을 합쳐 뒤섞인 해설 번호를 1부터 차례로
 print("문항", nprob, "번호 새로 넣음", nins)
 
 sec = headA + "".join(paras) + tailA

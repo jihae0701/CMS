@@ -60,12 +60,12 @@ def set_number(p, n, template=None):
     return p[:r1.start()] + new1 + p[r1.end():r2.start()] + new2 + p[r2.end():]
 
 
-def renumber(P, template):
+def renumber(P, template, start=1):
     """P: 문단 목록. template: 대표문제 상자가 없는 번호 문단(새로 넣을 때 씀)"""
     segs = segments(P)
     inserts = {}
     numpara = {}
-    for k, (a, e) in enumerate(segs, 1):
+    for k, (a, e) in enumerate(segs, start):
         if num_text(P[a]) is not None:
             numpara[a] = k
         else:
@@ -78,3 +78,19 @@ def renumber(P, template):
             p = set_number(p, numpara[i], template)
         out.append(p)
     return out, len(segs), len(inserts)
+
+
+def note_start(P, start):
+    """해설(미주) 번호가 start부터 시작하게: 구역 설정의 미주 시작 번호와 각 미주의 번호"""
+    P = [re.sub(r'(<hp:endNotePr>.*?<hp:numbering type="CONTINUOUS" newNum=")\d+(")',
+                lambda m: m.group(1) + str(start) + m.group(2), p, flags=re.S) for p in P]
+    n = [start - 1]
+
+    def num(m):
+        n[0] += 1
+        return m.group(1) + str(n[0]) + m.group(2)
+    out = []
+    for p in P:
+        p = re.sub(r'(<hp:endNote number=")\d+(")', lambda m: m.group(1) + str(n[0] + 1) + m.group(2), p)
+        out.append(re.sub(r'(<hp:autoNum num=")\d+(" numType="ENDNOTE")', num, p))
+    return out

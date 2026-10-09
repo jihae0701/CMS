@@ -5,9 +5,10 @@
 """
 import sys, os, re
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import plain, hwpxio as io, fixes, numbering as nb, fixC
+import plain, shortans, hwpxio as io, fixes, numbering as nb, fixC
 
 C, OUT = sys.argv[1:3]   # 나머지정리.hwpx, 출력
+START = 41   # 책 전체로 이어지는 문항 번호: 1단원이 001~040
 f, o = io.read(C)
 sec = f["Contents/section0.xml"].decode("utf-8")
 head, P, tail = io.split(sec)
@@ -20,8 +21,12 @@ for i, p in enumerate(P):
     if "이용하여 나머지 구하기" in io.text(p):
         P[i] = p.replace("를 이용하여 나머지 구하기", "을 이용하여 나머지 구하기")
 P = plain.rewrite(P, plain.TABLE2, fixes.Doc(P))
+# 5지선다 -> 단답형 (식이 답인 문항, ㄱㄴㄷ 문항은 유지)
+P, slog = shortans.convert(P, fixes.Doc(P), keep=(6, 24, 32, 33))
+print("단답형", sum(1 for l in slog if l[1] == "단답형"), [l for l in slog if l[1] != "단답형"])
 tmpl = next(p for p in P if nb.num_text(p) and "<hp:container" not in p)
-P, nprob, nins = nb.renumber(P, tmpl)
+P, nprob, nins = nb.renumber(P, tmpl, start=START)
+P = nb.note_start(P, START)
 print("문항", nprob, "번호 새로 넣음", nins)
 f["Contents/section0.xml"] = (head + "".join(P) + tail).encode("utf-8")
 for mp in ("Contents/masterpage0.xml", "Contents/masterpage1.xml"):

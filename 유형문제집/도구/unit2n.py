@@ -17,6 +17,7 @@ A = _load("unit01.py")
 B = _load("unit02.py")
 X = json.load(open(os.path.join(HERE, "unit2_extra.json"), encoding="utf-8"))
 UNIT = ("나머지정리", "02")
+START = 67   # 1단원(1~66)에 이어지는 번호
 
 
 def H(t, kind=1):

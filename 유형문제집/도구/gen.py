@@ -454,8 +454,11 @@ def build():
     body = []
     first = items[0]
     assert first.get("h")
-    body.append(renum(P0.replace("<hp:t>다항식의 덧셈과 뺄셈</hp:t>", "<hp:t>%s</hp:t>" % escape(first["h"]))))
+    p0 = re.sub(r'(<hp:endNotePr>.*?<hp:numbering type="CONTINUOUS" newNum=")\d+',
+                lambda m: m.group(1) + str(getattr(U, "START", 1)), P0, count=1, flags=re.S)
+    body.append(renum(p0.replace("<hp:t>다항식의 덧셈과 뺄셈</hp:t>", "<hp:t>%s</hp:t>" % escape(first["h"]))))
     n = 0
+    start = getattr(U, "START", 1)      # 여러 단원을 한 권으로 묶을 때 이어지는 번호
     after_head = True
     for it in items[1:]:
         if it.get("h"):
@@ -463,7 +466,7 @@ def build():
             after_head = True
             continue
         n += 1
-        body.append(endnote_para(n, it["ans"], it["sol"], it.get("src", ""), 0 if after_head else 1))
+        body.append(endnote_para(n + start - 1, it["ans"], it["sol"], it.get("src", ""), 0 if after_head else 1))
         body.append(q_items(it["q"], banner if n == 1 else None))
         after_head = False
     tail = [t.replace("<hp:t>다항식의 연산</hp:t>", "<hp:t>%s</hp:t>" % escape(title)) for t in TAIL]
