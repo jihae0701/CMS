@@ -586,7 +586,7 @@ def counsel_page(s, cfg, exams, stats):
     if s["memo"]:
         pts.append("비고: %s" % s["memo"])
     return f"""<div class="page"><div class="int">내부용 · 외부 유출 금지</div>
-<div class="top"><div><div class="brand">{e(cfg['academy'])} · 개별 상담 카드</div><h1>{e(s['name'])} <span style="font-size:11pt;color:#5b6577;font-weight:500">{e(str(s['school']))} · {e(str(s['kind']))} · {e(str(s['phone']))}</span></h1></div>
+<div class="top"><div><div class="brand">{e(cfg['academy'])} · 개별 상담 카드</div><h1>{e(s['name'])} <span style="font-size:11pt;color:#5b6577;font-weight:500">{e(' · '.join(str(v) for v in (s['school'], s['kind'], s['phone']) if v))}</span></h1></div>
 <div class="meta">{e(cfg['title'])}<br>{' / '.join(gap) if gap else ''}</div></div>
 <div class="bg"><div><span>기존 반</span>{e(str(s['prev'])) or '-'}</div><div><span>학습 진도</span>{e(str(s['progress'])) or '-'}</div><div class="pre"><span>선행반</span>{e(recommended2(s, cfg) or '미정')}</div></div>
 <div style="height:3mm"></div><div class="kpi">{kp}</div>
