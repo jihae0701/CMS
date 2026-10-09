@@ -53,7 +53,9 @@ def build(P, template, items, blanks=18):
     spacer = [p for p in P[ti + 2:tj] if nb.blank(p) and 'pageBreak="1"' not in p and 'columnBreak="1"' not in p][:1]
     q_open = re.match(r"<hp:p [^>]*>", q_p).group(0)
     run_cp = re.search(r'<hp:run charPrIDRef="(\d+)">', q_p).group(1)
-    ctrl_cp = re.search(r'<hp:run charPrIDRef="(\d+)"><hp:ctrl><hp:endNote ', q_p).group(1)
+    # 미주가 든 run의 글자 모양 (미주가 글과 같은 run에 있는 문단도 있음)
+    m_cp = re.search(r'<hp:run charPrIDRef="(\d+)">(?:(?!</hp:run>).)*?<hp:ctrl><hp:endNote ', q_p, re.S)
+    ctrl_cp = m_cp.group(1) if m_cp else run_cp
     en0 = ENDNOTE.search(q_p).group(0)
     # 문제 글의 수식은 해설보다 크므로 본보기 문제 문단의 수식 모양을 쓴다
     qdoc = fixes.Doc(P)

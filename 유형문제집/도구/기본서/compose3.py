@@ -105,6 +105,14 @@ add_after_heading("여러 문자를 포함한 식", fixD.NEW_MULTI, REP, NORM)
 add_after_heading("복이차식", fixD.NEW_BIQ, REP, NORM)
 add_after_heading("삼각형의 모양", fixD.NEW_TRI, REP, NORM)
 # 복이차식 유형: 원래 첫 문항이 대표문제가 아니므로 새 대표문제가 앞에 온다
+# 단원 마무리 끝에 올림포스 고난도 1문항: 모양은 f(48) 문항을 본으로, 해설 제목 쪽(TITLE) 앞에 넣는다
+def num_of(sub):
+    for k, (s_, e_) in enumerate(nb.segments(P)):
+        q = "".join(io.text(re.sub(r"<hp:endNote .*?</hp:endNote>", "", P[i], flags=re.S)) for i in range(s_, e_ + 1))
+        if sub in q:
+            return nb.num_text(P[s_])
+    raise ValueError(sub)
+
 
 # 4. 단답형 바꾸기 (5지선다가 자연스러운 문항은 fixD.KEEP_MC의 글귀로 찾음)
 def seg_pos(sub):
@@ -119,6 +127,10 @@ keep = tuple(seg_pos(s) for s in fixD.KEEP_MC)
 P, slog = shortans.convert(P, fixes.Doc(P), keep=keep)
 print("단답형", sum(1 for l in slog if l[1] == "단답형"), [l for l in slog if l[1] != "단답형"])
 P, nprob, nins2 = nb.renumber(P, tmpl, start=START)
+# 번호를 다 매긴 뒤 단원 마무리 끝(해설 제목 쪽 앞)에 올림포스 문항을 넣고 번호를 다시 매긴다
+ti = next(i for i, p in enumerate(P) if io.text(p).strip() == TITLE and 'pageBreak="1"' in p)
+P = P[:ti] + addprob.build(P, num_of("f(48)"), fixD.NEW_STEP3, blanks=6) + P[ti:]
+P, nprob, nins3 = nb.renumber(P, tmpl, start=START)
 P = nb.note_start(P, START)
 print("문항", nprob)
 
