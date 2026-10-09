@@ -78,6 +78,14 @@ f = (x - 1)*(x - 2)*(p*x + q)
 s = solve([f.subs(x, 0) - 4, diff(f, x).subs(x, 0)], [p, q], dict=True)
 assert len(s) == 1
 chk("c32", f.subs(s[0]).subs(x, -1), -6)
+# c13: R=(x^2+x+1)(px+q), R를 x^2-x+1로 나눈 나머지 -6x, 예시 f로 다시 확인
+Rx = (x**2 + x + 1)*(p*x + q)
+s = solve(Poly(rem(expand(Rx), x**2 - x + 1, x) + 6*x, x).all_coeffs(), [p, q], dict=True)
+assert len(s) == 1
+Rx = expand(Rx.subs(s[0]))
+f = expand((x**4 + x**2 + 1)*(x**3 - 2*x + 5) + Rx)
+assert rem(f, x**2 + x + 1, x) == 0 and expand(rem(f, x**2 - x + 1, x) + 6*x) == 0
+chk("c13", rem(f, x**4 + x**2 + 1, x).subs(x, 1), -9)
 
 bad = [t for t in R if not t[1]]
 print("검산 %d문항, 불일치 %d" % (len(R), len(bad)))
