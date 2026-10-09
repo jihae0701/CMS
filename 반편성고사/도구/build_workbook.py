@@ -249,8 +249,8 @@ def score_sheet(name, subj):
     ws.merge_cells("A1:C1")
     cell(ws, "A1", f"{subj} 채점표", f(True, 14, "1F3864"), align=LEFT, border=False)
     ws.merge_cells(f"D1:{last_col}1")
-    cell(ws, "D1", "① 2~5행(노란 칸)에 정답·배점·단원·난이도 입력  ② 학생 행에 학생이 쓴 답을 그대로 입력"
-         "(객관식 1~5, 단답형 0~999) → 틀린 답은 빨간 칸, 점수 자동 계산. 결시생은 비워두면 미응시 처리.",
+    cell(ws, "D1", "객관식 1~14번: 학생이 고른 번호(1~5, 답안지 스캔으로 자동 입력 가능)  단답형 15~20번: 직접 채점해 맞으면 1, 틀리면 0"
+         " → 틀린 칸은 빨간색, 점수 자동 계산. 결시생은 비워두면 미응시 처리.",
          f(size=9, color="595959"), align=LEFT, border=False)
     ws.row_dimensions[1].height = 34
     ws.merge_cells("A2:C2")
@@ -263,25 +263,27 @@ def score_sheet(name, subj):
     dv_lv = DataValidation(type="list", formula1='"하,중하,중,중상,상,최상"', allow_blank=True)
     dv_mc = DataValidation(type="whole", operator="between", formula1="1", formula2="5", allow_blank=True,
                            error="객관식은 1~5 사이 정수만 입력", errorTitle="입력 오류", showErrorMessage=True)
-    dv_sa = DataValidation(type="whole", operator="between", formula1="0", formula2="999", allow_blank=True,
-                           error="단답형은 0~999 사이 정수만 입력", errorTitle="입력 오류", showErrorMessage=True)
+    dv_sa = DataValidation(type="whole", operator="between", formula1="0", formula2="1", allow_blank=True,
+                           error="단답형은 맞으면 1, 틀리면 0을 입력", errorTitle="입력 오류", showErrorMessage=True)
     for dv in (dv_unit, dv_lv, dv_mc, dv_sa):
         ws.add_data_validation(dv)
     for i, c in enumerate(QC):
         mc = i < N_MC
-        cell(ws, f"{c}2", M[i]["ans"], f(True, 10, "C00000"), INPUT)
+        # 단답형은 직접 채점(맞음 1)하므로 채점 기준값 1, 실제 정답은 6행 머리에 표시
+        cell(ws, f"{c}2", M[i]["ans"] if mc else 1, f(True, 10, "C00000"), INPUT if mc else GREY)
         cell(ws, f"{c}3", points(M[i]), fill=INPUT)
         cell(ws, f"{c}4", M[i]["unit"], f(size=8), INPUT)
         cell(ws, f"{c}5", M[i]["level"], fill=INPUT)
-        cell(ws, f"{c}6", f"{i + 1}\n{'객관식' if mc else '단답형'}", f(True, 9, "FFFFFF"),
+        cell(ws, f"{c}6", f"{i + 1}\n객관식" if mc else f"{i + 1}\n단답형\n답 {M[i]['ans']}", f(True, 9, "FFFFFF"),
              HEAD if mc else PatternFill("solid", fgColor="7030A0"))
         ws.column_dimensions[c].width = 6.2
-        (dv_mc if mc else dv_sa).add(f"{c}2")
+        if mc:
+            dv_mc.add(f"{c}2")
         (dv_mc if mc else dv_sa).add(f"{c}{FIRST}:{c}{LAST}")
     dv_unit.add(f"{QF}4:{QL}4")
     dv_lv.add(f"{QF}5:{QL}5")
     ws.row_dimensions[4].height = 42
-    ws.row_dimensions[6].height = 30
+    ws.row_dimensions[6].height = 44
     header(ws, 6, ["No", "이름", "학교"])
     header(ws, 6, ["맞힌\n개수", "총점"], start=24)
     for i, uc in enumerate(unit_cols):
@@ -466,7 +468,7 @@ for sh, subj in [("공수1", "공통수학1"), ("공수2", "공통수학2")]:
         cell(a, f"C{r}", f"='{sh}'!{c}4", f(size=9))
         cell(a, f"D{r}", f"='{sh}'!{c}5")
         cell(a, f"E{r}", f"='{sh}'!{c}3")
-        cell(a, f"F{r}", f"=IF({key}=\"\",\"\",{key})", f(True, 10, "C00000"))
+        cell(a, f"F{r}", f"=IF({key}=\"\",\"\",{key})" if q < N_MC else f"=IF({key}=\"\",\"\",\"{EXAM[sh][q]['ans']}\")", f(True, 10, "C00000"))
         cell(a, f"G{r}", f"=COUNT({tot})")
         cell(a, f"H{r}", f"=IF(F{r}=\"\",\"\",SUMPRODUCT(({col}={key})*({col}<>\"\")))")
         cell(a, f"I{r}", f"=IF(OR(F{r}=\"\",G{r}=0),\"\",H{r}/G{r})", f(True), fmt="0%")
