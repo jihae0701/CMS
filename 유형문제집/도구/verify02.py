@@ -203,9 +203,12 @@ co = Poly(expand((2*x**2 + x - 2)**5), x).all_coeffs()[::-1]
 v_ = sum(Rational(co[k], 2**k) for k in range(1, 10, 2)); assert v_ == Rational(31, 2)
 chk("m4", 31 + 2, 33)
 chk("m5", rem(x**21 - 21, x**5 - 5, x).subs(x, 1), 604)
-k1, k2 = symbols('k1 k2'); R_ = (x**2 + x + 1)*(k1*x + k2)
-s = solve(Poly(rem(expand(R_ + 6*x), x**2 - x + 1, x), x).all_coeffs(), [k1, k2], dict=True)
-chk("m6", R_.subs(s[0]).subs(x, 1), -9)
+a_ = symbols('a_'); R_ = a_*(x + 1)**3 + 11; R_ = R_.subs(a_, solve(R_.subs(x, 1) - 3, a_)[0])
+chk("o25", R_.subs(x, 2), -16)
+chk("o28", rem(expand((2*x**3 - 5*x**2 + 6*x - 1)**3), x**2 - x + 1, x).subs(x, 2), 37)
+ok_ = [(A, B) for A in range(1, 30) for B in range(1, 30) if rem(x**4 + A*x**2 - 2*x + 3, x**2 + x + B, x) == 0]
+assert ok_ == [(3, 3)]
+chk("o30", (x**4 + 3*x**2 - 2*x + 3 + x**2 + x + 3).subs(x, 2), 36)
 D_ = expand((x**2 - 4*x - 2)*(x**2 - 4*x + 7) + 18); assert expand(D_ - (x**2 - 4*x + 1)*(x - 2)**2) == 0
 cs = symbols('c0:4'); R_ = sum(cs[i]*x**i for i in range(4))
 e = Poly(rem(expand(R_ - 2*x - 2), x**2 - 4*x + 1, x), x).all_coeffs() + Poly(rem(expand(R_ - x**2), (x - 2)**2, x), x).all_coeffs()

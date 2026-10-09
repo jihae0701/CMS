@@ -208,10 +208,12 @@ good = [s for s in sols if all(v.is_real for v in s.values()) and s[p_] != 0
 assert len(good) == 1
 chk("n6", f_.subs(good[0]).subs(x, 2)*g_.subs(good[0]).subs(x, -4), 48)
 chk("n7", rem(x**5 - 3*x**4 + 2*x**3 + x**2 - x + 1, (x - 1)**3, x).subs(x, 3), -3)
-res = [(A, B, C) for A in range(1, 10) for B in range(1, 10) for C in range(1, 10)
-       if A > B > C and A**3*(B - C) + B**3*(C - A) + C**3*(A - B) == 102]
-assert len(res) == 1
-A_, B_, C_ = res[0]; chk("n8", A_*B_ + B_*C_ + C_*A_, 94)
+f_ = (t + 3)*(16 - (t + 3)**2/4)
+chk("o33", sum(cf for (k,), cf in Poly(expand(f_), t).terms() if k % 2 == 1), 9)
+u_, v_, w_ = symbols('u_ v_ w_')
+s_ = solve([2*u_/9 + Rational(2, 3)*(v_ + w_) - (58*x**2 + 82*x + 22), 2*w_/9 + Rational(2, 3)*(u_ + v_) - (54*x**2 + 74*x + 22),
+            2*v_/9 + Rational(2, 3)*(u_ + w_) - (42*x**2 + 82*x + 26)], [u_, v_, w_])
+Sx = Poly(expand(2*(s_[u_] + s_[v_] + s_[w_])), x); chk("o38", sum(Sx.all_coeffs()), 594)
 # n9: (a+b+c)(b+c-a)-(a-b+c)(a+b-c) = 2(b^2+c^2-a^2)
 assert expand((a + b + c)*(b + c - a) - (a - b + c)*(a + b - c) - 2*(b**2 + c**2 - a**2)) == 0
 chk("n9", Rational(8, 2), 4)
