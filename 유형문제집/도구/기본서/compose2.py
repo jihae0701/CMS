@@ -5,7 +5,7 @@
 """
 import sys, os, re
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import hwpxio as io, fixes, numbering as nb, fixC
+import plain, hwpxio as io, fixes, numbering as nb, fixC
 
 C, OUT = sys.argv[1:3]   # 나머지정리.hwpx, 출력
 f, o = io.read(C)
@@ -19,6 +19,7 @@ P[-2] = P[-2].replace("3. 나머지정리", "2. 나머지정리")
 for i, p in enumerate(P):
     if "이용하여 나머지 구하기" in io.text(p):
         P[i] = p.replace("를 이용하여 나머지 구하기", "을 이용하여 나머지 구하기")
+P = plain.rewrite(P, plain.TABLE2, fixes.Doc(P))
 tmpl = next(p for p in P if nb.num_text(p) and "<hp:container" not in p)
 P, nprob, nins = nb.renumber(P, tmpl)
 print("문항", nprob, "번호 새로 넣음", nins)

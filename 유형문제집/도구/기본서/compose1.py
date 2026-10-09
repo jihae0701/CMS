@@ -5,7 +5,7 @@
 """
 import sys, os, re, json
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import hwpxio as io, hwpxmerge as hm, fixes, numbering as nb, fixA, fixB
+import plain, hwpxio as io, hwpxmerge as hm, fixes, numbering as nb, fixA, fixB
 
 A, B, OUT = sys.argv[1:4]   # 다항식의 연산.hwpx, 항등식.hwpx, 출력
 TITLE = "다항식의 연산과 항등식"
@@ -69,6 +69,8 @@ for i, p in enumerate(paras):
         n += 1
         paras[i] = re.sub(r"(<hp:t>)(\d\d)(</hp:t>)", lambda m: m.group(1) + "%02d" % n + m.group(3), p, count=1)
 print("유형", n)
+# 본문에 글자로 적힌 수식을 수식 개체로
+paras = plain.rewrite(paras, plain.TABLE1, fixes.Doc(paras))
 # 문항 번호: 대표문제 상자가 없는 번호 문단을 본보기로
 tmpl = next(p for p in paras if nb.num_text(p) and "<hp:container" not in p)
 paras, nprob, nins = nb.renumber(paras, tmpl)

@@ -85,6 +85,37 @@ spec = importlib.util.spec_from_file_location("unit", UNITFILE)
 U = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(U)
 
+
+# ---------------------------------------------------------------- 글 속 숫자·영문자는 수식으로
+def _math_plain(text):
+    """'$수식$' 밖의 숫자·영문자를 수식으로: 대문자(점·도형 이름)는 rm, 소문자 한 글자는 기울임, 숫자는 그대로"""
+    out = []
+    for i, part in enumerate(re.split(r"(\$.+?\$)", text, flags=re.S)):
+        if i % 2:
+            out.append(part)
+            continue
+        part = re.sub(r"[A-Z]+(?:-[A-Z]+)*", lambda m: "$rm %s$" % m.group(0), part)
+        part = re.sub(r"(?<![A-Za-z$])\d+(?:\.\d+)?", lambda m: "$%s$" % m.group(0), part)
+        part = re.sub(r"(?<![A-Za-z$])[a-z](?![A-Za-z])", lambda m: "$%s$" % m.group(0), part)
+        out.append(part)
+    return "".join(out)
+
+
+def _norm(o):
+    if isinstance(o, str):
+        return _math_plain(o)
+    if isinstance(o, list):
+        return [_norm(v) for v in o]
+    if isinstance(o, dict):
+        return {k: (v if k in ("pic", "syn") else _norm(v)) for k, v in o.items()}
+    return o
+
+
+for _it in U.ITEMS:
+    if "h" not in _it:
+        _it["q"] = _norm(_it["q"])
+        _it["sol"] = _norm(_it["sol"])
+
 # ---------------------------------------------------------------- 번호
 _id = [1700000000]
 

@@ -28,6 +28,8 @@ class Doc:
                         eqs += re.findall(r"<hp:equation [^>]*>", q)
         self.first = firsts.most_common(1)[0][0]
         self.line = lines.most_common(1)[0][0]
+        body_eqs = [e for p in P for e in re.findall(r"<hp:equation [^>]*>", ENDNOTE.sub("", p))]
+        self.body_base = int(collections.Counter(re.search(r'baseUnit="(\d+)"', e).group(1) for e in body_eqs).most_common(1)[0][0])
         bases = collections.Counter(re.search(r'baseUnit="(\d+)"', e).group(1) for e in eqs)
         self.base = int(bases.most_common(1)[0][0])
         self.eq_open = collections.Counter(re.sub(r'\bid="\d+"', 'id="0"', re.sub(r'zOrder="\d+"', 'zOrder="0"', e))
@@ -101,7 +103,13 @@ def _replace_in(x, old, new, doc, mode="any"):
         new_sc = n if sc.strip() == o.strip() else sc.replace(o, n, 1)
         neq = m.group(0).replace(">" + sc + "</hp:script>", ">" + new_sc + "</hp:script>", 1)
         return x[:m.start()] + resize_eq(neq, doc.base) + x[m.end():], 1
-    o, n = escape(old), escape(new)
+    o = escape(old)
+    if "$" in new:
+        # 글 속에 수식을 넣을 때: 글자 요소를 닫고 수식을 끼운 뒤 다시 연다
+        parts = re.split(r"\$(.+?)\$", new)
+        n = "".join(("</hp:t>" + doc.eq(q, doc.body_base) + "<hp:t>") if i % 2 else escape(q) for i, q in enumerate(parts))
+    else:
+        n = escape(new)
     if o in x:
         return x.replace(o, n, 1), 1
     return x, 0
@@ -117,6 +125,8 @@ def apply(P, fixes, label=""):
                 all_sc += scripts_of(op[1])
             elif op[0] == "ans":
                 all_sc += scripts_of([op[1]])
+            elif op[0] in ("q", "solrep") and not op[2].startswith("$"):
+                all_sc += scripts_of([op[2]])
     eqsize.ensure(all_sc)
     segs = nb.segments(P)
     E = [e for _, e in segs]
