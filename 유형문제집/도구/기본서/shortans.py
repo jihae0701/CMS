@@ -35,7 +35,8 @@ def convert(P, doc, keep=()):
         if k in keep:
             continue
         nxt = segs[k][0] if k < len(segs) else len(P)
-        rng = [i for i in range(a, nxt) if not nb.is_heading(P[i])]
+        stop = next((i for i in range(a + 1, nxt) if nb.is_heading(P[i])), nxt)   # 다음 유형 제목에서 멈춤
+        rng = list(range(a, stop))
         cidx, vals = _choices(P, rng)
         if not cidx:
             continue
@@ -46,6 +47,8 @@ def convert(P, doc, keep=()):
             continue
         val = vals.get(CIRC.index(m.group(1)) + 1, "")
         sc = "".join(re.findall(r"\$([^$]*)\$", val)).strip()
+        if not sc and re.fullmatch(r"-?\d+", val.strip()):      # 보기가 수식이 아닌 글자 숫자
+            sc, val = val.strip(), "$%s$" % val.strip()
         if not sc or len(re.findall(r"\$", val)) != 2:
             log.append((k, "값 읽기 실패", val))
             continue

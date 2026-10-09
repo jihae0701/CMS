@@ -110,7 +110,7 @@ add_after_heading("삼각형의 모양", fixD.NEW_TRI, REP, NORM)
 def seg_pos(sub):
     segs = nb.segments(P)
     for k, (a, e) in enumerate(segs, 1):
-        if sub in "".join(io.text(P[i]) for i in range(a, e + 1)):
+        if sub in "".join(io.text(re.sub(r"<hp:endNote .*?</hp:endNote>", "", P[i], flags=re.S)) for i in range(a, e + 1)):
             return k
     raise ValueError(sub)
 

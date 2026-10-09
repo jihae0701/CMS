@@ -203,6 +203,14 @@ def apply(P, fixes, label=""):
                     drop.add(j)
                     j += 1
                 ok = 1
+            elif kind == "soldel":
+                # ("soldel", 글귀): 해설(미주)에서 글귀가 든 문단을 지운다 ([출제의도] 같은 시험지 흔적)
+                en = ENDNOTE.search(P[e]).group(0)
+                ps = re.findall(r"<hp:p [^>]*>.*?</hp:p>", en, re.S)
+                hit = [q for q in ps[1:] if op[1] in io.text(q)]
+                ok = int(bool(hit))
+                if hit:
+                    P[e] = P[e].replace(en, en.replace(hit[0], "", 1), 1)
             elif kind == "delpara":
                 ok = 0
                 for i in rng:
