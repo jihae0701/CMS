@@ -183,6 +183,39 @@ A3 = Rational(35, 8); A2B = Rational(15, 4)
 chk(60, 8 + 125, 133)
 assert A3 + 3*A2B == Rational(125, 8)
 
+
+# ---- 새 문항(재배치 때 추가)
+E = expand(prod([x + i for i in range(1, 11)])); chk("n1", coef(E, x, 8), 1320)
+# n2: (x-4)(3y-4)(2z-4)=0 전개 + (나) 대입 -> 6xyz=64. x=4일 때 실제 해로 확인
+yv = Rational(2); zv = Rational(4, 3)   # yz=8/3
+assert (4*(4 + 3*yv + 2*zv) - (3*4*yv + 6*yv*zv + 2*zv*4)) == 0
+chk("n2", 3*4*yv*zv, 32)
+s_ = solve([x + y - 3, x*y + 1], [x, y]); s_ = s_[0]
+assert simplify(s_[0]**2 + s_[1]**2 - 11) == 0
+chk("n3", simplify(s_[0]**5 + s_[1]**5), 393)
+Q_ = x**2 - 3*x + 1; P_ = Q_ + 2
+assert expand(P_**3 - Q_**3 - (6*x**4 - 36*x**3 + 78*x**2 - 72*x + 26)) == 0
+# Q+1 = -(x^2-3x+2) 이면 최고차항 계수가 -1 -> 제외
+chk("n4", P_.subs(x, 3) + Q_.subs(x, 3), 4)
+r_ = [v for v in solve(x**4 - 7*x**2 + 9, x) if v.is_real and v > sqrt(3)]
+assert len(r_) == 1
+chk("n5", nsimplify(simplify(r_[0]**3 - 27/r_[0]**3)), 10)
+p_, q_, m_, n_ = symbols('p_ q_ m_ n_')
+f_ = 2*x**2 + p_*x + q_; g_ = m_*x + n_
+sols = solve(Poly(expand(f_*g_ - ((f_ - 2*x**2)*(x**2 - 3*x + 3) + f_ + x*g_)), x).all_coeffs(), [p_, q_, m_, n_], dict=True)
+good = [s for s in sols if all(v.is_real for v in s.values()) and s[p_] != 0
+        and degree(expand((f_ + x*g_).subs(s)), x) < 1]
+assert len(good) == 1
+chk("n6", f_.subs(good[0]).subs(x, 2)*g_.subs(good[0]).subs(x, -4), 48)
+chk("n7", rem(x**5 - 3*x**4 + 2*x**3 + x**2 - x + 1, (x - 1)**3, x).subs(x, 3), -3)
+res = [(A, B, C) for A in range(1, 10) for B in range(1, 10) for C in range(1, 10)
+       if A > B > C and A**3*(B - C) + B**3*(C - A) + C**3*(A - B) == 102]
+assert len(res) == 1
+A_, B_, C_ = res[0]; chk("n8", A_*B_ + B_*C_ + C_*A_, 94)
+# n9: (a+b+c)(b+c-a)-(a-b+c)(a+b-c) = 2(b^2+c^2-a^2)
+assert expand((a + b + c)*(b + c - a) - (a - b + c)*(a + b - c) - 2*(b**2 + c**2 - a**2)) == 0
+chk("n9", Rational(8, 2), 4)
+
 bad = [r for r in R if not r[1]]
 print("검산 %d문항, 불일치 %d" % (len(R), len(bad)))
 for r in bad:

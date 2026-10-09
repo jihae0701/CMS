@@ -191,6 +191,27 @@ f_ = -3*x**2+12*x+16; av = -2
 assert expand(rem(f_, (x-av)**2, x) - (2*f_+6*x**2-4)) == 0 and rem(expand(f_**2-2*f_+3), x**2-4*x-5, x) == 2
 chk(80, f_.subs(x, av**2), 16)
 
+
+# ---- 새 문항(재배치 때 추가)
+p_, q_ = symbols('p_ q_'); f_ = p_*x + q_
+s = solve(Poly(expand(f_.subs(x, x**2 - x) - (x*f_ - 3*x + 4)), x).all_coeffs(), [p_, q_], dict=True)
+assert len(s) == 1
+chk("m1", f_.subs(s[0]).subs(x, -2), 6)
+co = Poly(expand((x**2 - x - 1)**3), x).all_coeffs()[::-1]
+chk("m3", sum(w*co[k] for k, w in zip(range(1, 7), [4, 8, 28, 80, 244, 728])), 124)
+co = Poly(expand((2*x**2 + x - 2)**5), x).all_coeffs()[::-1]
+v_ = sum(Rational(co[k], 2**k) for k in range(1, 10, 2)); assert v_ == Rational(31, 2)
+chk("m4", 31 + 2, 33)
+chk("m5", rem(x**21 - 21, x**5 - 5, x).subs(x, 1), 604)
+k1, k2 = symbols('k1 k2'); R_ = (x**2 + x + 1)*(k1*x + k2)
+s = solve(Poly(rem(expand(R_ + 6*x), x**2 - x + 1, x), x).all_coeffs(), [k1, k2], dict=True)
+chk("m6", R_.subs(s[0]).subs(x, 1), -9)
+D_ = expand((x**2 - 4*x - 2)*(x**2 - 4*x + 7) + 18); assert expand(D_ - (x**2 - 4*x + 1)*(x - 2)**2) == 0
+cs = symbols('c0:4'); R_ = sum(cs[i]*x**i for i in range(4))
+e = Poly(rem(expand(R_ - 2*x - 2), x**2 - 4*x + 1, x), x).all_coeffs() + Poly(rem(expand(R_ - x**2), (x - 2)**2, x), x).all_coeffs()
+s = solve(e, cs, dict=True); assert len(s) == 1
+chk("m7", R_.subs(s[0]).subs(x, -1), 16)
+
 bad = [r for r in R if not r[1]]
 print("검산 %d문항, 불일치 %d" % (len(R), len(bad)))
 for r in bad:

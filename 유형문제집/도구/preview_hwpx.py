@@ -60,8 +60,15 @@ def inline(el):
                 elif ref != "image2":
                     out.append('<div class="fig">%s</div>' % img_src(ref, w))
             elif t == "rect":
-                txt = "".join(inline(p) for p in c.iter(HP + "p"))
-                out.append('<div class="head">%s</div>' % txt)
+                ls = c.find(HP + "lineShape")
+                if ls is not None and ls.get("style") == "NONE":
+                    # 표 칸 안의 선 없는 글상자(보기·조건 상자): 문단마다 한 줄, 안쪽 여백만 둔다
+                    sub = c.find(HP + "drawText").find(HP + "subList")
+                    txt = "".join("<div>%s</div>" % inline(p) for p in sub.findall(HP + "p"))
+                    out.append('<div class="inbox">%s</div>' % txt)
+                else:
+                    txt = "".join(inline(p) for p in c.iter(HP + "p"))
+                    out.append('<div class="head">%s</div>' % txt)
     return "".join(out)
 
 
@@ -113,7 +120,8 @@ doc = """<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet"
 .banner{background:#ECF2FA;padding:2mm;font-weight:700;margin-bottom:2mm}
 .no{font-weight:800;font-size:13pt;color:#002E68} .src{font-size:8pt;color:#555}
 .q{margin-top:5mm} .cb{break-before:column} .pb{break-before:page}
-table.box{border:1px solid #787878;border-collapse:collapse;margin:2mm 0;width:100%%} table.box td{padding:1mm 2mm}
+table.box{border:1px solid #787878;border-collapse:collapse;margin:2mm 0;width:100%%} table.box td{padding:0}
+.inbox{padding:1mm 1.5mm 2mm 1.5mm} .inbox div{padding-left:2.2em;text-indent:-2.2em}
 table.syn{border-collapse:collapse;margin:2mm auto} table.syn td{padding:.5mm 3mm;text-align:center;min-width:8mm}
 .bogilab{background:#8e6fb3;color:#fff;font-size:8pt;padding:0 2mm}
 .fig{text-align:center;margin:2mm 0} .s{margin-bottom:3mm;break-inside:avoid} h2{column-span:all}

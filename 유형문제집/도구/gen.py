@@ -58,20 +58,27 @@ for p in PARA:
     m = re.findall(r'binaryItemIDRef="(image\d+)"', p)
     if len(m) == 1 and "<hp:pic " in p:
         PICPARA[m[0]] = nolines(p)
-BOX = nolines(re.search(r"<hp:tbl .*?</hp:tbl>", PARA[212], re.S).group(0))
-
 smp = zipfile.ZipFile(SAMPLE).read("Contents/section0.xml").decode("utf-8")
-BOGI = nolines(re.search(r"<hp:tbl .*?</hp:tbl>", smp, re.S).group(0))
+SMP_TBL = [nolines(m.group(0)) for m in re.finditer(r"<hp:tbl .*?</hp:tbl>", smp, re.S)]
 # 서식샘플의 테두리/문단/글자 모양 번호를 폼의 번호로 바꾼다(같은 모양이 폼에 있음)
 BF = {"5": "9", "6": "10", "7": "15", "8": "22", "9": "11", "10": "23", "11": "24", "12": "13",
       "13": "14", "14": "16", "15": "17", "16": "18", "17": "19", "18": "12", "22": "40"}
-BOGI = re.sub(r'borderFillIDRef="(\d+)"', lambda m: 'borderFillIDRef="%s"' % BF[m.group(1)], BOGI)
-BOGI = BOGI.replace('binaryItemIDRef="image1"', 'binaryItemIDRef="image9"')
-BOGI = re.sub(r'paraPrIDRef="(\d+)" styleIDRef="(\d+)"',
-              lambda m: {"25": 'paraPrIDRef="52" styleIDRef="0"', "23": 'paraPrIDRef="5" styleIDRef="3"'}
-              .get(m.group(1), m.group(0)), BOGI)
-BOGI = re.sub(r'charPrIDRef="(\d+)"', lambda m: 'charPrIDRef="%s"' % {"11": "2", "12": "2", "9": "7", "10": "8",
-                                                                       "13": "2", "7": "0"}.get(m.group(1), m.group(1)), BOGI)
+PP = {"25": 'paraPrIDRef="52" styleIDRef="0"', "23": 'paraPrIDRef="5" styleIDRef="3"',
+      "30": 'paraPrIDRef="0" styleIDRef="0"', "0": 'paraPrIDRef="0" styleIDRef="0"'}
+CP = {"11": "2", "12": "2", "9": "7", "10": "8", "13": "2", "7": "0", "14": "16"}
+
+
+def from_sample(t):
+    t = re.sub(r'borderFillIDRef="(\d+)"', lambda m: 'borderFillIDRef="%s"' % BF[m.group(1)], t)
+    t = t.replace('binaryItemIDRef="image1"', 'binaryItemIDRef="image9"')
+    t = re.sub(r'paraPrIDRef="(\d+)" styleIDRef="(\d+)"', lambda m: PP.get(m.group(1), m.group(0)), t)
+    return re.sub(r'charPrIDRef="(\d+)"', lambda m: 'charPrIDRef="%s"' % CP.get(m.group(1), m.group(1)), t)
+
+
+# 보기 상자(「보기」 꼬리표)와 조건 상자는 모두 표 칸 안에 선 없는 글상자를 두고 그 안에 글을 쓴다.
+# 글상자 안쪽 여백: 왼쪽·오른쪽 425, 아래 567
+BOGI = from_sample(SMP_TBL[0])
+BOX = from_sample(SMP_TBL[1])
 
 # ---------------------------------------------------------------- 단원 모듈
 spec = importlib.util.spec_from_file_location("unit", UNITFILE)
@@ -205,16 +212,86 @@ def replace_cell(tbl, row, col, inner):
     raise ValueError("cell not found")
 
 
+# ---------------------------------------------------------------- 글상자 높이
+# 글상자는 내용에 맞춰 늘어나지 않으므로 줄 수를 어림해 높이를 정한다.
+# 기준(사용자 예시 44번): 글자 10pt·자간 -5%, 줄 간격 165% → 줄 사이 652,
+# 줄 높이 = max(글자 1000, 그 줄 수식 높이), 글 너비 = 단 너비 - 글상자 여백 850 - 문단 오른쪽 여백 500
+BOX_TEXT_W = 29211 - 850 - 500
+HANG = 2241
+
+
+def _char_w(ch):
+    if ch == " ":
+        return 475
+    if "\uac00" <= ch <= "\ud7a3" or "\u3131" <= ch <= "\u318e":
+        return 950
+    if ch in ".,()[]:;'\"":
+        return 330
+    return 520
+
+
+def _words(line):
+    """줄을 (너비, 높이) 낱말 목록으로 쪼갠다. 수식은 낱말 안에 붙어 있을 수 있다."""
+    words, cur_w, cur_h = [], 0, 1000
+    for i, part in enumerate(re.split(r"\$(.+?)\$", line, flags=re.S)):
+        if i % 2:
+            W, H, _ = EQ[part.strip()]
+            cur_w += W * 1.1 + 112
+            cur_h = max(cur_h, H)
+            continue
+        for ch in part:
+            if ch == " ":
+                if cur_w:
+                    words.append((cur_w, cur_h))
+                cur_w, cur_h = 0, 1000
+            else:
+                cur_w += _char_w(ch)
+    if cur_w:
+        words.append((cur_w, cur_h))
+    return words
+
+
+def text_height(lines):
+    heights = []
+    for ln in lines:
+        hang = bool(re.match(r"\s*(\([가-하]\)|[ㄱ-ㅎ]\.)", ln))
+        for seg in ln.split("\n"):
+            limit, x, h = BOX_TEXT_W, 0, 1000
+            for w, wh in _words(seg):
+                add = w if x == 0 else 475 + w
+                if x and x + add > limit:
+                    heights.append(h)
+                    limit = BOX_TEXT_W - (HANG if hang else 0)
+                    x, h = w, wh
+                else:
+                    x += add
+                    h = max(h, wh)
+            heights.append(h)
+    return sum(heights) + 652 * (len(heights) - 1) + 567
+
+
+def fill_rect(tbl, lines):
+    """표 안 글상자(rect)에 조건/보기 문단을 넣고 높이를 맞춘다"""
+    h = text_height(lines)
+    r0 = tbl.index("<hp:rect ")
+    r1 = tbl.index("</hp:rect>", r0)
+    rect = tbl[r0:r1]
+    a = rect.index(">", rect.index("<hp:subList", rect.index("<hp:drawText"))) + 1
+    b = rect.index("</hp:subList>", a)
+    rect = rect[:a] + cond_paras(lines) + rect[b:]
+    rect = re.sub(r'<hp:curSz width="(\d+)" height="\d+"/>', lambda m: '<hp:curSz width="%s" height="%d"/>' % (m.group(1), h), rect, count=1)
+    rect = re.sub(r'(<hp:rotationInfo angle="0" centerX="\d+" centerY=")\d+"', lambda m: m.group(1) + '%d"' % (h // 2), rect, count=1)
+    rect = re.sub(r'(<hc:scaMatrix e1="[^"]+" e2="0" e3="0" e4="0" e5=")[^"]+"', lambda m: m.group(1) + '%.6f"' % (h / 8504), rect, count=1)
+    rect = re.sub(r'(<hp:sz width="10000" widthRelTo="COLUMN" height=")\d+"', lambda m: m.group(1) + '%d"' % h, rect)
+    return tbl[:r0] + rect + tbl[r1:]
+
+
 def box_xml(lines):
-    t = replace_cell(BOX, 2, 0, cond_paras(lines))
-    return renum(t)
+    return renum(fill_rect(BOX, lines))
 
 
 def bogi_xml(lines):
-    t = BOGI
-    # 내용 칸(rect가 든 칸)을 문단으로 바꾸고 칸 여백은 그대로 둔다
-    t = replace_cell(t, 2, 0, cond_paras(lines))
-    return renum(t)
+    return renum(fill_rect(BOGI, lines))
 
 
 def syn_xml(rows):
