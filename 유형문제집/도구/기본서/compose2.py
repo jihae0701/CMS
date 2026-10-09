@@ -8,7 +8,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import plain, shortans, hwpxio as io, fixes, numbering as nb, fixC
 
 C, OUT = sys.argv[1:3]   # 나머지정리.hwpx, 출력
-START = 41   # 책 전체로 이어지는 문항 번호: 1단원이 001~040
+START = 43   # 책 전체로 이어지는 문항 번호: 1단원이 001~042
 f, o = io.read(C)
 sec = f["Contents/section0.xml"].decode("utf-8")
 head, P, tail = io.split(sec)

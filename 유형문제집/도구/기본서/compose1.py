@@ -5,7 +5,7 @@
 """
 import sys, os, re, json
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import plain, shortans, hwpxio as io, hwpxmerge as hm, fixes, numbering as nb, fixA, fixB
+import plain, shortans, addprob, hwpxio as io, hwpxmerge as hm, fixes, numbering as nb, fixA, fixB
 
 A, B, OUT = sys.argv[1:4]   # 다항식의 연산.hwpx, 항등식.hwpx, 출력
 TITLE = "다항식의 연산과 항등식"
@@ -77,6 +77,9 @@ print("단답형", sum(1 for l in slog if l[1] == "단답형"), [l for l in slog
 # 문항 번호: 대표문제 상자가 없는 번호 문단을 본보기로
 tmpl = next(p for p in paras if nb.num_text(p) and "<hp:container" not in p)
 paras, nprob, nins = nb.renumber(paras, tmpl)
+# 유형 07에 대표 문제 2개 보충(차수 따지기, f(x)=t로 놓는 항등식). 모양은 014를 따른다.
+paras = addprob.insert(paras, after="020", template="014", items=addprob.NEW1)
+paras, nprob, nins2 = nb.renumber(paras, tmpl)
 paras = nb.note_start(paras, 1)    # 두 파일을 합쳐 뒤섞인 해설 번호를 1부터 차례로
 print("문항", nprob, "번호 새로 넣음", nins)
 
