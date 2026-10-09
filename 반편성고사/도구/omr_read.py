@@ -167,11 +167,14 @@ def read_page(gray):
     # 이름 칸(머리 표 중 가장 오른쪽 표의 둘째 칸)
     head = sorted([s for s in T if len(s[2]) == 2 and s[2][1] <= mc[0][2][0]], key=lambda s: s[0])
     boxes = [(s[0], s[2][0], s[1], s[2][1]) for s in head]
-    return {"answers": answers, "conf": conf, "flags": flags, "cells": cells,
+    # 단답형 15~20번 칸: 3행짜리 넓은 띠 2개(왼쪽 15~17, 오른쪽 18~20)
+    sa = sorted([s for s in T if len(s[2]) == 4 and s[1] - s[0] >= 150], key=lambda s: (s[0]))[:2]
+    sa_cells = [(x0, ys[r], x1, ys[r + 1]) for (x0, x1, ys) in sa for r in range(3)]
+    return {"answers": answers, "conf": conf, "flags": flags, "cells": cells, "sa_cells": sa_cells,
             "name_box": boxes[-1] if boxes else None, "head": boxes}, gray
 
 def review_image(gray, res, label, path):
-    """확인용: 과목 제목·머리 칸(현재반·학교·이름) + 판독 결과를 표시한 객관식 표"""
+    """확인용: 과목 제목·머리 칸(현재반·학교·이름) + 판독 결과를 표시한 객관식 표 + 단답형 답 칸(파란 번호)"""
     vis = cv2.cvtColor(gray, cv2.COLOR_GRAY2BGR)
     for q, (x0, y0, x1, y1) in enumerate(res["cells"]):
         a, fl = res["answers"][q], res["flags"][q]
@@ -179,7 +182,11 @@ def review_image(gray, res, label, path):
         cv2.rectangle(vis, (x0, y0), (x1, y1), col, 3 if fl else 1)
         txt = "%s" % (a if a else "-")
         cv2.putText(vis, txt, (x1 + 8, (y0 + y1) // 2 + 12), cv2.FONT_HERSHEY_SIMPLEX, 1.1, col, 3)
-    ys = [c[1] for c in res["cells"]] + [c[3] for c in res["cells"]]
+    for k, (x0, y0, x1, y1) in enumerate(res.get("sa_cells", [])):
+        cv2.rectangle(vis, (x0, y0), (x1, y1), (200, 90, 0), 2)
+        cv2.putText(vis, str(15 + k), (x0 + 6, y0 + 34), cv2.FONT_HERSHEY_SIMPLEX, 1.0, (200, 90, 0), 3)
+    allc = res["cells"] + res.get("sa_cells", [])
+    ys = [c[1] for c in allc] + [c[3] for c in allc]
     top = max(0, min([h[1] for h in res["head"]] + [min(ys)]) - 300)   # 과목 제목까지 보이게
     crop = vis[top:max(ys) + 20, :]
     cv2.putText(crop, label, (10, 40), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (200, 0, 0), 3)
