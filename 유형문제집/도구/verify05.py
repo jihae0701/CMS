@@ -382,6 +382,47 @@ for kv in range(1, 40):
             ok.append(kv)
 chk("n2928", ok[0] if len(ok) == 1 else ok, 6)
 
+# ---- 사용자 요청 추가(고난도)
+res = []
+for av in [r for r in solve(9*a**2 + 16*a - 4, a)] + [Rational(-1, 2), -1, -3]:
+    if av >= 0:
+        continue
+    rr = real_roots(av*x**2 - (-2*x - 4))
+    if len(rr) == 2:
+        al, be = rr
+        if simplify((-2*al - 4) - (-2*be - 4) - 6) == 0 and -2*be - 4 < -2*al - 4 <= 0:
+            res.append(al**2 + be**2)
+chk("n1256", res[0] if len(res) == 1 else res, 5)
+fx = x**2 - 7*x; gx = x/2 - Rational(7, 2)
+def npts(kv):
+    s_ = set()
+    for e in (fx, gx):
+        for r in real_roots(e - (2*x + kv)):
+            s_.add(nsimplify(r))
+    return len(s_)
+cands = set(solve(disc(fx - (2*x + k)), k))
+for xv in real_roots(fx - gx):
+    cands.add(gx.subs(x, xv) - 2*xv)
+ks = sorted(kv for kv in cands if npts(kv) == 2)
+# 다른 k(촘촘한 표본)에서는 2개가 아님을 확인
+assert all(npts(Rational(i, 4)) != 2 for i in range(-120, 40) if Rational(i, 4) not in ks)
+chk("n822", max(ks) - min(ks), 16)
+av, bv, cv = 4, 1, 3
+f = (x - av)**2 + bv; g = -Rational(1, 2)*(x - cv)**2 + 4
+al, be = real_roots(f - g)
+hp = [(f, lambda r: al <= r <= be), (g, lambda r: r < al or r > be)]
+three = [Rational(i, 36) for i in range(-72, 200) if count_pieces(hp, Rational(i, 36)) == 3]
+assert three == [1, 2] and count_pieces(hp, 1) == 3 and count_pieces(hp, 2) == 3
+def xsum(K):
+    s_ = set()
+    for e, cnd in hp:
+        for r in real_roots(e - K):
+            if cnd(r):
+                s_.add(nsimplify(r))
+    return sum(s_)
+assert simplify(xsum(1) - xsum(2) - Rational(av, 4)) == 0
+chk("n1495", g.subs(x, 7) if 7 > be else f.subs(x, 7), -4)
+
 if __name__ == "__main__":
     bad = [r for r in R if not r[1]]
     print(len(R), "검산", "불일치", bad)
