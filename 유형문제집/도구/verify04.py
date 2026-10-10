@@ -309,10 +309,12 @@ rr = solve(x**2 + 5*x + av[0], x); assert abs(rr[0] - rr[1]) == 3
 chk("n1290", av[0], 4)
 
 # ---- 추가 문항(풀이·근과 계수)
-rts = [r for r in solve(x**2 - (2*x - 1) - 2, x) if r >= Rational(1, 2)] + [r for r in solve(x**2 + (2*x - 1) - 2, x) if r < Rational(1, 2)]
+rts = sorted(r for lo, hi, e in [(1, oo, x**2 - 2*(x + 1) - 2*(x - 1) + 3), (-1, 1, x**2 - 2*(x + 1) + 2*(x - 1) + 3),
+                                   (-oo, -1, x**2 + 2*(x + 1) + 2*(x - 1) + 3)] for r in solve(e, x) if lo <= r < hi)
 for r in rts:
-    assert simplify(r**2 - abs(2*r - 1) - 2) == 0
-chk("w7", simplify(sum(rts)), -2 + sqrt(2))
+    assert r**2 - 2*abs(r + 1) - 2*abs(r - 1) + 3 == 0
+assert rts == [-3, -1, 1, 3]
+chk("w7", prod(rts), 9)
 for al in solve(x**2 - 4*x + 1, x):
     chk("w8", simplify(al**2 - 3*al + 1/al), 3) if al == solve(x**2 - 4*x + 1, x)[0] else None
     assert simplify(al**2 - 3*al + 1/al - 3) == 0
