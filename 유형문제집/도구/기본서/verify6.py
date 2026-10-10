@@ -90,7 +90,7 @@ f = 2*x + (x**2 - 6*x + 5); M_, m_ = rng(f, 0, 5); ans.append(M_ - m_)
 ans.append(max((1000 - 20*v)*(400 + 20*v) for v in range(0, 50)))
 s = solve([9*a + k, a + k + 2], [a, k]); f = s[a]*(x + 3)**2 + s[k]
 gmin = min(rng(f, R(i, 20), R(i, 20) + 2)[0] for i in range(-200, 100)); assert gmin == -2; ans.append(f.subs(x, -3))
-tM, tm = rng(x**2 - 4*x, -1, 3); M_, m_ = rng((x**2 - 6*x + 1).subs(x, x), tm, tM); ans.append(M_ + m_)
+fmin = (x**2 + 6*x + 12).subs(x, solve((x**2 + 6*x + 12).diff(x), x)[0]); gmax = (-x**2 - 2*x).subs(x, solve((-x**2 - 2*x).diff(x), x)[0]); ans.append(max(av for av in range(-10, 11) if fmin >= gmax + av))
 # 2022.6.21 ㄷ 확인
 best = max(av + bv for av, bv in [(R(i, 100), 5 - rng((x - R(i, 100))**2, 1, 2)[1]) for i in range(-300, 600)]); assert best == R(29, 4); ans.append("⑤")
 sols = [f.subs(x, -2) for av in range(-10, 0) for bv in range(-10, 0) for f in [av*x**2 + bv*x + 5] if rng(f, 1, 2)[0] == 3]; assert len(set(sols)) == 1; ans.append(sols[0])
