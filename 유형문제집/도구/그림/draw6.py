@@ -5,7 +5,7 @@
 import os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from draw import page, shoot, HERE, STROKE
-from draw5 import Frame, LN, roots
+from draw5 import Frame, LN, roots, fit_shoot
 
 # 색칠은 회색 대신 연한 색(사용자 요청)
 PINK, GREEN, SKY, LAVENDER, YELLOW = "#ffd9e6", "#dcf3d2", "#d6ecfb", "#e8defa", "#fff3bf"
@@ -200,13 +200,13 @@ def fig_abc():
     return F.render()
 
 
-FIGS = (("g6_paper.png", fig_paper), ("g6_rect8.png", fig_rect8), ("g6_curveP.png", fig_curveP),
-        ("g6_tri.png", fig_tri), ("g6_two.png", fig_two), ("g6_isos.png", fig_isos),
-        ("g6_curveAC.png", fig_curveAC), ("g6_equi.png", fig_equi), ("g6_abc.png", fig_abc))
+# (파일, 함수, 문서에 넣는 폭 HWPUNIT = data6.py의 "w"). 모든 그림을 1픽셀=K_HWP로 맞춰 화살표·글자 크기를 같게 한다
+FIGS = (("g6_paper.png", fig_paper, 9000), ("g6_rect8.png", fig_rect8, 10000), ("g6_curveP.png", fig_curveP, 10000),
+        ("g6_tri.png", fig_tri, 10000), ("g6_two.png", fig_two, 10000), ("g6_isos.png", fig_isos, 9000),
+        ("g6_curveAC.png", fig_curveAC, 10000), ("g6_equi.png", fig_equi, 8000), ("g6_abc.png", fig_abc, 9000))
 
 if __name__ == "__main__":
-    for name, fn in FIGS:
+    for name, fn, wd in FIGS:
         if len(sys.argv) > 1 and name not in sys.argv[1:]:
             continue
-        doc, w, h = fn()
-        shoot(doc, w, h, os.path.join(HERE, name))
+        fit_shoot(name, fn, wd, HERE)

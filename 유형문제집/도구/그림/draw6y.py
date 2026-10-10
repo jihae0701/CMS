@@ -5,7 +5,7 @@
 import os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from draw import shoot, HERE
-from draw5 import Frame, roots
+from draw5 import Frame, roots, fit_shoot
 from draw6 import right_mark, PINK, GREEN, SKY
 
 
@@ -122,12 +122,12 @@ def fig_m3335():
     return F.render()
 
 
-FIGS = (("u6_o44.png", fig_o44), ("u6_n1151.png", fig_n1151), ("u6_n1169.png", fig_n1169),
-        ("u6_m3285.png", fig_m3285), ("u6_m3335.png", fig_m3335))
+# (파일, 함수, 문서에 넣는 폭 HWPUNIT = unit06.py의 "w"). 1픽셀=K_HWP로 맞춰 화살표·글자 크기를 모든 그림에서 같게 한다
+FIGS = (("u6_o44.png", fig_o44, 11000), ("u6_n1151.png", fig_n1151, 11000), ("u6_n1169.png", fig_n1169, 11000),
+        ("u6_m3285.png", fig_m3285, 12000), ("u6_m3335.png", fig_m3335, 11000))
 
 if __name__ == "__main__":
-    for name, fn in FIGS:
+    for name, fn, wd in FIGS:
         if len(sys.argv) > 1 and name not in sys.argv[1:]:
             continue
-        doc, w, h = fn()
-        shoot(doc, w, h, os.path.join(HERE, name))
+        fit_shoot(name, fn, wd, HERE)

@@ -100,12 +100,15 @@ def fig_n3040():
 
 
 LN = 2.0      # 직선·선분 굵기 (곡선은 STROKE)
+ZOOM = 1.0    # 그림 전체 확대(한 칸 픽셀에만 곱함). 글자·화살표 크기는 그대로 두고 그림 크기만 맞출 때 쓴다
+K_HWP = 6.4   # 문서에 넣을 때 PNG 1픽셀당 HWPUNIT(모든 그림 같게: 화살표·글자 크기가 같아 보이도록)
 
 
 class Frame:
     """수학 좌표 -> 화면 좌표. xr/yr: 보이는 범위, sx/sy: 한 칸 픽셀, m=(왼, 위, 오른, 아래) 여백"""
 
     def __init__(self, xr, yr, sx, sy, m):
+        sx, sy = sx * ZOOM, sy * ZOOM
         self.xr, self.yr, self.sx, self.sy, self.m = xr, yr, sx, sy, m
         self.w = int((xr[1] - xr[0]) * sx + m[0] + m[2])
         self.h = int((yr[1] - yr[0]) * sy + m[1] + m[3])
@@ -142,6 +145,22 @@ class Frame:
         svg = '<svg width="%d" height="%d" style="position:absolute;left:0;top:0">%s</svg>' % (self.w, self.h, "".join(self.svg))
         return page(svg, self.labels, self.w, self.h), self.w, self.h
 
+
+
+def fit_shoot(name, fn, target_w, out_dir):
+    """문서 폭 target_w(HWPUNIT)일 때 1픽셀=K_HWP가 되도록 ZOOM을 맞춰 그린다. 결과 PNG 폭 = target_w/K_HWP"""
+    import draw5
+    from draw import shoot
+    draw5.ZOOM = 1.0
+    want = target_w / K_HWP / 3                       # shoot는 3배로 찍는다
+    for _ in range(10):                               # 여백은 그대로이므로 몇 번 맞춘다
+        doc, w, h = fn()
+        if abs(w - want) < 2:
+            break
+        draw5.ZOOM *= want / w
+    doc, w, h = fn()
+    shoot(doc, w, h, os.path.join(out_dir, name))
+    draw5.ZOOM = 1.0
 
 def roots(f, lo, hi, v, n=4000):
     """f(x)=v인 x (구간 [lo, hi]에서 부호 바뀜으로 찾음)"""
