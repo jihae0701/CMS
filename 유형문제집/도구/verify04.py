@@ -190,7 +190,10 @@ chk("n1458", -(r1v + r2v) + r1v*r2v, -28)
 z = expand((1 - I)*(4 + 3*I)); f = expand((x - z)*(x - conjugate(z))); chk("n992", f.subs(x, 3), 17)
 z = simplify(6*I/(1 - I)); f = expand(3*(x - z)*(x - conjugate(z))); cf = Poly(f, x).all_coeffs()
 chk("n1098", cf[1] + cf[2], 72)
-f = expand((x - (2 - sqrt(3)))*(x - (2 + sqrt(3)))); cf = Poly(f, x).all_coeffs(); chk("w4", cf[1]*cf[2], -4)
+r0 = radsimp(2/(sqrt(3) - 1)); f = expand((x - r0)*(x - (2 - r0))); cf = Poly(f, x).all_coeffs()
+assert all(c_.is_rational for c_ in cf) and simplify(f.subs(x, r0)) == 0
+av, bv = cf[1], cf[2]; rr = solve(bv*x**2 + av*x + 1, x)
+chk("w4", simplify(rr[0]**2 + rr[1]**2), 2)
 bv = expand((3 + I)*(3 - I)); pv = -bv/2; chk("n3071", pv**2 + 4, 29)
 
 # ---- 고난도
