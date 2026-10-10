@@ -485,6 +485,10 @@ assert par.subs(x, 0) == 0 and par.subs(x, 2) == 0 and par.subs(x, 1) == 4
 ms = [mv for mv in solve(disc(par - (m*x + 9)), m) if mv < 0]
 chk("n3040", solve(ms[0]*x + 9, x)[0], Rational(9, 4))
 
+# ---- 사용자 요청 추가(n1162)
+f = 3*(x + 4)*(x - 5); g = -2*(x - 2)*(x - 5)
+chk("n1162", sum(real_roots(f + 3*g)), 13)
+
 if __name__ == "__main__":
     bad = [r for r in R if not r[1]]
     print(len(R), "검산", "불일치", bad)
