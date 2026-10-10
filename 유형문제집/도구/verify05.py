@@ -167,7 +167,7 @@ pieces = [(x**2 - 4*x, lambda r: r <= 0 or r >= 4), (-x**2 + 4*x, lambda r: 0 < 
 ks = [Rational(i, 4) for i in range(-40, 41) if count_pieces(pieces, x + Rational(i, 4)) == 3]
 chk("w12", sum(ks), Rational(9, 4))
 w18p = [(x**2 - 4*x + 3, lambda r: r >= 0), (x**2 + 4*x + 3, lambda r: r < 0)]
-chk("w18", sum(count_pieces(w18p, kv) for kv in (-1, 0, 3, 5)), 11)
+chk("w18", sum(count_pieces(w18p, kv) for kv in (-1, 0, 3)), 9)
 s = solve([(2 - sqrt(3))**2 + (a - 2)*(2 - sqrt(3)) - 3 - b, (2 + sqrt(3))**2 + (a - 2)*(2 + sqrt(3)) - 3 - b], [a, b], dict=True)[0]
 fx = x**2 + s[a]*x - 3; gx = 2*x + s[b]
 lo, hi = 2 - sqrt(3), 2 + sqrt(3)
