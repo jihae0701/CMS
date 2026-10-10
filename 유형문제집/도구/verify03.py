@@ -177,7 +177,24 @@ chk("m3185", max(sums) + min(sums), 6)
 # ---- 인수분해의 활용
 chk("w12", Rational(1003**3 + 27, 1003*1000 + 9), 1006)
 chk("n1082", sum(1 for A in divisors(9**4 + 4) if A not in (1, 9**4 + 4)), 6)
-chk("w15", (2027*2028*2029*2030 - 60) % (2027**2 + 3*2024 + 1), 20)
+chk("w15", (227*228*229*230 - 60) % (227**2 + 3*224 + 1), 20)
+# w16: 기본서 092 변형 (정수 범위에서 완전히 인수분해했을 때 인수가 서로 다른 3개)
+ok_a = []
+for A in range(1, 200):
+    B = A**2*(130 - A**2)
+    if B <= 0:
+        continue
+    fl = factor_list(x**4 - 130*x**2 + B)[1]
+    if len(fl) == 3 and all(m == 1 for _, m in fl):
+        ok_a.append(A)
+chk("w16", sum(ok_a), 36)
+# w17: 기본서 099 변형
+F2 = expand(x*(x - 4)*(x**2 - 4*x + 10) + 25)
+assert same(F2.subs(x, x + 1) - 25, (x + 1)*(x - 3)*(x**2 - 2*x + 7))
+fl = factor_list(F2)[1]; assert len(fl) == 1 and fl[0][1] == 2
+g = fl[0][0]*sign(LC(fl[0][0], x))
+assert discriminant(g, x) < 0            # g > 0
+chk("w17", prod(solve(g.subs(x, 1 + a) - 10, a)), -8)
 chk("w6", Rational(2025**3 + 1, 2025**2 - 2024), 2026)
 chk("n3017", Rational(901*901 + 8, 963), 843)
 X_, Y_ = sqrt(3) + 1, sqrt(3) - 1
