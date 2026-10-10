@@ -119,7 +119,7 @@ class Frame:
         X, Y = self.P(self.xr[1], 0)
         self.labels.append((X - 2, Y + 7, "x", 22, "rt"))
         X, Y = self.P(0, self.yr[1])
-        self.labels.append((X + 8, Y + 2, "y", 22, "lt"))
+        self.labels.append((X - 8, Y + 2, "y", 22, "rt"))        # y는 화살표 왼쪽
 
     def curve(self, f, x0, x1):
         self.svg.append(curve(f, x0, x1, self.P))

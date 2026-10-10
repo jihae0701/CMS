@@ -6,7 +6,7 @@ import os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from draw import shoot, HERE
 from draw5 import Frame, roots
-from draw6 import right_mark, GRAY
+from draw6 import right_mark, PINK, GREEN, SKY
 
 
 def dot(F, p, r=3.5):
@@ -38,7 +38,7 @@ def fig_n1151():
     A, B = (a, f(a)), (-a, f(a))
     C, D = (a, g(a)), (-2 - a, g(a))
     F = Frame((-3.4, 2.9), (-1.8, 5.0), 52, 46, (20, 12, 150, 12))
-    F.poly([A, B, C, D], GRAY)
+    F.poly([A, B, C, D], SKY)
     F.axes()
     F.curve(f, roots(f, -4, 0, -1.6)[0], roots(f, 0, 4, -1.6)[0])
     F.curve(g, roots(g, -4, -1, 4.7)[0], roots(g, -1, 3, 4.7)[0])
@@ -62,7 +62,7 @@ def fig_n1169():
     A, B = (4 + tt, f(4 + tt)), (4 - tt, f(4 - tt))
     C, D = (4 - tt, l(4 - tt)), (4 + tt, l(4 + tt))
     F = Frame((-0.9, 9.0), (-1.2, 9.0), 40, 34, (20, 12, 150, 12))
-    F.poly([A, B, C, D], GRAY)
+    F.poly([A, B, C, D], GREEN)
     F.axes()
     F.curve(f, roots(f, -1, 4, -1.0)[0], roots(f, 4, 10, -1.0)[0])
     F.seg((-0.8, l(-0.8)), (8.8, l(8.8)))
@@ -84,7 +84,7 @@ def fig_m3285():
     B, C = (xB, f(xB)), (xC, f(xC))
     D, E = (xB, 0), (xC, 0)
     F = Frame((-1.4, 6.3), (-2.9, 4.6), 52, 52, (20, 12, 60, 12))
-    F.poly([A, E, C], GRAY); F.poly([A, D, B], GRAY)
+    F.poly([A, E, C], PINK); F.poly([A, D, B], SKY)
     F.axes()
     F.curve(f, roots(f, -2, 2, 4.3)[0], roots(f, 2, 8, 4.3)[0])
     F.seg((-1.0, -mv), (6.0, 6.0 * mv))                          # l1
@@ -109,7 +109,7 @@ def fig_m3335():
     xA, xB = xs[0], xs[1]
     O, A, B, C, D = (0, 0), (xA, f(xA)), (xB, f(xB)), (0, -4), (0, 4)
     F = Frame((-5.2, 5.4), (-5.6, 18.0), 32, 11, (60, 12, 20, 12))
-    F.poly([O, A, C], GRAY); F.poly([O, B, D], GRAY)
+    F.poly([O, A, C], SKY); F.poly([O, B, D], PINK)
     F.axes()
     F.curve(f, roots(f, -6, -0.5, 17.5)[0], roots(f, -0.5, 6, 17.5)[0])
     l0, l1 = roots(g, -6, 0, -5.4)[0], roots(g, 0, 6, 17.6)[0]

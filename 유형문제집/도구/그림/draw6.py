@@ -7,7 +7,8 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from draw import page, shoot, HERE, STROKE
 from draw5 import Frame, LN, roots
 
-GRAY = "#e3e3e3"
+# 색칠은 회색 대신 연한 색(사용자 요청)
+PINK, GREEN, SKY, LAVENDER, YELLOW = "#ffd9e6", "#dcf3d2", "#d6ecfb", "#e8defa", "#fff3bf"
 
 
 def geo(xr, yr, s, m=(30, 30, 30, 30)):
@@ -52,7 +53,7 @@ def fig_paper():
     A, B, C = (0, 30), (0, 0), (20, 0)
     e = 7
     E, D, Fp = (0, 30 - 1.5 * e), (e, 30 - 1.5 * e), (e, 0)
-    F.poly([E, B, Fp, D], GRAY)
+    F.poly([E, B, Fp, D], YELLOW)
     for p, q in ((A, B), (B, C), (C, A)):
         F.seg(p, q, STROKE)
     F.seg(E, D); F.seg(D, Fp)
@@ -100,7 +101,7 @@ def fig_tri():
     h = 7
     P_ = (A[0] * h / 18, h); S_ = (C[0] + (A[0] - C[0]) * h / 18, h)
     Q_, R_ = (P_[0], 0), (S_[0], 0)
-    F.poly([P_, Q_, R_, S_], GRAY)
+    F.poly([P_, Q_, R_, S_], GREEN)
     for p, q in ((A, B), (B, C), (C, A)):
         F.seg(p, q, STROKE)
     for p, q in ((P_, Q_), (P_, S_), (S_, R_)):
@@ -142,7 +143,7 @@ def fig_isos():
     R_ = (P_[0] - (A[0] - B[0]) * (P_[1] / A[1]) * 0 - (P_[1] / A[1]) * 0, P_[1])
     R_ = (P_[1], P_[1])                         # AB 위: y=x
     F = geo((-1, 18), (-1.2, 9.6), 15, (26, 26, 26, 26))
-    F.poly([P_, R_, B, Q_], GRAY)
+    F.poly([P_, R_, B, Q_], LAVENDER)
     for p, q in ((A, B), (B, C), (C, A)):
         F.seg(p, q, STROKE)
     F.seg(P_, Q_); F.seg(P_, R_)
@@ -154,7 +155,7 @@ def fig_isos():
 
 def fig_curveAC():
     f = lambda t: t * t - 6 * t + 5
-    F = Frame((-1.4, 7.4), (-5.2, 8.6), 40, 24, (20, 12, 150, 12))
+    F = Frame((-1.4, 7.4), (-5.2, 9.8), 40, 24, (20, 12, 150, 12))
     F.axes()
     F.curve(f, roots(f, -1.5, 3, 8)[0], roots(f, 3, 8, 8)[0])
     F.svg.append('<circle cx="%.1f" cy="%.1f" r="4" fill="#000"/>' % F.P(3.6, f(3.6)))
@@ -186,11 +187,11 @@ def fig_equi():
 def fig_abc():
     aa = 1.3
     f = lambda t: t * t - (aa + 4) * t + 3 * aa + 3
-    F = Frame((-1.2, 5.6), (-1.6, 8.4), 50, 30, (20, 40, 20, 12))
+    F = Frame((-1.2, 5.6), (-1.6, 9.4), 50, 30, (20, 40, 20, 12))
     F.axes()
     F.curve(f, roots(f, -1.5, 2.5, 8)[0], roots(f, 2.5, 7, 8)[0])
     A, B, C = (aa + 1, 0), (3, 0), (0, 3 * aa + 3)
-    F.poly([A, B, C], GRAY)
+    F.poly([A, B, C], PINK)
     F.seg(C, A); F.seg(C, B)
     F.pt((0, 0), "O", "rt", -5, 5)
     F.pt(A, "A", "rt", -3, 5); F.pt(B, "B", "lt", 4, 5); F.pt(C, "C", "rc", -7, 0)
