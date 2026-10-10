@@ -58,7 +58,7 @@ def cube():
         return '<polygon points="%s" fill="%s" stroke="#000" stroke-width="%s" stroke-linejoin="round"/>' % (
             " ".join("%.1f,%.1f" % p for p in pts), fill, STROKE)
     svg = '<svg width="%d" height="%d" style="position:absolute;left:0;top:0">%s%s%s</svg>' % (
-        w, h, poly([F, L, K, R], "#eaf5fd"), poly([F, L, L2, F2], "#d6ecfb"), poly([F, R, R2, F2], "#dcf3d2"))   # 세 면: 비슷한 연한 색(하늘·연두)
+        w, h, poly([F, L, K, R], "#ebf6fd"), poly([F, L, L2, F2], "#d6ecfb"), poly([F, R, R2, F2], "#c1e1f7"))   # 세 면: 연한 하늘색, 명도만 다르게(위 밝게, 오른쪽 어둡게)
     labels = [(ox, oy - d, r"3x^{3}-x^{2}", 25, "cc"),
               (ox - W / 2, oy - d / 2 + H / 2, r"-x^{3}+x", 25, "cc"),
               (ox + W / 2, oy - d / 2 + H / 2, r"x^{3}+1", 25, "cc")]
