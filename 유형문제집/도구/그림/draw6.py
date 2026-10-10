@@ -30,9 +30,25 @@ def right_mark(F, v, p, q, k=0.06):
                  % (F.P(*p1) + F.P(*p2) + F.P(*p3)))
 
 
+def dim_arc(F, p, q, label, side, bulge=16, size=20, gap=6):
+    """선분 pq의 길이 표시: side 쪽(화면 법선 방향 +1/-1)으로 휜 점선 호와 가운데 글자"""
+    import math
+    (x1, y1), (x2, y2) = F.P(*p), F.P(*q)
+    mx, my = (x1 + x2) / 2, (y1 + y2) / 2
+    dx, dy = x2 - x1, y2 - y1
+    n = math.hypot(dx, dy)
+    nx, ny = -dy / n * side, dx / n * side
+    cx, cy = mx + nx * 2 * bulge, my + ny * 2 * bulge
+    F.svg.append('<path d="M%.1f,%.1f Q%.1f,%.1f %.1f,%.1f" fill="none" stroke="#000" stroke-width="1.5" stroke-dasharray="5,4"/>'
+                 % (x1, y1, cx, cy, x2, y2))
+    lx, ly = mx + nx * (bulge + gap), my + ny * (bulge + gap)
+    anc = ("l" if nx > 0.5 else "r" if nx < -0.5 else "c") + ("t" if ny > 0.5 else "b" if ny < -0.5 else "c")
+    F.labels.append((lx, ly, label, size, anc))
+
+
 def fig_paper():
-    # 직각삼각형 A(0,30), B(0,0), C(20,0)에서 직사각형 EBFD (그림은 ED=7)
-    F = geo((-2, 22), (-2, 31), 9, (34, 22, 20, 30))
+    # 직각삼각형 A(0,30), B(0,0), C(20,0)에서 직사각형 EBFD (그림은 ED=7). 길이는 점선 호로 표시
+    F = geo((-2, 22), (-2, 31), 9, (60, 22, 34, 50))
     A, B, C = (0, 30), (0, 0), (20, 0)
     e = 7
     E, D, Fp = (0, 30 - 1.5 * e), (e, 30 - 1.5 * e), (e, 0)
@@ -41,9 +57,10 @@ def fig_paper():
         F.seg(p, q, STROKE)
     F.seg(E, D); F.seg(D, Fp)
     right_mark(F, B, A, C, 1.2)
-    F.pt(A, "A", "cb", 0, -6); F.pt(B, "B", "rt", -6, 4); F.pt(C, "C", "lt", 4, 4)
-    F.pt(E, "E", "rc", -7, 0); F.pt(D, "D", "lb", 6, -2); F.pt(Fp, "F", "ct", 0, 6)
-    F.lab((14, 0), "20", "ct", 0, 8, 20); F.lab((0, 15), "30", "rc", -26, 0, 20)
+    dim_arc(F, B, A, "30", -1, 18)          # AB 왼쪽
+    dim_arc(F, B, C, "20", 1, 18)           # BC 아래쪽
+    F.pt(A, "A", "cb", 0, -6); F.pt(B, "B", "rt", -9, 9); F.pt(C, "C", "lc", 8, 0)
+    F.pt(E, "E", "lc", 6, -12); F.pt(D, "D", "lb", 6, -2); F.pt(Fp, "F", "lb", 5, -4)
     return F.render()
 
 
@@ -161,8 +178,8 @@ def fig_equi():
     F.seg(A, Pm); F.seg(B, Q_); F.seg(C, Q_)
     F.svg.append('<circle cx="%.1f" cy="%.1f" r="3.5" fill="#000"/>' % F.P(*Q_))
     F.pt(A, "A", "cb", 0, -6); F.pt(B, "B", "rt", -5, 4); F.pt(C, "C", "lt", 5, 4)
-    F.pt(Pm, "P", "ct", 0, 6); F.pt(Q_, "Q", "lc", 8, -10)
-    F.lab((0, 0.37), "x", "lc", 6, 0, 20)
+    F.pt(Pm, "P", "ct", 0, 6); F.pt(Q_, "Q", "rc", -8, -10)
+    dim_arc(F, Pm, Q_, "x", -1, 12)         # PQ 왼쪽(BQ와 AP 사이)
     return F.render()
 
 
