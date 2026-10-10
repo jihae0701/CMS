@@ -69,7 +69,7 @@ chk("n1120", cnt, 3)
 
 # ---- i의 거듭제곱
 chk("n517", expand(sum(I**j for j in range(1, 12))), -1)
-v = expand(((1 + I)/(1 - I))**2026 + ((1 - I)/(1 + I))**2026)
+v = expand(((1 + I)/(1 - I))**46 + ((1 - I)/(1 + I))**46)
 chk("n1117", re(simplify(v)) + im(simplify(v)), -2)
 chk("n1257", sum(1 for nv in range(1, 101) if expand((1 + I)**(6*nv) - 8**nv*I) == 0), 25)
 z = (1 + I)/sqrt(2)
@@ -307,3 +307,20 @@ chk("w6", simplify(sqrt(al)*sqrt(be) + sqrt(be)/sqrt(al) + sqrt(al)/sqrt(be)), 1
 av = [r for r in solve(25 - 4*a - 9, a)]
 rr = solve(x**2 + 5*x + av[0], x); assert abs(rr[0] - rr[1]) == 3
 chk("n1290", av[0], 4)
+
+# ---- 추가 문항(풀이·근과 계수)
+rts = [r for r in solve(x**2 - (2*x - 1) - 2, x) if r >= Rational(1, 2)] + [r for r in solve(x**2 + (2*x - 1) - 2, x) if r < Rational(1, 2)]
+for r in rts:
+    assert simplify(r**2 - abs(2*r - 1) - 2) == 0
+chk("w7", simplify(sum(rts)), -2 + sqrt(2))
+for al in solve(x**2 - 4*x + 1, x):
+    chk("w8", simplify(al**2 - 3*al + 1/al), 3) if al == solve(x**2 - 4*x + 1, x)[0] else None
+    assert simplify(al**2 - 3*al + 1/al - 3) == 0
+av = solve(3 - (2 + sqrt(3))*sqrt(3) + a, a)[0]
+rr = solve(x**2 - (2 + sqrt(3))*x + av, x); bv = [r for r in rr if simplify(r - sqrt(3)) != 0][0]
+chk("w9", simplify(av*bv), 4*sqrt(3))
+bv, cv = -4, 12
+wr = [(-bv + sqrt(bv**2 - 1*cv))/2, (-bv - sqrt(bv**2 - 1*cv))/2]
+assert sorted(wr) == [1, 3]
+rr = solve(x**2 + bv*x + cv, x)
+chk("w10", expand(rr[0]**2 + rr[1]**2), -8)
