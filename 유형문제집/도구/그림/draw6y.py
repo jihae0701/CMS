@@ -84,7 +84,7 @@ def fig_m3285():
     B, C = (xB, f(xB)), (xC, f(xC))
     D, E = (xB, 0), (xC, 0)
     F = Frame((-1.4, 6.3), (-2.9, 4.6), 52, 52, (20, 12, 60, 12))
-    F.poly([A, E, C], PINK); F.poly([A, D, B], SKY)
+    F.poly([A, E, C], SKY); F.poly([A, D, B], GREEN)      # S1-S2: 두 삼각형을 비슷한 색으로 구분
     F.axes()
     F.curve(f, roots(f, -2, 2, 4.3)[0], roots(f, 2, 8, 4.3)[0])
     F.seg((-1.0, -mv), (6.0, 6.0 * mv))                          # l1
@@ -109,7 +109,7 @@ def fig_m3335():
     xA, xB = xs[0], xs[1]
     O, A, B, C, D = (0, 0), (xA, f(xA)), (xB, f(xB)), (0, -4), (0, 4)
     F = Frame((-5.2, 5.4), (-5.6, 18.0), 32, 11, (60, 12, 20, 12))
-    F.poly([O, A, C], SKY); F.poly([O, B, D], PINK)
+    F.poly([O, A, C], SKY); F.poly([O, B, D], SKY)        # S1+S2: 한 색
     F.axes()
     F.curve(f, roots(f, -6, -0.5, 17.5)[0], roots(f, -0.5, 6, 17.5)[0])
     l0, l1 = roots(g, -6, 0, -5.4)[0], roots(g, 0, 6, 17.6)[0]
