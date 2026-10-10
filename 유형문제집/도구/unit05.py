@@ -394,7 +394,7 @@ X8 = N("m3226", ["이차항의 계수가 음수인 이차함수 $y=f(x)$의 그�
        ["$rm B(0,~b)$ $(0<b<6)$라 하면 두 삼각형 $rm ABD$, $rm BCD$는 밑변 $rm BD$가 같고 높이가 각각 $6-b$, $b$이다.",
         "넓이의 비가 $1:3$이므로 $(6-b):b=1:3$ $therefore$ $b={9} over {2}$",
         "${1} over {2} times overline {rm BD} times {9} over {2}={9} over {2}$에서 $overline {rm BD}=2$",
-        "$rm C(c,~0)$ $(c<0)$이라 하면 점 $rm D$는 선분 $rm AC$를 $3:1$로 내분하는 점이므로 $rm D left ({9+c} over {4},~{9} over {2} right )$",
+        "$rm C(c,~0)$ $(c<0)$이라 하면 직선 $rm AC$의 방정식은 $y={6} over {3-c}(x-c)$이고, 점 $rm D$의 $y$좌표가 ${9} over {2}$이므로 $x=c+{3} over {4}(3-c)={9+c} over {4}$, 즉 $rm D left ({9+c} over {4},~{9} over {2} right )$",
         "${9+c} over {4}=2$이면 $c=-1$, ${9+c} over {4}=-2$이면 $c=-17$",
         "$f(x)=px^{2}+qx+{9} over {2}$에 대하여 $c=-1$이면 $f(-1)=0$, $f(3)=6$에서 $p=-1$, $q={7} over {2}$",
         "$c=-17$이면 $p={1} over {85}>0$이 되어 조건에 맞지 않는다.",
