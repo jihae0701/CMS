@@ -74,6 +74,14 @@ for g, _ in fl:
     tot += -cf[1] if len(cf) == 2 else cf[1] + cf[2]
 chk("n3099", tot, 4)
 
+# ---- 상반식
+e = x**4 - 3*x**3 - 2*x**2 - 3*x + 1
+s = [(p, q) for p in range(-9, 10) for q in range(-9, 10) if p <= q and same(e, (x**2 + p*x + 1)*(x**2 + q*x + 1))]
+assert len(s) == 1; chk("w13", s[0][0]**2 + s[0][1]**2, 17)
+e = 2*x**4 + x**3 - 6*x**2 + x + 2
+s = [(p, q) for p in range(-9, 10) for q in range(-9, 10) if same(e, (x - 1)**2*(p*x + 1)*(x + q))]
+assert len(s) == 1; chk("w14", sum(s[0]), 4)
+
 # ---- 여러 문자
 e = x**2 + 2*y**2 - 3*x*y + y - 1
 s = [(p, q) for p in range(1, 9) for q in range(1, 9) if same(e, (x - p*y - 1)*(x - q*y + 1))]
@@ -167,6 +175,7 @@ for av in cand:
 chk("m3185", max(sums) + min(sums), 6)
 
 # ---- 인수분해의 활용
+chk("w12", Rational(1003**3 + 27, 1003*1000 + 9), 1006)
 chk("n1082", sum(1 for A in divisors(9**4 + 4) if A not in (1, 9**4 + 4)), 6)
 chk("w6", Rational(2025**3 + 1, 2025**2 - 2024), 2026)
 chk("n3017", Rational(901*901 + 8, 963), 843)
