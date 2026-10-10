@@ -437,12 +437,6 @@ chk("o13", Rational(1, 2)*kv*Px, 40)
 
 # ---- 사용자 요청 추가(근의 위치)
 ok = []
-for av in range(-30, 31):
-    rr = real_roots(x**2 + (av - 3)*x + av - 5)
-    if len(rr) == 2 and rr[0] < 0 < rr[1] and abs(rr[0]) > abs(rr[1]):
-        ok.append(av)
-chk("w15", ok[0] if len(ok) == 1 else ok, 4)
-ok = []
 for i in range(-80, 120):
     av = Rational(i, 20)
     rr = real_roots(x**2 - 4*x + av)

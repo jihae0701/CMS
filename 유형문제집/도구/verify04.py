@@ -326,3 +326,13 @@ wr = [(-bv + sqrt(bv**2 - 1*cv))/2, (-bv - sqrt(bv**2 - 1*cv))/2]
 assert sorted(wr) == [1, 3]
 rr = solve(x**2 + bv*x + cv, x)
 chk("w10", expand(rr[0]**2 + rr[1]**2), -8)
+
+# ---- 5단원에서 옮겨 온 문항(근의 부호)
+okw = []
+for av in range(-30, 31):
+    rr = [r for r in solve(x**2 + (av - 3)*x + av - 5, x) if r.is_real]
+    if len(rr) == 2:
+        r1, r2 = sorted(rr, key=lambda z: float(z))
+        if r1 < 0 < r2 and abs(r1) > abs(r2):
+            okw.append(av)
+chk("w11", okw[0] if len(okw) == 1 else okw, 4)
