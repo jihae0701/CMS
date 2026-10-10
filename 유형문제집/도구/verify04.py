@@ -297,3 +297,10 @@ f = lambda t_: av_*(t_**2 + 4)
 assert f(-2*I) == 0
 rr = solve(f(av_*x) - (cv*x - 4), x)
 chk("o56", sum(set(rr)), 16)
+
+# ---- 교체 문항
+rr = solve(x**2 + 6*x + 4, x); al, be = rr
+chk("w6", simplify(sqrt(al)*sqrt(be) + sqrt(be)/sqrt(al) + sqrt(al)/sqrt(be)), 1)
+av = [r for r in solve(25 - 4*a - 9, a)]
+rr = solve(x**2 + 5*x + av[0], x); assert abs(rr[0] - rr[1]) == 3
+chk("n1290", av[0], 4)

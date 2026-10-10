@@ -464,8 +464,22 @@ L6 = N("o56", ["다항식 $f(x)=ax^{2}+bx+c$가 다음 조건을 만족시킬 �
         "${x^{2}} over {8}+2=2x-4$에서 $x^{2}-16x+48=0$, $(x-4)(x-12)=0$",
         "따라서 서로 다른 모든 실근의 합은 $16$"])
 
+# ------------------------------------------------------------ 사용자 요청 교체 문항
+I5 = N("w6", ["이차방정식 $x^{2}+6x+4=0$의 두 근을 $alpha$, $beta$라 할 때, $sqrt {alpha} sqrt {beta}+{sqrt {beta}} over {sqrt {alpha}}+{sqrt {alpha}} over {sqrt {beta}}$의 값을 구하시오."],
+       "1",
+       ["근과 계수의 관계에 의하여 $alpha+ beta=-6<0$, $alpha beta=4>0$이므로 $alpha<0$, $beta<0$",
+        "$alpha$, $beta$가 모두 음수이므로 $sqrt {alpha} sqrt {beta}=- sqrt {alpha beta}=-2$",
+        "$sqrt {alpha}= sqrt {- alpha}i$, $sqrt {beta}= sqrt {- beta}i$이므로",
+        "${sqrt {beta}} over {sqrt {alpha}}+{sqrt {alpha}} over {sqrt {beta}}={sqrt {- beta}} over {sqrt {- alpha}}+{sqrt {- alpha}} over {sqrt {- beta}}={(- beta)+(- alpha)} over {sqrt {alpha beta}}={6} over {2}=3$",
+        "따라서 구하는 값은 $-2+3=1$"])
+J6 = N("n1290", ["이차방정식 $x^{2}+5x+a=0$의 두 실근의 차가 $3$일 때, 실수 $a$의 값을 구하시오."],
+       "4",
+       ["두 실근을 $alpha$, $beta$라 하면 근과 계수의 관계에 의하여 $alpha+ beta=-5$, $alpha beta=a$",
+        "$( alpha- beta)^{2}=( alpha+ beta)^{2}-4 alpha beta=25-4a$",
+        "두 근의 차가 $3$이므로 $25-4a=9$ $therefore$ $a=4$"])
+
 ALL = [A1, A2, A3, B1, B2, B3, C1, C2, D1, D2, D3, D4, D5, E1, E2, E3, E4, F1, F2, F3, F4,
        G1, G2, G3, G4, H1, H2, H3, H4, H5, I1, I2, I3, I4, J1, J2, J3, J4, J5, K1, K2, K3, K4,
        L1, L2, L3, L4, X1, X2, X3, X4, X5, X6, X7, X8, X9, X10, X11, X12, X13, X14]
-ALL += [K5, H6, L5, L6]
+ALL += [K5, H6, L5, L6, I5, J6]
 P = {it["v"]: it for it in ALL}
