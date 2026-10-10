@@ -46,11 +46,11 @@ class Doc:
                 '<hp:outMargin left="56" right="56" top="0" bottom="0"/><hp:shapeComment>수식입니다.</hp:shapeComment>'
                 '<hp:script>%s</hp:script></hp:equation>') % (W, H, escape(sc))
 
-    def inline(self, text):
+    def inline(self, text, base=None):
         out = []
         for i, part in enumerate(re.split(r"\$(.+?)\$", text)):
             if i % 2:
-                out.append(self.eq(part))
+                out.append(self.eq(part, base))
             elif part:
                 out.append("<hp:t>%s</hp:t>" % escape(part))
         return "".join(out) or "<hp:t/>"
@@ -125,6 +125,8 @@ def apply(P, fixes, label=""):
                 all_sc += scripts_of(op[1])
             elif op[0] == "ans":
                 all_sc += scripts_of([op[1]])
+            elif op[0] == "qtext":
+                all_sc += scripts_of([op[2]])
             elif op[0] in ("q", "solrep") and not op[2].startswith("$"):
                 all_sc += scripts_of([op[2]])
     eqsize.ensure(all_sc)
@@ -211,6 +213,19 @@ def apply(P, fixes, label=""):
                 ok = int(bool(hit))
                 if hit:
                     P[e] = P[e].replace(en, en.replace(hit[0], "", 1), 1)
+            elif kind == "qtext":
+                # ("qtext", 글귀, 새 문장): 글귀가 든 문제 문단의 내용을 새 문장으로 바꾼다(미주는 그대로 둠)
+                ok = 0
+                for i in rng:
+                    p = P[i]
+                    if op[1] in io.text(ENDNOTE.sub("", p)):
+                        head = re.match(r"<hp:p [^>]*>", p).group(0)
+                        c = re.search(r'<hp:run charPrIDRef="(\d+)">', p).group(1)
+                        enrun = re.search(r'<hp:run charPrIDRef="\d+"><hp:ctrl><hp:endNote .*?</hp:endNote></hp:ctrl>.*?</hp:run>', p, re.S)
+                        P[i] = (head + '<hp:run charPrIDRef="%s">%s</hp:run>' % (c, doc.inline(op[2], doc.body_base))
+                                + (enrun.group(0) if enrun else "") + "</hp:p>")
+                        ok = 1
+                        break
             elif kind == "delpara":
                 ok = 0
                 for i in rng:
