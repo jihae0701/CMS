@@ -11,6 +11,7 @@ from playwright.sync_api import sync_playwright
 HERE = os.path.dirname(os.path.abspath(__file__))
 KATEX = os.environ["KATEX_DIR"]
 STROKE = 3.2
+ZOOM = 1.0     # 그림 크기만 키우거나 줄임(글자 크기는 그대로). 문서 폭에 1픽셀=6.4 HWPUNIT로 맞출 때 쓴다
 CHROME = os.environ.get("CHROME", "/opt/pw-browsers/chromium-1194/chrome-linux/chrome")
 
 
@@ -47,17 +48,17 @@ def shoot(html, w, h, out, scale=3):
 
 def cube():
     # 꼭짓점 쪽에서 본 정육면체: 앞 모서리 x=0, 왼쪽·오른쪽 면, 위 면
-    W, d, H, m = 150, 48, 150, 12
+    W, d, H, m = 150 * ZOOM, 48 * ZOOM, 150 * ZOOM, 12
     ox, oy = m + W, m + 2 * d          # 앞 모서리 위 꼭짓점
     F, L, R, K = (ox, oy), (ox - W, oy - d), (ox + W, oy - d), (ox, oy - 2 * d)
     F2, L2, R2 = (ox, oy + H), (ox - W, oy - d + H), (ox + W, oy - d + H)
-    w, h = 2 * W + 2 * m, 2 * d + H + 2 * m
+    w, h = int(2 * W + 2 * m), int(2 * d + H + 2 * m)
 
     def poly(pts, fill):
         return '<polygon points="%s" fill="%s" stroke="#000" stroke-width="%s" stroke-linejoin="round"/>' % (
             " ".join("%.1f,%.1f" % p for p in pts), fill, STROKE)
     svg = '<svg width="%d" height="%d" style="position:absolute;left:0;top:0">%s%s%s</svg>' % (
-        w, h, poly([F, L, K, R], "#f2f2f2"), poly([F, L, L2, F2], "#e3e3e3"), poly([F, R, R2, F2], "#d4d4d4"))
+        w, h, poly([F, L, K, R], "#eaf5fd"), poly([F, L, L2, F2], "#d6ecfb"), poly([F, R, R2, F2], "#dcf3d2"))   # 세 면: 비슷한 연한 색(하늘·연두)
     labels = [(ox, oy - d, r"3x^{3}-x^{2}", 25, "cc"),
               (ox - W / 2, oy - d / 2 + H / 2, r"-x^{3}+x", 25, "cc"),
               (ox + W / 2, oy - d / 2 + H / 2, r"x^{3}+1", 25, "cc")]
@@ -66,7 +67,7 @@ def cube():
 
 def triangle():
     # 원래 그림과 같은 비율: B(0,0), C(850,0), A(850,1220) (수학 좌표), 화면에 맞게 줄임
-    s = 0.28
+    s = 0.28 * ZOOM
     Bm, Cm, Am = (0, 0), (850, 0), (850, 1220)
     ux, uy = Am[0] - Bm[0], Am[1] - Bm[1]
     t = ((Cm[0] - Bm[0]) * ux + (Cm[1] - Bm[1]) * uy) / (ux * ux + uy * uy)
@@ -115,6 +116,14 @@ def triangle():
 
 
 if __name__ == "__main__":
-    for name, fn in (("image86.png", cube), ("image83.png", triangle)):
+    # (파일, 함수, 폼 그림의 가로 HWPUNIT). 1픽셀=6.4 HWPUNIT가 되도록 ZOOM을 맞춘다(그림 축척 통일)
+    for name, fn, wd in (("image86.png", cube, 13033), ("image83.png", triangle, 11357)):
+        want = wd / 6.4 / 3
+        ZOOM = 1.0
+        for _ in range(10):
+            doc, w, h = fn()
+            if abs(w - want) < 1:
+                break
+            ZOOM *= want / w
         doc, w, h = fn()
         shoot(doc, w, h, os.path.join(HERE, name))

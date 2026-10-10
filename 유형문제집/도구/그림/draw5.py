@@ -35,26 +35,17 @@ def axes(P, xr, yr):
 
 def two_parabolas(f, g, xr, yr, sx, sy, ticks, flab, glab):
     """f, g: 함수, xr/yr: 보이는 범위, sx/sy: 한 칸 픽셀, ticks: x절편 눈금, flab/glab: (x, y, 위치) 이름표"""
-    ml = 30
-    w = int((xr[1] - xr[0]) * sx + 2 * ml + 70)
-    h = int((yr[1] - yr[0]) * sy + 2 * ml)
-
-    def P(x, y):
-        return (ml + (x - xr[0]) * sx, ml + (yr[1] - y) * sy)
+    F = Frame(xr, yr, sx, sy, (30, 30, 100, 30))          # 축·화살표·x, y 이름은 Frame.axes(공통 기준)
     fx = [x / 100 for x in range(int(xr[0] * 100), int(xr[1] * 100) + 1) if yr[0] <= f(x / 100) <= yr[1]]
     gx = [x / 100 for x in range(int(xr[0] * 100), int(xr[1] * 100) + 1) if yr[0] <= g(x / 100) <= yr[1]]
-    svg = axes(P, xr, yr) + curve(f, fx[0], fx[-1], P) + curve(g, gx[0], gx[-1], P)
-    labels = [(P(xr[1], 0)[0] - 2, P(0, 0)[1] + 6, "x", 22, "rt"), (P(0, yr[1])[0] + 8, P(0, yr[1])[1] + 2, "y", 22, "lt"),
-              (P(0, 0)[0] - 5, P(0, 0)[1] + 5, r"\mathrm{O}", 20, "rt")]
+    F.axes()
+    F.curve(f, fx[0], fx[-1]); F.curve(g, gx[0], gx[-1])
+    F.lab((0, 0), r"\mathrm{O}", "rt", -5, 5, 20)
     for tx, anc, dx, dy in ticks:
-        X, Y = P(tx, 0)
-        labels.append((X + dx, Y + dy, str(tx) if tx >= 0 else "-%d" % -tx, 20,
-                       ("r" if anc == "l" else "l") + ("t" if dy > 0 else "b")))
+        F.lab((tx, 0), str(tx) if tx >= 0 else "-%d" % -tx, ("r" if anc == "l" else "l") + ("t" if dy > 0 else "b"), dx, dy, 20)
     for (x, y, anc), tex in ((flab, "y=f(x)"), (glab, "y=g(x)")):
-        X, Y = P(x, y)
-        labels.append((X, Y, tex, 20, anc))
-    svg = '<svg width="%d" height="%d" style="position:absolute;left:0;top:0">%s</svg>' % (w, h, svg)
-    return page(svg, labels, w, h), w, h
+        F.lab((x, y), tex, anc, 0, 0, 20)
+    return F.render()
 
 
 def fig_n1090():
@@ -75,7 +66,7 @@ def fig_n1162():
 
 def fig_n3040():
     # 지면 y=0, A(0,0), B(2,0), 조형물 y=-4x^2+8x, 조명 (0,9), 그림자 끝 C(9/4, 0)
-    s, sx = 30, 70          # 가로를 늘려 그린 개형(접하는 관계는 그대로 유지됨)
+    s, sx = 30 * ZOOM, 70 * ZOOM   # 가로를 늘려 그린 개형(접하는 관계는 그대로 유지됨). ZOOM: 문서 폭에 맞춘 확대
     ml, mt = 40, 26
     xr = (-0.6, 3.0)
     w, h = int((xr[1] - xr[0]) * sx + 2 * ml), int(9.6 * s + mt + 40)
@@ -148,19 +139,21 @@ class Frame:
 
 
 def fit_shoot(name, fn, target_w, out_dir):
-    """문서 폭 target_w(HWPUNIT)일 때 1픽셀=K_HWP가 되도록 ZOOM을 맞춰 그린다. 결과 PNG 폭 = target_w/K_HWP"""
-    import draw5
+    """문서 폭 target_w(HWPUNIT)일 때 1픽셀=K_HWP가 되도록 ZOOM을 맞춰 그린다. 결과 PNG 폭 = target_w/K_HWP
+    ZOOM은 이 함수가 정의된 모듈의 전역값(Frame과 같은 모듈)을 바꾼다."""
     from draw import shoot
-    draw5.ZOOM = 1.0
+    G = globals()
+    G["ZOOM"] = 1.0
     want = target_w / K_HWP / 3                       # shoot는 3배로 찍는다
     for _ in range(10):                               # 여백은 그대로이므로 몇 번 맞춘다
         doc, w, h = fn()
-        if abs(w - want) < 2:
+        if abs(w - want) < 1:
             break
-        draw5.ZOOM *= want / w
+        G["ZOOM"] *= want / w
     doc, w, h = fn()
     shoot(doc, w, h, os.path.join(out_dir, name))
-    draw5.ZOOM = 1.0
+    G["ZOOM"] = 1.0
+
 
 def roots(f, lo, hi, v, n=4000):
     """f(x)=v인 x (구간 [lo, hi]에서 부호 바뀜으로 찾음)"""
@@ -232,7 +225,7 @@ def fig_m3217():
     ex = max(roots(lambda x: f(x) - h(x), 4, 12, 0))
     E = (ex, f(ex))
     F = Frame((-1.6, 10.6), (-5.6, 8.6), 36, 36, (16, 30, 64, 10))
-    F.poly([(0, 0), A, D], "#e3e3e3")                     # 삼각형 AOD
+    F.poly([(0, 0), A, D], "#d6ecfb")                     # 삼각형 AOD (연한 하늘)
     F.axes()
     x0, x1 = roots(f, -3, 0, -5.4)[0], roots(f, 8, 12, -5.4)[0]
     F.curve(f, x0, x1)
@@ -253,9 +246,9 @@ def fig_m3217():
 
 
 if __name__ == "__main__":
-    for name, fn in (("u5_n1090.png", fig_n1090), ("u5_n1162.png", fig_n1162), ("u5_n3040.png", fig_n3040),
-                     ("u5_m3243.png", fig_m3243), ("u5_m3336.png", fig_m3336), ("u5_m3217.png", fig_m3217)):
+    # (파일, 함수, 문서에 넣는 폭 HWPUNIT = unit05.py의 "w"). 1픽셀=K_HWP로 맞춘다
+    for name, fn, wd in (("u5_n1090.png", fig_n1090, 16000), ("u5_n1162.png", fig_n1162, 16000), ("u5_n3040.png", fig_n3040, 9000),
+                         ("u5_m3243.png", fig_m3243, 12500), ("u5_m3336.png", fig_m3336, 13000), ("u5_m3217.png", fig_m3217, 14000)):
         if len(sys.argv) > 1 and name not in sys.argv[1:]:
             continue
-        doc, w, h = fn()
-        shoot(doc, w, h, os.path.join(HERE, name))
+        fit_shoot(name, fn, wd, HERE)
