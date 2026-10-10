@@ -58,8 +58,8 @@ cs = sorted(-r for r in roots(e, x, multiple=True)); pos = [v for v in cs if v >
 assert len(cs) == 4 and len(pos) == 2; chk("o04", pos[0]*pos[1], 15)
 
 # ---- 복이차식
-s = [(p, q) for p in range(-5, 6) for q in range(-5, 6) if p > q and same(x**4 + x**2 + 1, (x**2 + p*x + 1)*(x**2 + q*x + 1))]
-assert len(s) == 1; chk("w3", s[0][0] - s[0][1], 2)
+s = [(p, q) for p in range(-5, 6) for q in range(-5, 6) if p > q and same(x**4 - 6*x**2 + 1, (x**2 + p*x - 1)*(x**2 + q*x - 1))]
+assert len(s) == 1; chk("w3", s[0][0] - s[0][1], 4)
 f = x**4 + a*x**2 + b
 s = solve([f.subs(x, 2), diff(f, x).subs(x, 2)], [a, b], dict=True); assert len(s) == 1
 chk("o19", s[0][a] + s[0][b], 8)
@@ -78,9 +78,9 @@ chk("n3099", tot, 4)
 e = x**4 - 3*x**3 - 2*x**2 - 3*x + 1
 s = [(p, q) for p in range(-9, 10) for q in range(-9, 10) if p <= q and same(e, (x**2 + p*x + 1)*(x**2 + q*x + 1))]
 assert len(s) == 1; chk("w13", s[0][0]**2 + s[0][1]**2, 17)
-e = 2*x**4 + x**3 - 6*x**2 + x + 2
-s = [(p, q) for p in range(-9, 10) for q in range(-9, 10) if same(e, (x - 1)**2*(p*x + 1)*(x + q))]
-assert len(s) == 1; chk("w14", sum(s[0]), 4)
+e = x**5 + 2*x**4 - 9*x**3 - 9*x**2 + 2*x + 1
+s = [(p, q) for p in range(-9, 10) for q in range(-9, 10) if p > q and same(e, (x + 1)*(x**2 + p*x + 1)*(x**2 + q*x + 1))]
+assert len(s) == 1; chk("w14", s[0][0] - s[0][1], 7)
 
 # ---- 여러 문자
 e = x**2 + 2*y**2 - 3*x*y + y - 1
@@ -176,7 +176,7 @@ chk("m3185", max(sums) + min(sums), 6)
 
 # ---- 인수분해의 활용
 chk("w12", Rational(1003**3 + 27, 1003*1000 + 9), 1006)
-chk("n1082", sum(1 for A in divisors(9**4 + 4) if A not in (1, 9**4 + 4)), 6)
+chk("n1082", sum(1 for A in divisors(17**4 + 4) if A not in (1, 17**4 + 4)), 10)
 chk("w6", Rational(2025**3 + 1, 2025**2 - 2024), 2026)
 chk("n3017", Rational(901*901 + 8, 963), 843)
 X_, Y_ = sqrt(3) + 1, sqrt(3) - 1
