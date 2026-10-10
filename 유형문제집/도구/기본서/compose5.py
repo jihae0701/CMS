@@ -6,10 +6,10 @@ python compose5.py <초안.hwpx> <번호 본보기(2단원 원본).hwpx> <출력
 - 유형: 01 이차함수의 성질 / 02 x절편과 이차방정식의 근 / 03 이차함수와 일차함수의 그래프의 교점 / 04 곡선과 직선의 위치 관계
   / 05 방정식의 해와 두 함수의 그래프의 교점 / 06 접선의 방정식 / 07 근의 위치 / 08 이차함수의 활용
 - 겹치는 문항 2개(07의 '적어도 한 근', 08의 α³+β³=40)를 빼고 판별식으로 위치 관계를 판단하는 기본 문항을 02, 03에 1개씩 넣는다.
-- 08 유형은 대표문제가 없어 첫 문항(S₁−S₂=20)을 대표문제로 삼는다. 전체 40문항.
+- 08 유형은 대표문제가 없어 첫 문항(S₁−S₂=20)을 대표문제로 삼고, 그 뒤에 유형서에서 옮긴 m3243을 유제로 둔다. 전체 41문항.
 - 유형마다 새 쪽에서 시작, 문항 번호는 4단원(122~160)에 이어 161부터.
 """
-import sys, re
+import sys, re, os, struct
 sys.path.insert(0, __import__("os").path.dirname(__import__("os").path.abspath(__file__)))
 from xml.sax.saxutils import escape, unescape
 import hwpxio as io, hwpxmerge as hm, fixes, numbering as nb, shortans, addprob, fixF
@@ -119,6 +119,57 @@ def num_of(sig):
 for k, item in fixF.NEW_AFTER:
     P = addprob.insert(P, num_of(SIG[k]), num_of(SIG[fixF.NEW_TEMPLATE]), [item], blanks=16)
     P, nprob, _ = nb.renumber(P, tmpl, start=START)
+
+
+# 7-2. 유형서에서 옮겨 온 그림 문항: 문제 문단 뒤에 그림 문단(182번 그림 문단처럼 가운데 정렬)을 둔다
+PIC_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "그림")
+pic_tpl = re.search(r"<hp:pic .*?</hp:pic>", next(p for p in P if "<hp:pic " in p and 'treatAsChar="1"' in p
+                                                     and "<hp:container" not in p), re.S).group(0)
+fig_p = next(p for p in P if p.startswith("<hp:p ") and "<hp:container" in p and not nb.num_text(p)
+             and not io.text(re.sub(r"<hp:container .*?</hp:container>", "", p, flags=re.S)).strip())
+fig_open = re.match(r"<hp:p [^>]*>", fig_p).group(0)
+fig_cp = re.search(r'<hp:run charPrIDRef="(\d+)">', fig_p).group(1)
+new_imgs = []
+
+
+def pic_para(fn, width):
+    img = "image%d" % (101 + len(new_imgs))
+    new_imgs.append((fn, img))
+    pw, ph = struct.unpack(">II", open(os.path.join(PIC_DIR, fn), "rb").read(24)[16:24])
+    W, H = int(width), round(int(width) * ph / pw)
+    x = re.sub(r'binaryItemIDRef="[^"]+"', 'binaryItemIDRef="%s"' % img, pic_tpl)
+    x = re.sub(r'\bid="\d+"', 'id="%d"' % (1990500000 + len(new_imgs)), x, count=1)
+    x = re.sub(r'instid="\d+"', 'instid="%d"' % (990500000 + len(new_imgs)), x, count=1)
+    x = re.sub(r'<hp:orgSz [^>]*/>', '<hp:orgSz width="%d" height="%d"/>' % (W, H), x)
+    x = re.sub(r'<hp:curSz [^>]*/>', '<hp:curSz width="%d" height="%d"/>' % (W, H), x)
+    x = re.sub(r'centerX="\d+" centerY="\d+"', 'centerX="%d" centerY="%d"' % (W // 2, H // 2), x)
+    x = re.sub(r'<hc:scaMatrix [^>]*/>', '<hc:scaMatrix e1="1" e2="0" e3="0" e4="0" e5="1" e6="0"/>', x)
+    x = re.sub(r'<hp:imgRect>.*?</hp:imgRect>', '<hp:imgRect><hc:pt0 x="0" y="0"/><hc:pt1 x="%d" y="0"/>'
+               '<hc:pt2 x="%d" y="%d"/><hc:pt3 x="0" y="%d"/></hp:imgRect>' % (W, W, H, H), x, flags=re.S)
+    x = re.sub(r'<hp:imgClip [^>]*/>', '<hp:imgClip left="0" right="%d" top="0" bottom="%d"/>' % (W, H), x)
+    x = re.sub(r'<hp:imgDim [^>]*/>', '<hp:imgDim dimwidth="%d" dimheight="%d"/>' % (W, H), x)
+    x = re.sub(r'<hp:sz width="\d+" widthRelTo="ABSOLUTE" height="\d+"',
+               '<hp:sz width="%d" widthRelTo="ABSOLUTE" height="%d"' % (W, H), x)
+    x = re.sub(r'<hp:outMargin [^>]*/>', '<hp:outMargin left="0" right="0" top="0" bottom="0"/>', x)
+    x = re.sub(r"<hp:shapeComment>.*?</hp:shapeComment>", "<hp:shapeComment>그림입니다.</hp:shapeComment>", x, flags=re.S)
+    return '%s<hp:run charPrIDRef="%s">%s<hp:t/></hp:run></hp:p>' % (fig_open, fig_cp, x)
+
+
+for k, item, fn, width in fixF.NEW_PIC_AFTER:
+    after = num_of(SIG[k])
+    new = addprob.build(P, num_of(SIG[fixF.NEW_TEMPLATE]), [item], blanks=14)
+    new = new[:2] + [pic_para(fn, width)] + new[2:]
+    _, aj = addprob._block(P, after)
+    P = P[:aj] + new + P[aj:]
+    P, nprob, _ = nb.renumber(P, tmpl, start=START)
+hpf = f["Contents/content.hpf"].decode("utf-8")
+for fn, img in new_imgs:
+    name = "BinData/%s.png" % img
+    f[name] = open(os.path.join(PIC_DIR, fn), "rb").read()
+    o.append(name)
+    k = hpf.index("/>", hpf.rindex('<opf:item id="image')) + 2
+    hpf = hpf[:k] + '<opf:item id="%s" href="%s" media-type="image/png" isEmbeded="1"/>' % (img, name) + hpf[k:]
+f["Contents/content.hpf"] = hpf.encode("utf-8")
 
 
 # 8. 단답형 바꾸기 (보기 ㄱㄴㄷ·범위 답 문항은 5지선다로 남김)
