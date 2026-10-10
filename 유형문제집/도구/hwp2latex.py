@@ -7,6 +7,7 @@ WORDS = {
     "in": r"\in ", "subset": r"\subset ", "nsubset": r"\not\subset ", "cap": r"\cap ", "cup": r"\cup ",
     "circ": r"\circ ", "rarrow": r"\rightarrow ", "alpha": r"\alpha ", "beta": r"\beta ", "prime": "'",
     "sim": r"\sim ", "LEFT": "left", "RIGHT": "right", "DEG": r"^\circ ",
+    "therefore": r"\therefore ", "THEREFORE": r"\therefore ",
 }
 
 def _group(s, i):
@@ -84,6 +85,8 @@ def convert(script):
     s = re.sub(r"\brm\s+([A-Za-z]+)", r"\\mathrm{\1}", s)
     s = re.sub(r"\bit\b", "", s)
     s = re.sub(r"\bbar\s*\{", r"\\overline{", s)
+    s = re.sub(r"\boverline\s*\{", r"\\overline{", s)
+    s = s.replace("+-", r"\pm ").replace("-+", r"\mp ")
     s = re.sub(r"\bsqrt\s*\{", r"\\sqrt{", s)
     s = re.sub(r"\bsqrt\s+([A-Za-z0-9]+)", r"\\sqrt{\1}", s)
     # over
