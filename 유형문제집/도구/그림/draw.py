@@ -59,9 +59,10 @@ def cube():
             " ".join("%.1f,%.1f" % p for p in pts), fill, STROKE)
     svg = '<svg width="%d" height="%d" style="position:absolute;left:0;top:0">%s%s%s</svg>' % (
         w, h, poly([F, L, K, R], "#ebf6fd"), poly([F, L, L2, F2], "#d6ecfb"), poly([F, R, R2, F2], "#c1e1f7"))   # 세 면: 연한 하늘색, 명도만 다르게(위 밝게, 오른쪽 어둡게)
-    labels = [(ox, oy - d, r"3x^{3}-x^{2}", 25, "cc"),
-              (ox - W / 2, oy - d / 2 + H / 2, r"-x^{3}+x", 25, "cc"),
-              (ox + W / 2, oy - d / 2 + H / 2, r"x^{3}+1", 25, "cc")]
+    fs = int(W * 0.17)                  # 글씨를 면에 꽉 차게(사용자 요청), 세 면 같은 크기
+    labels = [(ox, oy - d, r"3x^{3}-x^{2}", fs, "cc"),
+              (ox - W / 2, oy - d / 2 + H / 2, r"-x^{3}+x", fs, "cc"),
+              (ox + W / 2, oy - d / 2 + H / 2, r"x^{3}+1", fs, "cc")]
     return page(svg, labels, w, h), w, h
 
 
