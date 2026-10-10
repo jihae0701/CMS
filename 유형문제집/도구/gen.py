@@ -107,7 +107,7 @@ def _norm(o):
     if isinstance(o, list):
         return [_norm(v) for v in o]
     if isinstance(o, dict):
-        return {k: (v if k in ("pic", "syn") else _norm(v)) for k, v in o.items()}
+        return {k: (v if k in ("pic", "syn", "img", "w") else _norm(v)) for k, v in o.items()}
     return o
 
 
@@ -448,6 +448,8 @@ def q_items(items, banner=None):
             out.append(obj_para(syn_xml(it["syn"])))
         elif "pic" in it:
             out.append(renum(PICPARA[it["pic"]]))
+        elif "img" in it:
+            out.append(renum(new_pic_para(it["img"], it.get("w", 14000))))
         elif "ch" in it:
             out.append(choices_paras(it["ch"]))
         else:
@@ -527,6 +529,48 @@ def build():
 
 # ---------------------------------------------------------------- 다시 그린 그림 / 문단 번호 시작
 PIC_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "그림")
+NEWPICS = {}      # 새 그림 파일 이름 -> imageNN (폼에 없는 그림을 문항에 넣을 때)
+
+
+def new_pic_para(fn, width):
+    """그림/fn(PNG)을 새 그림으로 넣는 문단. 모양은 폼의 image86 문단(글자처럼 취급, 위아래 배치)을 따른다.
+    width: 그림 가로 크기(HWPUNIT), 세로는 그림 비율대로."""
+    if fn not in NEWPICS:
+        NEWPICS[fn] = "image%d" % (201 + len(NEWPICS))
+    img = NEWPICS[fn]
+    pw, ph = _png_size(os.path.join(PIC_DIR, fn))
+    W, H = int(width), round(int(width) * ph / pw)
+    x = PICPARA["image86"].replace('binaryItemIDRef="image86"', 'binaryItemIDRef="%s"' % img)
+    x = re.sub(r"<hp:t>\s*</hp:t>(<hp:pic )", r"\1", x, count=1)            # 앞의 빈칸 지움
+    x = re.sub(r'paraPrIDRef="\d+"', 'paraPrIDRef="52"', x, count=1)          # 가운데 정렬 문단
+    x = re.sub(r'<hp:orgSz [^>]*/>', '<hp:orgSz width="%d" height="%d"/>' % (W, H), x)
+    x = re.sub(r'<hp:curSz [^>]*/>', '<hp:curSz width="%d" height="%d"/>' % (W, H), x)
+    x = re.sub(r'centerX="\d+" centerY="\d+"', 'centerX="%d" centerY="%d"' % (W // 2, H // 2), x)
+    x = re.sub(r'<hc:scaMatrix [^>]*/>', '<hc:scaMatrix e1="1" e2="0" e3="0" e4="0" e5="1" e6="0"/>', x)
+    x = re.sub(r'<hp:imgRect>.*?</hp:imgRect>',
+               '<hp:imgRect><hc:pt0 x="0" y="0"/><hc:pt1 x="%d" y="0"/><hc:pt2 x="%d" y="%d"/>'
+               '<hc:pt3 x="0" y="%d"/></hp:imgRect>' % (W, W, H, H), x, flags=re.S)
+    x = re.sub(r'<hp:imgClip [^>]*/>', '<hp:imgClip left="0" right="%d" top="0" bottom="%d"/>' % (W, H), x)
+    x = re.sub(r'<hp:imgDim [^>]*/>', '<hp:imgDim dimwidth="%d" dimheight="%d"/>' % (W, H), x)
+    x = re.sub(r'<hp:sz width="\d+" widthRelTo="ABSOLUTE" height="\d+"',
+               '<hp:sz width="%d" widthRelTo="ABSOLUTE" height="%d"' % (W, H), x)
+    x = re.sub(r"<hp:shapeComment>.*?</hp:shapeComment>", "<hp:shapeComment>그림입니다.</hp:shapeComment>", x, flags=re.S)
+    return x
+
+
+def add_new_pics(files, order):
+    """NEWPICS의 그림 파일을 BinData와 content.hpf에 더한다."""
+    hpf = files["Contents/content.hpf"].decode("utf-8")
+    for fn, img in NEWPICS.items():
+        name = "BinData/%s.png" % img
+        files[name] = open(os.path.join(PIC_DIR, fn), "rb").read()
+        if name not in order:
+            order.append(name)
+        item = '<opf:item id="%s" href="%s" media-type="image/png" isEmbeded="1"/>' % (img, name)
+        k = hpf.rindex('<opf:item id="image')
+        k = hpf.index("/>", k) + 2
+        hpf = hpf[:k] + item + hpf[k:]
+    files["Contents/content.hpf"] = hpf.encode("utf-8")
 
 
 def _png_size(path):
@@ -598,6 +642,7 @@ def main():
     files = dict(FILES)
     order = list(ORDER)
     sec = swap_pics(sec, files, order)
+    add_new_pics(files, order)
     used = set(re.findall(r'binaryItemIDRef="(image\d+)"', sec))
     number_start(files, getattr(U, "START", 1))
     files["Contents/section0.xml"] = sec.encode("utf-8")
