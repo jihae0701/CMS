@@ -365,6 +365,23 @@ for pv in range(1, 10):
         res.append(f.subs(x, 17) + g.subs(x, 17))
 chk("n1490", res[0] if len(res) == 1 else res, 60)
 
+# ---- 사용자 요청 추가
+s = solve([disc(a*x**2 + x + b - (5*x + 2)), disc(a*x**2 + x + b - (-x + 5))], [a, b], dict=True)
+s = [d for d in s if d[a] != 0]
+chk("n1406", s[0][a] + s[0][b] if len(s) == 1 else s, 7)
+pieces = [(x**2 - 3*x - 4, lambda r: r <= -1 or r >= 4), (-x**2 + 3*x + 4, lambda r: -1 < r < 4)]
+ms = [Rational(i, 8) for i in range(-80, 81) if count_pieces(pieces, Rational(i, 8)*x + 3) == 4]
+assert count_pieces(pieces, Rational(-3, 4)*x + 3) == 3 and count_pieces(pieces, 3*x + 3) == 3
+chk("w14", (max(ms) + Rational(1, 8)) - (min(ms) - Rational(1, 8)), Rational(15, 4))
+ok = []
+for kv in range(1, 40):
+    rr = real_roots(Rational(1, 2)*x**2 - (2*x + kv))
+    if len(rr) == 2 and rr[0] < 0 < rr[1]:
+        S1 = Rational(1, 2)*rr[1]*Rational(1, 2)*rr[1]**2; S2 = Rational(1, 2)*(-rr[0])*Rational(1, 2)*rr[0]**2
+        if simplify(S1 - S2 - 52) == 0:
+            ok.append(kv)
+chk("n2928", ok[0] if len(ok) == 1 else ok, 6)
+
 if __name__ == "__main__":
     bad = [r for r in R if not r[1]]
     print(len(R), "검산", "불일치", bad)
