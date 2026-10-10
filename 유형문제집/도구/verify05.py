@@ -453,6 +453,38 @@ for kv in range(-30, 31):
         ok.append(kv)
 chk("w17", len(ok), 2)
 
+# ---- 사용자 요청 추가(내신 중상 4문항)
+lab = []
+for av in (1, 2, 3, Rational(5, 2)):
+    f = 2*x**2 - 4*av*x
+    A_ = (av, f.subs(x, av))
+    cv = solve(-(av - 2*av)*(av - c) - A_[1], c)[0]
+    g = -(x - 2*av)*(x - cv); bv = (cv - 2*av)/2
+    lab.append((simplify(g.subs(x, 2*av + bv) - bv**2) == 0,
+                f.subs(x, av) - g.subs(x, 2*av) < g.subs(x, 2*av + bv) + f.subs(x, 2*av)))
+    if set(real_roots(f - g)) == {2, 4}:
+        assert bv == 1
+assert all(p_ and q_ for p_, q_ in lab)
+chkmc("n1363", True, "⑤")
+f = (x + 2)*(x - 4); g = -(x - 1)*(x - 4)
+ks = [kv for kv in range(-20, 21) if not real_roots(2*f + kv*g - (kv*x - 4))]
+chk("n1090", min(ks), 3)
+f = x**2 - 2*x; g = x**2 - 6*x + 8
+h_pieces = [(f, lambda r: r < 2), (g, lambda r: r >= 2)]
+assert all(simplify((f if 2 - tv < 2 else g).subs(x, 2 - tv) - (f if 2 + tv < 2 else g).subs(x, 2 + tv)) == 0 for tv in range(-5, 6))
+assert count_pieces(h_pieces, 0) == 3
+ms = []
+for e, cnd in h_pieces:
+    for mv in solve(disc(e - (m*x - 2*m - 4)), m):
+        tx = real_roots(e - (mv*x - 2*mv - 4))[0]
+        if cnd(tx):
+            ms.append(mv)
+chk("n2955", prod(ms), -4)
+par = -4*x**2 + 8*x
+assert par.subs(x, 0) == 0 and par.subs(x, 2) == 0 and par.subs(x, 1) == 4
+ms = [mv for mv in solve(disc(par - (m*x + 9)), m) if mv < 0]
+chk("n3040", solve(ms[0]*x + 9, x)[0], Rational(9, 4))
+
 if __name__ == "__main__":
     bad = [r for r in R if not r[1]]
     print(len(R), "검산", "불일치", bad)
