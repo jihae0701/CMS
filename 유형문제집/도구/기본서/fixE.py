@@ -118,14 +118,7 @@ FIX = {
 }
 
 # 새 유형 '이차방정식의 근과 계수의 관계'(02 뒤): 새 대표문제 + 단원 마무리에서 옮겨 오는 문항(문제 글귀)
-NEW_VIETA_REP = [
-    {"q": "이차방정식 $x^{2}-4x+2=0$의 두 근을 $alpha$, $beta$라 할 때, $( alpha- beta)^{2}+{1} over {alpha}+{1} over {beta}$의 값을 구하시오.",
-     "ans": "󰂼 $10$",
-     "sol": ["근과 계수의 관계에 의하여 $alpha+ beta=4$, $alpha beta=2$",
-             "$( alpha- beta)^{2}=( alpha+ beta)^{2}-4 alpha beta=16-8=8$",
-             "${1} over {alpha}+{1} over {beta}={alpha+ beta} over {alpha beta}={4} over {2}=2$",
-             "따라서 구하는 값은 $8+2=10$"]},
-]
+NEW_VIETA_REP = []          # 새 대표문제(x²-4x+2=0, 답 10)는 사용자 요청으로 뺌
 MOVE_VIETA = ["x^2 -3x +4 =0", "x ^{2} -4x-2=0", "잘못 알고", "두 근이 모두 자연수"]
 
 # 5지선다로 남길 문항(문제 글귀): 보기 ㄱㄴㄷ

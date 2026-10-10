@@ -3,7 +3,7 @@
 
 python compose4.py <초안.hwpx> <번호 본보기(2단원 원본).hwpx> <출력.hwpx>
 - 수식 안의 변환 흔적을 지우고, 검수 수정(fixE.FIX)을 초안 문항 순서(k)대로 적용한다.
-- 유형: 01 i의 거듭제곱 / 02 켤레복소수 / 03 근과 계수의 관계(새 유형, 단원 마무리 4문항을 옮김) / 04 f(ax+b)=0 / 05 작성\n  / 06 두 일차식의 곱 / 07 켤레근. 그 밖의 빠진 유형은 유형서에서 다룬다. 단원 마무리는 17문항(전체 40문항).
+- 유형: 01 i의 거듭제곱 / 02 켤레복소수 / 03 근과 계수의 관계(새 유형, 단원 마무리 4문항을 옮김) / 04 f(ax+b)=0 / 05 작성\n  / 06 두 일차식의 곱 / 07 켤레근. 그 밖의 빠진 유형은 유형서에서 다룬다. 단원 마무리는 17문항(전체 39문항).
 - 유형마다 새 쪽에서 시작, 문항 번호는 3단원(082~121)에 이어 122부터.
 """
 import sys, re
@@ -113,10 +113,11 @@ P = [p for i, p in enumerate(P[:h03]) if i not in cut] + [newhead] + moved + \
     [p for i, p in enumerate(P[h03:], h03) if i not in cut]
 P, nprob, _ = nb.renumber(P, tmpl, start=START)
 # 새 대표문제: 모양은 04 유형(원래 03) 대표문제(f(x-1)=0)를 본으로, 새 제목 바로 뒤에
-rep_num = nb.num_text(P[problem_block("f(x-1)=0")[0]])
-hn = next(i for i, p in enumerate(P) if nb.is_heading(p) and "근과 계수의 관계" in io.text(p))
-P = P[:hn + 1] + addprob.build(P, rep_num, fixE.NEW_VIETA_REP, blanks=16) + P[hn + 1:]
-P, nprob, _ = nb.renumber(P, tmpl, start=START)
+if fixE.NEW_VIETA_REP:
+    rep_num = nb.num_text(P[problem_block("f(x-1)=0")[0]])
+    hn = next(i for i, p in enumerate(P) if nb.is_heading(p) and "근과 계수의 관계" in io.text(p))
+    P = P[:hn + 1] + addprob.build(P, rep_num, fixE.NEW_VIETA_REP, blanks=16) + P[hn + 1:]
+    P, nprob, _ = nb.renumber(P, tmpl, start=START)
 
 
 # 4. 단답형 바꾸기 (보기 ㄱㄴㄷ 문항은 5지선다로 남김)
