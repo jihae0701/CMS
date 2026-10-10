@@ -85,7 +85,7 @@ def resize_eq(eqxml, base_default):
     return eqxml
 
 
-def _replace_in(x, old, new, doc, mode="any"):
+def _replace_in(x, old, new, doc, mode="any", base=None):
     """x 안에서 old를 new로(수식이면 크기를 다시 잼). 바뀐 개수를 돌려준다."""
     if old.startswith("$") and old.endswith("$"):
         o, n = escape(old[1:-1]), escape(new[1:-1])
@@ -107,7 +107,7 @@ def _replace_in(x, old, new, doc, mode="any"):
     if "$" in new:
         # 글 속에 수식을 넣을 때: 글자 요소를 닫고 수식을 끼운 뒤 다시 연다
         parts = re.split(r"\$(.+?)\$", new)
-        n = "".join(("</hp:t>" + doc.eq(q, doc.body_base) + "<hp:t>") if i % 2 else escape(q) for i, q in enumerate(parts))
+        n = "".join(("</hp:t>" + doc.eq(q, base or doc.body_base) + "<hp:t>") if i % 2 else escape(q) for i, q in enumerate(parts))
     else:
         n = escape(new)
     if o in x:
@@ -173,7 +173,7 @@ def apply(P, fixes, label=""):
                                 ok = 1
                                 break
                         elif en:
-                            new, c = _replace_in(en.group(0), op[1], op[2], doc, mode)
+                            new, c = _replace_in(en.group(0), op[1], op[2], doc, mode, doc.base)
                             if c:
                                 P[i] = p.replace(en.group(0), new, 1)
                                 ok = 1
