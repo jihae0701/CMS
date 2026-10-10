@@ -118,8 +118,19 @@ FIX = {
 }
 
 # 새 유형 '이차방정식의 근과 계수의 관계'(02 뒤): 새 대표문제 + 단원 마무리에서 옮겨 오는 문항(문제 글귀)
-NEW_VIETA_REP = []          # 새 대표문제(x²-4x+2=0, 답 10)는 사용자 요청으로 뺌
-MOVE_VIETA = ["x^2 -3x +4 =0", "x ^{2} -4x-2=0", "잘못 알고", "두 근이 모두 자연수"]
+# 대표문제: 단원 마무리의 √(β/α)-√(α/β) 문항을 대표문제 상자로 옮겨 씀(해설 정리)
+# (처음 새로 넣었던 대표문제 x²-4x+2=0은 사용자 요청으로 뺌)
+NEW_VIETA_REP = [
+    {"q": "이차방정식 $x^{2}-4x-2=0$의 두 근을 $alpha$, $beta$라 할 때, $left ( sqrt {{beta} over {alpha}}- sqrt {{alpha} over {beta}} right )^{2}$의 값을 구하시오.",
+     "ans": "󰂼 $-8$",
+     "sol": ["근과 계수의 관계에 의하여 $alpha+ beta=4$, $alpha beta=-2$",
+             "$alpha beta<0$이므로 ${beta} over {alpha}<0$, ${alpha} over {beta}<0$이고",
+             "$sqrt {{beta} over {alpha}} sqrt {{alpha} over {beta}}=- sqrt {{beta} over {alpha} times {alpha} over {beta}}=-1$",
+             "$left ( sqrt {{beta} over {alpha}}- sqrt {{alpha} over {beta}} right )^{2}={beta} over {alpha}+{alpha} over {beta}-2 sqrt {{beta} over {alpha}} sqrt {{alpha} over {beta}}={beta} over {alpha}+{alpha} over {beta}+2$",
+             "$={alpha^{2}+ beta^{2}} over {alpha beta}+2={( alpha+ beta)^{2}-2 alpha beta} over {alpha beta}+2={16+4} over {-2}+2=-8$"]},
+]
+MOVE_VIETA = ["x^2 -3x +4 =0", "잘못 알고", "두 근이 모두 자연수"]
+DROP_VIETA = ["x ^{2} -4x-2=0"]      # 대표문제로 새로 쓰므로 단원 마무리의 원래 문항은 뺌
 
 # 5지선다로 남길 문항(문제 글귀): 보기 ㄱㄴㄷ
 KEEP_MC = ["a_n + b_n i", "z-2z^2", "옳은 설명만을"]
