@@ -27,7 +27,7 @@ def axes(P, xr, yr):
     (x0, y0), (x1, _) = P(xr[0], 0), P(xr[1], 0)
     (ox, yb), (_, yt) = P(0, yr[0]), P(0, yr[1])
     arrow = '<marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">' \
-            '<path d="M0,0 L10,5 L0,10 z" fill="#000"/></marker>'
+            '<path d="M10,5 L0.6,0.3 L2.2,5 L0.6,9.7 z" fill="#000"/></marker>'   # 뒤가 오목한 화살표(사용자 예시)
     return ('<defs>%s</defs><line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="#000" stroke-width="%s" marker-end="url(#ar)"/>'
             '<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="#000" stroke-width="%s" marker-end="url(#ar)"/>'
             % (arrow, x0, y0, x1, y0, AX, ox, yb, ox, yt, AX))
@@ -120,9 +120,9 @@ class Frame:
     def axes(self):
         self.svg.append(axes(self.P, self.xr, self.yr))
         X, Y = self.P(self.xr[1], 0)
-        self.labels.append((X - 2, Y + 7, "x", 22, "rt"))
+        self.labels.append((X - 0.3, Y + 7, "x", 22, "rt"))
         X, Y = self.P(0, self.yr[1])
-        self.labels.append((X - 8, Y + 2, "y", 22, "rt"))        # y는 화살표 왼쪽
+        self.labels.append((X - 10, Y + 3.7, "y", 22, "rc"))     # y는 화살표 왼쪽, 글자 윗끝을 화살표 끝 높이에(사용자 예시)
 
     def curve(self, f, x0, x1):
         self.svg.append(curve(f, x0, x1, self.P))
