@@ -271,3 +271,29 @@ for nv in range(1, 21):
     if re(expand(w**4)) < 0 and im(expand(w**4)) == 0 and im(expand(I*w**2)) == 0 and re(expand(I*w**2)) > 0:
         good.append(nv)
 chk("n1344", sum(good), 55)
+
+# ---- 기본서 유형 05·06·07 관련 보충
+for av in [Rational(j, 3) for j in range(-30, 31)]:
+    rr = solve(x**2 - av*x + av + 1, x)
+    if len(rr) == 2:
+        fx = expand(x**2 - av*x + av + 1 + 2*x + 1)
+        assert all(simplify(fx.subs(x, r) - 2*r - 1) == 0 for r in rr)
+        assert fx.subs(x, 2) + av == 10
+chk("n1339", 10, 10)
+ks = []
+for kv in solve((4*k + 2)**2 - 4*81, k):
+    fl = factor_list(x**2 - x*y - 2*y**2 + x + kv*y - 2)[1]
+    if sum(mm for _, mm in fl) == 2:
+        ks.append(kv)
+chk("w5", sum(ks), -1)
+ps = []
+for pv in solve(p**2 - 3*p - 7, p) if False else solve(symbols('p')**2 - 3*symbols('p') - 7, symbols('p')):
+    for wv in solve(x**2 - pv*x + 3*pv + 7, x):
+        if im(wv) != 0 and simplify(im(expand(wv**3))) == 0:
+            ps.append(pv); break
+chk("n2926", simplify(sum(ps)), 3)
+av_ = Rational(1, 2); cv = 4*av_
+f = lambda t_: av_*(t_**2 + 4)
+assert f(-2*I) == 0
+rr = solve(f(av_*x) - (cv*x - 4), x)
+chk("o56", sum(set(rr)), 16)
