@@ -79,6 +79,10 @@ def from_sample(t):
 # 글상자 안쪽 여백: 왼쪽·오른쪽 425, 아래 567
 BOGI = from_sample(SMP_TBL[0])
 BOX = from_sample(SMP_TBL[1])
+# 두 줄 식(구간별로 다른 함수식): 서식샘플의 셋째 표. 왼쪽 칸 'f(x)= {'(두 줄을 묶는 중괄호), 가운데 칸 식, 오른쪽 칸 범위
+# 칸 안 문단은 가운데 정렬(서식샘플 21 -> 폼 52), 글자는 본문 글자(17 -> 0)
+PW = from_sample(SMP_TBL[2].replace('paraPrIDRef="21" styleIDRef="0"', 'paraPrIDRef="52" styleIDRef="0"')
+                 .replace('charPrIDRef="17"', 'charPrIDRef="0"'))
 
 # ---------------------------------------------------------------- 단원 모듈
 spec = importlib.util.spec_from_file_location("unit", UNITFILE)
@@ -107,7 +111,7 @@ def _norm(o):
     if isinstance(o, list):
         return [_norm(v) for v in o]
     if isinstance(o, dict):
-        return {k: (v if k in ("pic", "syn", "img", "w") else _norm(v)) for k, v in o.items()}
+        return {k: (v if k in ("pic", "syn", "img", "w", "pw") else _norm(v)) for k, v in o.items()}
     return o
 
 
@@ -317,6 +321,33 @@ def fill_rect(tbl, lines):
     return tbl[:r0] + rect + tbl[r1:]
 
 
+def _line_w(text):
+    ws = _words(text)
+    return int(sum(w for w, _ in ws) + 475 * max(0, len(ws) - 1))
+
+
+def pw_xml(lhs, rows):
+    """두 줄 식: lhs는 'h(x)'처럼 함수 이름, rows는 [[식, 범위], [식, 범위]] ($수식$ 섞인 글)"""
+    t = PW.replace("f(x)= pile{", "%s= pile{" % lhs, 1)
+    pad = 1020 + 400
+    w1 = max(_line_w(r[0]) for r in rows) + pad
+    w3 = max(_line_w(r[1]) for r in rows) + pad
+    for r, (ex, cond) in enumerate(rows):
+        for c, txt in ((1, ex), (3, cond)):
+            t = replace_cell(t, r, c, '<hp:p id="0" paraPrIDRef="52" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">'
+                             '<hp:run charPrIDRef="0">%s</hp:run></hp:p>' % inline(txt))
+    def set_w(m):
+        tc = m.group(0)
+        c = int(re.search(r'colAddr="(\d+)"', tc).group(1))
+        if c in (1, 3):
+            tc = re.sub(r'<hp:cellSz width="\d+"', '<hp:cellSz width="%d"' % (w1 if c == 1 else w3), tc)
+        return tc
+    t = re.sub(r"<hp:tc .*?</hp:tc>", set_w, t, flags=re.S)
+    w0 = int(re.search(r'<hp:cellSz width="(\d+)"', t).group(1))
+    t = re.sub(r'(<hp:tbl [^>]*>\s*<hp:sz width=")\d+"', lambda m: m.group(1) + '%d"' % (w0 + w1 + 566 + w3), t, count=1)
+    return renum(t)
+
+
 def box_xml(lines):
     return renum(fill_rect(BOX, lines))
 
@@ -446,6 +477,8 @@ def q_items(items, banner=None):
             out.append(obj_para(bogi_xml(it["bogi"]), pp="3"))
         elif "syn" in it:
             out.append(obj_para(syn_xml(it["syn"])))
+        elif "pw" in it:
+            out.append(obj_para(pw_xml(*it["pw"]), pp="3"))
         elif "pic" in it:
             out.append(renum(PICPARA[it["pic"]]))
         elif "img" in it:

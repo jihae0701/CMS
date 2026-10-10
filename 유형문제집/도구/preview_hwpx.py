@@ -49,7 +49,12 @@ def inline(el):
                         out.append(html.escape(cc.tail))
             elif t == "equation":
                 sc = c.find(HP + "script").text or ""
-                out.append('<span class="m" data-t="%s"></span>' % html.escape(convert(sc)))
+                m = re.match(r"\s*(.*?)=\s*pile\{.*\}\s*right\{\s*$", sc, re.S)
+                if m:   # 두 줄 식 왼쪽 칸: 'h(x)= pile{ # # } right{' -> h(x)= 와 두 줄 높이의 왼쪽 중괄호
+                    lx = convert(m.group(1)) + r"=\left\{\rule{0pt}{2.2em}\right."
+                else:
+                    lx = convert(sc)
+                out.append('<span class="m" data-t="%s"></span>' % html.escape(lx))
             elif t == "tbl":
                 out.append(table(c))
             elif t == "pic":
@@ -78,6 +83,7 @@ def table(tb):
         return '<div class="banner">%s</div>' % " ".join(t for t in texts if t)
     rows = []
     syn = tb.get("borderFillIDRef") == "40"
+    pw = any("pile{" in (e.text or "") for e in tb.iter(HP + "script"))
     for tr in tb.findall(HP + "tr"):
         cells = []
         for tc in tr.findall(HP + "tc"):
@@ -87,9 +93,11 @@ def table(tb):
             if syn:
                 st = {"42": "border-right:1px solid #000", "44": "border-top:1px solid #000",
                       "43": "border-left:1px solid #000;border-top:1px solid #000"}.get(bf, "")
-            cells.append('<td style="%s">%s</td>' % (st, inner))
+            sp = tc.find(HP + "cellSpan")
+            rs = ' rowspan="%s"' % sp.get("rowSpan") if sp is not None and sp.get("rowSpan") != "1" else ""
+            cells.append('<td%s style="%s">%s</td>' % (rs, st, inner))
         rows.append("<tr>%s</tr>" % "".join(cells))
-    cls = "syn" if syn else "box"
+    cls = "syn" if syn else "pw" if pw else "box"
     return '<table class="%s">%s</table>' % (cls, "".join(rows))
 
 
@@ -122,7 +130,7 @@ doc = """<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet"
 .q{margin-top:5mm} .cb{break-before:column} .pb{break-before:page}
 table.box{border:1px solid #787878;border-collapse:collapse;margin:2mm 0;width:100%%} table.box td{padding:0}
 .inbox{padding:1mm 1.5mm 2mm 1.5mm} .inbox div{padding-left:2.2em;text-indent:-2.2em}
-table.syn{border-collapse:collapse;margin:2mm auto} table.syn td{padding:.5mm 3mm;text-align:center;min-width:8mm}
+table.syn{border-collapse:collapse;margin:2mm auto} table.syn td{padding:.5mm 3mm;text-align:center;min-width:8mm} table.pw{border-collapse:collapse;margin:1mm 0 1mm 4mm;display:inline-table;vertical-align:middle} table.pw td{padding:0 1.5mm;text-align:center;white-space:nowrap}
 .bogilab{background:#8e6fb3;color:#fff;font-size:8pt;padding:0 2mm}
 .fig{text-align:center;margin:2mm 0} .s{margin-bottom:3mm;break-inside:avoid} h2{column-span:all}
 .noimg{border:1px dashed #999;padding:4mm;text-align:center;color:#999}

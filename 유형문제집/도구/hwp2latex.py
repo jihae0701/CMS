@@ -2,7 +2,7 @@
 import re
 
 WORDS = {
-    "le": r"\le ", "ge": r"\ge ", "ne": r"\ne ", "TIMES": r"\times ", "times": r"\times ",
+    "le": r"\le ", "ge": r"\ge ", "leq": r"\le ", "geq": r"\ge ", "LEQ": r"\le ", "GEQ": r"\ge ", "ne": r"\ne ", "TIMES": r"\times ", "times": r"\times ",
     "CDOTS": r"\cdots ", "cdots": r"\cdots ", "PLUSMINUS": r"\pm ", "notin": r"\notin ", "nin": r"\notin ",
     "in": r"\in ", "subset": r"\subset ", "nsubset": r"\not\subset ", "cap": r"\cap ", "cup": r"\cup ",
     "circ": r"\circ ", "rarrow": r"\rightarrow ", "alpha": r"\alpha ", "beta": r"\beta ", "prime": "'",
