@@ -82,7 +82,7 @@ def fig_rect8():
 
 def fig_curveP():
     f = lambda t: t * t - 3 * t - 4
-    F = Frame((-2.6, 5.8), (-7.2, 6.2), 40, 26, (20, 12, 150, 12))
+    F = Frame((-2.6, 5.8), (-7.2, 6.2), 40, 26, (20, 12, 185, 12))
     F.axes()
     x0, x1 = roots(f, -3, 1.5, 5.6)[0], roots(f, 1.5, 6, 5.6)[0]
     F.curve(f, x0, x1)
@@ -155,7 +155,7 @@ def fig_isos():
 
 def fig_curveAC():
     f = lambda t: t * t - 6 * t + 5
-    F = Frame((-1.4, 7.4), (-5.2, 9.8), 40, 24, (20, 12, 150, 12))
+    F = Frame((-1.4, 7.4), (-5.2, 9.8), 40, 24, (20, 12, 185, 12))
     F.axes()
     F.curve(f, roots(f, -1.5, 3, 8)[0], roots(f, 3, 8, 8)[0])
     F.svg.append('<circle cx="%.1f" cy="%.1f" r="4" fill="#000"/>' % F.P(3.6, f(3.6)))

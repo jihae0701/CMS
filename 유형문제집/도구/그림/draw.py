@@ -15,10 +15,16 @@ ZOOM = 1.0     # 그림 크기만 키우거나 줄임(글자 크기는 그대로
 CHROME = os.environ.get("CHROME", "/opt/pw-browsers/chromium-1194/chrome-linux/chrome")
 
 
+FONT = 22      # 그림 안 글씨 크기는 모두 같게(사용자 요청). 면을 채우는 큰 글씨(정육면체)만 예외
+
+
 def page(svg, labels, w, h):
-    """labels: [(x, y, tex, size, anchor)] anchor는 글자 상자의 기준(가운데 'c', 왼쪽 'l' 등)"""
+    """labels: [(x, y, tex, size, anchor)] anchor는 글자 상자의 기준(가운데 'c', 왼쪽 'l' 등)
+    글씨 크기는 FONT로 통일한다(size가 FONT보다 훨씬 큰 경우만 그대로). 분수는 \\dfrac로 써서 숫자가 작아지지 않게 한다."""
     divs = []
     for x, y, tex, size, anc in labels:
+        size = size if size > FONT + 4 else FONT
+        tex = tex.replace(r"\dfrac", r"\frac").replace(r"\frac", r"\dfrac")
         tx = {"c": "-50%", "l": "0", "r": "-100%"}[anc[0]]
         ty = {"c": "-50%", "t": "0", "b": "-100%"}[anc[1] if len(anc) > 1 else "c"]
         divs.append('<div class="lb" style="left:%.1fpx;top:%.1fpx;font-size:%dpx;transform:translate(%s,%s)" data-tex="%s"></div>'
