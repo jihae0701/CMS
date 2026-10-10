@@ -423,6 +423,42 @@ def xsum(K):
 assert simplify(xsum(1) - xsum(2) - Rational(av, 4)) == 0
 chk("n1495", g.subs(x, 7) if 7 > be else f.subs(x, 7), -4)
 
+# ---- 사용자 요청 교체
+kv = solve(disc(x**2 - k*x + 3*k - 9), k)
+assert len(kv) == 1
+f = x**2 - kv[0]*x + 3*kv[0] - 9
+Ax = real_roots(f)[0]
+chk("o30", Rational(1, 2)*Ax*f.subs(x, 0), Rational(27, 2))
+cnts = [len(real_roots(-x**2 + 5*x + 1 - L)) for L in (-x + 3, x + 5, 3*x + 4)]
+chkmc("n2908", cnts == [2, 1, 0], "⑤")
+kv = solve(disc(-x**2 + 7*x + 4 - (-x + k)), k)[0]
+Px = real_roots(-x**2 + 7*x + 4 - (-x + kv))[0]
+chk("o13", Rational(1, 2)*kv*Px, 40)
+
+# ---- 사용자 요청 추가(근의 위치)
+ok = []
+for av in range(-30, 31):
+    rr = real_roots(x**2 + (av - 3)*x + av - 5)
+    if len(rr) == 2 and rr[0] < 0 < rr[1] and abs(rr[0]) > abs(rr[1]):
+        ok.append(av)
+chk("w15", ok[0] if len(ok) == 1 else ok, 4)
+ok = []
+for i in range(-80, 120):
+    av = Rational(i, 20)
+    rr = real_roots(x**2 - 4*x + av)
+    if len(rr) == 2 and all(0 < r < 3 for r in rr):
+        ok.append(av)
+assert min(ok) > 3 and max(ok) < 4 and len(ok) == 19
+chk("w16", 3 + 4, 7)
+ok = []
+for kv in range(-30, 31):
+    if kv == 0:
+        continue
+    rr = real_roots(kv*x**2 - 2*x + kv - 4)
+    if len(rr) == 2 and rr[0] < 1 < rr[1]:
+        ok.append(kv)
+chk("w17", len(ok), 2)
+
 if __name__ == "__main__":
     bad = [r for r in R if not r[1]]
     print(len(R), "검산", "불일치", bad)
