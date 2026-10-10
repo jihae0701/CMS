@@ -176,7 +176,8 @@ chk("m3185", max(sums) + min(sums), 6)
 
 # ---- 인수분해의 활용
 chk("w12", Rational(1003**3 + 27, 1003*1000 + 9), 1006)
-chk("n1082", sum(1 for A in divisors(17**4 + 4) if A not in (1, 17**4 + 4)), 10)
+chk("n1082", sum(1 for A in divisors(9**4 + 4) if A not in (1, 9**4 + 4)), 6)
+chk("w15", (2027*2028*2029*2030 - 60) % (2027**2 + 3*2024 + 1), 20)
 chk("w6", Rational(2025**3 + 1, 2025**2 - 2024), 2026)
 chk("n3017", Rational(901*901 + 8, 963), 843)
 X_, Y_ = sqrt(3) + 1, sqrt(3) - 1
