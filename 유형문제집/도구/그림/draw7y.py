@@ -22,8 +22,25 @@ def fig_o53():
     return F.render()
 
 
+def fig_n622():
+    # 내신(1-07): 직각이등변삼각형 ABC(빗변 AB=8)와 정사각형 DEFG, A, D, B, E가 한 직선 위 (그림은 a=4.2, b=2.2)
+    from draw6 import GREEN
+    F = Frame((-0.6, 10.6), (-0.9, 5.0), 34, 34, (24, 26, 24, 16))
+    av, bv = 4.2, 2.2
+    A, B, C = (0, 0), (8, 0), (4, 4)
+    D, E = (8 - bv, 0), (10, 0)
+    Fp, G = (10, av), (8 - bv, av)
+    H = (D[0], 8 - D[0])
+    F.poly([D, B, H], GREEN)
+    for p, q in ((A, E), (A, C), (C, B), (E, Fp), (Fp, G), (G, D)):
+        F.seg(p, q)
+    F.pt(A, "A", "ct", 0, 6); F.pt(D, "D", "ct", 0, 6); F.pt(B, "B", "ct", 0, 6); F.pt(E, "E", "ct", 0, 6)
+    F.pt(C, "C", "cb", 0, -6); F.pt(Fp, "F", "lb", 4, -2); F.pt(G, "G", "rb", -4, -2); F.pt(H, "H", "lc", 6, 0)
+    return F.render()
+
+
 # (파일, 함수, 문서에 넣는 폭 HWPUNIT = unit07.py의 "w")
-FIGS = (("u7_o53.png", fig_o53, 9000),)
+FIGS = (("u7_o53.png", fig_o53, 9000), ("u7_n622.png", fig_n622, 11000))
 
 if __name__ == "__main__":
     for name, fn, wd in FIGS:

@@ -299,6 +299,29 @@ for nv in range(1, 41):
         ns.append(nv)
 chk("n863", sum(ns), 60)
 
+# ---- 추가 문항
+ks = [kv for kv in range(-30, 6) if len(set(rts((x + 1)*(x - kv)*(x**2 + 4*x - kv)))) == 4
+      and all(r.is_real for r in rts((x + 1)*(x - kv)*(x**2 + 4*x - kv)))]
+chk("n14", len(ks), 6)
+ks = []
+for kv in range(-60, 61):
+    S_ = solve([3*x**2 + kv*x*y - 3*y**2 + 3, 6*x**2 - 5*x*y + 2*y**2 - 1], [x, y], dict=True)
+    S_ = [d for d in S_ if d[x].is_real and d[y].is_real]
+    if S_ and all((d[y]/d[x]).is_integer for d in S_):
+        ks.append(kv)
+chk("n823", max(ks) + min(ks), 30)
+S_ = solve([x**2 - x*y - 2*y**2 + 2*x + 5*y - 3, x**2 + x*y + y**2 - 1], [x, y], dict=True)
+assert len(S_) == 4
+chk("n846", sum(d[x]*d[y] for d in S_), Rational(-89, 49))
+sols = [(xv, yv) for xv in range(-30, 31) for yv in range(-30, 31) if xv**2 - xv*yv + yv**2 == 3]
+chk("w10", max(xv + yv for xv, yv in sols), 3)
+S_ = [d for d in solve([4*a + 4*b - 120, a**2 - b**2 - 180], [a, b], dict=True) if d[a] > d[b] > 0]
+chk("y44", S_[0][a], 18)
+S_ = [d for d in solve([x**2 + y**2 - 208, (x + 4)*(y + 4) - x*y - 96], [x, y], dict=True) if d[x] > 0 and d[y] > 0]
+assert {abs(d[x] - d[y]) for d in S_} == {4}; chk("y45", 4, 4)
+S_ = [d for d in solve([8 - b + a - 10, a**2 - 4*b**2/2 - 7], [a, b], dict=True) if 2 < d[a] < 6 and 0 < d[b] < 4]
+chk("n622", sum(d[a] for d in S_), 8)
+
 if __name__ == "__main__":
     bad = [r for r in R if not r[1]]
     print(len(R), "검산", "불일치", bad)
