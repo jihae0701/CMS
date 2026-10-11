@@ -28,6 +28,7 @@ tmpl = next(p for p in P if nb.num_text(p) and "<hp:container" not in p)
 P, nprob, nins = nb.renumber(P, tmpl, start=START)
 P = nb.note_start(P, START)
 print("문항", nprob, "번호 새로 넣음", nins)
+P = fixes.split_wide(P)   # 해설 단 폭을 넘는 수식은 = 에서 나눔
 f["Contents/section0.xml"] = (head + "".join(P) + tail).encode("utf-8")
 for mp in ("Contents/masterpage0.xml", "Contents/masterpage1.xml"):
     x = f[mp].decode("utf-8").replace("<hp:t>3. 나머지정리</hp:t>", "<hp:t>2. 나머지정리</hp:t>")

@@ -134,6 +134,7 @@ P, nprob, nins3 = nb.renumber(P, tmpl, start=START)
 P = nb.note_start(P, START)
 print("문항", nprob)
 
+P = fixes.split_wide(P)   # 해설 단 폭을 넘는 수식은 = 에서 나눔
 f["Contents/section0.xml"] = (head + "".join(P) + tail).encode("utf-8")
 f["Contents/header.xml"] = M.hA.encode("utf-8")
 for mp in [n for n in f if n.startswith("Contents/masterpage")]:

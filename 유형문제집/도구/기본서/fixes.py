@@ -243,3 +243,58 @@ def apply(P, fixes, label=""):
     for l in bad:
         print("적용 실패:", l)
     return P, log
+
+
+def _top_eq_points(sc, ops="="):
+    """수식 스크립트에서 괄호 밖에 있는 ops 글자의 위치"""
+    out, depth = [], 0
+    for i, ch in enumerate(sc):
+        if ch in "({[":
+            depth += 1
+        elif ch in ")}]":
+            depth -= 1
+        elif ch in ops and depth == 0 and i > 0 and sc[i - 1] not in "<>!=^_+-" and sc[:i].strip():
+            out.append(i)
+    return out
+
+
+def split_wide(P, limit=28500):
+    """해설(미주) 단 폭을 넘는 수식을 괄호 밖의 '='에서 나눠, 뒤쪽을 '='로 시작하는 다음 줄로 넘긴다."""
+    from xml.sax.saxutils import unescape
+
+    def width(sc):
+        eqsize.ensure([sc])
+        return eqsize.size(sc, 1100)[0]
+
+    def fix_inner(p):
+        if p.count("<hp:p ") > 1:          # 그림·표 속 문단이 섞인 경우는 건드리지 않는다
+            return p
+        for m in re.finditer(r"<hp:equation .*?</hp:equation>", p, re.S):
+            eq = m.group(0)
+            if int(re.search(r'<hp:sz width="(\d+)"', eq).group(1)) <= limit:
+                continue
+            sc = re.search(r"<hp:script[^>]*>(.*?)</hp:script>", eq, re.S).group(1)
+            raw = unescape(sc)
+            pts = [k for k in _top_eq_points(raw) if width(raw[:k].strip()) <= limit]
+            if not pts:                    # '='로 나눌 수 없으면 괄호 밖의 +, -에서 나눈다
+                pts = [k for k in _top_eq_points(raw, "+-") if width(raw[:k].strip()) <= limit]
+            if not pts:
+                continue
+            k = pts[-1]
+            a, b = raw[:k].strip(), raw[k:].strip()
+            mk = lambda s: resize_eq(eq.replace(">" + sc + "</hp:script>", ">" + escape(s) + "</hp:script>", 1), 1100)
+            ropen = list(re.finditer(r'<hp:run charPrIDRef="\d+">', p[:m.start()]))[-1].group(0)
+            popen = re.match(r"<hp:p [^>]*>", p).group(0)
+            first = io.nolines(p[:m.start()] + mk(a) + "</hp:run></hp:p>")
+            second = io.nolines(popen + ropen + mk(b) + p[m.end():])
+            return first + fix_inner(second)
+        return p
+
+    out = []
+    for p in P:
+        if "<hp:endNote " in p:
+            en = re.search(r"<hp:endNote .*?</hp:endNote>", p, re.S)
+            body = re.sub(r"<hp:p [^>]*>.*?</hp:p>", lambda m: fix_inner(m.group(0)), en.group(0), flags=re.S)
+            p = p[:en.start()] + body + p[en.end():]
+        out.append(p)
+    return out

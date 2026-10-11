@@ -187,6 +187,7 @@ P, nprob, _ = nb.renumber(P, tmpl, start=START)
 P = nb.note_start(P, START)
 print("문항", nprob, "5지선다", sorted(keep))
 
+P = fixes.split_wide(P)   # 해설 단 폭을 넘는 수식은 = 에서 나눔
 f["Contents/section0.xml"] = (head + "".join(P) + tail).encode("utf-8")
 f["Contents/header.xml"] = M.hA.encode("utf-8")
 io.write(OUT, f, o)
