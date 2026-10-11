@@ -8,7 +8,7 @@ WORDS = {
     "circ": r"\circ ", "rarrow": r"\rightarrow ", "alpha": r"\alpha ", "beta": r"\beta ", "prime": "'",
     "sim": r"\sim ", "LEFT": "left", "RIGHT": "right", "DEG": r"^\circ ",
     "therefore": r"\therefore ", "THEREFORE": r"\therefore ",
-    "gamma": r"\gamma ", "delta": r"\delta ", "omega": r"\omega ", "theta": r"\theta ",
+    "angle": r"\angle ", "gamma": r"\gamma ", "delta": r"\delta ", "omega": r"\omega ", "theta": r"\theta ",
     "LRARROW": r"\Leftrightarrow ", "lrarrow": r"\leftrightarrow ", "RARROW": r"\Rightarrow ",
 }
 
