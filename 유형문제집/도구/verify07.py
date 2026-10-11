@@ -202,6 +202,8 @@ chk("n840", s[a] + s[b] + 6*kv, 7)
 # ---- 부정방정식
 cnt = [(xv, yv) for xv in range(-50, 51) for yv in range(-50, 51) if xv*yv - 2*xv - 3*yv == 1]
 chk("w5", len(cnt), 4)
+pairs = [(xv, yv) for xv in range(1, 100) for yv in range(1, 100) if xv**2 - yv**2 == 24]
+chk("w9", sum(xv*yv for xv, yv in pairs), 40)
 G_ = x**2 + 2*x*y + 2*y**2 - 4*y + 4
 S_ = solve([diff(G_, x), diff(G_, y)], [x, y], dict=True)[0]
 assert G_.subs(S_) == 0 and hessian(G_, (x, y)).det() > 0           # 최솟값 0인 점이 유일한 실수 해
