@@ -322,6 +322,8 @@ assert {abs(d[x] - d[y]) for d in S_} == {4}; chk("y45", 4, 4)
 S_ = [d for d in solve([8 - b + a - 10, a**2 - 4*b**2/2 - 7], [a, b], dict=True) if 2 < d[a] < 6 and 0 < d[b] < 4]
 chk("n622", sum(d[a] for d in S_), 8)
 
+chk("w11", val(sum({r for r in rts(x**4 - 5*x**3 + 8*x**2 - 5*x + 1) if r.is_real})), 4)
+
 if __name__ == "__main__":
     bad = [r for r in R if not r[1]]
     print(len(R), "검산", "불일치", bad)
