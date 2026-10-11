@@ -34,4 +34,6 @@ for mp in ("Contents/masterpage0.xml", "Contents/masterpage1.xml"):
     x = f[mp].decode("utf-8").replace("<hp:t>3. 나머지정리</hp:t>", "<hp:t>2. 나머지정리</hp:t>")
     f[mp] = x.encode("utf-8")
 io.write(OUT, f, o)
+import applyform   # 기본서 양식(기본서/원본/기본서_form.hwpx)의 바탕쪽·쪽 여백을 입힌다
+applyform.apply(applyform.FORM, OUT, OUT, *applyform.unit_of(OUT))
 print("문단", len(P), "->", OUT)

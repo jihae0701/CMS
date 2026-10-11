@@ -93,4 +93,6 @@ for mp in ("Contents/masterpage0.xml", "Contents/masterpage1.xml"):
     x = x.replace("<hp:t>다항식의 연산</hp:t>", "<hp:t>1. " + TITLE + "</hp:t>")
     fa[mp] = x.encode("utf-8")
 io.write(OUT, fa, oa)
+import applyform   # 기본서 양식(기본서/원본/기본서_form.hwpx)의 바탕쪽·쪽 여백을 입힌다
+applyform.apply(applyform.FORM, OUT, OUT, *applyform.unit_of(OUT))
 print("문단", len(paras), "->", OUT)

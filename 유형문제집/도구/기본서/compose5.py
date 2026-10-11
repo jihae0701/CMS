@@ -191,4 +191,6 @@ P = fixes.split_wide(P)   # 해설 단 폭을 넘는 수식은 = 에서 나눔
 f["Contents/section0.xml"] = (head + "".join(P) + tail).encode("utf-8")
 f["Contents/header.xml"] = M.hA.encode("utf-8")
 io.write(OUT, f, o)
+import applyform   # 기본서 양식(기본서/원본/기본서_form.hwpx)의 바탕쪽·쪽 여백을 입힌다
+applyform.apply(applyform.FORM, OUT, OUT, *applyform.unit_of(OUT))
 print("문단", len(P), "->", OUT)

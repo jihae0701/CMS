@@ -289,4 +289,6 @@ for fn, img in new_imgs.items():
     hpf = hpf[:k] + '<opf:item id="%s" href="%s" media-type="image/png" isEmbeded="1"/>' % (img, name) + hpf[k:]
 f["Contents/content.hpf"] = hpf.encode("utf-8")
 io.write(OUT, f, o)
+import applyform   # 기본서 양식(기본서/원본/기본서_form.hwpx)의 바탕쪽·쪽 여백을 입힌다
+applyform.apply(applyform.FORM, OUT, OUT, *applyform.unit_of(OUT))
 print("문항", nprob, "문단", len(P), "그림", len(new_imgs), "->", OUT)
