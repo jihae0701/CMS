@@ -354,18 +354,15 @@ pts = sorted(set([r for r in real_roots(fxx - f0) if r <= 3] + [r for r in real_
 assert pts == [0, 4, 12]
 chk("m3277", fxx.subs(x, -2) + gxx.subs(x, 5), 17)
 res = []
-for pv in range(1, 10):
-    bv = 4*pv; cv = -2*bv
-    f = pv*x**2; g = -pv*x**2 + bv*x + cv
-    assert real_roots(f + g) == [2]
-    fg = f - g; assert solve(diff(fg, x), x) == [1]
-    cnt = 0
-    for kv in range(-100, 100):
-        if not real_roots(f - kv) and not real_roots(g - kv):
-            cnt += 1
-    if cnt == 3:
-        res.append(f.subs(x, 17) + g.subs(x, 17))
-chk("n1490", res[0] if len(res) == 1 else res, 60)
+for av in [Rational(i, 9) for i in range(-27, 28) if i] :
+    for bv in [Rational(i, 4) for i in range(-16, 17) if i]:
+        f = av*(x - Rational(5, 2))**2 + Rational(11, 4); g = bv*(x + Rational(7, 4))**2 - Rational(15, 8)
+        if not (av > 0 and bv < 0): continue
+        if set(real_roots((x - f)*(x - g))) != {3, -2}: continue
+        fm = f - x; gm = g - x
+        if minimum(fm, x) != 0 or maximum(gm, x) != 0: continue
+        res.append(f.subs(x, 0) - g.subs(x, 0))
+chk("n1130", res[0] if len(set(res)) == 1 else res, 17)
 
 # ---- 사용자 요청 추가
 s = solve([disc(a*x**2 + x + b - (5*x + 2)), disc(a*x**2 + x + b - (-x + 5))], [a, b], dict=True)
