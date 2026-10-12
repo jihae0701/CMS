@@ -199,6 +199,55 @@ chk("n817", max(vals) + min(vals), 51)
 vals = [z**2 + (6*z - 2*z**2) for z in [Rt(i, 100) for i in range(-100, 400)] if 6*z - 2*z**2 >= 0]
 chk("w10", max(vals) + min(vals), 9)
 
+# ---- 사용자 요청 추가(모의고사 기출)
+xs = solve(Eq(x + 1, 3), x) + solve(Eq(x + 1, 8), x)      # 교점 x=2, 7
+f = -(x - 2)*(x - 7) + x + 1                                 # 위로 볼록한 대표 꼴(계수 -1)
+chk("m1011", sum(ints(sol(f - x - 1 > 0))), 18)
+ps = []
+for pv in range(-40, 41):
+    if pv == 0: continue
+    fx = x**2 + pv*x + pv; A = (-Rt(pv, 2), fx.subs(x, -Rt(pv, 2))); gx = pv + (A[1] - pv)/A[0]*x
+    if len(ints(sol(expand(fx - gx) <= 0))) == 10:
+        ps.append(pv)
+chk("m1509", max(ps) - min(ps), 38)
+# m1803 ㄱㄴㄷ
+st = sol(expand(x**2 - 9 - 2*0*(x - 3)) <= 0)
+c1 = st == Interval(-oo, -3)
+c2 = len([kv for kv in range(-30, 30) if sol(expand(x**2 - 9 - 2*kv*(x - 5)) <= 0) == EmptySet]) == 7
+c3 = all(ints(sol(expand(x**2 - 9 - 2*kv*(x - av)) <= 0), -20, 20)
+         for av in [Rt(i, 2) for i in range(-6, 7)] for kv in [Rt(j, 2) for j in range(-12, 13)])
+chkmc("m1803", (not c1) and c2 and c3, "④")
+# m1611 ㄱㄴㄷ: f>g가 항상 성립하는 (a,b) 표본에서 ㄱ, ㄴ, ㄷ 확인
+ok = True
+for av, bv in iprod([Rt(i, 2) for i in range(-6, 7)], [Rt(j, 2) for j in range(-20, 6)]):
+    if sol(expand(x**2 - av*x + bv - (av*x + 2*bv)) > 0) == S.Reals:
+        ok &= sol(x**2 - 2*av*x - bv > 0) == S.Reals and bv < 0 and (-av**2/4 + bv) > 2*bv
+chkmc("m1611", ok, "⑤")
+best = None
+for kv in [Rt(i, 1000) for i in range(1, 4000)]:
+    f = 2*(x - kv)*(x - 2*kv) + x; g = -(x - kv)**2 + x
+    if sol(expand(f + g) >= 0) == S.Reals:
+        best = kv
+kk = symbols("kk", positive=True)
+kmax = max(solve(kk**2 - 4*kk + 1, kk))
+assert best <= kmax and kmax - best < Rt(1, 500)
+chk("m2406", kmax, 2 + sqrt(3))
+kr = sol(discriminant(k*x**2 - 8*x + 4*k - 8, x) >= 0, k)
+chk("k1411", kr.sup - kr.inf, 2*sqrt(5))
+good = [av for av in [Rt(i, 300) for i in range(1, 1500)] if av != 2 and
+        abs(av**2 - 3*av + 3) + abs(2*av**2 - 4*av) <= 3]
+chk("m2410", max(good) + min(good), Rt(10, 3))
+vals = []
+for kv in range(-20, 41):
+    for al in range(1, 30):
+        for be in range(1, 30):
+            if al == be: continue
+            f = Rt(1, 2)*(x - be)**2 + be                     # (가), (나)에서 꼭짓점 (β, β)
+            if expand(f + x - kv).subs(x, al) == 0 and expand(f + x - kv).subs(x, be) == 0 \
+               and f.subs(x, 0) <= al + be + f.subs(x, al):
+                vals.append(f.subs(x, 6))
+chk("m2506", prod(set(vals)), 45)
+
 if __name__ == "__main__":
     bad = [r for r in R if not r[1]]
     print(len(R), "검산", "불일치", bad)

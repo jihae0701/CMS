@@ -55,8 +55,27 @@ def fig_w1():
     return F.render()
 
 
+def fig_m1509():
+    # 2015년 9월 고1 14번: f(x)=x^2+px+p, 꼭짓점 A, y절편 B, 직선 l=AB (그림은 p=2.6)
+    from draw6y import dot
+    pv = 2.6
+    f = lambda t: t * t + pv * t + pv
+    l = lambda t: pv / 2 * t + pv
+    A, B = (-pv / 2, f(-pv / 2)), (0, pv)
+    F = Frame((-3.6, 1.9), (-1.2, 4.6), 38, 38, (20, 12, 110, 12))
+    F.axes()
+    F.curve(f, roots(f, -6, -1.3, 4.3)[0], roots(f, -1.3, 4, 4.3)[0])
+    F.seg((-2.5, l(-2.5)), (0.7, l(0.7)))
+    dot(F, A); dot(F, B)
+    F.pt((0, 0), "O", "rt", -4, 4)
+    F.pt(A, "A", "ct", 0, 7); F.pt(B, "B", "rc", -8, 2)
+    F.lab((roots(f, -1.3, 4, 4.3)[0], 4.3), r"y=f(x)", "lc", 6, 4)
+    F.lab((0.7, l(0.7)), "l", "lc", 6, 2)
+    return F.render()
+
+
 # (파일, 함수, 문서에 넣는 폭 HWPUNIT = unit08.py의 "w")
-FIGS = (("u8_y72.png", fig_y72, 9000), ("u8_y73.png", fig_y73, 10000), ("u8_w1.png", fig_w1, 10000))
+FIGS = (("u8_y72.png", fig_y72, 9000), ("u8_y73.png", fig_y73, 10000), ("u8_w1.png", fig_w1, 10000), ("u8_m1509.png", fig_m1509, 9000))
 
 if __name__ == "__main__":
     for name, fn, wd in FIGS:
