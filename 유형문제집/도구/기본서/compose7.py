@@ -5,14 +5,14 @@ python compose7.py <본보기: 기본서 5단원.hwpx> <출력.hwpx>
 - 모양(제목 상자, 개념 문단, 유형 머리, 대표문제 번호, 문제 문단, 조건 상자, 보기 상자, 선택지, 미주)은
   기본서 5단원 파일의 문단을 복제해 쓴다.
 - 구성: STEP 1 개념 확인하기 / STEP 2 유형별 학습하기(유형 01~07, 유형마다 새 쪽) / STEP 3 단원 마무리 하기
-- 문항 번호는 5단원(161~200)에 이어 201부터. 그림은 도구/그림/의 PNG를 image101부터 넣는다.
+- 문항 번호는 6단원(201~239)에 이어 240부터. 그림은 도구/그림/의 PNG를 image101부터 넣는다.
 """
 import sys, re, os, struct, math
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import hwpxio as io, fixes, numbering as nb, eqsize, addprob, data7
 
 SRC, OUT = sys.argv[1:3]
-START = 241
+START = 240
 UNIT_NO, UNIT_TITLE = "7.", "여러 가지 방정식"
 PIC_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "그림")
 

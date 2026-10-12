@@ -236,7 +236,7 @@ ans.append(max(ks))
 items = [p for _, _, ps in data7.TYPES for p in ps] + data7.STEP3
 assert len(items) == len(ans) == 44, (len(items), len(ans))
 bad = 0
-for no, (it, v) in enumerate(zip(items, ans), 241):
+for no, (it, v) in enumerate(zip(items, ans), 240):
     want = it["ans"].replace("$", "")
     if isinstance(v, str):
         ok = (want == v)

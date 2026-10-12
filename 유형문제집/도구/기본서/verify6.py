@@ -64,9 +64,6 @@ f = (x**2 + 4*x)**2 + 6*(x**2 + 4*x) - 5; vals = [f.subs(x, R(i, 500)) for i in 
 # 06
 e = x**2 + 2*y**2 - 4*x - 16*y + 40; sp = solve([e.diff(x), e.diff(y)], [x, y]); ans.append(sp[x] + sp[y] + e.subs(sp))
 f = 3*x**2 + (2 - x)**2; M_, m_ = rng(f, 0, 2); ans.append(M_ + m_)
-import math
-best = max(math.cos(th) * math.sqrt(6) + math.sin(th) * math.sqrt(3) for th in [i * 2 * math.pi / 200000 for i in range(200000)])
-assert abs(best - 3) < 1e-6; ans.append(3)
 vals = []
 for kv in [R(i, 100) for i in range(-500, 51)]:
     r = solve(x**2 - 2*kv*x + kv**2 + 4*kv - 2, x)
@@ -117,7 +114,7 @@ good = [av for av in [R(i, 100) for i in range(-199, 800)] if rng(x**2 - 4*x + 1
 good = [av for av in [R(i, 4) for i in range(1, 60)] if sum(rng(-2*x**2 + 16*x - 7, 0, av)) == 0]; ans.append(sum(good))
 
 items = [p for _, _, ps in data6.TYPES for p in ps] + data6.STEP3
-assert len(items) == len(ans) == 40, (len(items), len(ans))
+assert len(items) == len(ans) == 39, (len(items), len(ans))
 bad = 0
 for n, (it, v) in enumerate(zip(items, ans), 201):
     want = it["ans"]
