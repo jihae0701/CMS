@@ -185,6 +185,20 @@ for mv in range(-60, 80):
         ms.append(mv)
 chk("n495", sum(ms), 132)
 
+# ---- 사용자 요청 추가
+s_ = sol(x**2 - 2*x + 4 - (4*x - 1) >= 0); chk("y75", s_.args[1].inf - s_.args[0].sup, 4)
+chk("w8", sum(av for av in range(-30, 30) if len(ints(sol(x**2 - (av + 4)*x + 4*av < 0))) == 3), 8)
+gf = lambda z: ((z*z - 2*z - 8) + abs(z*z - 2*z - 8)) / 2
+chk("w9", len([z for z in range(-100, 100) if gf(z) <= z + 2]), 8)
+vals = []
+for av in [Rt(i, 100) for i in range(1, 600)]:
+    f = av*(x**2 - 4)
+    if sol(expand(f - (4*x - 17)) >= 0) == S.Reals:
+        vals.append(f.subs(x, 4))
+chk("n817", max(vals) + min(vals), 51)
+vals = [z**2 + (6*z - 2*z**2) for z in [Rt(i, 100) for i in range(-100, 400)] if 6*z - 2*z**2 >= 0]
+chk("w10", max(vals) + min(vals), 9)
+
 if __name__ == "__main__":
     bad = [r for r in R if not r[1]]
     print(len(R), "검산", "불일치", bad)
