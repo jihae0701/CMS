@@ -22,13 +22,21 @@ def set_answer(d, k, ans):
     segs = seg_parse(ans)
     tmpl_eq = next(d.root.iter(HP + 'equation'))
     pos = list(r).index(t) + 1
+    first = True
     for s in segs:
         if isinstance(s, str):
-            t.text = (t.text or '') + s
+            if first:
+                t.text = (t.text or '') + s
+            else:
+                nt = etree.Element(HP + 't')
+                nt.text = s
+                r.insert(pos, nt)
+                pos += 1
         else:
             e = make_eq(tmpl_eq, s[1])
             r.insert(pos, e)
             pos += 1
+        first = False
     log(k, '정답', '단답형', m.group(1), ans.replace('$', ''))
 
 
@@ -150,3 +158,33 @@ def eq_edit(scope, q, where, kind_, contains, old_sub, new_sub, show=None, **kw)
     assert old_sub in sc, (old_sub, sc)
     set_script(e, sc.replace(old_sub, new_sub, 1))
     log(q, where, kind_, show[0] if show else old_sub, show[1] if show else new_sub)
+
+
+def truncate_after(p, marker, new):
+    """문단 p에서 marker 글까지만 남기고(그 글은 new로) 뒤의 내용(보기 줄 등)을 모두 지운다"""
+    for t in p.iter(HP + 't'):
+        if in_endnote(t):
+            continue
+        segs = [(t, 'text')] + [(c, 'tail') for c in t]
+        for el, w in segs:
+            v = (el.text if w == 'text' else el.tail) or ''
+            if marker in v:
+                v2 = v[:v.index(marker)] + new
+                if w == 'text':
+                    el.text = v2
+                    for c in list(t):
+                        t.remove(c)
+                else:
+                    el.tail = v2
+                    kids = list(t)
+                    for c in kids[kids.index(el) + 1:]:
+                        t.remove(c)
+                run = t.getparent()
+                kids = list(run)
+                for x in kids[kids.index(t) + 1:]:
+                    run.remove(x)
+                runs = p.findall(HP + 'run')
+                for r2 in runs[runs.index(run) + 1:]:
+                    p.remove(r2)
+                return
+    raise AssertionError(('marker 없음', marker))
