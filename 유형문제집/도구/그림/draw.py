@@ -38,6 +38,31 @@ def page(svg, labels, w, h):
 </body></html>""" % (KATEX, KATEX, w, h, svg, "".join(divs))
 
 
+def cut_arc(x1, y1, cx, cy, x2, y2, label, size=FONT, width=1.5):
+    """길이 표시 점선 호(2차 베지에, 화면 좌표)의 가운데를 끊고 그 자리에 길이를 쓴다(사용자 요청).
+    끊는 길이는 글자 폭(호가 가로로 지날 때) 또는 높이(세로로 지날 때)에 맞춘다. (svg 조각들, 글자 위치)를 돌려준다."""
+    dash = 'fill="none" stroke="#000" stroke-width="%s" stroke-dasharray="5,4"' % width
+
+    def B(t):
+        return ((1 - t) ** 2 * x1 + 2 * t * (1 - t) * cx + t * t * x2, (1 - t) ** 2 * y1 + 2 * t * (1 - t) * cy + t * t * y2)
+
+    def sub(t0, t1):
+        a, b = B(t0), B(t1)
+        d0 = (2 * (1 - t0) * (cx - x1) + 2 * t0 * (x2 - cx), 2 * (1 - t0) * (cy - y1) + 2 * t0 * (y2 - cy))
+        h = (t1 - t0) / 2
+        c = (a[0] + d0[0] * h, a[1] + d0[1] * h)
+        return '<path d="M%.1f,%.1f Q%.1f,%.1f %.1f,%.1f" %s/>' % (a + c + b + (dash,))
+
+    M = B(0.5)
+    tx, ty = x2 - x1, y2 - y1                       # 가운데에서 호의 방향(현과 나란함)
+    horiz = abs(tx) >= abs(ty)
+    half = (len(label) * 0.62 * size) / 2 + 6 if horiz else size * 0.75 / 2 + 10
+    t = 0.5
+    while t > 0 and math.hypot(B(t)[0] - M[0], B(t)[1] - M[1]) < half:
+        t -= 0.002
+    return [sub(0, t), sub(1 - t, 1)], M
+
+
 def shoot(html, w, h, out, scale=3):
     path = os.path.join(HERE, "_draw.html")
     open(path, "w", encoding="utf-8").write(html)
@@ -109,13 +134,12 @@ def triangle():
     nx, ny = ey, -ex                    # CD에 수직, A 쪽
     if (A[0] - mx) * nx + (A[1] - my) * ny < 0:
         nx, ny = -nx, -ny
-    bulge = 19
+    bulge = 34
     cx, cy = mx + nx * bulge * 2, my + ny * bulge * 2
-    arc = '<path d="M%.1f,%.1f Q%.1f,%.1f %.1f,%.1f" fill="none" stroke="#000" stroke-width="1.6" stroke-dasharray="5,4"/>' % (
-        D[0], D[1], cx, cy, C[0], C[1])
+    arcs, (lx, ly) = cut_arc(D[0], D[1], cx, cy, C[0], C[1], "1", 22, 1.6)
+    arc = "".join(arcs)
     svg = '<svg width="%d" height="%d" style="position:absolute;left:0;top:0">%s%s%s%s%s%s%s</svg>' % (
         w, h, line(A, B), line(B, C), line(C, A), line(C, D), right_mark(D, C, A), right_mark(C, B, A), arc)
-    lx, ly = mx + nx * (bulge + 17), my + ny * (bulge + 17)
     labels = [(A[0], A[1] - 8, r"\mathrm{A}", 24, "cb"), (B[0] - 6, B[1] + 4, r"\mathrm{B}", 24, "rc"),
               (C[0] + 6, C[1] + 4, r"\mathrm{C}", 24, "lc"), (D[0] - 10, D[1] - 6, r"\mathrm{D}", 24, "rb"),
               (lx, ly, "1", 22, "cc")]
