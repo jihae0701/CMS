@@ -107,7 +107,7 @@ R[(1,20)]=res
 # ---- 공수2 ----
 m=sp.Rational(8-2,3-1); R[(2,1)]=1-(-1/m)*3
 fmap={1:4,2:1,3:5,4:2,5:3}; inv={v:k_ for k_,v in fmap.items()}; R[(2,2)]=fmap[fmap[1]]+inv[5]
-av=sp.solve(2*a-3-5,a)[0]; R[(2,3)]=sp.solve(av*x-3-13,x)[0]
+R[(2,3)]=sum(sp.solve((3-a)**2+(a-1)**2-10,a))
 R[(2,4)]=sp.solve((1+a+5)/3-3,a)[0]+sp.solve((4-2+b)/3-2,b)[0]
 # 5: 변환 후 직선이 중심 지남
 cx,cy=-1,4; assert sp.expand((x+1)**2+(y-4)**2-9)==x**2+y**2+2*x-8*y+8
@@ -119,13 +119,9 @@ R[(2,7)]=sum(1 for r_ in range(13) for X_ in map(set,_cmb(sorted(U_),r_))
              if (A_-B_)|X_==X_ and not X_-(A_|B_) and len(X_-B_)==len(X_&B_))
 R[(2,8)]=sp.sqrt((0-10)**2+(1-6)**2)-sp.sqrt(5)
 
-def bij(av):
-    f_=lambda v: (av+4)*v+3 if v<2 else (6-av)*v+4*av-1
-    xs=[i/50 for i in range(-500,501)]; ys=[f_(v) for v in xs]
-    inc=all(ys[i]<ys[i+1] for i in range(len(ys)-1)); dec=all(ys[i]>ys[i+1] for i in range(len(ys)-1))
-    cont=abs(f_(2-1e-12)-f_(2))<1e-6
-    return (inc or dec) and cont
-R[(2,9)]=sum(1 for av in range(-50,51) if bij(av))
+m9=sp.symbols('m9'); P9=sp.solve([x+2*y-4,2*x-y-3],[x,y])
+ms9=sp.solve((P9[y]-m9*P9[x])**2-(m9**2+1),m9)          # 원점과의 거리 1 (x=2 는 거리 2)
+yi9=[P9[y]-mm*P9[x] for mm in ms9]; R[(2,9)]=abs(yi9[0]-yi9[1])*P9[x]/2
 ks=[kv for kv in range(-30,31) if kv!=-6 and abs(max((2*xx/100+kv)/(xx/100-3) for xx in range(0,201))-4)<1e-9]; R[(2,10)]=ks[0] if len(ks)==1 else ks
 
 f11=lambda t: -t+2 if t<=2 else 2*t-4          # 그림의 꺾은선 (0,2)-(2,0)-(4,4)
@@ -173,11 +169,14 @@ for s_ in sols:
         AB=2*s_[rr_]; CD=2*sp.sqrt(s_[rr_]**2-s_[hh_]**2); res.add(AB*CD/2)
 R[(2,16)]=res
 from itertools import product as P_
-R[(2,17)]=sum(1 for f_ in P_(range(1,7),repeat=6) if f_[0]>f_[1]>f_[2]>f_[3] and f_[4]<f_[5] and len(set(f_))<6)
+R[(2,17)]=sp.nsimplify(round(min(aa*(2*aa/(aa-3))/2 for aa in [3+i/10000 for i in range(1,600000)]),6))
 ans18=set()
-for kv in range(2,400):
-    U=set(range(1,kv+1)); A_s={v for v in U if v%2==0}; B_s={v for v in U if kv%v==0}; Cs=U-(A_s|B_s)
-    if len(A_s)*len(Cs)==28: ans18.add(sum(Cs))
+for av in [i/4 for i in range(-40,41)]:
+    for bv in [i/4 for i in range(-40,41)]:
+        f_=lambda v: (av+2)*v+bv if v<1 else v*v-2*av*v+av*av+5
+        xs=[i/100 for i in range(0,2001)]; ys=[f_(v) for v in xs]
+        if abs(ys[0]-2)<1e-12 and all(ys[i]<ys[i+1] for i in range(len(ys)-1)) and abs((av+2)+bv-f_(1))<1e-12:
+            ans18.add(f_(4))
 R[(2,18)]=ans18
 from itertools import combinations as C2
 best=0;X=range(1,11)

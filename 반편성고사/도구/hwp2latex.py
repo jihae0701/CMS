@@ -6,7 +6,7 @@ WORDS = {
     "CDOTS": r"\cdots ", "cdots": r"\cdots ", "PLUSMINUS": r"\pm ", "notin": r"\notin ", "nin": r"\notin ",
     "in": r"\in ", "subset": r"\subset ", "nsubset": r"\not\subset ", "cap": r"\cap ", "cup": r"\cup ",
     "circ": r"\circ ", "rarrow": r"\rightarrow ", "alpha": r"\alpha ", "beta": r"\beta ", "prime": "'",
-    "sim": r"\sim ", "LEFT": "left", "RIGHT": "right", "DEG": r"^\circ ",
+    "sim": r"\sim ", "emptyset": r"\varnothing ", "LEFT": "left", "RIGHT": "right", "DEG": r"^\circ ",
 }
 
 def _group(s, i):

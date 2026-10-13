@@ -16,7 +16,8 @@ random.seed(20261008)
 CIRC = "①②③④⑤"
 COLW = 29620                       # 단 너비(HWPUNIT)
 FIGW = {"room.png": 19000, "chair.png": 16000, "mapping.png": 15000, "sqrt.png": 16000,
-        "reflect.png": 16500, "twocurve.png": 15500, "circleline.png": 17000, "tangent2.png": 15500}
+        "reflect.png": 16500, "twocurve.png": 15500, "circleline.png": 17000, "tangent2.png": 15500,
+        "compgraph.png": 13500}
 # 단 구성: 한 단에 한 문항 또는 두 문항 (14단 = 7쪽)
 LAYOUT = [[1, 2], [3, 4], [5, 6], [7, 8], [9, 10], [11], [12], [13], [14], [15, 16], [17], [18], [19], [20]]
 
@@ -290,7 +291,7 @@ def build(M, subject, outname):
             bag.add(c)
     eq_sizes(bag)
     byno = {p["no"]: p for p in M}
-    prefix = PREFIX.replace("공통수학1", subject).replace("반편성고사", "진단평가")
+    prefix = cover_note(PREFIX.replace("공통수학1", subject).replace("반편성고사", "진단평가"))
     hdr = HDR_ODD.replace("공통수학1", subject)
     cap_first, cap = 70000, 82000
     parts = []
@@ -327,6 +328,17 @@ def build(M, subject, outname):
         qa.append(re.sub(r"<hp:linesegarray>.*?</hp:linesegarray>", "", line, flags=re.S))
     sec = prefix + "".join(parts) + "".join(qa) + "".join(TAIL_PARAS) + TAIL_END
     write(sec, subject, outname)
+
+def cover_note(x):
+    """표지 안내문에 '20문항 100점, 객관식·단답형 구성' 줄 추가 (학원 편집본과 같게)"""
+    i = x.index("단답형 답의 숫자에")
+    a, b = x.rfind("<hp:p ", 0, i), x.index("</hp:p>", i) + 7
+    p = re.sub(r"<hp:linesegarray>.*?</hp:linesegarray>", "", x[a:b], flags=re.S)
+    p = re.sub(r'<hp:p id="\d+"', '<hp:p id="2147483648"', p, count=1)
+    p = re.sub(r"<hp:t>.*?</hp:t>", "<hp:t>○ 본 시험은 20문항 100점입니다.<hp:lineBreak/>"
+               "객관식 1~14번, 단답형 15~20번으로 구성되어 있습니다.</hp:t>", p, count=1, flags=re.S)
+    rest = re.sub(r"<hp:linesegarray>.*?</hp:linesegarray>", "", x[b:], flags=re.S)   # 아래 문단은 한글이 다시 배치
+    return x[:b] + p + rest
 
 _heights = {}
 def problem_height(pr):
