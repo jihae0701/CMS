@@ -113,9 +113,10 @@ R[(2,4)]=sp.solve((1+a+5)/3-3,a)[0]+sp.solve((4-2+b)/3-2,b)[0]
 cx,cy=-1,4; assert sp.expand((x+1)**2+(y-4)**2-9)==x**2+y**2+2*x-8*y+8
 R[(2,5)]=sp.solve(-a*(cx-2)-2-cy,a)[0]
 R[(2,6)]=sum(av for av in range(-20,21) if all(abs(v-av)<=3 for v in [2+i/100 for i in range(201)]))
-ok=[v/100 for v in range(-1000,1001) if all(abs(xx-1)<=5 for xx in [min(2*v/100,-v/100)+i*(abs(3*v/100))/50 for i in range(51)])]
-R[(2,7)]=sp.nsimplify(max(ok)*min(ok))
-R[(2,7)]=sp.nsimplify(max(ok)*min(ok))
+from itertools import combinations as _cmb
+U_=set(range(1,13)); A_={d for d in U_ if 12%d==0}; B_={d for d in U_ if d%2==0}
+R[(2,7)]=sum(1 for r_ in range(13) for X_ in map(set,_cmb(sorted(U_),r_))
+             if (A_-B_)|X_==X_ and not X_-(A_|B_) and len(X_-B_)==len(X_&B_))
 R[(2,8)]=sp.sqrt((0-10)**2+(1-6)**2)-sp.sqrt(5)
 
 def bij(av):
@@ -127,8 +128,14 @@ def bij(av):
 R[(2,9)]=sum(1 for av in range(-50,51) if bij(av))
 ks=[kv for kv in range(-30,31) if kv!=-6 and abs(max((2*xx/100+kv)/(xx/100-3) for xx in range(0,201))-4)<1e-9]; R[(2,10)]=ks[0] if len(ks)==1 else ks
 
-best=min(math.hypot(tt+4,3)+math.hypot(4-(tt+2),5) for tt in [i/10000 for i in range(-100000,100001)])
-R[(2,11)]=sp.nsimplify(round(best,6))
+f11=lambda t: -t+2 if t<=2 else 2*t-4          # 그림의 꺾은선 (0,2)-(2,0)-(4,4)
+r11=set()
+for k_ in range(0,400001):                        # 구간 [0,4]를 촘촘히 훑어 부호 변화·근 찾기
+    t0,t1=k_/100000,(k_+1)/100000
+    d0,d1=f11(f11(t0))-f11(t0),f11(f11(t1))-f11(t1) if t1<=4 else None
+    if abs(d0)<1e-12: r11.add(round(t0,6))
+    elif d1 is not None and d0*d1<0: r11.add(round((t0+t1)/2,4))
+R[(2,11)]=sp.nsimplify(round(sum(r11),3))
 Ax=sp.solve(sp.Eq(3*sp.sqrt(x),x**2/9),x); Ax=max(Ax); P_=(Ax*4/9,Ax*4/9)
 Bx=sp.solve(3*sp.sqrt(x)-P_[1],x)[0]; Cx=[r for r in sp.solve(x**2/9-P_[1],x) if r>0][0]; R[(2,12)]=(Cx-Bx)*(Ax-P_[1])/2
 ms=[r for r in sp.solve((4*k-2)**2/(k**2+1)-2,k) if 0<r<1]
