@@ -248,6 +248,31 @@ for kv in range(-20, 41):
                 vals.append(f.subs(x, 6))
 chk("m2506", prod(set(vals)), 45)
 
+# ---- 사용자 요청 추가(고등수매씽 실전유형 12·13, 연계문항)
+s_ = sol(x**2 - 2*x - 4 - (2*x + 1) > 0); chk("s1466", s_.args[0].sup + 2*s_.args[1].inf, 9)
+res = [(av, bv) for av in range(-20, 21) for bv in range(-20, 21)
+       if sol(-x**2 + av*x + 7 - bv < 0) == Union(Interval.open(-oo, -1), Interval.open(5, oo))]
+chk("s1468", res[0][0] - res[0][1] if len(res) == 1 else res, 2)
+res = []
+for av in range(-40, 40):
+    st = sol(2*x**2 - x - 9 - (4*x + av) < 0)
+    if isinstance(st, Interval) and st.sup == Rt(3, 2):
+        res.append(st.inf - av)
+chk("s1470", res[0] if len(res) == 1 else res, 13)
+res = [(av, bv) for av in range(-20, 21) for bv in range(-20, 21)
+       if sol(-2*x**2 + 3*x + 2 - (-x**2 + av*x + bv) > 0) == Interval.open(-2, 3)]
+chk("s1471", res[0][0]**2 + res[0][1]**2 if len(res) == 1 else res, 20)
+good = [kv for kv in [Rt(i, 4) for i in range(-20, 20)] if sol(expand(x**2 - 2*(kv - 1)*x + 3 - (2*x - 1)) > 0) == S.Reals]
+chk("s1472", max(good) + min(good), 0)       # 열린 범위 -2<k<2 (격자 끝 ±7/4는 대칭)
+chk("s1474", len([mv for mv in range(-30, 30) if sol(expand(-x**2 - 3*x - (mv*x + 4)) < 0) == S.Reals]), 7)
+good = [kv for kv in [Rt(i, 100) for i in range(-300, 0)] if sol(expand(kv*x**2 - 4*kv*x - 1 - 2*x) < 0) == S.Reals]
+assert min(good) > -1 and max(good) < Rt(-1, 4) and Rt(-99, 100) in good and Rt(-26, 100) in good
+chk("s1476", -1 + Rt(-1, 4), Rt(-5, 4))
+chk("s1477", len([mv for mv in range(-30, 30) if sol(expand((mv + 2)*x**2 + 3 - (2*mv + 4)*x) > 0) == S.Reals]), 3)
+chk("s1605", len([av for av in range(-30, 30) if sol(expand((av - 2)*x**2 - 4*(av - 2)*x + 7) < 0) == EmptySet]), 2)
+
+chk("s1604", len([mv for mv in range(-30, 30) if sol(expand((mv + 2)*x**2 - 2*(mv + 2)*x + 4) >= 0) == S.Reals]), 5)
+
 if __name__ == "__main__":
     bad = [r for r in R if not r[1]]
     print(len(R), "검산", "불일치", bad)
