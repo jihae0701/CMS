@@ -8,6 +8,10 @@ import data9
 
 GRID = [Fr(i, 40) for i in range(-1200, 1201)]     # -30 ~ 30, 0.025 간격
 ans = []
+def roots(a, b, c):
+    d = b*b - 4*a*c
+    if d < 0: return None
+    return ((-b - math.sqrt(d))/(2*a), (-b + math.sqrt(d))/(2*a))
 
 # ---- 01
 ans.append(max(k for k in range(-20, 20) if not any(abs(x + 2) + abs(x - 2) < k for x in GRID)))
@@ -15,12 +19,20 @@ f = lambda t: t*t - 2*t - 3; g = lambda t: t*t + t - 5; h = lambda t: t*t + 4*t 
 ok = [t for t in GRID if abs(f(t) - g(t)) + abs(g(t) - h(t)) < 12]
 assert all(-3 < t < 1 for t in ok) and min(ok) == Fr(-3) + Fr(1, 40) and max(ok) == 1 - Fr(1, 40)
 ans.append(-3 + 1)
+r = [a for a in range(-60, 60) if sum(1 for x in range(1, 300) if abs(a*x - 1) < 21 and 2*x + 3 > 5) == 2]
+ans.append(sum(r))
 # ---- 02
 ans.append(sum(a for a in range(-50, 50) if sum(1 for x in range(1, 100) if 3*x - 8 < 2*x - 3 < 4*x - a) == 2))
 good = [a for a in [Fr(i, 20) for i in range(-200, 200)]
         if sum(1 for x in range(-50, 50) if Fr(5, 10)*(x - 1) >= Fr(3, 10)*x - Fr(9, 10) and 2*(x - 1) + a <= 3) == 5]
 assert min(good) == -1 + Fr(1, 20) and max(good) == 1
 ans.append("-1<a leq 1")
+# 잘못 푼 해 1<x<7을 주는 일차식 f를 찾아 원래 해와 비교
+fs = [(m, n) for m in [Fr(i, 4) for i in range(-40, 41)] for n in [Fr(i, 4) for i in range(-80, 81)]
+      if all((m*x + n < x + 2 and m*x + n < -2*x + 14) == (1 < x < 7) for x in [Fr(i, 16) for i in range(-160, 240)])]
+assert len(fs) == 1
+m_, n_ = fs[0]
+ans.append(sum(x for x in range(2, 7) if not (m_*x + n_ < x + 2 < -2*x + 14)))
 # ---- 03 (마지막 의자에 1~8명)
 ans.append(min(x for x in range(6, 200) if 8*(x - 6) + 1 <= 7*x + 5 <= 8*(x - 6) + 8))
 ans.append(max(x for x in range(3, 200) if 4*(x - 3) + 1 <= 3*x + 5 <= 4*(x - 3) + 4))
@@ -32,6 +44,17 @@ for k in range(-100, 100):
 ans.append(cnt)
 good = [k for k in [Fr(i, 20) for i in range(1, 200)] if sum(1 for x in range(-10, 20) if abs(x - 3) < k and x*x - 3*x - 4 <= 0) == 3]
 ans.append(max(good))
+ok = [a for a in [2 + Fr(i, 1000) for i in range(1, 3000)]
+      if not any(x*x - (a*a - 3)*x - 3*a*a < 0 and x*x + (a - 9)*x - 9*a > 0 for x in range(-50, 120))]
+assert max(ok) ** 2 <= 10 < (max(ok) + Fr(1, 1000)) ** 2
+ans.append(10)
+res = []
+for a in [Fr(i, 8) for i in range(-200, 200)]:
+    A = sorted((-9, a*a - 6*a)); B = sorted((2*a - 16, 2*a))
+    if max(A[0], B[0]) == min(A[1], B[1]):
+        res.append(a)
+assert res == [Fr(-9, 2), 3, 4]
+ans.append(sum(res))
 # ---- 05
 X = [Fr(i, 400) for i in range(-400, 401)]
 ans.append(4 * (max(x*x - 2*x for x in X) - min(x*x - x for x in X)))
@@ -56,24 +79,31 @@ for n in range(-100, 100):
         xs.append(x)
 assert len(xs) == 1
 ans.append(xs[0])
+ok = [x for x in [Fr(i, 16) for i in range(1, 192)] if x*(12 - x) > x*x/2 and x*(12 - x) > (12 - x)**2/2]
+assert ok[0] == 4 + Fr(1, 16) and ok[-1] == 8 - Fr(1, 16)
+ans.append("4< overline {rm BR} <8")
 # ---- 07
-def roots(a, b, c):
-    d = b*b - 4*a*c
-    if d < 0: return None
-    return ((-b - math.sqrt(d))/(2*a), (-b + math.sqrt(d))/(2*a))
 good = [a for a in [i/8 for i in range(-160, 160)] if (r := roots(1, 2*a, 2*a + 8)) and r[0] != r[1] and r[1] < 2]
 assert min(good) == 4 + 1/8 and 4 not in good
 ans.append("a>4")
-ans.append(sum(a for a in range(-50, 50) if (r := roots(1, -8, a + 3)) and r[0] >= 3))
-good = [k for k in [i/64 for i in range(-640, 640)] if (r := roots(2, 5, k)) and r[1] < -1]   # x=-2는 늘 근
-assert min(good) == 3 + 1/64 and max(good) == 25/8
-ans.append(R(3)*R(25, 8))
-good = [a for a in [i/8 for i in range(-400, 200)] if (r := roots(1, -2, a)) and any(-2 < z < 2 for z in r)]
-assert min(good) == -8 + 1/8 and max(good) == 1
-ans.append(9)
-good = [a for a in [i/8 for i in range(-400, 200)] if (r := roots(1, 4, a - 3)) and any(-3 < z < 3 for z in r)]
-assert min(good) == -18 + 1/8 and max(good) == 7
-ans.append(abs(-18 + 7))
+ks = []
+for k in range(-20, 20):
+    r = roots(1, -2*(k - 1), 2*k + 1)
+    if r and all(-1 - 1e-9 <= z <= 5 + 1e-9 for z in r):
+        ks.append(k)
+ans.append("%s" % ", ".join(map(str, ks)))
+good = [a for a in [i/8 for i in range(-200, 200)] if (r := roots(1, a*a - 5*a - 24, -a + 5)) and r[0] < 0 < r[1] and -r[0] > r[1]]
+assert min(good) == 8 + 1/8 and 8 not in good
+ans.append("a>8")
+ans.append(sum(k for k in range(-30, 30) if (r := roots(1, 2*k, 2*k*(k + 2))) and r[1] > 0))
+ks = []
+for k in range(-30, 30):
+    from sympy import Poly, real_roots, Symbol
+    X_ = Symbol("X")
+    rr = real_roots(Poly(X_**3 - (2*k - 1)*X_**2 - 3*(k - 2)*X_ - k + 6, X_))   # 중근은 겹쳐 나옴
+    if len(set(rr)) == 3 and sum(1 for z in rr if z < 0) == 1 and sum(1 for z in rr if z > 0) == 2:
+        ks.append(k)
+ans.append(sum(ks))
 # ---- STEP 3
 ans.append(min(abs(x + 3) + abs(x - 2) for x in GRID))
 ok = [x for x in GRID if abs(x - 1) <= abs(x - 2) < -x + 3]
@@ -106,6 +136,7 @@ for a in range(-10, 15):
         if all(-2 <= (a - 2)*x + b <= x*x + 2*x + 5 for x in GRID[::4]):
             best = max(best, a*a + b*b)
 ans.append(best)
+ans.append(sum(k for k in range(1, 50) if 14 <= 2*(2*k + k*k + 4) <= 78))
 ks = []
 for al in range(-30, 3):
     be = 6 - al
@@ -123,21 +154,9 @@ ok = [x for x in X if (2*x/5 - 1) > 0 and rnd1(2*x/5 - 1) >= 2 and rnd1(abs(2*x 
 assert ok[0] == Fr(7375, 1000) and ok[-1] == Fr(9474, 1000)
 ans.append(10*(Fr(9475, 1000) - Fr(7375, 1000)))
 ans.append(min(a for a in range(-20, 20) if 1 - 4*a < 0 or 12*a*a - 12*(a + 1)**2 < 0))
-ks = []
-for k in range(-20, 20):
-    r = roots(1, -2*(k - 1), 2*k + 1)
-    if r and all(-1 - 1e-9 <= z <= 5 + 1e-9 for z in r):
-        ks.append(k)
-ans.append("%s" % ", ".join(map(str, ks)))
-ks = []
-for k in range(1, 50):
-    r = roots(1, -4, k)
-    if r and r[0] < 2 < r[1]:
-        ks.append(k)
-ans.append(sum(ks))
 
 items = [p for _, _, ps in data9.TYPES for p in ps] + data9.STEP3
-assert len(items) == len(ans) == 32, (len(items), len(ans))
+assert len(items) == len(ans) == 36, (len(items), len(ans))
 bad = 0
 for no, (it, v) in enumerate(zip(items, ans), 320):
     want = it["ans"].replace("$", "")
