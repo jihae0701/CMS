@@ -138,6 +138,9 @@ def apply(form_path, unit_path, out_path, unit_no, unit_title):
     sec = U["Contents/section0.xml"].decode("utf-8")
     fmargin = re.search(r"<hp:margin [^>]*/>", F["Contents/section0.xml"].decode("utf-8")).group(0)
     sec = re.sub(r"<hp:margin [^>]*/>", fmargin, sec, count=1)
+    sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    import eqfix   # 한글 수식의 '<-'(← 명령)를 '< it-'로
+    sec = eqfix.fix_xml(sec)[0]
     U["Contents/section0.xml"] = sec.encode("utf-8")
     io.write(out_path, U, order)
 

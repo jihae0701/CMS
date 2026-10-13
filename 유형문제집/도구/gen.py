@@ -689,6 +689,10 @@ def main():
             hpf = hpf.replace(m.group(0), "")
     files["Contents/content.hpf"] = hpf.encode("utf-8")
     files["settings.xml"] = re.sub(rb'paraIDRef="\d+" pos="\d+"', b'paraIDRef="0" pos="0"', files["settings.xml"])
+    import eqfix   # 한글 수식의 '<-'(← 명령)를 '< it-'로
+    for name in list(files):
+        if name.startswith("Contents/section") and name.endswith(".xml"):
+            files[name] = eqfix.fix_xml(files[name].decode("utf-8"))[0].encode("utf-8")
     with zipfile.ZipFile(OUT, "w") as z:
         for name in order:
             if name in drop:
