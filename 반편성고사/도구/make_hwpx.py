@@ -16,8 +16,7 @@ random.seed(20261008)
 CIRC = "①②③④⑤"
 COLW = 29620                       # 단 너비(HWPUNIT)
 FIGW = {"room.png": 19000, "chair.png": 16000, "mapping.png": 15000, "sqrt.png": 16000,
-        "reflect.png": 16500, "twocurve.png": 15500, "circleline.png": 17000, "tangent2.png": 15500,
-        "compgraph.png": 13500}
+        "reflect2.png": 16000, "twocurve.png": 15500, "compgraph.png": 13500}
 # 단 구성: 한 단에 한 문항 또는 두 문항 (14단 = 7쪽)
 LAYOUT = [[1, 2], [3, 4], [5, 6], [7, 8], [9, 10], [11], [12], [13], [14], [15, 16], [17], [18], [19], [20]]
 

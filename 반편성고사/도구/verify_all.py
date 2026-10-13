@@ -117,7 +117,10 @@ from itertools import combinations as _cmb
 U_=set(range(1,13)); A_={d for d in U_ if 12%d==0}; B_={d for d in U_ if d%2==0}
 R[(2,7)]=sum(1 for r_ in range(13) for X_ in map(set,_cmb(sorted(U_),r_))
              if (A_-B_)|X_==X_ and not X_-(A_|B_) and len(X_-B_)==len(X_&B_))
-R[(2,8)]=sp.sqrt((0-10)**2+(1-6)**2)-sp.sqrt(5)
+import numpy as _np
+_th=_np.linspace(0,2*_np.pi,1441); _B=_np.stack([6+_np.cos(_th),2+_np.sin(_th)],1); _ps=_np.linspace(0,12,1201)
+R[(2,8)]=sp.nsimplify(round(min(_np.min(_np.hypot(_B[:,0]-q_,_B[:,1]-q_))+_np.min(_np.hypot(_ps-8,2)+_np.hypot(_ps-q_,q_))
+                                 for q_ in _np.linspace(0,10,2001)),3))
 
 m9=sp.symbols('m9'); P9=sp.solve([x+2*y-4,2*x-y-3],[x,y])
 ms9=sp.solve((P9[y]-m9*P9[x])**2-(m9**2+1),m9)          # 원점과의 거리 1 (x=2 는 거리 2)
@@ -134,24 +137,20 @@ for k_ in range(0,400001):                        # 구간 [0,4]를 촘촘히 �
 R[(2,11)]=sp.nsimplify(round(sum(r11),3))
 Ax=sp.solve(sp.Eq(3*sp.sqrt(x),x**2/9),x); Ax=max(Ax); P_=(Ax*4/9,Ax*4/9)
 Bx=sp.solve(3*sp.sqrt(x)-P_[1],x)[0]; Cx=[r for r in sp.solve(x**2/9-P_[1],x) if r>0][0]; R[(2,12)]=(Cx-Bx)*(Ax-P_[1])/2
-ms=[r for r in sp.solve((4*k-2)**2/(k**2+1)-2,k) if 0<r<1]
-# 검증: OH:BH=3:1
-mv=ms[0]; d2=(4*mv-2)**2/(mv**2+1); assert sp.simplify((20-d2)/(4-d2))==9; R[(2,13)]=mv
-
-mm,cc=sp.symbols('mm cc',positive=True)
-def foot(P,d):  # 원점을 지나는 방향 d 직선 위로 내린 수선의 발
-    d=sp.Matrix(d); return d*(sp.Matrix(P).dot(d))/d.dot(d)
-Ac=sp.Matrix([cc,cc]); Qp=foot(Ac,[mm,1]); Pp_=foot(Ac,[1,mm])
-# 직선 PQ 와 x축의 교점 R
-tt=sp.symbols('tt'); Rr=Pp_+tt*(Qp-Pp_); tsol=sp.solve(Rr[1],tt)[0]; Rr=Rr.subs(tt,tsol)
-msol=[v for v in sp.solve(sp.simplify((Qp-Pp_).norm()**2-4*(Rr-Qp).norm()**2),mm) if v>1]
-assert len(msol)==1; mv=msol[0]
-area=sp.Abs(Pp_[0]*Qp[1]-Qp[0]*Pp_[1])/2
-cv=[v for v in sp.solve(sp.simplify(area.subs(mm,mv))-16,cc) if v>0][0]
-Q_=Qp.subs({mm:mv,cc:cv}); A_c=Ac.subs(cc,cv)
-# 직선 AQ 와 l1: y=mv x 의 교점
-ss=sp.symbols('ss'); Bp_=A_c+ss*(Q_-A_c); ssol=sp.solve(Bp_[1]-mv*Bp_[0],ss)[0]; Bp_=Bp_.subs(ss,ssol)
-R[(2,14)]=sp.nsimplify(sp.sqrt(sp.simplify((Bp_-Q_).norm()**2)))
+k13,a13=sp.symbols('k13 a13',positive=True)
+f13=k13*(x-2)*(x-a13); P13=((2+a13)/2,f13.subs(x,(2+a13)/2))
+a13v=[v for v in sp.solve(sp.simplify(-f13.subs(x,0)/a13-P13[1]/(P13[0]-2)),a13) if v>2]; assert len(a13v)==1
+m13=(-f13.subs(x,0)/a13).subs(a13,a13v[0]); AP13=sp.sqrt((P13[0]-2)**2+P13[1]**2).subs(a13,a13v[0])
+AQ13=sp.Abs(m13*(2-a13v[0]))/sp.sqrt(m13**2+1)
+k13v=sp.solve(sp.simplify(AP13*AQ13)-32,k13); R[(2,13)]=[f13.subs({a13:a13v[0],k13:kv}).subs(x,8) for kv in k13v][0]
+res14=set()
+for c_ in (4,0,-4):                                   # 중심은 x+y=4,0,-4 와 y=f(x)의 교점
+    for s_ in sp.solve([b+1-10*a, c_-b**2/(4*a)+4],[a,b],dict=True):
+        av_,bv_=float(s_[a]),float(s_[b])
+        if av_<=0: continue
+        rts=sorted(set(_np.round([z.real for d_ in (4,0,-4) for z in _np.roots([av_,bv_+1,c_-d_]) if abs(z.imag)<1e-12],9)))
+        if len(rts)==6 and abs(rts[-1])<1e-9 and abs(sum(rts[:-1])+30)<1e-6: res14.add(round(36*av_+6*bv_+c_,9))
+R[(2,14)]=res14
 res=set()
 for s_ in sp.solve([b**2-3*b],[b],dict=True):
     if s_[b]>0:
