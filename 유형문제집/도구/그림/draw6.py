@@ -39,12 +39,13 @@ def dim_arc(F, p, q, label, side, bulge=16, size=20, gap=6, cut=True):
     mx, my = (x1 + x2) / 2, (y1 + y2) / 2
     dx, dy = x2 - x1, y2 - y1
     n = math.hypot(dx, dy)
+    bulge = max(bulge, 0.2 * n)        # 선분 길이의 0.2배 이상 휘게(사용자 요청: 점선을 더 휘게)
     nx, ny = -dy / n * side, dx / n * side
     cx, cy = mx + nx * 2 * bulge, my + ny * 2 * bulge
     if cut:
         arcs, (lx, ly) = cut_arc(x1, y1, cx, cy, x2, y2, label, size)
         F.svg += arcs
-        F.labels.append((lx, ly, label, size, "cc"))
+        F.labels.append((lx, ly, label, size, "cc", "dim"))
         return
     F.svg.append('<path d="M%.1f,%.1f Q%.1f,%.1f %.1f,%.1f" fill="none" stroke="#000" stroke-width="1.5" stroke-dasharray="5,4"/>'
                  % (x1, y1, cx, cy, x2, y2))
@@ -55,7 +56,7 @@ def dim_arc(F, p, q, label, side, bulge=16, size=20, gap=6, cut=True):
 
 def fig_paper():
     # 직각삼각형 A(0,30), B(0,0), C(20,0)에서 직사각형 EBFD (그림은 ED=7). 길이는 점선 호로 표시
-    F = geo((-2, 22), (-2, 31), 9, (60, 22, 34, 50))
+    F = geo((-2, 22), (-2, 31), 9, (96, 34, 34, 50))
     A, B, C = (0, 30), (0, 0), (20, 0)
     e = 7
     E, D, Fp = (0, 30 - 1.5 * e), (e, 30 - 1.5 * e), (e, 0)
@@ -207,9 +208,9 @@ def fig_abc():
 
 
 # (파일, 함수, 문서에 넣는 폭 HWPUNIT = data6.py의 "w"). 모든 그림을 1픽셀=K_HWP로 맞춰 화살표·글자 크기를 같게 한다
-FIGS = (("g6_paper.png", fig_paper, 9000), ("g6_rect8.png", fig_rect8, 10000), ("g6_curveP.png", fig_curveP, 10000),
+FIGS = (("g6_paper.png", fig_paper, 8800), ("g6_rect8.png", fig_rect8, 10000), ("g6_curveP.png", fig_curveP, 10000),
         ("g6_tri.png", fig_tri, 10000), ("g6_two.png", fig_two, 10000), ("g6_isos.png", fig_isos, 9000),
-        ("g6_curveAC.png", fig_curveAC, 10000), ("g6_equi.png", fig_equi, 8000), ("g6_abc.png", fig_abc, 9000))
+        ("g6_curveAC.png", fig_curveAC, 10000), ("g6_equi.png", fig_equi, 10000), ("g6_abc.png", fig_abc, 9000))
 
 if __name__ == "__main__":
     for name, fn, wd in FIGS:

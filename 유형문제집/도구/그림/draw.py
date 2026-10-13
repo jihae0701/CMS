@@ -16,19 +16,28 @@ CHROME = os.environ.get("CHROME", "/opt/pw-browsers/chromium-1194/chrome-linux/c
 
 
 FONT = 22      # 그림 안 글씨 크기는 모두 같게(사용자 요청). 면을 채우는 큰 글씨(정육면체)만 예외
+# 글자가 선·곡선에 붙지 않도록 figcheck.py --fix가 찾은 글자 옮김(그림 파일 -> {글자 번호: [dx, dy]} 화면 px)
+NUDGE_FILE = os.path.join(HERE, "label_nudge.json")
+NUDGE = __import__("json").load(open(NUDGE_FILE, encoding="utf-8")) if os.path.exists(NUDGE_FILE) else {}
+CURRENT = None     # 지금 그리는 그림 파일 이름(fit_shoot가 정함)
 
 
 def page(svg, labels, w, h):
     """labels: [(x, y, tex, size, anchor)] anchor는 글자 상자의 기준(가운데 'c', 왼쪽 'l' 등)
     글씨 크기는 FONT로 통일한다(size가 FONT보다 훨씬 큰 경우만 그대로). 분수는 \\dfrac로 써서 숫자가 작아지지 않게 한다."""
     divs = []
-    for x, y, tex, size, anc in labels:
+    nudge = NUDGE.get(CURRENT, {})
+    for i, lab in enumerate(labels):
+        x, y, tex, size, anc = lab[:5]
+        fixed = len(lab) > 5 and lab[5] == "dim"         # 길이 점선을 끊은 자리의 글자(옮기지 않음)
+        dx, dy = nudge.get(str(i), (0, 0))
+        x, y = x + dx, y + dy
         size = size if size > FONT + 4 else FONT
         tex = tex.replace(r"\dfrac", r"\frac").replace(r"\frac", r"\dfrac")
         tx = {"c": "-50%", "l": "0", "r": "-100%"}[anc[0]]
         ty = {"c": "-50%", "t": "0", "b": "-100%"}[anc[1] if len(anc) > 1 else "c"]
-        divs.append('<div class="lb" style="left:%.1fpx;top:%.1fpx;font-size:%dpx;transform:translate(%s,%s)" data-tex="%s"></div>'
-                    % (x, y, size, tx, ty, escape(tex, quote=True)))
+        divs.append('<div class="lb" style="left:%.1fpx;top:%.1fpx;font-size:%dpx;transform:translate(%s,%s)" data-tex="%s" data-i="%d"%s></div>'
+                    % (x, y, size, tx, ty, escape(tex, quote=True), i, ' data-fixed="1"' if fixed else ""))
     return """<!doctype html><html><head><meta charset="utf-8">
 <link rel="stylesheet" href="file://%s/katex.min.css"><script src="file://%s/katex.min.js"></script>
 <style>body{margin:0;background:#fff}#fig{position:relative;width:%dpx;height:%dpx;background:#fff}
@@ -56,7 +65,7 @@ def cut_arc(x1, y1, cx, cy, x2, y2, label, size=FONT, width=1.5):
     M = B(0.5)
     tx, ty = x2 - x1, y2 - y1                       # 가운데에서 호의 방향(현과 나란함)
     horiz = abs(tx) >= abs(ty)
-    half = (len(label) * 0.62 * size) / 2 + 6 if horiz else size * 0.75 / 2 + 10
+    half = (len(label) * 0.62 * size) / 2 + 10 if horiz else size * 0.75 / 2 + 14   # 점선 끝과 글자 사이를 띄움
     t = 0.5
     while t > 0 and math.hypot(B(t)[0] - M[0], B(t)[1] - M[1]) < half:
         t -= 0.002
@@ -134,7 +143,7 @@ def triangle():
     nx, ny = ey, -ex                    # CD에 수직, A 쪽
     if (A[0] - mx) * nx + (A[1] - my) * ny < 0:
         nx, ny = -nx, -ny
-    bulge = 34
+    bulge = max(34, 0.2 * math.hypot(C[0] - D[0], C[1] - D[1]))     # 길이 점선은 선분 길이의 0.2배만큼 휜다
     cx, cy = mx + nx * bulge * 2, my + ny * bulge * 2
     arcs, (lx, ly) = cut_arc(D[0], D[1], cx, cy, C[0], C[1], "1", 22, 1.6)
     arc = "".join(arcs)
@@ -142,19 +151,35 @@ def triangle():
         w, h, line(A, B), line(B, C), line(C, A), line(C, D), right_mark(D, C, A), right_mark(C, B, A), arc)
     labels = [(A[0], A[1] - 8, r"\mathrm{A}", 24, "cb"), (B[0] - 6, B[1] + 4, r"\mathrm{B}", 24, "rc"),
               (C[0] + 6, C[1] + 4, r"\mathrm{C}", 24, "lc"), (D[0] - 10, D[1] - 6, r"\mathrm{D}", 24, "rb"),
-              (lx, ly, "1", 22, "cc")]
+              (lx, ly, "1", 22, "cc", "dim")]
     return page(svg, labels, w, h), w, h
 
 
-if __name__ == "__main__":
-    # (파일, 함수, 폼 그림의 가로 HWPUNIT). 1픽셀=6.4 HWPUNIT가 되도록 ZOOM을 맞춘다(그림 축척 통일)
-    for name, fn, wd in (("image86.png", cube, 13033), ("image83.png", triangle, 11357)):
-        want = wd / 6.4 / 3
-        ZOOM = 1.0
-        for _ in range(10):
-            doc, w, h = fn()
-            if abs(w - want) < 1:
-                break
-            ZOOM *= want / w
+# (파일, 함수, 문서 폭 HWPUNIT). 1픽셀=6.4 HWPUNIT가 되도록 ZOOM을 맞춘다(그림 축척 통일)
+FIGS = (("image86.png", cube, 13033), ("image83.png", triangle, 7600))
+
+
+def fit_shoot(name, fn, wd, out_dir=HERE):
+    global ZOOM
+    import draw as _d
+    _d.CURRENT = name
+    globals()["CURRENT"] = name     # python draw.py로 돌릴 때(__main__)도
+    want = wd / 6.4 / 3
+    ZOOM = 1.0
+    for _ in range(10):
         doc, w, h = fn()
-        shoot(doc, w, h, os.path.join(HERE, name))
+        if abs(w - want) < 1:
+            break
+        ZOOM *= want / w
+    doc, w, h = fn()
+    import draw as _d          # 검사 도구가 shoot를 바꿔 끼울 수 있게 모듈에서 찾는다
+    _d.shoot(doc, w, h, os.path.join(out_dir, name))
+    ZOOM = 1.0
+
+
+if __name__ == "__main__":
+    import sys
+    for name, fn, wd in FIGS:
+        if len(sys.argv) > 1 and name not in sys.argv[1:]:
+            continue
+        fit_shoot(name, fn, wd)

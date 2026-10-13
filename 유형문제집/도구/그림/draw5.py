@@ -77,10 +77,11 @@ def fig_n3040():
     arch = curve(lambda x: -4 * x * x + 8 * x, 0, 2, P)
     pole = '<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="#000" stroke-width="%s"/>' % (P(0, 0) + P(0, 9) + (STROKE,))
     lamp = '<circle cx="%.1f" cy="%.1f" r="6" fill="#fff" stroke="#000" stroke-width="2"/>' % P(0, 9)
-    ray = '<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="#000" stroke-width="1.6" stroke-dasharray="6,5"/>' % (P(0, 9) + P(2.25, 0))
+    # 점선은 길이 표시에만 쓰므로 빛과 높이 표시선은 실선(사용자 요청)
+    ray = '<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="#000" stroke-width="%s"/>' % (P(0, 9) + P(2.25, 0) + (LN,))
     shadow = '<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="#000" stroke-width="6" stroke-opacity="0.35"/>' % (P(2, 0) + P(2.25, 0))
-    # 높이 4m 표시(점선)
-    hgt = '<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="#000" stroke-width="1.4" stroke-dasharray="4,4"/>' % (P(1, 0) + P(1, 4))
+    # 높이 4m 표시(실선)
+    hgt = '<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="#000" stroke-width="%s"/>' % (P(1, 0) + P(1, 4) + (LN,))
     svg = '<svg width="%d" height="%d" style="position:absolute;left:0;top:0">%s</svg>' % (
         w, h, ground + shadow + arch + hgt + ray + pole + lamp)
     labels = [(P(0, 0)[0] - 4, P(0, 0)[1] + 6, r"\mathrm{A}", 21, "rt"), (P(2, 0)[0] - 2, P(2, 0)[1] + 6, r"\mathrm{B}", 21, "ct"),
@@ -142,6 +143,8 @@ def fit_shoot(name, fn, target_w, out_dir):
     """문서 폭 target_w(HWPUNIT)일 때 1픽셀=K_HWP가 되도록 ZOOM을 맞춰 그린다. 결과 PNG 폭 = target_w/K_HWP
     ZOOM은 이 함수가 정의된 모듈의 전역값(Frame과 같은 모듈)을 바꾼다."""
     from draw import shoot
+    import draw
+    draw.CURRENT = name                               # 글자 옮김(label_nudge.json)을 찾을 그림 이름
     G = globals()
     G["ZOOM"] = 1.0
     want = target_w / K_HWP / 3                       # shoot는 3배로 찍는다
@@ -245,10 +248,12 @@ def fig_m3217():
     return F.render()
 
 
+# (파일, 함수, 문서에 넣는 폭 HWPUNIT = unit05.py의 "w"). 1픽셀=K_HWP로 맞춘다
+FIGS = (("u5_n1090.png", fig_n1090, 10000), ("u5_n1162.png", fig_n1162, 10000), ("u5_n3040.png", fig_n3040, 9000),
+        ("u5_m3243.png", fig_m3243, 10000), ("u5_m3336.png", fig_m3336, 9900), ("u5_m3217.png", fig_m3217, 9200))
+
 if __name__ == "__main__":
-    # (파일, 함수, 문서에 넣는 폭 HWPUNIT = unit05.py의 "w"). 1픽셀=K_HWP로 맞춘다
-    for name, fn, wd in (("u5_n1090.png", fig_n1090, 16000), ("u5_n1162.png", fig_n1162, 16000), ("u5_n3040.png", fig_n3040, 9000),
-                         ("u5_m3243.png", fig_m3243, 12500), ("u5_m3336.png", fig_m3336, 13000), ("u5_m3217.png", fig_m3217, 14000)):
+    for name, fn, wd in FIGS:
         if len(sys.argv) > 1 and name not in sys.argv[1:]:
             continue
         fit_shoot(name, fn, wd, HERE)

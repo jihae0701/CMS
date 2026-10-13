@@ -29,6 +29,12 @@ LN = 2.0           # 직선·선분 굵기
 AX = 2.0           # 좌표축 굵기
 K_HWP = 6.4        # 문서에 넣을 때 PNG 1픽셀당 HWPUNIT (모든 그림 같게)
 ZOOM = 1.0         # fit_shoot가 조정한다(그림 크기만 바뀌고 글자·화살표 크기는 그대로)
+LONG_SIDE = 10000  # 그림의 긴 변(문서 HWPUNIT). 도형·그래프 그림은 모두 이 크기로 맞춰 도형과 글씨의 비율을 같게 한다
+GAP = 8            # 글자(점 이름·숫자·식)와 선·곡선 사이 최소 간격(px). fit_shoot가 검사하고 글자를 옮긴다
+REACH = 22         # 글자를 옮길 수 있는 최대 거리(px)
+NUDGE = {}         # 그림 파일 -> {글자 번호: [dx, dy]} (fit_shoot가 채우고 out_dir/label_nudge.json에 적는다)
+CURRENT = None     # 지금 그리는 그림 파일 이름
+AXIS_LABELS = {"x", "y", r"\mathrm{O}"}   # 약속된 자리라 옮기지 않는 글자
 
 # 색칠은 회색 대신 연한 색
 PINK, GREEN, SKY, LAVENDER, YELLOW = "#ffd9e6", "#dcf3d2", "#d6ecfb", "#e8defa", "#fff3bf"
@@ -55,13 +61,18 @@ def page(svg, labels, w, h):
     """labels: [(x, y, tex, size, anchor)]. anchor는 글자 상자의 기준점: 가로 l/c/r + 세로 t/c/b (예: 'rt')
     글씨 크기는 FONT로 통일한다(size가 FONT보다 훨씬 큰 경우만 그대로). 분수는 \\dfrac로 바꿔 숫자가 작아지지 않게 한다."""
     divs = []
-    for x, y, tex, size, anc in labels:
+    nudge = NUDGE.get(CURRENT, {})
+    for i, lab in enumerate(labels):
+        x, y, tex, size, anc = lab[:5]
+        fixed = len(lab) > 5 and lab[5] == "dim"       # 길이 점선을 끊은 자리의 글자(옮기지 않음)
+        dx, dy = nudge.get(str(i), (0, 0))
+        x, y = x + dx, y + dy
         size = size if size > FONT + 4 else FONT
         tex = tex.replace(r"\dfrac", r"\frac").replace(r"\frac", r"\dfrac")
         tx = {"c": "-50%", "l": "0", "r": "-100%"}[anc[0]]
         ty = {"c": "-50%", "t": "0", "b": "-100%"}[anc[1] if len(anc) > 1 else "c"]
-        divs.append('<div class="lb" style="left:%.1fpx;top:%.1fpx;font-size:%dpx;transform:translate(%s,%s)" data-tex="%s"></div>'
-                    % (x, y, size, tx, ty, escape(tex, quote=True)))
+        divs.append('<div class="lb" style="left:%.1fpx;top:%.1fpx;font-size:%dpx;transform:translate(%s,%s)" data-tex="%s" data-i="%d"%s></div>'
+                    % (x, y, size, tx, ty, escape(tex, quote=True), i, ' data-fixed="1"' if fixed else ""))
     return """<!doctype html><html><head><meta charset="utf-8">%s
 <style>body{margin:0;background:#fff}#fig{position:relative;width:%dpx;height:%dpx;background:#fff}
 .lb{position:absolute;white-space:nowrap;line-height:1}</style></head><body>
@@ -149,9 +160,7 @@ class Frame:
         return page(svg, self.labels, self.w, self.h), self.w, self.h
 
 
-def fit_shoot(name, fn, target_w, out_dir="."):
-    """문서 폭 target_w(HWPUNIT)일 때 PNG 1픽셀 = K_HWP가 되도록 ZOOM만 맞춰 찍는다.
-    결과 PNG의 CSS 폭 = target_w / K_HWP / 3 (3배 해상도). 글자·화살표는 픽셀 크기 그대로라 모든 그림에서 같아 보인다."""
+def _fit(fn, target_w):
     G = globals()
     G["ZOOM"] = 1.0
     want = target_w / K_HWP / 3
@@ -160,9 +169,125 @@ def fit_shoot(name, fn, target_w, out_dir="."):
         if abs(w - want) < 1:
             break
         G["ZOOM"] *= want / w
-    doc, w, h = fn()
+    return fn()
+
+
+def _measure(html, w, h):
+    """(선만 찍은 검은 픽셀 지도, [(글자 번호, tex, 옮기지 않음, 글자 모양 범위)])"""
+    import io
+    import numpy as np
+    from PIL import Image
+    from playwright.sync_api import sync_playwright
+    path = os.path.abspath("_measure.html")
+    open(path, "w", encoding="utf-8").write(html)
+    with sync_playwright() as p:
+        b = p.chromium.launch(executable_path=CHROME) if CHROME else p.chromium.launch()
+        pg = b.new_page(viewport={"width": w, "height": h}, device_scale_factor=1)
+        pg.goto("file://" + path)
+        pg.wait_for_function("document.querySelectorAll('.lb .katex').length === document.querySelectorAll('.lb').length")
+        pg.wait_for_timeout(150)
+        labs = pg.evaluate("""() => [...document.querySelectorAll('.lb')].map(e => {
+            const r = e.getBoundingClientRect(); return [r.left, r.top, r.right, r.bottom, e.dataset.tex, +e.dataset.i, e.dataset.fixed === '1']})""")
+        pg.evaluate("() => document.querySelectorAll('svg').forEach(e => e.style.visibility='hidden')")
+        lab_png = pg.locator("#fig").screenshot()
+        pg.evaluate("() => { document.querySelectorAll('svg').forEach(e => e.style.visibility='visible');"
+                    " document.querySelectorAll('.lb').forEach(e => e.style.visibility='hidden') }")
+        st_png = pg.locator("#fig").screenshot()
+        b.close()
+    os.remove(path)
+    st = np.array(Image.open(io.BytesIO(st_png)).convert("L")) < 150
+    lb = np.array(Image.open(io.BytesIO(lab_png)).convert("L")) < 150
+    out = []
+    for x0, y0, x1, y1, tex, i, fixed in labs:
+        ys, xs = np.nonzero(lb[max(0, int(y0)):int(y1) + 1, max(0, int(x0)):int(x1) + 1])
+        if len(xs):
+            out.append((i, tex, fixed, (int(x0) + xs.min(), int(y0) + ys.min(), int(x0) + xs.max(), int(y0) + ys.max())))
+    I = np.pad(st.astype(np.int32).cumsum(0).cumsum(1), ((1, 0), (1, 0)))
+    return I, out
+
+
+def _count(I, x0, y0, x1, y1):
+    H, W = I.shape[0] - 1, I.shape[1] - 1
+    x0, y0, x1, y1 = max(0, x0), max(0, y0), min(W - 1, x1), min(H - 1, y1)
+    return 0 if x0 > x1 or y0 > y1 else int(I[y1 + 1, x1 + 1] - I[y0, x1 + 1] - I[y1 + 1, x0] + I[y0, x0])
+
+
+def _gap(I, b, limit=GAP + 4):
+    for d in range(limit + 1):
+        if _count(I, b[0] - d, b[1] - d, b[2] + d, b[3] + d):
+            return d
+    return limit + 1
+
+
+def check_and_nudge(name, html, w, h):
+    """글자와 선 사이가 GAP보다 좁은 글자를 가장 가까운 빈자리로 옮긴다(NUDGE). 남은 문제 목록을 돌려준다."""
+    I, labs = _measure(html, w, h)
+    bad = [(i, tex, fixed, box) for i, tex, fixed, box in labs if tex not in AXIS_LABELS and _gap(I, box) < GAP]
+    boxes = {i: box for i, tex, fixed, box in labs}
+    nud = NUDGE.setdefault(name, {})
+    cands = sorted(((dx, dy) for dx in range(-REACH, REACH + 1) for dy in range(-REACH, REACH + 1)),
+                   key=lambda t: t[0] * t[0] + t[1] * t[1])
+    left = [(tex, "그림 밖으로 나감: 그 쪽 여백을 늘린다") for i, tex, fixed, box in labs
+            if box[0] < 2 or box[1] < 2 or box[2] > w - 3 or box[3] > h - 3]
+    for i, tex, fixed, box in bad:
+        if fixed:
+            left.append((tex, "길이 점선 글자: 점선을 더 휘게 하거나 끊는 길이를 늘린다"))
+            continue
+        others = [bx for j, bx in boxes.items() if j != i]
+        for dx, dy in cands:
+            nb = (box[0] + dx, box[1] + dy, box[2] + dx, box[3] + dy)
+            if nb[0] < 2 or nb[1] < 2 or nb[2] > w - 3 or nb[3] > h - 3 or _gap(I, nb) < GAP:
+                continue
+            if any(not (nb[2] + 4 < o[0] or o[2] + 4 < nb[0] or nb[3] + 4 < o[1] or o[3] + 4 < nb[1]) for o in others):
+                continue
+            ox, oy = nud.get(str(i), (0, 0))
+            nud[str(i)] = [ox + dx, oy + dy]
+            boxes[i] = nb
+            break
+        else:
+            left.append((tex, "옮길 자리가 없음: 그림 여백이나 글자 위치를 손으로 고친다"))
+    return bad, left
+
+
+def fit_shoot(name, fn, target_w=None, out_dir=".", fix=True):
+    """문서 폭 target_w(HWPUNIT)일 때 PNG 1픽셀 = K_HWP가 되도록 ZOOM만 맞춰 찍는다.
+    결과 PNG의 CSS 폭 = target_w / K_HWP / 3 (3배 해상도). 글자·화살표는 픽셀 크기 그대로라 모든 그림에서 같아 보인다.
+    target_w를 주지 않으면 그림의 긴 변이 LONG_SIDE(약 10000 HWPUNIT)가 되도록 폭을 정한다(도형 크기와 글씨 비율 통일).
+    fix=True이면 글자와 선 사이 간격(GAP)을 검사해 붙은 글자를 옮기고(out_dir/label_nudge.json에 저장) 찍는다.
+    돌려주는 값: 문서에 넣을 폭(HWPUNIT)"""
+    import json
+    global CURRENT
+    CURRENT = name
+    nf = os.path.join(out_dir, "label_nudge.json")
+    if os.path.exists(nf):
+        NUDGE.update(json.load(open(nf, encoding="utf-8")))
+    if target_w is None:                      # 긴 변을 LONG_SIDE로
+        target_w = LONG_SIDE
+        for _ in range(6):
+            doc, w, h = _fit(fn, target_w)
+            long_side = max(w, h) * 3 * K_HWP
+            if abs(long_side - LONG_SIDE) < 60:
+                break
+            target_w *= LONG_SIDE / long_side
+        target_w = int(round(target_w / 100.0) * 100)
+    doc, w, h = _fit(fn, target_w)
+    if fix:
+        for _ in range(3):
+            bad, left = check_and_nudge(name, doc, w, h)
+            if not bad:
+                break
+            doc, w, h = _fit(fn, target_w)
+        for tex, why in left:
+            print("  [그림 검사] %s: %s — %s" % (name, tex, why))
+        json.dump(NUDGE, open(nf, "w", encoding="utf-8"), ensure_ascii=False, indent=1, sort_keys=True)
     shoot(doc, w, h, os.path.join(out_dir, name))
+    long_side = max(w, h) * 3 * K_HWP
+    if not (0.89 * LONG_SIDE <= long_side <= 1.1 * LONG_SIDE):
+        print("  [그림 검사] %s: 긴 변 %d HWPUNIT (약속 %d 안팎; 넓은 개념 그림 등만 예외)" % (name, long_side, LONG_SIDE))
+    G = globals()
     G["ZOOM"] = 1.0
+    CURRENT = None
+    return target_w
 
 
 def roots(f, lo, hi, v, n=4000):
@@ -207,6 +332,7 @@ def dim_arc(F, p, q, label, side, bulge=16, size=FONT, gap=6, cut=True):
     mx, my = (x1 + x2) / 2, (y1 + y2) / 2
     dx, dy = x2 - x1, y2 - y1
     n = math.hypot(dx, dy)
+    bulge = max(bulge, 0.2 * n)          # 선분 길이의 0.2배 이상 휘게(사용자 요청: 점선을 넉넉히 휘게)
     nx, ny = -dy / n * side, dx / n * side
     cx, cy = mx + nx * 2 * bulge, my + ny * 2 * bulge
     dash = 'fill="none" stroke="#000" stroke-width="1.5" stroke-dasharray="5,4"'
@@ -229,13 +355,13 @@ def dim_arc(F, p, q, label, side, bulge=16, size=FONT, gap=6, cut=True):
 
     M = B(0.5)
     # 끊는 길이: 호가 가로로 지나면 글자 폭, 세로로 지나면 글자 높이에 여유를 더한 만큼
-    half = (len(label) * 0.62 * size) / 2 + 6 if abs(dx) >= abs(dy) else size * 0.75 / 2 + 10
+    half = (len(label) * 0.62 * size) / 2 + 10 if abs(dx) >= abs(dy) else size * 0.75 / 2 + 14   # 점선 끝과 글자 사이를 띄움
     t = 0.5
     while t > 0 and math.hypot(B(t)[0] - M[0], B(t)[1] - M[1]) < half:
         t -= 0.002
     F.svg.append(sub(0, t))
     F.svg.append(sub(1 - t, 1))
-    F.labels.append((M[0], M[1], label, size, "cc"))
+    F.labels.append((M[0], M[1], label, size, "cc", "dim"))
 
 if __name__ == "__main__":
     # 시험: 두 점 (-2, 0), (3, 0)을 지나는 포물선과 직사각형 길이 표시
@@ -251,7 +377,7 @@ if __name__ == "__main__":
         return F.render()
 
     def fig_rect():
-        F = Frame((-0.5, 8.5), (-0.5, 5.5), 30, 30, (60, 30, 40, 50))
+        F = Frame((-0.5, 8.5), (-0.5, 5.5), 30, 30, (90, 30, 40, 90))
         A, B, C, D = (0, 4), (0, 0), (7, 0), (7, 4)
         F.poly([A, B, C, D], SKY)
         for p, q in ((A, B), (B, C), (C, D), (D, A)):
@@ -262,5 +388,6 @@ if __name__ == "__main__":
         dim_arc(F, B, A, "4", -1, 22)
         return F.render()
 
-    fit_shoot("example_graph.png", fig_graph, 9000)
-    fit_shoot("example_rect.png", fig_rect, 9000)
+    # 폭을 주지 않으면 긴 변이 LONG_SIDE(10000 HWPUNIT)가 되도록 맞추고, 글자-선 간격을 검사해 붙은 글자를 옮긴다
+    print("문서 폭", fit_shoot("example_graph.png", fig_graph))
+    print("문서 폭", fit_shoot("example_rect.png", fig_rect))

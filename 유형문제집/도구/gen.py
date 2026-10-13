@@ -614,7 +614,7 @@ def _png_size(path):
 
 
 def swap_pics(sec, files, order):
-    """그림/imageNN.png가 있으면 폼의 같은 그림 대신 넣는다. 가로 크기는 그대로, 세로는 새 그림 비율로."""
+    """그림/imageNN.png가 있으면 폼의 같은 그림 대신 넣는다. 크기는 1픽셀=6.4 HWPUNIT(그림 축척 통일)."""
     hpf = files["Contents/content.hpf"].decode("utf-8")
     for fn in sorted(os.listdir(PIC_DIR)) if os.path.isdir(PIC_DIR) else []:
         m = re.match(r"(image\d+)\.png$", fn)
@@ -630,7 +630,7 @@ def swap_pics(sec, files, order):
             a = sec.rindex("<hp:pic ", 0, i)
             b = sec.index("</hp:pic>", i) + len("</hp:pic>")
             x = sec[a:b]
-            W = int(re.search(r'<hp:curSz width="(\d+)"', x).group(1))
+            W = round(pw * 6.4)       # 1픽셀=6.4 HWPUNIT(모든 그림 같은 축척, 사용자 요청)
             H = round(W * ph / pw)
             x = re.sub(r'<hp:orgSz [^>]*/>', '<hp:orgSz width="%d" height="%d"/>' % (W, H), x)
             x = re.sub(r'<hp:curSz [^>]*/>', '<hp:curSz width="%d" height="%d"/>' % (W, H), x)

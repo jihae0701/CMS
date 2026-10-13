@@ -124,7 +124,7 @@ def fig_m3335():
 
 # (파일, 함수, 문서에 넣는 폭 HWPUNIT = unit06.py의 "w"). 1픽셀=K_HWP로 맞춰 화살표·글자 크기를 모든 그림에서 같게 한다
 FIGS = (("u6_o44.png", fig_o44, 11000), ("u6_n1151.png", fig_n1151, 11000), ("u6_n1169.png", fig_n1169, 11000),
-        ("u6_m3285.png", fig_m3285, 12000), ("u6_m3335.png", fig_m3335, 11000))
+        ("u6_m3285.png", fig_m3285, 10000), ("u6_m3335.png", fig_m3335, 11000))
 
 if __name__ == "__main__":
     for name, fn, wd in FIGS:

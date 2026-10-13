@@ -187,7 +187,7 @@ TYPES.append(("이차함수의 최대·최소의 활용", [
     "도형의 넓이, 판매 이익, 곡선 위의 점 등에서 변수를 정하고 그 변수의 값의 범위를 구한 후, 이차함수의 최댓값 또는 최솟값을 구한다.",
 ], [
     P(["그림과 같이 밑변의 길이가 $20$, 높이가 $30$인 직각삼각형 모양의 색종이에서 직사각형 모양을 잘라 내려고 한다. 잘라 낼 수 있는 직사각형의 넓이의 최댓값을 구하시오.",
-       {"img": "g6_paper.png", "w": 9000}],
+       {"img": "g6_paper.png", "w": 8800}],
       "150",
       ["그림과 같이 직사각형을 $rm EBFD$라 하면 삼각형 $rm ABC$와 삼각형 $rm AED$는 닮음이므로 $overline {rm AE}:overline {rm ED}=30:20=3:2$",
        "$overline {rm ED}=2a$라 하면 $overline {rm AE}=3a$, $overline {rm EB}=30-3a$ $(0<a<10)$",
@@ -297,7 +297,7 @@ STEP3 = [
        "(ⅱ) $a geq 2$일 때 최솟값은 $f(2)=2a^{2}-4a+4=10$, $(a-3)(a+1)=0$에서 $a=3$",
        "이때 최댓값은 $f(0)=2a^{2}=18$"], src="2021년 11월 고1 26번"),
     P(["그림과 같이 한 변의 길이가 $2$인 정삼각형 $rm ABC$에 대하여 변 $rm BC$의 중점을 $rm P$라 하고, 선분 $rm AP$ 위의 점 $rm Q$에 대하여 선분 $rm PQ$의 길이를 $x$라 하자. $overline {rm AQ}^{2}+overline {rm BQ}^{2}+overline {rm CQ}^{2}$은 $x=a$에서 최솟값 $m$을 가진다. ${m} over {a}$의 값을 구하시오. (단, $0<x< sqrt {3}$)",
-       {"img": "g6_equi.png", "w": 8000}],
+       {"img": "g6_equi.png", "w": 10000}],
       "4 sqrt {3}",
       ["$overline {rm AP}= sqrt {3}$이므로 $overline {rm AQ}= sqrt {3}-x$이고, $overline {rm BQ}^{2}=overline {rm CQ}^{2}=1+x^{2}$",
        "$overline {rm AQ}^{2}+overline {rm BQ}^{2}+overline {rm CQ}^{2}=( sqrt {3}-x)^{2}+2(1+x^{2})$", "$=3x^{2}-2 sqrt {3}x+5=3 left ( x-{ sqrt {3}} over {3} right )^{2}+4$",
