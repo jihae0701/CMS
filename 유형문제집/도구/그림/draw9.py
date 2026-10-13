@@ -35,7 +35,7 @@ def fig_roots():
 
 
 def fig_tri():
-    F = geo((-2, 14), (-2.5, 13), 16, (80, 22, 30, 16))
+    F = geo((-2, 14), (-3.2, 13), 16, (80, 22, 30, 16))
     A, B, C = (0, 12), (0, 0), (12, 0)
     P, Q, R = (5, 7), (0, 7), (5, 0)
     for p, q in ((A, B), (B, C), (C, A)):
@@ -43,7 +43,7 @@ def fig_tri():
     F.seg(Q, P); F.seg(P, R)
     right_mark(F, B, A, C, 0.75); right_mark(F, Q, A, P, 0.75); right_mark(F, R, P, C, 0.75)
     dim_arc(F, B, A, "12", -1, 46, cut=True)
-    dim_arc(F, B, C, "12", 1, 16, cut=True)
+    dim_arc(F, B, C, "12", 1, 30, cut=True)
     F.pt(A, "A", "cb", 0, -6); F.pt(B, "B", "rt", -6, 4); F.pt(C, "C", "lc", 7, 0)
     F.pt(P, "P", "lb", 5, -3); F.pt(Q, "Q", "rc", -6, 0); F.pt(R, "R", "lb", 20, -3)
     return F.render()
