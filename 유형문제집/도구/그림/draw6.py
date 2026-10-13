@@ -31,8 +31,9 @@ def right_mark(F, v, p, q, k=0.06):
                  % (F.P(*p1) + F.P(*p2) + F.P(*p3)))
 
 
-def dim_arc(F, p, q, label, side, bulge=16, size=20, gap=6):
-    """선분 pq의 길이 표시: side 쪽(화면 법선 방향 +1/-1)으로 휜 점선 호와 가운데 글자"""
+def dim_arc(F, p, q, label, side, bulge=16, size=20, gap=6, cut=False):
+    """선분 pq의 길이 표시: side 쪽(화면 법선 방향 +1/-1)으로 휜 점선 호와 가운데 글자
+    cut=True이면 점선의 가운데를 끊고 그 자리에 글자를 쓴다(사용자 요청, 9단원부터)."""
     import math
     (x1, y1), (x2, y2) = F.P(*p), F.P(*q)
     mx, my = (x1 + x2) / 2, (y1 + y2) / 2
@@ -40,11 +41,33 @@ def dim_arc(F, p, q, label, side, bulge=16, size=20, gap=6):
     n = math.hypot(dx, dy)
     nx, ny = -dy / n * side, dx / n * side
     cx, cy = mx + nx * 2 * bulge, my + ny * 2 * bulge
-    F.svg.append('<path d="M%.1f,%.1f Q%.1f,%.1f %.1f,%.1f" fill="none" stroke="#000" stroke-width="1.5" stroke-dasharray="5,4"/>'
-                 % (x1, y1, cx, cy, x2, y2))
-    lx, ly = mx + nx * (bulge + gap), my + ny * (bulge + gap)
-    anc = ("l" if nx > 0.5 else "r" if nx < -0.5 else "c") + ("t" if ny > 0.5 else "b" if ny < -0.5 else "c")
-    F.labels.append((lx, ly, label, size, anc))
+    dash = 'fill="none" stroke="#000" stroke-width="1.5" stroke-dasharray="5,4"'
+    if not cut:
+        F.svg.append('<path d="M%.1f,%.1f Q%.1f,%.1f %.1f,%.1f" %s/>' % (x1, y1, cx, cy, x2, y2, dash))
+        lx, ly = mx + nx * (bulge + gap), my + ny * (bulge + gap)
+        anc = ("l" if nx > 0.5 else "r" if nx < -0.5 else "c") + ("t" if ny > 0.5 else "b" if ny < -0.5 else "c")
+        F.labels.append((lx, ly, label, size, anc))
+        return
+
+    def B(t):
+        return ((1 - t) ** 2 * x1 + 2 * t * (1 - t) * cx + t * t * x2, (1 - t) ** 2 * y1 + 2 * t * (1 - t) * cy + t * t * y2)
+
+    def sub(t0, t1):
+        # 2차 베지에의 [t0, t1] 부분을 같은 꼴의 곡선으로
+        a, b = B(t0), B(t1)
+        d0 = (2 * (1 - t0) * (cx - x1) + 2 * t0 * (x2 - cx), 2 * (1 - t0) * (cy - y1) + 2 * t0 * (y2 - cy))
+        h = (t1 - t0) / 2
+        c = (a[0] + d0[0] * h, a[1] + d0[1] * h)
+        return '<path d="M%.1f,%.1f Q%.1f,%.1f %.1f,%.1f" %s/>' % (a + c + b + (dash,))
+
+    M = B(0.5)
+    half = (len(label) * 0.62 * size) / 2 + 6 if abs(ny) > abs(nx) else size * 0.75 / 2 + 10   # 끊는 길이의 반(글자 폭 또는 높이에 맞춤)
+    t = 0.5
+    while t > 0 and math.hypot(B(t)[0] - M[0], B(t)[1] - M[1]) < half:
+        t -= 0.002
+    F.svg.append(sub(0, t))
+    F.svg.append(sub(1 - t, 1))
+    F.labels.append((M[0], M[1], label, size, "cc"))
 
 
 def fig_paper():
