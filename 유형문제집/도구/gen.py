@@ -115,6 +115,9 @@ def _norm(o):
     return o
 
 
+import mcorig   # 출처를 붙인 모의고사 객관식 문항은 원문대로 5지선다로
+mcorig.apply(U.ITEMS)
+
 for _it in U.ITEMS:
     if "h" not in _it:
         _it["q"] = _norm(_it["q"])

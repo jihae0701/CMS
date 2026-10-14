@@ -87,6 +87,7 @@ def convert(script):
     s = re.sub(r"\brm\s+([A-Za-z]+)", r"\\mathrm{\1}", s)
     s = re.sub(r"\bit\b", "", s)
     s = re.sub(r"\bbar\s*\{", r"\\overline{", s)
+    s = re.sub(r"\bBOX\s*\{", r"\\boxed{", s)     # 빈칸 추론의 빈칸
     s = re.sub(r"(?<!\\)\boverline\s*\{", r"\\overline{", s)
     s = s.replace("+-", r"\pm ").replace("-+", r"\mp ")
     s = re.sub(r"\bsqrt\s*\{", r"\\sqrt{", s)

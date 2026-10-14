@@ -335,7 +335,11 @@ for av in range(5, 60):
             if area((0, 0), Pp, (av, 0)) == area((0, 0), Pp, (0, f.subs(x, 0))):
                 res.append(av)
 assert sorted(set(res)) == [16]
-chk("m3336", res[0], 16)
+# 빈칸 추론: (가) 직선 BC의 기울기(직선 y=-x와 평행), (나) k, (다) a → (p+r)/q
+av = res[0]; slope = -1
+kv = solve(k*(0 - 4)*(0 - av) - slope*(0 - av), k)[0]
+assert kv == Rational(1, 4) and disc(kv*(x - 4)*(x - av) + x) == 0
+chk("m3336", (slope + av)/kv, 60)
 res = []
 for pv in (1, -1):
     f = 4*(x - pv)**2 + 2*x - 4; g = (x - 4*pv)**2 + 2*x - 4

@@ -226,7 +226,7 @@ for kv in [Rational(i, 8) for i in range(-80, 81)]:
     rr = sorted({r for r in rts(x**3 - 6*x**2 + (kv + 8)*x - 2*kv) if r.is_real}, key=float)
     if len(rr) == 3 and Z(2*rr[0] + rr[1] - 2*rr[2]):
         ks.append(kv)
-assert ks == [Rational(15, 4)]; chk("m3275", 4*ks[0], 15)
+assert ks == [Rational(15, 4)]; chk("m3275", ks[0], Rational(15, 4))
 f = x**3 + k*x**2 + (k + 4)*x - 6*k - 1
 kv = solve(f.subs(x, 1) - 8, k)[0]
 chk("o49", val(sum(r**2 for r in rts(f.subs(k, kv)))), -5)

@@ -357,13 +357,13 @@ L3 = N("n577", ["어떤 정삼각형과 정육각형의 둘레의 길이의 합�
         "$therefore$ $b={8} over {5}$, $a={54} over {5}$이고 $a+b={62} over {5}$"])
 
 # ------------------------------------------------------------ 고난도
-X1 = N("m3275", ["$x$에 대한 삼차방정식 $x^{3}-6x^{2}+(k+8)x-2k=0$은 서로 다른 세 실근 $alpha$, $beta$, $gamma$ $( alpha < beta < gamma )$를 갖는다. $2 alpha + beta =2 gamma$일 때, $4k$의 값을 구하시오. (단, $k$는 상수이다.)"],
-       "15",
+X1 = N("m3275", ["$x$에 대한 삼차방정식 $x^{3}-6x^{2}+(k+8)x-2k=0$은 서로 다른 세 실근 $alpha$, $beta$, $gamma$ $( alpha < beta < gamma )$를 갖는다. $2 alpha + beta =2 gamma$일 때, 상수 $k$의 값을 구하시오."],
+       "{15} over {4}",
        ["$x^{3}-6x^{2}+(k+8)x-2k=(x-2)(x^{2}-4x+k)$",
         "$x^{2}-4x+k=0$의 두 실근을 $x_{1}$, $x_{2}$ $(x_{1}<x_{2})$라 하면 $x_{1}+x_{2}=4$이므로 $x_{1}<2<x_{2}$",
         "$therefore$ $beta =2$, $alpha =x_{1}$, $gamma =x_{2}$이고 $alpha + gamma =4$, $alpha gamma =k$",
         "$2 alpha + beta =2 gamma$에서 $2( gamma - alpha )= beta =2$이므로 $gamma - alpha =1$",
-        "$( gamma - alpha )^{2}=( alpha + gamma )^{2}-4 alpha gamma$에서 $1=16-4k$ $therefore$ $4k=15$"],
+        "$( gamma - alpha )^{2}=( alpha + gamma )^{2}-4 alpha gamma$에서 $1=16-4k$ $therefore$ $k={15} over {4}$"],
        src="2025년 9월 고1 18번 [4점]")
 X2 = N("o49", ["$x$에 대한 삼차방정식 $x^{3}+kx^{2}+(k+4)x-6k-1=0$의 세 근을 $alpha$, $beta$, $gamma$라 하자. $(1- alpha )(1- beta )(1- gamma )=8$일 때, $alpha^{2}+ beta^{2}+ gamma^{2}$의 값을 구하시오. (단, $k$는 상수이다.)"],
        "-5",
