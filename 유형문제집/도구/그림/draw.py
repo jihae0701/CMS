@@ -47,7 +47,7 @@ def page(svg, labels, w, h):
 </body></html>""" % (KATEX, KATEX, w, h, svg, "".join(divs))
 
 
-def cut_arc(x1, y1, cx, cy, x2, y2, label, size=FONT, width=1.5):
+def cut_arc(x1, y1, cx, cy, x2, y2, label, size=FONT, width=1.5, chars=None):
     """길이 표시 점선 호(2차 베지에, 화면 좌표)의 가운데를 끊고 그 자리에 길이를 쓴다(사용자 요청).
     끊는 길이는 글자 폭(호가 가로로 지날 때) 또는 높이(세로로 지날 때)에 맞춘다. (svg 조각들, 글자 위치)를 돌려준다."""
     dash = 'fill="none" stroke="#000" stroke-width="%s" stroke-dasharray="5,4"' % width
@@ -65,7 +65,7 @@ def cut_arc(x1, y1, cx, cy, x2, y2, label, size=FONT, width=1.5):
     M = B(0.5)
     tx, ty = x2 - x1, y2 - y1                       # 가운데에서 호의 방향(현과 나란함)
     horiz = abs(tx) >= abs(ty)
-    half = (len(label) * 0.62 * size) / 2 + 10 if horiz else size * 0.75 / 2 + 14   # 점선 끝과 글자 사이를 띄움
+    half = ((chars or len(label)) * 0.62 * size) / 2 + 10 if horiz else size * 0.75 / 2 + 14   # 점선 끝과 글자 사이를 띄움(chars: 보이는 글자 수)
     t = 0.5
     while t > 0 and math.hypot(B(t)[0] - M[0], B(t)[1] - M[1]) < half:
         t -= 0.002

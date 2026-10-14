@@ -66,13 +66,26 @@ def fig_n1162():
 
 def fig_n3040():
     # 지면 y=0, A(0,0), B(2,0), 조형물 y=-4x^2+8x, 조명 (0,9), 그림자 끝 C(9/4, 0)
+    # 길이(9 m, 4 m, 2 m)는 가운데를 끊은 점선 호로 표시(사용자 요청)
+    import math
+    from draw import cut_arc
     s, sx = 30 * ZOOM, 70 * ZOOM   # 가로를 늘려 그린 개형(접하는 관계는 그대로 유지됨). ZOOM: 문서 폭에 맞춘 확대
-    ml, mt = 40, 26
+    ml, mt, mb = 70, 26, 80
     xr = (-0.6, 3.0)
-    w, h = int((xr[1] - xr[0]) * sx + 2 * ml), int(9.6 * s + mt + 40)
+    w, h = int((xr[1] - xr[0]) * sx + ml + 40), int(9.6 * s + mt + mb)
 
     def P(x, y):
         return (ml + (x - xr[0]) * sx, mt + (9.6 - y) * s)
+
+    def dim(p, q, label, chars, side):
+        (x1, y1), (x2, y2) = P(*p), P(*q)
+        n = math.hypot(x2 - x1, y2 - y1)
+        bulge = max(16, 0.2 * n)
+        nx, ny = -(y2 - y1) / n * side, (x2 - x1) / n * side
+        cx, cy = (x1 + x2) / 2 + nx * 2 * bulge, (y1 + y2) / 2 + ny * 2 * bulge
+        arcs, (lx, ly) = cut_arc(x1, y1, cx, cy, x2, y2, label, 21, 1.5, chars)
+        return "".join(arcs), (lx, ly, label, 21, "cc", "dim")
+
     ground = '<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="#000" stroke-width="%s"/>' % (P(xr[0], 0) + P(xr[1], 0) + (AX,))
     arch = curve(lambda x: -4 * x * x + 8 * x, 0, 2, P)
     pole = '<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="#000" stroke-width="%s"/>' % (P(0, 0) + P(0, 9) + (STROKE,))
@@ -80,14 +93,14 @@ def fig_n3040():
     # 점선은 길이 표시에만 쓰므로 빛과 높이 표시선은 실선(사용자 요청)
     ray = '<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="#000" stroke-width="%s"/>' % (P(0, 9) + P(2.25, 0) + (LN,))
     shadow = '<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="#000" stroke-width="6" stroke-opacity="0.35"/>' % (P(2, 0) + P(2.25, 0))
-    # 높이 4m 표시(실선)
     hgt = '<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="#000" stroke-width="%s"/>' % (P(1, 0) + P(1, 4) + (LN,))
+    a9, l9 = dim((0, 0), (0, 9), r"9\,\mathrm{m}", 3, -1)      # 조명 높이: 기둥 왼쪽
+    a4, l4 = dim((1, 0), (1, 4), r"4\,\mathrm{m}", 3, -1)      # 조형물 높이: 높이 선 왼쪽
+    a2, l2 = dim((0, 0), (2, 0), r"2\,\mathrm{m}", 3, 1)       # 조형물 폭 AB: 지면 아래
     svg = '<svg width="%d" height="%d" style="position:absolute;left:0;top:0">%s</svg>' % (
-        w, h, ground + shadow + arch + hgt + ray + pole + lamp)
-    labels = [(P(0, 0)[0] - 4, P(0, 0)[1] + 6, r"\mathrm{A}", 21, "rt"), (P(2, 0)[0] - 2, P(2, 0)[1] + 6, r"\mathrm{B}", 21, "ct"),
-              (P(2.25, 0)[0] + 4, P(2.25, 0)[1] + 6, r"\mathrm{C}", 21, "lt"),
-              (P(1, 1.6)[0] - 6, P(1, 1.6)[1], r"4\,\mathrm{m}", 18, "rc"), (P(1, 0)[0], P(1, 0)[1] + 8, r"2\,\mathrm{m}", 18, "ct"),
-              (P(0, 6)[0] - 8, P(0, 6)[1], r"9\,\mathrm{m}", 18, "rc")]
+        w, h, ground + shadow + arch + hgt + ray + pole + lamp + a9 + a4 + a2)
+    labels = [(P(0, 0)[0] - 4, P(0, 0)[1] + 6, r"\mathrm{A}", 21, "rt"), (P(2, 0)[0] + 3, P(2, 0)[1] + 6, r"\mathrm{B}", 21, "lt"),
+              (P(2.25, 0)[0] + 5, P(2.25, 0)[1] - 4, r"\mathrm{C}", 21, "lb"), l9, l4, l2]
     return page(svg, labels, w, h), w, h
 
 
