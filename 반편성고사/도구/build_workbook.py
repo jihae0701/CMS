@@ -230,8 +230,11 @@ dv_kind = DataValidation(type="list", formula1='"재원,외부"', allow_blank=Tr
 st.add_data_validation(dv_kind)
 for r in range(FIRST, LAST + 1):
     cell(st, f"A{r}", r - FIRST + 1, fill=GREY)
-    for col in "BCDEFGHIJK":
+    for col in "BCDEFGHK":
         cell(st, f"{col}{r}", fill=INPUT, align=LEFT if col == "F" else C)
+    # 공통수학1·2 점수는 채점 시트 총점을 그대로 가져옴(미응시는 빈칸)
+    for col, sh in (("I", "공수1"), ("J", "공수2")):
+        cell(st, f"{col}{r}", f"=IF('{sh}'!Y{r}=\"\",\"\",'{sh}'!Y{r})", f(True), GREY)
 dv_kind.add(f"D{FIRST}:D{LAST}")
 for col, v in zip("BCDEFG", ["홍길동(예시)", "OO중", "외부", "신규", "공통수학까지", "월수금"]):
     st[f"{col}{FIRST}"].value = v
