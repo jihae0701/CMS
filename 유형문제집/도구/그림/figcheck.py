@@ -19,7 +19,7 @@ from playwright.sync_api import sync_playwright
 
 GAP = 8             # 글자와 선 사이 최소 간격(화면 px; 글자 크기 22px)
 REACH = 22          # 글자를 옮길 수 있는 최대 거리(화면 px)
-MODULES = ["draw", "draw5", "draw6", "draw6y", "draw7y", "draw8", "draw8y", "draw9", "draw10"]
+MODULES = ["draw", "draw5", "draw6", "draw6y", "draw7y", "draw8", "draw8y", "draw9", "draw10", "draw10y"]
 SKIP = {"image86.png"}          # 정육면체: 면을 채우는 식이라 검사하지 않음
 AXIS = {"x", "y", r"\mathrm{O}"}
 WIDE = {"g8_cases.png", "g9_roots.png", "image86.png"}     # 크기 약속의 예외(가로로 긴 개념 그림, 정육면체)
