@@ -67,6 +67,8 @@ def convert(script):
             rows = [r.replace("&&", "&").replace("& &", "&") for r in rows]
             return r"\begin{cases}" + r"\\".join(rows) + r"\end{cases}"
         rows = [re.sub(r"&&?", "&", r) for r in rows]
+        if name == "pmatrix":
+            return r"\begin{pmatrix}" + r"\\".join(rows) + r"\end{pmatrix}"
         return r"\begin{matrix}" + r"\\".join(rows) + r"\end{matrix}"
     for name in ("cases", "rpile", "matrix", "pmatrix"):
         while True:
@@ -74,7 +76,8 @@ def convert(script):
             if not m:
                 break
             g, e = _group(s, m.end() - 1)
-            s = s[:m.start()] + "{" + env("cases" if name == "cases" else "matrix", g) + "}" + s[e:]
+            s = s[:m.start()] + "{" + env(name if name in ("cases", "pmatrix") else "matrix", g) + "}" + s[e:]
+    s = s.replace("!=", " ne ")          # 한글 수식의 != 는 ≠ (계승 뒤의 등호는 "5! =120"처럼 띄어 쓴다)
     # 단어 치환
     s = re.sub(r"\b(" + "|".join(sorted(WORDS, key=len, reverse=True)) + r")\b", lambda m: WORDS[m.group(1)], s)
     # left/right 괄호
