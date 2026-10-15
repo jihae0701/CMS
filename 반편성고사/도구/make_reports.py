@@ -19,7 +19,7 @@ try:
 except Exception:
     POINT = {}
 
-FIRST, LAST = 7, 86
+FIRST, LAST = 7, 156
 QCOLS = list(range(4, 24))  # D..W
 SUBJ = [("공수1", "공통수학1"), ("공수2", "공통수학2")]
 CHROME = os.environ.get("CHROME_PATH", "/opt/pw-browsers/chromium-1194/chrome-linux/chrome")
@@ -103,6 +103,8 @@ def read(path):
                            unit=ws.cell(4, c).value, level=ws.cell(5, c).value, col=c) for i, c in enumerate(QCOLS)]
 
     st, b = wb["학생명단"], wb["반배정"]
+    hdr = {str(st.cell(6, c).value or "").strip(): c for c in range(1, st.max_column + 1)}
+    col = lambda r, *names: next((st.cell(r, hdr[n]).value or "" for n in names if n in hdr), "")
     students = []
     for r in range(FIRST, LAST + 1):
         name = st.cell(r, 2).value
@@ -113,7 +115,7 @@ def read(path):
             continue
         students.append(dict(row=r, no=r - FIRST + 1, name=str(name or "(이름 없음)"), school=st.cell(r, 3).value or "",
                              kind=st.cell(r, 4).value or "", prev=st.cell(r, 5).value or "", progress=st.cell(r, 6).value or "",
-                             phone=st.cell(r, 7).value or "", memo=st.cell(r, 8).value or "",
+                             phone=col(r, "연락처"), memo=col(r, "비고(내부용)", "비고"),
                              manual=num(b.cell(r, 13).value), reco2=num(b.cell(r, 14).value), resp=resp))
     return cfg, exams, students
 

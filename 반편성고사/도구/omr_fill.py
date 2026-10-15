@@ -10,7 +10,7 @@
 import sys, os, csv, json, shutil
 from openpyxl import load_workbook
 
-FIRST, LAST, N_MC = 7, 86, 14
+FIRST, LAST, N_MC = 7, 156, 14
 
 def read_csv(path):
     with open(path, encoding="utf-8-sig") as f:
