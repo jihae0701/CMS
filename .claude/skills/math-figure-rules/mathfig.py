@@ -198,20 +198,44 @@ def right_mark(F, v, p, q, k=0.06):
                  % (F.P(*p1) + F.P(*p2) + F.P(*p3)))
 
 
-def dim_arc(F, p, q, label, side, bulge=16, size=FONT, gap=6):
-    """선분 pq의 길이 표시: side 쪽(+1/-1)으로 휜 점선 호를 긋고 가운데에 길이를 쓴다"""
+def dim_arc(F, p, q, label, side, bulge=16, size=FONT, gap=6, cut=True):
+    """선분 pq의 길이 표시: side 쪽(+1/-1)으로 휜 점선 호를 긋는다.
+    약속: 점선의 가운데를 끊고 그 끊은 자리에 길이를 쓴다(cut=True, 기본).
+    bulge는 호가 선분에서 떨어지는 정도(픽셀). 글자가 다른 점 이름·선과 붙으면 bulge를 키운다(보통 16~46).
+    cut=False는 예전 모양(끊지 않은 호 바깥에 글자)으로, 새 그림에는 쓰지 않는다."""
     (x1, y1), (x2, y2) = F.P(*p), F.P(*q)
     mx, my = (x1 + x2) / 2, (y1 + y2) / 2
     dx, dy = x2 - x1, y2 - y1
     n = math.hypot(dx, dy)
     nx, ny = -dy / n * side, dx / n * side
     cx, cy = mx + nx * 2 * bulge, my + ny * 2 * bulge
-    F.svg.append('<path d="M%.1f,%.1f Q%.1f,%.1f %.1f,%.1f" fill="none" stroke="#000" stroke-width="1.5" stroke-dasharray="5,4"/>'
-                 % (x1, y1, cx, cy, x2, y2))
-    lx, ly = mx + nx * (bulge + gap), my + ny * (bulge + gap)
-    anc = ("l" if nx > 0.5 else "r" if nx < -0.5 else "c") + ("t" if ny > 0.5 else "b" if ny < -0.5 else "c")
-    F.labels.append((lx, ly, label, size, anc))
+    dash = 'fill="none" stroke="#000" stroke-width="1.5" stroke-dasharray="5,4"'
+    if not cut:
+        F.svg.append('<path d="M%.1f,%.1f Q%.1f,%.1f %.1f,%.1f" %s/>' % (x1, y1, cx, cy, x2, y2, dash))
+        lx, ly = mx + nx * (bulge + gap), my + ny * (bulge + gap)
+        anc = ("l" if nx > 0.5 else "r" if nx < -0.5 else "c") + ("t" if ny > 0.5 else "b" if ny < -0.5 else "c")
+        F.labels.append((lx, ly, label, size, anc))
+        return
 
+    def B(t):
+        return ((1 - t) ** 2 * x1 + 2 * t * (1 - t) * cx + t * t * x2, (1 - t) ** 2 * y1 + 2 * t * (1 - t) * cy + t * t * y2)
+
+    def sub(t0, t1):                    # 2차 베지에의 [t0, t1] 부분
+        a, b = B(t0), B(t1)
+        d0 = (2 * (1 - t0) * (cx - x1) + 2 * t0 * (x2 - cx), 2 * (1 - t0) * (cy - y1) + 2 * t0 * (y2 - cy))
+        h = (t1 - t0) / 2
+        c = (a[0] + d0[0] * h, a[1] + d0[1] * h)
+        return '<path d="M%.1f,%.1f Q%.1f,%.1f %.1f,%.1f" %s/>' % (a + c + b + (dash,))
+
+    M = B(0.5)
+    # 끊는 길이: 호가 가로로 지나면 글자 폭, 세로로 지나면 글자 높이에 여유를 더한 만큼
+    half = (len(label) * 0.62 * size) / 2 + 6 if abs(dx) >= abs(dy) else size * 0.75 / 2 + 10
+    t = 0.5
+    while t > 0 and math.hypot(B(t)[0] - M[0], B(t)[1] - M[1]) < half:
+        t -= 0.002
+    F.svg.append(sub(0, t))
+    F.svg.append(sub(1 - t, 1))
+    F.labels.append((M[0], M[1], label, size, "cc"))
 
 if __name__ == "__main__":
     # 시험: 두 점 (-2, 0), (3, 0)을 지나는 포물선과 직사각형 길이 표시
@@ -227,14 +251,15 @@ if __name__ == "__main__":
         return F.render()
 
     def fig_rect():
-        F = Frame((-0.5, 8.5), (-0.5, 5.5), 30, 30, (30, 30, 40, 30))
+        F = Frame((-0.5, 8.5), (-0.5, 5.5), 30, 30, (60, 30, 40, 50))
         A, B, C, D = (0, 4), (0, 0), (7, 0), (7, 4)
         F.poly([A, B, C, D], SKY)
         for p, q in ((A, B), (B, C), (C, D), (D, A)):
             F.seg(p, q)
         right_mark(F, B, A, C, 0.45)
         F.pt(A, "A", "rb", -4, -4); F.pt(B, "B", "rt", -4, 4); F.pt(C, "C", "lt", 4, 4); F.pt(D, "D", "lb", 4, -4)
-        dim_arc(F, B, C, "7", 1)
+        dim_arc(F, B, C, "7", 1, 22)
+        dim_arc(F, B, A, "4", -1, 22)
         return F.render()
 
     fit_shoot("example_graph.png", fig_graph, 9000)
