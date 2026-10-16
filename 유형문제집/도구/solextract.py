@@ -1,6 +1,6 @@
 # 기본서 미주(해설) 중 지정한 번호만 꺼내 한글 파일로 만든다.
 # python solextract.py <기본서.hwpx> <출력.hwpx> 27 30 ...
-import zipfile, re, sys
+import zipfile, re, sys, os
 SRC, OUT, NOS = sys.argv[1], sys.argv[2], sys.argv[3:]
 z = zipfile.ZipFile(SRC)
 files = {n: z.read(n) for n in z.namelist()}
@@ -38,7 +38,8 @@ for k, NO in enumerate(NOS):
     fcp = re.search(r'<hp:run charPrIDRef="(\d+)"', body).group(1)
     gap = ('%s<hp:run charPrIDRef="%s"><hp:t/></hp:run></hp:p>' % (fp, fcp)) if k else ""
     parts.append(gap + '%s<hp:run charPrIDRef="%s"><hp:t>[%s번 해설]</hp:t></hp:run></hp:p>' % (fp, fcp, NO) + body)
-title_all = "기본서 1단원 " + ", ".join(NOS) + "번 해설"
+UNIT = re.match(r"(\d+)\.", os.path.basename(SRC))
+title_all = "기본서 %s단원 " % (UNIT.group(1) if UNIT else "") + ", ".join(NOS) + "번 해설"
 
 out_sec = (head + p_open + '<hp:run charPrIDRef="%s">' % first_cp + sec + colpr + "</hp:run></hp:p>"
            + "".join(parts) + "</hs:sec>")
