@@ -45,7 +45,7 @@ def read(path):
     val = lambda ref: s[ref].value
     cfg = {
         "classes": [val("B6"), val("B7"), val("B8"), val("B9") or "보류"],
-        # 절대평가 기준: (반 이름, 공수1 이상, 공수1 미만, 공수2 이상, 공수2 미만), 빈칸은 조건 없음
+        # 절대평가 기준: (반 이름, 공수1 이상, 합계 이상, 한 과목 이하, 합계 이하). 채운 조건 중 하나라도 맞으면 그 반, 모두 빈 줄은 나머지
         "rules": [(val("B%d" % r), num(val("C%d" % r)), num(val("D%d" % r)), num(val("E%d" % r)), num(val("F%d" % r)))
                   for r in (6, 7, 8)],
         "w": [float(val("C13") or 1), float(val("C14") or 1)],
@@ -141,24 +141,28 @@ def compute(cfg, exams, students):
     ranked = [s for s in students if s["total"] is not None]
     hold = cfg["classes"][3]
 
-    def fits(x, lo, hi):
-        return (lo is None or x >= lo) and (hi is None or x < hi)
+    def match(a, b, rule):
+        _, min1, tmin, smax, tmax = rule
+        both = a is not None and b is not None
+        if all(v is None for v in rule[1:]):
+            return both
+        return ((min1 is not None and a is not None and a >= min1) or
+                (tmin is not None and both and a + b >= tmin) or
+                (smax is not None and any(x is not None and x <= smax for x in (a, b))) or
+                (tmax is not None and both and a + b <= tmax))
 
     for s in ranked:
         s["rank"] = 1 + sum(1 for t in ranked if t["total"] > s["total"])
         a, b = s["score"]["공수1"], s["score"]["공수2"]
-        s["auto"] = hold
-        if a is not None and b is not None:
-            for name, lo1, hi1, lo2, hi2 in cfg["rules"]:
-                if fits(a, lo1, hi1) and fits(b, lo2, hi2):
-                    s["auto"] = name
-                    break
+        s["auto"] = next((r_[0] for r_ in cfg["rules"] if match(a, b, r_)), hold)
         s["final"] = s["manual"] or s["auto"]
-        # 경계: 과목 점수가 그 과목의 기준 점수와 경계 범위 이내
-        th1 = [v for r_ in cfg["rules"] for v in r_[1:3] if v is not None]
-        th2 = [v for r_ in cfg["rules"] for v in r_[3:5] if v is not None]
+        # 경계: 과목 점수나 합계가 기준 점수와 경계 범위 이내
+        th1 = [r_[1] for r_ in cfg["rules"] if r_[1] is not None] + [r_[3] for r_ in cfg["rules"] if r_[3] is not None]
+        th2 = [r_[3] for r_ in cfg["rules"] if r_[3] is not None]
+        tht = [v for r_ in cfg["rules"] for v in (r_[2], r_[4]) if v is not None]
         s["near"] = (a is not None and b is not None and
-                     (any(abs(a - v) <= cfg["border"] for v in th1) or any(abs(b - v) <= cfg["border"] for v in th2)))
+                     (any(abs(a - v) <= cfg["border"] for v in th1) or any(abs(b - v) <= cfg["border"] for v in th2) or
+                      any(abs(a + b - v) <= cfg["border"] for v in tht)))
     for s in students:
         s.setdefault("rank", None); s.setdefault("auto", None); s.setdefault("final", s["manual"]); s.setdefault("near", False)
     stats = {"n": len(ranked)}
@@ -532,10 +536,15 @@ def counsel_page(s, cfg, exams, stats):
         sc = s["score"][key]
         if sc is None:
             continue
-        ths = sorted({v for r_ in cfg["rules"] for v in (r_[1:3] if k == 0 else r_[3:5]) if v is not None})
+        ths = sorted({v for r_ in cfg["rules"] for v in ((r_[1], r_[3]) if k == 0 else (r_[3],)) if v is not None})
         if ths:
             v = min(ths, key=lambda t: abs(sc - t))
             gap.append("%s %g점 (기준 %g점 대비 %+g)" % (nm, sc, v, sc - v))
+    a_, b_ = s["score"]["공수1"], s["score"]["공수2"]
+    tht = sorted({v for r_ in cfg["rules"] for v in (r_[2], r_[4]) if v is not None})
+    if a_ is not None and b_ is not None and tht:
+        v = min(tht, key=lambda t: abs(a_ + b_ - t))
+        gap.append("합계 %g점 (기준 %g점 대비 %+g)" % (a_ + b_, v, a_ + b_ - v))
     near = s["near"]
     manual = s["manual"] and s["manual"] != s["auto"]
     kpi = [("공통수학1", "-" if s["score"]["공수1"] is None else "%g점" % s["score"]["공수1"], False),
@@ -577,7 +586,7 @@ def counsel_page(s, cfg, exams, stats):
     if near:
         pts.append("기준 점수 경계에 있습니다. 단원별 성취와 학습 태도를 함께 보고 반을 확정하세요.")
     if s["auto"] == cfg["classes"][3] and not s["manual"]:
-        pts.insert(0, "자동배정 보류: 과목별 기준에 해당하지 않습니다. 상담 후 엑셀 반배정 시트 '공통수학반(입력)'에 반을 입력하세요.")
+        pts.insert(0, "자동배정 보류: 미응시 과목이 있어 기준으로 정할 수 없습니다. 상담 후 엑셀 반배정 시트 '공통수학반(입력)'에 반을 입력하세요.")
     if easy_miss:
         pts.append("정답률 70%% 이상인 문항에서 %d문항 오답 — 개념 누락 또는 계산 실수 여부를 확인하세요." % easy_miss)
     weak = sorted([(u, s["unit"][(k, u)]) for k, _ in SUBJ for u in cfg["units"][k] if s["unit"][(k, u)] is not None], key=lambda x: x[1])[:2]

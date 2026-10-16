@@ -71,27 +71,29 @@ s.column_dimensions["D"].width = 12
 s.column_dimensions["E"].width = 44
 
 cell(s, "A4", "① 반 배정 기준 (절대평가)", f(True, 11, "1F3864"), align=LEFT, border=False)
-header(s, 5, ["순서", "반 이름", "공수1 이상", "공수1 미만", "공수2 이상", "공수2 미만"])
-for i, (nm, a1, b1, a2, b2) in enumerate([("TF1반", 60, None, 60, None), ("TF2반", 60, None, None, 40), ("TF3반", None, 40, None, 40)]):
+header(s, 5, ["순서", "반 이름", "공수1 이상", "합계 이상", "한 과목 이하", "합계 이하"])
+for i, (nm, a1, t1, m2, t2) in enumerate([("TF1반", 51, 120, None, None), ("HF반", None, None, 20, 60), ("TF2반", None, None, None, None)]):
     r = 6 + i
     cell(s, f"A{r}", f"{i + 1}순위", fill=GREY)
     cell(s, f"B{r}", nm, f(True), INPUT)
-    for col, v in zip("CDEF", (a1, b1, a2, b2)):
+    for col, v in zip("CDEF", (a1, t1, m2, t2)):
         cell(s, f"{col}{r}", v, fill=INPUT)
 cell(s, "A9", "그 외", f(True), GREY)
 cell(s, "B9", "보류", f(True), INPUT)
 s.merge_cells("C9:F9")
-cell(s, "C9", "위 조건에 모두 해당하지 않거나 미응시 과목이 있으면 보류 → 상담 후 수동 배정", f(size=9, color="595959"), GREY, align=LEFT)
-cell(s, "H5", "· 점수(100점 만점)로 판정, 빈칸은 조건 없음\n· 위 순위부터 차례로 확인해 처음 맞는 반에 배정\n"
-     "· 예) TF2반: 공수1 60점 이상이고 공수2 40점 미만", f(size=9, color="595959"), align=LEFT, border=False)
+cell(s, "C9", "미응시 과목이 있어 위 기준으로 정할 수 없으면 보류 → 상담 후 수동 배정", f(size=9, color="595959"), GREY, align=LEFT)
+cell(s, "H5", "· 점수(100점 만점)로 판정. 한 줄 안의 조건은 '하나라도' 맞으면 그 반(또는)\n"
+     "· 위 순위부터 차례로 확인해 처음 맞는 반에 배정, 조건이 모두 빈 줄은 '나머지'\n"
+     "· 합계 = 공수1 + 공수2, 한 과목 이하 = 공수1·공수2 중 하나라도 그 점수 이하\n"
+     "· 예) TF1반: 공수1 51점 이상 또는 합계 120점 이상", f(size=9, color="595959"), align=LEFT, border=False)
 s.merge_cells("H5:L9")
 
 cell(s, "A11", "② 점수 반영", f(True, 11, "1F3864"), align=LEFT, border=False)
 header(s, 12, ["항목", "값"], start=2)
 for r, lab, v, note in [
     (13, "공통수학1 반영비율", 1, "환산총점(석차·참고용) = 공수1 점수×비율 + 공수2 점수×비율"),
-    (14, "공통수학2 반영비율", 1, "반 배정은 ①의 과목별 점수 기준으로만 결정"),
-    (15, "경계 범위(점)", 3, "어느 과목이든 기준 점수(①의 숫자)와 차이가 이 값 이내면 '경계'로 표시 → 상담·재검토 대상"),
+    (14, "공통수학2 반영비율", 1, "반 배정은 ①의 기준(과목 점수·합계)으로만 결정"),
+    (15, "경계 범위(점)", 3, "과목 점수나 합계가 ①의 기준 점수와 이 값 이내로 차이 나면 '경계'로 표시 → 상담·재검토 대상"),
 ]:
     cell(s, f"B{r}", lab, fill=GREY)
     cell(s, f"C{r}", v, fill=INPUT)
@@ -183,9 +185,9 @@ cell(s, f"A{CLASS_ROW}", "⑥ 공통수학반 소개 (공통수학 시험 결과
 header(s, CLASS_ROW + 1, ["공통수학반 이름", "소개 문구"])
 s.merge_cells(f"B{CLASS_ROW + 1}:E{CLASS_ROW + 1}")
 CLASS_DESC = [
-    "공통수학1·2 모두 탄탄한 기초를 갖춘 학생을 위한 반으로, 개념 심화와 고난도 문항 해결력, 고1 내신 상위권 대비까지 진행합니다.",
-    "공통수학1의 강점을 살리면서 공통수학2의 개념을 처음부터 체계적으로 다져, 두 과목의 균형을 맞추는 반입니다.",
-    "중등 연계 개념부터 차근차근 점검하며, 공통수학1·2의 핵심 개념과 기본 유형을 확실히 완성하는 반입니다.",
+    "공통수학1·2의 탄탄한 기초를 바탕으로 개념 심화와 고난도 문항 해결력, 고1 내신 상위권 대비까지 진행하는 반입니다.",
+    "중등 연계 개념부터 차근차근 점검하며, 공통수학1·2의 핵심 개념과 기본 유형을 확실히 다지는 반입니다.",
+    "공통수학1·2의 개념을 체계적으로 정리하고 유형별 문제 해결력을 키워, 두 과목의 균형을 맞추는 반입니다.",
 ]
 for i, d in enumerate(CLASS_DESC):
     r = CLASS_ROW + 2 + i
@@ -356,9 +358,15 @@ b.add_data_validation(dv_cls)
 b.add_data_validation(dv_pre)
 
 def cond(k, r):
+    """'설정' ①의 k번째 줄: 채운 조건 중 하나라도 맞으면 참, 모두 비면 두 과목 응시한 '나머지'"""
     t = 6 + k
-    return (f"AND(OR('설정'!$C${t}=\"\",G{r}>='설정'!$C${t}),OR('설정'!$D${t}=\"\",G{r}<'설정'!$D${t}),"
-            f"OR('설정'!$E${t}=\"\",H{r}>='설정'!$E${t}),OR('설정'!$F${t}=\"\",H{r}<'설정'!$F${t}))")
+    both = f"AND(G{r}<>\"\",H{r}<>\"\")"
+    tot = f"(N(G{r})+N(H{r}))"
+    st = lambda c: f"'설정'!${c}${t}"
+    anyc = (f"OR(AND({st('C')}<>\"\",G{r}<>\"\",N(G{r})>={st('C')}),AND({st('D')}<>\"\",{both},{tot}>={st('D')}),"
+            f"AND({st('E')}<>\"\",OR(AND(G{r}<>\"\",N(G{r})<={st('E')}),AND(H{r}<>\"\",N(H{r})<={st('E')}))),"
+            f"AND({st('F')}<>\"\",{both},{tot}<={st('F')}))")
+    return f"IF(COUNT('설정'!$C${t}:$F${t})=0,{both},{anyc})"
 
 for r in range(FIRST, LAST + 1):
     cell(b, f"A{r}", r - FIRST + 1, fill=GREY)
@@ -369,10 +377,11 @@ for r in range(FIRST, LAST + 1):
     cell(b, f"H{r}", f"='공수2'!Y{r}")
     cell(b, f"I{r}", f"=IF(AND(G{r}=\"\",H{r}=\"\"),\"\",N(G{r})*'설정'!$C$13+N(H{r})*'설정'!$C$14)", fmt="0.#")
     cell(b, f"J{r}", f"=IF(I{r}=\"\",\"\",COUNTIF({G},\">\"&I{r})+1)")
-    cell(b, f"K{r}", f"=IF(I{r}=\"\",\"\",IF(OR(G{r}=\"\",H{r}=\"\"),{NAMES[3]},IF({cond(0, r)},{NAMES[0]},"
-                     f"IF({cond(1, r)},{NAMES[1]},IF({cond(2, r)},{NAMES[2]},{NAMES[3]})))))", f(True))
-    cell(b, f"L{r}", f"=IF(OR(G{r}=\"\",H{r}=\"\"),\"\",IF(SUMPRODUCT(ISNUMBER('설정'!$C$6:$D$8)*(ABS(G{r}-'설정'!$C$6:$D$8)<={BD}))"
-                     f"+SUMPRODUCT(ISNUMBER('설정'!$E$6:$F$8)*(ABS(H{r}-'설정'!$E$6:$F$8)<={BD}))>0,\"경계\",\"\"))", f(True, 10, "C55A11"))
+    cell(b, f"K{r}", f"=IF(I{r}=\"\",\"\",IF({cond(0, r)},{NAMES[0]},IF({cond(1, r)},{NAMES[1]},"
+                     f"IF({cond(2, r)},{NAMES[2]},{NAMES[3]}))))", f(True))
+    near = lambda col, x: f"SUMPRODUCT(ISNUMBER('설정'!${col}$6:${col}$8)*(ABS({x}-'설정'!${col}$6:${col}$8)<={BD}))"
+    cell(b, f"L{r}", f"=IF(OR(G{r}=\"\",H{r}=\"\"),\"\",IF({near('C', f'G{r}')}+{near('D', f'(G{r}+H{r})')}+{near('F', f'(G{r}+H{r})')}"
+                     f"+{near('E', f'G{r}')}+{near('E', f'H{r}')}>0,\"경계\",\"\"))", f(True, 10, "C55A11"))
     cell(b, f"M{r}", fill=INPUT)
     cell(b, f"N{r}", fill=INPUT)
     cell(b, f"O{r}", f"=IF(M{r}<>\"\",M{r},K{r})", f(True))
@@ -411,7 +420,7 @@ for k_ in (1, 2, 5, 6):
     cell(b, f"{cols_[k_]}{r}", f"=SUM({cols_[k_]}7:{cols_[k_]}10)", f(True), GREY)
 cell(b, f"{cols_[3]}{r}", f"=IFERROR(AVERAGE({E_}),\"\")", f(True), GREY, fmt="0.0")
 cell(b, f"{cols_[4]}{r}", f"=IFERROR(AVERAGE({F_}),\"\")", f(True), GREY, fmt="0.0")
-cell(b, f"{cols_[0]}13", "· 자동배정은 '설정' ①의 과목별 점수 기준(절대평가)\n· 경계 = 어느 과목이든 기준 점수와의 차이가 경계 범위 이내\n"
+cell(b, f"{cols_[0]}13", "· 자동배정은 '설정' ①의 기준(공수1 점수·한 과목 점수·합계)\n· 경계 = 과목 점수나 합계가 기준 점수와 경계 범위 이내\n"
      "· 공통수학반·선행반은 목록에서 고르거나 직접 입력('설정' ⑥·⑦에 반 소개 추가 가능)\n· 환산총점·석차는 참고용", f(size=9, color="595959"),
      align=LEFT, border=False)
 b.merge_cells(f"{cols_[0]}13:{cols_[6]}18")
