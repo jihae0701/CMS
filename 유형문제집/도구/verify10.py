@@ -188,3 +188,11 @@ if __name__ == "__main__":
     for r in bad:
         print("불일치", r)
     print("검산", len(R), "불일치", len(bad))
+# ---- 사용자 추가 문항(2026-10-16)
+nums = sorted(int("".join(p)) for p in product("123", repeat=4))
+chk("u22", nums[49], 2322)
+chk("u32", sum(1 for f in product("abcd", repeat=3) if f[0] == "a" or f[1] == "b"), 28)
+Xs = [-4, -2, 0, 2, 4]
+chk("u33", sum(1 for f in product(Xs, repeat=5) if all(f[i] + f[4 - i] == 0 for i in range(5))), 25)
+chk("u59", sum(1 for d in product("123", repeat=6) if set(d) == {"1", "2", "3"} and d[5] == d[3]), 150)
+chk("u70", len({p for p in permutations("BBBBWWWWWWW") if p == p[::-1]}), 10)

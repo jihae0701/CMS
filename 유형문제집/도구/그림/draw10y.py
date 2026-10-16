@@ -5,6 +5,7 @@
 - u10_venn.png: o53 — 세 원이 만드는 7개의 영역(번호 1~7)
 - u10_strip.png: o54 — 일렬로 놓인 5개의 영역 A~E
 - u10_boat.png: n470 — 한 줄에 3개씩 4줄인 보트 좌석
+- u10_marble.png: 검은 구슬 4개, 흰 구슬 7개의 좌우 대칭 배열
 - u10_vr.png: n442 — 한 줄에 3개씩 2줄인 체험 기구 의자
 """
 import os, sys, math
@@ -96,9 +97,19 @@ def seat_grid(rows, cols, labels):
     return fn
 
 
+
+def fig_marble():
+    F = geo((-0.6, 10.6), (-0.6, 0.6), 60, (8, 8, 8, 8))
+    for i, c in enumerate("WWWBBWBBWWW"):
+        X, Y = F.P(i, 0)
+        F.svg.append('<circle cx="%.1f" cy="%.1f" r="%.1f" fill="%s" stroke="#000" stroke-width="2"/>'
+                     % (X, Y, 0.42 * F.sx, "#000" if c == "B" else "#fff"))
+    return F.render()
+
+
 FIGS = (("u10_road.png", fig_road, 9500), ("u10_ring.png", fig_ring, 9000), ("u10_venn.png", fig_venn, 9000),
         ("u10_strip.png", fig_strip, 10000), ("u10_boat.png", seat_grid(4, 3, True), 7300),
-        ("u10_vr.png", seat_grid(2, 3, False), 9000))
+        ("u10_vr.png", seat_grid(2, 3, False), 9000), ("u10_marble.png", fig_marble, 10000))
 
 if __name__ == "__main__":
     for name, fn, wd in FIGS:

@@ -217,3 +217,67 @@ if __name__ == "__main__":
     for r in bad:
         print("불일치", r)
     print("검산", len(R), "불일치", len(bad))
+# ---- 사용자 추가 문항(2026-10-16): 최단 거리 — 도로망의 변을 모두 적고 경로를 직접 센다
+
+
+def npaths(edges, s, t, ban=()):
+    adj = {}
+    for a, b in edges:
+        adj.setdefault(a, []).append(b)
+    memo = {}
+
+    def f(v):
+        if v in ban:
+            return 0
+        if v == t:
+            return 1
+        if v not in memo:
+            memo[v] = sum(f(w) for w in adj.get(v, []))
+        return memo[v]
+    return f(s)
+
+
+G = [((x, y), (x + 1, y)) for x in range(4) for y in range(5)] + [((x, y), (x, y + 1)) for x in range(5) for y in range(4)]
+chk("u84", npaths(G, (0, 0), (4, 4), ban=((1, 2),)), 40)
+G3 = []
+for x in range(5):
+    for y in range(4):
+        for z in range(3):
+            for dx, dy, dz in ((1, 0, 0), (0, 1, 0), (0, 0, 1)):
+                q = (x + dx, y + dy, z + dz)
+                if q[0] <= 4 and q[1] <= 3 and q[2] <= 2:
+                    G3.append(((x, y, z), q))
+chk("u87", npaths(G3, (0, 0, 0), (4, 3, 2)), 1260)
+ZE = []
+for j, (lo, hi) in {0: (0, 4), 1: (0, 4), 2: (2, 4), 3: (2, 6), 4: (3, 6)}.items():
+    ZE += [((k, j), (k + 1, j)) for k in range(lo, hi)]
+for i, (lo, hi) in {0: (0, 1), 1: (0, 1), 2: (0, 3), 3: (0, 4), 4: (0, 4), 5: (3, 4), 6: (3, 4)}.items():
+    ZE += [((i, k), (i, k + 1)) for k in range(lo, hi)]
+chk("u92", npaths(ZE, (0, 0), (6, 4), ban=((4, 0), (4, 4))), 42)
+AE = set()
+for y in (0, 1):
+    AE |= {frozenset({(0, y), (1, y)}), frozenset({(3, y), (4, y)}), frozenset({(4, y), (5, y)})}
+for y in (2, 3):
+    AE |= {frozenset({(x, y), (x + 1, y)}) for x in range(5)}
+for x in (0, 1, 3, 4, 5):
+    AE |= {frozenset({(x, y), (x, y + 1)}) for y in range(3)}
+AE.add(frozenset({(2, 2), (2, 3)}))
+
+
+def walks(s, t, steps):
+    out = []
+
+    def go(p, path):
+        if p == t:
+            out.append(path)
+            return
+        for dx, dy in steps:
+            q = (p[0] + dx, p[1] + dy)
+            if frozenset({p, q}) in AE:
+                go(q, path + [frozenset({p, q})])
+    go(s, [])
+    return out
+
+
+W1, W2 = walks((0, 0), (2, 3), ((1, 0), (0, 1))), walks((2, 3), (5, 0), ((1, 0), (0, -1)))
+chk("u93", sum(1 for a in W1 for b in W2 if not set(a) & set(b)), 94)
