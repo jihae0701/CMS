@@ -45,6 +45,7 @@ def read(path):
     val = lambda ref: s[ref].value
     cfg = {
         "classes": [val("B6"), val("B7"), val("B8"), val("B9") or "보류"],
+        "school_cls": (str(val("B10")).strip() if val("A10") == "학교 지정" and val("B10") else None),  # 자사/일반에 학교가 적힌 학생의 반
         # 절대평가 기준: (반 이름, 공수1 이상, 합계 이상, 한 과목 이하, 합계 이하). 채운 조건 중 하나라도 맞으면 그 반, 모두 빈 줄은 나머지
         "rules": [(val("B%d" % r), num(val("C%d" % r)), num(val("D%d" % r)), num(val("E%d" % r)), num(val("F%d" % r)))
                   for r in (6, 7, 8)],
@@ -115,7 +116,7 @@ def read(path):
             continue
         students.append(dict(row=r, no=r - FIRST + 1, name=str(name or "(이름 없음)"), school=st.cell(r, 3).value or "",
                              kind=st.cell(r, 4).value or "", prev=st.cell(r, 5).value or "", progress=st.cell(r, 6).value or "",
-                             phone=col(r, "연락처"), memo=col(r, "비고(내부용)", "비고"), day=str(col(r, "현재 등원 요일")),
+                             phone=col(r, "연락처"), memo=col(r, "비고(내부용)", "비고"), day=str(col(r, "현재 등원 요일")), school2=str(col(r, "자사/일반")).strip(),
                              manual=num(b.cell(r, 13).value), reco2=num(b.cell(r, 14).value), resp=resp))
     return cfg, exams, students
 
@@ -171,7 +172,7 @@ def compute(cfg, exams, students):
         s["rank"] = 1 + sum(1 for t in ranked if t["total"] > s["total"])
         a, b = s["score"]["공수1"], s["score"]["공수2"]
         s["auto"] = next((r_[0] for r_ in cfg["rules"] if match(a, b, r_)), hold)
-        s["final"] = s["manual"] or with_day(s["auto"], s.get("day", ""), cfg)
+        s["final"] = s["manual"] or (cfg["school_cls"] if cfg["school_cls"] and s.get("school2") else None) or with_day(s["auto"], s.get("day", ""), cfg)
         # 경계: 과목 점수나 합계가 기준 점수와 경계 범위 이내
         th1 = [r_[1] for r_ in cfg["rules"] if r_[1] is not None] + [r_[3] for r_ in cfg["rules"] if r_[3] is not None]
         th2 = [r_[3] for r_ in cfg["rules"] if r_[3] is not None]
@@ -180,7 +181,8 @@ def compute(cfg, exams, students):
                      (any(abs(a - v) <= cfg["border"] for v in th1) or any(abs(b - v) <= cfg["border"] for v in th2) or
                       any(abs(a + b - v) <= cfg["border"] for v in tht)))
     for s in students:
-        s.setdefault("rank", None); s.setdefault("auto", None); s.setdefault("final", s["manual"]); s.setdefault("near", False)
+        s.setdefault("rank", None); s.setdefault("auto", None); s.setdefault("near", False)
+        s.setdefault("final", s["manual"] or (cfg["school_cls"] if cfg["school_cls"] and s.get("school2") else None))
     stats = {"n": len(ranked)}
     for key, _ in SUBJ:
         takers = [s for s in students if s["took"][key]]
