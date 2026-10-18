@@ -392,7 +392,7 @@ for r in range(FIRST, LAST + 1):
     cell(b, f"N{r}", fill=INPUT)
     # 최종: 입력한 반 우선. TF1·TF2는 현재 등원 요일(학생명단)에 따라 월금/화목 반으로
     day = f"'학생명단'!G{r}"
-    cell(b, f"O{r}", f"=IF(M{r}<>\"\",M{r},IF(AND('설정'!$B$10<>\"\",'학생명단'!K{r}<>\"\"),'설정'!$B$10,IF(OR(K{r}={NAMES[0]},K{r}={NAMES[2]}),SUBSTITUTE(K{r},\"반\",\"\")&"
+    cell(b, f"O{r}", f"=IF(M{r}<>\"\",M{r},IF(AND('설정'!$B$10<>\"\",'학생명단'!K{r}<>\"\"),'설정'!$B$10&\"(\"&IF(K{r}=\"\",\"미응시\",SUBSTITUTE(K{r},\"반\",\"\"))&\")\",IF(OR(K{r}={NAMES[0]},K{r}={NAMES[2]}),SUBSTITUTE(K{r},\"반\",\"\")&"
                      f"IF(ISNUMBER(SEARCH(\"월\",{day})),\"월금\",IF(ISNUMBER(SEARCH(\"화\",{day})),\"화목\",\"반\")),K{r})))", f(True))
     cell(b, f"P{r}", f"=IF(I{r}=\"\",\"\",IF(G{r}=\"\",\"공수1 미응시\",IF(H{r}=\"\",\"공수2 미응시\",\"\")))",
          f(size=9, color="C00000"))
@@ -432,12 +432,12 @@ cell(b, f"{cols_[1]}{r}", f"=SUM({cols_[1]}7:{cols_[1]}10)", f(True), GREY)
 cell(b, f"{cols_[2]}{r}", f"=COUNTIF({Lr},\"?*\")", f(True), GREY)
 cell(b, f"{cols_[5]}{r}", f"=COUNTIFS({Lr},\"?*\",{D},\"재원\")", f(True), GREY)
 cell(b, f"{cols_[6]}{r}", f"=COUNTIFS({Lr},\"?*\",{D},\"외부\")", f(True), GREY)
-cell(b, f"{cols_[0]}12", "=IF('설정'!$B$10=\"\",\"\",\"※ \"&'설정'!$B$10&\" \"&COUNTIF("+Lr+",'설정'!$B$10)&\"명은 위 반별 인원에 없음(아래 요일반 표)\")",
+cell(b, f"{cols_[0]}12", "=IF('설정'!$B$10=\"\",\"\",\"※ \"&'설정'!$B$10&\" \"&COUNTIF("+Lr+",'설정'!$B$10&\"(*\")&\"명은 위 반별 인원에 없음(아래 요일반 표)\")",
      f(size=8, color="C00000"), align=LEFT, border=False)
 cell(b, f"{cols_[3]}{r}", f"=IFERROR(AVERAGE({E_}),\"\")", f(True), GREY, fmt="0.0")
 cell(b, f"{cols_[4]}{r}", f"=IFERROR(AVERAGE({F_}),\"\")", f(True), GREY, fmt="0.0")
 cell(b, f"{cols_[0]}13", "· 자동배정은 '설정' ①의 기준(공수1 점수·한 과목 점수·합계)\n· 경계 = 과목 점수나 합계가 기준 점수와 경계 범위 이내\n"
-     "· 공통수학반(최종): '자사/일반'에 학교가 적힌 학생은 '설정' B10 반, 그 외 TF1·TF2는 등원 요일에 따라 월금/화목\n"
+     "· 공통수학반(최종): '자사/일반'에 학교가 적힌 학생은 '설정' B10 반(괄호 안은 성적상 반), 그 외 TF1·TF2는 등원 요일에 따라 월금/화목\n"
      "· 공통수학반·선행반은 목록에서 고르거나 직접 입력('설정' ⑥·⑦에 반 소개 추가 가능)\n· 환산총점·석차는 참고용", f(size=9, color="595959"),
      align=LEFT, border=False)
 b.merge_cells(f"{cols_[0]}13:{cols_[6]}18")
@@ -451,9 +451,10 @@ for i, (k, suf) in enumerate([(None, None), (0, "월금"), (0, "화목"), (2, "�
         cell(b, c0, "=IF('설정'!$B$10=\"\",\"-\",'설정'!$B$10)", f(True), PatternFill("solid", fgColor=CLS4[0]))
     else:
         cell(b, c0, f"={PFX(NAMES[k])}&\"{suf}\"", f(True), PatternFill("solid", fgColor=CLS4[k]))
-    cell(b, c1, f"=COUNTIF({Lr},{c0})", f(True))
-    cell(b, c2, f"=IFERROR(AVERAGEIF({Lr},{c0},{E_}),\"\")", fmt="0.0")
-    cell(b, c3, f"=IFERROR(AVERAGEIF({Lr},{c0},{F_}),\"\")", fmt="0.0")
+    crit = f"{c0}&\"(*\"" if k is None else c0      # TF자사(TF1)·TF자사(TF2)… 모두 TF자사로 셈
+    cell(b, c1, f"=COUNTIF({Lr},{crit})", f(True))
+    cell(b, c2, f"=IFERROR(AVERAGEIF({Lr},{crit},{E_}),\"\")", fmt="0.0")
+    cell(b, c3, f"=IFERROR(AVERAGEIF({Lr},{crit},{F_}),\"\")", fmt="0.0")
 for c in cols_:
     b.column_dimensions[c].width = 8
 b.column_dimensions[cols_[0]].width = 10

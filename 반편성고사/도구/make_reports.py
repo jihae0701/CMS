@@ -131,6 +131,14 @@ def with_day(cls, day, cfg):
     return str(cls).replace("반", "") + suf
 
 
+def school_cls(s, cfg):
+    """'자사/일반'에 학교가 적힌 학생: 'TF자사(TF1)'처럼 괄호 안에 성적상 반"""
+    if not (cfg["school_cls"] and s.get("school2")):
+        return None
+    a = s.get("auto")
+    return "%s(%s)" % (cfg["school_cls"], str(a).replace("반", "") if a else "미응시")
+
+
 def class_desc(name, cfg):
     """반 소개 문구: 'TF1월금'처럼 요일이 붙은 반은 'TF1반' 소개를 사용"""
     d = cfg["class_desc"]
@@ -174,7 +182,7 @@ def compute(cfg, exams, students):
         s["rank"] = 1 + sum(1 for t in ranked if t["total"] > s["total"])
         a, b = s["score"]["공수1"], s["score"]["공수2"]
         s["auto"] = next((r_[0] for r_ in cfg["rules"] if match(a, b, r_)), hold)
-        s["final"] = s["manual"] or (cfg["school_cls"] if cfg["school_cls"] and s.get("school2") else None) or with_day(s["auto"], s.get("day", ""), cfg)
+        s["final"] = s["manual"] or school_cls(s, cfg) or with_day(s["auto"], s.get("day", ""), cfg)
         # 경계: 과목 점수나 합계가 기준 점수와 경계 범위 이내
         th1 = [r_[1] for r_ in cfg["rules"] if r_[1] is not None] + [r_[3] for r_ in cfg["rules"] if r_[3] is not None]
         th2 = [r_[3] for r_ in cfg["rules"] if r_[3] is not None]
@@ -184,7 +192,7 @@ def compute(cfg, exams, students):
                       any(abs(a + b - v) <= cfg["border"] for v in tht)))
     for s in students:
         s.setdefault("rank", None); s.setdefault("auto", None); s.setdefault("near", False)
-        s.setdefault("final", s["manual"] or (cfg["school_cls"] if cfg["school_cls"] and s.get("school2") else None))
+        s.setdefault("final", s["manual"] or school_cls(s, cfg))
     stats = {"n": len(ranked)}
     for key, _ in SUBJ:
         takers = [s for s in students if s["took"][key]]
@@ -532,6 +540,8 @@ def parent_pages(s, cfg, exams, stats):
 def recommended(s, cfg):
     """공통수학반: 최종(입력한 공통수학반 우선, 없으면 자동배정). 보류·미정이면 None(빈칸)"""
     f = s.get("final")
+    if f and cfg["school_cls"] and str(f).startswith(cfg["school_cls"] + "("):
+        return cfg["school_cls"]   # 보고서에는 'TF자사'만 (괄호 속 성적상 반은 엑셀·상담 카드용)
     return str(f) if f and f != cfg["classes"][3] else None
 
 
