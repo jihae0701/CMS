@@ -72,7 +72,7 @@ s.column_dimensions["E"].width = 44
 
 cell(s, "A4", "① 반 배정 기준 (절대평가)", f(True, 11, "1F3864"), align=LEFT, border=False)
 header(s, 5, ["순서", "반 이름", "공수1 이상", "합계 이상", "한 과목 이하", "합계 이하"])
-for i, (nm, a1, t1, m2, t2) in enumerate([("TF1반", 51, 120, None, None), ("HF반", None, None, 20, 60), ("TF2반", None, None, None, None)]):
+for i, (nm, a1, t1, m2, t2) in enumerate([("TF1반", 55, 115, None, None), ("HF반", None, None, 20, 60), ("TF2반", None, None, None, None)]):
     r = 6 + i
     cell(s, f"A{r}", f"{i + 1}순위", fill=GREY)
     cell(s, f"B{r}", nm, f(True), INPUT)
@@ -85,7 +85,7 @@ cell(s, "C9", "미응시 과목이 있어 위 기준으로 정할 수 없으면 
 cell(s, "H5", "· 점수(100점 만점)로 판정. 한 줄 안의 조건은 '하나라도' 맞으면 그 반(또는)\n"
      "· 위 순위부터 차례로 확인해 처음 맞는 반에 배정, 조건이 모두 빈 줄은 '나머지'\n"
      "· 합계 = 공수1 + 공수2, 한 과목 이하 = 공수1·공수2 중 하나라도 그 점수 이하\n"
-     "· 예) TF1반: 공수1 51점 이상 또는 합계 120점 이상", f(size=9, color="595959"), align=LEFT, border=False)
+     "· 예) TF1반: 공수1 55점 이상 또는 합계 115점 이상", f(size=9, color="595959"), align=LEFT, border=False)
 s.merge_cells("H5:L9")
 
 cell(s, "A11", "② 점수 반영", f(True, 11, "1F3864"), align=LEFT, border=False)
