@@ -115,9 +115,25 @@ def read(path):
             continue
         students.append(dict(row=r, no=r - FIRST + 1, name=str(name or "(이름 없음)"), school=st.cell(r, 3).value or "",
                              kind=st.cell(r, 4).value or "", prev=st.cell(r, 5).value or "", progress=st.cell(r, 6).value or "",
-                             phone=col(r, "연락처"), memo=col(r, "비고(내부용)", "비고"),
+                             phone=col(r, "연락처"), memo=col(r, "비고(내부용)", "비고"), day=str(col(r, "현재 등원 요일")),
                              manual=num(b.cell(r, 13).value), reco2=num(b.cell(r, 14).value), resp=resp))
     return cfg, exams, students
+
+
+def with_day(cls, day, cfg):
+    """TF1·TF2(설정 ①의 1·3순위 반)는 현재 등원 요일에 따라 'TF1월금'·'TF1화목'처럼 표시"""
+    if cls not in (cfg["classes"][0], cfg["classes"][2]):
+        return cls
+    suf = "월금" if "월" in day else "화목" if "화" in day else "반"
+    return str(cls).replace("반", "") + suf
+
+
+def class_desc(name, cfg):
+    """반 소개 문구: 'TF1월금'처럼 요일이 붙은 반은 'TF1반' 소개를 사용"""
+    d = cfg["class_desc"]
+    if name in d:
+        return d[name]
+    return next((v for k, v in d.items() if k and name.startswith(k.replace("반", ""))), "")
 
 
 def compute(cfg, exams, students):
@@ -155,7 +171,7 @@ def compute(cfg, exams, students):
         s["rank"] = 1 + sum(1 for t in ranked if t["total"] > s["total"])
         a, b = s["score"]["공수1"], s["score"]["공수2"]
         s["auto"] = next((r_[0] for r_ in cfg["rules"] if match(a, b, r_)), hold)
-        s["final"] = s["manual"] or s["auto"]
+        s["final"] = s["manual"] or with_day(s["auto"], s.get("day", ""), cfg)
         # 경계: 과목 점수나 합계가 기준 점수와 경계 범위 이내
         th1 = [r_[1] for r_ in cfg["rules"] if r_[1] is not None] + [r_[3] for r_ in cfg["rules"] if r_[3] is not None]
         th2 = [r_[3] for r_ in cfg["rules"] if r_[3] is not None]
@@ -493,7 +509,7 @@ def parent_pages(s, cfg, exams, stats):
         else:  # 아직 정하지 않은 경우
             body = head + '<div class="tx pend">개별 상담을 통해 안내해 드립니다.</div>'
         return '<div class="rc%s"><div class="no">%d</div><div class="bd">%s</div></div>' % (" first" if first else "", n, body)
-    cards2 = (rcard(1, "공통수학반", "진단평가 결과 기준", r1, cfg["class_desc"].get(r1 or "", ""), b1, True) +
+    cards2 = (rcard(1, "공통수학반", "진단평가 결과 기준", r1, class_desc(r1 or "", cfg), b1, True) +
               rcard(2, "선행 과목반", "학습 진도 기준", r2, cfg["pre_desc"].get(r2 or "", ""), b2, False))
     p2 = f"""<div class="cl p2"><div class="panel">
 <div class="mini">{brand}<div class="rt">{e(cfg['title'] or '예비고1 진단평가 결과 보고서')}<b>{e(s['name'])}</b></div></div>

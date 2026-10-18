@@ -384,7 +384,10 @@ for r in range(FIRST, LAST + 1):
                      f"+{near('E', f'G{r}')}+{near('E', f'H{r}')}>0,\"경계\",\"\"))", f(True, 10, "C55A11"))
     cell(b, f"M{r}", fill=INPUT)
     cell(b, f"N{r}", fill=INPUT)
-    cell(b, f"O{r}", f"=IF(M{r}<>\"\",M{r},K{r})", f(True))
+    # 최종: 입력한 반 우선. TF1·TF2는 현재 등원 요일(학생명단)에 따라 월금/화목 반으로
+    day = f"'학생명단'!G{r}"
+    cell(b, f"O{r}", f"=IF(M{r}<>\"\",M{r},IF(OR(K{r}={NAMES[0]},K{r}={NAMES[2]}),SUBSTITUTE(K{r},\"반\",\"\")&"
+                     f"IF(ISNUMBER(SEARCH(\"월\",{day})),\"월금\",IF(ISNUMBER(SEARCH(\"화\",{day})),\"화목\",\"반\")),K{r}))", f(True))
     cell(b, f"P{r}", f"=IF(I{r}=\"\",\"\",IF(G{r}=\"\",\"공수1 미응시\",IF(H{r}=\"\",\"공수2 미응시\",\"\")))",
          f(size=9, color="C00000"))
     cell(b, f"Q{r}", f"=IF(J{r}=\"\",\"\",J{r}+ROW()/100000)")
@@ -394,10 +397,11 @@ b.row_dimensions[6].height = 30
 b.conditional_formatting.add(f"A{FIRST}:P{LAST}",
                              FormulaRule(formula=[f"$L{FIRST}=\"경계\""], fill=PatternFill("solid", fgColor="FBE5D6")))
 CLS4 = CLS + ["E7E6E6"]
+PFX = lambda nm: f"SUBSTITUTE({nm},\"반\",\"\")"      # 'TF1반' → 'TF1' (TF1월금·TF1화목도 같은 반으로 묶음)
 for col in "KO":
     for i, nm in enumerate(NAMES):
         b.conditional_formatting.add(f"{col}{FIRST}:{col}{LAST}",
-                                     FormulaRule(formula=[f"AND(${col}{FIRST}<>\"\",${col}{FIRST}={nm})"],
+                                     FormulaRule(formula=[f"AND(${col}{FIRST}<>\"\",LEFT(${col}{FIRST},LEN({PFX(nm)}))={PFX(nm)})"],
                                                  fill=PatternFill("solid", fgColor=CLS4[i])))
 # 요약표
 SX = 19  # S열부터
@@ -409,11 +413,12 @@ for i, nm in enumerate(NAMES):
     c0, c1, c2, c3, c4, c5, c6 = [f"{c}{r}" for c in cols_]
     cell(b, c0, f"={nm}", f(True), PatternFill("solid", fgColor=CLS4[i]))
     cell(b, c1, f"=COUNTIF({I},{c0})")
-    cell(b, c2, f"=COUNTIF({Lr},{c0})", f(True))
-    cell(b, c3, f"=IFERROR(AVERAGEIF({Lr},{c0},{E_}),\"\")", fmt="0.0")
-    cell(b, c4, f"=IFERROR(AVERAGEIF({Lr},{c0},{F_}),\"\")", fmt="0.0")
-    cell(b, c5, f"=COUNTIFS({Lr},{c0},{D},\"재원\")")
-    cell(b, c6, f"=COUNTIFS({Lr},{c0},{D},\"외부\")")
+    crit = f"SUBSTITUTE({c0},\"반\",\"\")&\"*\""
+    cell(b, c2, f"=COUNTIF({Lr},{crit})", f(True))
+    cell(b, c3, f"=IFERROR(AVERAGEIF({Lr},{crit},{E_}),\"\")", fmt="0.0")
+    cell(b, c4, f"=IFERROR(AVERAGEIF({Lr},{crit},{F_}),\"\")", fmt="0.0")
+    cell(b, c5, f"=COUNTIFS({Lr},{crit},{D},\"재원\")")
+    cell(b, c6, f"=COUNTIFS({Lr},{crit},{D},\"외부\")")
 r = 11
 cell(b, f"{cols_[0]}{r}", "합계", f(True), GREY)
 for k_ in (1, 2, 5, 6):
@@ -421,9 +426,20 @@ for k_ in (1, 2, 5, 6):
 cell(b, f"{cols_[3]}{r}", f"=IFERROR(AVERAGE({E_}),\"\")", f(True), GREY, fmt="0.0")
 cell(b, f"{cols_[4]}{r}", f"=IFERROR(AVERAGE({F_}),\"\")", f(True), GREY, fmt="0.0")
 cell(b, f"{cols_[0]}13", "· 자동배정은 '설정' ①의 기준(공수1 점수·한 과목 점수·합계)\n· 경계 = 과목 점수나 합계가 기준 점수와 경계 범위 이내\n"
+     "· 공통수학반(최종): TF1·TF2는 현재 등원 요일에 따라 월금/화목 반(예: TF1월금, TF2화목)\n"
      "· 공통수학반·선행반은 목록에서 고르거나 직접 입력('설정' ⑥·⑦에 반 소개 추가 가능)\n· 환산총점·석차는 참고용", f(size=9, color="595959"),
      align=LEFT, border=False)
 b.merge_cells(f"{cols_[0]}13:{cols_[6]}18")
+# 요일반별 인원
+cell(b, f"{cols_[0]}20", "요일반별 인원 (최종 기준)", f(True, 11, "1F3864"), align=LEFT, border=False)
+header(b, 21, ["반", "인원", "공수1\n평균", "공수2\n평균"], start=SX)
+for i, (k, suf) in enumerate([(0, "월금"), (0, "화목"), (2, "월금"), (2, "화목")]):
+    r = 22 + i
+    c0, c1, c2, c3 = [f"{c}{r}" for c in cols_[:4]]
+    cell(b, c0, f"={PFX(NAMES[k])}&\"{suf}\"", f(True), PatternFill("solid", fgColor=CLS4[k]))
+    cell(b, c1, f"=COUNTIF({Lr},{c0})", f(True))
+    cell(b, c2, f"=IFERROR(AVERAGEIF({Lr},{c0},{E_}),\"\")", fmt="0.0")
+    cell(b, c3, f"=IFERROR(AVERAGEIF({Lr},{c0},{F_}),\"\")", fmt="0.0")
 for c in cols_:
     b.column_dimensions[c].width = 8
 b.column_dimensions[cols_[0]].width = 10
