@@ -83,7 +83,7 @@ cell(s, "B9", "보류", f(True), INPUT)
 s.merge_cells("C9:F9")
 cell(s, "C9", "미응시 과목이 있어 위 기준으로 정할 수 없으면 보류 → 상담 후 수동 배정", f(size=9, color="595959"), GREY, align=LEFT)
 cell(s, "A10", "학교 지정", f(True), GREY)
-cell(s, "B10", "TF1월", f(True), INPUT)
+cell(s, "B10", "TF자사", f(True), INPUT)
 s.merge_cells("C10:F10")
 cell(s, "C10", "학생명단 '자사/일반' 칸에 학교가 적힌 학생은 점수와 관계없이 이 반 (비우면 적용 안 함)", f(size=9, color="595959"), GREY, align=LEFT)
 cell(s, "H5", "· 점수(100점 만점)로 판정. 한 줄 안의 조건은 '하나라도' 맞으면 그 반(또는)\n"
@@ -199,11 +199,13 @@ for i, d in enumerate(CLASS_DESC):
     s.merge_cells(f"B{r}:E{r}")
     cell(s, f"B{r}", d, fill=INPUT, align=LEFT)
     s.row_dimensions[r].height = 30
-for i in range(3):  # 추가로 추천할 반(기존 반 등)
+EXTRA_CLASSES = [("=B10", "자사고·특목고 진학 예정 학생을 위한 반으로, 고교 내신과 심화 문항 해결력을 함께 준비합니다.")]
+for i in range(3):  # 추가로 추천할 반(학교 지정 반, 기존 반 등)
     r = CLASS_ROW + 5 + i
-    cell(s, f"A{r}", None, f(True), INPUT)
+    nm, d = EXTRA_CLASSES[i] if i < len(EXTRA_CLASSES) else (None, None)
+    cell(s, f"A{r}", nm, f(True), INPUT)
     s.merge_cells(f"B{r}:E{r}")
-    cell(s, f"B{r}", None, fill=INPUT, align=LEFT)
+    cell(s, f"B{r}", d, fill=INPUT, align=LEFT)
     s.row_dimensions[r].height = 30
 cell(s, f"F{CLASS_ROW + 5}", "← 공통수학반이 더 있으면 반 이름과 소개를 추가", f(size=9, color="595959"), align=LEFT, border=False)
 CLASS_LIST = f"='설정'!$A${CLASS_ROW + 2}:$A${CLASS_ROW + 7}"
@@ -425,8 +427,13 @@ for i, nm in enumerate(NAMES):
     cell(b, c6, f"=COUNTIFS({Lr},{crit},{D},\"외부\")")
 r = 11
 cell(b, f"{cols_[0]}{r}", "합계", f(True), GREY)
-for k_ in (1, 2, 5, 6):
-    cell(b, f"{cols_[k_]}{r}", f"=SUM({cols_[k_]}7:{cols_[k_]}10)", f(True), GREY)
+cell(b, f"{cols_[1]}{r}", f"=SUM({cols_[1]}7:{cols_[1]}10)", f(True), GREY)
+# 최종 합계는 학교 지정 반(TF자사 등)까지 모두 셈
+cell(b, f"{cols_[2]}{r}", f"=COUNTIF({Lr},\"?*\")", f(True), GREY)
+cell(b, f"{cols_[5]}{r}", f"=COUNTIFS({Lr},\"?*\",{D},\"재원\")", f(True), GREY)
+cell(b, f"{cols_[6]}{r}", f"=COUNTIFS({Lr},\"?*\",{D},\"외부\")", f(True), GREY)
+cell(b, f"{cols_[0]}12", "=IF('설정'!$B$10=\"\",\"\",\"※ \"&'설정'!$B$10&\" \"&COUNTIF("+Lr+",'설정'!$B$10)&\"명은 위 반별 인원에 없음(아래 요일반 표)\")",
+     f(size=8, color="C00000"), align=LEFT, border=False)
 cell(b, f"{cols_[3]}{r}", f"=IFERROR(AVERAGE({E_}),\"\")", f(True), GREY, fmt="0.0")
 cell(b, f"{cols_[4]}{r}", f"=IFERROR(AVERAGE({F_}),\"\")", f(True), GREY, fmt="0.0")
 cell(b, f"{cols_[0]}13", "· 자동배정은 '설정' ①의 기준(공수1 점수·한 과목 점수·합계)\n· 경계 = 과목 점수나 합계가 기준 점수와 경계 범위 이내\n"

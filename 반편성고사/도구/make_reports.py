@@ -87,6 +87,8 @@ def read(path):
         for i in range(6):  # 앞 3줄은 ① 반 이름과 연결, 뒤 3줄은 추가 반
             r = cls_row + 2 + i
             name = cfg["classes"][i] if i < 3 else s["A%d" % r].value
+            if isinstance(name, str) and name.startswith("="):   # 예: =B10 (학교 지정 반 이름)
+                name = s[name[1:].replace("$", "")].value
             if name:
                 cfg["class_desc"][str(name).strip()] = s["B%d" % r].value or ""
     cfg["pre_desc"] = {}
