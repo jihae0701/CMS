@@ -5,7 +5,7 @@ WORDS = {
     "le": r"\le ", "ge": r"\ge ", "leq": r"\le ", "geq": r"\ge ", "LEQ": r"\le ", "GEQ": r"\ge ", "ne": r"\ne ", "TIMES": r"\times ", "times": r"\times ",
     "CDOTS": r"\cdots ", "cdots": r"\cdots ", "PLUSMINUS": r"\pm ", "notin": r"\notin ", "nin": r"\notin ",
     "in": r"\in ", "subset": r"\subset ", "nsubset": r"\not\subset ", "cap": r"\cap ", "cup": r"\cup ",
-    "circ": r"\circ ", "rarrow": r"\rightarrow ", "alpha": r"\alpha ", "beta": r"\beta ", "prime": "'",
+    "circ": r"\circ ", "rarrow": r"\rightarrow ", "alpha": r"\alpha ", "beta": r"\beta ", "prime": "'", "dprime": "''",
     "sim": r"\sim ", "LEFT": "left", "RIGHT": "right", "DEG": r"^\circ ",
     "therefore": r"\therefore ", "THEREFORE": r"\therefore ",
     "angle": r"\angle ", "gamma": r"\gamma ", "PI": r"\Pi ", "delta": r"\delta ", "omega": r"\omega ", "theta": r"\theta ",
@@ -78,6 +78,7 @@ def convert(script):
             g, e = _group(s, m.end() - 1)
             s = s[:m.start()] + "{" + env(name if name in ("cases", "pmatrix") else "matrix", g) + "}" + s[e:]
     s = s.replace("!=", " ne ")          # 한글 수식의 != 는 ≠ (계승 뒤의 등호는 "5! =120"처럼 띄어 쓴다)
+    s = re.sub(r"\bprime\s+prime\b", "dprime", s)   # B″: KaTeX는 ' '를 이중 위 첨자로 본다
     # 단어 치환
     s = re.sub(r"\b(" + "|".join(sorted(WORDS, key=len, reverse=True)) + r")\b", lambda m: WORDS[m.group(1)], s)
     # left/right 괄호

@@ -110,6 +110,12 @@ for p in root:
         src = "".join(c.text or "" for r in p.findall(HP + "run") if r.get("charPrIDRef") == "34" for c in r if ln(c) == "t")
         cb = p.get("columnBreak") == "1"
         body.append('<div class="q%s"><span class="no">%d</span> <span class="src">%s</span>' % (" cb" if cb else "", n, html.escape(src)))
+        if not src.strip():                      # 기본서: 문제 글이 미주와 같은 문단에 있다
+            import copy
+            q = copy.deepcopy(p)
+            for e in q.iter(HP + "endNote"):
+                e.getparent().remove(e)
+            body.append("<p>%s</p>" % inline(q))
         sol = "".join("<p>%s</p>" % inline(sp) for sp in en.find(HP + "subList").findall(HP + "p"))
         sols.append('<div class="s"><b>%d</b> %s</div>' % (n, sol))
         continue
