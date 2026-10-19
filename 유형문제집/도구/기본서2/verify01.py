@@ -325,6 +325,33 @@ ps = [p for p in [Rational(i, 1000) for i in range(1, 6000)] if d2(A, (p, 0)) ==
 r_ = ps[0] / (6 - ps[0]); ok.append(len(ps) == 1 and numer(r_) + 2 * denom(r_) == 7)
 R["g050"] = "".join("ㄱㄴㄷ"[i] for i in range(3) if ok[i])
 
+# n01: 직사각형 (예: P(√5, 2), a=√5+2√3, b=2+√13) — 존재 확인 후 PD
+a_, b_ = sqrt(5) + 2 * sqrt(3), 2 + sqrt(13)
+P_ = (sqrt(5), 2)
+A, B, C, D = (0, 0), (a_, 0), (a_, b_), (0, b_)
+assert [simplify(dist(P_, Q)) for Q in (A, B, C)] == [3, 4, 5]
+R["n01"] = simplify(dist(P_, D))
+# m192v: 격자점 전수
+pts = [(i, j) for i in range(5) for j in range(5)]
+cnt = 0
+for u_, v_ in itertools.combinations(pts, 2):
+    ok = all(((2 * u_[k] + v_[k]) % 3 == 0) and ((u_[k] + 2 * v_[k]) % 3 == 0) for k in (0, 1))
+    cnt += ok
+R["m192v"] = cnt
+# m04: 임의의 삼각형 여러 개로 비 확인
+import random
+random.seed(1)
+for _ in range(5):
+    A, B, C = [(Rational(random.randint(-9, 9)), Rational(random.randint(-9, 9))) for _ in range(3)]
+    if (B[0] - A[0]) * (C[1] - A[1]) - (B[1] - A[1]) * (C[0] - A[0]) == 0:
+        continue
+    G = ((A[0] + B[0] + C[0]) / 3, (A[1] + B[1] + C[1]) / 3)
+    mid = lambda P, Q: ((P[0] + Q[0]) / 2, (P[1] + Q[1]) / 2)
+    L_, M_, N_ = mid(B, C), mid(C, A), mid(A, B)
+    r_ = (d2(A, B) + d2(B, C) + d2(C, A)) / (d2(G, L_) + d2(G, M_) + d2(G, N_))
+    assert r_ == 12
+R["m04"] = 12
+
 # ---------------------------------------------------------------- data01의 답과 맞추기
 def to_expr(s):
     s = s.replace("LEFT (", "(").replace("RIGHT )", ")").replace("~", "").replace("it-", "-")
