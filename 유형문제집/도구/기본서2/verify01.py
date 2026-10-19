@@ -352,6 +352,51 @@ for _ in range(5):
     assert r_ == 12
 R["m04"] = 12
 
+# 고쟁이로 바꾼 문항(2026-10-19)
+# g026: B, C를 직접 잡아 확인 (P 중심, 반지름 √13인 원 위 지름 양 끝)
+Pc = (-1, -1); A = (2, 1)
+B = (-1 + sqrt(13), -1); C = (-1 - sqrt(13), -1)
+assert simplify(d2(Pc, A) - d2(Pc, B)) == 0
+R["g026"] = simplify(d2(A, B) + d2(A, C))
+# g031
+vals = {"P": sqrt(2), "Q": sqrt(3), "A": (sqrt(2) + sqrt(3)) / 2, "B": (3 * sqrt(2) + sqrt(3)) / 4, "C": (sqrt(2) + 3 * sqrt(3)) / 4}
+R["g031"] = "".join(sorted(vals, key=lambda k: float(vals[k])))
+# g033
+Pt = ((1 - t) * 1 + t * (-5), (1 - t) * (-3) + t * 1)
+r = solve([Pt[0] < 0, Pt[1] < 0, t > 0, t < 1], t)
+assert r.as_set() == Interval.open(Rational(1, 6), Rational(3, 4))
+R["g033"] = Rational(1, 6) + Rational(3, 4)
+# g025: 정삼각형을 직접 만든다
+A = Matrix([3, 5]); G = Matrix([-1, 2])
+M_ = G + (G - A) / 2
+u = (M_ - A); perp = Matrix([-u[1], u[0]]) / u.norm()
+half = u.norm() / sqrt(3)
+B = M_ + perp * half; C = M_ - perp * half
+assert simplify((A - B).norm() - (B - C).norm()) == 0 and simplify((A - C).norm() - (B - C).norm()) == 0
+R["g025"] = simplify(3 * (B - C).norm())
+# g021
+f_ = sum((x - p[0]) ** 2 + (y - p[1]) ** 2 for p in ((1, -1), (-3, 4), (5, 6)))
+s_ = solve([diff(f_, x), diff(f_, y)], [x, y], dict=True)[0]
+R["g021"] = s_[x] + s_[y] + f_.subs(s_)
+# g022: 촘촘한 수치 탐색 + 선분 길이
+g_ = lambda X, Y: math.sqrt(X * X + Y * Y + 6 * X - 4 * Y + 13) + math.sqrt(X * X + Y * Y - 2 * X - 8 * Y + 17)
+import math
+mn = min(g_(-4 + i * 0.05, j * 0.05) for i in range(120) for j in range(120))
+assert abs(mn - math.sqrt(20)) < 1e-6
+R["g022"] = sqrt(20)
+# g029: 좌표로
+kk2 = symbols("kk2", positive=True)
+s_ = solve([(x + kk2) ** 2 + y ** 2 - 25, (x - 3 * kk2) ** 2 + y ** 2 - 9, x ** 2 + y ** 2 - 15], [x, y, kk2], dict=True)
+R["g029"] = simplify(4 * [q for q in s_ if q[kk2] > 0][0][kk2])
+# g030: 임의의 삼각형으로 비 확인
+k30 = None
+for (ax_, ay_, c_) in ((1, 2, 1), (3, 5, 2), (-2, 7, 3)):
+    A = (ax_, ay_); B = (-3 * c_, 0); C = (c_, 0); D = (0, 0)
+    r_ = Rational(3 * d2(A, D) + d2(B, D), d2(A, B) + 3 * d2(A, C))
+    assert k30 is None or r_ == k30
+    k30 = r_
+R["g030"] = k30
+
 # ---------------------------------------------------------------- data01의 답과 맞추기
 def to_expr(s):
     s = s.replace("LEFT (", "(").replace("RIGHT )", ")").replace("~", "").replace("it-", "-")
@@ -366,7 +411,9 @@ items = [it for _, _, ps in data01.TYPES for it in ps] + data01.STEP3
 bad = 0
 for it in items:
     got, ans = R[it["src"]], it["ans"]
-    if isinstance(got, str):
+    if it["src"] == "g031":
+        same = ans.replace(" ", "") == "rmP,~B,~A,~C,~Q" and got == "PBACQ"
+    elif isinstance(got, str):
         same = got == ans.replace(", ", "").replace(" ", "")
     elif it["src"] in ("012", "014"):
         lo, hi = (0, Rational(4, 9)) if it["src"] == "012" else (Rational(1, 5), Rational(4, 7))
