@@ -397,6 +397,41 @@ for (ax_, ay_, c_) in ((1, 2, 1), (3, 5, 2), (-2, 7, 3)):
     k30 = r_
 R["g030"] = k30
 
+# 넓이의 비(2026-10-19)
+def area(P, Q, T):
+    return abs((Q[0] - P[0]) * (T[1] - P[1]) - (Q[1] - P[1]) * (T[0] - P[0])) / Rational(2)
+# g042
+A, B, C = (-3, 1), (-1, 5), (2, -1)
+Pp = inner(A, C, dist(B, A), dist(B, C))
+G = ((A[0] + B[0] + C[0]) / Rational(3), (A[1] + B[1] + C[1]) / Rational(3))
+R["g042"] = simplify(area(A, B, C) / area(B, Pp, G))
+# g053: 여러 볼록사각형으로 확인
+for (A, B, C, D) in (((1, 2), (0, 0), (4, 0), (3, 3)), ((-1, 4), (0, 0), (6, 0), (5, 6))):
+    A = tuple(map(Rational, A)); D = tuple(map(Rational, D))
+    sA, sD = area(A, B, C), area(D, B, C)
+    E = inner(A, D, 3, 1)
+    rat = area(E, B, C)
+    assert rat == (sA + 3 * sD) / 4
+R["g053"] = (2 + 3 * 3) / Rational(4)
+# m10: 이등변이 아닌 삼각형으로도 확인
+for (A, B, C) in (((0, 9), (-4, 0), (4, 0)), ((1, 7), (-3, 0), (5, 1))):
+    A, B, C = [tuple(map(Rational, p)) for p in (A, B, C)]
+    G = tuple((A[k] + B[k] + C[k]) / 3 for k in (0, 1))
+    Pp = tuple((G[k] + A[k] + B[k]) / 3 for k in (0, 1)); Qq = tuple((G[k] + C[k] + A[k]) / 3 for k in (0, 1))
+    assert area(A, B, C) / area(A, Pp, Qq) == Rational(27, 5)
+R["m10"] = 30 * Rational(27, 5)
+# m07: 내부 격자를 1/15 간격으로 모두 훑어 넓이 비가 4:5:6인 점을 찾는다
+A, B, C = (2, 8), (-6, 0), (6, 0)
+found = []
+for i in range(-90, 91):
+    for j in range(1, 120):
+        Pq = (Rational(i, 15), Rational(j, 15))
+        s1, s2, s3 = area(Pq, A, B), area(Pq, B, C), area(Pq, C, A)
+        if s1 + s2 + s3 == area(A, B, C) and s1 * 5 == s2 * 4 and s3 * 5 == s2 * 6:
+            found.append(Pq)
+assert len(found) == 1
+R["m07"] = 15 * (found[0][0] + found[0][1])
+
 # ---------------------------------------------------------------- data01의 답과 맞추기
 def to_expr(s):
     s = s.replace("LEFT (", "(").replace("RIGHT )", ")").replace("~", "").replace("it-", "-")
