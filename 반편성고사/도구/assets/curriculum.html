@@ -1,0 +1,123 @@
+<!-- 예비고1 커리큘럼 안내지 (성적표 뒤에 함께 인쇄). make_reports.py 가 {LOGO} 를 로고 이미지로 바꿔 넣습니다. -->
+<style>
+.cu{width:210mm;height:296.8mm;box-sizing:border-box;padding:12mm 15mm 10mm;position:relative;page-break-after:always;overflow:hidden;
+  font-family:'Malgun Gothic','Noto Sans KR','Noto Sans CJK KR',sans-serif;color:#1d2433;background:#fff}
+.cu *{box-sizing:border-box}
+.cu .top{display:flex;justify-content:space-between;align-items:center}
+.cu .top img{height:7.5mm}
+.cu .top .yr{font-size:8pt;color:#5b6577;text-align:right;line-height:1.5}
+.cu .top .yr b{color:#1B2A4A;font-weight:800}
+.cu h1{font-size:21pt;font-weight:800;margin:6mm 0 2mm;letter-spacing:-.3px}
+.cu .lead{font-size:9pt;color:#5b6577;line-height:1.6;margin:0 0 4mm}
+.cu .open{background:#e6f5f1;border-radius:3mm;padding:3.4mm 5mm;margin-bottom:5mm}
+.cu .open small{display:block;font-size:8pt;color:#16806b;font-weight:700}
+.cu .open b{font-size:17pt;font-weight:800;letter-spacing:-.2px}
+.cu h2{font-size:11.5pt;font-weight:800;margin:5mm 0 2.6mm;display:flex;align-items:center;gap:3mm}
+.cu h2 i{font-style:normal;font-size:8.5pt;color:#16806b;font-weight:800}
+.cu h2 em{font-style:normal;font-size:8pt;color:#2F6FD0;font-weight:700;margin-left:auto}
+.cu .two{display:flex;gap:4mm}
+.cu .card{flex:1;border-radius:3mm;padding:3.6mm 4.6mm}
+.cu .card.tf{background:#ebf2fd}
+.cu .card.hf{background:#e6f5f1}
+.cu .card.sp{background:#fff4e6}
+.cu .card small{font-size:7.6pt;font-weight:700;color:#2F6FD0}
+.cu .card.hf small{color:#16806b}
+.cu .card.sp small{color:#c0670b}
+.cu .card .nm{font-size:15pt;font-weight:800;margin:.8mm 0 1.2mm}
+.cu .card .sub{font-size:8.6pt;font-weight:700;margin-bottom:1.8mm}
+.cu .card .ln{font-size:8pt;color:#3a4356;line-height:1.75}
+.cu .card .ln b{display:inline-block;min-width:13mm;color:#1d2433}
+.cu .card .dt{font-size:8.6pt;font-weight:800;color:#2F6FD0;margin-top:1.2mm}
+.cu table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:8.2pt;margin-bottom:2mm}
+.cu th{background:#dff1ec;font-weight:800;padding:1.6mm;border:1px solid #c9e3dc}
+.cu td{padding:1.6mm;border:1px solid #dfe5ea;text-align:center}
+.cu td:first-child{font-weight:800}
+.cu tr:nth-child(even) td{background:#f6f9fa}
+.cu .note{font-size:7.6pt;color:#5b6577;line-height:1.7;margin-bottom:1mm}
+.cu .grid{display:grid;grid-template-columns:1fr 1fr;gap:3.4mm}
+.cu .sc{border-radius:3mm;padding:3.4mm 4.6mm}
+.cu .sc b{font-size:12pt;font-weight:800}
+.cu .sc .s{font-size:7.8pt;color:#5b6577;margin:.6mm 0 1.8mm}
+.cu .sc .t{font-size:8.4pt;font-weight:700}
+.cu .sc .w{font-size:7.8pt;color:#3a4356;margin-top:1mm}
+.cu .sc .d{font-size:8pt;font-weight:800;color:#16806b;margin-top:1mm}
+.cu .g1{background:#e6f5f1}.cu .g2{background:#ebf2fd}.cu .g3{background:#f1edfb}.cu .g4{background:#fff4e6}
+.cu .ten{background:#e6f5f1;border-radius:3mm;padding:3.4mm 5mm;margin-top:4mm}
+.cu .ten b{font-size:11.5pt;font-weight:800}
+.cu .ten div{font-size:8pt;color:#5b6577;margin-top:1mm}
+.cu .ad{margin-top:4mm;border:1.6px solid #1B2A4A;border-radius:3mm;padding:3.4mm 5mm;display:flex;align-items:center;gap:4mm}
+.cu .ad .tag{font-size:7.5pt;font-weight:800;color:#fff;background:#1B2A4A;border-radius:1.5mm;padding:.8mm 2mm;flex:none}
+.cu .ad b{font-size:12pt;font-weight:800}
+.cu .ad span{font-size:8.4pt;color:#3a4356;margin-left:auto;font-weight:700;white-space:nowrap}
+.cu .ft{position:absolute;left:15mm;right:15mm;bottom:7mm;display:flex;justify-content:space-between;font-size:7.5pt;color:#8a93a3}
+</style>
+
+<div class="cu">
+  <div class="top"><img src="{LOGO}" alt="CLIMATH"><div class="yr"><b>CMS고등부 CLIMATH</b><br>2027학년도 예비고1</div></div>
+  <h1>예비고1 커리큘럼 안내</h1>
+  <p class="lead">공통수학의 기본 개념부터 심화 학습까지,<br>학생의 학습 단계에 맞춰 고등수학의 시작을 준비합니다.</p>
+  <div class="open"><small>예비고1 정규반 개강</small><b>2026년 11월 25일 수요일</b></div>
+
+  <h2><i>01</i>학습 단계에 맞춘 두 가지 정규 과정</h2>
+  <div class="two">
+    <div class="card tf"><small>심화 과정</small><div class="nm">TF반</div>
+      <div class="sub">공통수학1·2 동시 진행 + 실전모의고사</div>
+      <div class="ln"><b>월·금</b>TF1 P · Q · R</div>
+      <div class="ln"><b>화·목</b>TF2 M · N · S</div>
+      <div class="ln">수업 요일은 월·금 / 화·목 중 선택</div></div>
+    <div class="card hf"><small>기본 과정</small><div class="nm">HF반</div>
+      <div class="sub">공통수학1 → 공통수학2 순차 진행 (개념 + 유형)</div>
+      <div class="ln"><b>월·금</b>HF1</div>
+      <div class="ln"><b>화·목</b>HF2</div>
+      <div class="ln">수요일 심화 개념·유형 수업(HF5) 연계</div></div>
+  </div>
+
+  <h2><i>02</i>정규 수업은 이렇게 진행합니다</h2>
+  <table><tr><th style="width:18%">TF반</th><th>월(화)</th><th>금(목)</th></tr>
+    <tr><td>1교시</td><td>CMSTORY 공통수학1·2</td><td>공통수학1</td></tr>
+    <tr><td>2교시</td><td>실전모의고사 응시 및 풀이</td><td>공통수학2</td></tr></table>
+  <table><tr><th style="width:18%">HF반</th><th>월(화)</th><th>금(목)</th></tr>
+    <tr><td>1교시</td><td>공통수학 개념</td><td>공통수학 개념</td></tr>
+    <tr><td>2교시</td><td>공통수학 유형</td><td>공통수학 유형</td></tr></table>
+  <div class="note">월(화)·금(목)은 반별 수업 요일 표기입니다. HF반은 공통수학1을 마친 뒤 공통수학2를 이어서 학습합니다.<br>
+    TF교재 : CLIMATH(M) 공통수학1·2 자체교재, CMSTORY 공통수학 &nbsp;|&nbsp; HF교재 : CLIMATH(C) 공통수학1·2 자체교재, 자체 워크북</div>
+
+  <h2><i>03</i>TF자사반 안내 <em>자사고·특목고 진학 예정 학생</em></h2>
+  <div class="two">
+    <div class="card tf"><small>11월 개강</small><div class="nm">TF반 11월 개강반</div>
+      <div class="ln"><b>개강</b>2026년 11월 25일 수요일</div>
+      <div class="ln"><b>월·금</b>TF1 P · Q · R &nbsp; <b>화·목</b>TF2 M · N · S</div></div>
+    <div class="card sp"><small>12월 개강</small><div class="nm">TF집중속진반</div>
+      <div class="ln"><b>반</b>TF11 · TF12</div>
+      <div class="ln"><b>개강</b>2026년 12월 28일 &nbsp;(1·2월 공통수학 집중속진)</div></div>
+  </div>
+  <div class="ft"><span>CMS고등부 CLIMATH · 정규반 커리큘럼</span><span>1 / 2</span></div>
+</div>
+
+<div class="cu">
+  <div class="top"><img src="{LOGO}" alt="CLIMATH"><div class="yr"><b>CMS고등부 CLIMATH</b><br>2027학년도 예비고1</div></div>
+  <h1>연계 수업 · 겨울방학 안내</h1>
+  <p class="lead">반별 추가 연계 수업과 겨울방학 특강으로 고등수학 학습을 이어갑니다.</p>
+
+  <h2><i>01</i>반별 추가 연계 수업 <em>11월 25일 개강 · 모든 학생 수강 가능</em></h2>
+  <table><tr><th>대상 반</th><th style="width:14%">요일</th><th>시간</th><th>학습 내용</th></tr>
+    <tr><td>TF3 A · B · C</td><td>수</td><td>5:30 ~ 9:50</td><td>미적분Ⅱ</td></tr>
+    <tr><td>TF4 A · C</td><td>일</td><td>12:30 ~ 4:30</td><td>미적분Ⅱ</td></tr>
+    <tr><td>TF4 B · D</td><td>일</td><td>3:15 ~ 7:15</td><td>미적분Ⅱ</td></tr>
+    <tr><td>TF5</td><td>수</td><td>5:30 ~ 9:50</td><td>미적분Ⅰ</td></tr>
+    <tr><td>TF7</td><td>일</td><td>3:15 ~ 7:15</td><td>미적분Ⅰ</td></tr>
+    <tr><td>HF5</td><td>수</td><td>-</td><td>공통수학 심화 개념·유형</td></tr></table>
+
+  <h2><i>02</i>필요한 과목을 더하는 겨울방학특강</h2>
+  <div class="grid">
+    <div class="sc g1"><b>대수 실전 특강</b><div class="s">대수 문제 풀이 집중 학습</div><div class="t">월·금 / 화·목 &nbsp;|&nbsp; 2:00~4:30</div><div class="w">대상 예비고1</div><div class="d">1월 7일 개강</div></div>
+    <div class="sc g2"><b>고1 모의고사 특강</b><div class="s">고등수학 실전 적용 연습</div><div class="t">월·금 &nbsp;|&nbsp; 2:00~4:30</div><div class="w">대상 예비고1</div><div class="d">1월 7일 개강</div></div>
+    <div class="sc g3"><b>기하 특강</b><div class="s">기하 과목 집중 학습</div><div class="t">토·일 &nbsp;|&nbsp; 7:30~10:00</div><div class="w">대상 예비고1~고3</div><div class="d">1월 9일 개강</div></div>
+    <div class="sc g4"><b>확률과 통계 특강</b><div class="s">확률과 통계 과목 집중 학습</div><div class="t">토·일 &nbsp;|&nbsp; 7:30~10:00</div><div class="w">대상 예비고1~고3</div><div class="d">1월 9일 개강</div></div>
+  </div>
+
+  <div class="ten"><b>1월부터 10 to 10 프로그램</b><div>정규반과 집중속진반에 연계하여 운영합니다. 세부 운영 내용은 별도 안내합니다.</div></div>
+
+  <div class="ad"><span class="tag">광고</span><b>일반고 선택 전략 세미나</b><span>2026년 11월 6일 금요일</span></div>
+  <div class="ft"><span>CMS고등부 CLIMATH · 연계 수업 및 겨울방학 특강</span><span>2 / 2</span></div>
+</div>

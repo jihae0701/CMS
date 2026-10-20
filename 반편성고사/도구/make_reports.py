@@ -432,6 +432,8 @@ PCSS = """
 
 _LOGO = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "climath_logo.png")
 LOGO_URI = ("data:image/png;base64," + __import__("base64").b64encode(open(_LOGO, "rb").read()).decode()) if os.path.exists(_LOGO) else ""
+_CUR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "curriculum.html")
+CURRIC = open(_CUR, encoding="utf-8").read().replace("{LOGO}", LOGO_URI) if os.path.exists(_CUR) else ""
 
 PB = {"매우 우수": "b0", "우수": "b1", "양호": "b2", "보완 필요": "b3"}
 
@@ -523,8 +525,7 @@ def parent_pages(s, cfg, exams, stats):
         else:  # 아직 정하지 않은 경우
             body = head + '<div class="tx pend">개별 상담을 통해 안내해 드립니다.</div>'
         return '<div class="rc%s"><div class="no">%d</div><div class="bd">%s</div></div>' % (" first" if first else "", n, body)
-    cards2 = (rcard(1, "공통수학반", "진단평가 결과 기준", r1, d1, b1, True) +
-              rcard(2, "선행 과목반", "학습 진도 기준", r2, cfg["pre_desc"].get(r2 or "", ""), b2, False))
+    cards2 = rcard(1, "공통수학반", "진단평가 결과 기준", r1, d1, b1, True)   # 성적표에는 공통수학 추천반만 (선행반은 싣지 않음)
     p2 = f"""<div class="cl p2"><div class="panel">
 <div class="mini">{brand}<div class="rt">{e(cfg['title'] or '예비고1 진단평가 결과 보고서')}<b>{e(s['name'])}</b></div></div>
 <div class="sh"><b>문항별 결과</b><span class="mono">ITEM CHECK</span></div>{''.join(grids)}
@@ -533,7 +534,7 @@ def parent_pages(s, cfg, exams, stats):
 <div class="two"><div class="box good"><h4>✓ 강점 단원</h4>{gi}</div><div class="box warn"><h4>! 보완할 단원</h4>{wi}</div></div>
 <div class="sh"><b>종합 의견</b><span class="mono">OVERALL COMMENT</span></div><div class="note">{e(text)}</div>
 <div class="sh"><b>수강 추천 반</b><span class="mono">RECOMMENDED CLASSES</span></div>
-<div class="blue"><div class="ds">진단평가 결과에 따른 <b>공통수학반 1개</b>와 현재 학습 진도에 맞춘 <b>선행 과목반 1개</b>, 총 2개 반을 함께 수강합니다.</div>{cards2}</div>
+<div class="blue"><div class="ds">진단평가 결과에 따른 <b>공통수학 추천반</b>입니다.</div>{cards2}</div>
 <div class="next"><div><b>상담 안내</b><br>{e(cfg['notice'])}</div><div style="white-space:nowrap;text-align:right"><b>{e(cfg['academy'])}</b><br>{e(str(cfg['contact']))}</div></div>
 </div>{foot(2)}</div>"""
     return p1 + p2
@@ -668,14 +669,17 @@ def main(xlsx, outdir):
     stats = compute(cfg, exams, students)
     os.makedirs(os.path.join(outdir, "학부모보고서"), exist_ok=True)
     targets = [s for s in students if s["total"] is not None]
-    pages = [parent_pages(s, cfg, exams, stats) for s in targets]
+    # 인쇄 순서: 학생마다 성적표 → 커리큘럼 안내지(assets/curriculum.html, 있으면)
+    pages = [parent_pages(s, cfg, exams, stats) + CURRIC for s in targets]
     render(pages, os.path.join(outdir, "학부모보고서_전체.pdf"))
+    if CURRIC:
+        render([CURRIC], os.path.join(outdir, "커리큘럼안내지.pdf"))
     for s, pgx in zip(targets, pages):
         safe = re.sub(r'[\\/:*?"<>|]', "_", s["name"])
         render([pgx], os.path.join(outdir, "학부모보고서", "%02d_%s.pdf" % (s["no"], safe)))
     render([counsel_page(s, cfg, exams, stats) for s in targets], os.path.join(outdir, "상담카드_전체.pdf"))
     print("학생 %d명: 학부모 보고서·상담 카드 생성 완료 → %s" % (len(targets), outdir))
-    for label, fn, col in (("공통수학반", recommended, "공통수학반(입력), M열"), ("선행반", recommended2, "선행반(입력), N열")):
+    for label, fn, col in (("공통수학반", recommended, "공통수학반(입력), M열"),):
         pending = ["%d번 %s" % (s["no"], s["name"]) for s in targets if not fn(s, cfg)]
         if pending:
             print("%s 미정(보고서에 빈칸) %d명: %s" % (label, len(pending), ", ".join(pending)))
