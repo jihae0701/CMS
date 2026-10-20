@@ -512,6 +512,8 @@ def parent_pages(s, cfg, exams, stats):
     wi = "".join('<div class="it"><span class="m">!</span><span><b>%s</b> — %s</span></div>' % (e(u), e(cfg["advice"].get(u, ""))) for _, u, _ in weak) \
         or '<div class="it"><span class="m">!</span><span>전 단원이 고르게 우수합니다. 고난도 문항으로 실력의 폭을 넓혀 보세요.</span></div>'
     r1, r2 = recommended(s, cfg), recommended2(s, cfg)
+    d1 = class_desc(r1 or "", cfg)
+    r1 = parent_label(r1)
     b1, b2 = basis(s, cfg)
 
     def rcard(n, kind, std, c, desc, why, first):
@@ -521,7 +523,7 @@ def parent_pages(s, cfg, exams, stats):
         else:  # 아직 정하지 않은 경우
             body = head + '<div class="tx pend">개별 상담을 통해 안내해 드립니다.</div>'
         return '<div class="rc%s"><div class="no">%d</div><div class="bd">%s</div></div>' % (" first" if first else "", n, body)
-    cards2 = (rcard(1, "공통수학반", "진단평가 결과 기준", r1, class_desc(r1 or "", cfg), b1, True) +
+    cards2 = (rcard(1, "공통수학반", "진단평가 결과 기준", r1, d1, b1, True) +
               rcard(2, "선행 과목반", "학습 진도 기준", r2, cfg["pre_desc"].get(r2 or "", ""), b2, False))
     p2 = f"""<div class="cl p2"><div class="panel">
 <div class="mini">{brand}<div class="rt">{e(cfg['title'] or '예비고1 진단평가 결과 보고서')}<b>{e(s['name'])}</b></div></div>
@@ -543,6 +545,12 @@ def recommended(s, cfg):
     if f and cfg["school_cls"] and str(f).startswith(cfg["school_cls"] + "("):
         return cfg["school_cls"]   # 보고서에는 'TF자사'만 (괄호 속 성적상 반은 엑셀·상담 카드용)
     return str(f) if f and f != cfg["classes"][3] else None
+
+
+def parent_label(name):
+    """학부모 성적표 표기: TF1월금·TF2월금 → TF월금, TF1화목·TF2화목 → TF화목 (엑셀·상담 카드는 그대로)"""
+    m = re.fullmatch(r"TF\d(월금|화목)", str(name or ""))
+    return "TF" + m.group(1) if m else name
 
 
 def recommended2(s, cfg):
