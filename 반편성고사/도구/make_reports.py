@@ -434,6 +434,12 @@ _LOGO = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "clim
 LOGO_URI = ("data:image/png;base64," + __import__("base64").b64encode(open(_LOGO, "rb").read()).decode()) if os.path.exists(_LOGO) else ""
 _CUR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "curriculum.html")
 CURRIC = open(_CUR, encoding="utf-8").read().replace("{LOGO}", LOGO_URI) if os.path.exists(_CUR) else ""
+for _k, _f in (("{GIFT_COMPASS}", "gift_compass.jpg"), ("{GIFT_ANALYSIS}", "gift_analysis.jpg"), ("{GIFT_REPORT}", "gift_report.jpg")):
+    _p = os.path.join(os.path.dirname(_CUR), _f)
+    if os.path.exists(_p):   # 안내지 3쪽 세미나 안내 아래 그림(표지·흐린 성적표 예시)
+        CURRIC = CURRIC.replace(_k, "data:image/jpeg;base64," + __import__("base64").b64encode(open(_p, "rb").read()).decode())
+    else:                    # 그림 파일이 없으면 그림 칸만 비움(교재 표지는 저장소에 올리지 않음)
+        CURRIC = re.sub(r'<img src="%s"[^>]*>' % re.escape(_k), "", CURRIC)
 
 PB = {"매우 우수": "b0", "우수": "b1", "양호": "b2", "보완 필요": "b3"}
 

@@ -1,3 +1,8 @@
 __pycache__/
 *.pyc
 _measure.html
+
+# 교재 표지(학원 자료) — 저장소에 올리지 않음
+반편성고사/도구/assets/gift_compass.jpg
+반편성고사/도구/assets/gift_analysis.jpg
+반편성고사/시험지/커리큘럼안내지.pdf
