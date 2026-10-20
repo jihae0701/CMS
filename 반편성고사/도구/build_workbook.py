@@ -199,7 +199,7 @@ for i, d in enumerate(CLASS_DESC):
     s.merge_cells(f"B{r}:E{r}")
     cell(s, f"B{r}", d, fill=INPUT, align=LEFT)
     s.row_dimensions[r].height = 30
-EXTRA_CLASSES = [("=B10", "자사고·특목고 진학 예정 학생을 위한 반으로, 고교 내신과 심화 문항 해결력을 함께 준비합니다.")]
+EXTRA_CLASSES = [("=B10", "자사고·특목고 진학 예정 학생을 위한 TF집중속진반(TF11·TF12, 12월 28일 개강)으로, 1·2월 공통수학을 집중속진 과정으로 학습합니다.")]
 for i in range(3):  # 추가로 추천할 반(학교 지정 반, 기존 반 등)
     r = CLASS_ROW + 5 + i
     nm, d = EXTRA_CLASSES[i] if i < len(EXTRA_CLASSES) else (None, None)
