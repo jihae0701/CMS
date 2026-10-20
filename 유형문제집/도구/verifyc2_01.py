@@ -387,6 +387,15 @@ sh = lambda pts: Abs(sum(pts[i][0] * pts[(i + 1) % len(pts)][1] - pts[(i + 1) % 
 assert sh([O_, A, B, C]) == 81
 chk("n1919", sh([D, E, F, G]), Q(45, 2))
 
+# m2410: 직육면체 부피를 직접 계산
+av = one([v for v in solve(a ** 2 * (3 * a + 7) - 4, a) if v.is_real and v > 0])
+AB_ = 3 * av ** 2 + 10 * av + 7
+AP_ = AB_ / (1 + av); PB_ = AB_ - AP_
+V2 = PB_ * av / 2 * av
+V1 = av * AB_ * av - V2
+assert simplify(V1 - V2 - 4) == 0
+chk("m2410", simplify(AP_), 9)
+
 if __name__ == "__main__":
     bad = [r_ for r_ in R if not r_[1]]
     for r_ in bad:
