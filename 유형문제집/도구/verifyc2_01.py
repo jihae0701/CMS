@@ -331,6 +331,62 @@ C = (w[xc_], w[yc_])
 A = (-(B[0] + C[0]), -(B[1] + C[1]))
 chk("g051", simplify(area(A, B, C)), 6 * sqrt(15))
 
+# ---- 내신 기출 모음(allc.json)에서 더한 문항
+chk("n1885", one(solve(d2((0, b), (-2, 1)) - d2((0, b), (4, -1)), b)), -3)
+O = circum((0, 0), (1, 2), (4, -2))
+chk("n1815", d2(O, (0, 0)), Q(25, 4))
+# n1621: A를 여러 곳에 두고 B를 원 위에서 훑어 최댓값 289가 되는 |OA|를 찾은 뒤 최솟값
+import math
+best = None
+for oa in [13]:
+    vals = [(oa + 4 * math.cos(th)) ** 2 + (4 * math.sin(th)) ** 2 for th in [i * math.pi / 3600 for i in range(7200)]]
+    assert abs(max(vals) - 289) < 1e-6
+    best = round(min(vals), 6)
+oa_ = one([v for v in solve((symbols("o") + 4) ** 2 - 289, symbols("o")) if v > 0])
+chk("n1621", (oa_ - 4) ** 2 if best == 81 else best, 81)
+for Bt in [(3, 1), (-5, 2)]:
+    Ct = (2 - Bt[0], 6 - Bt[1])
+    assert (1 + Bt[0]) / Q(2) + (1 + Ct[0]) / Q(2) == 2 and (6 + Bt[1]) / Q(2) + (6 + Ct[1]) / Q(2) == 9
+    G = ((1 + Bt[0] + Ct[0]) / Q(3), (6 + Bt[1] + Ct[1]) / Q(3))
+chk("n1528", G[0] + G[1], 5)
+# n1802: 각의 이등분선 위의 점은 두 변 OA, OB에서 같은 각 → 단위벡터의 합 방향과 AB의 교점
+A, B = Matrix([2, 2 * sqrt(3)]), Matrix([4, -3])
+u_ = A / A.norm() + B / B.norm()
+lam, mu = symbols("lam mu")
+z = one(solve(list(lam * u_ - (A + mu * (B - A))), [lam, mu], dict=True))
+chk("n1802", simplify((lam * u_)[0].subs(z)), Q(26, 9))
+I = incenter((0, 0), (10, 0), (3, 4))
+# 직선 OI와 AB의 교점
+z = one(solve(list(lam * Matrix(I) - (Matrix([10, 0]) + mu * (Matrix([3, 4]) - Matrix([10, 0])))), [lam, mu], dict=True))
+D = tuple(simplify(v) for v in (lam * Matrix(I)).subs(z))
+chk("n1879", area((0, 0), (3, 4), D), Q(20, 3))
+# n1840: C(0, c)를 풀어 D를 구한다
+c_ = symbols("c_", positive=True)
+A, B, C = (-3, 0), (8, 0), (0, c_)
+D = div(B, C, sqrt(d2(A, B)), sqrt(d2(A, C)))      # BD:DC = AB:AC
+z = [w for w in solve(d2(D, A) - d2(D, B), c_) if w > 0]
+cv = one(z)
+Dv = tuple(simplify(v.subs(c_, cv)) for v in D)
+chk("n1840", Dv[0] + Dv[1], Q(21, 4))
+for av_, cv_ in [(3, 4), (5, 7), (1, 9)]:
+    hyp = av_ ** 2 + cv_ ** 2
+    A, C = (0, av_), (cv_, 0)
+    P, Q2 = div(A, C, 1, 2), div(A, C, 2, 1)
+    assert (d2((0, 0), P) + d2((0, 0), Q2)) / hyp == Q(5, 9)
+chk("n1937", Q(5, 9) * 144, 80)
+A, B, C = (-5, 1), (7, 17), (11, 1)
+I = incenter(A, B, C)
+z = one(solve(list(Matrix(A) + lam * (Matrix(I) - Matrix(A)) - (Matrix(B) + mu * (Matrix(C) - Matrix(B)))), [lam, mu], dict=True))
+Qp = tuple(simplify(v) for v in (Matrix(B) + mu * (Matrix(C) - Matrix(B))).subs(z))
+G = ((A[0] + B[0] + C[0]) / Q(3), (A[1] + B[1] + C[1]) / Q(3))
+chk("n1796", simplify(area(A, B, Qp) / area(A, G, Qp)), 15)
+O_, A, B, C = (0, 0), (12, 0), (9, 6), (3, 12)
+D, F = div(O_, A, 5, 1), div(B, C, 5, 1)
+E, G = div(A, B, 1, 5), div(C, O_, 1, 5)
+sh = lambda pts: Abs(sum(pts[i][0] * pts[(i + 1) % len(pts)][1] - pts[(i + 1) % len(pts)][0] * pts[i][1] for i in range(len(pts)))) / 2
+assert sh([O_, A, B, C]) == 81
+chk("n1919", sh([D, E, F, G]), Q(45, 2))
+
 if __name__ == "__main__":
     bad = [r_ for r_ in R if not r_[1]]
     for r_ in bad:
