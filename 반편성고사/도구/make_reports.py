@@ -434,12 +434,15 @@ _LOGO = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "clim
 LOGO_URI = ("data:image/png;base64," + __import__("base64").b64encode(open(_LOGO, "rb").read()).decode()) if os.path.exists(_LOGO) else ""
 _CUR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "curriculum.html")
 CURRIC = open(_CUR, encoding="utf-8").read().replace("{LOGO}", LOGO_URI) if os.path.exists(_CUR) else ""
+_CUR2 = os.path.join(os.path.dirname(_CUR), "curriculum_2p.html")   # 표지 없는 2쪽 안내지
+CURRIC2 = open(_CUR2, encoding="utf-8").read().replace("{LOGO}", LOGO_URI) if os.path.exists(_CUR2) else ""
 for _k, _f in (("{COVER_HERO}", "cover_hero.jpg"), ("{GIFT_COMPASS}", "gift_compass.jpg"), ("{GIFT_ANALYSIS}", "gift_analysis.jpg"), ("{GIFT_REPORT}", "gift_report.jpg")):
     _p = os.path.join(os.path.dirname(_CUR), _f)
     if os.path.exists(_p):   # 안내지 3쪽 세미나 안내 아래 그림(표지·흐린 성적표 예시)
-        CURRIC = CURRIC.replace(_k, "data:image/jpeg;base64," + __import__("base64").b64encode(open(_p, "rb").read()).decode())
+        _u = "data:image/jpeg;base64," + __import__("base64").b64encode(open(_p, "rb").read()).decode()
+        CURRIC, CURRIC2 = CURRIC.replace(_k, _u), CURRIC2.replace(_k, _u)
     else:                    # 그림 파일이 없으면 그림 칸만 비움(교재 표지는 저장소에 올리지 않음)
-        CURRIC = re.sub(r'<img src="%s"[^>]*>' % re.escape(_k), "", CURRIC)
+        CURRIC, CURRIC2 = (re.sub(r'<img src="%s"[^>]*>' % re.escape(_k), "", c) for c in (CURRIC, CURRIC2))
 
 PB = {"매우 우수": "b0", "우수": "b1", "양호": "b2", "보완 필요": "b3"}
 
@@ -680,6 +683,8 @@ def main(xlsx, outdir):
     render(pages, os.path.join(outdir, "학부모보고서_전체.pdf"))
     if CURRIC:
         render([CURRIC], os.path.join(outdir, "커리큘럼안내지.pdf"))
+    if CURRIC2:
+        render([CURRIC2], os.path.join(outdir, "안내지_2쪽.pdf"))
     for s, pgx in zip(targets, pages):
         safe = re.sub(r'[\\/:*?"<>|]', "_", s["name"])
         render([pgx], os.path.join(outdir, "학부모보고서", "%02d_%s.pdf" % (s["no"], safe)))
