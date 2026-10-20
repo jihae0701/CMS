@@ -669,8 +669,8 @@ def main(xlsx, outdir):
     stats = compute(cfg, exams, students)
     os.makedirs(os.path.join(outdir, "학부모보고서"), exist_ok=True)
     targets = [s for s in students if s["total"] is not None]
-    # 인쇄 순서: 학생마다 성적표 → 커리큘럼 안내지(assets/curriculum.html, 있으면)
-    pages = [parent_pages(s, cfg, exams, stats) + CURRIC for s in targets]
+    # 성적표는 학생별, 커리큘럼 안내지(assets/curriculum.html)는 모든 학생 공통 파일 하나로 따로 출력
+    pages = [parent_pages(s, cfg, exams, stats) for s in targets]
     render(pages, os.path.join(outdir, "학부모보고서_전체.pdf"))
     if CURRIC:
         render([CURRIC], os.path.join(outdir, "커리큘럼안내지.pdf"))
