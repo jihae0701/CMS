@@ -432,6 +432,70 @@ for i in range(-90, 91):
 assert len(found) == 1
 R["m07"] = 15 * (found[0][0] + found[0][1])
 
+# 출처 비율 맞추기(2026-10-20)
+# m06
+cnt = 0
+for a_ in range(1, 11):
+    for b_ in range(1, 11):
+        ok = any(Rational(-m_ + n_ * a_, m_ + n_) == 0 and Rational(-2 * m_ + n_ * b_, m_ + n_) == 0 for m_ in range(1, 25) for n_ in range(1, 25))
+        col = (1 - b_) * (2 - a_) - (-2 - b_) * (-1 - a_) == 0
+        cnt += ok and not col
+R["m06"] = cnt
+# n02
+A = (-1, 4); M_ = (5, 1)
+for B in ((3, 0), (8, -2)):
+    C = (2 * M_[0] - B[0], 2 * M_[1] - B[1])
+    D, E, F = inner(A, B, 2, 1), inner(B, C, 2, 1), inner(C, A, 2, 1)
+    assert ((D[0] + E[0] + F[0]) / 3, (D[1] + E[1] + F[1]) / 3) == (3, 2)
+R["n02"] = A[0] + A[1]
+# m05: 좌표로 직접
+C = (0, 0); B = (2, 0)
+s_ = solve([x ** 2 + y ** 2 - 4, (x - 2) ** 2 + y ** 2 - 12], [x, y], dict=True)
+A = [(q[x], q[y]) for q in s_ if q[y] > 0][0]
+D = (1, 0)
+assert simplify(dist(A, D) - sqrt(7)) == 0
+E = inner(A, B, dist(C, A), dist(C, B))
+Pp = ((A[0] + B[0] + C[0]) / 3, (A[1] + B[1] + C[1]) / 3)
+Rr = inner(E, A, dist(Pp, E), dist(Pp, A))
+Qq = inner(D, C, dist(Pp, D), dist(Pp, C))
+# R, P, Q 한 직선 위
+assert simplify((Rr[0] - Pp[0]) * (Qq[1] - Pp[1]) - (Rr[1] - Pp[1]) * (Qq[0] - Pp[0])) == 0
+ratio = nsimplify(simplify(area(Pp, Qq, C) / area(Pp, Rr, E)), [sqrt(7)])
+assert simplify(ratio - (8 - 2 * sqrt(7))) == 0
+R["m05"] = 8 * (-2)
+# m11: t를 촘촘히
+A, B, C = (0, 4), (-3, 0), (4, -3)
+best = 0
+for i in range(1, 600):
+    t_ = Rational(i, 1200)
+    P_ = inner(A, C, t_, 1 - t_); Q_ = inner(B, C, t_, 1 - t_)
+    R_ = inner(A, B, t_, 1 - t_); S_ = inner(B, A, t_, 1 - t_)
+    ar = area(P_, R_, S_) + area(P_, S_, Q_)
+    best = max(best, ar)
+assert best == Rational(37, 6)
+R["m11"] = 6 + 37
+# m02v: 여러 A, C로
+for A, C in (((3, 0), (0, 5)), ((1, -2), (4, 2)), ((-2, 1), (3, 1))):
+    A, C = tuple(map(Rational, A)), tuple(map(Rational, C))
+    if d2(A, C) != 25:
+        continue
+    B = (2, 5); O = (0, 0)
+    P_, Q_, R_, S_ = inner(O, A, 2, 1), inner(A, B, 2, 1), inner(B, C, 2, 1), inner(C, O, 2, 1)
+    assert d2(P_, R_) + d2(Q_, S_) == 30
+R["m02v"] = 30
+
+# k01: 2024년 9월 고1 20번 — 직선 PC가 넓이를 이등분하는지 직접 확인
+a12 = 12
+A, B, C, O = [tuple(map(Rational, p)) for p in ((-8, a12), (7, 3), (-6, 0), (0, 0))]
+Pp = inner(A, B, 2, 1)
+Qq = inner(C, Pp, 1, 1)
+assert (Qq[0] - A[0]) * (O[1] - A[1]) - (Qq[1] - A[1]) * (O[0] - A[0]) == 0      # Q는 선분 AO 위
+assert area(A, Qq, Pp) * 2 == area(A, O, B)
+# 다른 양수 a로는 성립하지 않음(Q의 y좌표 조건이 a에 대한 일차식)
+sol = solve(Rational(1, 4) * a - (a + 6) / 6, a)
+assert sol == [12]
+R["k01"] = a12
+
 # ---------------------------------------------------------------- data01의 답과 맞추기
 def to_expr(s):
     s = s.replace("LEFT (", "(").replace("RIGHT )", ")").replace("~", "").replace("it-", "-")
