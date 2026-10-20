@@ -62,7 +62,8 @@ NOTE_TBL = T[find(lambda p: 'rowCnt="28"' in p)]                  # 줄 노트 �
 i_s2 = find(lambda p: "유형별 학습하기" in body(p))
 STEP2 = T[i_s2]
 HEAD1 = T[i_s2 + 1]
-HEAD2 = T[find(lambda p: nb.is_heading(p) and 'pageBreak="1"' in p and pp(p) == "14", i_s2 + 2)]
+HEAD2 = T[find(lambda p: nb.is_heading(p) and 'pageBreak="1"' in p and pp(p) == "14"
+               and len(re.findall(r"<hp:t>[^<]*</hp:t>", p)) == 3, i_s2 + 2)]   # 번호·제목·'유형' 세 칸뿐인 머리(02번 머리는 제목이 여러 칸)
 DESC = T[i_s2 + 2]
 GAPS = [p for p in T[i_s2 + 3:i_s2 + 6] if nb.blank(p)]
 i_rep = find(lambda p: nb.num_text(p) is not None and "대표문제" in p)
@@ -283,8 +284,8 @@ def place(probs, num_rep, num_norm, q_tmpl, doc, blank, y0):
 
 def heading(k, title):
     src = HEAD1 if k == 0 else HEAD2
-    x = src.replace("<hp:t>01</hp:t>", "<hp:t>%02d</hp:t>" % (k + 1), 1)
-    old_title = re.findall(r"<hp:t>([^<]*)</hp:t>", x)[1]
+    old_no, old_title = re.findall(r"<hp:t>([^<]*)</hp:t>", src)[:2]
+    x = src.replace("<hp:t>%s</hp:t>" % old_no, "<hp:t>%02d</hp:t>" % (k + 1), 1)
     x = x.replace("<hp:t>%s</hp:t>" % old_title, "<hp:t>%s</hp:t>" % title, 1)
     return renew_ids(x)
 

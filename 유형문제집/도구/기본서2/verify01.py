@@ -526,6 +526,13 @@ for a_ in (1, 2, -3, Rational(1, 2)):
 assert len(vals) == 1
 R["s01"] = vals.pop()
 
+# g052: y축 위의 점 Q에 대한 |AQ-BQ|의 최댓값(수치 탐색)과 그때의 y좌표
+import math as _m
+fa = lambda q: abs(_m.hypot(1, q - 4) - _m.hypot(2, q - 1))
+best = max((fa(i / 1000), i / 1000) for i in range(-20000, 20001))
+assert abs(best[1] - 7) < 1e-9 and abs(best[0] - _m.sqrt(10)) < 1e-9
+R["g052"] = 7 ** 2 + 10
+
 # ---------------------------------------------------------------- data01의 답과 맞추기
 def to_expr(s):
     s = s.replace("LEFT (", "(").replace("RIGHT )", ")").replace("~", "").replace("it-", "-")
