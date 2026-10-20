@@ -396,6 +396,107 @@ V1 = av * AB_ * av - V2
 assert simplify(V1 - V2 - 4) == 0
 chk("m2410", simplify(AP_), 9)
 
+# ---- 올림포스 고난도 공통수학2 01단원
+xs = [v for v in solve(Abs(x + 1) - 2 * Abs(x - 5), x)]
+roots = set()
+for xv in xs:
+    roots |= set(solve(a ** 2 - 3 * a - xv, a))
+assert all(r_.is_real for r_ in roots) and len(roots) == 4
+chk("o01", sum(roots), 6)
+tv = symbols("tv")
+pts = [(v, v ** 2) for v in solve((tv - 1) ** 2 + (tv ** 2 - 2) ** 2 - 5, tv) if v != 0]
+pts = sorted(set(pts))
+assert len(pts) == 2 and circum((0, 0), pts[0], pts[1]) == (1, 2)
+chk("o02", d2(pts[0], pts[1]), 18)
+cands = []
+for cv in range(-100, 101):
+    for dv in range(-100, 101):
+        A_ = 4 - cv
+        if A_ < 2 and 4 * cv == 3 * dv + 2 and abs(dv - A_) == 14 and len({A_, 2, cv, dv}) == 4:
+            cands.append(Q(A_ + dv, 2))
+chk("o06", one(cands), 3)
+tot = 0
+B, C = (-1, 0), (3, 0)
+for av_ in set(solve(d2((a, a), B) - d2((a, a), C), a)) | set(solve(d2((a, a), B) - 16, a)) | set(solve(d2((a, a), C) - 16, a)):
+    assert av_.is_real and area((av_, av_), B, C) != 0
+    tot += av_
+chk("o47", simplify(tot), 3)
+b2, c2 = symbols("b2 c2")
+w = one(solve([(a + b2) / 2 - 1, (1 + c2) / 2 - 0, d2((a, 1), (-1, -2)) - d2((a, 1), (3, 2))], [a, b2, c2], dict=True))
+A, B, C, D = (w[a], 1), (-1, -2), (w[b2], w[c2]), (3, 2)
+assert len({d2(A, B), d2(B, C), d2(C, D), d2(D, A)}) == 1
+chk("o29", area(A, B, C) + area(A, C, D), 8)
+# o27: 임의의 BC=2 삼각형에서 A를 움직여 조건을 만족하는 A의 AB²+AC²가 하나인지
+xa, ya = symbols("xa ya", real=True)
+B, C = (-1, 0), (1, 0)
+G = ((xa + 0) / 3, ya / 3)
+cond = d2((xa, ya), B) + d2((xa, ya), C) - d2(G, B) - d2(G, C) - 32
+val = simplify((d2((xa, ya), B) + d2((xa, ya), C)).subs(ya, solve(cond, ya)[0]))
+chk("o27", val, 38)
+A, B, C = (1, 6), (0, 0), (4, 0)
+assert area(A, B, C) == 12
+D = (Q(3 * C[0] - A[0], 2), Q(3 * C[1] - A[1], 2))
+assert div(A, D, 2, 1) == (C[0], C[1])
+Es = [E for E in [(Q(3, 2) * 4, 0), (-Q(3, 2) * 4, 0)] if abs(E[0] - C[0]) < 4]
+E = one(Es)
+sh = lambda P_: Abs(sum(P_[i][0] * P_[(i + 1) % len(P_)][1] - P_[(i + 1) % len(P_)][0] * P_[i][1] for i in range(len(P_)))) / 2
+chk("o32", sh([A, B, D, E]), 27)
+A, B = (5, 1), (1, 4)
+s_t = symbols("s_t", real=True)
+P = (A[0] + s_t * (B[0] - A[0]), A[1] + s_t * (B[1] - A[1]))
+sums = [simplify((P[0] + P[1]).subs(s_t, v)) for v in solve(area((0, 0), A, P) ** 2 - Q(19, 4) ** 2, s_t)]
+chk("o30", max(sums) + min(sums), 12)
+rr = symbols("rr", positive=True)
+rv = one([v for v in solve(2 * rr * sqrt(rr ** 2 - 1) - 12 * sqrt(2), rr) if v > 1])
+A, B, C, D = (1 - rv, 0), (1 + rv, 0), (0, -sqrt(rv ** 2 - 1)), (0, sqrt(rv ** 2 - 1))
+assert simplify(sh([A, C, B, D]) - 12 * sqrt(2)) == 0
+chk("o48", simplify(d2(A, B) + d2(C, D)), 68)
+O_, A, B = (0, 0), (4, 0), (0, 2)
+P, Q_, R_ = div(O_, A, t, 1 - t), div(A, B, t, 1 - t), div(B, O_, t, 1 - t)
+ts = [v for v in solve(4 - 12 * t * (1 - t) - 2, t) if 0 < v < 1]      # 넓이 식은 아래에서 좌표로 다시 확인
+for v in ts:
+    assert simplify(sh([P, Q_, R_]).subs(t, v) - 2) == 0
+from sympy import prod as _prod
+chk("o51", simplify(_prod(ts)), Q(1, 6))
+A, B, C = (1, 1), (3, 2), (-1, 3)
+Ds = [(A[0] + C[0] - B[0], A[1] + C[1] - B[1]), (A[0] + B[0] - C[0], A[1] + B[1] - C[1]), (B[0] + C[0] - A[0], B[1] + C[1] - A[1])]
+abs_ = [D_[0] * D_[1] for D_ in Ds]
+chk("o54", max(abs_) - min(abs_), 10)
+
+# ---- 사용자가 준 학력평가 문항
+kk2 = symbols("kk2", real=True)
+A, B = (kk2 - 2, 2), (kk2 + 2, 2)
+ks = set()
+for eq in [d2((0, 0), A) - d2((0, 0), B), d2((0, 0), A) - 16, d2((0, 0), B) - 16]:
+    ks |= set(solve(eq, kk2))
+for v in ks:
+    assert area((0, 0), (v - 2, 2), (v + 2, 2)) != 0
+chk("m2109", len(ks) + max(ks, key=lambda v: float(v)), 7 + 2 * sqrt(3))
+kv = symbols("kv", positive=True)
+xs2 = sorted(solve(x ** 2 - 2 * x - (3 * x + kv), x), key=lambda e: float(e.subs(kv, 1)))
+chk("m2103", one(solve((2 * xs2[0] + xs2[1]) / 3 - 1, kv)), 14)
+import random as _r
+_r.seed(3)
+ok = [True, True, True]
+for _ in range(50):
+    av_, bv_ = Q(_r.randint(1, 199), 100), Q(_r.randint(1, 199), 100)
+    A, B, C, D = (0, 4), (0, 0), (4, 0), (4, 4)
+    F_, G, H, E = (av_, bv_), (av_ + 2, bv_), (av_ + 2, bv_ + 2), (av_, bv_ + 2)
+    ok[0] &= d2(A, E) + d2(C, G) == d2(B, F_) + d2(D, H)
+    if d2(A, E) == d2(B, F_):
+        ok[1] &= d2(C, G) == d2(D, H)
+    S1, S2, S3, S4 = sh([A, B, F_, E]), sh([B, C, G, F_]), sh([C, D, H, G]), sh([D, A, E, H])
+    ok[2] &= S1 + S3 == S2 + S4
+# ㄴ은 b=1일 때를 따로 확인
+for av_ in [Q(1, 3), Q(3, 2)]:
+    A, B, C, D = (0, 4), (0, 0), (4, 0), (4, 4)
+    F_, G, H, E = (av_, 1), (av_ + 2, 1), (av_ + 2, 3), (av_, 3)
+    assert d2(A, E) == d2(B, F_) and d2(C, G) == d2(D, H)
+chk("m0809", mark(ok, ["ㄴ", "ㄷ", "ㄱ, ㄴ", "ㄱ, ㄷ", "ㄱ, ㄴ, ㄷ"]), "⑤")
+bs, ss = symbols("bs ss", positive=True)
+sols = solve([bs + ss - (-(bs - 1) ** 2 + 1), bs - (bs + ss) ** 2], [bs, ss], dict=True)
+chk("m0911", simplify(one([w[ss] for w in sols])), sqrt(5) - 2)
+
 if __name__ == "__main__":
     bad = [r_ for r_ in R if not r_[1]]
     for r_ in bad:

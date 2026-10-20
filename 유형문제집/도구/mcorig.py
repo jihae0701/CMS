@@ -38,6 +38,8 @@ TABLE = {
     "2015년 9월 고1 14번": (_c(32, 34, 36, 38, 40), "④", None),
     "2024년 6월 고1 21번": (_c("1+ sqrt {3}", "2+ sqrt {3}", "3+ sqrt {3}", "4+ sqrt {3}", "5+ sqrt {3}"), "②", None),
     "2024년 10월 고1 20번": (_c("{15} over {2}", 8, "{17} over {2}", 9, "{19} over {2}"), "④", None),
+    "2021년 9월 고1 21번": (_c("7+ sqrt {3}", "7+2 sqrt {3}", "7+3 sqrt {3}", "9+2 sqrt {3}", "9+3 sqrt {3}"), "②", None),
+    "2009년 11월 고1 21번": (_c("{sqrt {5}} over {2} -1", "sqrt {5} -2", "2- sqrt {3}", "sqrt {3} -1", "3- sqrt {5}"), "②", None),
     "2014학년도 경찰대학 11번": (_c(2, "2 sqrt {2}", "2 sqrt {3}", 4, "2 sqrt {5}"), "⑤", None),
     "2025년 6월 고1 21번": (_c(45, 48, 51, 54, 57), "①", None),
     "2024년 10월 고1 18번": (_c(2, "{7} over {3}", "{8} over {3}", 3, "{10} over {3}"), "⑤", None),
@@ -78,7 +80,9 @@ def apply(items):
         if simplify(got - value(it["ans"])) != 0:
             raise SystemExit("객관식 정답 불일치 %s: 보기 %s, 단원 정답 %s" % (k, got, it["ans"]))
         q = list(it["q"])
-        last = max(i for i, p in enumerate(q) if isinstance(p, str))
+        # 발문 끝('…구하시오.')이 든 문단 — 뒤에 단서 문단 '(단, …)'이나 그림이 따로 올 수 있다
+        last = max([i for i, p in enumerate(q) if isinstance(p, str) and "구하시오." in p]
+                   or [i for i, p in enumerate(q) if isinstance(p, str)])
         s = q[last]
         if edits:
             for a, b in edits:
