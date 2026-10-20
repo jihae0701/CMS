@@ -454,9 +454,11 @@ CIRC = "①②③④⑤"
 def choices_paras(ch):
     def cell(i):
         c = ch[i]
-        return "%s %s" % (CIRC[i], c if ("$" in c or re.match(r"[ㄱ-ㅎ]", c)) else "$%s$" % c)
+        return "%s %s" % (CIRC[i], c if ("$" in c or re.search(r"[ㄱ-ㅎ가-힣]", c)) else "$%s$" % c)
     long_ = max(len(re.sub(r"\$", "", c)) for c in ch) > 14
-    if long_:
+    if max(len(re.sub(r"\$", "", c)) for c in ch) > 22:     # 아주 긴 선지(삼각형의 모양 등)는 한 줄에 하나
+        groups = [[0], [1], [2], [3], [4]]
+    elif long_:
         groups = [[0, 1], [2, 3], [4]]
     else:
         groups = [[0, 1, 2], [3, 4]]
@@ -683,7 +685,10 @@ def main():
     number_start(files, getattr(U, "START", 1))
     files["Contents/section0.xml"] = sec.encode("utf-8")
     for mp in ("Contents/masterpage0.xml", "Contents/masterpage1.xml"):
-        files[mp] = files[mp].decode("utf-8").replace("<hp:t>다항식의 연산</hp:t>", "<hp:t>%s</hp:t>" % escape(title)).encode("utf-8")
+        x = files[mp].decode("utf-8").replace("<hp:t>다항식의 연산</hp:t>", "<hp:t>%s</hp:t>" % escape(title))
+        # 공통수학2: 머리말의 '공통수학', ' ', '1' 세 칸 중 권 번호 '1'을 바꾼다
+        x = re.sub(r"(<hp:t>공통수학</hp:t>.*?<hp:t> </hp:t>.*?<hp:t>)1(</hp:t>)", lambda m: m.group(1) + getattr(U, "BOOK", "1") + m.group(2), x, count=1, flags=re.S)
+        files[mp] = x.encode("utf-8")
     hpf = files["Contents/content.hpf"].decode("utf-8")
     drop = set()
     for m in re.finditer(r'<opf:item id="(image\d+)" href="([^"]+)"[^>]*/>', hpf):

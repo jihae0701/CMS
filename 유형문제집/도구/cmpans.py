@@ -30,9 +30,9 @@ def conv(s):
     s = s.strip().strip("$")
     if re.match(r"^[①-⑤ㄱ-ㅎ]", s):
         return s
+    s = re.sub(r"sqrt\s*\{\s*([^{}]*)\}", r"sqrt(\1)", s)     # 먼저 sqrt를 바꿔야 {10 sqrt {2}} over {7}도 읽힌다
     s = re.sub(r"\{([^{}]*)\}\s*over\s*\{([^{}]*)\}", r"((\1)/(\2))", s)
     s = re.sub(r"(\d+)\s*over\s*(\d+)", r"((\1)/(\2))", s)
-    s = re.sub(r"sqrt\s*\{\s*([^{}]*)\}", r"sqrt(\1)", s)
     s = re.sub(r"root\s*\{?(\d+)\}?", r"sqrt(\1)", s)
     s = re.sub(r"(\d)\s*sqrt", r"\1*sqrt", s).replace(" ", "")
     return sympify(s)
