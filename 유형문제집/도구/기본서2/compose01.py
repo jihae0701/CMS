@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """공통수학2 기본서 단원 조립: 사용자가 손본 1단원 편집본(기본서/원본/기본서_편집본보기_1단원.hwpx)을 틀로 삼는다.
 
-python compose01.py [<출력.hwpx>]      (기본: 공통수학2/기본서/1. 평면좌표.hwpx)
+python compose01.py [<출력.hwpx>]      (기본: 공통수학2/기본서/생성본/1. 평면좌표(생성본).hwpx — 정식 파일은 사용자 완성본)
 - 틀의 문단을 복제해 쓴다(제작기준 '기본서 편집 기준'):
   STEP 1 개념(소제목·개념 줄·참고 상자) → 새 쪽에 줄 노트 12단(6쪽, 틀의 표 문단 그대로)
   → STEP 2 유형별 학습하기(유형마다 새 쪽, 유형 머리·가운데 정렬 설명) → STEP 3 단원 마무리 하기 → 끝 쪽(단원 이름 상자).
@@ -22,7 +22,9 @@ import hwpxio as io, fixes, numbering as nb, eqsize
 DATA = importlib.import_module(os.environ.get("C2DATA", "data01"))
 UNIT_NO, UNIT_TITLE = "1.", "평면좌표"
 SRC = os.path.join(ROOT, "기본서", "원본", "기본서_편집본보기_1단원.hwpx")
-OUT = sys.argv[1] if len(sys.argv) > 1 else os.path.join(ROOT, "공통수학2", "기본서", "%s %s.hwpx" % (UNIT_NO, UNIT_TITLE))
+# 정식 파일(공통수학2/기본서/1. 평면좌표.hwpx)은 사용자 완성본(2026-10-20) — 덮어쓰지 않도록 기본 출력은 생성본 이름으로
+OUT = sys.argv[1] if len(sys.argv) > 1 else os.path.join(ROOT, "공통수학2", "기본서", "생성본", "%s %s(생성본).hwpx" % (UNIT_NO, UNIT_TITLE))
+os.makedirs(os.path.dirname(OUT), exist_ok=True)
 PIC_DIR = os.path.join(TOOL, "그림")
 START = 1
 
