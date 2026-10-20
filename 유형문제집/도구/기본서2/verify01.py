@@ -496,6 +496,36 @@ sol = solve(Rational(1, 4) * a - (a + 6) / 6, a)
 assert sol == [12]
 R["k01"] = a12
 
+# 내신 기출(2026-10-20)
+# s03
+A_, B_ = symbols("A_ B_")
+# 수직선으로: M=0, P=k (AP=6k, AM=5k) 그리고 좌표로 직접
+M_ = Matrix([2, 1]); P_ = Matrix([5, 5])
+u = (P_ - M_)                     # MP 방향, |MP| = k
+A = M_ - 5 * u; B = M_ + 5 * u      # AM = BM = 5k
+assert A + Rational(3, 5) * (B - A) == P_
+R["s03"] = (B - A).norm()
+# s02
+A = (1, 3); B = (2 * -1 - 1, 2 * 1 - 3)
+C = ((4 * 4 - 1) / Rational(3), (4 * 9 - 3) / Rational(3))
+assert inner(A, C, 3, 1) == (4, 9)
+G = ((A[0] + B[0] + C[0]) / Rational(3), (A[1] + B[1] + C[1]) / Rational(3))
+R["s02"] = 3 * (G[0] + G[1])
+# s01: 여러 a로 직접 B, C를 구해 확인
+vals = set()
+for a_ in (1, 2, -3, Rational(1, 2)):
+    A = (4 * a_ + 3, 0)
+    p_, q_ = symbols("p_ q_", real=True)
+    B = (-2 * a_ + p_, 6 + q_); C = (-2 * a_ - p_, 6 - q_)
+    sol = solve([d2(A, B) - d2(A, C), d2(B, C) - 4 * ((2 * a_ + 1) ** 2 + 4)], [p_, q_], dict=True)
+    sol = [z for z in sol if z[p_] > 0]
+    assert len(sol) == 1
+    Bv = (B[0].subs(sol[0]), B[1].subs(sol[0])); Cv = (C[0].subs(sol[0]), C[1].subs(sol[0]))
+    assert ((A[0] + Bv[0] + Cv[0]) / 3, (A[1] + Bv[1] + Cv[1]) / 3) == (1, 4)
+    vals.add(simplify(Bv[0] + Bv[1]))
+assert len(vals) == 1
+R["s01"] = vals.pop()
+
 # ---------------------------------------------------------------- data01의 답과 맞추기
 def to_expr(s):
     s = s.replace("LEFT (", "(").replace("RIGHT )", ")").replace("~", "").replace("it-", "-")
