@@ -572,6 +572,82 @@ assert simplify(L[0] * Oc[x] + L[1] * Oc[y] + L[2]) == 0          # 외심도 �
 sc = Rational(16) / L[2]
 R["b020"] = L[0] * sc + L[1] * sc
 
+# ================================================================ 난도 올리기 7문항(2026-10-21 사용자 '난도 높여서 40문제까지')
+# a1668: 정사각형 O,A(12,0),B(12,12),C(0,12), (6,6)을 지나는 세 직선 l,m,n이 넓이 6등분, l의 x절편 a (4<=a<=7)
+#        → (n의 기울기)×(m의 y절편)의 최솟값
+sq = [(0, 0), (12, 0), (12, 12), (0, 12)]
+best = None
+for i in range(0, 301):
+    av4 = 4 + 3 * i / 300
+    kq, ss = 8 - av4, 16 - av4
+    # 세 직선: (a,0)-(6,6), (0,k)-(6,6), (0,s)-(6,6) 이 6등분하는지 확인(중심 대칭이라 세 부분만 보면 된다)
+    nslope = (6 - kq) / 6
+    mslope = (6 - ss) / 6
+    assert nslope > 0 and mslope < 0
+    # 넓이 확인: 중심에서 본 부채꼴 모양 다각형 넓이를 꼭짓점으로 계산
+    def poly_area(pts):
+        return abs(sum(pts[j][0] * pts[(j + 1) % len(pts)][1] - pts[(j + 1) % len(pts)][0] * pts[j][1] for j in range(len(pts)))) / 2
+    assert abs(poly_area([(6, 6), (av4, 0), (0, 0), (0, kq)]) - 24) < 1e-9
+    assert abs(poly_area([(6, 6), (0, kq), (0, ss)]) - 24) < 1e-9
+    val = nslope * ss
+    best = val if best is None or val < best else best
+assert abs(best - 4) < 1e-9
+R["a1668"] = 4
+
+# a1646: 제1사분면의 A, B, 원점 O, 무게중심 G(8,4), B와 직선 OA 거리 6√10/5, OB 기울기 > OA 기울기 → OA 기울기
+ms = solve(Eq(25 * (8 * m - 4) ** 2, 40 * (m ** 2 + 1)), m)          # G와 직선 y=mx 거리 = (1/3)(6√10/5)
+assert set(ms) == {Rational(1, 3), Rational(9, 13)}
+mv = [v for v in ms if v < Rational(1, 2)]                          # G는 두 반직선 OA, OB 사이 → OA 기울기 < OG 기울기 1/2
+# 실제로 만족하는 A, B가 있는지: A=(3p, p), M=(3p/2, p/2), B=3G-2M... B = (24-3p, 12-p) (O+A+B=3G)
+p_ = symbols("p_", positive=True)
+Bv = (24 - 3 * p_, 12 - p_)
+# A가 직선 y=x/3 위(0<p<8)이면 B와 직선 OA의 거리는 늘 6√10/5이고 B는 제1사분면, OB 기울기 > 1/3
+assert simplify(pdist(Bv, (1, -3, 0)) - 6 * sqrt(10) / 5) == 0
+assert all(Bv[0].subs(p_, v) > 0 and Bv[1].subs(p_, v) > 0 and (Bv[1] / Bv[0]).subs(p_, v) > Rational(1, 3) for v in (1, 4, 7))
+# 기울기 9/13이면 G가 각 AOB 밖에 있게 된다(OB 기울기 > OA 기울기 > OG 기울기)
+R["a1646"] = mv[0]
+
+# a1834: A(0,2), P(t,0), P를 지나고 AP에 수직인 직선 l 위의 모든 점에서 y <= a x^2 → a의 최솟값
+tt = symbols("tt", nonzero=True)
+disc = (tt / 2) ** 2 - 4 * a * tt ** 2 / 2                         # a x^2 - (t/2) x + t^2/2 >= 0
+R["a1834"] = solve(Eq(disc / tt ** 2, 0), a)[0]
+
+# g114: y=3x, y=-x/3, y=mx+2 (m>0)로 둘러싸인 이등변삼각형의 넓이
+res = []
+for mv5 in (Rational(1, 2), -2):
+    A_ = meet((3, -1, 0), (mv5, -1, 2)); B_ = meet((1, 3, 0), (mv5, -1, 2))
+    if dist((0, 0), A_) == dist((0, 0), B_) and mv5 > 0:
+        res.append(area((0, 0), A_, B_))
+# 직각삼각형(O에서 직각)이므로 이등변이면 OA=OB뿐: m은 1/2 또는 -2
+assert res == [Rational(16, 5)]
+R["g114"] = res[0]
+
+# g117: 2x-y+3=0 위의 A, B에서 x-y+1=0에 내린 수선의 발 C, D, AC=BD=√2, A의 x좌표 > B의 x좌표 → 사각형 ADBC 넓이
+avs = solve(Eq(Abs(a - (2 * a + 3) + 1), 2), a)
+avs = sorted(avs)
+Bp, Ap = (avs[0], 2 * avs[0] + 3), (avs[1], 2 * avs[1] + 3)
+foot = lambda P: ((P[0] + P[1] - 1) / 2, (P[0] + P[1] + 1) / 2)    # x-y+1=0 위의 수선의 발
+Cp, Dp = foot(Ap), foot(Bp)
+R["g117"] = area(Ap, Dp, Bp, Cp)
+
+# g105: y=x^2-4x+6 위의 점과 y=2x+k 사이 거리의 최솟값 √5 → k
+kv = None
+for kk_ in solve(Eq(Abs(k + 3), 5), k):
+    # 직선과 포물선이 만나지 않아야 최솟값이 √5
+    if discriminant(x ** 2 - 4 * x + 6 - 2 * x - kk_, x) < 0:
+        kv = kk_
+mins = min(abs(2 * xv - (xv * xv - 4 * xv + 6) + float(kv)) / 5 ** 0.5 for xv in [i / 1000 for i in range(-5000, 10001)])
+assert abs(mins - 5 ** 0.5) < 1e-6
+R["g105"] = kv
+
+# o44: y=x^2 위 네 점에서 y=x+5까지 거리 √2/2 → 사각형 ABCD 넓이 S, n<S<n+1
+xs = sorted(solve(Eq(x ** 2 - x - 6, 0), x) + solve(Eq(x ** 2 - x - 4, 0), x), key=lambda v: float(v))
+for xv in xs:
+    assert simplify(pdist((xv, xv ** 2), (1, -1, 5)) - sqrt(2) / 2) == 0
+Sv = simplify(area(*[(xv, xv ** 2) for xv in xs]))
+assert simplify(Sv - 5 - sqrt(17)) == 0
+R["o44"] = floor(Sv)
+
 # ---------------------------------------------------------------- data02의 답과 맞추기
 import re          # sympy의 re를 덮는다
 
