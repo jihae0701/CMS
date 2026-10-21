@@ -2,6 +2,7 @@
 """공통수학2 기본서 단원 조립: 사용자가 손본 1단원 편집본(기본서/원본/기본서_편집본보기_1단원.hwpx)을 틀로 삼는다.
 
 python compose01.py [<출력.hwpx>]      (기본: 공통수학2/기본서/생성본/1. 평면좌표(생성본).hwpx — 정식 파일은 사용자 완성본)
+C2DATA=data02 python compose01.py <출력.hwpx>   (2단원: 자료 파일의 UNIT_NO·UNIT_TITLE·START를 쓴다)
 - 틀의 문단을 복제해 쓴다(제작기준 '기본서 편집 기준'):
   STEP 1 개념(소제목·개념 줄·참고 상자) → 새 쪽에 줄 노트 12단(6쪽, 틀의 표 문단 그대로)
   → STEP 2 유형별 학습하기(유형마다 새 쪽, 유형 머리·가운데 정렬 설명) → STEP 3 단원 마무리 하기 → 끝 쪽(단원 이름 상자).
@@ -9,7 +10,7 @@ python compose01.py [<출력.hwpx>]      (기본: 공통수학2/기본서/생성
   + 단서 '(단, …)'는 오른쪽 정렬 문단 + 그림 문단(가운데). 글 안의 '⏎'는 줄바꿈(긴 식을 따로 한 줄에).
 - 한 단에 2문항: 위 문항은 단 맨 위, 아래 문항은 단의 가운데쯤(세로 약 43000/86000)에서 시작하도록 빈 줄을 채우고,
   다음 단의 첫 문항은 단 나눔으로 시작한다. 빈 줄 수는 문항 높이를 어림해 정한다(한글에서 다시 맞출 수 있음).
-- 번호·미주는 001부터. 그림은 도구/그림/의 PNG를 image101부터 넣는다(1픽셀=6.4 HWPUNIT 약속은 그림 파일 쪽에서 맞춤).
+- 번호·미주는 자료 파일의 START부터(1단원 001, 2단원 039). 그림은 도구/그림/의 PNG를 image101부터 넣는다(1픽셀=6.4 HWPUNIT 약속은 그림 파일 쪽에서 맞춤).
 """
 import sys, re, os, struct, math, importlib
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -20,13 +21,14 @@ sys.path.insert(0, HERE)
 import hwpxio as io, fixes, numbering as nb, eqsize
 
 DATA = importlib.import_module(os.environ.get("C2DATA", "data01"))
-UNIT_NO, UNIT_TITLE = "1.", "평면좌표"
+# 단원 번호·제목·첫 문항 번호는 자료 파일이 정한다(없으면 1단원)
+UNIT_NO, UNIT_TITLE = getattr(DATA, "UNIT_NO", "1."), getattr(DATA, "UNIT_TITLE", "평면좌표")
 SRC = os.path.join(ROOT, "기본서", "원본", "기본서_편집본보기_1단원.hwpx")
 # 정식 파일(공통수학2/기본서/1. 평면좌표.hwpx)은 사용자 완성본(2026-10-20) — 덮어쓰지 않도록 기본 출력은 생성본 이름으로
 OUT = sys.argv[1] if len(sys.argv) > 1 else os.path.join(ROOT, "공통수학2", "기본서", "생성본", "%s %s(생성본).hwpx" % (UNIT_NO, UNIT_TITLE))
 os.makedirs(os.path.dirname(OUT), exist_ok=True)
 PIC_DIR = os.path.join(TOOL, "그림")
-START = 1
+START = getattr(DATA, "START", 1)
 
 f, order = io.read(SRC)
 head, T, tail = io.split(f["Contents/section0.xml"].decode("utf-8"))
