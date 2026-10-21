@@ -497,6 +497,58 @@ bs, ss = symbols("bs ss", positive=True)
 sols = solve([bs + ss - (-(bs - 1) ** 2 + 1), bs - (bs + ss) ** 2], [bs, ss], dict=True)
 chk("m0911", simplify(one([w[ss] for w in sols])), sqrt(5) - 2)
 
+# ---- 고등수매씽 공통수학2 01 (사용자 캡처)
+aa = symbols("aa", positive=True)
+al, be = symbols("al be")
+r_ = solve(aa * x ** 2 - x / 2 - 1, x)
+av = one(solve((r_[0] + r_[1]) / 2 - 1, aa))
+P_, Q_ = [(v.subs(aa, av), v.subs(aa, av) / 2 + 1) for v in r_]
+chk("m2009a", "①②③④⑤"[[4, Q(9, 2), 5, Q(11, 2), 6].index(simplify(sqrt(d2(P_, Q_))))], "③")
+av = one([v for v in solve(d2((0, a), (-3, 0)) - 16, a) if v > 0])
+A, B, C = (0, av), (-3, 0), (1, 0)
+D = ((A[0] + C[0]) / Q(2), (A[1] + C[1]) / Q(2))
+assert simplify(sqrt(d2(B, A)) / sqrt(d2(B, C)) - sqrt(d2(A, D)) / sqrt(d2(D, C))) == 0
+chk("m2009b", "①②③④⑤"[[sqrt(5), sqrt(6), sqrt(7), 2 * sqrt(2), 3].index(av)], "③")
+sols = [(av_, av_ + 5, 12) for av_ in [-1, 1] if av_ > 0 and av_ ** 2 + 49 == 50]
+av_, bv_, cv_ = one(sols)
+O_, A, B, C = (0, 0), (av_, 7), (bv_, cv_), (5, 5)
+assert len({d2(O_, A), d2(A, B), d2(B, C), d2(C, O_)}) == 1
+chk("m2111", av_ + bv_ + cv_, 19)
+chk("sm0013", len([v for v in range(-50, 51) if (v - 1) ** 2 + (7 - v) ** 2 <= 36]), 7)
+O_, A = (0, 0), (3, -1)
+B, C = (A[0] + 1, A[1] + 3), (1, 3)        # A를 원점 중심 90° 회전한 C(1, 3), B = A + C
+assert d2(O_, A) == d2(A, B) == d2(B, C) == d2(C, O_) and B[0] > 0 and B[1] > 0
+chk("sm0014", d2(O_, A) + d2(O_, B), 30)
+rts = solve(d2((a, a ** 2), (-2, 0)) - d2((a, a ** 2), (2, 1)), a)
+assert all(v.is_real for v in rts) and len(rts) == 2
+chk("sm0025", simplify(sum(rts)), -4)
+A, B = (8, 0), (0, 6)
+M = (4, 3)
+Ps = [(4 + 5 * sympy.cos(th), 3 + 5 * sympy.sin(th)) for th in [Q(1, 3), 1, 2]]
+for P in Ps:   # 지름 AB인 원 위의 점 P에서 외심 M까지의 거리
+    assert abs(float(d2(P, M)) - 25) < 1e-9
+chk("sm0028", sqrt(d2(M, (0, 0))), 5)
+ab2 = d2((1, 2 - a), (a + 2, -1))
+amin = one(solve(ab2.diff(a), a))
+chk("sm0036", sqrt(ab2.subs(a, amin)), 2 * sqrt(2))
+import itertools as _it
+A, B, C, D = (0, 0), (4, 0), (3, 4), (0, 4 * sqrt(3))
+fval = lambda X: sum(sqrt((X[0] - Pp[0]) ** 2 + (X[1] - Pp[1]) ** 2) for Pp in [A, B, C, D])
+best = min(float(fval((i / 40, j / 40))) for i in range(0, 161) for j in range(0, 281))
+assert abs(best - 13) < 0.05
+chk("sm0041", sqrt(d2(A, C)) + sqrt(d2(B, D)), 13)
+A, B, C = (0, 0), (6, 0), (6, 6)
+D = div(A, B, 5, 1)
+w = one(solve([(D[0] + 6 + a) / 3 - 4, (D[1] + b + a) / 3 - 2], [a, b], dict=True))
+chk("sm0094", sqrt(d2((6, w[b]), (w[a], w[a]))), sqrt(41))
+p_, q_, cc, dd = symbols("p_ q_ cc dd")
+w = one(solve([p_ + cc - 8, q_ + dd - 0, 2 * cc + 3 * p_ - 12, 2 * dd + 3 * q_ - 3], [p_, q_, cc, dd], dict=True))
+chk("sm0101", w[p_] + w[q_], -1)
+cv, d_ = symbols("cv d_")
+w = one(solve([(1 + 5) / 2 - (b + 9) / 2, (a + cv) / 2 - (-6 + d_) / 2, (1 + 5) / 2 - (a + cv) / 2], [b, d_, cv], dict=True))
+bv_, dv_ = w[b], w[d_]   # 대각선 교점 (3, (a+c)/2)가 y=x 위 → (a+c)/2 = 3
+chk("sm0103", simplify(a + w[cv] + bv_ + dv_), 15)
+
 if __name__ == "__main__":
     bad = [r_ for r_ in R if not r_[1]]
     for r_ in bad:
