@@ -413,6 +413,70 @@ R["g119"] = hv[0]
 
 # k01은 1단원. 2단원 STEP 3에 넣은 a1891도 위에서 확인.
 
+# ================================================================ 모의고사 변형(기본서에 넣는 것, 원문은 유형서로)
+# k02v: y=x/3+2 (A, B), y=ax-3a (C, D), 사각형 ADCB가 사다리꼴인 a의 합
+A, B, C, D = (S(-6), S(0)), (S(0), S(2)), (S(3), S(0)), (S(0), -3 * a)
+vals = [v for v in solve(Eq(sl(A, B), sl(D, C)), a) + solve(Eq(sl(A, D), sl(B, C)), a) if v > 0]
+assert len(vals) == 2
+R["k02v"] = sum(vals)
+
+# k03v: A(0,1), B(0,6), C(2,p), D(6,q), CD 기울기 음수, AB=CD, AD∥BC
+sols = solve([Eq((q - p) ** 2 + 16, 25), Eq((q - 1) / 6, (p - 6) / 2)], [p, q], dict=True)
+sols = [s_ for s_ in sols if s_[q] - s_[p] < 0]
+assert len(sols) == 1
+R["k03v"] = sols[0][p] + sols[0][q]
+
+# k04v: 사다리꼴 ABCD, ∠A=∠B=90°, AB=3, BC=6, P는 AD를 3:1로 내분, AC⊥BP → 삼각형 AQD
+A_, B_, C_ = (S(0), S(3)), (S(0), S(0)), (S(6), S(0))
+P_ = inner(A_, (t, S(3)), 3, 1)
+tv = [v for v in solve(Eq(sl(A_, C_) * (P_[1] / P_[0]), -1), t) if v > 0][0]
+Q_ = meet(line_through(A_, C_), line_through(B_, (P_[0].subs(t, tv), P_[1])))
+R["k04v"] = area(A_, Q_, (tv, 3))
+
+# k05v: A(a,5) (a>0), 직선 l: (4,0),(0,2), 정사각형 ABCD 넓이 49/5 (B, C는 l 위, D는 제1사분면)
+L = line_through((4, 0), (0, 2))
+av = [v for v in solve(Eq(pdist((a, 5), L) ** 2, Rational(49, 5)), a) if v > 0]
+assert len(av) == 1
+# D가 제1사분면에 오도록 잡을 수 있는지 확인
+Av = Matrix([av[0], 5]); n_ = Matrix([L[0], L[1]]) / sqrt(L[0] ** 2 + L[1] ** 2)
+Bv = Av - n_ * (n_.dot(Av) + L[2] / sqrt(L[0] ** 2 + L[1] ** 2))
+u_ = Matrix([-n_[1], n_[0]]) * sqrt(Rational(49, 5))
+assert any((Av + sg * u_)[0] > 0 and (Av + sg * u_)[1] > 0 for sg in (1, -1))
+R["k05v"] = av[0]
+
+# k06v: l1: 2x-y-4=0, l2 ∥ l1 (y절편 양수), 사각형 ADCB 넓이 36 → d^2
+cv = [v for v in solve(Eq((c + 4) ** 2 / 4, 36), c) if v > 0]
+assert area((2, 0), (0, cv[0]), (-cv[0] / 2, 0), (0, -4)) == 36
+R["k06v"] = (pdist((0, cv[0]), (2, -1, -4))) ** 2
+
+# k07v: O, A(8,4), B(-3,6), △OPB = 1/4 △OAB, △OPQ = 2 △OPB → 직선 PQ: mx+ny=30
+P_ = (S(2), S(1))
+Q_ = (S(-6), S(12))
+assert area((0, 0), P_, (-3, 6)) == area((0, 0), (8, 4), (-3, 6)) / 4
+assert area((0, 0), P_, Q_) == 2 * area((0, 0), P_, (-3, 6))
+L = line_through(P_, Q_)
+sc = Rational(30, -L[2])
+R["k07v"] = L[0] * sc + L[1] * sc
+
+# k08v: (a,a)를 지나고 y=x^2-2x+5에 접하는 두 직선이 수직 → 기울기의 합
+disc = expand((m + 2) ** 2 - 4 * (5 + a * m - a))
+cf = Poly(disc, m).all_coeffs()
+av = solve(Eq(cf[2] / cf[0], -1), a)[0]
+assert av ** 2 - 2 * av + 5 > av            # 점이 포물선 아래쪽에 있어 접선이 두 개
+R["k08v"] = -cf[1].subs(a, av) / cf[0]
+
+# k09v: f(x)=k(x-1)(x-a) (k>0, a>1), APRQ 정사각형 → f(10)
+fx = kk * (x - 1) * (x - a)
+Pv = ((a + 1) / 2, fx.subs(x, (a + 1) / 2))
+Cv = (0, fx.subs(x, 0))
+Bv = (a, 0)
+sola = [v for v in solve(Eq((Pv[1] - 0) / (Pv[0] - 1), (Cv[1] - 0) / (0 - a)), a) if v != 1]
+assert sola == [3]
+Lbc = line_through(Bv, Cv)
+kv = solve(Eq((dist((1, 0), Pv) ** 2).subs(a, 3), (pdist((1, 0), Lbc) ** 2).subs(a, 3)), kk)
+assert kv == [1]
+R["k09v"] = fx.subs({a: 3, kk: 1, x: 10})
+
 # ---------------------------------------------------------------- data02의 답과 맞추기
 import re          # sympy의 re를 덮는다
 
