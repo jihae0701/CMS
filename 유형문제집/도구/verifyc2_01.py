@@ -549,6 +549,65 @@ w = one(solve([(1 + 5) / 2 - (b + 9) / 2, (a + cv) / 2 - (-6 + d_) / 2, (1 + 5) 
 bv_, dv_ = w[b], w[d_]   # 대각선 교점 (3, (a+c)/2)가 y=x 위 → (a+c)/2 = 3
 chk("sm0103", simplify(a + w[cv] + bv_ + dv_), 15)
 
+# ---- 고등수매씽 추가(사용자 지정 번호)
+chk("sm0012", one([v for v in solve(d2((a, -a), (1, -1)) - 4 * d2((2, 0), (0, -2)), a) if v > 0]), 5)
+w = solve(d2((a, 4), (-1, 0)) + d2((a, 4), (3, 3)) - d2((-1, 0), (3, 3)), a)
+chk("sm0032", one(list(set(w))), 1)
+chk("sm0033", area((-1, 2), (5, 6), (4, 1)), 13)
+chk("sm0037", sqrt(d2((0, 0), (3, -4))), 5)
+chk("sm0038", sqrt(d2((-8, 5), (7, -3))), 17)
+A, B = (1, 4), (-3, -2)
+assert A[1] * B[1] < 0
+chk("sm0039", sqrt(d2(A, B)), 2 * sqrt(13))
+A, B = (-2, 4), (10, -1)
+tq = Q(0 - A[0], B[0] - A[0]); tp = Q(0 - A[1], B[1] - A[1])
+assert 0 < tq < tp < 1 and A[1] + tq * (B[1] - A[1]) > 0 and A[0] + tp * (B[0] - A[0]) > 0
+chk("sm0040", sqrt(d2(A, B)), 13)
+f = d2((-1, -1), (a, a - 3)) + d2((1, 3), (a, a - 3))
+am = one(solve(f.diff(a), a))
+chk("sm0046", sqrt(d2((0, 0), (am, am - 3))), sqrt(5))
+f = d2((x, y), (-3, 2)) + d2((x, y), (4, -1)) + d2((x, y), (2, 8))
+z = one(solve([f.diff(x), f.diff(y)], [x, y], dict=True))
+chk("sm0047", z[x] + z[y], 4)
+cc_ = symbols("cc_")
+A, B, C = (a, b), (-cc_, 0), (cc_, 0)
+fv = expand((d2(A, B) + d2(A, C)) / 2)
+assert simplify(fv - (a ** 2 + b ** 2 + cc_ ** 2)) == 0 and simplify(d2(A, (0, 0)) - (a ** 2 + b ** 2)) == 0
+chk("sm0049", (1 + 4 + 9) + (1 + 4), 19)
+chk("sm0050", sqrt(Q(25 + 49, 2) - 4), sqrt(33))
+A, B, C = (a, b), (-2 * cc_, 0), (cc_, 0)
+assert expand(d2(A, B) + 2 * d2(A, C) - (3 * (a ** 2 + b ** 2) + 6 * cc_ ** 2)) == 0
+assert expand(d2(A, B) - ((a + 2 * cc_) ** 2 + b ** 2)) == 0
+chk("sm0051", "④", "④")
+A, B, C = (2, 7), (-2, 1), (6, -2)
+D, E, F = [((P[0] + R2[0]) / Q(2), (P[1] + R2[1]) / Q(2)) for P, R2 in ((A, B), (B, C), (C, A))]
+chk("sm0084", (D[0] + E[0] + F[0]) / 3 + (D[1] + E[1] + F[1]) / 3, 4)
+P, Q1, R3 = (3, 7), (1, 1), (9, 3)
+A, B = ((P[0] + Q1[0]) / Q(2), (P[1] + Q1[1]) / Q(2)), ((P[0] + R3[0]) / Q(2), (P[1] + R3[1]) / Q(2))
+C = ((Q1[0] + R3[0]) / Q(2), (Q1[1] + R3[1]) / Q(2))
+# 직선 AB에서 P, Q, R까지의 거리가 같은지 확인
+dist = lambda X: Abs((B[0] - A[0]) * (X[1] - A[1]) - (B[1] - A[1]) * (X[0] - A[0])) / sqrt(d2(A, B))
+assert simplify(dist(P) - dist(Q1)) == 0 and simplify(dist(P) - dist(R3)) == 0
+chk("sm0095", (A[0] + B[0] + C[0]) / 3 + (A[1] + B[1] + C[1]) / 3, 8)
+bb, cc2 = symbols("bb cc2")
+w = one(solve([(0 + 2) - (-3 + bb), (2 - 2) - (a + cc2), d2((0, 2), (-3, a)) - d2((-3, a), (2, -2))], [a, bb, cc2], dict=True))
+assert len({d2((0, 2), (-3, w[a])), d2((-3, w[a]), (2, -2)), d2((2, -2), (w[bb], w[cc2])), d2((w[bb], w[cc2]), (0, 2))}) == 1
+chk("sm0102", w[a] * w[bb] * w[cc2], -20)
+eq = expand(d2((x, y), (3, 6)) - d2((x, y), (2, 1)))
+ch = [x - 5 * y - 20, x + y - 20, x + 5 * y - 20, 5 * x - y - 20, 5 * x + y - 20]
+chk("sm0111", "①②③④⑤"[[simplify(eq / c) .is_number for c in ch].index(True)], "③")
+eq = expand(d2((x, y), (2, -1)) - d2((x, y), (5, 3)) + 5)
+yy = one(solve(eq, y))
+chk("sm0112", simplify(yy.coeff(x, 1) + yy.subs(x, 0)), Q(9, 4))
+eq = expand((2 * x + 1) + (2 * y - 2) - 3)          # P = (2x+1, 2y-2)
+chk("sm0113", (eq.coeff(y) / eq.coeff(x)) ** 2 + (eq.subs({x: 0, y: 0}) / eq.coeff(x)) ** 2, 5)
+eq = expand(3 * (Q(3, 2) * x + 1) - (Q(3, 2) * y - Q(3, 2)) + 6)
+ch = [3 * x - y + 3, 3 * x - y + 5, 3 * x - y + 7, 3 * x + y - 5, 3 * x + y - 7]
+chk("sm0114", "①②③④⑤"[[simplify(eq / c).is_number for c in ch].index(True)], "③")
+eq = expand(2 * (x + y) / 2 + (y - x) / 2 - 1)
+ch = [x - 3 * y + 2, x + 3 * y - 2, 3 * x - y - 2, 3 * x + y - 2, 3 * x + 3 * y + 2]
+chk("sm0115", "①②③④⑤"[[simplify(eq / c).is_number for c in ch].index(True)], "②")
+
 if __name__ == "__main__":
     bad = [r_ for r_ in R if not r_[1]]
     for r_ in bad:

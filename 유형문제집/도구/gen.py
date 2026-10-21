@@ -455,7 +455,7 @@ def choices_paras(ch):
     def cell(i):
         c = ch[i]
         return "%s %s" % (CIRC[i], c if ("$" in c or re.search(r"[ㄱ-ㅎ가-힣]", c)) else "$%s$" % c)
-    long_ = max(len(re.sub(r"\$", "", c)) for c in ch) > 14
+    long_ = max(len(re.sub(r"\$", "", c)) for c in ch) > 14 or any("=" in c for c in ch)   # 등식 선지는 수식 폭이 넓다
     if max(len(re.sub(r"\$", "", c)) for c in ch) > 22:     # 아주 긴 선지(삼각형의 모양 등)는 한 줄에 하나
         groups = [[0], [1], [2], [3], [4]]
     elif long_:
