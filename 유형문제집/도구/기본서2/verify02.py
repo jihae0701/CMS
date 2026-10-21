@@ -477,6 +477,56 @@ kv = solve(Eq((dist((1, 0), Pv) ** 2).subs(a, 3), (pdist((1, 0), Lbc) ** 2).subs
 assert kv == [1]
 R["k09v"] = fx.subs({a: 3, kk: 1, x: 10})
 
+# ================================================================ 추가 5문항(2026-10-21)
+# k10v: 2024년 9월 고1 20번 변형 — A(-6,a), B(5,6), C(-3,0), P는 AB를 3:1로 내분, 직선 PC가 △AOB 넓이 이등분
+av_ = symbols("av_", positive=True)
+A, B, C = (S(-6), av_), (S(5), S(6)), (S(-3), S(0))
+P_ = inner(A, B, 3, 1)
+Q_ = meet(line_through(C, P_), line_through((0, 0), A))
+sarea = lambda P0, P1, P2: ((P1[0] - P0[0]) * (P2[1] - P0[1]) - (P2[0] - P0[0]) * (P1[1] - P0[1])) / 2
+sol = [v for v in solve(Eq(sarea(A, Q_, P_) ** 2, (sarea((0, 0), A, B) / 2) ** 2), av_) if v > 0]
+sol = [v for v in sol if simplify(Abs(sarea(A, Q_, P_)) - Abs(sarea((0, 0), A, B)) / 2).subs(av_, v) == 0
+       and 0 < (Q_[1] / A[1]).subs(av_, v) < 1]
+assert len(sol) == 1
+# Q가 선분 AO 위, C는 삼각형 밖
+Qv = tuple(v.subs(av_, sol[0]) for v in Q_)
+assert -6 < Qv[0] < 0
+R["k10v"] = sol[0]
+
+# a1838: A(0,3)을 지나는 직선과 B(n,0)을 지나는 직선이 C에서 수직, 무게중심 G(13,4) → 자연수 n
+nn = symbols("nn", positive=True)
+Cv = (39 - nn, 12 - 3)
+ns = [v for v in solve(Eq((Cv[1] - 3) * (Cv[1] - 0) + (Cv[0] - 0) * (Cv[0] - nn), 0), nn) if v.is_integer]
+assert ns == [21]
+R["a1838"] = ns[0]
+
+# g107: 직선 l이 y=-x/2+3, y=-x/2-1과 각각 A, B에서 수직으로 만남, △OAB 넓이 2 → 직선 AB의 y절편의 곱
+kvals = solve(Eq(Abs(k) * 4 / 5, 2), k)
+for kv_ in kvals:
+    A_ = meet((2, -1, kv_), (1, 2, -6)); B_ = meet((2, -1, kv_), (1, 2, 2))
+    assert area((0, 0), A_, B_) == 2
+R["g107"] = Mul(*kvals)
+
+# o40: O(0,0), A(2,-1), 제1사분면의 B, 삼각형 OAB의 내심=외심(정삼각형) → 직선 OB의 기울기
+sols = solve([Eq(x ** 2 + y ** 2, 5), Eq((x - 2) ** 2 + (y + 1) ** 2, 5)], [x, y], dict=True)
+sols = [s_ for s_ in sols if s_[x] > 0 and s_[y] > 0]
+assert len(sols) == 1
+R["o40"] = radsimp(sols[0][y] / sols[0][x])
+
+# m21: A(0,a), B(3,0), AC=BC인 직각이등변삼각형 ABC, -1<=a<=2 → OC의 최댓값/최솟값
+vals = []
+for i in range(0, 30001):
+    av2 = -1 + 3 * i / 30000
+    Nx, Ny = 1.5, av2 / 2
+    for sg in (1, -1):
+        Cx, Cy = Nx + sg * av2 / 2, Ny + sg * 1.5
+        # 확인: CA=CB, CA ⊥ CB
+        assert abs((Cx) ** 2 + (Cy - av2) ** 2 - (Cx - 3) ** 2 - Cy ** 2) < 1e-9
+        assert abs((0 - Cx) * (3 - Cx) + (av2 - Cy) * (0 - Cy)) < 1e-9
+        vals.append(_m.hypot(Cx, Cy))
+assert abs(max(vals) / min(vals) - 5) < 1e-9
+R["m21"] = 5
+
 # ---------------------------------------------------------------- data02의 답과 맞추기
 import re          # sympy의 re를 덮는다
 
