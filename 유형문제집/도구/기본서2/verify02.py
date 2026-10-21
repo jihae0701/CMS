@@ -527,6 +527,51 @@ for i in range(0, 30001):
 assert abs(max(vals) / min(vals) - 5) < 1e-9
 R["m21"] = 5
 
+# ================================================================ Basecamp 3문항(2026-10-21 사용자 'Basecamp 참고해서 진행해')
+# b033: A(-3,0), B(1,4), 직선 AB 위의 점 중 (k+1)x+(k-1)y-2k=0 (k 실수)이 지날 수 없는 점 (a,b) → ab
+# 직선 AB 위의 점 (t, t+3)마다 그 점을 지나는 k가 있는지 확인
+reach = lambda tv: solve(Eq((k + 1) * tv + (k - 1) * (tv + 3) - 2 * k, 0), k)
+bad_ = [tv for tv in [Rational(i, 4) for i in range(-40, 41)] if not reach(tv)]
+assert bad_ == [Rational(-1, 2)]
+tsol = solve(Eq(2 * t + 3 - 2, 0), t)                  # 일반적으로: (2t+3-2)k + (t-(t+3)) = 0 → k의 계수가 0
+assert tsol == [Rational(-1, 2)]
+R["b033"] = tsol[0] * (tsol[0] + 3)
+
+# b022: x-y+1=0, ax+y+2=0, 2x-by-1=0 이 좌표평면을 네 부분으로 나눔 → 모든 a의 합
+def regions(L):
+    """서로 다른 직선의 배치로 나뉘는 부분의 수(일치하는 직선은 하나로)"""
+    U = []
+    for l in L:
+        if not any(Matrix([l, u]).rank() < 2 for u in U):
+            U.append(l)
+    n = len(U)
+    par = sum(1 for i in range(n) for j in range(i + 1, n) if U[i][0] * U[j][1] - U[i][1] * U[j][0] == 0)
+    if n == 1: return 2
+    if n == 2: return 3 if par else 4
+    # 세 직선
+    if par == 3: return 4
+    if par == 1: return 6
+    P0 = meet(U[0], U[1])
+    return 6 if U[2][0] * P0[0] + U[2][1] * P0[1] + U[2][2] == 0 else 7
+found = set()
+for av3 in [Rational(i, 4) for i in range(-40, 41)]:
+    for bv3 in [Rational(i, 4) for i in range(-40, 41)]:
+        if regions([(1, -1, 1), (av3, 1, 2), (2, -bv3, -1)]) == 4:
+            found.add((av3, bv3))
+assert found == {(-1, 2), (-4, Rational(1, 2))}, found
+R["b022"] = sum(a_ for a_, _ in found)
+
+# b020: A(1,0), B(4,0), C(3,4)의 오일러 직선 ax+by+16=0 → a+b
+A, B, C = (S(1), S(0)), (S(4), S(0)), (S(3), S(4))
+G = ((A[0] + B[0] + C[0]) / 3, (A[1] + B[1] + C[1]) / 3)
+H = meet((1, 0, -C[0]), (B[0] - C[0], B[1] - C[1], -((B[0] - C[0]) * A[0] + (B[1] - C[1]) * A[1])))   # C에서 AB, A에서 BC에 내린 수선
+Oc = solve([Eq((x - A[0]) ** 2 + (y - A[1]) ** 2, (x - B[0]) ** 2 + (y - B[1]) ** 2),
+            Eq((x - A[0]) ** 2 + (y - A[1]) ** 2, (x - C[0]) ** 2 + (y - C[1]) ** 2)], [x, y], dict=True)[0]
+L = line_through(G, H)
+assert simplify(L[0] * Oc[x] + L[1] * Oc[y] + L[2]) == 0          # 외심도 같은 직선 위
+sc = Rational(16) / L[2]
+R["b020"] = L[0] * sc + L[1] * sc
+
 # ---------------------------------------------------------------- data02의 답과 맞추기
 import re          # sympy의 re를 덮는다
 
