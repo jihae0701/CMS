@@ -444,6 +444,15 @@ for _k, _f in (("{COVER_HERO}", "cover_hero.jpg"), ("{GIFT_COMPASS}", "gift_comp
     else:                    # 그림 파일이 없으면 그림 칸만 비움(교재 표지는 저장소에 올리지 않음)
         CURRIC, CURRIC2 = (re.sub(r'<img src="%s"[^>]*>' % re.escape(_k), "", c) for c in (CURRIC, CURRIC2))
 
+_PC = os.path.join(os.path.dirname(_CUR), "curriculum_pc.html")   # 커리큘럼안내지(2): 4쪽판 3쪽 자리에 PC반 안내 추가
+CURRIC_PC = ""
+if CURRIC and os.path.exists(_PC):
+    _toc = ('<div class="it"><div class="n">03</div><div class="t"><b>PC반(PRECLIMATH) 안내</b>'
+            '<span>화·목 수업 · 공통수학1 → 공통수학2 · 교재</span></div><div class="p">3쪽</div></div>\n      ')
+    _c = re.sub(r'<div class="n">03</div>(<div class="t"><b>겨울방학.*?)3쪽', r'<div class="n">04</div>\g<1>4쪽', CURRIC, count=1)
+    _c = _c.replace("<!--TOC-->", _toc).replace("3 / 3</span>", "4 / 4</span>").replace(" / 3</span>", " / 4</span>")
+    CURRIC_PC = _c.replace("<!--PCPAGE-->", open(_PC, encoding="utf-8").read().replace("{LOGO}", LOGO_URI))
+
 PB = {"매우 우수": "b0", "우수": "b1", "양호": "b2", "보완 필요": "b3"}
 
 
@@ -693,6 +702,9 @@ def main(xlsx, outdir):
         render([CURRIC2], os.path.join(outdir, "안내지_2쪽.pdf"))
     if CURRIC:
         render([bw(CURRIC)], os.path.join(outdir, "커리큘럼안내지_흑백.pdf"))
+    if CURRIC_PC:
+        render([CURRIC_PC], os.path.join(outdir, "커리큘럼안내지(2).pdf"))
+        render([bw(CURRIC_PC)], os.path.join(outdir, "커리큘럼안내지(2)_흑백.pdf"))
     for s, pgx in zip(targets, pages):
         safe = re.sub(r'[\\/:*?"<>|]', "_", s["name"])
         render([pgx], os.path.join(outdir, "학부모보고서", "%02d_%s.pdf" % (s["no"], safe)))

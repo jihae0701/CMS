@@ -25,3 +25,9 @@
 .cv .bar{background:#000 !important}
 .cv .toc{border-top:1.6px solid #000 !important}
 .cv .toc .it{border-bottom:1px solid #777 !important}
+.cu .flow .st,.cu .card.pc{background:#fff !important;border:1.3px solid #000 !important}
+.cu .flow .st.now{background:#ececec !important}
+.cu .flow .st small,.cu .card.pc small{color:#000 !important;font-weight:800 !important}
+.cu .flow .st div{color:#222 !important}
+.cu .flow .ar{color:#000 !important}
+.cu .flow .badge{background:#000 !important;color:#fff !important}
