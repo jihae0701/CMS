@@ -9,6 +9,7 @@ WORDS = {
     "sim": r"\sim ", "LEFT": "left", "RIGHT": "right", "DEG": r"^\circ ",
     "therefore": r"\therefore ", "THEREFORE": r"\therefore ",
     "angle": r"\angle ", "gamma": r"\gamma ", "PI": r"\Pi ", "pi": r"\pi ", "delta": r"\delta ", "omega": r"\omega ", "theta": r"\theta ",
+    "triangle": r"\triangle ",
     "LRARROW": r"\Leftrightarrow ", "lrarrow": r"\leftrightarrow ", "RARROW": r"\Rightarrow ",
 }
 
@@ -57,7 +58,7 @@ def _atom_after(s, start):
 
 def convert(script):
     s = script
-    s = s.replace("`", " ").replace("~", r"\ ")
+    s = s.replace("`", " ").replace("~", r"\ ").replace("∥", r"\parallel ")
     # 한글 -> \text{}
     s = re.sub(r"([가-힣]+(?:\s*[가-힣]+)*)", lambda m: r"\text{" + m.group(1) + "}", s)
     # cases / rpile(행렬)

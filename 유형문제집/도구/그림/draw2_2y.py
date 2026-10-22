@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """공통수학2 유형서 2단원(직선의 방정식) 그림. python 그림/draw2_2y.py [파일 ...]  (KATEX_DIR 필요)
-학력평가 원문 그림(HIT기출 3회, 고쟁이 044)을 같은 모양으로 새로 그렸다.
+학력평가 원문 그림(HIT기출 3회, 2009년 3월 14번은 사용자 사진)을 같은 모양으로 새로 그렸다.
 """
 import os, sys, math
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -12,12 +12,13 @@ DOT = 'stroke-dasharray="5,5" stroke-width="1.3"'
 
 
 def fig_m0903():
-    # 2009년 3월 고2 14번: 세 점 O(0, 0), A(6, 2), B(-2, 4)
+    # 2009년 3월 고2 14번: 세 점 O(0, 0), A(6, 2), B(-2, 4)를 꼭짓점으로 하는 삼각형 (사용자 사진)
     A, B = (6, 2), (-2, 4)
     F = Frame((-3.2, 7.4), (-0.9, 5.2), 36, 36, (20, 20, 20, 16))
     F.axes()
     F.seg((0, 0), A, STROKE)
     F.seg((0, 0), B, STROKE)
+    F.seg(A, B, STROKE)                                        # 원문(Infinite 26-1)처럼 삼각형 OAB
     for p in (A, B):
         F.seg((p[0], 0), p, 1.3, DOT)
         F.seg((0, p[1]), p, 1.3, DOT)

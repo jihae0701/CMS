@@ -478,6 +478,25 @@ for M_ in solve(Eq(m - 1 / m, Q(7, 12)), m):
         assert sq[1].distance(sq[2]) == sides[-1]
 chk("f8-11", one(sides), 12)
 
+
+# f4-10 세 직선이 직각삼각형: a를 훑어 삼각형을 이루고 한 각이 직각인 경우
+def right_tri(A0):
+    Ls = [Ln(1, 2, -3), Ln(3, -4, -12), Ln(A0, 1, 1)]
+    pts = []
+    for i in range(3):
+        for j in range(i + 1, 3):
+            X = Ls[i].intersection(Ls[j])
+            if not X or not isinstance(X[0], Point):
+                return False
+            pts.append(X[0])
+    if len(set(pts)) < 3:
+        return False
+    a1, b1, c1 = pts
+    sq = sorted([a1.distance(b1) ** 2, b1.distance(c1) ** 2, c1.distance(a1) ** 2])
+    return simplify(sq[0] + sq[1] - sq[2]) == 0
+good = [A0 for A0 in [Q(i, 6) for i in range(-60, 61)] if right_tri(A0)]
+chk("f4-10", sum(good), Q(-2, 3))
+
 if __name__ == "__main__":
     bad = [r_ for r_ in R if not r_[1]]
     for r_ in bad:
