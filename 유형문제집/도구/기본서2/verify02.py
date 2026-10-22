@@ -648,6 +648,27 @@ Sv = simplify(area(*[(xv, xv ** 2) for xv in xs]))
 assert simplify(Sv - 5 - sqrt(17)) == 0
 R["o44"] = floor(Sv)
 
+# ================================================================ 넓이 등분 줄이기(2026-10-22): g079 → g082, o36 → o53
+# g082: 원점을 지나고 기울기가 양수인 l1, l2: l2 기울기 = 4×(l1 기울기), l2의 각 = 2×(l1의 각) → l2의 기울기
+av6 = symbols("av6", positive=True)
+sol = solve(Eq(2 * av6 / (1 - av6 ** 2), 4 * av6), av6)            # tan 2θ = 2tanθ/(1-tan²θ)로 확인
+assert sol == [sqrt(2) / 2]
+# 각의 이등분선 풀이: OA:OC = AB:BC = 1:3, OA=1 → OC^2 = 1+16a^2 = 9
+assert solve(Eq(1 + 16 * av6 ** 2, 9), av6) == [sqrt(2) / 2]
+R["g082"] = 4 * sol[0]
+
+# o53: A는 y=x/2 위, ∠A=90° 직각이등변삼각형 OAB (A, B 제1사분면), 외심과 내심 사이 거리 √5(2-√2)/2 → 6(p+q)
+sv = symbols("sv", positive=True)
+A_, B_, O_ = (2 * sv, sv), (sv, 3 * sv), (0, 0)
+assert simplify(dist(O_, A_) - dist(A_, B_)) == 0 and simplify((A_[0]) * (B_[0] - A_[0]) + A_[1] * (B_[1] - A_[1])) == 0
+a_, b_, c_ = dist(B_, O_), dist(O_, A_), dist(A_, B_)                # 각 꼭짓점 A, B, O의 대변
+I_ = ((a_ * A_[0] + b_ * B_[0] + c_ * O_[0]) / (a_ + b_ + c_), (a_ * A_[1] + b_ * B_[1] + c_ * O_[1]) / (a_ + b_ + c_))
+M_ = (B_[0] / 2, B_[1] / 2)                                         # 외심 = 빗변 OB의 중점
+svv = solve(Eq(simplify(dist(I_, M_) ** 2), (sqrt(5) * (2 - sqrt(2)) / 2) ** 2), sv)
+assert svv == [1]
+G_ = ((A_[0] + B_[0]) / 3, (A_[1] + B_[1]) / 3)
+R["o53"] = 6 * (G_[0] + G_[1]).subs(sv, 1)
+
 # ---------------------------------------------------------------- data02의 답과 맞추기
 import re          # sympy의 re를 덮는다
 
