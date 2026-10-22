@@ -19,7 +19,7 @@
 .cu .hfd{color:#fff !important;background:#000 !important}
 .cu .ad{border:1.8px solid #000 !important}
 .cu .ad .tag{background:#000 !important}
-.cu .gift img{border:1px solid #000 !important;background:#fff !important;box-shadow:none !important;filter:grayscale(1)}
+.cu .gift img{border:none !important;background:#fff !important;box-shadow:none !important;filter:grayscale(1)}
 .cu .top img,.cv .ft img{filter:grayscale(1) brightness(0)}
 .cv .hero{filter:grayscale(1)}
 .cv .bar{background:#000 !important}
