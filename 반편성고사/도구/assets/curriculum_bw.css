@@ -18,7 +18,7 @@
 .cu tr:nth-child(even) td{background:#f2f2f2 !important}
 .cu .hfd{color:#fff !important;background:#000 !important}
 .cu .ad{border:1.8px solid #000 !important}
-.cu .ad .tag{background:#000 !important}
+.cu .ad .tag{background:#000 !important;color:#fff !important}
 .cu .gift img{border:.8px solid #000 !important;border-radius:0 !important;background:#fff !important;box-shadow:.6mm .9mm 1.8mm rgba(0,0,0,.35) !important;filter:grayscale(1)}
 .cu .top img,.cv .ft img{filter:grayscale(1) brightness(0)}
 .cv .hero{filter:grayscale(1)}
