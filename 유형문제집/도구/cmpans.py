@@ -34,6 +34,7 @@ def conv(s):
     s = re.sub(r"\{([^{}]*)\}\s*over\s*\{([^{}]*)\}", r"((\1)/(\2))", s)
     s = re.sub(r"(\d+)\s*over\s*(\d+)", r"((\1)/(\2))", s)
     s = re.sub(r"root\s*\{?(\d+)\}?", r"sqrt(\1)", s)
+    s = re.sub(r"(\d|\))\s*pi", r"\1*pi", s)       # 74 pi, ((9)/(2)) pi
     s = re.sub(r"(\d)\s*sqrt", r"\1*sqrt", s).replace(" ", "")
     return sympify(s)
 

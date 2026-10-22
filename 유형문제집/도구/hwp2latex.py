@@ -9,7 +9,7 @@ WORDS = {
     "sim": r"\sim ", "LEFT": "left", "RIGHT": "right", "DEG": r"^\circ ",
     "therefore": r"\therefore ", "THEREFORE": r"\therefore ",
     "angle": r"\angle ", "gamma": r"\gamma ", "PI": r"\Pi ", "pi": r"\pi ", "delta": r"\delta ", "omega": r"\omega ", "theta": r"\theta ",
-    "triangle": r"\triangle ",
+    "triangle": r"\triangle ", "bot": r"\perp ",
     "LRARROW": r"\Leftrightarrow ", "lrarrow": r"\leftrightarrow ", "RARROW": r"\Rightarrow ",
 }
 
