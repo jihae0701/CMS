@@ -416,6 +416,68 @@ Cf = C_.subs(sv, svv)
 assert Cf[0] > 0 and Cf[1] > 0
 chk("w4", Cf[0] + Cf[1], 32)
 
+
+# ---- 2026-10-22 추가한 내신 6문항
+# n1929 사각형 OABC의 넓이를 y=ax가 이등분: 다각형을 직접 잘라 넓이를 잼
+quad = Polygon(Point(0, 0), Point(1, 4), Point(4, 6), Point(4, 1))
+aa = Q(19, 16)
+Pp = Point(4, 4 * aa)
+assert abs(Polygon(Point(0, 0), Point(4, 1), Pp).area) == abs(quad.area) / 2
+chk("n1929", aa, Q(19, 16))
+
+# f3-18 직선 AB 위의 D: 닮음비를 쓰지 않고 E를 구해 넓이 비로 확인
+A_, B_, C_ = Matrix([1, 1]), Matrix([10, -2]), Matrix([7, 7])
+xs = []
+for tt in solve(Eq((t ** 2), Q(1, 9)), t):          # D = A + t(B - A) 후보를 넓이 비 식으로 확인
+    D = A_ + tt * (B_ - A_)
+    E = A_ + tt * (C_ - A_)                          # DE ∥ BC
+    assert simplify((E - D)[0] * (C_ - B_)[1] - (E - D)[1] * (C_ - B_)[0]) == 0
+    assert area(tuple(A_), tuple(B_), tuple(C_)) == 9 * area(tuple(A_), tuple(D), tuple(E))
+    xs.append(D[0])
+chk("f3-18", xs[0] * xs[1], -8)
+
+# n1891 정사각형 OABC, B(7, 3): A, C를 직접 구함(OB를 대각선으로)
+Mo = Matrix([Q(7, 2), Q(3, 2)])
+half = Matrix([-Q(3, 2), Q(7, 2)])                   # OB/2를 90° 돌린 것
+A1, C1 = Mo + half, Mo - half
+assert (A1 - Matrix([0, 0])).dot(Matrix([7, 3]) - A1) == 0
+chk("n1891", Line(Point(*A1), Point(*C1)).intersection(Line(Point(0, 0), Point(1, 0)))[0].x, Q(29, 7))
+
+# n1920 수심
+H = one(solve([(x - 1) * (6 - 5) + (y - 3) * (5 - 1), (x - 5) * (6 - 1) + (y - 1) * (5 - 3)], [x, y], dict=True))
+chk("n1920", area((1, 3), (5, 1), (H[x], H[y])), Q(16, 9))
+
+# n1607 이등변삼각형 조건: 기울기를 훑어 직선 l과 y=3x, y=-x/3이 만드는 삼각형이 이등변인 기울기 찾기
+def tri_iso(M_):
+    P1 = one(solve([Eq(y, M_ * x + 2), Eq(y, 3 * x)], [x, y], dict=True))
+    P2 = one(solve([Eq(y, M_ * x + 2), Eq(y, -x / 3)], [x, y], dict=True))
+    d1, d2 = P1[x] ** 2 + P1[y] ** 2, P2[x] ** 2 + P2[y] ** 2
+    d3 = (P1[x] - P2[x]) ** 2 + (P1[y] - P2[y]) ** 2
+    return d1 == d2 or d1 == d3 or d2 == d3
+cand = [Q(i, 12) for i in range(-60, 61) if i != 0 and Q(i, 12) not in (3, Q(-1, 3)) and tri_iso(Q(i, 12))]
+assert cand == [-2, Q(1, 2)], cand
+Bp = one(solve([Eq(y, x / 2 + 2), Eq(y, -x / 3)], [x, y], dict=True))
+Cp = one(solve([Eq(y, -2 * x + 2), Eq(y, -x / 3)], [x, y], dict=True))
+chk("n1607", area((0, 2), (Bp[x], Bp[y]), (Cp[x], Cp[y])), Q(18, 5))
+
+# f8-11 정사각형 PQRS: 기울기 m인 두 쌍의 평행선으로 정사각형을 만들고 네 점이 변(선분) 위에 있는지 확인
+sides = []
+for M_ in solve(Eq(m - 1 / m, Q(7, 12)), m):
+    L1 = (M_, -1, 10 - 3 * M_)          # PQ: A 지남
+    L3 = (M_, -1, 2 - 12 * M_)          # RS: C 지남
+    L2 = (-1 / M_, -1, 0)               # QR: B 지남
+    L4 = (-1 / M_, -1, 9 + 8 / M_)      # SP: D 지남
+    meet = lambda La, Lb: one(solve([La[0] * x + La[1] * y + La[2], Lb[0] * x + Lb[1] * y + Lb[2]], [x, y], dict=True))
+    P_, Q_, R_, S_ = [meet(*pr) for pr in [(L4, L1), (L1, L2), (L2, L3), (L3, L4)]]
+    pt = lambda d_: Point(d_[x], d_[y])
+    sq = [pt(P_), pt(Q_), pt(R_), pt(S_)]
+    on = [Segment(sq[0], sq[1]).contains(Point(3, 10)), Segment(sq[1], sq[2]).contains(Point(0, 0)),
+          Segment(sq[2], sq[3]).contains(Point(12, 2)), Segment(sq[3], sq[0]).contains(Point(8, 9))]
+    if all(on):
+        sides.append(sq[0].distance(sq[1]))
+        assert sq[1].distance(sq[2]) == sides[-1]
+chk("f8-11", one(sides), 12)
+
 if __name__ == "__main__":
     bad = [r_ for r_ in R if not r_[1]]
     for r_ in bad:
