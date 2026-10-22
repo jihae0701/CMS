@@ -447,18 +447,20 @@ chk("n1891", Line(Point(*A1), Point(*C1)).intersection(Line(Point(0, 0), Point(1
 H = one(solve([(x - 1) * (6 - 5) + (y - 3) * (5 - 1), (x - 5) * (6 - 1) + (y - 1) * (5 - 3)], [x, y], dict=True))
 chk("n1920", area((1, 3), (5, 1), (H[x], H[y])), Q(16, 9))
 
-# n1607 이등변삼각형 조건: 기울기를 훑어 직선 l과 y=3x, y=-x/3이 만드는 삼각형이 이등변인 기울기 찾기
+# n1607(변형) 이등변삼각형 조건: 기울기를 훑어 A(0, 4)를 지나는 직선과 y=2x-1, y=-x/2+2가 만드는 삼각형이 이등변인 기울기 찾기
 def tri_iso(M_):
-    P1 = one(solve([Eq(y, M_ * x + 2), Eq(y, 3 * x)], [x, y], dict=True))
-    P2 = one(solve([Eq(y, M_ * x + 2), Eq(y, -x / 3)], [x, y], dict=True))
-    d1, d2 = P1[x] ** 2 + P1[y] ** 2, P2[x] ** 2 + P2[y] ** 2
+    P1 = one(solve([Eq(y, M_ * x + 4), Eq(y, 2 * x - 1)], [x, y], dict=True))
+    P2 = one(solve([Eq(y, M_ * x + 4), Eq(y, -x / 2 + 2)], [x, y], dict=True))
+    P3 = (Q(6, 5), Q(7, 5))
+    d1 = (P1[x] - P3[0]) ** 2 + (P1[y] - P3[1]) ** 2
+    d2 = (P2[x] - P3[0]) ** 2 + (P2[y] - P3[1]) ** 2
     d3 = (P1[x] - P2[x]) ** 2 + (P1[y] - P2[y]) ** 2
-    return d1 == d2 or d1 == d3 or d2 == d3
-cand = [Q(i, 12) for i in range(-60, 61) if i != 0 and Q(i, 12) not in (3, Q(-1, 3)) and tri_iso(Q(i, 12))]
-assert cand == [-2, Q(1, 2)], cand
-Bp = one(solve([Eq(y, x / 2 + 2), Eq(y, -x / 3)], [x, y], dict=True))
-Cp = one(solve([Eq(y, -2 * x + 2), Eq(y, -x / 3)], [x, y], dict=True))
-chk("n1607", area((0, 2), (Bp[x], Bp[y]), (Cp[x], Cp[y])), Q(18, 5))
+    return min(d1, d2, d3) > 0 and (d1 == d2 or d1 == d3 or d2 == d3)
+cand = [Q(i, 12) for i in range(-60, 61) if i != 0 and Q(i, 12) not in (2, Q(-1, 2)) and tri_iso(Q(i, 12))]
+assert cand == [-3, Q(1, 3)], cand
+Bp = one(solve([Eq(y, x / 3 + 4), Eq(y, 2 * x - 1)], [x, y], dict=True))
+Cp = one(solve([Eq(y, -3 * x + 4), Eq(y, 2 * x - 1)], [x, y], dict=True))
+chk("n1607", area((0, 4), (Bp[x], Bp[y]), (Cp[x], Cp[y])), 5)
 
 # f8-11 정사각형 PQRS: 기울기 m인 두 쌍의 평행선으로 정사각형을 만들고 네 점이 변(선분) 위에 있는지 확인
 sides = []
