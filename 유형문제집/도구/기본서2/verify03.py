@@ -472,6 +472,29 @@ assert abs(e1) < 1e-9 and abs(e2) < 1e-9 and A_[0] < 0 < A_[1] and B_[0] > 0 > B
 R["m36"] = 45
 
 
+
+# ---------------------------------------------------------------- 2026-10-22 모의고사 변형 → 내신 변형으로 교체
+# s18(2026 중간 f3 21번): A(8,0), B(0,4), P는 AB를 3:1로 내분, x^2+y^2-2ax-2by=9가 직선 AB와 P에서만 → 32ab
+P18 = ((3 * 0 + 1 * 8) / Integer(4), (3 * 4 + 1 * 0) / Integer(4))
+circ = x ** 2 + y ** 2 - 2 * a * x - 2 * b * y - 9
+sol = solve([circ.subs({x: P18[0], y: P18[1]}),
+             discriminant(expand(circ.subs(x, 8 - 2 * y)), y)], [a, b], dict=True)
+vals = {simplify(32 * s_[a] * s_[b]) for s_ in sol}
+assert vals == {5}, vals
+R["s18"] = 5
+# a1733(수리고): y=x^2-8x+16 위 A, B, AB 지름 원 넓이 18π, A를 지나고 기울기 -1인 직선이 원에 접 → AB의 y절편
+kv = [r_ for r_ in solve(Eq((9) ** 2 - 4 * (16 - k), 36), k)][0]
+xs = solve(Eq(x ** 2 - 8 * x + 16, x + kv), x)
+A_, B_ = [(xx, xx + kv) for xx in xs]
+assert simplify(dist(A_, B_) - 6 * sqrt(2)) == 0
+R["a1733"] = kv
+# a1691(성문고): x-2y+8=0, x+2y+8=0에 접하고 (-2,-2)를 지나는 두 원의 중심 사이 거리 (중심 (u,v) 일반으로 풂)
+u, v = symbols("u v", real=True)
+cs = solve([Eq((u - 2 * v + 8) ** 2, (u + 2 * v + 8) ** 2), Eq(5 * ((u + 2) ** 2 + (v + 2) ** 2), (u - 2 * v + 8) ** 2)], [u, v], dict=True)
+cs = [s_ for s_ in cs if s_[u].is_real and s_[v].is_real]
+assert len(cs) == 2, cs
+R["a1691"] = simplify(sqrt((cs[0][u] - cs[1][u]) ** 2 + (cs[0][v] - cs[1][v]) ** 2))
+
 # ---------------------------------------------------------------- data03의 답과 맞추기
 import re          # sympy의 re를 덮는다
 

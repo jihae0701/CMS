@@ -669,6 +669,51 @@ assert svv == [1]
 G_ = ((A_[0] + B_[0]) / 3, (A_[1] + B_[1]) / 3)
 R["o53"] = 6 * (G_[0] + G_[1]).subs(sv, 1)
 
+
+# ---------------------------------------------------------------- 2026-10-22 모의고사 변형 → 내신 변형으로 교체
+# a1688(성문고): A(0,2), B(0,4), C(√3,p), D(2√3,q), CD 기울기 양수, AB=CD, AD∥BC → pq
+sols = [s_ for s_ in solve([Eq(3 + (q - p) ** 2, 4), Eq((q - 2) / (2 * sqrt(3)), (p - 4) / sqrt(3))], [p, q], dict=True) if s_[q] - s_[p] > 0]
+assert len(sols) == 1
+R["a1688"] = sols[0][p] * sols[0][q]
+# s16(2026 중간 f5 17번): AB=5, BC=10, P는 AD를 5:2로 내분, AC⊥BP → 삼각형 PQD
+tv = [r_ for r_ in solve(Eq(5, 2 * Rational(5, 7) * t), t) if r_ > 0][0]
+Pp, Dp = (Rational(5, 7) * tv, 5), (tv, 5)
+Qs = solve([Eq(y, -x / 2 + 5), Eq(y, 2 * x)], [x, y], dict=True)[0]
+assert simplify((Pp[1] - 0) * 1 - 2 * Pp[0]) == 0
+R["s16"] = area(Pp, (Qs[x], Qs[y]), Dp)
+# a1903(충훈고): l1: 3x-4y-12=0, l2 ∥ l1, 사각형 ADCB 넓이 54 → 거리
+d_ = symbols("d_", positive=True)
+dv = [r_ for r_ in solve(Eq(area((4, 0), (0, d_), (-Rational(4, 3) * d_, 0), (0, -3)), 54), d_) if r_ > 0]
+R["a1903"] = pdist((4, 0), (3, -4, 4 * dv[0]))
+# a1628(백영고): (a,2a)를 지나고 y=-x^2+4x-6에 접하는 두 직선이 수직 → 기울기의 합
+ex = expand(discriminant(expand(-x ** 2 + 4 * x - 6 - (m * (x - a) + 2 * a)), x))
+cf = Poly(ex, m).all_coeffs()
+av = solve(Eq(cf[2] / cf[0], -1), a)[0]
+R["a1628"] = -cf[1].subs(a, av) / cf[0]
+# a1734(수리고): f(x)=k(x+9)(x-a) (k<0, -9<a<0), BPRQ 정사각형 → f(3)
+kk2, aa2 = symbols("kk2 aa2", real=True)
+fx = kk2 * (x + 9) * (x - aa2)
+Pv = ((aa2 - 9) / 2, fx.subs(x, (aa2 - 9) / 2)); Cv = (0, fx.subs(x, 0))
+e1 = Eq(Pv[1] * 9, Cv[1] * (Pv[0] - aa2))                        # BP ∥ AC (기울기 같음)
+e2 = Eq((Pv[0] - aa2) ** 2 + Pv[1] ** 2, pdist((aa2, 0), line_through((-9, 0), Cv)) ** 2)
+avs = [r_ for r_ in solve(simplify((e1.lhs - e1.rhs) / kk2), aa2) if -9 < r_ < 0]
+assert len(avs) == 1
+kvs = [r_ for r_ in solve(e2.subs(aa2, avs[0]), kk2) if r_ < 0]
+assert len(kvs) == 1
+R["a1734"] = fx.subs({aa2: avs[0], kk2: kvs[0]}).subs(x, 3)
+# s17(2026 중간 f6 16번): A(-8,3), B(12,a), C(9,0), P는 AB를 1:3 내분, 직선 PC가 △AOB 이등분 → 11a (수치로 넓이 확인)
+def half_ok(av_):
+    from sympy import Polygon as Pg, Point as Pt, Line as Ln
+    A_, B_, C_ = Pt(-8, 3), Pt(12, av_), Pt(9, 0)
+    P_ = Pt((3 * A_.x + B_.x) / 4, (3 * A_.y + B_.y) / 4)
+    tri = Pg(Pt(0, 0), A_, B_)
+    X = [pt for pt in tri.intersection(Ln(P_, C_)) if pt != P_]
+    piece = Pg(P_, B_, X[0])
+    return abs(piece.area) - abs(tri.area) / 2
+av2 = Rational(45, 11)
+assert simplify(half_ok(av2)) == 0
+R["s17"] = 11 * av2
+
 # ---------------------------------------------------------------- data02의 답과 맞추기
 import re          # sympy의 re를 덮는다
 
