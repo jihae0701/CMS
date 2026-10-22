@@ -1,0 +1,27 @@
+/* 흑백 인쇄용: 색 배경을 흰색+검은 테두리/옅은 회색으로, 색 글자는 검정·진회색으로 */
+.cu,.cv{color:#000 !important}
+.cu h1,.cv h1,.cu h2{color:#000 !important}
+.cu h2:before{background:#000 !important}
+.cu h2 i,.cv .kk,.cv .toc .n{color:#000 !important}
+.cu h2 em{color:#000 !important;font-weight:800 !important}
+.cu h2 em.soft{color:#333 !important;font-weight:600 !important}
+.cu .lead,.cu .note,.cu .card .ln,.cu .sc .s,.cu .sc .w,.cu .ten div,.cu .ad span,.cu .gift figcaption,
+.cu .top .yr,.cv .who,.cv .toc .t span,.cv .info small{color:#222 !important}
+.cu .top .yr b,.cv .who b,.cu .gift .gt,.cu .card .ln b,.cu .gift figcaption b{color:#000 !important}
+.cu .ft,.cv .ft,.cv .toc .p{color:#444 !important}
+.cu .open,.cu .card,.cu .sc,.cu .ten,.cv .info div{background:#fff !important;border:1.3px solid #000 !important}
+.cu .card.sp,.cu .open{background:#ececec !important}
+.cu .open small,.cu .card small,.cu .card.hf small,.cu .card.sp small,.cu .card .dt,.cu .sc .d{color:#000 !important;font-weight:800 !important}
+.cu .sc .d{text-decoration:underline}
+.cu th{background:#d9d9d9 !important;border:1px solid #000 !important;color:#000 !important}
+.cu td{border:1px solid #555 !important;color:#000 !important}
+.cu tr:nth-child(even) td{background:#f2f2f2 !important}
+.cu .hfd{color:#fff !important;background:#000 !important}
+.cu .ad{border:1.8px solid #000 !important}
+.cu .ad .tag{background:#000 !important}
+.cu .gift img{border:1px solid #000 !important;background:#fff !important;box-shadow:none !important;filter:grayscale(1)}
+.cu .top img,.cv .ft img{filter:grayscale(1) brightness(0)}
+.cv .hero{filter:grayscale(1)}
+.cv .bar{background:#000 !important}
+.cv .toc{border-top:1.6px solid #000 !important}
+.cv .toc .it{border-bottom:1px solid #777 !important}

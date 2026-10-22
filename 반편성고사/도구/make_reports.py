@@ -658,6 +658,12 @@ def counsel_page(s, cfg, exams, stats):
 </div>"""
 
 
+def bw(page):
+    """흑백 인쇄용: assets/curriculum_bw.css 를 덧붙임"""
+    p = os.path.join(os.path.dirname(_CUR), "curriculum_bw.css")
+    return page + ("<style>%s</style>" % open(p, encoding="utf-8").read() if os.path.exists(p) else "")
+
+
 def render(pages, out_pdf):
     from playwright.sync_api import sync_playwright
     doc = '<!doctype html><html><head><meta charset="utf-8"><style>%s%s</style></head><body>%s</body></html>' % (CSS, PCSS, "".join(pages))
@@ -685,6 +691,8 @@ def main(xlsx, outdir):
         render([CURRIC], os.path.join(outdir, "커리큘럼안내지.pdf"))
     if CURRIC2:
         render([CURRIC2], os.path.join(outdir, "안내지_2쪽.pdf"))
+    if CURRIC:
+        render([bw(CURRIC)], os.path.join(outdir, "커리큘럼안내지_흑백.pdf"))
     for s, pgx in zip(targets, pages):
         safe = re.sub(r'[\\/:*?"<>|]', "_", s["name"])
         render([pgx], os.path.join(outdir, "학부모보고서", "%02d_%s.pdf" % (s["no"], safe)))
