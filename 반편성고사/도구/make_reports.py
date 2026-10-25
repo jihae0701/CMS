@@ -144,6 +144,8 @@ def class_desc(name, cfg):
     d = cfg["class_desc"]
     if name in d:
         return d[name]
+    if "(자사)" in name and cfg["school_cls"] in d:   # 'TF1월금(자사)' → 학교 지정 반(TF자사) 소개
+        return d[cfg["school_cls"]]
     return next((v for k, v in d.items() if k and name.startswith(k.replace("반", ""))), "")
 
 
@@ -567,9 +569,9 @@ def recommended(s, cfg):
 
 
 def parent_label(name):
-    """학부모 성적표 표기: TF1월금·TF2월금 → TF월금, TF1화목·TF2화목 → TF화목 (엑셀·상담 카드는 그대로)"""
-    m = re.fullmatch(r"TF\d(월금|화목)", str(name or ""))
-    return "TF" + m.group(1) if m else name
+    """학부모 성적표 표기: TF1월금·TF2월금 → TF월금, TF1화목(자사) → TF화목(자사) (엑셀·상담 카드는 그대로)"""
+    m = re.fullmatch(r"TF\d(월금|화목)(\(.+\))?", str(name or ""))
+    return "TF" + m.group(1) + (m.group(2) or "") if m else name
 
 
 def recommended2(s, cfg):
@@ -692,7 +694,7 @@ def main(xlsx, outdir):
     cfg, exams, students = read(xlsx)
     stats = compute(cfg, exams, students)
     os.makedirs(os.path.join(outdir, "학부모보고서"), exist_ok=True)
-    targets = [s for s in students if s["total"] is not None]
+    targets = [s for s in students if s["total"] is not None and not str(s.get("final") or "").startswith("퇴원")]
     # 성적표는 학생별, 커리큘럼 안내지(assets/curriculum.html)는 모든 학생 공통 파일 하나로 따로 출력
     pages = [parent_pages(s, cfg, exams, stats) for s in targets]
     render(pages, os.path.join(outdir, "학부모보고서_전체.pdf"))
