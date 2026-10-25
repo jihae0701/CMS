@@ -408,7 +408,7 @@ PCSS = """
 .cl .blue{background:#F3F7FC;border-left:3px solid #2F6FD0;padding:4.5mm 5mm 4mm}
 .cl .blue h3{margin:0 0 1mm;font-size:12pt;font-weight:800;color:#111}
 .cl .blue .ds{font-size:8.6pt;color:#555;border-bottom:1px solid #d3dceb;padding-bottom:2.5mm;margin-bottom:3.5mm}
-.cl .rc{background:#fff;border:1px solid #d6dbe6;border-radius:2mm;padding:3.8mm 4.5mm;margin-bottom:3mm;display:flex;gap:3.5mm}
+.cl .rc{background:#fff;border:1.6px solid #2F6FD0;border-radius:2mm;padding:3.8mm 4.5mm;margin-bottom:3mm;display:flex;gap:3.5mm}
 .cl .rc.first{border:1.6px solid #2F6FD0}
 .cl .rc .no{width:7mm;height:7mm;border-radius:50%;background:#2F6FD0;color:#fff;font-weight:800;font-size:10pt;display:flex;align-items:center;justify-content:center;flex:none}
 .cl .rc .bd{flex:1}
