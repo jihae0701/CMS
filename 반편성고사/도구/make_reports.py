@@ -408,6 +408,8 @@ PCSS = """
 .cl .blue{background:#F3F7FC;border-left:3px solid #2F6FD0;padding:4.5mm 5mm 4mm}
 .cl .blue h3{margin:0 0 1mm;font-size:12pt;font-weight:800;color:#111}
 .cl .blue .ds{font-size:8.6pt;color:#555;border-bottom:1px solid #d3dceb;padding-bottom:2.5mm;margin-bottom:3.5mm}
+.cl .blue .opt{font-size:8.8pt;color:#1F3864;font-weight:700;background:#fff;border:1px dashed #2F6FD0;border-radius:1.5mm;padding:1.8mm 3.2mm;margin:-1mm 0 2.6mm}
+.cl .blue .opt b{color:#2F6FD0}
 .cl .rc{background:#fff;border:1.6px solid #2F6FD0;border-radius:2mm;padding:3.8mm 4.5mm;margin-bottom:3mm;display:flex;gap:3.5mm}
 .cl .rc.first{border:1.6px solid #2F6FD0}
 .cl .rc .no{width:7mm;height:7mm;border-radius:50%;background:#2F6FD0;color:#fff;font-weight:800;font-size:10pt;display:flex;align-items:center;justify-content:center;flex:none}
@@ -554,17 +556,18 @@ def parent_pages(s, cfg, exams, stats):
     cards = [rcard(1, "공통수학반", "진단평가 결과 기준", r1, d1, "공통수학1, 2 진단평가", True, o1)]   # 성적표에는 점수 대신 시험명만
     if fast:
         cards.append(rcard(2, "집중속진반", "자사고·특목고 진학 예정", FAST[0], cfg["class_desc"].get(cfg["school_cls"], ""),
-                           "진학 예정 학교 " + str(s.get("school2") or "자사고·특목고"), False, FAST[1]))
+                           "자사고·특목고 진학 예정", False, FAST[1]))
     cards.append(rcard(len(cards) + 1, "추가 연계 수업", "학습 진도 기준", l2, d2, b2, False, o2))
     cards2 = "".join(cards)
     ds = "<b>공통수학 추천반</b>, <b>집중속진반</b>과 <b>추가 연계 수업</b>" if fast else "<b>공통수학 추천반</b>과 <b>추가 연계 수업</b>"
+    opt = ('<div class="opt">※ <b>%s</b> 또는 <b>%s</b> 중 자사고 입시 스케줄에 따라 선택 가능합니다.</div>' % (e(r1), FAST[0])) if fast else ""
     p2 = f"""<div class="cl p2"><div class="panel">
 <div class="mini">{brand}<div class="rt">{e(cfg['title'] or '예비고1 진단평가 결과 보고서')}<b>{e(s['name'])}</b></div></div>
 <div class="sh"><b>강점과 보완점</b><span class="mono">TOP 2 EACH</span></div>
 <div class="two"><div class="box good"><h4>✓ 강점 단원</h4>{gi}</div><div class="box warn"><h4>! 보완할 단원</h4>{wi}</div></div>
 <div class="sh"><b>종합 의견</b><span class="mono">OVERALL COMMENT</span></div><div class="note">{e(text)}</div>
 <div class="sh"><b>수강 추천 반</b><span class="mono">RECOMMENDED CLASSES</span></div>
-<div class="blue"><div class="ds">진단평가 결과에 따른 {ds}입니다.</div>{cards2}</div>
+<div class="blue"><div class="ds">진단평가 결과에 따른 {ds}입니다.</div>{opt}{cards2}</div>
 <div class="next"><div><b>상담 안내</b><br>{e(cfg['notice'])}</div><div style="white-space:nowrap;text-align:right"><b>{e(cfg['academy'])}</b><br>{e(str(cfg['contact']))}</div></div>
 </div>{foot(2)}</div>"""
     return p1 + p2
@@ -598,7 +601,7 @@ LINK = {
 }
 # 개강일 (안내지와 같게): 공통수학반은 요일별, 집중속진반(자사)은 따로
 OPEN_MAIN = {"월금": "11월 27일(금) 개강", "화목": "11월 26일(목) 개강"}
-FAST = ("TF집중속진반 (TF11·TF12)", "12월 28일(월) 개강")
+FAST = ("TF집중속진반", "12월 28일(월) 개강")
 
 
 def main_open(name, s):
@@ -628,7 +631,7 @@ def link_class(s, cfg):
 def basis(s, cfg):
     """추천 근거 문구: (공통수학반, 선행반)"""
     sc = " · ".join("%s %s" % (nm, "미응시" if s["score"][k] is None else "%g점" % s["score"][k]) for k, nm in SUBJ)
-    pr = ("학습 진도: %s" % s["progress"]) if s.get("progress") else "현재 학습 진도"
+    pr = "학습 진도"   # 성적표에는 진도 내용은 적지 않음
     return "진단평가 " + sc, pr
 
 
