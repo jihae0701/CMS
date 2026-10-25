@@ -544,14 +544,14 @@ def parent_pages(s, cfg, exams, stats):
     b1, b2 = basis(s, cfg)
 
     def rcard(n, kind, std, c, desc, why, first, od=""):
-        head = '<div class="hd"><b>%s%s</b><span>%s · %s</span></div>' % (e(c or kind), "<i>%s</i>" % e(od) if c and od else "", kind, std)
+        head = '<div class="hd"><b>%s%s</b></div>' % (e(c or kind), "<i>%s</i>" % e(od) if c and od else "")
         if c:
             body = head + ('<div class="tx">%s</div>' % e(desc) if desc else "") + '<div class="why"><em>추천 근거</em>%s</div>' % e(why)
         else:  # 아직 정하지 않은 경우
             body = head + '<div class="tx pend">개별 상담을 통해 안내해 드립니다.</div>'
         return '<div class="rc%s"><div class="no">%d</div><div class="bd">%s</div></div>' % (" first" if first else "", n, body)
     l2, d2, o2 = link_class(s, cfg)
-    cards = [rcard(1, "공통수학반", "진단평가 결과 기준", r1, d1, b1, True, o1)]
+    cards = [rcard(1, "공통수학반", "진단평가 결과 기준", r1, d1, "공통수학1, 2 진단평가", True, o1)]   # 성적표에는 점수 대신 시험명만
     if fast:
         cards.append(rcard(2, "집중속진반", "자사고·특목고 진학 예정", FAST[0], cfg["class_desc"].get(cfg["school_cls"], ""),
                            "진학 예정 학교 " + str(s.get("school2") or "자사고·특목고"), False, FAST[1]))
@@ -596,7 +596,6 @@ LINK = {
     "미적1": ("미적분Ⅰ", {"수": ("TF5반 · 수요일 17:30~21:50", "11월 25일(수) 개강"), "일": ("TF7반 · 일요일 12:30~17:00", "11월 29일(일) 개강")}),
     "공수1심화": ("공통수학1 심화 개념·유형", {"수": ("HF5반 · 수요일 17:30~21:50", "12월 2일(수) 개강")}),
 }
-DAYNAME = {"수": "수요일", "일": "일요일"}
 # 개강일 (안내지와 같게): 공통수학반은 요일별, 집중속진반(자사)은 따로
 OPEN_MAIN = {"월금": "11월 27일(금) 개강", "화목": "11월 26일(목) 개강"}
 FAST = ("TF집중속진반 (TF11·TF12)", "12월 28일(월) 개강")
@@ -621,7 +620,7 @@ def link_class(s, cfg):
     day = next(iter(opts)) if len(opts) == 1 else "수" if "월금" in fin else "일" if "화목" in fin else None
     extra = cfg["pre_desc"].get(r2, "")
     if day in opts:
-        return "%s · %s" % (nm, DAYNAME[day]), opts[day][0] + (" — " + extra if extra else ""), opts[day][1]
+        return nm, opts[day][0] + (" — " + extra if extra else ""), opts[day][1]
     alt = " / ".join(v[0] for v in opts.values())
     return nm, (alt + " 중 상담을 통해 안내해 드립니다." if alt else extra), ""
 
