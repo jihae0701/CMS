@@ -415,6 +415,7 @@ PCSS = """
 .cl .rc .hd{display:flex;justify-content:space-between;align-items:baseline}
 .cl .rc .hd b{font-size:12.5pt;font-weight:800;color:#111}
 .cl .rc .hd span{font-size:7.8pt;color:#2F6FD0;font-weight:700}
+.cl .rc .hd b i{font-style:normal;font-size:8.2pt;font-weight:700;color:#c0670b;margin-left:2.2mm}
 .cl .rc .tx{font-size:8.8pt;color:#444;line-height:1.65;margin-top:1.2mm}
 .cl .rc .tx.pend{color:#777}
 .cl .rc .why{font-size:7.8pt;color:#2F6FD0;margin-top:1.3mm}
@@ -534,28 +535,36 @@ def parent_pages(s, cfg, exams, stats):
     wi = "".join('<div class="it"><span class="m">!</span><span><b>%s</b> — %s</span></div>' % (e(u), e(cfg["advice"].get(u, ""))) for _, u, _ in weak) \
         or '<div class="it"><span class="m">!</span><span>전 단원이 고르게 우수합니다. 고난도 문항으로 실력의 폭을 넓혀 보세요.</span></div>'
     r1, r2 = recommended(s, cfg), recommended2(s, cfg)
+    fast = bool(r1 and "(자사)" in r1)     # 'TF1월금(자사)': TF월금 추천 + 집중속진반 안내
+    if fast:
+        r1 = re.sub(r"\(자사\)$", "", r1)
     d1 = class_desc(r1 or "", cfg)
+    o1 = main_open(r1, s) if r1 and r1 != cfg["school_cls"] else ""
     r1 = parent_label(r1)
     b1, b2 = basis(s, cfg)
 
-    def rcard(n, kind, std, c, desc, why, first):
-        head = '<div class="hd"><b>%s</b><span>%s · %s</span></div>' % (e(c or kind), kind, std)
+    def rcard(n, kind, std, c, desc, why, first, od=""):
+        head = '<div class="hd"><b>%s%s</b><span>%s · %s</span></div>' % (e(c or kind), "<i>%s</i>" % e(od) if c and od else "", kind, std)
         if c:
             body = head + ('<div class="tx">%s</div>' % e(desc) if desc else "") + '<div class="why"><em>추천 근거</em>%s</div>' % e(why)
         else:  # 아직 정하지 않은 경우
             body = head + '<div class="tx pend">개별 상담을 통해 안내해 드립니다.</div>'
         return '<div class="rc%s"><div class="no">%d</div><div class="bd">%s</div></div>' % (" first" if first else "", n, body)
-    l2, d2 = link_class(s, cfg)
-    cards2 = rcard(1, "공통수학반", "진단평가 결과 기준", r1, d1, b1, True) + rcard(2, "추가 연계 수업", "학습 진도 기준", l2, d2, b2, False)
+    l2, d2, o2 = link_class(s, cfg)
+    cards = [rcard(1, "공통수학반", "진단평가 결과 기준", r1, d1, b1, True, o1)]
+    if fast:
+        cards.append(rcard(2, "집중속진반", "자사고·특목고 진학 예정", FAST[0], cfg["class_desc"].get(cfg["school_cls"], ""),
+                           "진학 예정 학교 " + str(s.get("school2") or "자사고·특목고"), False, FAST[1]))
+    cards.append(rcard(len(cards) + 1, "추가 연계 수업", "학습 진도 기준", l2, d2, b2, False, o2))
+    cards2 = "".join(cards)
+    ds = "<b>공통수학 추천반</b>, <b>집중속진반</b>과 <b>추가 연계 수업</b>" if fast else "<b>공통수학 추천반</b>과 <b>추가 연계 수업</b>"
     p2 = f"""<div class="cl p2"><div class="panel">
 <div class="mini">{brand}<div class="rt">{e(cfg['title'] or '예비고1 진단평가 결과 보고서')}<b>{e(s['name'])}</b></div></div>
-<div class="sh"><b>문항별 결과</b><span class="mono">ITEM CHECK</span></div>{''.join(grids)}
-<div class="leg"><span>○ 정답 · × 오답</span><span>1~14번 객관식 · 15~20번 단답형(음영)</span></div>
 <div class="sh"><b>강점과 보완점</b><span class="mono">TOP 2 EACH</span></div>
 <div class="two"><div class="box good"><h4>✓ 강점 단원</h4>{gi}</div><div class="box warn"><h4>! 보완할 단원</h4>{wi}</div></div>
 <div class="sh"><b>종합 의견</b><span class="mono">OVERALL COMMENT</span></div><div class="note">{e(text)}</div>
 <div class="sh"><b>수강 추천 반</b><span class="mono">RECOMMENDED CLASSES</span></div>
-<div class="blue"><div class="ds">진단평가 결과에 따른 <b>공통수학 추천반</b>과 <b>추가 연계 수업</b>입니다.</div>{cards2}</div>
+<div class="blue"><div class="ds">진단평가 결과에 따른 {ds}입니다.</div>{cards2}</div>
 <div class="next"><div><b>상담 안내</b><br>{e(cfg['notice'])}</div><div style="white-space:nowrap;text-align:right"><b>{e(cfg['academy'])}</b><br>{e(str(cfg['contact']))}</div></div>
 </div>{foot(2)}</div>"""
     return p1 + p2
@@ -583,26 +592,38 @@ def recommended2(s, cfg):
 
 # 추가 연계 수업(엑셀 반배정 '선행반' 칸) → 과목명, 요일별 반·시간 (안내지 '반별 추가 연계 수업'과 같게)
 LINK = {
-    "미적2": ("미적분Ⅱ", {"수": "TF3반 · 수요일 17:30~21:50", "일": "TF4반 · 일요일 12:30~17:00"}),
-    "미적1": ("미적분Ⅰ", {"수": "TF5반 · 수요일 17:30~21:50", "일": "TF7반 · 일요일 12:30~17:00"}),
-    "공수1심화": ("공통수학1 심화 개념·유형", {"수": "HF5반 · 수요일 17:30~21:50 · 12월 2일 개강"}),
+    "미적2": ("미적분Ⅱ", {"수": ("TF3반 · 수요일 17:30~21:50", "11월 25일(수) 개강"), "일": ("TF4반 · 일요일 12:30~17:00", "11월 29일(일) 개강")}),
+    "미적1": ("미적분Ⅰ", {"수": ("TF5반 · 수요일 17:30~21:50", "11월 25일(수) 개강"), "일": ("TF7반 · 일요일 12:30~17:00", "11월 29일(일) 개강")}),
+    "공수1심화": ("공통수학1 심화 개념·유형", {"수": ("HF5반 · 수요일 17:30~21:50", "12월 2일(수) 개강")}),
 }
 DAYNAME = {"수": "수요일", "일": "일요일"}
+# 개강일 (안내지와 같게): 공통수학반은 요일별, 집중속진반(자사)은 따로
+OPEN_MAIN = {"월금": "11월 27일(금) 개강", "화목": "11월 26일(목) 개강"}
+FAST = ("TF집중속진반 (TF11·TF12)", "12월 28일(월) 개강")
+
+
+def main_open(name, s):
+    """공통수학반 개강일: 반 이름의 요일(월금/화목), 없으면 학생 등원 요일로"""
+    for k, v in OPEN_MAIN.items():
+        if k in str(name):
+            return v
+    day = s.get("day") or ""
+    return OPEN_MAIN["월금"] if "월" in day else OPEN_MAIN["화목"] if "화" in day else "11월 26일(목)·27일(금) 개강"
 
 
 def link_class(s, cfg):
     """(카드 제목, 소개 문구). 월금반 → 수요일, 화목반 → 일요일. 비어 있으면 (None, '')"""
     r2 = recommended2(s, cfg)
     if not r2:
-        return None, ""
+        return None, "", ""
     nm, opts = LINK.get(r2.replace(" ", ""), (r2, {}))
     fin = str(s.get("final") or "")
     day = next(iter(opts)) if len(opts) == 1 else "수" if "월금" in fin else "일" if "화목" in fin else None
     extra = cfg["pre_desc"].get(r2, "")
     if day in opts:
-        return "%s · %s" % (nm, DAYNAME[day]), opts[day] + (" — " + extra if extra else "")
-    alt = " / ".join(opts.values())
-    return nm, (alt + " 중 상담을 통해 안내해 드립니다." if alt else extra)
+        return "%s · %s" % (nm, DAYNAME[day]), opts[day][0] + (" — " + extra if extra else ""), opts[day][1]
+    alt = " / ".join(v[0] for v in opts.values())
+    return nm, (alt + " 중 상담을 통해 안내해 드립니다." if alt else extra), ""
 
 
 def basis(s, cfg):
