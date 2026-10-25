@@ -441,23 +441,12 @@ cell(b, f"{cols_[0]}13", "· 자동배정은 '설정' ①의 기준(공수1 점�
      "· 공통수학반·선행반은 목록에서 고르거나 직접 입력('설정' ⑥·⑦에 반 소개 추가 가능)\n· 환산총점·석차는 참고용", f(size=9, color="595959"),
      align=LEFT, border=False)
 b.merge_cells(f"{cols_[0]}13:{cols_[6]}18")
-# 요일반별 인원
-cell(b, f"{cols_[0]}20", "요일반별 인원 (최종 기준)", f(True, 11, "1F3864"), align=LEFT, border=False)
-header(b, 21, ["반", "인원", "공수1\n평균", "공수2\n평균"], start=SX)
-for i, (k, suf) in enumerate([(None, None), (0, "월금"), (0, "화목"), (2, "월금"), (2, "화목")]):
-    r = 22 + i
-    c0, c1, c2, c3 = [f"{c}{r}" for c in cols_[:4]]
-    if k is None:   # 학교 지정 반('설정' B10)
-        cell(b, c0, "=IF('설정'!$B$10=\"\",\"-\",'설정'!$B$10)", f(True), PatternFill("solid", fgColor=CLS4[0]))
-    else:
-        cell(b, c0, f"={PFX(NAMES[k])}&\"{suf}\"", f(True), PatternFill("solid", fgColor=CLS4[k]))
-    crit = f"{c0}&\"(*\"" if k is None else c0      # TF자사(TF1)·TF자사(TF2)… 모두 TF자사로 셈
-    cell(b, c1, f"=COUNTIF({Lr},{crit})", f(True))
-    cell(b, c2, f"=IFERROR(AVERAGEIF({Lr},{crit},{E_}),\"\")", fmt="0.0")
-    cell(b, c3, f"=IFERROR(AVERAGEIF({Lr},{crit},{F_}),\"\")", fmt="0.0")
+# 요일반별 인원(자사 구분)·선행과목별 인원 표 (S20~)
+from count_tables import add_count_tables
+add_count_tables(b, FIRST, LAST)
 for c in cols_:
     b.column_dimensions[c].width = 8
-b.column_dimensions[cols_[0]].width = 10
+b.column_dimensions[cols_[0]].width = 16
 b.column_dimensions["Q"].hidden = True
 b.freeze_panes = f"C{FIRST}"
 
