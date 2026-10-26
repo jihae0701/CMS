@@ -152,6 +152,22 @@ ans.append("⑴ $%d$ ⑵ $%s$" % (sab[0][a] + sab[0][b], mstr(A ** 3 + 2 * A ** 
 # STEP 3
 s3 = solve([3 + a + b + 6 - 13, 3 - a + b - 6 - 15], [a, b])
 ans.append(s3[a] * s3[b])
+# 내신 중대부고 10번: 2A+B의 (i,j)=3i, A-B의 (i,j)=3j+p (2×3), A+B 성분 합 26
+pp = symbols("pp")
+Aij = lambda i, j: (3 * i + 3 * j + pp) / 3
+Bij = lambda i, j: 3 * i - 2 * Aij(i, j)
+assert all(simplify(Aij(i, j) - Bij(i, j) - (3 * j + pp)) == 0 for i in (1, 2) for j in (1, 2, 3))
+ans.append(solve(sum(Aij(i, j) + Bij(i, j) for i in (1, 2) for j in (1, 2, 3)) - 26, pp)[0])
+# 내신 중대부고 14번: 모든 실수 k에 대하여 f(k)=k^2-k+5+2a-b>=0 (k를 촘촘히 훑어 확인)
+cnt = 0
+for a_ in range(1, 5):
+    for b_ in range(5, 11):
+        kk_ = symbols("kk_")
+        f = expand(sum(Matrix([[1, kk_ ** 2], [2, -kk_]]) + Matrix([[1 + 2 * a_, -1 - b_], [-1, 3]])))
+        ok = all(f.subs(kk_, Rational(v, 100)) >= 0 for v in range(-300, 301))
+        assert ok == (Rational(19, 4) + 2 * a_ - b_ >= 0)
+        cnt += ok
+ans.append(cnt)
 shapes = {"A": (1, 3), "B": (3, 2), "C": (2, 1)}
 
 
@@ -178,9 +194,21 @@ al = Rational(-1, 2) + sqrt(3) / 2 * I
 assert simplify(al ** 3 - 1) == 0
 A = Matrix([[al, 2], [-1, al]])
 ans.append(simplify(expand(sum(A * A))))
+# 내신 서답형: A=(x 1; y 2), A^2의 대각합 9, 나머지 합 -5 → A^4 성분 합
+xx, yy = symbols("xx yy", real=True)
+A = Matrix([[xx, 1], [yy, 2]]); A2 = A * A
+sols = [d for d in solve([A2[0, 0] + A2[1, 1] - 9, A2[0, 1] + A2[1, 0] + 5], [xx, yy], dict=True) if d[xx].is_real]
+assert len(sols) == 1
+ans.append(total((A2 * A2).subs(sols[0])))
 P1, P2 = Matrix([[1, -1], [4, 5]]), Matrix([[1, -1], [2, 3]])
 A, B = (P1 + P2) / 2, (P1 - P2) / 2
 ans.append(total(A * A - B * B))
+# 내신 숙명여고 21번: AB=BA=A, B 성분 합 10 → B^2 성분 합
+pq = symbols("p1 q1 r1 s1")
+A = Matrix([[1, -1], [-1, 1]]); B = Matrix(2, 2, pq)
+sb = solve(list(A * B - A) + list(B * A - A) + [sum(B) - 10], pq, dict=True)
+assert len(sb) == 1
+ans.append(total((B * B).subs(sb[0])))
 A = Matrix([[-2, 5], [-1, 2]])
 ans.append(next(n for n in range(1, 50) if A ** n + A == Matrix([[-1, 5], [-1, 3]])))
 X = Matrix([[3, 1], [1, 2]])          # 열이 (3p,q)/p, (p,2q)/q 꼴: A·diag(p,q)·X = [[2,4],[-3,5]]
@@ -195,7 +223,23 @@ t = symbols("t")
 r_ = rem(t ** 4 + t ** 5, t ** 3 + t ** 2 + 3 * t + 3, t)       # A^3+A^2+3A+3E=O로 낮춘 나머지
 assert expand(r_ - (9 * t + 9)) == 0
 ans.append(9 * 0 + 9 * 2)
-it_last = data12.STEP3[11]
+# 내신 현대고 10번: A^2=O, B^2=B, ABA=A, 성분 합 A 1, B 2, AB 1, BA 2 (조건을 만족시키는 행렬을 찾아 확인)
+it_h = next(it for it in data12.STEP3 if it["src"] == "내신 현대고")
+found = []
+for t4 in product(range(-2, 3), repeat=4):
+    Am = Matrix(2, 2, t4)
+    if sum(Am) != 1 or Am * Am != O:
+        continue
+    for u4 in product(range(-2, 3), repeat=4):
+        Bm = Matrix(2, 2, u4)
+        if sum(Bm) == 2 and Bm * Bm == Bm and Am * Bm * Am == Am and sum(Am * Bm) == 1 and sum(Bm * Am) == 2:
+            found.append((Am, Bm))
+assert found
+tr = [all(sum(a1 + b1) == 3 for a1, b1 in found),
+      all(sum(a1 * b1 * a1 * b1 + b1 * a1 * b1 * a1) == 3 for a1, b1 in found),
+      all(sum((a1 + b1) ** 2) == 4 for a1, b1 in found)]
+ans.append(choose(tr, ch_of(it_h)))
+it_last = next(it for it in data12.STEP3 if it["ans"] == "④")
 Z = Matrix([[0, 1], [1, 0]])
 v1 = not (Z * Z == E and Z != E and Z != -E)
 v2 = True
@@ -222,7 +266,7 @@ ans.append(10 * 2 + 1 + kk)
 items = [p for _, _, ps in data12.TYPES for p in ps] + data12.STEP3
 assert len(items) == len(ans), (len(items), len(ans))
 bad = 0
-for no, (it, v) in enumerate(zip(items, ans), 428):
+for no, (it, v) in enumerate(zip(items, ans), 445):
     if str(v) != it["ans"]:
         bad += 1
         print("불일치", no, it["ans"], v)

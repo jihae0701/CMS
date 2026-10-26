@@ -12,7 +12,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import hwpxio as io, fixes, numbering as nb, eqsize, addprob, data12
 
 SRC, OUT = sys.argv[1:3]
-START = 428
+START = 445
 UNIT_NO, UNIT_TITLE = "12.", "행렬"
 PIC_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "그림")
 
