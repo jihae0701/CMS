@@ -608,6 +608,15 @@ eq = expand(2 * (x + y) / 2 + (y - x) / 2 - 1)
 ch = [x - 3 * y + 2, x + 3 * y - 2, 3 * x - y - 2, 3 * x + y - 2, 3 * x + 3 * y + 2]
 chk("sm0115", "①②③④⑤"[[simplify(eq / c).is_number for c in ch].index(True)], "②")
 
+# o3-35 (올림포스 03단원 35번, 4단원에서 옮겨 옴): x축 위의 점 P(a, 0)을 촘촘히 훑음
+import math
+_d = lambda P, S: math.hypot(P[0] - S[0], P[1] - S[1])
+_vals = [(abs(_d((p, 0), (1, 6)) - _d((p, 0), (-1, -2))), p) for p in [i / 1000 for i in range(-30000, 30000)]]
+_Mv, _a1 = max(_vals)
+_mv, _a2 = min(_vals)
+_r = (_Mv + _mv) / (_a1 + _a2)
+chk("o3-35", sqrt(5) / 3 if abs(_r - math.sqrt(5) / 3) < 1e-3 else _r, sqrt(5) / 3)
+
 if __name__ == "__main__":
     bad = [r_ for r_ in R if not r_[1]]
     for r_ in bad:

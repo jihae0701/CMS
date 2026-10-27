@@ -343,10 +343,6 @@ for av in [4 * sqrt(2)]:
     if simplify(Polygon(A3, B3, C3).circumradius * Polygon(A3, Point(0, 0), C3).circumradius - 18 * sqrt(2)) == 0:
         found.append(av ** 2)
 chk("m2409", found[0] if len(found) == 1 else -1, 32)
-vals = [(abs(d2((p, 0), (1, 6)) - d2((p, 0), (-1, -2))), p) for p in [i / 1000 for i in range(-30000, 30000)]]
-Mv, a1 = max(vals)
-mv, a2 = min(vals)
-near("o35", (Mv + mv) / (a1 + a2), sqrt(5) / 3, 1e-3)
 # m2321 (ㄱㄴㄷ)
 arc = [(5 * math.cos(math.radians(90 + i / 10)), 5 * math.sin(math.radians(90 + i / 10))) for i in range(0, 901)]
 mids, lens, ars = set(), set(), []
