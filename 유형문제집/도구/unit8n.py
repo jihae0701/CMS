@@ -15,7 +15,7 @@ def _load(fn):
 
 T = _load("unit08.py")
 UNIT = ("이차부등식", "08")
-START = 415   # 7단원(355~414)에 이어지는 번호
+START = 414   # 7단원(354~413)에 이어지는 번호
 
 
 def H(t, kind=1):

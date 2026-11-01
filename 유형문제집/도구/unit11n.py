@@ -15,7 +15,7 @@ def _load(fn):
 
 T = _load("unit11.py")
 UNIT = ("조합", "11")
-START = 597   # 10단원(530~596)에 이어지는 번호
+START = 596   # 10단원(529~595)에 이어지는 번호
 
 
 def H(t, kind=1):
