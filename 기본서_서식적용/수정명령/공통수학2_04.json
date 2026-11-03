@@ -1,0 +1,338 @@
+[
+ {
+  "op": "replace",
+  "n": 6,
+  "part": "q",
+  "old": "구하시오..",
+  "new": "구하시오."
+ },
+ {
+  "op": "replace",
+  "n": 8,
+  "part": "q",
+  "old": "구하시오..",
+  "new": "구하시오."
+ },
+ {
+  "op": "replace",
+  "n": 9,
+  "part": "q",
+  "old": "구하시오..",
+  "new": "구하시오."
+ },
+ {
+  "op": "replace",
+  "n": 10,
+  "part": "q",
+  "old": "구하시오..",
+  "new": "구하시오."
+ },
+ {
+  "op": "replace",
+  "n": 13,
+  "part": "q",
+  "old": "구하시오..",
+  "new": "구하시오."
+ },
+ {
+  "op": "replace",
+  "n": 14,
+  "part": "q",
+  "old": "구하시오..",
+  "new": "구하시오."
+ },
+ {
+  "op": "replace",
+  "n": 16,
+  "part": "q",
+  "old": "구하시오..",
+  "new": "구하시오."
+ },
+ {
+  "op": "replace",
+  "n": 17,
+  "part": "q",
+  "old": "구하시오..",
+  "new": "구하시오."
+ },
+ {
+  "op": "replace",
+  "n": 18,
+  "part": "q",
+  "old": "구하시오..",
+  "new": "구하시오."
+ },
+ {
+  "op": "replace",
+  "n": 19,
+  "part": "q",
+  "old": "구하시오..",
+  "new": "구하시오."
+ },
+ {
+  "op": "replace",
+  "n": 29,
+  "part": "q",
+  "old": "구하시오..",
+  "new": "구하시오."
+ },
+ {
+  "op": "replace",
+  "n": 31,
+  "part": "q",
+  "old": "구하시오..",
+  "new": "구하시오."
+ },
+ {
+  "op": "replace",
+  "n": 32,
+  "part": "q",
+  "old": "구하시오..",
+  "new": "구하시오."
+ },
+ {
+  "op": "replace",
+  "n": 44,
+  "part": "q",
+  "old": "구하시오..",
+  "new": "구하시오."
+ },
+ {
+  "op": "replace",
+  "n": 15,
+  "part": "q",
+  "old": "답하시오..",
+  "new": "답하시오."
+ },
+ {
+  "op": "replace",
+  "n": 15,
+  "part": "q",
+  "old": "모두 포함하는 집합의 개수를 구하시오..",
+  "new": "모두 포함하는 집합의 개수를 구하시오."
+ },
+ {
+  "op": "replace",
+  "n": 15,
+  "part": "q",
+  "old": "포함하지 않는 집합의 개수를 구하시오..",
+  "new": "포함하지 않는 집합의 개수를 구하시오."
+ },
+ {
+  "op": "replace",
+  "n": 38,
+  "part": "q",
+  "old": "⟦B= LEFT { 3,````it`b  ^{2} ,````b  ^{2} -1 RIGHT }⟧",
+  "new": "⟦B= LEFT { 1,````it`b  ^{2} ,````b  ^{2} -1 RIGHT }⟧"
+ },
+ {
+  "op": "replace",
+  "n": 38,
+  "part": "sol",
+  "old": "󰂼 ③",
+  "new": "󰂼 ⟦5⟧"
+ },
+ {
+  "op": "replace",
+  "n": 38,
+  "part": "end",
+  "old": "③",
+  "new": "⟦5⟧"
+ },
+ {
+  "op": "replace",
+  "n": 29,
+  "part": "q",
+  "old": "⟦ S= LEFT { itx+y  left | x`   IN  A,````ity IN  B`,```it`x != y RIGHT }⟧",
+  "new": "⟦ S= LEFT { itx+y  left | x`   IN  A,````ity IN  A`,```it`x != y RIGHT }⟧"
+ },
+ {
+  "op": "replace",
+  "n": 29,
+  "part": "sol",
+  "old": "⟦a+b=14,``a+c=17,``b+c=21`⟧에서 ⟦a=5,``b=9,``c=12⟧이다.",
+  "new": "⟦a+b=14,``a+c=17,``b+c=21`⟧이고, 이를 연립하여 풀면 ⟦a=5,``b=9,``c=12⟧이다."
+ },
+ {
+  "op": "replace",
+  "n": 29,
+  "part": "sol",
+  "old": "에서 ",
+  "new": "에서 ⟦a<b<c⟧라 하면 ⟦a+b<a+c<b+c⟧이므로 "
+ },
+ {
+  "op": "replace",
+  "n": 43,
+  "part": "q",
+  "old": "⟦A= left{2x left | x  le x le 9,~x`⟧",
+  "new": "⟦A= left{2x left | 1  le x le 9,~x`⟧"
+ },
+ {
+  "op": "replace",
+  "n": 43,
+  "part": "sol",
+  "old": "⟦2^9-4 =2^5 =32⟧",
+  "new": "⟦2^{9-4} =2^5 =32⟧"
+ },
+ {
+  "op": "replace",
+  "n": 43,
+  "part": "sol",
+  "old": "의 원소를 갖는 부분집합",
+  "new": "의 원소를 모두 원소로 갖는 부분집합"
+ },
+ {
+  "op": "replace",
+  "n": 23,
+  "part": "sol",
+  "old": "⟦LEFT { `1,~2` RIGHT }  IN  rm A~ LEFT { `1,~2` RIGHT }  SUBSET  rm A`⟧",
+  "new": "⟦LEFT { `1,~2` RIGHT }  IN  rm A,~ LEFT { `1,~2` RIGHT }  SUBSET  rm A`⟧"
+ },
+ {
+  "op": "replace",
+  "n": 23,
+  "part": "sol",
+  "old": "⟦LEFT { `2,~3` RIGHT }  SUBSET  rm A`⟧이다.",
+  "new": "⟦LEFT { `2,~3` RIGHT }  SUBSET  rm A`⟧이고, 이다."
+ },
+ {
+  "op": "replace",
+  "n": 23,
+  "part": "sol",
+  "old": "이고, 이다.",
+  "new": "이고, ⟦LEFT { `2,~3` RIGHT }  NOTIN  rm A`⟧이다."
+ },
+ {
+  "op": "replace",
+  "n": 23,
+  "part": "sol",
+  "old": "옳지 않는 것은",
+  "new": "옳지 않은 것은"
+ },
+ {
+  "op": "replace",
+  "n": 34,
+  "part": "sol",
+  "old": "⟦B SUBSET A`⟧이고 ⟦a!=4`⟧이므로",
+  "new": "⟦B SUBSET A`⟧이고 ⟦5 IN B`⟧이므로"
+ },
+ {
+  "op": "replace",
+  "n": 34,
+  "part": "sol",
+  "old": "이어야 한다.⏎",
+  "new": "이어야 한다. (⟦a+1=5⟧이면 ⟦a=4⟧이므로 제외한다.)⏎"
+ },
+ {
+  "op": "replace",
+  "n": 28,
+  "part": "sol",
+  "old": "⟦X= left{2^2 ,~2^3 ,~2^4 ,~cdots,~2^8 right}`⟧",
+  "new": "⟦C= left{2^2 ,~2^3 ,~2^4 ,~cdots,~2^8 right}`⟧"
+ },
+ {
+  "op": "replace",
+  "n": 20,
+  "part": "sol",
+  "old": "즉, 집합⟦rm { A }⟧의 원소가 될 수 있는 수는 ⟦1,2,4,8,16⟧의 원소의 개수에 따라 집합⟦rm { A }⟧를 구하면",
+  "new": "즉, 집합 ⟦rm { A }⟧의 원소가 될 수 있는 수는 ⟦1,~2,~4,~8,~16⟧이다. 원소의 개수에 따라 집합 ⟦rm { A }⟧를 구하면"
+ },
+ {
+  "op": "replace",
+  "n": 20,
+  "part": "sol",
+  "old": "⟦(ⅰ)⟧집합⟦rm { A }⟧의 원소의 개수가 ⟦1⟧개일 때,⟦rm { A= LEFT { 4 RIGHT } }⟧",
+  "new": "⟦(ⅰ)⟧ 집합 ⟦rm { A }⟧의 원소의 개수가 ⟦1⟧개일 때, ⟦rm { A= LEFT { 4 RIGHT } }⟧"
+ },
+ {
+  "op": "replace",
+  "n": 20,
+  "part": "sol",
+  "old": "⟦(ⅱ)⟧집합⟦rm { A }⟧의 원소의 개수가 ⟦2⟧개일 때,⟦rm { A= LEFT { 1,16 RIGHT } }⟧⟦rm { A= LEFT { 2,`8 RIGHT } }⟧",
+  "new": "⟦(ⅱ)⟧ 집합 ⟦rm { A }⟧의 원소의 개수가 ⟦2⟧개일 때, ⟦rm { A= LEFT { 1,16 RIGHT } }⟧, ⟦rm { A= LEFT { 2,`8 RIGHT } }⟧"
+ },
+ {
+  "op": "replace",
+  "n": 20,
+  "part": "sol",
+  "old": "⟦(ⅲ)⟧집합⟦rm { A }⟧의 원소의 개수가 ⟦3⟧개일 때,⟦rm { A= LEFT { 1,4,16 RIGHT } }⟧⟦rm { A= LEFT { 2,4,`8 RIGHT } }⟧",
+  "new": "⟦(ⅲ)⟧ 집합 ⟦rm { A }⟧의 원소의 개수가 ⟦3⟧개일 때, ⟦rm { A= LEFT { 1,4,16 RIGHT } }⟧, ⟦rm { A= LEFT { 2,4,`8 RIGHT } }⟧"
+ },
+ {
+  "op": "replace",
+  "n": 20,
+  "part": "sol",
+  "old": "⟦(ⅳ)⟧집합⟦rm { A }⟧의 원소의 개수가 ⟦4⟧개일 때,⟦rm { A= LEFT { 1,`2,`8,16 RIGHT } }⟧",
+  "new": "⟦(ⅳ)⟧ 집합 ⟦rm { A }⟧의 원소의 개수가 ⟦4⟧개일 때, ⟦rm { A= LEFT { 1,`2,`8,16 RIGHT } }⟧"
+ },
+ {
+  "op": "replace",
+  "n": 20,
+  "part": "sol",
+  "old": "⟦(ⅴ)⟧집합⟦rm { A }⟧의 원소의 개수가 ⟦5⟧개일 때,⟦rm { A= LEFT { 1,`2,4,`8,16 RIGHT } }⟧따라서 집합⟦rm { S` }⟧의 총 개수는 ⟦7⟧개다.",
+  "new": "⟦(ⅴ)⟧ 집합 ⟦rm { A }⟧의 원소의 개수가 ⟦5⟧개일 때, ⟦rm { A= LEFT { 1,`2,4,`8,16 RIGHT } }⟧⏎따라서 집합 ⟦rm { A }⟧의 개수는 ⟦7⟧이다."
+ },
+ {
+  "op": "replace",
+  "n": 20,
+  "part": "sol",
+  "old": "집합⟦rm { A }⟧는 ⟦1,2,4,8,16⟧중의",
+  "new": "집합 ⟦rm { A }⟧는 ⟦1,2,4,8,16⟧ 중의"
+ },
+ {
+  "op": "replace",
+  "n": 20,
+  "part": "sol",
+  "old": "즉 ⟦1,2,4⟧이 집합⟦rm { A }⟧의 원소인지 아닌지에 따라 ⟦16,8,4⟧가 집합⟦rm { A }⟧의 원소인지 아닌지가 결정된다. 따라서 집합⟦rm { A }⟧의 개수는 ⟦2 CIRC 2 CIRC 2=2  ^{3} =8`⟧ 이 중에도 ⟦EMPTYSET ⟧도 포함되므로 ⟦EMPTYSET ⟧을 제외하면 집합⟦A⟧의 개수는 ⟦8-1=7⟧개다.",
+  "new": "즉, ⟦1,~2,~4⟧가 집합 ⟦rm { A }⟧의 원소인지 아닌지에 따라 ⟦16,8,4⟧가 집합 ⟦rm { A }⟧의 원소인지 아닌지가 결정된다. 따라서 집합 ⟦rm { A }⟧의 개수는 ⟦2 TIMES 2 TIMES 2=2  ^{3} =8`⟧이다. 이 중에는 ⟦EMPTYSET ⟧도 포함되므로 ⟦EMPTYSET ⟧을 제외하면 집합 ⟦A⟧의 개수는 ⟦8-1=7⟧개다."
+ },
+ {
+  "op": "replace",
+  "n": 24,
+  "part": "sol",
+  "old": "집합⟦rm { A }⟧는 ⟦EMPTYSET ,1,` LEFT { 1,2 RIGHT } ,2⟧을 원소로",
+  "new": "집합 ⟦rm { A }⟧는 ⟦EMPTYSET ,1,` LEFT { 1,2 RIGHT } ,2⟧를 원소로"
+ },
+ {
+  "op": "replace",
+  "n": 24,
+  "part": "sol",
+  "old": "또,집합⟦rm { A }⟧의 부분집합은",
+  "new": "또, 집합 ⟦rm { A }⟧의 부분집합은"
+ },
+ {
+  "op": "replace",
+  "n": 24,
+  "part": "sol",
+  "old": "⑤번⟦rm { LEFT { 2 RIGHT }  NOTIN A }⟧",
+  "new": "⑤ ⟦rm { LEFT { 2 RIGHT }  NOTIN A }⟧"
+ },
+ {
+  "op": "replace",
+  "n": 7,
+  "part": "q",
+  "old": "{gso}서 있는 대로",
+  "new": "{gso}에서 있는 대로"
+ },
+ {
+  "op": "replace",
+  "n": 27,
+  "part": "q",
+  "old": "⟦it right⟧",
+  "new": "⟦` right}⟧"
+ },
+ {
+  "op": "replace",
+  "n": 22,
+  "part": "sol",
+  "old": "⟦left{2,~3 right} SUBSET A⟧",
+  "new": "⟦left{2,~3 right} SUBSET A⟧ (참)"
+ },
+ {
+  "op": "replace",
+  "n": 30,
+  "part": "sol",
+  "old": "⟦C= LEFT {  (-1,~-2),`(-1,~0),~(-1,~2),~(0,~-2),~(0,~0),~(0,~2)⟧",
+  "new": "⟦C= LEFT {  (-1,~-2),`(-1,~0),~(-1,~2),~(0,~-2),~(0,~0),~(0,~2),⟧"
+ }
+]

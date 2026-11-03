@@ -1,0 +1,282 @@
+[
+ {
+  "op": "replace",
+  "n": 4,
+  "part": "sol",
+  "old": "몫을 ⟦Q(s)⟧,",
+  "new": "몫을 ⟦Q(x)⟧,"
+ },
+ {
+  "op": "replace",
+  "n": 6,
+  "part": "sol",
+  "old": "⟦Q _{2} LEFT ( x RIGHT )⟧, ⟦R LEFT ( x RIGHT ) =ax ^{2} +bx+c⟧",
+  "new": "⟦Q _{2} LEFT ( x RIGHT )⟧라 하고, ⟦R LEFT ( x RIGHT ) =ax ^{2} +bx+c⟧"
+ },
+ {
+  "op": "replace",
+  "n": 6,
+  "part": "sol",
+  "old": "라 하고, ",
+  "new": "라 하고, ⟦LEFT ( x ^{2} +1 RIGHT ) LEFT ( x-1 RIGHT )⟧로 나누었을 때의 나머지를 "
+ },
+ {
+  "op": "replace",
+  "n": 6,
+  "part": "sol",
+  "old": "⟦f LEFT ( x RIGHT ) = LEFT ( x ^{2} +1 RIGHT ) LEFT ( x-1 RIGHT ) Q _{3} LEFT ( x RIGHT ) +a LEFT ( x ^{2} +1 RIGHT ) +x+1⟧",
+  "new": "⟦f LEFT ( x RIGHT ) = LEFT ( x ^{2} +1 RIGHT ) LEFT ( x-1 RIGHT ) Q _{2} LEFT ( x RIGHT ) +a LEFT ( x ^{2} +1 RIGHT ) +x+1⟧"
+ },
+ {
+  "op": "replace",
+  "n": 6,
+  "part": "sol",
+  "old": "⟦THEREFORE~ R LEFT ( 3 RIGHT ) = {1} over {2} 3 ^{2} +3+ {3} over {2} =9⟧",
+  "new": "⟦THEREFORE~ R LEFT ( 3 RIGHT ) = {1} over {2} TIMES 3 ^{2} +3+ {3} over {2} =9⟧"
+ },
+ {
+  "op": "replace",
+  "n": 7,
+  "part": "sol",
+  "old": "󰂼 ⟦ 6}⟧",
+  "new": "󰂼 ⟦6⟧"
+ },
+ {
+  "op": "replace",
+  "n": 10,
+  "part": "sol",
+  "old": "󰂼 ⟦ -3}}⟧",
+  "new": "󰂼 ⟦-3⟧"
+ },
+ {
+  "op": "replace",
+  "n": 11,
+  "part": "sol",
+  "old": "󰂼 ⟦ 10}}⟧",
+  "new": "󰂼 ⟦10⟧"
+ },
+ {
+  "op": "add_para",
+  "n": 10,
+  "part": "sol",
+  "before": "⟦=x  ^{3} +x  ^{2} -4x-4⟧",
+  "text": "⟦f LEFT ( x RIGHT )⟧는 최고차항의 계수가 ⟦1⟧인 삼차식이고 ⟦LEFT ( x+1 RIGHT ) LEFT ( x-2 RIGHT )⟧를 인수로 가지므로 ⟦f LEFT ( x RIGHT ) = LEFT ( x+1 RIGHT ) LEFT ( x-2 RIGHT ) LEFT ( x+c RIGHT )⟧ (⟦c⟧는 상수)로 놓으면 상수항에서 ⟦-2c=-4⟧이므로 ⟦c=2⟧"
+ },
+ {
+  "op": "replace",
+  "n": 13,
+  "part": "q",
+  "old": "를 만족시킬 때, ⟦f(x)⟧는 ⟦x-1⟧로 나누어떨어진다. 이때,",
+  "new": "이고 ⟦f(x)⟧가 ⟦x-1⟧로 나누어떨어질 때,"
+ },
+ {
+  "op": "replace",
+  "n": 15,
+  "part": "sol",
+  "old": "⟦-2 LEFT { P` LEFT ( x RIGHT ) RIGHT } ^{2} =left(x ^{2} -3x+2{right)A LEFT ( x RIGHT ) `⟧",
+  "new": "⟦-2 LEFT { P` LEFT ( x RIGHT ) RIGHT } ^{2} =left(x ^{2} -3x+2 right)A LEFT ( x RIGHT ) `⟧"
+ },
+ {
+  "op": "replace",
+  "n": 15,
+  "part": "sol",
+  "old": "⟦LEFT { P` LEFT ( x RIGHT ) RIGHT } ^{2} =left(x-1{right){left(x-2{right) LEFT { - {1} over {2} A LEFT ( x RIGHT ) RIGHT } `⟧",
+  "new": "⟦LEFT { P` LEFT ( x RIGHT ) RIGHT } ^{2} =left(x-1 right) left(x-2 right) LEFT { - {1} over {2} A LEFT ( x RIGHT ) RIGHT } `⟧"
+ },
+ {
+  "op": "replace",
+  "n": 15,
+  "part": "sol",
+  "old": "⟦P` LEFT ( x RIGHT ) = it -2left(x-1{right){left(x-2{right)`⟧, ⟦Q` LEFT ( x RIGHT ) =4left(x-1{right)left(x-2{right)`⟧",
+  "new": "⟦P` LEFT ( x RIGHT ) = it -2 left(x-1 right) left(x-2 right)`⟧, ⟦Q` LEFT ( x RIGHT ) =4 left(x-1 right) left(x-2 right)`⟧"
+ },
+ {
+  "op": "replace",
+  "n": 16,
+  "part": "sol",
+  "old": "(6) ⟦ {{21} over {4} ⟧",
+  "new": "(6) ⟦{21} over {4}⟧"
+ },
+ {
+  "op": "replace",
+  "n": 18,
+  "part": "q",
+  "old": "]안의 수",
+  "new": "] 안의 수"
+ },
+ {
+  "op": "replace",
+  "n": 19,
+  "part": "sol",
+  "old": "󰂼 ⟦  {-11}}}}⟧",
+  "new": "󰂼 ⟦-11⟧"
+ },
+ {
+  "op": "replace",
+  "n": 19,
+  "part": "end",
+  "old": "⟦ {   {-11}}}} }⟧",
+  "new": "⟦-11⟧"
+ },
+ {
+  "op": "replace",
+  "n": 21,
+  "part": "sol",
+  "old": "󰂼 ⟦ {3x-1}}⟧",
+  "new": "󰂼 ⟦3x-1⟧"
+ },
+ {
+  "op": "replace",
+  "n": 21,
+  "part": "end",
+  "old": "⟦ {  {3x-1}} }⟧",
+  "new": "⟦3x-1⟧"
+ },
+ {
+  "op": "replace",
+  "n": 23,
+  "part": "q",
+  "old": "으로 나눈 나머지는",
+  "new": "로 나눈 나머지는"
+ },
+ {
+  "op": "replace",
+  "n": 23,
+  "part": "sol",
+  "old": "으로 나눈 나머지가",
+  "new": "로 나눈 나머지가"
+ },
+ {
+  "op": "replace",
+  "n": 24,
+  "part": "sol",
+  "old": "󰂼 ⟦ {x^2 +x+1⟧",
+  "new": "󰂼 ⟦x^2 +x+1⟧"
+ },
+ {
+  "op": "replace",
+  "n": 24,
+  "part": "sol",
+  "old": "양볁에",
+  "new": "양변에"
+ },
+ {
+  "op": "replace",
+  "n": 24,
+  "part": "end",
+  "old": "⟦ { {x^2 +x+1 }⟧",
+  "new": "⟦x^2 +x+1⟧"
+ },
+ {
+  "op": "replace",
+  "n": 26,
+  "part": "sol",
+  "old": "󰂼 ⟦ {x-4⟧",
+  "new": "󰂼 ⟦x-4⟧"
+ },
+ {
+  "op": "replace",
+  "n": 26,
+  "part": "end",
+  "old": "⟦ { {x-4 }⟧",
+  "new": "⟦x-4⟧"
+ },
+ {
+  "op": "replace",
+  "n": 31,
+  "part": "sol",
+  "old": "⟦f(-1)=(-1-1)Q(-1)+2=  -2  cdot 3  =  -4⟧",
+  "new": "⟦f(-1)=(-1-1)Q(-1)+2=-2 cdot 3+2=-4⟧"
+ },
+ {
+  "op": "replace",
+  "n": 32,
+  "part": "q",
+  "old": "⟦ (x^2 +2)Q(x-2)⟧",
+  "new": "⟦ (x^2 +a)Q(x-2)⟧"
+ },
+ {
+  "op": "replace",
+  "n": 33,
+  "part": "q",
+  "old": "다항식 ⟦f(x)= 2x sup 3 + ax  sup 2  - 3x +3⟧이 ⟦x-2⟧를 인수로 가질 때",
+  "new": "다항식 ⟦f(x)=x sup 3 -2x sup 2 -ax+9⟧가 ⟦x+1⟧로 나누어떨어질 때"
+ },
+ {
+  "op": "replace",
+  "n": 33,
+  "part": "sol",
+  "old": "⟦f(x)  x sup 3  - 2  x sup 2   - ax +9⟧",
+  "new": "⟦f(x)= x sup 3  - 2  x sup 2   - ax +9⟧"
+ },
+ {
+  "op": "replace",
+  "n": 37,
+  "part": "q",
+  "old": "⟦P left({ 1 over 2  right) = P left( 1 over 3 right) = P left(  1over4  right) = 0⟧",
+  "new": "⟦P left( 1 over 2  right) = P left( 1 over 3 right) = P left(  1over4  right) = 0⟧"
+ },
+ {
+  "op": "replace",
+  "n": 40,
+  "part": "sol",
+  "old": "조간 (가)에서",
+  "new": "조건 (가)에서"
+ },
+ {
+  "op": "replace",
+  "n": 41,
+  "part": "sol",
+  "old": "⟦x^{3}-2 x+1-P(x)⟧는 이차식이 되어야 하므로 ⟦P(x)⟧의",
+  "new": "⟦x^{3}-10 x+13-P(x)⟧는 이차식이 되어야 하므로 ⟦P(x)⟧의"
+ },
+ {
+  "op": "replace",
+  "n": 41,
+  "part": "sol",
+  "old": "⟦x^{3}-2 x+1-P(x)⟧는 이차식이 되어야 하므로 ⟦P(x)⟧는",
+  "new": "⟦x^{3}-10 x+13-P(x)⟧는 이차식이 되어야 하므로 ⟦P(x)⟧는"
+ },
+ {
+  "op": "replace",
+  "n": 41,
+  "part": "sol",
+  "old": "⟦x ^{3} -``````3x ^{2} ```````````````````````````````````3x⟧",
+  "new": "⟦x ^{3} -``````3x ^{2} ```````````````````````````````````+3x⟧"
+ },
+ {
+  "op": "replace",
+  "n": 2,
+  "part": "end",
+  "old": "(1) ⟦{8⟧ (2) ⟦3⟧ (3) ⟦{63 over 8⟧",
+  "new": "(1) ⟦8⟧ (2) ⟦3⟧ (3) ⟦63 over 8⟧"
+ },
+ {
+  "op": "replace",
+  "n": 3,
+  "part": "end",
+  "old": "⟦{-22⟧",
+  "new": "⟦-22⟧"
+ },
+ {
+  "op": "replace",
+  "n": 4,
+  "part": "end",
+  "old": "⟦{3x-2⟧",
+  "new": "⟦3x-2⟧"
+ },
+ {
+  "op": "replace",
+  "n": 12,
+  "part": "end",
+  "old": "⟦{10⟧",
+  "new": "⟦10⟧"
+ },
+ {
+  "op": "replace",
+  "n": 16,
+  "part": "end",
+  "old": "(6) ⟦ {  {{21} over {4}  }⟧",
+  "new": "(6) ⟦{21} over {4}⟧"
+ }
+]

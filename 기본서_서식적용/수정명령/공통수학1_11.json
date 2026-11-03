@@ -1,0 +1,982 @@
+[
+ {
+  "op": "replace",
+  "n": 1,
+  "part": "sol",
+  "old": "{atno} 정답 ",
+  "new": "{atno} 󰂼 "
+ },
+ {
+  "op": "replace",
+  "n": 2,
+  "part": "sol",
+  "old": "{atno} 정답 ",
+  "new": "{atno} 󰂼 "
+ },
+ {
+  "op": "replace",
+  "n": 3,
+  "part": "sol",
+  "old": "{atno} 정답 ",
+  "new": "{atno} 󰂼 "
+ },
+ {
+  "op": "replace",
+  "n": 4,
+  "part": "sol",
+  "old": "{atno} 정답 ",
+  "new": "{atno} 󰂼 "
+ },
+ {
+  "op": "replace",
+  "n": 7,
+  "part": "sol",
+  "old": "{atno} 정답 ",
+  "new": "{atno} 󰂼 "
+ },
+ {
+  "op": "replace",
+  "n": 8,
+  "part": "sol",
+  "old": "{atno} 정답 ",
+  "new": "{atno} 󰂼 "
+ },
+ {
+  "op": "replace",
+  "n": 9,
+  "part": "sol",
+  "old": "{atno} 정답 ",
+  "new": "{atno} 󰂼 "
+ },
+ {
+  "op": "replace",
+  "n": 10,
+  "part": "sol",
+  "old": "{atno} 정답 ",
+  "new": "{atno} 󰂼 "
+ },
+ {
+  "op": "replace",
+  "n": 11,
+  "part": "sol",
+  "old": "{atno} 정답 ",
+  "new": "{atno} 󰂼 "
+ },
+ {
+  "op": "replace",
+  "n": 12,
+  "part": "sol",
+  "old": "{atno} 정답 ",
+  "new": "{atno} 󰂼 "
+ },
+ {
+  "op": "replace",
+  "n": 13,
+  "part": "sol",
+  "old": "{atno} 정답 ",
+  "new": "{atno} 󰂼 "
+ },
+ {
+  "op": "replace",
+  "n": 14,
+  "part": "sol",
+  "old": "{atno} 정답 ",
+  "new": "{atno} 󰂼 "
+ },
+ {
+  "op": "replace",
+  "n": 15,
+  "part": "sol",
+  "old": "{atno} 정답 ",
+  "new": "{atno} 󰂼 "
+ },
+ {
+  "op": "replace",
+  "n": 16,
+  "part": "sol",
+  "old": "{atno} 정답 ",
+  "new": "{atno} 󰂼 "
+ },
+ {
+  "op": "replace",
+  "n": 23,
+  "part": "sol",
+  "old": "{atno} 정답 ",
+  "new": "{atno} 󰂼 "
+ },
+ {
+  "op": "replace",
+  "n": 24,
+  "part": "sol",
+  "old": "{atno} 정답 ",
+  "new": "{atno} 󰂼 "
+ },
+ {
+  "op": "replace",
+  "n": 25,
+  "part": "sol",
+  "old": "{atno} 정답 ",
+  "new": "{atno} 󰂼 "
+ },
+ {
+  "op": "replace",
+  "n": 31,
+  "part": "sol",
+  "old": "{atno} 정답 ",
+  "new": "{atno} 󰂼 "
+ },
+ {
+  "op": "replace",
+  "n": 33,
+  "part": "sol",
+  "old": "{atno} 정답 ",
+  "new": "{atno} 󰂼 "
+ },
+ {
+  "op": "replace",
+  "n": 34,
+  "part": "sol",
+  "old": "{atno} 정답 ",
+  "new": "{atno} 󰂼 "
+ },
+ {
+  "op": "replace",
+  "n": 35,
+  "part": "sol",
+  "old": "{atno} 정답 ",
+  "new": "{atno} 󰂼 "
+ },
+ {
+  "op": "replace",
+  "n": 36,
+  "part": "sol",
+  "old": "{atno} 정답 ",
+  "new": "{atno} 󰂼 "
+ },
+ {
+  "op": "replace",
+  "n": 42,
+  "part": "sol",
+  "old": "{atno} 정답 ",
+  "new": "{atno} 󰂼 "
+ },
+ {
+  "op": "replace",
+  "n": 43,
+  "part": "sol",
+  "old": "{atno} 정답 ",
+  "new": "{atno} 󰂼 "
+ },
+ {
+  "op": "replace",
+  "n": 46,
+  "part": "sol",
+  "old": "{atno} 정답 ",
+  "new": "{atno} 󰂼 "
+ },
+ {
+  "op": "replace",
+  "n": 5,
+  "part": "sol",
+  "old": "{atno} [정답] ",
+  "new": "{atno} 󰂼 "
+ },
+ {
+  "op": "replace",
+  "n": 19,
+  "part": "sol",
+  "old": "{atno} [정답] ",
+  "new": "{atno} 󰂼 "
+ },
+ {
+  "op": "replace",
+  "n": 20,
+  "part": "sol",
+  "old": "{atno} [정답] ",
+  "new": "{atno} 󰂼 "
+ },
+ {
+  "op": "replace",
+  "n": 21,
+  "part": "sol",
+  "old": "{atno} [정답] ",
+  "new": "{atno} 󰂼 "
+ },
+ {
+  "op": "replace",
+  "n": 37,
+  "part": "sol",
+  "old": "{atno} [정답] ",
+  "new": "{atno} 󰂼 "
+ },
+ {
+  "op": "replace",
+  "n": 40,
+  "part": "sol",
+  "old": "{atno} [정답] ",
+  "new": "{atno} 󰂼 "
+ },
+ {
+  "op": "replace",
+  "n": 41,
+  "part": "sol",
+  "old": "{atno} [정답] ",
+  "new": "{atno} 󰂼 "
+ },
+ {
+  "op": "replace",
+  "n": 44,
+  "part": "sol",
+  "old": "{atno} [정답] ",
+  "new": "{atno} 󰂼 "
+ },
+ {
+  "op": "replace",
+  "n": 49,
+  "part": "sol",
+  "old": "{atno} [정답] ",
+  "new": "{atno} 󰂼 "
+ },
+ {
+  "op": "replace",
+  "n": 52,
+  "part": "sol",
+  "old": "{atno} [정답] ",
+  "new": "{atno} 󰂼 "
+ },
+ {
+  "op": "replace",
+  "n": 22,
+  "part": "sol",
+  "old": "{atno} 답 ",
+  "new": "{atno} 󰂼 "
+ },
+ {
+  "op": "replace",
+  "n": 17,
+  "part": "sol",
+  "old": "{atno} (1) ",
+  "new": "{atno} 󰂼 (1) "
+ },
+ {
+  "op": "replace",
+  "n": 18,
+  "part": "sol",
+  "old": "{atno} (1) ",
+  "new": "{atno} 󰂼 (1) "
+ },
+ {
+  "op": "replace",
+  "n": 38,
+  "part": "sol",
+  "old": "󰂼 ④",
+  "new": "󰂼 ⟦5⟧"
+ },
+ {
+  "op": "replace",
+  "n": 39,
+  "part": "sol",
+  "old": "{atno} 정답 ",
+  "new": "{atno} 󰂼 "
+ },
+ {
+  "op": "replace",
+  "n": 39,
+  "part": "sol",
+  "old": "󰂼 ",
+  "new": "󰂼 ⟦-4 le a < -3⟧ 또는 ⟦4 < a le 5⟧"
+ },
+ {
+  "op": "replace",
+  "n": 42,
+  "part": "sol",
+  "old": "⟦{ 2 le x  < 4⟧",
+  "new": "⟦{ 2 le k  < 4⟧"
+ },
+ {
+  "op": "replace",
+  "n": 1,
+  "part": "sol",
+  "old": "⟦3x+2<0`⟧",
+  "new": "⟦3k+2<0`⟧"
+ },
+ {
+  "op": "replace",
+  "n": 3,
+  "part": "q",
+  "old": "⟦x-5 le 3x-1 < 2 (x+3)⟧.",
+  "new": "⟦x-5 le 3x-1 < 2 (x+3)⟧"
+ },
+ {
+  "op": "replace",
+  "n": 6,
+  "part": "q",
+  "old": "한판을 ⟦8⟧조각으로",
+  "new": "한 판이 ⟦8⟧조각으로"
+ },
+ {
+  "op": "replace",
+  "n": 6,
+  "part": "sol",
+  "old": "이상 ",
+  "new": " 이상 "
+ },
+ {
+  "op": "replace",
+  "n": 6,
+  "part": "sol",
+  "old": "미만이다.",
+  "new": " 미만이다."
+ },
+ {
+  "op": "replace",
+  "n": 6,
+  "part": "sol",
+  "old": "㉠를 풀면",
+  "new": "㉠을 풀면"
+ },
+ {
+  "op": "replace",
+  "n": 6,
+  "part": "sol",
+  "old": "㉡를 풀면",
+  "new": "㉡을 풀면"
+ },
+ {
+  "op": "replace",
+  "n": 6,
+  "part": "sol",
+  "old": "㉢를 만족하는",
+  "new": "㉢을 만족하는"
+ },
+ {
+  "op": "replace",
+  "n": 9,
+  "part": "sol",
+  "old": "⟦2x^2 <6-ㅌ`⟧",
+  "new": "⟦2x^2 <6-x`⟧"
+ },
+ {
+  "op": "replace",
+  "n": 10,
+  "part": "q",
+  "old": "⟦alphabeta`⟧",
+  "new": "⟦alpha beta`⟧"
+ },
+ {
+  "op": "replace",
+  "n": 11,
+  "part": "q",
+  "old": "⟦cases{ x^2 + left| x right| -20 <0 _{it } \r\n#\r\nx^2 +2x > it -4 `⟧",
+  "new": "⟦cases{ x^2 + left| x right| -20 <0 _{it } \r\n#\r\nx^2 +2x > -4x `⟧"
+ },
+ {
+  "op": "replace",
+  "n": 13,
+  "part": "sol",
+  "old": "존재하도록 ㉠, ㉡의 해의 공통부분에 속하는 정수 ⟦x`⟧가 ⟦2`⟧개가 존재하도록 ㉠, ㉡의 해를",
+  "new": "존재하도록 ㉠, ㉡의 해를"
+ },
+ {
+  "op": "replace",
+  "n": 14,
+  "part": "sol",
+  "old": "⟦4 le x lea⟧",
+  "new": "⟦4 le x le a⟧"
+ },
+ {
+  "op": "replace",
+  "n": 17,
+  "part": "sol",
+  "old": "⇥② ⟦f( 1) > 0⟧",
+  "new": "⇥② (축의 방정식)⟦>1⟧"
+ },
+ {
+  "op": "replace",
+  "n": 17,
+  "part": "sol",
+  "old": "⏎① ⟦ ( -2 ) ^2  - ( -a) > 0⟧",
+  "new": "⏎⇥③ ⟦f( 1) > 0⟧⏎① "
+ },
+ {
+  "op": "replace",
+  "n": 17,
+  "part": "sol",
+  "old": "⏎① , ",
+  "new": "⏎① ⟦ ( -2 ) ^2  - ( -a) > 0⟧, "
+ },
+ {
+  "op": "replace",
+  "n": 17,
+  "part": "sol",
+  "old": "⏎② ⟦ 1- 4 -a > 0⟧, ⟦a < it -3⟧",
+  "new": "⏎② ⟦2>1⟧이므로 항상 성립한다.⏎③ ⟦ 1- 4 -a > 0⟧"
+ },
+ {
+  "op": "replace",
+  "n": 17,
+  "part": "sol",
+  "old": "⏎①, ②에 의하여 ",
+  "new": ", ⟦a < it -3⟧⏎①, ②, ③에 의하여 "
+ },
+ {
+  "op": "replace",
+  "n": 17,
+  "part": "sol",
+  "old": "(2) ⟦ -2 < a le it -1⟧",
+  "new": "(2) ⟦a le it -1⟧"
+ },
+ {
+  "op": "replace",
+  "n": 17,
+  "part": "sol",
+  "old": "③ ⟦a+ 2 > 0 ⟧, ⟦ a > it -2⟧",
+  "new": "③ ⟦f(1)=1-2a+a+2=3-a > 0 ⟧, ⟦ a < 3⟧"
+ },
+ {
+  "op": "replace",
+  "n": 17,
+  "part": "sol",
+  "old": "에 의하여 ⟦ -2 < a le it -1⟧",
+  "new": "에 의하여 ⟦a le it -1⟧"
+ },
+ {
+  "op": "replace",
+  "n": 17,
+  "part": "sol",
+  "old": "(4) ⟦ 2 le a < 3⟧",
+  "new": "(4) ⟦ 2 < a < 3⟧"
+ },
+ {
+  "op": "replace",
+  "n": 17,
+  "part": "sol",
+  "old": "(4) ⟦x^2 = ax + 3 -a =0⟧의 두 근이 모두 ⟦ -3 ⟧과 ⟦0⟧사이에",
+  "new": "(4) ⟦x^2 + ax + 3 -a =0⟧의 서로 다른 두 근이 모두 ⟦ -3 ⟧과 ⟦0⟧ 사이에"
+ },
+ {
+  "op": "replace",
+  "n": 17,
+  "part": "sol",
+  "old": "⟦D ge0⟧",
+  "new": "⟦D >0⟧"
+ },
+ {
+  "op": "replace",
+  "n": 17,
+  "part": "sol",
+  "old": "⟦a ^2 - 4 ( 3- a)  ge 0⟧",
+  "new": "⟦a ^2 - 4 ( 3- a)  > 0⟧"
+ },
+ {
+  "op": "replace",
+  "n": 17,
+  "part": "sol",
+  "old": "⟦a ^2 + 4a -12 ge 0⟧",
+  "new": "⟦a ^2 + 4a -12 > 0⟧"
+ },
+ {
+  "op": "replace",
+  "n": 17,
+  "part": "sol",
+  "old": "⟦( a+ 6 ) ( a -2 ) ge 0⟧",
+  "new": "⟦( a+ 6 ) ( a -2 ) > 0⟧"
+ },
+ {
+  "op": "replace",
+  "n": 17,
+  "part": "sol",
+  "old": "⟦a le it -6⟧ 또는 ⟦a ge 2⟧",
+  "new": "⟦a < it -6⟧ 또는 ⟦a > 2⟧"
+ },
+ {
+  "op": "replace",
+  "n": 17,
+  "part": "sol",
+  "old": "⟦ -3 < it -a < 0⟧, ⟦0 < a < 3⟧",
+  "new": "⟦ -3 < it - a over 2  < 0⟧, ⟦0 < a < 6⟧"
+ },
+ {
+  "op": "replace",
+  "n": 17,
+  "part": "sol",
+  "old": "에 의하여 ⟦ 2 le a < 3⟧",
+  "new": "에 의하여 ⟦ 2 < a < 3⟧"
+ },
+ {
+  "op": "replace",
+  "n": 18,
+  "part": "q",
+  "old": "사이에 존재",
+  "new": "사이에 존재한다."
+ },
+ {
+  "op": "replace",
+  "n": 18,
+  "part": "q",
+  "old": "이 존재",
+  "new": "이 존재한다."
+ },
+ {
+  "op": "replace",
+  "n": 18,
+  "part": "sol",
+  "old": "(1) ⟦-7<a LEQit-3⟧",
+  "new": "(1) ⟦-7<a LEQ it-3⟧"
+ },
+ {
+  "op": "replace",
+  "n": 18,
+  "part": "sol",
+  "old": "에 의하여 ⟦-7<a LEQit-3⟧",
+  "new": "에 의하여 ⟦-7<a LEQ it-3⟧"
+ },
+ {
+  "op": "replace",
+  "n": 18,
+  "part": "sol",
+  "old": "⟦x ^{2} -ax+3-a=0⟧",
+  "new": "⟦x ^{2} +ax+3-a=0⟧"
+ },
+ {
+  "op": "replace",
+  "n": 18,
+  "part": "sol",
+  "old": "⟦0⟧사이에",
+  "new": "⟦0⟧ 사이에"
+ },
+ {
+  "op": "replace",
+  "n": 19,
+  "part": "q",
+  "old": "의 최댓값을 구하시오.",
+  "new": "의 값을 구하시오. (단, ⟦a⟧는 실수이다.)"
+ },
+ {
+  "op": "add_para",
+  "n": 19,
+  "part": "sol",
+  "before": "⟦D= (6-a)^2 - 4(2-b) le 0⟧",
+  "text": "⟦rm(i)⟧에서 ⟦a=3⟧이므로"
+ },
+ {
+  "op": "replace",
+  "n": 19,
+  "part": "sol",
+  "old": "⟦D= (6-a)^2 - 4(2-b) le 0⟧",
+  "new": "⟦D= (6-3)^2 - 4(2-b) =4b+1 le 0⟧"
+ },
+ {
+  "op": "replace",
+  "n": 20,
+  "part": "sol",
+  "old": "⟦y=mx+n⟧는",
+  "new": "⟦y=mx+n⟧은"
+ },
+ {
+  "op": "replace",
+  "n": 22,
+  "part": "sol",
+  "old": "⟦x= {x-1} over {4}⟧",
+  "new": "⟦x= {m-1} over {4}⟧"
+ },
+ {
+  "op": "replace",
+  "n": 22,
+  "part": "sol",
+  "old": "⟦(m-12)  ^{2} =12  ^{2}⟧",
+  "new": "⟦(m-11)  ^{2} =12  ^{2}⟧"
+ },
+ {
+  "op": "replace",
+  "n": 24,
+  "part": "q",
+  "old": "⟦ax geb`⟧",
+  "new": "⟦ax ge b`⟧"
+ },
+ {
+  "op": "replace",
+  "n": 24,
+  "part": "sol",
+  "old": "⟦x > 2a overa+b `⟧",
+  "new": "⟦x > {2a} over {a+b} `⟧"
+ },
+ {
+  "op": "replace",
+  "n": 24,
+  "part": "sol",
+  "old": "⟦2a overa+b = 1⟧",
+  "new": "⟦{2a} over {a+b} = 1⟧"
+ },
+ {
+  "op": "replace",
+  "n": 25,
+  "part": "q",
+  "old": "⟦{cases{`` {3-x} over {2}  GEQ  {x} over {4}#``0.9x+1>0.5x-02}}⟧",
+  "new": "⟦{cases{`` {3-x} over {2}  GEQ  {x} over {4}#``0.9x+1>0.5x-0.2}}⟧"
+ },
+ {
+  "op": "replace",
+  "n": 25,
+  "part": "sol",
+  "old": "⟦2x+ 5 > 4(x+1) `⟧",
+  "new": "⟦2x+ 5 < 4(x+1) `⟧"
+ },
+ {
+  "op": "replace",
+  "n": 26,
+  "part": "q",
+  "old": "⟦3x+a leqx+6<4x+b`⟧",
+  "new": "⟦3x+a leq x+6<4x+b`⟧"
+ },
+ {
+  "op": "replace",
+  "n": 26,
+  "part": "sol",
+  "old": "⟦3x+a leqx+6⟧",
+  "new": "⟦3x+a leq x+6⟧"
+ },
+ {
+  "op": "replace",
+  "n": 26,
+  "part": "sol",
+  "old": "㉠를 풀면",
+  "new": "㉠을 풀면"
+ },
+ {
+  "op": "replace",
+  "n": 26,
+  "part": "sol",
+  "old": "㉡를 풀면",
+  "new": "㉡을 풀면"
+ },
+ {
+  "op": "replace",
+  "n": 27,
+  "part": "sol",
+  "old": "{atno} 󰂼 ⟦ 0<a LEQ 1⟧",
+  "new": "{atno} 󰂼 ⟦ 0 LEQ a<1⟧"
+ },
+ {
+  "op": "replace",
+  "n": 27,
+  "part": "sol",
+  "old": "㉠를 풀면",
+  "new": "㉠을 풀면"
+ },
+ {
+  "op": "replace",
+  "n": 27,
+  "part": "sol",
+  "old": "㉡를 풀면 ⟦x le 5⟧",
+  "new": "㉡을 풀면 ⟦x le 3⟧"
+ },
+ {
+  "op": "replace",
+  "n": 27,
+  "part": "sol",
+  "old": "⟦ a+1 <5⟧",
+  "new": "⟦ a+1 <3⟧"
+ },
+ {
+  "op": "replace",
+  "n": 27,
+  "part": "sol",
+  "old": "⟦a+1 <x le 5⟧",
+  "new": "⟦a+1 <x le 3⟧"
+ },
+ {
+  "op": "replace",
+  "n": 27,
+  "part": "sol",
+  "old": "두 개 뿐이어야 하므로 이래 그림과 같이 ⟦1<a+1 LEQ 2⟧",
+  "new": "두 개뿐이어야 하므로 ⟦1 LEQ a+1<2⟧"
+ },
+ {
+  "op": "replace",
+  "n": 27,
+  "part": "sol",
+  "old": "두 개뿐이어야 하므로 ",
+  "new": "두 개뿐이어야 하므로 정수 ⟦x⟧는 ⟦2⟧, ⟦3⟧이고 "
+ },
+ {
+  "op": "replace",
+  "n": 27,
+  "part": "sol",
+  "old": "⟦therefore~0<a LEQ 1⟧",
+  "new": "⟦therefore~0 LEQ a<1⟧"
+ },
+ {
+  "op": "replace",
+  "n": 28,
+  "part": "sol",
+  "old": "㉠를 풀면",
+  "new": "㉠을 풀면"
+ },
+ {
+  "op": "replace",
+  "n": 28,
+  "part": "sol",
+  "old": "㉡를 풀면",
+  "new": "㉡을 풀면"
+ },
+ {
+  "op": "replace",
+  "n": 28,
+  "part": "sol",
+  "old": "되야 하므로",
+  "new": "되어야 하므로"
+ },
+ {
+  "op": "replace",
+  "n": 28,
+  "part": "sol",
+  "old": "가 ⟦-4⟧, ",
+  "new": "가 "
+ },
+ {
+  "op": "replace",
+  "n": 29,
+  "part": "sol",
+  "old": "㉠, ㉡를 모두",
+  "new": "㉠, ㉡을 모두"
+ },
+ {
+  "op": "replace",
+  "n": 30,
+  "part": "q",
+  "old": "모든 수 들의 합",
+  "new": "모든 수들의 합"
+ },
+ {
+  "op": "replace",
+  "n": 30,
+  "part": "sol",
+  "old": "여름방학을",
+  "new": "방학을"
+ },
+ {
+  "op": "replace",
+  "n": 30,
+  "part": "sol",
+  "old": "㉠, ㉡를 모두",
+  "new": "㉠, ㉡을 모두"
+ },
+ {
+  "op": "replace",
+  "n": 32,
+  "part": "q",
+  "old": "⟦rmbar { AC} + bar { BC}⟧",
+  "new": "⟦rm bar { AC} + bar { BC}⟧"
+ },
+ {
+  "op": "replace",
+  "n": 32,
+  "part": "sol",
+  "old": "{atno} 󰂼 ⟦-2 LEQx le 3⟧",
+  "new": "{atno} 󰂼 ⟦-2 LEQ x le 3⟧"
+ },
+ {
+  "op": "replace",
+  "n": 32,
+  "part": "sol",
+  "old": "(ⅰ)~(ⅲ)에 의하여 ⟦-2 LEQx le 3⟧",
+  "new": "(ⅰ)~(ⅲ)에 의하여 ⟦-2 LEQ x le 3⟧"
+ },
+ {
+  "op": "replace",
+  "n": 32,
+  "part": "sol",
+  "old": "⟦therefore⟧ ⟦-2 LEQx le 3⟧",
+  "new": "⟦therefore⟧ ⟦-2 LEQ x le 3⟧"
+ },
+ {
+  "op": "replace",
+  "n": 32,
+  "part": "sol",
+  "old": "⟦rmC⟧",
+  "new": "⟦rm C⟧"
+ },
+ {
+  "op": "replace",
+  "n": 32,
+  "part": "sol",
+  "old": "⟦rmAB⟧",
+  "new": "⟦rm AB⟧"
+ },
+ {
+  "op": "replace",
+  "n": 32,
+  "part": "sol",
+  "old": "㉠, ㉡를 모두",
+  "new": "㉠, ㉡을 모두"
+ },
+ {
+  "op": "replace",
+  "n": 32,
+  "part": "sol",
+  "old": "㉢, ㉣를 모두",
+  "new": "㉢, ㉣을 모두"
+ },
+ {
+  "op": "replace",
+  "n": 32,
+  "part": "sol",
+  "old": "㉤, ㉥를 모두",
+  "new": "㉤, ㉥을 모두"
+ },
+ {
+  "op": "replace",
+  "n": 38,
+  "part": "sol",
+  "old": "⟦therefore~x leqa⟧",
+  "new": "⟦therefore~x leq a⟧"
+ },
+ {
+  "op": "replace",
+  "n": 38,
+  "part": "sol",
+  "old": "⟦x geqb⟧",
+  "new": "⟦x geq b⟧"
+ },
+ {
+  "op": "replace",
+  "n": 38,
+  "part": "sol",
+  "old": "⟦x leqa⟧ 또는 ⟦x>c⟧",
+  "new": "⟦x leq a⟧ 또는 ⟦x>c⟧"
+ },
+ {
+  "op": "replace",
+  "n": 38,
+  "part": "sol",
+  "old": "⟦therefore~2 leqx leq 3⟧",
+  "new": "⟦therefore~2 leq x leq 3⟧"
+ },
+ {
+  "op": "add_para",
+  "n": 40,
+  "part": "sol",
+  "after": "이차부등식 ㉡의 해는",
+  "text": "한편 ㉠, ㉡의 해 중 ⟦x< -a⟧인 부분의 공통부분은 ⟦2<a<3⟧일 때 ⟦-3<x< -a⟧이고, ⟦a ge 3⟧일 때는 없다. 이때 ⟦-3< -a< -2⟧이므로 ⟦-3<x< -a⟧에는 정수가 없다."
+ },
+ {
+  "op": "replace",
+  "n": 41,
+  "part": "sol",
+  "old": "⟦ -5`,~4`,~5⟧",
+  "new": "⟦ -5`,~-4`,~5⟧"
+ },
+ {
+  "op": "replace",
+  "n": 44,
+  "part": "sol",
+  "old": "이므로 성립한다.⏎",
+  "new": "이므로 성립한다.⏎⟦ rm(iii) ⟧ "
+ },
+ {
+  "op": "replace",
+  "n": 45,
+  "part": "sol",
+  "old": "양수인 근보다 크므로",
+  "new": "양수인 근보다 작으므로"
+ },
+ {
+  "op": "replace",
+  "n": 48,
+  "part": "sol",
+  "old": "사이에 있어야",
+  "new": " 사이에 있어야"
+ },
+ {
+  "op": "replace",
+  "n": 50,
+  "part": "sol",
+  "old": "⟦y=mx+n⟧는",
+  "new": "⟦y=mx+n⟧은"
+ },
+ {
+  "op": "replace",
+  "n": 50,
+  "part": "sol",
+  "old": "⟦(it-1,~3)⟧를 지나고",
+  "new": "⟦(it-1,~3)⟧을 지나고"
+ },
+ {
+  "op": "replace",
+  "n": 50,
+  "part": "sol",
+  "old": "⟦(it-1,~3)⟧를 지나므로",
+  "new": "⟦(it-1,~3)⟧을 지나므로"
+ },
+ {
+  "op": "replace",
+  "n": 51,
+  "part": "sol",
+  "old": "성립하라면 ⟦-2 le x le 1⟧에서 직선 ⟦y=x+a⟧이",
+  "new": "성립하려면 ⟦-2 le x le 1⟧에서 직선 ⟦y=x+a⟧가"
+ },
+ {
+  "op": "replace",
+  "n": 51,
+  "part": "sol",
+  "old": "성립하라면 ⟦-2 le x le 1⟧에서 직선 ⟦y=2x+b⟧이 이차함수 ⟦y=x^2⟧의 그래프와 ⟦x=2⟧일 때",
+  "new": "성립하려면 ⟦-2 le x le 1⟧에서 직선 ⟦y=2x+b⟧가 이차함수 ⟦y=x^2⟧의 그래프와 ⟦x=-2⟧일 때"
+ },
+ {
+  "op": "replace",
+  "n": 51,
+  "part": "sol",
+  "old": "⟦(2,~4)⟧",
+  "new": "⟦(-2,~4)⟧"
+ },
+ {
+  "op": "replace",
+  "n": 52,
+  "part": "q",
+  "old": "의 최댓값을 구하시오.",
+  "new": "의 값을 구하시오."
+ },
+ {
+  "op": "replace",
+  "n": 52,
+  "part": "sol",
+  "old": "의 최댓값은",
+  "new": "의 값은"
+ },
+ {
+  "op": "replace",
+  "n": 53,
+  "part": "sol",
+  "old": "⟦2x+4>3x⟧, 즉 ⟦0<x<4⟧일 때",
+  "new": "⟦2x+4 ge 3x⟧, 즉 ⟦0<x le 4⟧일 때"
+ },
+ {
+  "op": "replace",
+  "n": 54,
+  "part": "sol",
+  "old": "⟦6. 5<{7- sqrt {51}} over {2} <7< {7+ sqrt {51}} over {2} < 7.5⟧",
+  "new": "⟦6.5<{7+ sqrt {47}} over {2} <7< {7+ sqrt {51}} over {2} < 7.5⟧"
+ },
+ {
+  "op": "replace",
+  "n": 54,
+  "part": "sol",
+  "old": "또는 ⟦{7+ sqrt {47}} over {2}  lex< {7+ sqrt {51}} over {2}⟧",
+  "new": "또는 ⟦{7+ sqrt {47}} over {2}  le x< {7+ sqrt {51}} over {2}⟧"
+ },
+ {
+  "op": "replace",
+  "n": 54,
+  "part": "sol",
+  "old": "⟦{7+ sqrt {47}} over {2}  lex< {7+ sqrt {51}} over {2}⟧를",
+  "new": "⟦{7+ sqrt {47}} over {2}  le x< {7+ sqrt {51}} over {2}⟧를"
+ },
+ {
+  "op": "replace",
+  "n": 54,
+  "part": "sol",
+  "old": "㉠, ㉡를 모두",
+  "new": "㉠, ㉡을 모두"
+ }
+]

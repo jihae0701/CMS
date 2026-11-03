@@ -1,0 +1,551 @@
+[
+{
+"op": "replace",
+"n": 5,
+"part": "sol",
+"old": "을 만족시키는 ⟦ 5⟧이하",
+"new": "을 만족시키는 ⟦ 5⟧ 이하"
+},
+{
+"op": "replace",
+"n": 5,
+"part": "sol",
+"old": "를 만족시키는 ⟦ 5⟧이하",
+"new": "를 만족시키는 ⟦ 5⟧ 이하"
+},
+{
+"op": "replace",
+"n": 5,
+"part": "sol",
+"old": "되도록 하는 ⟦ 5⟧이하",
+"new": "되도록 하는 ⟦ 5⟧ 이하"
+},
+{
+"op": "replace",
+"n": 7,
+"part": "sol",
+"old": "⇥(2) ⟦{10}⟧",
+"new": "⇥(2) ⟦8⟧"
+},
+{
+"op": "replace",
+"n": 7,
+"part": "sol",
+"old": "⟦=LEFT ( alpha + beta  RIGHT ) LEFT ( bar { alpha }+ bar { beta } RIGHT )⟧⏎⟦=LEFT ( 2+i+1-2i RIGHT ) LEFT ( 2-i+1+2i RIGHT )⟧⏎⟦= LEFT ( 3-i RIGHT ) LEFT ( 3+i RIGHT )⟧⏎⟦=9-i  ^{2}⟧⏎⟦=9+1⟧",
+"new": "⟦= alpha LEFT ( beta + bar { beta } RIGHT ) + bar { alpha } LEFT ( beta + bar { beta } RIGHT )⟧⏎⟦= LEFT ( alpha + bar { alpha } RIGHT ) LEFT ( beta + bar { beta } RIGHT )⟧⏎⟦= LEFT ( 2+i+2-i RIGHT ) LEFT ( 1-2i+1+2i RIGHT )⟧⏎⟦=4 TIMES 2⟧⏎⟦=8⟧"
+},
+{
+"op": "replace",
+"n": 7,
+"part": "sol",
+"old": "⏎⟦=10⟧",
+"new": ""
+},
+{
+"op": "replace",
+"n": 7,
+"part": "end",
+"old": "(2) ⟦{10}⟧",
+"new": "(2) ⟦8⟧"
+},
+{
+"op": "replace",
+"n": 8,
+"part": "sol",
+"old": "⏎⟦=2cdot LEFT ( -6 RIGHT )⟧⟦=it-12⟧",
+"new": ""
+},
+{
+"op": "replace",
+"n": 8,
+"part": "end",
+"old": "(2) ⟦{-24⟧",
+"new": "(2) ⟦-24i⟧"
+},
+{
+"op": "replace",
+"n": 11,
+"part": "q",
+"old": "(단 ",
+"new": "(단, "
+},
+{
+"op": "replace",
+"n": 14,
+"part": "sol",
+"old": "⟦therefore~⟧⟦b=1⟧",
+"new": "⟦therefore~⟧⟦b=1~cdotscdots ㉠⟧"
+},
+{
+"op": "replace",
+"n": 14,
+"part": "sol",
+"old": "⟦=a  ^{2} +b  ^{2} =10⟧",
+"new": "⟦=a  ^{2} +b  ^{2} =10~cdotscdots ㉡⟧"
+},
+{
+"op": "replace",
+"n": 17,
+"part": "q",
+"old": "⟦ 100⟧이하",
+"new": "⟦ 100⟧ 이하"
+},
+{
+"op": "replace",
+"n": 17,
+"part": "sol",
+"old": "⟦ 100⟧이하의 모든 자연수 ⟦ n⟧은 ⟦1`,~4`,~7`,~cdots `,~ 100⟧",
+"new": "⟦ 100⟧ 이하의 모든 자연수 ⟦ n⟧은 ⟦1`,~4`,~7`,~cdots `,~ 100⟧"
+},
+{
+"op": "replace",
+"n": 17,
+"part": "sol",
+"old": "⟦ 100⟧이하의 모든 자연수 ⟦ n⟧은 ⟦ 2`,~5`,~8`,~cdots`,~ 98⟧",
+"new": "⟦ 100⟧ 이하의 모든 자연수 ⟦ n⟧은 ⟦ 2`,~5`,~8`,~cdots`,~ 98⟧"
+},
+{
+"op": "replace",
+"n": 17,
+"part": "sol",
+"old": "⟦ 100⟧이하의 자연수는",
+"new": "⟦ 100⟧ 이하의 자연수는"
+},
+{
+"op": "replace",
+"n": 18,
+"part": "sol",
+"old": "개므로",
+"new": "개이므로"
+},
+{
+"op": "replace",
+"n": 18,
+"part": "sol",
+"old": "개다.",
+"new": "개이다."
+},
+{
+"op": "replace",
+"n": 19,
+"part": "sol",
+"old": "⟦sqrt {-2} sqrt {-2} + {3} over {sqrt {-3}} + sqrt {4} sqrt {-4} + {sqrt {-5}} over {sqrt {5}}⟧",
+"new": "⟦sqrt {-2} sqrt {-2} + {sqrt {3}} over {sqrt {-3}} + sqrt {4} sqrt {-4} + {sqrt {-5}} over {sqrt {5}}⟧"
+},
+{
+"op": "replace",
+"n": 22,
+"part": "q",
+"old": "⟦rootx-1 rootx-1 +root1-x overrootx-1 -left|x right|⟧",
+"new": "⟦sqrt {x-1} sqrt {x-1} + {sqrt {1-x}} over {sqrt {x-1}} -left|x right|⟧"
+},
+{
+"op": "replace",
+"n": 22,
+"part": "sol",
+"old": "⟦THEREFORE~root{x-1}root{x-1}+ root1-x overrootx-1 -left|x right|⟧",
+"new": "⟦THEREFORE~sqrt {x-1} sqrt {x-1} + {sqrt {1-x}} over {sqrt {x-1}} -left|x right|⟧"
+},
+{
+"op": "replace",
+"n": 22,
+"part": "sol",
+"old": "⟦=-root(x-1)^2 -root{1-x over x-1} - left|x right|⟧",
+"new": "⟦=- sqrt {(x-1)^2} - sqrt {{1-x} over {x-1}} - left|x right|⟧"
+},
+{
+"op": "replace",
+"n": 25,
+"part": "q",
+"old": "⟦{1-root2 i}over{1+root2 i}+{1+root2 i}over{1-root2 i}- 2-i over3⟧",
+"new": "⟦{1-root2 i}over{1+root2 i}+{1+root2 i}over{1-root2 i}- {2-i} over 3⟧"
+},
+{
+"op": "replace",
+"n": 25,
+"part": "sol",
+"old": "⟦{1-root2 i}over{1+root2 i}+{1+root2 i}over{1-root2 i}- 2-i over3⟧",
+"new": "⟦{1-root2 i}over{1+root2 i}+{1+root2 i}over{1-root2 i}- {2-i} over 3⟧"
+},
+{
+"op": "replace",
+"n": 25,
+"part": "sol",
+"old": "⟦={(1-root2 i )^2 +(1+root2 i)^2}over{(1+root2 i)(1-root2 i)} - 2-i over3⟧",
+"new": "⟦={(1-root2 i )^2 +(1+root2 i)^2}over{(1+root2 i)(1-root2 i)} - {2-i} over 3⟧"
+},
+{
+"op": "replace",
+"n": 25,
+"part": "sol",
+"old": "⟦={(-1-2root2 i)+(-1+2root2 i)}over3 - 2-i over3⟧",
+"new": "⟦={(-1-2root2 i)+(-1+2root2 i)}over3 - {2-i} over 3⟧"
+},
+{
+"op": "replace",
+"n": 25,
+"part": "sol",
+"old": "⟦= - 2over3 - 2-i over3 = - 4over3 + 1over3 i⟧",
+"new": "⟦= - 2over3 - {2-i} over 3 = - 4over3 + 1over3 i⟧"
+},
+{
+"op": "replace",
+"n": 27,
+"part": "sol",
+"old": "허부부분",
+"new": "허수부분"
+},
+{
+"op": "add_para",
+"n": 28,
+"part": "sol",
+"before": "이 음의 실수이면",
+"text": "주어진 복소수를 ⟦z⟧라 하자."
+},
+{
+"op": "replace",
+"n": 28,
+"part": "sol",
+"old": "⟦=(a^2 -8a -15 )  +(a^2 +2a -35 )i ⟧",
+"new": "⟦=(a^2 -8a +15 )  +(a^2 +2a -35 )i ⟧"
+},
+{
+"op": "replace",
+"n": 28,
+"part": "sol",
+"old": "⟦a!=7⟧",
+"new": "⟦a != -7⟧"
+},
+{
+"op": "replace",
+"n": 35,
+"part": "q",
+"old": "복소수 ⟦z⟧의 켤레복소수를 ⟦bar z ⟧라 할 때",
+"new": "⟦0⟧이 아닌 복소수 ⟦z⟧의 켤레복소수를 bar z 라 할 때"
+},
+{
+"op": "replace",
+"n": 35,
+"part": "q",
+"old": "켤레복소수를 bar z 라",
+"new": "켤레복소수를 ⟦bar z ⟧라"
+},
+{
+"op": "replace",
+"n": 35,
+"part": "sol",
+"old": "⟦{z} over {bar{z}} = {1-i} over {1+i} =i  ⟧",
+"new": "⟦{z} over {bar{z}} = {1-i} over {1+i} =-i⟧"
+},
+{
+"op": "replace",
+"n": 35,
+"part": "sol",
+"old": "⟦z  ^{2} +( bar{z} )  ^{2} = LEFT ( a+bi RIGHT )  ^{2} + LEFT ( a-bi RIGHT )  ^{2} =2 LEFT ( a  ^{2} +b  ^{2} RIGHT )  ⟧",
+"new": "⟦z  ^{2} +( bar{z} )  ^{2} = LEFT ( a+bi RIGHT )  ^{2} + LEFT ( a-bi RIGHT )  ^{2} =2 LEFT ( a  ^{2} -b  ^{2} RIGHT )⟧"
+},
+{
+"op": "replace",
+"n": 37,
+"part": "sol",
+"old": "⟦z^2⟧은 음의 실수이면 ⟦z`⟧은 순허수이므로 ㄱ은 거짓이다.",
+"new": "⟦z=a+ai~(a != 0)⟧이므로 ⟦z^2 =(a+ai)^2 =2a^2 i⟧는 순허수이고 음의 실수가 아니다.⏎따라서 ㄱ은 거짓이다."
+},
+{
+"op": "replace",
+"n": 43,
+"part": "sol",
+"old": "이고.",
+"new": "이므로 복소수가 서로 같을 조건에 의하여"
+},
+{
+"op": "replace",
+"n": 43,
+"part": "sol",
+"old": "[다른풀이]",
+"new": "[다른 풀이]"
+},
+{
+"op": "replace",
+"n": 47,
+"part": "sol",
+"old": "⟦1+ {2} over {i} + {3} over {i ^{2}} + {4} over {i ^{3}} =1-3i-2+4i= it -2+2i⟧",
+"new": "⟦1+ {2} over {i} + {3} over {i ^{2}} + {4} over {i ^{3}} =1-2i-3+4i= it -2+2i⟧"
+},
+{
+"op": "replace",
+"n": 48,
+"part": "sol",
+"old": "⟦z  ^{2} = LEFT ( {sqrt {2}} over {1-i} RIGHT )  ^{2} = {2} over {-2i} =-i`⟧",
+"new": "⟦z  ^{2} = LEFT ( {sqrt {2}} over {1-i} RIGHT )  ^{2} = {2} over {-2i} =- {1} over {i} =i`⟧"
+},
+{
+"op": "replace",
+"n": 48,
+"part": "sol",
+"old": "⟦therefore`z  ^{8} =(z  ^{2} )  ^{4} =(-i)  ^{4} =i  ^{4} =1`⟧",
+"new": "⟦therefore`z  ^{8} =(z  ^{2} )  ^{4} =i  ^{4} =1`⟧"
+},
+{
+"op": "replace",
+"n": 49,
+"part": "q",
+"old": "이다)",
+"new": "이다.)"
+},
+{
+"op": "replace",
+"n": 51,
+"part": "q",
+"old": "⟦12⟧이하",
+"new": "⟦12⟧ 이하"
+},
+{
+"op": "replace",
+"n": 51,
+"part": "q",
+"old": "의 개수는?",
+"new": "의 개수를 구하시오."
+},
+{
+"op": "replace",
+"n": 51,
+"part": "sol",
+"old": "󰂼 ⟦4⟧",
+"new": "󰂼 ⟦12⟧"
+},
+{
+"op": "replace",
+"n": 51,
+"part": "end",
+"old": "⟦4⟧",
+"new": "⟦12⟧"
+},
+{
+"op": "replace",
+"n": 51,
+"part": "sol",
+"old": "⟦alpha  ^{3} = {1+ sqrt {3} i} over {2} times {sqrt {3} +i} over {2}= it-i⟧",
+"new": "⟦alpha  ^{3} = {1+ sqrt {3} i} over {2} times {sqrt {3} +i} over {2}=i⟧"
+},
+{
+"op": "add_para",
+"n": 51,
+"part": "sol",
+"before": "이므로 자연수 ⟦k⟧에 대하여",
+"text": "⟦alpha^4 = alpha^3 alpha = {-1+ sqrt {3} i} over {2}⟧, ⟦alpha^5 = alpha^3 alpha^2 = {- sqrt {3} +i} over {2}⟧"
+},
+{
+"op": "add_para",
+"n": 51,
+"part": "sol",
+"before": "이므로 자연수 ⟦k⟧에 대하여",
+"text": "⟦alpha^6 =-1⟧이므로 ⟦alpha^{k+6} =- alpha^k⟧이고, ⟦alpha⟧, ⟦alpha^2⟧, ⟦alpha^3⟧, ⟦alpha^4⟧, ⟦alpha^5⟧는 실수가 아니므로 ⟦alpha⟧부터 ⟦alpha^12⟧까지 중 ⟦1⟧인 것은 ⟦alpha^12⟧뿐이다."
+},
+{
+"op": "add_para",
+"n": 51,
+"part": "sol",
+"before": "이므로 자연수 ⟦k⟧에 대하여",
+"text": "즉, ⟦alpha^k =1⟧을 만족시키는 자연수 ⟦k⟧는"
+},
+{
+"op": "add_para",
+"n": 51,
+"part": "sol",
+"before": "이므로 자연수 ⟦k⟧에 대하여",
+"text": "⟦k=12`,~24`,~36`,~cdots⟧"
+},
+{
+"op": "del_para",
+"n": 51,
+"part": "sol",
+"para": "이므로 자연수 ⟦k⟧에 대하여"
+},
+{
+"op": "del_para",
+"n": 51,
+"part": "sol",
+"para": "⟦m=12k⟧일 때"
+},
+{
+"op": "del_para",
+"n": 51,
+"part": "sol",
+"para": "⟦m=12k-6⟧일 때"
+},
+{
+"op": "replace",
+"n": 51,
+"part": "sol",
+"old": "⟦beta = {1+root3 i } over 2⟧",
+"new": "⟦beta = {1+root3 i } over 2 = alpha^2⟧이므로"
+},
+{
+"op": "add_para",
+"n": 51,
+"part": "sol",
+"before": "⟦beta^2 ",
+"text": "⟦alpha^m beta^n = alpha^m alpha^{2n} = alpha^{m+2n}⟧"
+},
+{
+"op": "add_para",
+"n": 51,
+"part": "sol",
+"before": "⟦beta^2 ",
+"text": "그러므로 ⟦alpha^m beta^n =1⟧이려면 ⟦m+2n⟧이 ⟦12⟧의 배수이어야 하고, ⟦3 le m+2n le 36⟧이므로"
+},
+{
+"op": "add_para",
+"n": 51,
+"part": "sol",
+"before": "⟦beta^2 ",
+"text": "⟦m+2n=12⟧ 또는 ⟦m+2n=24⟧ 또는 ⟦m+2n=36⟧"
+},
+{
+"op": "del_para",
+"n": 51,
+"part": "sol",
+"para": "⟦beta^2 "
+},
+{
+"op": "del_para",
+"n": 51,
+"part": "sol",
+"para": "⟦beta^3 "
+},
+{
+"op": "del_para",
+"n": 51,
+"part": "sol",
+"para": "⟦beta^6 "
+},
+{
+"op": "del_para",
+"n": 51,
+"part": "sol",
+"para": "이므로 자연수 ⟦l⟧에 대하여"
+},
+{
+"op": "del_para",
+"n": 51,
+"part": "sol",
+"para": "⟦n=6l⟧일 때"
+},
+{
+"op": "del_para",
+"n": 51,
+"part": "sol",
+"para": "⟦n=6l-3⟧일 때"
+},
+{
+"op": "add_para",
+"n": 51,
+"part": "sol",
+"before": "따라서 ⟦alpha^m beta ^n = 1 ⟧",
+"text": "(ⅰ) ⟦m+2n=12⟧일 때, ⟦(10,~1)`,~(8,~2)`,~(6,~3)`,~(4,~4)`,~(2,~5)⟧"
+},
+{
+"op": "add_para",
+"n": 51,
+"part": "sol",
+"before": "따라서 ⟦alpha^m beta ^n = 1 ⟧",
+"text": "(ⅱ) ⟦m+2n=24⟧일 때, ⟦(12,~6)`,~(10,~7)`,~(8,~8)`,~(6,~9)`,~(4,~10)`,~(2,~11)⟧"
+},
+{
+"op": "add_para",
+"n": 51,
+"part": "sol",
+"before": "따라서 ⟦alpha^m beta ^n = 1 ⟧",
+"text": "(ⅲ) ⟦m+2n=36⟧일 때, ⟦(12,~12)⟧"
+},
+{
+"op": "replace",
+"n": 51,
+"part": "sol",
+"old": "를 만족시키는 ⟦10⟧이하",
+"new": "을 만족시키는 ⟦12⟧ 이하"
+},
+{
+"op": "replace",
+"n": 51,
+"part": "sol",
+"old": "의 순서쌍은",
+"new": "의 순서쌍 ⟦(m,~n)⟧의 개수는 ⟦5+6+1=12⟧이다."
+},
+{
+"op": "del_para",
+"n": 51,
+"part": "sol",
+"para": "⟦(6,~3)⟧, ⟦(6,~9)⟧"
+},
+{
+"op": "del_para",
+"n": 51,
+"part": "sol",
+"para": "으로 ⟦4⟧개다."
+},
+{
+"op": "replace",
+"n": 53,
+"part": "sol",
+"old": "⟦a^2 + b^2 =  6 + 2 cdot 4= 14 ⟧",
+"new": "⟦a^2 +2b^2 =  6 + 2 cdot 4= 14 ⟧"
+},
+{
+"op": "replace",
+"n": 54,
+"part": "q",
+"old": "⟦roota over root-a +rootb over root-b +roota-b overrootb-a⟧",
+"new": "⟦roota over root-a +rootb over root-b + {sqrt {a-b}} over {sqrt {b-a}}⟧"
+},
+{
+"op": "replace",
+"n": 54,
+"part": "sol",
+"old": "⟦THEREFORE~ roota over root-a +rootb over root-b +roota-b overrootb-a⟧",
+"new": "⟦THEREFORE~ roota over root-a +rootb over root-b + {sqrt {a-b}} over {sqrt {b-a}}⟧"
+},
+{
+"op": "replace",
+"n": 54,
+"part": "sol",
+"old": "⟦=-root{a over-a}+root{b over -b} -root{a-b over b-a}⟧",
+"new": "⟦=-root{a over-a}+root{b over -b} - sqrt {{a-b} over {b-a}}⟧"
+},
+{
+"op": "replace",
+"n": 55,
+"part": "sol",
+"old": "두 실수, ",
+"new": "두 실수 "
+},
+{
+"op": "replace",
+"n": 56,
+"part": "q",
+"old": "⟦roota-1 roota-1 + { root1-a} over { roota-1} + root {(a-1)^2}⟧",
+"new": "⟦sqrt {a-1} sqrt {a-1} + {sqrt {1-a}} over {sqrt {a-1}} + root {(a-1)^2}⟧"
+},
+{
+"op": "replace",
+"n": 56,
+"part": "sol",
+"old": "⟦roota-1 roota-1 + { root1-a} over { roota-1} + root {(a-1)^2}⟧",
+"new": "⟦sqrt {a-1} sqrt {a-1} + {sqrt {1-a}} over {sqrt {a-1}} + root {(a-1)^2}⟧"
+},
+{
+"op": "replace",
+"n": 56,
+"part": "sol",
+"old": "⟦=( sqrt { 1-ai})( sqrt { 1-ai})+ { sqrt { 1-a} } over { sqrt { 1-a} i}+ sqrt { (1-a) ^{ 2} }⟧",
+"new": "⟦=( sqrt { 1-a} i)( sqrt { 1-a} i)+ { sqrt { 1-a} } over { sqrt { 1-a} i}+ sqrt { (1-a) ^{ 2} }⟧"
+},
+{
+"op": "replace",
+"n": 57,
+"part": "end",
+"old": "①",
+"new": "⟦-b⟧"
+}
+]

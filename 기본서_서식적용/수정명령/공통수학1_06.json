@@ -1,0 +1,391 @@
+[
+ {
+  "op": "replace",
+  "n": 1,
+  "part": "sol",
+  "old": "{atno} (1)",
+  "new": "{atno} 󰂼 (1)"
+ },
+ {
+  "op": "replace",
+  "n": 2,
+  "part": "sol",
+  "old": "{atno} (1)",
+  "new": "{atno} 󰂼 (1)"
+ },
+ {
+  "op": "replace",
+  "n": 4,
+  "part": "sol",
+  "old": "(3) ⟦{{a<1}}⟧",
+  "new": "(3) ⟦a< -1⟧"
+ },
+ {
+  "op": "replace",
+  "n": 6,
+  "part": "sol",
+  "old": "(4) ⟦{{17⟧",
+  "new": "(4) ⟦11⟧"
+ },
+ {
+  "op": "replace",
+  "n": 6,
+  "part": "sol",
+  "old": "⟦=17⟧",
+  "new": "⟦=11⟧"
+ },
+ {
+  "op": "add_para",
+  "n": 7,
+  "part": "sol",
+  "before": "(4) ⟦LEFT",
+  "text": "(4) ⟦2 alpha^2 -6 alpha +3=0⟧에서 ⟦alpha^2 -3 alpha = - 3over2⟧이고, 같은 방법으로 ⟦beta^2 -3 beta = - 3over2⟧이므로"
+ },
+ {
+  "op": "replace",
+  "n": 7,
+  "part": "sol",
+  "old": "(4) ⟦LEFT ( alpha^2 -3 alpha +4 RIGHT ) LEFT ( beta^2 -3 beta +4 RIGHT )⟧",
+  "new": "    ⟦LEFT ( alpha^2 -3 alpha +4 RIGHT ) LEFT ( beta^2 -3 beta +4 RIGHT )⟧"
+ },
+ {
+  "op": "replace",
+  "n": 8,
+  "part": "sol",
+  "old": "⟦alpha   ^{2} +2 alpha =-m-7⟧",
+  "new": "⟦alpha   ^{2} +2 alpha =-m+7⟧"
+ },
+ {
+  "op": "replace",
+  "n": 9,
+  "part": "sol",
+  "old": "배 이므로",
+  "new": "배이므로"
+ },
+ {
+  "op": "replace",
+  "n": 12,
+  "part": "q",
+  "old": "⟦1⟧이 이차방정식",
+  "new": "⟦1⟧인 이차방정식"
+ },
+ {
+  "op": "replace",
+  "n": 12,
+  "part": "sol",
+  "old": "⟦x ^{2} -3x+15=0⟧",
+  "new": "⟦x ^{2} -8x+15=0⟧"
+ },
+ {
+  "op": "replace",
+  "n": 14,
+  "part": "sol",
+  "old": "계수와의 관계",
+  "new": "계수의 관계"
+ },
+ {
+  "op": "replace",
+  "n": 14,
+  "part": "sol",
+  "old": "⟦x=0⟧를 대입",
+  "new": "⟦x=0⟧을 대입"
+ },
+ {
+  "op": "replace",
+  "n": 14,
+  "part": "sol",
+  "old": "㉢를 ㉡에",
+  "new": "㉢을 ㉡에"
+ },
+ {
+  "op": "replace",
+  "n": 15,
+  "part": "sol",
+  "old": "계수와의 관계",
+  "new": "계수의 관계"
+ },
+ {
+  "op": "replace",
+  "n": 15,
+  "part": "sol",
+  "old": "⟦x=0⟧를 대입",
+  "new": "⟦x=0⟧을 대입"
+ },
+ {
+  "op": "replace",
+  "n": 15,
+  "part": "sol",
+  "old": "㉤를 ㉣에",
+  "new": "㉤을 ㉣에"
+ },
+ {
+  "op": "replace",
+  "n": 15,
+  "part": "sol",
+  "old": "㉡에서 ⟦alphabeta= it-1⟧이므로",
+  "new": "㉢에서 ⟦alphabeta= it-1⟧이므로"
+ },
+ {
+  "op": "replace",
+  "n": 17,
+  "part": "sol",
+  "old": "⟦x ^{2} +4x+1= LEFT { x- LEFT ( -2+ sqrt {3} RIGHT ) RIGHT } LEFT { x- LEFT ( 2- sqrt {3} RIGHT ) RIGHT }⟧",
+  "new": "⟦x ^{2} +4x+1= LEFT { x- LEFT ( -2+ sqrt {3} RIGHT ) RIGHT } LEFT { x- LEFT ( -2- sqrt {3} RIGHT ) RIGHT }⟧"
+ },
+ {
+  "op": "replace",
+  "n": 19,
+  "part": "sol",
+  "old": "두 일차시의",
+  "new": "두 일차식의"
+ },
+ {
+  "op": "replace",
+  "n": 21,
+  "part": "sol",
+  "old": "이므로 두 근 ",
+  "new": "이므로 두 근을 "
+ },
+ {
+  "op": "replace",
+  "n": 24,
+  "part": "q",
+  "old": "의 그래프와 ⟦x⟧축과 서로",
+  "new": "의 그래프가 ⟦x⟧축과 서로"
+ },
+ {
+  "op": "replace",
+  "n": 25,
+  "part": "sol",
+  "old": "⟦ax^2 +bc+c=mx⟧",
+  "new": "⟦ax^2 +bx+c=mx⟧"
+ },
+ {
+  "op": "replace",
+  "n": 26,
+  "part": "sol",
+  "old": "⟦18-3(a+3)+30b=0`⟧",
+  "new": "⟦18-3(a+3)+3-b=0`⟧"
+ },
+ {
+  "op": "replace",
+  "n": 32,
+  "part": "sol",
+  "old": "󰂼 ⟦5⟧",
+  "new": "󰂼 ⟦2⟧"
+ },
+ {
+  "op": "replace",
+  "n": 32,
+  "part": "sol",
+  "old": "⟦3 LEFT ( k-1 RIGHT ) x  ^{2} +2x-k  ^{3} +3=0⟧",
+  "new": "⟦3 LEFT ( k-1 RIGHT ) x  ^{2} +2x-k  ^{2} +3=0⟧"
+ },
+ {
+  "op": "del_para",
+  "n": 32,
+  "part": "sol",
+  "para": "-5x+6=0"
+ },
+ {
+  "op": "del_para",
+  "n": 32,
+  "part": "sol",
+  "para": "LEFT ( x-2 RIGHT ) LEFT ( x-3 RIGHT )"
+ },
+ {
+  "op": "del_para",
+  "n": 32,
+  "part": "sol",
+  "para": "k+alpha=2+3=5"
+ },
+ {
+  "op": "replace",
+  "n": 35,
+  "part": "sol",
+  "old": "⟦D_1 = a^2 - b^2 >0⟧",
+  "new": "⟦{D_1} over 4 = a^2 - b^2 >0⟧"
+ },
+ {
+  "op": "replace",
+  "n": 35,
+  "part": "sol",
+  "old": "⟦D_2 = b^2 - LEFT (  a^2 +1 RIGHT ) = LEFT ( b^2 - a^2  RIGHT )-1 <0⟧",
+  "new": "⟦{D_2} over 4 = b^2 - LEFT (  a^2 +1 RIGHT ) = LEFT ( b^2 - a^2  RIGHT )-1 <0⟧"
+ },
+ {
+  "op": "add_para",
+  "n": 38,
+  "part": "sol",
+  "after": "근과 계수의 관계에 의해",
+  "text": "이때 판별식을 ⟦D⟧라 하면 ⟦{D} over {4} = LEFT ( -4 RIGHT ) ^{2} -4=12>0⟧이고, ⟦alpha + beta =8>0⟧, ⟦alpha beta =4>0⟧이므로 ⟦alpha >0⟧, ⟦beta >0⟧"
+ },
+ {
+  "op": "replace",
+  "n": 39,
+  "part": "sol",
+  "old": "⟦( alpha + beta ) sup 3 = (alpha + beta ) sup 3  - 3  alpha beta ( alpha + beta) =2 sup 3  -3 cdot  k over 2  cdot 2 =7⟧",
+  "new": "⟦alpha sup 3 + beta sup 3 = (alpha + beta ) sup 3  - 3  alpha beta ( alpha + beta) =2 sup 3  -3 cdot  k over 2  cdot 2 =7⟧"
+ },
+ {
+  "op": "replace",
+  "n": 43,
+  "part": "sol",
+  "old": "⟦x^2 +3x-1=(x-alpha)(x-beta)⟧",
+  "new": "⟦x^2 +3x+1=(x-alpha)(x-beta)⟧"
+ },
+ {
+  "op": "replace",
+  "n": 43,
+  "part": "sol",
+  "old": "계수와의 관계",
+  "new": "계수의 관계"
+ },
+ {
+  "op": "replace",
+  "n": 43,
+  "part": "sol",
+  "old": "⟦x=0⟧를 대입",
+  "new": "⟦x=0⟧을 대입"
+ },
+ {
+  "op": "replace",
+  "n": 43,
+  "part": "sol",
+  "old": "㉢를 ㉡에",
+  "new": "㉢을 ㉡에"
+ },
+ {
+  "op": "replace",
+  "n": 46,
+  "part": "q",
+  "old": "⟦x^2  －2x-2⟧을",
+  "new": "⟦x^2  -2x-2⟧를"
+ },
+ {
+  "op": "replace",
+  "n": 48,
+  "part": "sol",
+  "old": "그의 공식을",
+  "new": "근의 공식을"
+ },
+ {
+  "op": "replace",
+  "n": 50,
+  "part": "sol",
+  "old": "계수와의 관계",
+  "new": "계수의 관계"
+ },
+ {
+  "op": "replace",
+  "n": 51,
+  "part": "q",
+  "old": "의 그래프와 ⟦x⟧축과 서로",
+  "new": "의 그래프가 ⟦x⟧축과 서로"
+ },
+ {
+  "op": "replace",
+  "n": 53,
+  "part": "sol",
+  "old": "⟦THEREFORE ~x^2 +(a-m)x+48=0⟧",
+  "new": "⟦x^2 +(a-m)x+48=0⟧"
+ },
+ {
+  "op": "replace",
+  "n": 55,
+  "part": "sol",
+  "old": "⟦x ^{2} + LEFT ( a+1 RIGHT ) x+ LEFT ( b+11 RIGHT ) =0 {over{ p r k 0 0 1 }}⟧",
+  "new": "⟦x ^{2} + LEFT ( a+1 RIGHT ) x+ LEFT ( b+11 RIGHT ) =0 ⟧"
+ },
+ {
+  "op": "add_para",
+  "n": 55,
+  "part": "sol",
+  "before": "-4 LEFT ( b+8 RIGHT )",
+  "text": "두 이차방정식의 판별식을 각각 ⟦D_{1}⟧, ⟦D_{2}⟧라 하면 이차함수의 그래프가 두 직선에 동시에 접하므로"
+ },
+ {
+  "op": "replace",
+  "n": 55,
+  "part": "sol",
+  "old": "⟦D = LEFT ( a-1 RIGHT ) ^{2} -4 LEFT ( b+8 RIGHT ) =0 ⟧, ⟦D = LEFT ( a+1 RIGHT ) ^{2} -4 LEFT ( b+11 RIGHT ) =0 ⟧",
+  "new": "⟦D_{1} = LEFT ( a-1 RIGHT ) ^{2} -4 LEFT ( b+8 RIGHT ) =0 ⟧, ⟦D_{2} = LEFT ( a+1 RIGHT ) ^{2} -4 LEFT ( b+11 RIGHT ) =0 ⟧"
+ },
+ {
+  "op": "add_para",
+  "n": 55,
+  "part": "sol",
+  "after": "를 연립하면",
+  "text": "⟦THEREFORE ~ab=3 TIMES LEFT ( -7 RIGHT ) =-21⟧"
+ },
+ {
+  "op": "add_para",
+  "n": 57,
+  "part": "sol",
+  "after": "󰂼 ⟦- 3over2⟧",
+  "text": "⟦h LEFT ( x RIGHT ) =f LEFT ( x RIGHT ) -g LEFT ( x RIGHT ) = it-x ^{2} + LEFT ( a-b-1 RIGHT ) x+b-a⟧"
+ },
+ {
+  "op": "add_para",
+  "n": 57,
+  "part": "sol",
+  "after": "⟦h LEFT ( x RIGHT ) =f LEFT",
+  "text": "두 점 ⟦{rm{A}} it ⟧, ⟦{rm{B}} it ⟧의 ⟦x⟧좌표 ⟦alpha⟧, ⟦beta⟧는 이차방정식 ⟦h LEFT ( x RIGHT ) =0⟧, 즉 ⟦x ^{2} - LEFT ( a-b-1 RIGHT ) x+a-b=0⟧의 두 실근이다."
+ },
+ {
+  "op": "add_para",
+  "n": 57,
+  "part": "sol",
+  "after": "두 점 ⟦{rm{A}} it ⟧",
+  "text": "⟦a-b=t⟧라 하면 근과 계수의 관계에 의하여 ⟦alpha + beta =t-1⟧, ⟦alpha beta =t⟧"
+ },
+ {
+  "op": "add_para",
+  "n": 57,
+  "part": "sol",
+  "after": "⟦a-b=t⟧라 하면",
+  "text": "⟦LEFT | alpha - beta RIGHT | = sqrt {17}⟧의 양변을 제곱하면"
+ },
+ {
+  "op": "add_para",
+  "n": 57,
+  "part": "sol",
+  "after": "의 양변을 제곱하면",
+  "text": "⟦LEFT ( alpha - beta RIGHT ) ^{2} = LEFT ( alpha + beta RIGHT ) ^{2} -4 alpha beta = LEFT ( t-1 RIGHT ) ^{2} -4t=17⟧"
+ },
+ {
+  "op": "add_para",
+  "n": 57,
+  "part": "sol",
+  "after": "-4t=17⟧",
+  "text": "⟦t ^{2} -6t-16=0⟧, ⟦LEFT ( t+2 RIGHT ) LEFT ( t-8 RIGHT ) =0⟧"
+ },
+ {
+  "op": "add_para",
+  "n": 57,
+  "part": "sol",
+  "after": "⟦t ^{2} -6t-16=0⟧",
+  "text": "이때 ⟦b>a⟧에서 ⟦t=a-b<0⟧이므로 ⟦t= it-2⟧"
+ },
+ {
+  "op": "add_para",
+  "n": 57,
+  "part": "sol",
+  "after": "⟦t=a-b<0⟧",
+  "text": "따라서 ⟦h LEFT ( x RIGHT ) = it-x ^{2} -3x+2= it- LEFT ( x+ {3} over {2} RIGHT ) ^{2} + {17} over {4}⟧이므로"
+ },
+ {
+  "op": "add_para",
+  "n": 57,
+  "part": "sol",
+  "after": "+ {17} over {4}⟧이므로",
+  "text": "함수 ⟦h LEFT ( x RIGHT )⟧는 ⟦x= it- {3} over {2}⟧일 때, 최댓값 ⟦{17} over {4}⟧를 갖는다."
+ },
+ {
+  "op": "add_para",
+  "n": 57,
+  "part": "sol",
+  "after": "최댓값 ⟦{17} over {4}⟧를",
+  "text": "⟦THEREFORE ~p= it- {3} over {2} ,~q= {17} over {4}⟧"
+ }
+]

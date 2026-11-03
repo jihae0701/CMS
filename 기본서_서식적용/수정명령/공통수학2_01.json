@@ -1,0 +1,380 @@
+[
+ {
+  "op": "replace",
+  "n": 22,
+  "part": "sol",
+  "old": "⟦ 3x+y-8=0⟧",
+  "new": "⟦ x+2y+3=0⟧"
+ },
+ {
+  "op": "replace",
+  "n": 22,
+  "part": "end",
+  "old": "⟦ 3x+y-8=0⟧",
+  "new": "⟦ x+2y+3=0⟧"
+ },
+ {
+  "op": "replace",
+  "n": 24,
+  "part": "sol",
+  "old": "󰂼 ①",
+  "new": "󰂼 ⟦-{1} over {2}⟧"
+ },
+ {
+  "op": "replace",
+  "n": 24,
+  "part": "end",
+  "old": "①",
+  "new": "⟦-{1} over {2}⟧"
+ },
+ {
+  "op": "replace",
+  "n": 27,
+  "part": "sol",
+  "old": "󰂼 ③",
+  "new": "󰂼 ⟦-{3} over {2}⟧"
+ },
+ {
+  "op": "replace",
+  "n": 27,
+  "part": "end",
+  "old": "③",
+  "new": "⟦-{3} over {2}⟧"
+ },
+ {
+  "op": "replace",
+  "n": 31,
+  "part": "q",
+  "old": "의 값은?",
+  "new": "의 값을 구하시오."
+ },
+ {
+  "op": "replace",
+  "n": 31,
+  "part": "sol",
+  "old": "󰂼 ⑤",
+  "new": "󰂼 ⟦8⟧"
+ },
+ {
+  "op": "replace",
+  "n": 31,
+  "part": "end",
+  "old": "⑤",
+  "new": "⟦8⟧"
+ },
+ {
+  "op": "replace",
+  "n": 4,
+  "part": "sol",
+  "old": "⟦=a ^{2} -16a+b ^{2} +6b+73⟧",
+  "new": "⟦=a ^{2} -16a+b ^{2} -6b+73⟧"
+ },
+ {
+  "op": "replace",
+  "n": 18,
+  "part": "sol",
+  "old": "⟦y=-3x-5⟧에 평행한",
+  "new": "⟦y=-3x+2⟧에 평행한"
+ },
+ {
+  "op": "replace",
+  "n": 29,
+  "part": "sol",
+  "old": "⟦{rm bar AP}^2 + {rm bar BP}^2 `⟧",
+  "new": "⟦{rm bar AP}^2 = {rm bar BP}^2 `⟧"
+ },
+ {
+  "op": "replace",
+  "n": 34,
+  "part": "sol",
+  "old": "와 ⟦rm BC⟧의 중점",
+  "new": "와 ⟦rm BD⟧의 중점"
+ },
+ {
+  "op": "replace",
+  "n": 36,
+  "part": "sol",
+  "old": "⟦rm A LEFT ( 4,~-2 RIGHT ) ,~ rm B LEFT ( -1,~5 RIGHT ) ,~P LEFT ( it a,~a+3 RIGHT )⟧",
+  "new": "⟦rm A LEFT ( 4,~-2 RIGHT ) ,~ rm B LEFT ( 1,~-5 RIGHT ) ,~P LEFT ( it a,~a+3 RIGHT )⟧"
+ },
+ {
+  "op": "replace",
+  "n": 48,
+  "part": "sol",
+  "old": "⟦rm A LEFT ( it 5,~4 RIGHT ) ,~ rm B LEFT ( it 7,~-2 RIGHT ) ,~ rm C LEFT ( it c,~ it d RIGHT )⟧",
+  "new": "⟦rm A LEFT ( it 5,~4 RIGHT ) ,~ rm B LEFT ( it -7,~2 RIGHT ) ,~ rm C LEFT ( it c,~ it d RIGHT )⟧"
+ },
+ {
+  "op": "add_para",
+  "n": 57,
+  "part": "sol",
+  "after": "⟦therefore~⟧교점",
+  "text": "⟦y-2= 7over4 LEFT ( x-2 RIGHT )⟧⇥⇥⟦therefore~ 7x-4y-6=0⟧"
+ },
+ {
+  "op": "add_para",
+  "n": 57,
+  "part": "sol",
+  "after": "⟦therefore~⟧교점",
+  "text": "따라서 두 점 ⟦LEFT ( -2,~-5 RIGHT ),~ LEFT ( 2,~2 RIGHT )`⟧를 지나는 직선의 방정식은"
+ },
+ {
+  "op": "replace",
+  "n": 7,
+  "part": "sol",
+  "old": "이고,",
+  "new": "각의 이등분선의 성질에 의하여 ⟦rm bar{AB} `:` bar{AC} = bar{BD} `:` bar{DC}⟧이고,"
+ },
+ {
+  "op": "replace",
+  "n": 43,
+  "part": "sol",
+  "old": "오른쪽 그림의 ⟦TRIANGLE \\ABC⟧에서",
+  "new": "⟦TRIANGLE \\ABC⟧에서"
+ },
+ {
+  "op": "replace",
+  "n": 38,
+  "part": "sol",
+  "old": "⟦LEFT ( x^2  +  y^2    RIGHT )+ left{  (x-3) sup 2  +  y sup 2 right} + left{  x sup 2 +  (y-6) sup  2 right}⟧",
+  "new": "⟦=LEFT ( x^2  +  y^2    RIGHT )+ left{  (x-3) sup 2  +  y sup 2 right} + left{  x sup 2 +  (y-6) sup  2 right}⟧"
+ },
+ {
+  "op": "replace",
+  "n": 49,
+  "part": "sol",
+  "old": "⟦{ 2y_3 +y_2} over { 2+1}=-2⟧⇥⇥…… ㉡",
+  "new": "⟦{ 2y_3 +y_2} over { 2+1}=-2⟧"
+ },
+ {
+  "op": "replace",
+  "n": 49,
+  "part": "sol",
+  "old": "⟦2y_3 +y_2 = -6⟧ ",
+  "new": "⟦2y_3 +y_2 = -6⟧ ⇥⇥…… ㉡"
+ },
+ {
+  "op": "replace",
+  "n": 49,
+  "part": "sol",
+  "old": "⟦{ 2y_1 +y_3} over { 2+1}=6⟧⇥⇥…… ㉢",
+  "new": "⟦{ 2y_1 +y_3} over { 2+1}=6⟧"
+ },
+ {
+  "op": "replace",
+  "n": 49,
+  "part": "sol",
+  "old": "⟦2y_1 +y_3 = 18⟧ ⇥⇥",
+  "new": "⟦2y_1 +y_3 = 18⟧ ⇥⇥…… ㉢"
+ },
+ {
+  "op": "replace",
+  "n": 9,
+  "part": "sol",
+  "old": "⟦sqrt {(3-a) ^{2} +(1-2) ^{2}} = sqrt {(3-2) ^{2} + right{1- LEFT ( -3 RIGHT )right} ^{2}}⟧",
+  "new": "⟦sqrt {(3-a) ^{2} +(1-2) ^{2}} = sqrt {(3-2) ^{2} + LEFT { 1- LEFT ( -3 RIGHT ) RIGHT } ^{2}}⟧"
+ },
+ {
+  "op": "replace",
+  "n": 64,
+  "part": "sol",
+  "old": "⟦rmbarOA}cdoth= sqrt { 5}cdot { 1} over { sqrt { 5} }=1⟧",
+  "new": "⟦rm bar{OA} it cdot h= sqrt { 5}cdot { 1} over { sqrt { 5} }=1⟧"
+ },
+ {
+  "op": "replace",
+  "n": 5,
+  "part": "q",
+  "old": "내분하는 점을 ⟦rmP⟧를 구하시오.",
+  "new": "내분하는 점 ⟦rmP⟧의 좌표를 구하시오."
+ },
+ {
+  "op": "replace",
+  "n": 40,
+  "part": "q",
+  "old": "의 값의 값을",
+  "new": "의 값을"
+ },
+ {
+  "op": "replace",
+  "n": 41,
+  "part": "q",
+  "old": ".{en}두 점",
+  "new": "{en}두 점"
+ },
+ {
+  "op": "replace",
+  "n": 41,
+  "part": "q",
+  "old": "의 값을 구하시오",
+  "new": "의 값을 구하시오."
+ },
+ {
+  "op": "replace",
+  "n": 41,
+  "part": "sol",
+  "old": "으로 내분하는 점의 좌표는",
+  "new": "로 내분하는 점의 좌표는"
+ },
+ {
+  "op": "replace",
+  "n": 39,
+  "part": "q",
+  "old": "내분하는 점의 좌표를 ",
+  "new": "내분하는 점을 "
+ },
+ {
+  "op": "replace",
+  "n": 39,
+  "part": "q",
+  "old": "중점의 좌표를 점 ",
+  "new": "중점을 "
+ },
+ {
+  "op": "replace",
+  "n": 26,
+  "part": "sol",
+  "old": "밑볕의",
+  "new": "밑변의"
+ },
+ {
+  "op": "replace",
+  "n": 14,
+  "part": "sol",
+  "old": "각의 크기는",
+  "new": "각의 크기가"
+ },
+ {
+  "op": "replace",
+  "n": 19,
+  "part": "sol",
+  "old": "이루어 지지",
+  "new": "이루어지지"
+ },
+ {
+  "op": "replace",
+  "n": 44,
+  "part": "sol",
+  "old": "⟦rm AC⟧을 ⟦3`:`2⟧로 내분하는 점이다",
+  "new": "⟦rm AC⟧를 ⟦3`:`2⟧로 내분하는 점이다"
+ },
+ {
+  "op": "replace",
+  "n": 44,
+  "part": "sol",
+  "old": "⟦rm AC⟧을 ⟦3`:`2⟧로 내분하는 점의 좌표는",
+  "new": "⟦rm AC⟧를 ⟦3`:`2⟧로 내분하는 점의 좌표는"
+ },
+ {
+  "op": "replace",
+  "n": 61,
+  "part": "sol",
+  "old": "이 때,",
+  "new": "이때,"
+ },
+ {
+  "op": "replace",
+  "n": 54,
+  "part": "q",
+  "old": "위치 관게",
+  "new": "위치 관계"
+ },
+ {
+  "op": "replace",
+  "n": 3,
+  "part": "sol",
+  "old": "⟦y=-x+2⟧위의",
+  "new": "⟦y=-x+2⟧ 위의"
+ },
+ {
+  "op": "replace",
+  "n": 12,
+  "part": "sol",
+  "old": "중점⟦rm D`⟧",
+  "new": "중점 ⟦rm D`⟧"
+ },
+ {
+  "op": "replace",
+  "n": 12,
+  "part": "sol",
+  "old": "중점⟦rm E`⟧",
+  "new": "중점 ⟦rm E`⟧"
+ },
+ {
+  "op": "replace",
+  "n": 12,
+  "part": "sol",
+  "old": "중점⟦rm F`⟧",
+  "new": "중점 ⟦rm F`⟧"
+ },
+ {
+  "op": "replace",
+  "n": 13,
+  "part": "sol",
+  "old": "두 점⟦(-4,``1)⟧",
+  "new": "두 점 ⟦(-4,``1)⟧"
+ },
+ {
+  "op": "replace",
+  "n": 24,
+  "part": "q",
+  "old": "⟦(0,``2)⟧사이의",
+  "new": "⟦(0,``2)⟧ 사이의"
+ },
+ {
+  "op": "replace",
+  "n": 26,
+  "part": "sol",
+  "old": "점⟦rmA(1,``5)⟧와",
+  "new": "점 ⟦rmA(1,``5)⟧와"
+ },
+ {
+  "op": "replace",
+  "n": 59,
+  "part": "q",
+  "old": "⟦3x+y-5=0⟧사이의",
+  "new": "⟦3x+y-5=0⟧ 사이의"
+ },
+ {
+  "op": "replace",
+  "n": 61,
+  "part": "sol",
+  "old": "⟦x+y-3=0``\r\n⟧위의",
+  "new": "⟦x+y-3=0``\r\n⟧ 위의"
+ },
+ {
+  "op": "replace",
+  "n": 62,
+  "part": "sol",
+  "old": "직선 ㉠사이의",
+  "new": "직선 ㉠ 사이의"
+ },
+ {
+  "op": "replace",
+  "n": 63,
+  "part": "sol",
+  "old": "⟦rmAB⟧사이의",
+  "new": "⟦rmAB⟧ 사이의"
+ },
+ {
+  "op": "replace",
+  "n": 64,
+  "part": "sol",
+  "old": "⟦rmOA⟧사이의",
+  "new": "⟦rmOA⟧ 사이의"
+ },
+ {
+  "op": "replace",
+  "n": 61,
+  "part": "q",
+  "old": "구하시오.(단,",
+  "new": "구하시오. (단,"
+ },
+ {
+  "op": "replace",
+  "n": 58,
+  "part": "sol",
+  "old": "[다른풀이]",
+  "new": "[다른 풀이]"
+ }
+]

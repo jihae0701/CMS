@@ -1,0 +1,18 @@
+[
+ {"op":"replace","n":1,"part":"sol","old":"⟦{} _{n} {rmP}  _{2} =21 TIMES 2!=42=7 TIMES 6⟧","new":"⟦{} _{n} {rmP}  _{2} =21 TIMES 2! =42=7 TIMES 6⟧"},
+ {"op":"replace","n":2,"part":"q","old":"⟦{}_{r} rm C _{ IT r+1} = _{r} rm C _{IT 2r}⟧","new":"⟦{}_{7} rm C _{ IT r+1} = _{7} rm C _{IT 2r}⟧"},
+ {"op":"replace","n":2,"part":"sol","old":"⟦{} _{n+3} {rmP}  _{3} =20 TIMES 3!=120=6 TIMES 5 TIMES 4⟧","new":"⟦{} _{n+3} {rmP}  _{3} =20 TIMES 3! =120=6 TIMES 5 TIMES 4⟧"},
+ {"op":"replace","n":2,"part":"sol","old":"⇥⟦2r=16⟧⇥⇥⟦therefore~r=8⟧⏎","new":""},
+ {"op":"replace","n":11,"part":"sol","old":"⟦{} _{3} {rmC}  _{1}  TIMES   _{3} {rmC}  _{2} =3 TIMES  {5 TIMES 4} over {2 TIMES 1} =30⟧","new":"⟦{} _{3} {rmC}  _{1}  TIMES   _{5} {rmC}  _{2} =3 TIMES  {5 TIMES 4} over {2 TIMES 1} =30⟧"},
+ {"op":"replace","n":14,"part":"sol","old":"(ⅰ), (ⅱ)에서 구하는 방법의 수는","new":"따라서 구하는 방법의 수는"},
+ {"op":"replace","n":15,"part":"q","old":"다음을 경우의 수를 구하시오.","new":"다음 경우의 수를 구하시오."},
+ {"op":"replace","n":21,"part":"sol","old":"⟦r-2 != 2r-2`⟧","new":"⟦r+2 != 2r-2`⟧"},
+ {"op":"replace","n":23,"part":"sol","old":"⟦rm  _{10} {rmC}  _{5} = {10times9times8times7times6} over {5times4times3times2times1} =256⟧","new":"⟦rm  _{10} {rmC}  _{5} = {10times9times8times7times6} over {5times4times3times2times1} =252⟧"},
+ {"op":"replace","n":23,"part":"sol","old":"⟦256-56=196⟧","new":"⟦252-56=196⟧"},
+ {"op":"replace","n":27,"part":"q","old":"각각 들어있는","new":"각각 들어 있는"},
+ {"op":"replace","n":30,"part":"q","old":"봅아서 나열하는","new":"뽑아서 나열하는"},
+ {"op":"replace","n":31,"part":"sol","old":"⟦40times5times12=2880⟧","new":"⟦40times6times12=2880⟧"},
+ {"op":"replace","n":32,"part":"sol","old":"총회원수는","new":"총회원 수는"},
+ {"op":"replace","n":36,"part":"sol","old":"이때 일직선 위에 있는 점으로는 삼각형을 만들 수 없으므로","new":"이러한 직선은 ⟦3⟧개이고, 일직선 위에 있는 점으로는 삼각형을 만들 수 없으므로"},
+ {"op":"replace","n":44,"part":"sol","old":"이때 ⟦8⟧명을 ⟦4⟧팀씩","new":"이때 ⟦8⟧개의 팀을 ⟦4⟧팀씩"}
+]

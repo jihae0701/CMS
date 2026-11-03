@@ -1,0 +1,61 @@
+[
+ {"op":"replace","n":4,"part":"q","old":"⟦U= LEFT { -2,~-1.~0,~1,~2,~3 RIGHT }⟧","new":"⟦U= LEFT { -2,~-1,~0,~1,~2,~3 RIGHT }⟧"},
+ {"op":"replace","n":4,"part":"sol","old":"⟦P`capQ^c = LEFT { -1,~0,~1,~2 RIGHT }cap LEFT { 0,~3 RIGHT }= LEFT { -1,~1,~2 RIGHT }⟧","new":"⟦P`capQ^c = LEFT { -1,~0,~1,~2 RIGHT }cap LEFT { -2,~-1,~1,~2 RIGHT }= LEFT { -1,~1,~2 RIGHT }⟧"},
+ {"op":"replace","n":27,"part":"q","old":"⟦U= LEFT { -2,~-1.~0,~1,~2,~3 RIGHT }⟧","new":"⟦U= LEFT { -2,~-1,~0,~1,~2,~3 RIGHT }⟧"},
+ {"op":"replace","n":27,"part":"sol","old":"⟦P`capQ^c = LEFT { -1,~0,~1,~2 RIGHT }cap LEFT { 0,~3 RIGHT }= LEFT { -1,~1,~2 RIGHT }⟧","new":"⟦P`capQ^c = LEFT { -1,~0,~1,~2 RIGHT }cap LEFT { -2,~-1,~1,~2 RIGHT }= LEFT { -1,~1,~2 RIGHT }⟧"},
+
+ {"op":"replace","n":5,"part":"sol","old":"ㄴ. ⟦U`⟧의 어떤 ⟦x⟧에 대하여 ","new":"ㄴ. "},
+ {"op":"replace","n":5,"part":"sol","old":"⟦x^2 =36⟧인 ⟦x⟧가 존재","new":"⟦x^2 =36⟧을 만족시키는 ⟦x⟧가 존재"},
+ {"op":"replace","n":5,"part":"sol","old":"가 존재하지 않는다. (거짓)","new":"가 ⟦U`⟧에 존재하지 않는다. (거짓)"},
+
+ {"op":"replace","n":6,"part":"sol","old":"⟦P`=emptyset⟧","new":"⟦Q`=emptyset⟧"},
+
+ {"op":"replace","n":8,"part":"sol","old":"⟦1over2⟧","new":"⟦x= {1} over {2}⟧"},
+ {"op":"replace","n":8,"part":"sol","old":"(2) 참 (3) 거짓 [반례] ","new":"(2) 참 (3) 거짓 [반례] ⟦x=2⟧, ⟦y=-2⟧ (4) 거짓 [반례] "},
+ {"op":"replace","n":8,"part":"end","old":"⟦1over2⟧","new":"⟦x= {1} over {2}⟧"},
+ {"op":"replace","n":8,"part":"end","old":"(2) 참 (3) 거짓 [반례] ","new":"(2) 참 (3) 거짓 [반례] ⟦x=2⟧, ⟦y=-2⟧ (4) 거짓 [반례] "},
+
+ {"op":"replace","n":9,"part":"sol","old":"⟦P`capQ`=U`⟧","new":"⟦P`capQ`=Q`⟧"},
+ {"op":"replace","n":9,"part":"sol","old":"① ","new":"① ⟦P`capQ`=P`⟧이므로 "},
+ {"op":"replace","n":9,"part":"sol","old":"⟦P`cupQ`=Q`⟧","new":"⟦P`cupQ`=U`⟧"},
+ {"op":"replace","n":9,"part":"sol","old":"② ","new":"② ⟦P`cupQ`=Q`⟧이므로 "},
+ {"op":"replace","n":9,"part":"sol","old":"⟦P`cupQ^c ne U`⟧","new":"⟦P`cupQ^c =U`⟧"},
+ {"op":"replace","n":9,"part":"sol","old":"④ ","new":"④ ⟦Q`-P`⟧의 원소는 ⟦P`cupQ^c⟧에 속하지 않으므로 "},
+ {"op":"replace","n":9,"part":"sol","old":"⟦Q^c -P^c =emptyset⟧","new":"⟦Q^c -P^c =U`⟧"},
+ {"op":"replace","n":9,"part":"sol","old":"⑤ ","new":"⑤ ⟦Q^c -P^c =Q^c capP=emptyset⟧이므로 "},
+
+ {"op":"replace","n":10,"part":"sol","old":"벤 다이어그램으로 나타내면","new":"벤 다이어그램으로 나타내면 그림과 같다."},
+ {"op":"replace","n":10,"part":"sol","old":"⟦P`cupQ`neU`⟧","new":"⟦P`cupQ`=U`⟧"},
+ {"op":"replace","n":10,"part":"sol","old":"① ","new":"① ⟦P`cupQ` ne U`⟧일 수 있으므로 "},
+ {"op":"replace","n":10,"part":"sol","old":"⟦Q`-P`=Q`⟧","new":"⟦Q`-P`=emptyset⟧"},
+ {"op":"replace","n":10,"part":"sol","old":"③ ","new":"③ ⟦Q`-P`=Q`⟧이므로 "},
+ {"op":"replace","n":10,"part":"sol","old":"⟦P`capQ` = emptyset⟧","new":"⟦P`capQ`=P`⟧"},
+ {"op":"replace","n":10,"part":"sol","old":"④ ","new":"④ ⟦P`capQ` = emptyset⟧이므로 "},
+ {"op":"replace","n":10,"part":"sol","old":"⟦P^c cup Q^c = LEFT ( P`capQ` RIGHT )^c = U`⟧","new":"⟦P^c cup Q^c =emptyset⟧"},
+ {"op":"replace","n":10,"part":"sol","old":"⑤ ","new":"⑤ ⟦P^c cup Q^c = LEFT ( P`capQ` RIGHT )^c = U`⟧이므로 "},
+
+ {"op":"replace","n":13,"part":"sol","old":"⟦p`:`a<x<3.~q`:`x ge -4`⟧","new":"⟦p`:`a<x<3,~q`:`x ge -4`⟧"},
+ {"op":"replace","n":13,"part":"sol","old":"⟦P{=left{x``|``a<x<3 right}`⟧","new":"⟦P=left{x``|``a<x<3 right}`⟧"},
+
+ {"op":"replace","n":20,"part":"q","old":"에 대하여 ⟦q`⟧는","new":"일 때, ⟦q`⟧는"},
+
+ {"op":"replace","n":21,"part":"sol","old":"⟦Q`= LEFT { x` |`1 le x le3 RIGHT }⟧","new":"⟦Q`= LEFT { x` |`1 le x <3 RIGHT }⟧"},
+
+ {"op":"replace","n":23,"part":"sol","old":"⟦2+3 != 6`⟧","new":"⟦2+4 != 6`⟧"},
+ {"op":"replace","n":23,"part":"end","old":"⟦2+3 != 6`⟧","new":"⟦2+4 != 6`⟧"},
+
+ {"op":"replace","n":24,"part":"q","old":"이하의 소수","new":" 이하의 소수"},
+ {"op":"replace","n":24,"part":"sol","old":"⟦x`<`2`⟧","new":"⟦x` < `-2`⟧"},
+ {"op":"replace","n":24,"part":"end","old":"⟦x`<`2`⟧","new":"⟦x` < `-2`⟧"},
+
+ {"op":"replace","n":26,"part":"q","old":"⟦U`=` LEFT { x``\ue04d`x`⟧","new":"⟦U`=` LEFT { x`` | ``x`⟧"},
+
+ {"op":"replace","n":33,"part":"end","old":"(1) 명제 : ⟦x^2 =x⟧이면 ⟦x=0⟧ 또는 ⟦x=1⟧이다. (참)⏎역 : ⟦x=0⟧ 또는 ⟦x=1⟧이면 ⟦x^2 =x⟧이다. (참)⏎대우 : ⟦x ne0⟧이고 ⟦x ne1⟧이면","new":"역 : ⟦x ⟧가 ⟦24 ⟧의 약수이면 ⟦x ⟧가 ⟦8 ⟧의 약수이다, 거짓⏎대우 : ⟦x ⟧가 ⟦24 ⟧의 약수가 아니면 ⟦x ⟧가 ⟦8 ⟧의 약수가 아니다, 참"},
+ {"op":"replace","n":33,"part":"end","old":" ⟦x^2 ne x⟧이다. (참)⏎(2) 명제 : ⟦xy>1⟧이면 ⟦x>1⟧이고 ⟦y>1⟧이다. (거짓)⏎[반례] ⟦x=3,~y= { 1} over { 2}⟧⏎역 : ⟦x>1⟧이고 ⟦y>1⟧이면 ⟦xy>1⟧이다. (참)⏎대우 : ⟦x le 1⟧ 또는 ⟦y le 1⟧이면 ⟦xy le 1⟧이다. (거짓)⏎[반례] ⟦x=-2,~y= it-1⟧","new":""},
+
+ {"op":"replace","n":36,"part":"end","old":"󰂼 ","new":"󰂼 ④"},
+
+ {"op":"replace","n":38,"part":"sol","old":"󰂼 ③","new":"󰂼 ㄱ, ㄷ"},
+ {"op":"replace","n":38,"part":"end","old":"󰂼 ③","new":"󰂼 ㄱ, ㄷ"},
+ {"op":"replace","n":38,"part":"sol","old":"따라서 ⟦Q  SUBSET P`⟧가 항상","new":"따라서 ⟦P  SUBSET Q`⟧가 항상"}
+]

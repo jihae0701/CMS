@@ -1,0 +1,177 @@
+[
+ {
+  "op": "replace",
+  "n": 2,
+  "part": "q",
+  "old": "다음 식을 간단히 하시오",
+  "new": "다음 식을 간단히 하시오."
+ },
+ {
+  "op": "replace",
+  "n": 3,
+  "part": "sol",
+  "old": "⟦= {2x} over {x} =x⟧",
+  "new": "⟦= {2x} over {2} =x⟧"
+ },
+ {
+  "op": "replace",
+  "n": 5,
+  "part": "sol",
+  "old": "정의역 ⟦LEFT { x``|``x != 2⟧인 실수⟦\\}⟧",
+  "new": "정의역 ⟦\"{\"x``|``x != 2⟧인 실수⟦\"}\"⟧"
+ },
+ {
+  "op": "replace",
+  "n": 5,
+  "part": "sol",
+  "old": "정의역은 ⟦LEFT { x``|``x != 2⟧인 실수⟦\\}⟧",
+  "new": "정의역은 ⟦\"{\"x``|``x != 2⟧인 실수⟦\"}\"⟧"
+ },
+ {
+  "op": "replace",
+  "n": 5,
+  "part": "end",
+  "old": "정의역 ⟦LEFT { x``|``x != 2⟧인 실수⟦\\}⟧",
+  "new": "정의역 ⟦\"{\"x``|``x != 2⟧인 실수⟦\"}\"⟧"
+ },
+ {
+  "op": "replace",
+  "n": 5,
+  "part": "sol",
+  "old": "정의역 ⟦\"{\"x``|``x!= it -1⟧인 실수⟦\"}\"⟧, 치역은 ⟦\"{\"y``|``y!=2⟧",
+  "new": "정의역 ⟦\"{\"x``|``x!= it -1⟧인 실수⟦\"}\"⟧, 치역 ⟦\"{\"y``|``y!=2⟧"
+ },
+ {
+  "op": "replace",
+  "n": 5,
+  "part": "end",
+  "old": "치역은 ⟦\"{\"y``|``y!=2⟧",
+  "new": "치역 ⟦\"{\"y``|``y!=2⟧"
+ },
+ {
+  "op": "replace",
+  "n": 13,
+  "part": "sol",
+  "old": "또는 ⟦y GEQ  {5} over {2} RIGHT }⟧",
+  "new": "또는 ⟦LEFT . y GEQ  {5} over {2} RIGHT }⟧이다."
+ },
+ {
+  "op": "replace",
+  "n": 14,
+  "part": "sol",
+  "old": "⟦y= LEFT ( 3x+a RIGHT ) = it -x+5⟧",
+  "new": "⟦y LEFT ( 3x+a RIGHT ) = it -x+5⟧"
+ },
+ {
+  "op": "replace",
+  "n": 16,
+  "part": "q",
+  "old": "⟦f  ^{-1} =f⟧",
+  "new": "⟦f  ^{1} =f⟧"
+ },
+ {
+  "op": "replace",
+  "n": 16,
+  "part": "sol",
+  "old": "⇥⟦f`  ^{2} ⟧",
+  "new": "⇥⟦f`  ^{2} LEFT ( x RIGHT )⟧"
+ },
+ {
+  "op": "replace",
+  "n": 18,
+  "part": "sol",
+  "old": "⏎⟦y=ma-m+1⟧은",
+  "new": "⏎⟦y=mx-m+1⟧은"
+ },
+ {
+  "op": "replace",
+  "n": 18,
+  "part": "sol",
+  "old": "⟦y=ma-m+1⟧이 만나지",
+  "new": "⟦y=mx-m+1⟧이 만나지"
+ },
+ {
+  "op": "replace",
+  "n": 18,
+  "part": "sol",
+  "old": "⟦{x+1} over {x-1} =ma-m+1⟧",
+  "new": "⟦{x+1} over {x-1} =mx-m+1⟧"
+ },
+ {
+  "op": "replace",
+  "n": 18,
+  "part": "sol",
+  "old": "⟦LEFT ( ma-m+1 RIGHT ) LEFT ( x-1 RIGHT ) =x+1⟧",
+  "new": "⟦LEFT ( mx-m+1 RIGHT ) LEFT ( x-1 RIGHT ) =x+1⟧"
+ },
+ {
+  "op": "replace",
+  "n": 19,
+  "part": "sol",
+  "old": "⟦A SMALLINTER B= EMPTYSET ⟧이려면",
+  "new": "⟦A SMALLINTER B!= EMPTYSET ⟧이려면"
+ },
+ {
+  "op": "replace",
+  "n": 26,
+  "part": "sol",
+  "old": "(ⅰ) 위의 그림에서",
+  "new": "(ⅰ) 오른쪽 그림에서"
+ },
+ {
+  "op": "replace",
+  "n": 31,
+  "part": "sol",
+  "old": "⟦y= {-3x+1} over {x+1} `⟧",
+  "new": "⟦y=- {3x+1} over {x+1} `⟧"
+ },
+ {
+  "op": "replace",
+  "n": 33,
+  "part": "sol",
+  "old": "⟦m=-3⟧",
+  "new": "⟦n=-3⟧"
+ },
+ {
+  "op": "replace",
+  "n": 36,
+  "part": "sol",
+  "old": "일 대 최댓값",
+  "new": "일 때 최댓값"
+ },
+ {
+  "op": "replace",
+  "n": 36,
+  "part": "sol",
+  "old": "⟦4-2a=0⟧. 즉",
+  "new": "⟦4-2a=0⟧, 즉"
+ },
+ {
+  "op": "replace",
+  "n": 42,
+  "part": "q",
+  "old": "⟦B= LEFT { left(x,~y right) leftvert y=ax+1 RIGHT }⟧",
+  "new": "⟦B= LEFT { left(x,~y right) left vert y=ax+1 RIGHT }⟧"
+ },
+ {
+  "op": "replace",
+  "n": 42,
+  "part": "sol",
+  "old": "이 함수 ⟦y= {x-2} over {x} `⟧의 그래프와 만나지 않으려면 ⟦a>0`⟧이어야 합니다.",
+  "new": "은 ⟦a>0`⟧이면 함수 ⟦y= {x-2} over {x} `⟧의 그래프와 만나지 않고, 음수이면 만납니다."
+ },
+ {
+  "op": "replace",
+  "n": 42,
+  "part": "sol",
+  "old": "만나지 않고, 음수이면 만납니다.",
+  "new": "만나지 않고, ⟦a<0`⟧이면 만납니다."
+ },
+ {
+  "op": "replace",
+  "n": 44,
+  "part": "sol",
+  "old": "의 대한 식으로",
+  "new": "에 대한 식으로"
+ }
+]
