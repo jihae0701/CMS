@@ -627,7 +627,7 @@ def recommended(s, cfg):
 
 def parent_label(name):
     """학부모 성적표 표기: TF1월금·TF2월금 → TF월금, TF1화목(자사) → TF화목(자사) (엑셀·상담 카드는 그대로)"""
-    m = re.fullmatch(r"TF\d(월금|화목|반)(\(.+\))?", str(name or ""))   # 요일 미정이면 TF1반 → TF반
+    m = re.fullmatch(r"TF\d(월금/화목|월금|화목|반)(\(.+\))?", str(name or ""))   # 요일 미정이면 TF1반 → TF반
     return "TF" + m.group(1) + (m.group(2) or "") if m else name
 
 
@@ -650,10 +650,10 @@ FAST = ("TF집중속진반", "12월 28일(월) 개강")
 
 def main_open(name, s):
     """공통수학반 개강일: 반 이름의 요일(월금/화목), 없으면 학생 등원 요일로"""
-    for k, v in OPEN_MAIN.items():
-        if k in str(name):
-            return v
-    day = s.get("day") or ""
+    hit = [v for k, v in OPEN_MAIN.items() if k in str(name)]
+    if len(hit) == 1:
+        return hit[0]
+    day = "" if hit else s.get("day") or ""      # 'TF2월금/화목'은 두 요일 개강일 모두
     return OPEN_MAIN["월금"] if "월" in day else OPEN_MAIN["화목"] if "화" in day else "11월 26일(목)·27일(금) 개강"
 
 
@@ -664,12 +664,14 @@ def link_class(s, cfg):
         return None, "", ""
     nm, opts = LINK.get(r2.replace(" ", ""), (r2, {}))
     fin = str(s.get("final") or "")
-    day = next(iter(opts)) if len(opts) == 1 else "수" if "월금" in fin else "일" if "화목" in fin else None
+    both = "월금" in fin and "화목" in fin           # 'TF2월금/화목': 요일 선택 가능
+    day = next(iter(opts)) if len(opts) == 1 else None if both else "수" if "월금" in fin else "일" if "화목" in fin else None
     extra = cfg["pre_desc"].get(r2, "")
     if day in opts:
         return nm, opts[day][0] + (" — " + extra if extra else ""), opts[day][1]
     alt = " / ".join(v[0] for v in opts.values())
-    return nm, (alt + " 중 상담을 통해 안내해 드립니다." if alt else extra), ""
+    od = "·".join(v[1].replace(" 개강", "") for v in opts.values()) + " 개강" if opts else ""
+    return nm, (alt + (" 중 선택 가능합니다." if both else " 중 상담을 통해 안내해 드립니다.") if alt else extra), od
 
 
 def basis(s, cfg):
