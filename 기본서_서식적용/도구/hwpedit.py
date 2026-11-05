@@ -678,8 +678,8 @@ class Doc:
         raw = self.section_bytes()
         data = raw
         if self.h.compressed:
-            c = zlib.compressobj(9, zlib.DEFLATED, -15)
-            data = c.compress(raw) + c.flush()
+            import hwpzip
+            data = hwpzip.compress(raw)
         tmp = dst + '.tmp'
         if not inplace.replace_stream(self.path, tmp, ['BodyText', 'Section0'], data):
             root = cfb.read_tree(self.path)

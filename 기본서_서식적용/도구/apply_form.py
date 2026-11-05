@@ -57,7 +57,7 @@ def main(src, dst):
     new = patch_section(raw)
     assert len(new) == len(raw)
     if h.compressed:
-        c = zlib.compressobj(9, zlib.DEFLATED, -15); data = c.compress(new) + c.flush()
+        import hwpzip; data = hwpzip.compress(new)
     else:
         data = new
     import inplace

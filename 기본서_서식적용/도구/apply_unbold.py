@@ -13,7 +13,7 @@ def main(path):
         return 0, other, 'none'
     data = new
     if h.compressed:
-        c = zlib.compressobj(9, zlib.DEFLATED, -15); data = c.compress(new) + c.flush()
+        import hwpzip; data = hwpzip.compress(new)
     tmp = path + '.tmp'
     if inplace.replace_stream(path, tmp, ['BodyText', 'Section0'], data):
         mode = 'inplace'
