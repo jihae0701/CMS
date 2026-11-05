@@ -39,6 +39,9 @@ def num(v):
     return int(v) if isinstance(v, float) and v.is_integer() else v
 
 
+FROZEN = "평균고정"
+
+
 def read(path):
     wb = load_workbook(path)  # 입력 칸만 읽으므로 수식 캐시 불필요
     s = wb["설정"]
@@ -120,6 +123,13 @@ def read(path):
                              kind=st.cell(r, 4).value or "", prev=st.cell(r, 5).value or "", progress=st.cell(r, 6).value or "",
                              phone=col(r, "연락처"), memo=col(r, "비고(내부용)", "비고"), day=str(col(r, "현재 등원 요일")), school2=str(col(r, "자사/일반")).strip(),
                              manual=num(b.cell(r, 13).value), reco2=num(b.cell(r, 14).value), resp=resp))
+    cfg["frozen"] = {}
+    if FROZEN in wb.sheetnames:   # 평균 고정: 성적표를 이미 배부한 뒤 추가 응시자가 생겨도 같은 평균을 씀
+        fz = wb[FROZEN]
+        for r in range(4, fz.max_row + 1):
+            subj, unit, v = fz.cell(r, 1).value, fz.cell(r, 2).value, fz.cell(r, 3).value
+            if subj and v is not None:
+                cfg["frozen"][(str(subj), None if unit in (None, "", "(과목 평균)") else str(unit))] = float(v)
     return cfg, exams, students
 
 
@@ -209,7 +219,41 @@ def compute(cfg, exams, students):
         for q in exams[key]:
             n = len(takers)
             q["rate"] = sum(1 for s in takers if s["ok"][key][q["no"] - 1]) / n if n else None
+    fz = cfg.get("frozen") or {}
+    for key, _ in SUBJ:                       # '평균고정' 시트가 있으면 성적표의 과목·단원 평균은 그 값
+        if (key, None) in fz:
+            stats[("avg", key)] = fz[(key, None)]
+        for u in cfg["units"][key]:
+            if (key, str(u)) in fz:
+                stats[("uavg", key, u)] = fz[(key, str(u))]
     return stats
+
+
+def freeze(xlsx):
+    """지금 학생들 기준 과목·단원 평균을 '평균고정' 시트에 저장(이미 있으면 덮어씀). 이후 추가 응시자는 평균에 반영 안 됨"""
+    import datetime
+    cfg, exams, students = read(xlsx)
+    cfg["frozen"] = {}
+    stats = compute(cfg, exams, students)
+    wb = load_workbook(xlsx)
+    if FROZEN in wb.sheetnames:
+        del wb[FROZEN]
+    ws = wb.create_sheet(FROZEN)
+    ws["A1"] = "성적표 평균 고정값 (%s 고정, 과목별 응시 %s)" % (datetime.date.today().isoformat(),
+               " · ".join("%s %d명" % (k, sum(1 for s in students if s["took"][k])) for k, _ in SUBJ))
+    ws["A2"] = "이 시트가 있으면 학부모 성적표의 '전체 평균'은 아래 값을 씁니다. 다시 실제 평균을 쓰려면 이 시트를 지우세요."
+    for c, h in enumerate(["과목", "단원", "평균(과목=점수, 단원=득점률)"], 1):
+        ws.cell(3, c, h)
+    r = 4
+    for key, _ in SUBJ:
+        ws.cell(r, 1, key); ws.cell(r, 2, "(과목 평균)"); ws.cell(r, 3, round(stats[("avg", key)], 4)); r += 1
+        for u in cfg["units"][key]:
+            v = stats[("uavg", key, u)]
+            if v is not None:
+                ws.cell(r, 1, key); ws.cell(r, 2, u); ws.cell(r, 3, round(v, 4)); r += 1
+    ws.column_dimensions["A"].width, ws.column_dimensions["B"].width, ws.column_dimensions["C"].width = 10, 24, 26
+    wb.save(xlsx)
+    print("평균 고정 →", xlsx, {k: round(stats[("avg", k)], 1) for k, _ in SUBJ})
 
 
 def level(rate, cfg):
@@ -583,7 +627,7 @@ def recommended(s, cfg):
 
 def parent_label(name):
     """학부모 성적표 표기: TF1월금·TF2월금 → TF월금, TF1화목(자사) → TF화목(자사) (엑셀·상담 카드는 그대로)"""
-    m = re.fullmatch(r"TF\d(월금|화목)(\(.+\))?", str(name or ""))
+    m = re.fullmatch(r"TF\d(월금|화목|반)(\(.+\))?", str(name or ""))   # 요일 미정이면 TF1반 → TF반
     return "TF" + m.group(1) + (m.group(2) or "") if m else name
 
 
@@ -738,11 +782,18 @@ def render(pages, out_pdf):
     os.remove(tmp)
 
 
-def main(xlsx, outdir):
+def main(xlsx, outdir, only=None):
     cfg, exams, students = read(xlsx)
     stats = compute(cfg, exams, students)
     os.makedirs(os.path.join(outdir, "학부모보고서"), exist_ok=True)
     targets = [s for s in students if s["total"] is not None and not str(s.get("final") or "").startswith("퇴원")]
+    if only:   # 일부 학생만: 학생별 성적표만 만듦
+        targets = [s for s in targets if s["name"] in only]
+        for s in targets:
+            safe = re.sub(r'[\\/:*?"<>|]', "_", s["name"])
+            render([parent_pages(s, cfg, exams, stats)], os.path.join(outdir, "학부모보고서", "%02d_%s.pdf" % (s["no"], safe)))
+        print("학부모 보고서 %d명 → %s%s" % (len(targets), outdir, " (평균 고정값 사용)" if cfg["frozen"] else ""))
+        return
     # 성적표는 학생별, 커리큘럼 안내지(assets/curriculum.html)는 모든 학생 공통 파일 하나로 따로 출력
     pages = [parent_pages(s, cfg, exams, stats) for s in targets]
     render(pages, os.path.join(outdir, "학부모보고서_전체.pdf"))
@@ -768,4 +819,8 @@ def main(xlsx, outdir):
 
 
 if __name__ == "__main__":
-    main(sys.argv[1], sys.argv[2])
+    # python make_reports.py <엑셀> <출력폴더> [학생이름 ...]   /   python make_reports.py <엑셀> --평균고정
+    if sys.argv[2] == "--평균고정":
+        freeze(sys.argv[1])
+    else:
+        main(sys.argv[1], sys.argv[2], sys.argv[3:] or None)
