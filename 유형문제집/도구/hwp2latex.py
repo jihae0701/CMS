@@ -10,6 +10,7 @@ WORDS = {
     "therefore": r"\therefore ", "THEREFORE": r"\therefore ",
     "angle": r"\angle ", "gamma": r"\gamma ", "PI": r"\Pi ", "pi": r"\pi ", "delta": r"\delta ", "omega": r"\omega ", "theta": r"\theta ",
     "triangle": r"\triangle ", "bot": r"\perp ",
+    "vert": r"\vert ", "emptyset": r"\varnothing ", "EMPTYSET": r"\varnothing ",
     "LRARROW": r"\Leftrightarrow ", "lrarrow": r"\leftrightarrow ", "RARROW": r"\Rightarrow ",
 }
 
