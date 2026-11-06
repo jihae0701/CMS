@@ -708,6 +708,9 @@ def main():
             ct = zipfile.ZIP_STORED if name == "mimetype" else zipfile.ZIP_DEFLATED
             z.writestr(zipfile.ZipInfo(name, date_time=(2026, 10, 9, 0, 0, 0)), files[name], compress_type=ct)
     print("문항 %d개 -> %s (그림 %s)" % (n, OUT, ", ".join(sorted(used))))
+    if getattr(U, "DESIGN", None) == "c2":          # 공통수학2 유형서: 사용자 완성본(2026-11-06) 디자인을 입힌다
+        import c2design
+        c2design.apply(OUT, UNITFILE)
 
 
 if __name__ == "__main__":
