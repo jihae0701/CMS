@@ -206,6 +206,12 @@ def right(P, Q, R):
     return dot(v(P, Q), v(P, R)) == 0 or dot(v(Q, P), v(Q, R)) == 0 or dot(v(R, P), v(R, Q)) == 0
 chk("j7-20", sum(1 for t3 in itertools.combinations(S_, 3) if right(*t3)), 60)
 
+# 기본서에서 옮긴 문항(2026-11-06) --------------------------------------------------
+chk("e5-13", len({a * b for a in range(-1, 3) for b in range(-3, 6)}), 15)
+def inc1932(k):
+    return all(x * x - k * x + k * k - 19 < 0 for x in [-3 + 5 * j / 1000 for j in range(1001)])
+chk("n1932", sum(1 for k in range(-20, 21) if inc1932(k)), 4)
+
 if __name__ == "__main__":
     bad = [r for r in R if not r[1]]
     print("검산", len(R), "불일치", len(bad))

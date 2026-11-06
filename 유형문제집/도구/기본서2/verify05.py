@@ -117,7 +117,7 @@ R["e1-3"] = sol[0] if len(set(sol)) == 1 else sol
 def inc306(av):
     xs = [av - 1 + (k + 1) / 400 for k in range(400)]
     return all(1 < x < 6 for x in xs)
-R["g306"] = sum(av for av in range(1, 20) if inc306(av))
+R["b10"] = sum(av for av in range(1, 20) if inc306(av))
 # n1932
 def inc1932(k):
     xs = [-3 + 5 * j / 1000 for j in range(1001)]
@@ -297,6 +297,56 @@ g1 = abs((5 ** 2 - 3 ** 2) * math.pi - 16 * math.pi) < 1e-9 and drange(1)[0] < 3
 g2 = sum(1 for r_ in range(1, 11) if abs(r_ - 4) <= 4 <= r_ + 4) == 8
 g3 = sum(1 for m_ in range(1, 11) for n_ in range(m_ + 1, 11) if abs(n_ - 4) <= abs(m_ - 4)) == 12
 R["j10-14"] = ", ".join(nm for nm, ok in zip("ㄱㄴㄷ", [g1, g2, g3]) if ok)
+
+# Basecamp 추가 문항 -------------------------------------------------------------
+sq_ = [n * n for n in range(1, 40)]
+res = set()
+for A4 in itertools.combinations(sq_, 4):
+    B4 = {math.isqrt(v) for v in A4}
+    for a_, b_ in itertools.permutations(A4, 2):
+        if a_ + b_ == 13 and set(A4) & B4 == {a_, b_}:
+            c_, d_ = sorted(set(A4) - {a_, b_}, reverse=True)
+            res.add(c_ - d_)
+R["b33"] = res.pop() if len(res) == 1 else None
+R["b13"] = sum(1 for a_ in range(-30, 31) if all(x * x + a_ * x + a_ * a_ - 7 < 0 for x in [2]))
+cnt = 0
+for j in range(1, 100000):
+    x_ = Fr(1, 3) + Fr(j, 600000)
+    if not (Fr(1, 3) < x_ < Fr(1, 2)):
+        continue
+xs_ = [r for r in sp.solve(sp.Symbol("x") ** 2 + 2 * sp.Symbol("x") - 1) if sp.Rational(1, 3) < r < sp.Rational(1, 2)]
+# 1/3<x<1/2이면 1/x의 정수 부분은 2 — 구간을 촘촘히 나누어 f(1/x)=x의 해 개수를 부호 변화로도 확인
+import math as _m
+def g_(x_):
+    v = 1 / x_
+    return (v - _m.floor(v)) - x_
+pts = [1 / 3 + (1 / 2 - 1 / 3) * k / 20000 for k in range(1, 20000)]
+sign_changes = sum(1 for p1, p2 in zip(pts, pts[1:]) if g_(p1) * g_(p2) < 0)
+R["b110"] = len(xs_) if len(xs_) == sign_changes else None
+A_ = set(); cur = Fr(3)
+for _ in range(10):
+    A_.add(cur); cur = 1 / (1 - cur)
+R["b17"] = len(A_)
+R["b111"] = sum(1 for X in subsets(range(9, 16)) if len(X) >= 2 and sum(X) % 3 == 0)
+R["b104"] = sum(sum(v if i % 2 == 0 else -v for i, v in enumerate(sorted(X, reverse=True))) for X in subsets(range(1, 6)) if X)
+# b63: 7로 나눈 나머지 묶음을 고르는 경우를 모두 확인(같은 나머지끼리, 나머지 0은 하나까지)
+cnt_r = {r_: sum(1 for x in range(1, 101) if x % 7 == r_) for r_ in range(7)}
+best = 0
+for pick in itertools.product([0, 1, 2], repeat=3):   # 짝 (1,6), (2,5), (3,4) 중 어느 쪽(0이면 둘 다 안 넣음)
+    tot = 0
+    for (r1, r2), c_ in zip([(1, 6), (2, 5), (3, 4)], pick):
+        tot += cnt_r[r1] if c_ == 1 else (cnt_r[r2] if c_ == 2 else 0)
+    best = max(best, tot + 1)
+R["b63"] = best
+# b114: 탐욕 대신 작은 범위 전수 확인과 같은 방법 — 1~12에서 최대 크기 확인 후 같은 분류로 30까지
+def ok_set(X):
+    return all((x * y) % 6 for x, y in itertools.combinations(X, 2))
+small = max(len(X) for X in subsets(range(1, 13)) if ok_set(X))
+cls = lambda N: (sum(1 for x in range(1, N + 1) if x % 2 and x % 3), sum(1 for x in range(1, N + 1) if x % 2 == 0 and x % 3), sum(1 for x in range(1, N + 1) if x % 2 and x % 3 == 0))
+o_, e_, t_ = cls(12)
+assert small == o_ + max(e_, t_)
+o_, e_, t_ = cls(30)
+R["b114"] = o_ + max(e_, t_)
 
 
 # 대조 ---------------------------------------------------------------

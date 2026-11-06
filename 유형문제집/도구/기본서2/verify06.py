@@ -371,6 +371,56 @@ for X in subsets(sorted(U20)):
         cnt += 1
 R["j1-21"] = cnt
 
+# Basecamp 추가 문항 -------------------------------------------------------------
+U = frozenset(range(1, 9)); vals = set()
+for A in subsets(U):
+    for B in subsets(U):
+        if A & B == {3, 5} and (U - A) & (U - B) == {1, 7} and sum(A) == 2 * sum(B):
+            vals.add(sum(A))
+R["b92"] = vals.pop() if len(vals) == 1 else None
+U = frozenset(range(1, 11)); A = frozenset({1, 2, 3, 4}); B = frozenset({2, 3, 4, 5, 6})
+R["b57"] = sum(1 for X in subsets(U) if len(X - A) == 3 and A & X == B & X)
+U = set(range(1, 101)); Ak = lambda k: {v for v in U if v % k == 0}
+R["b70"] = len((Ak(2) - Ak(3)) | ((U - Ak(2)) & Ak(3))) - len(Ak(2) & (Ak(3) | Ak(4)))
+flags = [False, False, False]
+for j in range(-4000, 4001):
+    a_ = j / 400
+    xs_ = [k / 50 for k in range(-1000, 1001)]
+    An_ = any(x * x + 2 * a_ * x + a_ * a_ - a_ - 3 < 0 for x in xs_)
+    Bn_ = any(x * x - 2 * a_ * x + 2 * a_ * a_ + a_ - 2 < 0 for x in xs_)
+    if not An_ and Bn_: flags[0] = True
+    if An_ and not Bn_: flags[1] = True
+    if An_ and Bn_: flags[2] = True
+    if all(flags[1:]) and j > 0:
+        break
+R["b108"] = ", ".join(n for n, ok in zip("ㄱㄴㄷ", flags) if ok)
+d_ = lambda X, Y: (X | Y) - (X & Y)
+g1 = all(d_(A, B) == d_(comp(A), comp(B)) for A in ALL4 for B in ALL4)
+g2 = all(d_(d_(d_(d_(A, A), A), A), A) == A for A in ALL4)
+U20 = set(range(1, 21)); A2_, A3_, A5_ = [{v for v in U20 if v % k == 0} for k in (2, 3, 5)]
+g3 = len(d_(d_(A2_, A3_), A5_)) == 9
+R["b89"] = ", ".join(n for n, ok in zip("ㄱㄴㄷ", [g1, g2, g3]) if ok)
+sol = set()
+for one in range(0, 36):
+    for two in range(0, 36):
+        if one + two + 10 == 35 and one + 2 * two + 30 == 73:
+            sol.add(two + 10)
+R["b74"] = sol.pop() if len(sol) == 1 else None
+best = None
+for t_ in range(0, 64):
+    regs = [92 - 65 - 54 + t_, 75 - 65 - 48 + t_, 63 - 54 - 48 + t_, 65 - t_, 54 - t_, 48 - t_, t_]
+    if min(regs) >= 0 and sum(regs) <= 110:
+        best = t_ if best is None else min(best, t_)
+R["b98"] = best
+best = None
+for t_ in range(0, 41):
+    for x_ in range(0, 36):
+        regs = [40 - (15 - t_) - (10 - t_) - t_, 35 - (15 - t_) - (x_ - t_) - t_, 52 - (10 - t_) - (x_ - t_) - t_, 15 - t_, 10 - t_, x_ - t_, t_]
+        if min(regs) >= 0 and sum(regs) + 7 == 100:
+            v = (15 - t_) + (10 - t_) + (x_ - t_) + t_
+            best = v if best is None else min(best, v)
+R["b99"] = best
+
 
 # 대조 ---------------------------------------------------------------
 def norm(v):

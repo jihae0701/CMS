@@ -399,6 +399,32 @@ g2 = all(not Xm[m] for m in range(4, 8))
 g3 = all((sum(k for k in range(math.ceil(p - 1), math.floor(p + 1) + 1))) % 2 == 1 for m in range(8) for p in Xm[m])
 chk("j1-15", mark([g1, g2, g3], ["ㄱ", "ㄷ", "ㄱ, ㄴ", "ㄴ, ㄷ", "ㄱ, ㄴ, ㄷ"]), "③")
 
+# 기본서에서 옮긴 문항(2026-11-06) --------------------------------------------------
+U = frozenset(range(1, 11)); sol = set()
+rest = U - {5, 7, 3, 9, 10}
+for AmB in subsets(rest):
+    A = AmB | {5, 7}; B = (rest - AmB) | {5, 7}
+    if sum(A) == 2 * sum(B):
+        sol.add(math.prod(B))
+chk("g308", sol.pop() if len(sol) == 1 else None, 70)
+tot = F(0)
+for j in range(-400, 401):
+    av = F(j, 8)
+    lo, hi = max(F(2), av), min(F(3), av + 1)
+    if lo == hi:
+        tot += av
+chk("e11-22", tot, 4)
+U = frozenset(range(1, 10)); A, B = frozenset({1, 2, 3, 4}), frozenset({3, 4, 5, 6})
+chk("e1-14", sum(1 for X in subsets(U) if A - X == B - X and len((X - A) & (X - B)) >= 1), 28)
+M_ = lambda k: frozenset(range(k, 2001, k))
+chk("e12-13", sum(k for k in range(2, 100) if (M_(4) & M_(6)) <= M_(k)), 27)
+sol = set()
+for bb in range(0, 25):
+    for gg in range(0, 33):
+        if (24 - bb + 32 - gg) + 2 * (bb + gg) == 64 and 32 - gg == 24 - bb + 4:
+            sol.add(gg)
+chk("n2812", sol.pop() if len(sol) == 1 else None, 6)
+
 if __name__ == "__main__":
     bad = [r for r in R if not r[1]]
     print("검산", len(R), "불일치", len(bad))
