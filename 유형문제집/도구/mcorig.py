@@ -71,6 +71,8 @@ TABLE = {
     "2026년 3월 고2 14번": (_c("3 sqrt {2}", "4 sqrt {2}", "5 sqrt {2}", "6 sqrt {2}", "7 sqrt {2}"), "②", None),
     "2025년 10월 고1 21번": (_c("{3} over {5}", "{2} over {3}", "{11} over {15}", "{4} over {5}", "{13} over {15}"), "①", None),
     "2022년 9월 고1 17번": (_c("sqrt {42}", "sqrt {43}", "2 sqrt {11}", "3 sqrt {5}", "sqrt {46}"), "④", None),
+    # 공통수학2 6단원(집합의 연산) 유형서 — 번호를 모르는 학력평가(HIT기출 표기 '2022년 3월 고2' 등)는 문항의 "mc"에 둠(c2unit05.py·c2unit06.py)
+    "2026년 3월 고2 19번": (_c(8, 10, 12, 14, 16), "③", None),
 }
 
 
@@ -91,9 +93,14 @@ def apply(items):
     used = set()
     for it in items:
         k = key(it.get("src"))
-        if "h" in it or k not in TABLE:
+        if "h" in it:
             continue
-        ch, mark, edits = TABLE[k]
+        if "mc" in it:      # 문항 번호를 모르는 학력평가처럼 출처 글만으로 표를 찾을 수 없으면 문항에 직접 둔다
+            ch, mark, edits = it["mc"]
+        elif k in TABLE:
+            ch, mark, edits = TABLE[k]
+        else:
+            continue
         if any(isinstance(p, dict) and "ch" in p for p in it["q"]):
             raise SystemExit("이미 객관식인 문항이 표에 있음: %s" % k)
         got = value(ch[MARK.index(mark)])
