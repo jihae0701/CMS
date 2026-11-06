@@ -2,6 +2,7 @@
 # 집합은 원소를 직접 만들어 세고, 실수 조건은 방정식을 풀어 후보를 모두 확인한다.
 import itertools, math
 from fractions import Fraction as Fr
+from fractions import Fraction as F
 import sympy as sp
 R = []
 
@@ -171,6 +172,39 @@ for mask in range(1 << 19):
     if len(A_) > best_n or (len(A_) == best_n and sm > best_s):
         best_n, best_s = len(A_), sm
 chk("m88", best_s, 148)
+
+# 2026 중간 17개교 등 추가 문항 ----------------------------------------------
+chk("j2-1", mark([True, False, False, True], ["ㄱ, ㄴ", "ㄱ, ㄹ", "ㄷ, ㄹ", "ㄱ, ㄴ, ㄷ", "ㄴ, ㄷ, ㄹ"]), "②")   # 집합의 뜻(기준이 분명한 것)
+A3 = {2, 3, 4}
+PA = set(frozenset(x) for x in subsets(A3))
+chk("j12-9", mark([True, {frozenset(), frozenset(A3)} <= PA, all(math.prod(X) % 2 == 0 for X in PA if len(X) >= 2)],
+                  ["ㄱ", "ㄴ", "ㄱ, ㄴ", "ㄱ, ㄷ", "ㄱ, ㄴ, ㄷ"]), "⑤")
+A_ = {2 ** k for k in (1, 2, 3)}
+chk("j6-7", len({x - y for x in A_ for y in A_}), 7)
+sol = [a for a in [F(n, 2) for n in range(-40, 41)] if {3, a} <= {-a, 2 * a - 1, a * a + 3}]
+chk("j9-8", sol[0] if len(sol) == 1 else None, 0)
+sol = {a + b for a in range(-20, 21) for b in range(-20, 21) if {a, 1, 7} == {-2, b, 2 * a + 5}}
+chk("j6-4", sol.pop() if len(sol) == 1 else None, 5)
+best = 0
+for a in range(10, 100):
+    D = [d for d in range(1, a + 1) if a % d == 0]
+    if len(D) == 3:
+        best = max(best, math.prod(D))
+chk("j3-13", best, 343)
+chk("j5-6", sum(1 for X in subsets(range(1, 10)) if len(X) == 3 and 3 in X), 28)
+pr = [p_ for p_ in range(2, 17) if all(p_ % q for q in range(2, p_))]
+chk("j9-7", sum(1 for X in subsets(pr) if X), 63)
+sol = [(a, b) for a in range(-20, 21) for b in range(-30, 31) if {3, a + 5, b - 2} == {a * a - 1, 7, 8}]
+chk("e1-3", sol[0][0] + sol[0][1] if len(sol) == 1 else None, 12)
+chk("n1902", max(n for n in range(1, 5000) if {x for x in range(2, 100, 2) if x * x <= n} <= {2, 4, 6}), 63)
+sol = [a for a in range(-20, 21) if 16 * (5 * a + 20) == 400]
+chk("e7-13", 31 - sol[0] if len(sol) == 1 else None, 30)
+S_ = [(x, y) for x in range(-5, 6) for y in range(-5, 6) if x * x + y * y == 25]
+def right(P, Q, R):
+    v = lambda a, b: (b[0] - a[0], b[1] - a[1])
+    dot = lambda u, w: u[0] * w[0] + u[1] * w[1]
+    return dot(v(P, Q), v(P, R)) == 0 or dot(v(Q, P), v(Q, R)) == 0 or dot(v(R, P), v(R, Q)) == 0
+chk("j7-20", sum(1 for t3 in itertools.combinations(S_, 3) if right(*t3)), 60)
 
 if __name__ == "__main__":
     bad = [r for r in R if not r[1]]

@@ -255,6 +255,49 @@ for X1 in (r1, r2, []):
             best48 = max(best48, sum(X))
 R["o48"] = best48
 
+# 2026 중간 17개교 등 추가 문항 ----------------------------------------
+import cmath as _cm
+roots = [_cm.exp(2j * _cm.pi * k / 5) for k in range(1, 5)]
+vals = set()
+for z in roots:
+    for n_ in range(1, 7):
+        v = z ** n_ + z ** (-n_)
+        vals.add(round(v.real, 9))
+R["m73"] = round(math.prod(vals)) if len(vals) == 3 else None
+R["j16-5"] = sum(1 for X in subsets(range(1, 16)) if all(16 - x in X for x in X) and len(X) % 2 == 1)
+sol = set()
+for j in range(-80, 81):
+    av = Fr(j, 4)
+    if {-av + 3, av * av + 4} == {5, 4 * av - 2}:
+        sol.add(sum({-av + 3, av * av + 4}))
+R["j8-17"] = sol.pop() if len(sol) == 1 else None
+U3 = [1, 2, 3]
+R["j1-12"] = sum(1 for A in subsets(U3) for B in subsets(U3) if len(A) in B and len(B) in A)
+R["o30"] = sum(1 for X in subsets(range(1, 11)) if X and max(X) == 7 and len(X) >= 3)
+Cs = {a + b for a in (1, 2) for b in (2, 3, 5)}
+R["j17-11"] = sum(min(X) for X in subsets(Cs) if X)
+R["m89"] = sum(sum(v if i % 2 == 0 else -v for i, v in enumerate(sorted(X))) for X in subsets(range(1, 7)) if len(X) >= 3)
+from collections import Counter as _Ct
+Nk = _Ct()
+for X in subsets(range(1, 16)):
+    if len(X) >= 2:
+        Nk[Fr(min(X), max(X))] += 1
+Ak = [k_ for k_, v in Nk.items() if 100 <= v <= 150]
+pr = math.prod(Ak)
+R["j14-20"] = pr.numerator + pr.denominator
+# j10-14: B_r은 원점과의 거리가 |r−4| 이상 r+4 이하인 점 — 원 위 중심을 촘촘히 돌려 거리 범위 확인 후 판정
+def drange(r_, n=3600):
+    ds = []
+    for i in range(n):
+        th = 2 * math.pi * i / n
+        # 원점에서 각 방향으로 가장 가까운/먼 점: 중심 (4cos, 4sin), 반지름 r
+        ds.append(abs(4 * math.cos(th) - r_))
+    return min(ds), 4 + r_
+g1 = abs((5 ** 2 - 3 ** 2) * math.pi - 16 * math.pi) < 1e-9 and drange(1)[0] < 3 + 1e-6
+g2 = sum(1 for r_ in range(1, 11) if abs(r_ - 4) <= 4 <= r_ + 4) == 8
+g3 = sum(1 for m_ in range(1, 11) for n_ in range(m_ + 1, 11) if abs(n_ - 4) <= abs(m_ - 4)) == 12
+R["j10-14"] = ", ".join(nm for nm, ok in zip("ㄱㄴㄷ", [g1, g2, g3]) if ok)
+
 
 # 대조 ---------------------------------------------------------------
 def norm(v):

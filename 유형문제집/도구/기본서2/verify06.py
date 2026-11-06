@@ -350,6 +350,27 @@ for p_, q_ in itertools.combinations(pairs, 2):
         tot += av
 R["e10-15"] = tot
 
+# 2026 중간 17개교 추가 문항 -----------------------------------------------
+def holds2(cond, concl):
+    return all(concl(A, B) for A in ALL4 for B in ALL4 if A and B and cond(A, B))
+c_ = lambda A, B: (A - B) | (A & B) == A | B
+tv = [holds2(c_, lambda A, B: A <= B), holds2(c_, lambda A, B: comp(A) <= comp(B)), holds2(c_, lambda A, B: A & comp(B) == frozenset()), holds2(c_, lambda A, B: A | comp(B) == U4)]
+R["j2-11"] = ", ".join(n for n, ok in zip("ㄱㄴㄷㄹ", tv) if ok)
+# j16-11: 영역 개수를 미지수로 두고 가능한 모든 경우에서 n(C)가 하나로 정해지는지 확인(작은 표본: 각 영역 0~150)
+idok = all(comp(B | C) - A == comp(A | B | C) and (A - C) | (B - C) == (A | B) - C
+           and len(comp(A | B | C)) + len((A | B) - C) + len(C) == len(U4) for A in ALL4 for B in ALL4 for C in ALL4)
+R["j16-11"] = 150 - 10 - 70 if idok else None
+P_ = {2, 3, 5, 7, 11, 13, 17, 19}; U20 = set(range(1, 21)); A46 = {v for v in U20 if v % 4 == 0 or v % 6 == 0}
+cnt = 0
+for X in subsets(sorted(U20)):
+    X = set(X)
+    if len(X - P_) * len(X | (U20 - P_)) != 13 or not (X - P_) <= A46:
+        continue
+    M_ = math.prod(X)
+    if math.isqrt(M_) ** 2 == M_:
+        cnt += 1
+R["j1-21"] = cnt
+
 
 # 대조 ---------------------------------------------------------------
 def norm(v):

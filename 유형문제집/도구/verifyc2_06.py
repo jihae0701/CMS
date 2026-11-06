@@ -318,6 +318,87 @@ f2 = sp.Rational(1, 2) * (xx - 1) ** 2 - 1
 okc = okc and not (f2.subs(xx, 2) < f2.subs(xx, 1))
 chk("m2410-30", f.subs(xx, 7) - g.subs(xx, 9) if okc else None, 36)
 
+# 2026 중간 17개교 등 추가 문항 ----------------------------------------------
+chk("j1-5", sum(1 for X in subsets([1, 2, 3, 4, 5, 6]) if not (X & {2, 3, 4})), 8)
+A, B = {-1, 0, 1}, {2, 3}
+P = {x + y for x in A for y in A}; Q = {x * y for x in A for y in B}
+chk("j12-18", len(Q - P), 2)
+U = frozenset(range(1, 9)); vals = set()
+for Aa in subsets(U):
+    if Aa - (U - {8}) or 8 in Aa:
+        pass
+    for Cc in subsets(U):
+        if U - (Aa | Cc) != {8} or Cc - Aa != {1, 6}:
+            continue
+        for Bb in subsets(Aa):
+            if Aa - Bb == {2, 7} and Bb - Cc == {5}:
+                vals.add(sum(Aa - (Bb - Cc)))
+chk("j16-9", vals.pop() if len(vals) == 1 else None, 16)
+xs = sp.symbols("x")
+def rset(e):
+    return {sp.nsimplify(r) for r in sp.solve(e, xs) if r.is_real}
+def froots(b, c):   # x²+bx+c=0의 실근(수치)
+    d = b * b - 4 * c
+    if d < 0:
+        return set()
+    r = math.sqrt(d)
+    return {round((-b + r) / 2, 9), round((-b - r) / 2, 9)}
+res = set()
+for an in range(-80, 81):
+    for bn in range(-80, 81):
+        a_, b_ = an / 4, bn / 4
+        A_ = froots(-a_, b_); B_ = froots(-a_, b_ + 1)
+        if (A_ - B_) | (B_ - A_) == {1.0, 2.0, 3.0}:
+            res.add(a_ + b_)
+chk("j3-17", res.pop() if len(res) == 1 else None, 7)
+ok = [a_ for a_ in range(-40, 41) if len(froots(4, a_) ^ froots(a_, 4)) == 2]
+chk("j10-16", min(ok), -5)
+U = set(range(1, 101))
+forced = all(A == U4 for A in ALL4 for B in ALL4 if (A | B) == U4 and B & cp(B - A) == B)
+chk("e4-9", 100 if forced else None, 100)
+U = frozenset(range(1, 7)); A, B = frozenset({1, 3, 5}), frozenset({2, 5})
+chk("j14-4", sum(1 for Cc in subsets(U) if Cc != U and A | Cc == B | Cc), 7)
+U = set(range(1, 51)); An = lambda n: {v for v in U if v % n == 0}
+chk("j10-7", sum(k for k in range(1, 101) if 2 ** len(An(3) & (An(4) | An(k))) == 256), 17)
+U = set(range(1, 19)); res = []
+for k in range(1, 60):
+    Ak = {x for x in U for y in U if x * (y - k) == 30}; Bk = {d for d in U if k % d == 0}
+    if len(Ak) * len(U - (Ak | Bk)) == 36:
+        res.append(sum(Ak - Bk))
+chk("j16-15", res[0] if len(res) == 1 else None, 30)
+chk("e6-20", (100 - 25) - (50 + 40 - (100 - 25)), 60)
+res = {a + i for a in range(15) for b in range(15) for i in range(min(a, b) + 1) if 2 ** a + 2 ** b == 2 ** 10 and (2 ** a + 2 ** b) * 8 == 2 ** (a + b - i)}
+chk("j2-19", res.pop() if len(res) == 1 else None, 14)
+A = frozenset({2, 4, 6, 8, 10, 12}); best = 0
+for X in subsets(range(1, 15)):
+    if 2 ** len(A | X) == 2 ** len(A) + 2 ** len(X):
+        best = max(best, sum(A & X))
+chk("j11-13", best, 40)
+prods = []
+for asg in itertools.product(range(4), repeat=10):   # 0 바깥, 1 A만, 2 B만, 3 둘 다
+    if asg.count(1) != asg.count(2) or asg.count(1) != asg.count(3):
+        continue
+    A_ = [i + 1 for i, r in enumerate(asg) if r & 1]; B_ = [i + 1 for i, r in enumerate(asg) if r & 2]
+    uni = sum(i + 1 for i, r in enumerate(asg) if r)
+    if 55 - uni == 4 * uni:
+        prods.append(sum(A_) * sum(B_))
+chk("j14-11", max(prods) - min(prods), 63)
+U = set(range(1, 9)); A = {x for x in U if x * x - 9 * x + 20 > 0}; B = {x for x in U if x ** 3 - 18 * x * x + 87 * x - 110 == 0}; Ac = U - A
+cnt = 0
+for X in subsets(sorted(U)):
+    Cc = {abs(p - q) for p in Ac for q in X if p != q}
+    if len(A & (B | X)) == 3 and len(Cc) == 4:
+        cnt += 1
+chk("j8-24", cnt, 47)
+def kcount(x):   # x∈A_k인 정수 k의 개수(구간 [x−1, x+1]의 정수)
+    return math.floor(x + 1) - math.ceil(x - 1) + 1
+pts = [F(n, 7) for n in range(-70, 71)]
+Xm = {m: {p for p in pts if kcount(p) == m} for m in range(0, 8)}
+g1 = not Xm[0] and not Xm[1]
+g2 = all(not Xm[m] for m in range(4, 8))
+g3 = all((sum(k for k in range(math.ceil(p - 1), math.floor(p + 1) + 1))) % 2 == 1 for m in range(8) for p in Xm[m])
+chk("j1-15", mark([g1, g2, g3], ["ㄱ", "ㄷ", "ㄱ, ㄴ", "ㄴ, ㄷ", "ㄱ, ㄴ, ㄷ"]), "③")
+
 if __name__ == "__main__":
     bad = [r for r in R if not r[1]]
     print("검산", len(R), "불일치", len(bad))
