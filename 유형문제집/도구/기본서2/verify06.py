@@ -109,7 +109,7 @@ c316 = lambda A, B, C: A and B and C and (A & (C | comp(A))) == frozenset() and 
 g = [holds(c316, lambda A, B, C: A & comp(C) == A),
      holds(c316, lambda A, B, C: (A & comp(C)) | (comp(A) & B) == B),
      holds(c316, lambda A, B, C: comp(C) & (B | C) == B)]
-R["g316"] = ", ".join(n for n, ok in zip("ㄱㄴㄷ", g) if ok)
+R["g317"] = ", ".join(n for n, ok in zip("ㄱㄴㄷ", g) if ok)
 c38 = lambda A, B, C: A != B and ((A & B) | (A & comp(B))) & B == A
 g = [holds(c38, lambda A, B, C: B - A != frozenset(), 2),
      holds(c38, lambda A, B, C: comp(A) <= comp(B), 2),
@@ -153,7 +153,7 @@ def mult(k_, N=N):
 A945 = mult(9) & mult(15)
 mmin = min(m for m in range(1, 200) if mult(m) <= A945)
 nmax = max(n for n in range(1, 200) if (mult(18) | mult(45)) <= mult(n))
-R["g311"] = mmin + nmax
+R["g312"] = mmin + nmax
 R["e12-13"] = sum(k_ for k_ in range(2, 100) if (mult(4) & mult(6)) <= mult(k_))
 sol = []
 for k_ in range(2, 200):
@@ -198,7 +198,7 @@ U = set(range(1, 101))
 def op(X, Y):
     return (X | Y) & ((U - X) | (U - Y))
 A, B, C = {v for v in U if v % 3 == 0}, {v for v in U if v % 4 == 0}, {v for v in U if v % 5 == 0}
-R["g353"] = len(op(op(A, B), C))
+R["g351"] = len(op(op(A, B), C))
 def oc(X, Y):
     return (X & Y) | comp(X | Y)
 g1 = all(oc(A, B) == oc(B, A) for A in ALL4 for B in ALL4)
@@ -209,7 +209,7 @@ def rep(A, n):
         X = oc(X, A)
     return X
 g3 = all(rep(A, 99) == A for A in ALL4)
-R["g348"] = ", ".join(n for n, ok in zip("ㄱㄴㄷ", [g1, g2, g3]) if ok)
+R["g349"] = ", ".join(n for n, ok in zip("ㄱㄴㄷ", [g1, g2, g3]) if ok)
 ok = True
 for A1 in ALL4:
     for A2 in ALL4:
@@ -237,7 +237,7 @@ for r123 in range(0, 46):
                 continue
             if r1 + r2 + r3 + r12 + r13 + r23 + r123 + 4 == 45:
                 sol.add(r123)
-R["g330"] = list(sol)[0] if len(sol) == 1 else sol
+R["g331"] = list(sol)[0] if len(sol) == 1 else sol
 nU, nA, nB = 100, 50, 40
 nAB_union = nU - 25
 R["e6-20"] = (nA - (nA + nB - nAB_union)) + (nB - (nA + nB - nAB_union))

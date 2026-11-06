@@ -161,7 +161,7 @@ R["n1600"] = sum(1 for X in subsets([2, 3, 4, 5, 8, 16, 32]) if len(X) >= 3 and 
 R["o29"] = sum(1 for X in subsets(range(1, 10)) if 1 <= sum(1 for x in X if x % 2) <= 4)
 
 # 08 ---------------------------------------------------------------
-R["g358"] = sum(max(X) for X in subsets(range(1, 6)) if len(X) >= 2)
+R["g359"] = sum(max(X) for X in subsets(range(1, 6)) if len(X) >= 2)
 sol = []
 for av in range(-20, 21):
     A = [av + 2 * i for i in range(5)]
@@ -199,7 +199,7 @@ prod3 = 1
 for z in o:
     prod3 *= z
 g3 = abs(prod3 - 1) < 1e-9
-R["g349"] = ", ".join(n for n, ok in zip("ㄱㄴㄷ", [g1, g2, g3]) if ok)
+R["g348"] = ", ".join(n for n, ok in zip("ㄱㄴㄷ", [g1, g2, g3]) if ok)
 # o46
 sol = []
 for a_ in range(2, 100):
