@@ -1,0 +1,2822 @@
+[그림]
+[그림][그림]
+[그림]
+[표]
+내신고쟁이_공통수학2
+07.함수
+[그림]
+01
+함수의 뜻과 그래프
+다음 <보기>에서 집합  $X`$ 에서  $Y`$ 로의 함수인 것만을 있는 대로 고른 것은?
+[정답] ②
+집합  $X`$ 에서  $Y`$ 로의 대응이 함수이기 위해선
+집합  $X`$ 의 각 원소에 집합  $Y`$ 의 원소가 오직 하나씩 대응해야 한다.
+ㄱ. 집합  $X`$ 의 원소  $3`$ 에 대응하는 집합  $Y`$ 의 원소가 없으므로 함수가 아니다.
+ㄴ.  $1,~2$ 에  $c`$ 가 대응하고,  $3,~4$ 에  $a`$ 가 대응한다.
+즉, 집합  $X`$ 의 각 원소에 집합  $Y`$ 의 원소가 오직 하나씩 대응하므로 함수이다.
+ㄷ. 집합  $X`$ 의 원소  $2`$ 에 대응하는 집합  $Y`$ 의 원소가  $a,~c$ 의  $2$ 개이므로 함수가 아니다.
+따라서 함수인 것은 ㄴ이다.
+[표]
+[ 보 기 ]
+[표]
+ㄱ.
+[그림]
+ㄴ.
+[그림]
+ㄷ.
+[그림]
+① ㄱ② ㄴ③ ㄷ④ ㄴ, ㄷ⑤ ㄱ, ㄴ, ㄷ
+집합  $X= LEFT { 1,~2,~3 RIGHT } `$ 에서 집합  $Y= LEFT { -1,~0,~1,~2 RIGHT } `$ 로의 대응  $f`$ 가 그림과 같을 때, 이 대응에 대한 설명 중 옳지 않은 것은?
+[정답] ⑤
+① 집합  $X`$ 의 각 원소에 집합  $Y`$ 의 원소가 오직 하나씩 대응하므 로 이 대응은 집합  $X`$ 에서 집합  $Y`$ 로의 함수이다. (참)
+② 집합  $X`$ 의 원소  $1`$ 에 집합  $Y`$ 의 원소  $0`$ 이 대응하므로  $f LEFT ( 1 RIGHT ) =0`$ 이다. (참)
+③ 함수  $f`:`X` `->` `Y$ 의 정의역은  $X`$ 이다. (참)
+④ 함수  $f`:`X`` -> ``Y$ 의 공역은  $Y`$ 이다. (참)
+⑤  $f LEFT ( 1 RIGHT ) =0,~f LEFT ( 2 RIGHT ) =2,~f LEFT ( 3 RIGHT ) =0`$ 이므로
+함수  $f`$ 의 함숫값 전체의 집합인 함수  $f`$ 의 치역은  $LEFT { 0,~2 RIGHT } $ 이다.
+(거짓)
+따라서 옳지 않은 것은 ⑤이다.
+[그림]
+① 이 대응은 집합  $X`$ 에서 집합  $Y`$ 로의 함수이다.
+②  $f LEFT ( 1 RIGHT ) =0$ 이다.
+③ 함수  $f`$ 의 정의역은  $X`$ 이다.
+④ 함수  $f`$ 의 공역은  $Y`$ 이다.
+⑤ 함수  $f`$ 의 치역은  $LEFT { -1,~0,~1,~2 RIGHT } `$ 이다.
+[그림]
+두 집합  $X= LEFT { -1,~0,~1 RIGHT } `$ ,  $Y= LEFT { 0,~1,~2 RIGHT } `$ 에 대하여 집합  $X`$ 에서 집합  $Y`$ 로의 함수가 아닌 것은?
+[정답] ⑤
+[표]
+①
+[그림]
+②
+[그림]
+③
+[그림]
+④
+[그림]
+⑤
+[그림]
+따라서집합  $X`$ 에서 집합  $Y`$ 로의 함수가 아닌 것은 ⑤이다.
+①  $f LEFT ( x RIGHT ) =x+1$ ②  $f LEFT ( x RIGHT ) = LEFT | x-1 RIGHT |$ ③  $f LEFT ( x RIGHT ) = cases{`1&~ LEFT ( x<0 RIGHT ) #`0&~ LEFT ( x ge 0 RIGHT )$ ④  $f LEFT ( x RIGHT ) =x  ^{2} +1`$ ⑤  $f LEFT ( x RIGHT ) = sqrt {x+1} `$
+[그림]
+다음 중 함수의 그래프가 될 수 있는 것은?
+[정답] ③
+집합  $X`$ 의 각 원소에 집합  $Y`$ 의 원소가 오직 하나씩 대응할 때,
+이 대응은 집합  $X`$ 에서 집합  $Y`$ 로의 함수이다.
+$x IN X,~y IN Y`$ 라 하면
+①  [그림]
+$x=2`$ 에 대응하는  $y`$ 의 값이  $1`$ 과  $3`$ 으로  $2`$ 개이므로 함수가 아니다.
+② [그림]
+주어진 그래프를  $x=a`$ 라 하면  $x=a`$ 일 때 대응되는  $y`$ 의 값이 $2`$ 개 이상이므로 함수가 아니다.
+③  [그림]
+각 원소  $x`$ 에 대응되는  $y`$ 의 값이 오직 하나씩이므로 함수이다.
+④  [그림]
+주어진 원의 반지름의 길이를  $a$ 라 하면  $-a<x<a`$ 인  $x$ 에 대응하는  $y`$ 의 값이 각각  $2`$ 개씩이므로 함수가 아니다.
+⑤  [그림]
+$x>0`$ 인  $x$ 에 대응하는  $y`$ 의 값이 각각  $2`$ 개씩이므로 함수가 아니다.
+따라서 함수의 그래프가 될 수 있는 것은 ③이다.
+[표]
+①
+[그림]
+②
+[그림]
+③
+[그림]
+④
+[그림]
+⑤
+[그림]
+집합  $X=left{x`left|`-2 le x le 3 right}$ 에 대하여  $X$ 에서  $X$ 로의 함수  $f LEFT ( x RIGHT )=ax+b$ 의 공역과 치역이 같을 때,  $a+b$ 의 최솟값은?
+[정답] ③
+$a$ 의 값의 범위에 따라 다음과 같이 나누어 생각할 수 있다.
+(ⅰ)  $a>0$ 일 때
+함수  $f$ 의 공역과 치역이 모두 집합  $X$ 가 되려면
+ $f LEFT ( -2 RIGHT )=it-2a+b=it-2$ ,  $f LEFT ( 3 RIGHT )=3a+b=3$ 
+이어야 한다.
+즉,  $a=1$ ,  $b=0$ 이므로  $a+b=1$
+(ⅱ)  $a<0$ 일 때
+함수  $f$ 의 공역과 치역이 모두 집합  $X$ 가 되려면
+ $f LEFT ( -2 RIGHT )=it-2a+b=3$ ,  $f LEFT ( 3 RIGHT )=3a+b=it-2$ 
+이어야 한다.
+즉,  $a=it-1$ ,  $b=1$ 이므로  $a+b=0$
+(ⅰ), (ⅱ)에서  $a+b$ 의 최솟값은  $0$ 이다.
+(단,  $a,~b$ 는 상수이다.)
+①  $-2$ ②  $-1$ ③  $0$ ④  $1$ ⑤  $2$
+다음 <보기>에서 정의역이  $LEFT { -1,~0,~1 RIGHT } `$ 인 두 함수  $f,~g`$ 가 서로 같은 함수인 것만을 있는 대로 고른 것은?
+[정답] ④
+정의역이  $LEFT { -1,~0,~1 RIGHT } $ 인 두 함수  $f,~g$ 가 서로 같은 함수이려면
+$f LEFT ( -1 RIGHT ) =g LEFT ( -1 RIGHT ) `$ ,  $f LEFT ( 0 RIGHT ) =g LEFT ( 0 RIGHT ) `$ ,  $f LEFT ( 1 RIGHT ) =g LEFT ( 1 RIGHT ) `$ 을
+모두 만족시켜야 한다.
+ㄱ.  $f LEFT ( -1 RIGHT ) =g LEFT ( -1 RIGHT ) =1`$ ,  $f LEFT ( 0 RIGHT ) =g LEFT ( 0 RIGHT ) =0`$ ,  $f LEFT ( 1 RIGHT ) =g LEFT ( 1 RIGHT ) =1`$ 이므로
+ $f=g`$ 이다.
+ㄴ.  $f LEFT ( 1 RIGHT ) =1,````g LEFT ( 1 RIGHT ) =3`$ 에서  $f LEFT ( 1 RIGHT )  != g LEFT ( 1 RIGHT ) `$ 이므로  $f != g`$ 이다.
+ㄷ.  $f LEFT ( -1 RIGHT ) =g LEFT ( -1 RIGHT ) =2`$ ,  $f LEFT ( 0 RIGHT ) =g LEFT ( 0 RIGHT ) =1`$ ,  $f LEFT ( 1 RIGHT ) =g LEFT ( 1 RIGHT ) =0`$ 이므로  $f=g`$ 이다.
+따라서 두 함수  $f,~g$ 가 서로 같은 함수인 것은 ㄱ, ㄷ이다.
+[표]
+[ 보 기 ]
+ㄱ.  $f LEFT ( x RIGHT ) = LEFT | x RIGHT | `$ ,  $g LEFT ( x RIGHT ) =x  ^{2} `$
+ㄴ.  $f LEFT ( x RIGHT ) =2-x`$ ,  $g LEFT ( x RIGHT ) =x+2`$
+ㄷ.  $f LEFT ( x RIGHT ) =1-x  ^{2} `$ ,  $g LEFT ( x RIGHT ) =1-x`$
+① ㄱ② ㄴ③ ㄱ, ㄴ④ ㄱ, ㄷ⑤ ㄴ, ㄷ
+[그림]
+정의역이  $LEFT { 1,~2 RIGHT } `$ 인 두 함수  $f LEFT ( x RIGHT ) =ax-1`$ ,  $g LEFT ( x RIGHT ) =x  ^{2} +b`$ 에 대하여  $f=g`$ 일 때,  $a+b`$ 의 값은? (단,  $a,~b$ 는 상수이다.)
+[정답] ④
+정의역이  $LEFT { 1,~2 RIGHT } `$ 인 두 함수  $f LEFT ( x RIGHT ) =ax-1,~g LEFT ( x RIGHT ) =x  ^{2} +b`$ 가 서로
+같으려면  $f LEFT ( 1 RIGHT ) =g LEFT ( 1 RIGHT ) `$ ,  $f LEFT ( 2 RIGHT ) =g LEFT ( 2 RIGHT ) `$ 이어야 한다.
+$f LEFT ( 1 RIGHT ) =a-1,`````g LEFT ( 1 RIGHT ) =1+b`$ 이므로
+$a-1=1+b`$ 에서  $a-b=2`$  $CDOTS  CDOTS $ ㉠
+$f LEFT ( 2 RIGHT ) =2a-1,`````g LEFT ( 2 RIGHT ) =4+b`$ 이므로
+$2a-1=4+b`$ 에서  $2a-b=5`$  $CDOTS  CDOTS $ ㉡
+㉠, ㉡을 연립하여 풀면  $a=3,~b=1$
+$THEREFORE ~a+b=3+1=4`$
+①  $1$ ②  $2$ ③  $3$ ④  $4$ ⑤  $5$
+이차함수  $y=x^2 +2ax+5$ 의 정의역이  $left{x`left|`-2a le x le 3 right}$ 이고 치역이  $left{y`left|`1 le y le b right}$ 일 때, 양수  $a$ ,  $b$ 에 대하여  $a+b$ 의 값은?
+[정답] ⑤
+$y=x^2 +2ax+5= LEFT ( x+a RIGHT )^2 +5-a^2$ 에서 이차함수
+$y=x^2 +2ax+5$ 의 그래프는 꼭짓점이  $LEFT ( -a,~5-a^2 RIGHT )$ 이고
+아래로 볼록한 포물선이다.
+이때 치역이  $left{y`left|`1 le y le b right}$ 이므로
+$x=it-a$ 에서 최솟값  $1$ 을 가진다.
+$5-a^2 =1$ ,  $a^2 =4$ 에서  $a=2$   $LEFT ( because ~a>0 RIGHT )$
+즉, 정의역이  $left{x`left|-4 le x le 3 right}$ 이므로
+이차함수의 축  $x=it-2$ 에서 가장 먼  $x=3$ 에서 최댓값  $b$ 를 갖는다.
+$b= LEFT ( 3+2 RIGHT )^2 +1=26$
+$therefore~a+b=2+26=28$
+①  $20$ ②  $22$ ③  $24$ ④  $26$ ⑤  $28$
+[그림]
+02
+일대일함수, 일대일대응, 항등함수, 상수함수
+[그림]
+다음 <보기>는 실수 전체의 집합  $R`$ 에서  $R`$ 로의 함수의
+[정답] (1) ㄱ, ㄷ, ㄹ, ㅂ  (2) ㄱ, ㄴ, ㄹ, ㅂ
+(3) ㄱ, ㄹ, ㅂ  (4) ㄱ  (5) ㅁ
+(1) 함수  $f`:`R` `->``R`$ 이 일대일함수이려면
+정의역  $R`$ 의 임의의 두 원소  $x  _{1} ,~x  _{2} $ 에 대하여
+‘ $x  _{1}  != x  _{2} `$ 이면  $f LEFT ( x  _{1} RIGHT )  != f LEFT ( x  _{2} RIGHT ) `$ ’
+즉, ‘ $f LEFT ( x  _{1} RIGHT ) =f LEFT ( x  _{2} RIGHT ) `$ 이면  $x  _{1} =x  _{2} `$ ’
+를 만족시켜야 한다.
+따라서  $x`$ 축에 평행한 직선과 주어진 함수의 그래프의 교점의
+개수가 항상  $1`$ 인 것을 찾으면
+ㄱ, ㄷ, ㄹ, ㅂ이다.
+(2) 공역이  $R`$ 이므로 치역이  $R`$ 인 그래프는 ㄱ, ㄴ, ㄹ, ㅂ이다.
+(3) 함수  $f`:`R`` -> ``R`$ 이 일대일대응이려면 일대일함수이고 치역과 공역이 같아야 한다.
+따라서 (1), (2)에 의하여 일대일대응은
+ㄱ, ㄹ, ㅂ이다.
+(4) 함수  $f`:`R`` -> ``R$ 이 항등함수이려면  $x IN R`$ 에 대하여
+ $f LEFT ( x RIGHT ) =x`$ 이므로 ㄱ이다.
+(5) 함수  $f`:`R`` ->` `R`$ 이 상수함수이려면  $x IN R`$ 에 대하여
+ $f LEFT ( x RIGHT ) =c`$  ( $c`$ 는 상수)이므로 ㅁ이다.
+그래프이다. <보기>에서 다음에 해당되는 것을 각각 있는
+대로 고르시오.
+[표]
+[ 보 기 ]
+[표]
+ㄱ.
+[그림]
+ㄴ.
+[그림]
+ㄷ.
+[그림]
+ㄹ.
+[그림]
+ㅁ.
+[그림]
+ㅂ.
+[그림]
+(1) 일대일함수
+(2) 치역과 공역이 같은 함수
+(3) 일대일대응
+(4) 항등함수
+(5) 상수함수
+다음 중 집합  $X=left{x`left|`x$ 는 양의 실수 $itright}$ 에 대하여  $X$ 에서  $X$ 로의 대응  $f$ 가 일대일대응인 것은?
+[정답] ⑤
+집합  $X=left{x`left|`x$ 는 양의 실수 $itright$ 에 대하여 함수  $f `:`X``->``X$ 가 일대일대응이려면
+정의역  $X$ 의 임의의 두 원소  $x_1$ ,  $x_2$ 에 대하여  $x_1 != x_2$ 이면  $f LEFT ( x_1 RIGHT )!=f LEFT ( x_2 RIGHT )$ , 즉  $f LEFT ( x_1 RIGHT )=f LEFT ( x_2 RIGHT )$ 이면  $x_1 =x_2$ 이고
+치역이 공역  $X=left{x`left|`x$ 는 양의 실수 $itright}$ 와 같아야 한다.
+①  $f LEFT ( x RIGHT )=3$ 에서  $1!=2$ 이지만  $f LEFT ( 1 RIGHT )=f LEFT ( 2 RIGHT )=3$ 이므로 일대일대응이 아니다.
+② 함수  $f LEFT ( x RIGHT )=x+1$ 의 치역은  $left{x`left|`x>1 right}$ 이므로 일대일대응이 아니다.
+③  $f LEFT ( x RIGHT )=it-2x$ 에서  $f LEFT ( 1 RIGHT )=it-2 notin X$ 이므로  $f $ 는 함수가 아니다.
+④  $f LEFT ( x RIGHT )=left|x-2right|$ 에서  $1!=3$ 이지만  $f LEFT ( 1 RIGHT )=f LEFT ( 3 RIGHT )=1$ 이므로 일대일대응이 아니다.
+⑤  $a in X$ 인 임의의  $a$ 에 대하여  $f LEFT ( a RIGHT )=a^2 +a>0$ 
+즉,  $f LEFT ( a RIGHT ) in X$ 이므로  $f$ 는 함수이다.
+정의역  $X$ 의 임의의 두 원소  $x_1$ ,  $x_2$ 에 대하여
+ $f LEFT ( x_1 RIGHT )=f LEFT (x_2  RIGHT ) $ 이면  $x_1`^2 +x_1 =x_2 `^2 +x_2$ ,
+ $LEFT ( x_1 -x_2 RIGHT ) LEFT ( x_1 +x_2 +1 RIGHT )=0$ 이므로
+ $x_1 =x_2 ~ LEFT ( because ~x_1 >0,~x_2 >0 RIGHT )$ 
+또한 함수  $f LEFT ( x RIGHT )=x^2 +x=x LEFT ( x+1 RIGHT )$ 의 치역은
+ $X=left{x`left|`x$ 는 양의 실수 $itright$ 이므로 일대일대응이다.
+①  $f LEFT ( x RIGHT )=3$ ②  $f LEFT ( x RIGHT )=x+1$ ③  $f LEFT ( x RIGHT )=it-2x$ ④  $f LEFT ( x RIGHT )=left|x-2 right|$ ⑤  $f LEFT ( x RIGHT )=x^2 +x$
+두 집합  $`X= LEFT { 1,~2,~3,~4 RIGHT } ,~Y= LEFT { 1,~3,~5,~7 RIGHT }$ 에 대하여 함수  $f`:`X`` -> ``Y$ 가 일대일대응이다.  $f LEFT ( 2 RIGHT ) =5,~f LEFT ( 1 RIGHT ) -f LEFT ( 3 RIGHT ) =4$ 일 때,  $f LEFT ( 3 RIGHT ) +f LEFT ( 4 RIGHT )$ 의 값을 구하시오.
+[정답]  $4$
+$f LEFT ( 1 RIGHT ) -f LEFT ( 3 RIGHT ) =4$ 를 만족시키려면
+$f LEFT ( 1 RIGHT ) =5,``f LEFT ( 3 RIGHT ) =1$  또는  $f LEFT ( 1 RIGHT ) =7,~f LEFT ( 3 RIGHT ) =3$ 이어야 한다.
+이때  $f LEFT ( 2 RIGHT ) =5$ 이고  $f$ 가 일대일대응이므로  $f LEFT ( 1 RIGHT )  != 5$ 이다.
+따라서  $f LEFT ( 1 RIGHT ) =7,~f LEFT ( 3 RIGHT ) =3$ 이고, 이때  $f LEFT ( 4 RIGHT ) =1$ 이다.
+[그림]
+$THEREFORE~ f LEFT ( 3 RIGHT ) +f LEFT ( 4 RIGHT ) =3+1=4$
+함수  $f`:`X ``->`` Y$ 에 대한 다음 설명 중 옳지 않은 것은?
+[정답] ④
+① 함수  $f$ 가 일대일함수일 때, 공역과 치역이 같으면 함수  $f$ 는 일대일대응이다. (참)
+② 함수  $f$ 가 상수함수이면 치역인 집합  $LEFT { f LEFT ( x RIGHT )`left|`x IN X RIGHT }$ 의 원소의
+개수는  $1$ 이다. (참)
+③ 함수  $f$ 가 항등함수이면  $f LEFT ( x RIGHT ) =x$ 이므로 함수  $f$ 의 치역은 정의역과 같다. (참)
+④ 함수  $f$ 의 정의역의 임의의 두 원소  $x _{1} ,~x _{2}$ 에 대하여  $f LEFT ( x _{1} RIGHT ) =f LEFT ( x _{2} RIGHT )$ 일 때  $x _{1} =x _{2}$ 이면 함수  $f$ 는 일대일함수이다. 이때 함수  $f$ 의 치역과 공역이 같지 않으면 함수  $f$ 는 일대일대응이 아니다. (거짓)
+⑤  $n LEFT ( X RIGHT ) =n LEFT ( Y RIGHT )$ 이고, (공역)=(치역) $cdotscdots$ ㉠
+이면 정의역과 치역의 원소의 개수가 같으므로 함수  $f$ 는 일대일함수이고, ㉠에 의하여 일대일대응이다. (참)
+따라서 옳지 않은 것은 ④이다.
+(단,  $X,~Y$ 는 유한집합이다.)
+① 함수  $f$ 가 일대일함수일 때, 공역과 치역이 같으면 함수  $f$ 는 일대일대응이다.
+② 함수  $f$ 가 상수함수이면 집합  $LEFT { f LEFT ( x RIGHT ) `left| `x IN X RIGHT }$ 의 원소의 개수는  $1$ 이다.
+③ 함수  $f$ 가 항등함수이면 함수  $f$ 의 치역은 정의역과 같다.
+④ 함수  $f$ 의 정의역의 임의의 두 원소  $x _{1} ,~x _{2}$ 에 대하여  $f LEFT ( x _{1} RIGHT ) =f LEFT ( x _{2} RIGHT )$ 일 때  $x _{1} =x _{2}$ 이면 함수  $f$ 는 일대일대응이다.
+⑤  $n LEFT ( X RIGHT ) =n LEFT ( Y RIGHT )$ 이고, 공역과 치역이 같으면 함수  $f$ 는 일대일대응이다.
+실수 전체의 집합  $R$ 에서  $R$ 로의 함수
+[정답] ④
+함수  $f`:`R`` -> ``R$ 이 일대일대응이려면 일대일함수이고 공역과 치역이 같아야한다.
+함수  $f LEFT ( x RIGHT ) = {cases{LEFT ( a  ^{2} -5a RIGHT ) x&~LEFT ( x LEQ 0 RIGHT )#```````````2x&~LEFT ( x>0 RIGHT )}}$ 에서
+$x SUCC 0$ 일 때, 함수  $y=2x$ 의 그래프가 다음과 같고,
+$x LEQ 0$ 일 때, 함수  $y= LEFT ( a ^{2} -5a RIGHT ) x$ 의 그래프는 원점을 지나는 직선이다.
+[그림]
+이때 함수  $f LEFT ( x RIGHT )$ 가 일대일대응이 되려면  $x LEQ 0$ 에서 직선
+$y= LEFT ( a ^{2} -5a RIGHT ) x$ 의 기울기가 양수이어야 하므로
+$a  ^{2} -5a=a LEFT ( a-5 RIGHT ) >0$
+$THEREFORE~ a<0$  또는  $a>5$
+$f LEFT ( x RIGHT ) = {cases{ LEFT ( a^2 -5a RIGHT )x &~LEFT ( x le 0 RIGHT )#~~~2x &~LEFT ( x > 0 RIGHT )}}$
+가 일대일대응이 되도록 하는 실수  $a$ 의 값의 범위는?
+①  $0<a<2$ ②  $0 LEQ a LEQ 5$ ③  $a<0$  또는  $a>2$  ④  $a<0$  또는  $a>5$ ⑤  $a LEQ 0$  또는  $a GEQ 5$
+[그림]
+집합  $X= LEFT { x `left| `-3 LEQ x LEQ 5 RIGHT }$ 에서 집합  $Y= LEFT { y`left|`-6 LEQ y LEQ 10 RIGHT }$ 으로의 함수  $f LEFT ( x RIGHT ) =ax+b ~LEFT ( a<0 RIGHT )$ 가 일대일대응이 되도록 하는 상수  $a,~b$ 에 대하여  $a+b$ 의 값은?
+[정답] ⑤
+함수  $y=ax+b$ 의 그래프는  $a<0$ 이므로 기울기가 음수인 직선이다.
+함수  $f LEFT ( x RIGHT ) =ax+b$ 가  $X$ 에서  $Y$ 로의 일대일대응이려면 치역이 공역  $Y= LEFT { y `left|`-6 LEQ y LEQ 10 RIGHT }$ 과 같아야 하므로 함수  $y=f LEFT ( x RIGHT )$ 의 그래프는 다음 그림과 같다.
+[그림]
+즉,  $f LEFT ( -3 RIGHT ) =10,~f LEFT ( 5 RIGHT ) =it-6$ 이어야 되므로
+$-3a+b=10,~5a+b=it-6$
+두 식을 연립하여 풀면  $a=it-2,~b=4$
+$THEREFORE~a+b= LEFT ( -2 RIGHT )+4= 2$
+①  $-2$ ②  $-1$ ③  $0$ ④  $1$ ⑤  $2$
+[그림]
+03
+합성함수
+두 집합  $X= LEFT { 1,~2,~3 RIGHT } ,~Y= LEFT { 2,~3,~5 RIGHT }$ 에 대하여 두 함수  $f`:`X ``->`` Y,~g`:`Y ``-> ``X$ 가 그림과 같을 때,  $LEFT ( g CIRC f RIGHT ) LEFT ( 2 RIGHT ) + LEFT ( f CIRC g RIGHT ) LEFT ( 5 RIGHT )$ 의 값은?
+[정답] ③
+$f LEFT ( 2 RIGHT ) =5$ 이고,  $g LEFT ( 5 RIGHT ) =3$ 이므로
+$LEFT ( g CIRC f RIGHT ) LEFT ( 2 RIGHT ) =g LEFT ( f LEFT ( 2 RIGHT ) RIGHT ) =g LEFT ( 5 RIGHT ) =3$
+$g LEFT ( 5 RIGHT ) =3$ 이고,  $f LEFT ( 3 RIGHT ) =2$ 이므로
+$LEFT ( f CIRC g RIGHT ) LEFT ( 5 RIGHT ) =f LEFT ( g LEFT ( 5 RIGHT ) RIGHT ) =f LEFT ( 3 RIGHT ) =2$
+$THEREFORE ~ LEFT ( g CIRC f RIGHT ) LEFT ( 2 RIGHT ) + LEFT ( f CIRC g RIGHT ) LEFT ( 5 RIGHT ) =3+2=5$
+[그림]
+①  $3$ ②  $4$ ③  $5$ ④  $6$ ⑤  $7$
+세 함수
+[정답] (1)  $22$   (2)  $2$   (3)  $10$
+(1)  $f LEFT ( 2 RIGHT ) =5$ 이고,  $g LEFT ( 5 RIGHT ) =22$ 이므로
+ $LEFT ( g CIRC f RIGHT ) LEFT ( 2 RIGHT ) =g LEFT ( f LEFT ( 2 RIGHT ) RIGHT ) =g LEFT ( 5 RIGHT ) =22$
+(2)  $g LEFT ( 2 RIGHT ) =1$ 이고,  $f LEFT ( 1 RIGHT ) =2$ 이므로
+ $LEFT ( f CIRC g RIGHT ) LEFT ( 2 RIGHT ) =f LEFT ( g LEFT ( 2 RIGHT ) RIGHT ) =f LEFT ( 1 RIGHT ) =2$
+(3)  $h LEFT ( -1 RIGHT ) =3,``g LEFT ( 3 RIGHT ) =6,``f LEFT ( 6 RIGHT ) =17$ 이므로
+$LEFT ( LEFT ( f CIRC g RIGHT )  CIRC h RIGHT ) LEFT ( -1 RIGHT )$  $ = LEFT ( f CIRC g RIGHT ) LEFT ( h LEFT ( -1 RIGHT ) RIGHT ) =f LEFT ( g LEFT ( h LEFT ( -1 RIGHT ) RIGHT ) RIGHT )$  $=f LEFT ( g LEFT ( 3 RIGHT ) RIGHT ) =f LEFT ( 6 RIGHT ) =17$
+$h LEFT ( 1 RIGHT ) =1,~g LEFT ( 1 RIGHT ) =it-2,~f LEFT ( -2 RIGHT ) =it-7$ 이므로
+$LEFT ( f CIRC  LEFT ( g CIRC h RIGHT ) RIGHT ) LEFT ( 1 RIGHT )$  $ =f LEFT ( LEFT ( g CIRC h RIGHT ) LEFT ( 1 RIGHT ) RIGHT ) =f LEFT ( g LEFT ( h LEFT ( 1 RIGHT ) RIGHT ) RIGHT )$  $=f LEFT ( g LEFT ( 1 RIGHT ) RIGHT ) =f LEFT ( -2 RIGHT ) =it-7$
+$THEREFORE~ $  $LEFT ( LEFT ( f CIRC g RIGHT )  CIRC h RIGHT ) LEFT ( -1 RIGHT ) + LEFT ( f CIRC  LEFT ( g CIRC h RIGHT ) RIGHT ) LEFT ( 1 RIGHT )$ 
+ $=17+ LEFT ( -7 RIGHT ) =10$
+$f LEFT ( x RIGHT ) =3x-1,~g LEFT ( x RIGHT ) =x ^{2} -3,~h LEFT ( x RIGHT ) = LEFT | 2x-1 RIGHT |$
+에 대하여 다음 값을 구하시오.
+(1)  $LEFT ( g CIRC f RIGHT ) LEFT ( 2 RIGHT )$
+(2)  $LEFT ( f CIRC g RIGHT ) LEFT ( 2 RIGHT )$
+(3)  $LEFT ( LEFT ( f CIRC g RIGHT )  CIRC h RIGHT ) LEFT ( -1 RIGHT ) + LEFT ( f CIRC  LEFT ( g CIRC h RIGHT ) RIGHT ) LEFT ( 1 RIGHT )$
+집합  $X=left{x`left|`-a le x le a right}$ 에 대하여  $X$ 에서  $X$ 로의 함수  $f$ 가
+[정답]  $2$
+함수  $f  circ f$ 가 정의되려면 함수  $f$ 의 치역이 집합  $X$ 의 부분집합이어야 한다.
+함수  $f$ 의 치역은  $left{x`left|`-2 le x le a^2 -2 right}$ 이므로
+$left{x`left|`-2 le x le a^2 -2 right} subset left{x`left|`-a le x le a right}$ 가 되려면
+$-a le -2 $ 에서  $a ge 2$  $cdotscdots$ ㉠
+$a ge a^2 -2$ ,  $a^2 -a-2 le 0$ ,  $LEFT ( a-2 RIGHT ) LEFT ( a+1 RIGHT ) le 0$
+즉,  $0<a le 2$   $LEFT ( because ~a>0 RIGHT )$  $cdotscdots$ ㉡
+㉠, ㉡에 의하여 양수  $a$ 의 값은  $2$ 이다.
+$f LEFT ( x RIGHT )=x^2 -2$
+일 때, 함수  $f  circf$ 가 정의되도록 하는 양수  $a$ 의 값을 구하시오.
+[그림]
+두 함수  $f LEFT ( x RIGHT )=3x+2$ ,  $g LEFT ( x RIGHT )=it-x+k$ 에 대하여  $f circ g =g circ f$ 를 만족시키는 상수  $k$ 의 값은?
+[정답] ②
+$LEFT ( f circ g RIGHT ) LEFT ( x RIGHT )$  $=f LEFT ( g LEFT ( x RIGHT ) RIGHT )$ 
+ $=3LEFT ( -x+k RIGHT )+2 =it-3x+3k+2$
+$LEFT ( g circ f RIGHT ) LEFT ( x RIGHT )$  $=g LEFT ( f LEFT ( x RIGHT ) RIGHT )$ 
+ $=it- LEFT ( 3x+2 RIGHT )+k=it-3x-2+k$
+$LEFT ( f circ g  RIGHT ) LEFT ( x RIGHT )= LEFT ( g circ f  RIGHT ) LEFT ( x RIGHT )$ 에서
+$-3x+3k+2=it-3x-2+k$
+$3k+2=it-2+k$ ,  $2k=it-4$
+$therefore~k=it-2$
+[그림]
+$f circ g =g circ f$ 이면 모든 실수  $a$ 에 대하여
+$LEFT ( f circ g RIGHT ) LEFT ( a RIGHT )= LEFT ( g circ f RIGHT ) LEFT ( a RIGHT )$ 이다.
+따라서  $a=0$ 일 때,  $LEFT ( f circ g RIGHT ) LEFT ( 0 RIGHT )= LEFT ( g circ f RIGHT ) LEFT ( 0 RIGHT )$ 임을 이용하면
+$LEFT ( f circ g  RIGHT ) LEFT ( 0 RIGHT )=f LEFT ( g LEFT ( 0 RIGHT ) RIGHT )=f LEFT ( k RIGHT )=3k+2$
+$LEFT ( g circ f RIGHT ) LEFT ( 0 RIGHT )=g LEFT ( f LEFT ( 0 RIGHT ) RIGHT )=g LEFT ( 2 RIGHT )=it-2+k$
+에서  $3k+2=it-2+k$ ,  $2k=it-4$
+$therefore~k=it-2$
+①  $-1$ ②  $-2$ ③  $-3$ ④  $-4$ ⑤  $-5$
+실수 전체의 집합에서 정의된 두 함수  $f,~g$ 가 일대일대응이고,  $f(6)=8$ ,  $g(3)=4$ ,  $(f circ g)(5)=8$ ,  $(f circg)(3)=9$ 를 만족시킬 때,  $f(4)+g(5)$ 의 값은?
+[정답] ④
+$(f circ g)(5)=8$ 에서  $f(g(5))=8$ 이고
+이때 함수  $f$ 가 일대일대응이고,  $f(6)=8$ 이므로
+$g(5)=6$ 이다.
+한편,  $(f circ g)(3)=f(g(3))=f(4)=9$ 이다.
+$therefore$   $f(4)+g(5)=9+6=15$
+①  $12$ ②  $13$ ③  $14$ ④  $15$ ⑤  $16$
+집합  $X= left{1,~2,~3 right}$ 에 대하여  $X$ 에서  $X$ 로의 두 함수  $f,~g$ 가 일대일대응이고,  $f(2)=3$ ,  $g(3)=1$ ,  $(f circ g)(1)=1$ 을 만족시킬 때,  $(f circ g )(2)+ f(3)$ 의 값은?
+[정답] ③
+$f(2)=3$ ,  $g(3)=1$ 을 만족시키는 두 함수  $f,~g$ 에 대하여
+함수  $f circ g$ 를 나타내면 다음 그림과 같다.
+[그림]
+이때  $(f circ g)(1)=1$ 을 만족시키기 위해서
+$g(1)=1$ 이면  $g$ 가 일대일대응을 만족시키지 않게 되고,
+$g(1)=2$ 이면  $(f circ g)(1)=3$ 이 되므로
+$g(1)=3$ ,  $f(3)=1$ 이어야 한다.
+따라서 조건을 만족시키는 함수  $f circ g$ 는 다음 그림과 같다.
+[그림]
+$(f circ g)(2)=f(g(2))=f(2)=3$ ,  $f(3)=1$ 이므로
+$(f circ g)(2)+f(3)=3+1=4$
+①  $2$ ②  $3$ ③  $4$ ④  $5$ ⑤  $6$
+[그림]
+04
+역함수
+다음 <보기>는 실수 전체의 집합  $R$ 에서  $R$ 로의 함수이다.
+[정답] ⑤
+어떤 함수의 역함수가 존재하기 위한 필요충분조건은 그 함수가 일대일대응인 것이다.
+ㄱ.  $f(x)= LEFT | `x` RIGHT | +1$
+[그림]
+함수  $f(x)$ 는 일대일대응이 아니므로 역함수가 존재하지 않는다.
+ㄴ.  $g(x) = cases{ ``1-2x &~(x<0)#``1-x &~(x geq 0)}$
+[그림]
+함수  $g(x)$ 는 일대일대응이므로 역함수가 존재한다.
+ㄷ.  $h(x) = cases{ ``1-x^2&~ (x leq0 )#``1+x &~(x>0)$
+[그림]
+함수  $h(x)$ 는 일대일대응이므로 역함수가 존재한다.
+따라서 역함수가 존재하는 것은 ㄴ, ㄷ이다.
+<보기>에서 역함수가 존재하는 것만을 있는 대로 고른 것은?
+[표]
+[ 보 기 ]
+ㄱ.  $f(x)= left| x right| +1$
+ㄴ.  $g(x) = cases{`1-2x &~(x < 0)# `1-x&~(x ge 0)$
+ㄷ.  $h(x) = cases{ `1-x^2 &~(x le 0)#``1+x&~ (x >0 )$
+① ㄱ② ㄴ③ ㄷ④ ㄱ, ㄴ⑤ ㄴ, ㄷ
+두 집합  $X= left{ 1,~2,~3 right}$ ,  $Y= left{ 4,~5,~6 right}$ 에 대하여 두 함수  $f`:`X ``->`` Y$ ,   $g`:`Y``->``X$ 가 그림과 같을 때,  $f^-1 (5) +(g^-1 circ f^-1 )(4)$ 의 값은?
+[정답] ①
+$f(1)=5$ 이므로  $f^-1 (5)=1$ 이다.
+$f(3)=4$ 에서  $f^-1 (4)=3$ 이므로
+$(g^-1 circ f^-1 )(4)=g^-1 LEFT ( f^-1 LEFT ( 4 RIGHT ) RIGHT )=g^-1 LEFT ( 3 RIGHT )$ 이고,
+$g(4)=3$ 에서  $g^-1 (3)=4$ 이므로  $(g^-1 circ f^-1 )(4)=4$ 이다.
+$therefore$   $f^-1 (5) + (g^-1 circ f^-1 )(4)=1+4=5$
+[그림]
+①  $5$ ②  $6$ ③  $7$ ④  $8$ ⑤  $9$
+[그림]
+함수  $f(x) =3x-2$ ,  $g(x)=it-x+3$ 에 대하여 다음 값을 구하시오.
+[정답] (1)  $2$   (2)  $4$   (3)  $3$   (4)  $2$   (5)  $-8$
+(1)  $f^-1 (4)=a$ 라 하면  $f(a)=4$ 에서
+ $3a-2=4$ ,  $a=2$ 
+ $therefore$   $f^-1 (4)=2$
+(2)  $(f^-1 )^-1 = f$ 이므로
+ $(f^-1 )^-1 (2)=f(2)=4$
+(3)  $f circ f^-1 = I$  ( $I$ 는 항등함수)이므로
+ $(f circ f^-1 )(3) = I`(3) = 3$
+(4)  $(f circ g)^-1 = g^-1 circ f^-1$ 이므로
+$( f circ g)^-1 (1)$  $=(g^-1 circ f^-1 )(1)$ 
+ $=g^-1 (f^-1 (1))$  $cdotscdots$ ㉠
+$f^-1 (1)=k$ 라 하면  $f(k)=1$ 에서
+$3k-2=1$ ,  $k=1$ 이므로
+㉠에서  $g^-1 (f^-1 (1))=g^-1 (1)=m$ 이라 하면  $g(m)=1$ 에서
+$-m+3=1$ ,  $m=2$
+$therefore$   $(f circ g)^-1 (1)=2$
+(5)  $(f^-1 circ g)^-1 = g^-1 circ (f^-1 )^-1 = g^-1 circ f$ 이므로
+$(f circ (f^-1 circ g)^-1 circ f^-1 )(5)$
+$= (f circ g^-1 circ f circ f^-1 )(5)$
+$=(f circg^-1 )(5)$   $left(because~f circ f ^-1 =I,~I$ 는 항등함수 $itright)$
+$=f(g^-1 )(5)$  $cdotscdots$ ㉡
+$g^-1 (5)=t$ 라 하면  $g(t)=5$ 에서
+$-t+3=5$ ,  $t=it-2$
+㉡에서  $(f(g^-1 (5))=f(-2)=it-8$
+$therefore$   $(f circ (f^-1 circ g)^-1 circ f^-1 )(5)=it-8$
+[그림]
+(4)  $(f circ g)(x) $  $= f(-x+3)$ 
+ $=3(-x+3)-2 = it-3x+7$
+이므로  $(f circ g)^-1 (1) =k$ 라 하면  $(f circ g)(k) =1$ 에서
+$-3k+7=1$ ,  $k=2$
+$therefore$   $(f circ g)^-1 (1)=2$
+(1)  $f^-1 (4)$
+(2)  $(f^-1 )^-1 (2)$
+(3)  $(f circ f^-1 )(3)$
+(4)  $(f circ g )^-1 (1)$
+(5)  $(f circ (f^-1 circ g)^-1 circ f^-1 ) (5)$
+역함수가 존재하는 두 함수  $y=f(x)$ ,  $y=g(x)$ 의 그래프가 그림과 같을 때,  $f^-1 (-2)+(f circ g^-1 )^-1 (0)$ 의 값은?
+[정답] ④
+(ⅰ)  $f^-1 (-2)=k$ 라 하면  $f(k)=it-2$ 이다.
+주어진 그래프에 의하여  $f(0)=it-2$ 이므로  $k=0$ 
+ $therefore$   $f^-1 (-2)=0$
+(ⅱ)  $(f circ g^-1 )^-1 (0)$  $=((g^-1 )^-1 circ f^-1 )(0)$ 
+ $= (g circ f^-1 )(0)$ 
+ $= g(f^-1 (0))$                        $cdotscdots$ ㉠
+$f^-1 (0)=m$ 이라 하면  $f(m)=0$ 이다.
+주어진 그래프에 의하여  $f(-1) = 0$ 이므로  $m=it-1$
+㉠에서  $g(f^-1 (0))=g(-1)=1$
+$therefore$   $f^-1 (-2)+(f circ g^-1 )^-1 (0)=0+1=1$
+[그림]
+①  $-2$ ②  $-1$ ③  $0$ ④  $1$ ⑤  $2$
+두 함수  $f(x)=it-2x+1$ ,  $g(x)=3x-4$ 에 대하여
+[정답] ①
+$(f^-1 circ g)^-1 circ h = f$ 에서
+$(f^-1 circ g) circ (f^-1 circ g)^-1 circ h= (f^-1 circ g ) circ f$
+$I circ h = f^-1 circ g circ f$  ( $I`$ 는 항등함수)
+$therefore$   $h=f^-1 circ g circ f$
+$h(-2)$  $=(f^-1 circ g circ f)(-2)=f^-1 (g(f(-2)))$  $=f^-1 g(5))=f^-1 (11)$
+$f^-1 (11)=k$ 라 하면  $f(k)=11$ 에서
+$-2k+1=11$ ,  $k=it-5$
+$therefore$   $h(-2)=it-5$
+[그림]
+$(f^-1 circ g)^-1 circ h = f$ 에서
+$((f^-1 circ g)^-1 circ h )(-2)=f(-2)$
+$(f^-1 circ g)^-1 (h(-2))=5$
+$(f^-1 circ g )(5) = h(-2)$
+$(f^-1 circ g)(5) = f^-1 (g(5)) = f^-1 (11)$
+이때  $f^-1 (11) =k$ 라 하면  $f(k)=11$ 에서
+$-2k+1 = 11$ ,  $k=it-5$
+$therefore$   $h(-2)=it-5$
+$(f^-1 circ g)^-1 circ h = f$ 를 만족시키는 함수  $h$ 에 대하여  $h(-2)$ 의 값은?
+①  $-5$ ②  $-4$ ③  $-3$ ④  $-2$ ⑤  $-1$
+[그림]
+두 함수
+[정답] ③
+함수  $y=g(x)$ 의 그래프가 다음 그림과 같다.
+[그림]
+(ⅰ)  $g^-1 (2)=k$ 라 하면
+ $g(k)=2$ ,  $k<1$ 이므로
+  $2k+3=2$ ,  $k= it- 1over2$ 
+ $f(g^-1 (2))=f left(- 1over2 right) = 7$
+(ⅱ)  $f^-1 (g(2))=f^-1 (8) = m$ 이라 하면
+ $f(m)=8$ 이므로  $-2m+6=8$ ,  $m=it-1$ 
+ $therefore$   $f(g^-1 (2))+f^-1 (g(2))=7+(-1)=6$
+$f(x)=it-2x+6$ ,  $g(x)= cases {2x+3&~(x leq 1 )#3x+2&~(x>1)$
+에 대하여  $f(g^-1 (2)+f^-1 (g(2))$ 의 값은?
+①  $4$ ②  $5$ ③  $6$ ④  $7$ ⑤  $8$
+[그림]
+실수 전체의 집합에서 정의된 함수  $f$ 가 일대일대응이고
+[정답]  $7$
+$f^-1 (5)=k$ 라 하면  $f(k)=5$
+$f left({4x+1}over3 right) = it-2x+15$ 에서
+$-2x+15 = 5$ 일 때,  $x=5$ 이므로  $k= {4times5 +1}over3 = 7$
+$therefore$   $f^-1 (5)=7$
+[그림]
+${4x+1}over3 = t$ 로 치환하면  $x= {3t-1}over4$ 이므로
+$f(t)=it-2 times {3t-1}over4 +15 =it - 3over2 t + 31over2$
+$f^-1 (5)=k$ 라 하면  $f(k)=5$ 이므로
+$- 3over2 k+ 31over2 = 5$ ,  $k=7$
+$therefore$   $f^-1 (5)=7$
+$f left({4x+1}over3 right) = it-2x+15$ 일 때,  $f^-1 (5)$ 의 값을 구하시오.
+함수  $y=ax+b$ 의 역함수가  $y= {x-5}over2$ 일 때, 상수  $a,~b$ 에 대하여  $ab$ 의 값은?
+[정답] ⑤
+함수  $y=ax+b$ 의 역함수를 구하면 다음과 같다.
+$y=ax+b$ 를  $x$ 에 대하여 풀면  $x= {y-b}overa$ 이고,
+$x$ 와  $y$ 를 서로 바꾸면  $y= {x-b}over a$ 이므로
+역함수는  $y= {x-b}over a$ 이다.
+이 함수가  $y= {x-5}over2$ 와 같으므로  $a=2$ ,  $b=5$
+$therefore$   $ab=2 times 5 =10$
+[그림]
+함수  $y= {x-5}over2$ 의 역함수가  $y=ax+b$ 이다.
+함수  $y= {x-5}over2$ 의 역함수를 구하면 다음과 같다.
+$y= {x-5}over2$ 를  $x$ 에 대하여 풀면  $x=2y+5$ 이고,
+$x$ 와  $y$ 를 서로 바꾸면  $y=2x+5$ 이다.
+역함수가  $y=2x+5$ 이므로  $a=2$ ,  $b=5$
+$therefore$   $ab=10$
+[그림]
+$f(x)= {x-5}over2$ 라 하면  $f^-1 (x)=ax+b$ 이다.
+$f(5)=0$ ,  $f(1)=it-2$ 이므로  $f^-1 (0)=5$ ,  $f^-1 (-2)=1$ 이다.
+$f^-1 (0) = b=5$ ,  $f^-1 (-2)=it-2a+b=1$ 에서  $a=2$
+$therefore$   $ab=10$
+①  $2$ ②  $4$ ③  $6$ ④  $8$ ⑤  $10$
+[그림]
+두 함수  $f(x) = it-x+2$ ,  $g(x)=2x-3$ 에 대하여 다음을 만족시키는 함수  $h(x)$ 를 구하시오.
+[정답] (1)  $h(x)=it-2x+5$  (2)  $h(x)=it-2x+1$
+함수  $f LEFT ( x RIGHT )$ 는 역함수가 존재하므로  $f LEFT ( x RIGHT )=it-x+2$ 의 역함수를 구하면 다음과 같다.
+$y=it-x+2$ 를  $x$ 에 대하여 풀면  $x=it-y+2$
+$x$ 와  $y$ 를 서로 바꾸면  $y=it-x+2$ 이므로
+$f `^-1 LEFT ( x RIGHT )=it-x+2$  $cdotscdots$ ㉠
+(1)  $f circ h=g$ 에서  $h= f^-1 circ g$ 이다.
+$therefore$   $h(x) $  $= (f^-1 circ g)(x) = f^-1 (g(x))$ 
+ $= f^-1 (2x-3) = it-(2x-3)+2$   $left(because~$ ㉠ $itright)$ 
+ $=it-2x+5$
+(2)  $h circ f = g$ 에서  $h  = g circ f^-1$ 이다.
+$therefore$   $h(x)$  $= (g circ f^-1 )(x)=g(f^-1 (x))$ 
+ $=g(-x+2) = 2(-x+2)-3$   $left(because~$ ㉠ $itright)$ 
+ $=it-2x+1$
+[그림]
+(1)  $(f circ h )(x)=f(h(x))=it-h(x)+2$ 이므로
+ $(f circ h)(x) = g(x)$ 에서
+  $-h(x)+2=2x-3$ 
+  $therefore$   $h(x)= it-2x+5$
+(2)  $(h circ f)(x) = h(f(x)) = h(-x+2)$ 이므로
+ $(h circ f)(x) = g(x)$ 에서
+  $h(-x+2)=2x-3$ 
+ $-x+2=t$ 라 하면  $x=2-t$ 이므로
+  $h(t)=2(2-t)-3 = it-2t+1$ 
+  $therefore$   $h(x)=it-2x+1$
+(1)  $f circ h=g$
+(2)  $h circ f = g$
+두 함수  $f(x)=3x-1,~g(x)=x+4`$ 에 대하여  $g=h CIRC f`$ 를 만족시키는 함수  $h`$ 의 역함수를 구하시오.
+[정답]  $h  ^{-1} (x)=3x-13$
+두 함수  $f(x),~g(x)$ 는 역함수가 존재하므로
+$g=h CIRC f`$ 에서  $h=g CIRC f`  ^{-1}$  이고,
+$h  ^{-1} = LEFT ( g CIRC f`  ^{-1} RIGHT )  ^{-1} `=`f` CIRC g  ^{-1}$  이다.
+함수  $g(x)=x+4`$ 의 역함수를 구하면 다음과 같다.
+$y=x+4`$ 를  $x`$ 에 대하여 풀면  $x=y-4`$ 이고,
+$x$ 와  $y`$ 를 서로 바꾸면  $y=x-4`$ 이므로
+$g  ^{-1} (x)=x-4`$ 이다.
+$THEREFORE ~h  ^{-1} (x)$  $=(f CIRC g  ^{-1} )(x)=f(g  ^{-1} (x))$ 
+ $=f(x-4)=3(x-4)-1$  $=3x-13$
+[그림]
+$g(x)=(h CIRC f`)(x)$ 에서  $x+4=h(3x-1)$
+$3x-1=t`$ 로 치환하면  $x= {t+1} over {3}$ 이므로
+$h(t)= {t+1} over {3} +4= {t+13} over {3}$ 이다.
+$h(x)= {x+13} over {3}$ 의 역함수를 구하면 다음과 같다.
+$y= {x+13} over {3}$ 을  $x`$ 에 대하여 풀면  $x=3y-13$ 이고,
+$x$ 와  $y`$ 를 서로 바꾸면  $y=3x-13`$
+$THEREFORE ~h  ^{-1} (x)=3x-13$
+실수 전체의 집합에서 정의된 두 함수  $f(x)=2x-a$ ,  $g(x)=it-x+2a`$ 에 대하여  $LEFT ( g  ^{-1}  CIRC f  ^{`-1} RIGHT ) LEFT ( bx-6 RIGHT ) =x`$ 일 때,  $a+b`$ 의 값은? (단,  $a,``b`$ 는 상수이다.)
+[정답] ②
+$g  ^{-1}  CIRC f  ^{`-1} `=`(f CIRC g)  ^{-1}$ 이므로  $LEFT ( f circ g RIGHT )^-1  LEFT ( bx-6 RIGHT ) =x`$ 에서
+$(f CIRC g)(x)=bx-6`$ 이다.
+$(f CIRC g)(x)$  $=f(g(x))=f(-x+2a)$ 
+ $=2(-x+2a)-a=it-2x+3a$
+이므로  $-2x+3a=bx-6$
+따라서  $a=it-2,~b=it-2$ 이므로
+$a+b= LEFT ( -2 RIGHT )+ LEFT ( -2 RIGHT )=it-4$
+①  $-6$ ②  $-4$ ③  $-2$ ④  $2$ ⑤  $4$
+정의역이 실수 전체의 집합인 함수  $f LEFT ( x RIGHT )=a left|x right| +3x-1$ 의 역함수가 존재하도록 하는 모든 정수  $a$ 의 개수는?
+[정답] ③
+함수  $f LEFT ( x RIGHT )$ 의 역함수가 존재하려면 함수  $f LEFT ( x RIGHT )$ 가 일대일대응이어야 한다.
+$f LEFT ( x RIGHT )=cases {`LEFT ( 3-a RIGHT )x-1&~ LEFT ( x<0 RIGHT )#` LEFT ( a+3 RIGHT )x-1&~ LEFT ( x ge 0 RIGHT )}$
+에서  $y= LEFT ( 3-a RIGHT )x-1$ 은 점  $LEFT ( 0,~-1 RIGHT )$ 을 지나고 기울기가  $3-a$ 인 직선이고,
+$y= LEFT ( a+3 RIGHT )x-1$ 은 점  $LEFT ( 0,~-1 RIGHT )$ 을 지나고 기울기가  $a+3$ 인 직선이다.
+함수  $f LEFT ( x RIGHT )$ 가 일대일대응이려면 두 직선의 기울기의 부호가 모두 양수이거나 모두 음수이어야 하므로 두 직선의 기울기의 곱이 양수이어야 한다.
+즉,  $LEFT ( 3-a RIGHT ) LEFT ( a+3 RIGHT )>0$ 이므로  $-3<a<3$
+따라서 함수  $f LEFT ( x RIGHT )$ 의 역함수가 존재하도록 하는 정수  $a$ 는
+$-2,~-1,~0,~1,~2$ 의  $5$ 개이다.
+①  $1$ ②  $3$ ③  $5$ ④  $7$ ⑤  $9$
+[그림]
+두 함수  $y=f(x)`$ 와  $y=x`$ 의 그래프가 그림과 같다. 함수  $f(x)`$ 의 역함수를  $g(x)`$ 라 할 때,  $LEFT ( f  ^{`-1}  CIRC g RIGHT ) LEFT ( c RIGHT ) + LEFT ( f CIRC g RIGHT )  ^{-1} LEFT ( b RIGHT ) `$ 의 값은?
+[정답] ⑤
+$g=f  ^{-1}$ 이므로
+$LEFT ( f  ^{`-1}  CIRC g RIGHT ) LEFT ( c RIGHT ) + LEFT ( f CIRC g RIGHT )  ^{-1} LEFT ( b RIGHT ) `$
+$= LEFT ( f  ^{`-1}  CIRC f  ^{`-1} RIGHT ) LEFT ( c RIGHT ) + LEFT ( f CIRC f  ^{`-1} RIGHT )  ^{-1} LEFT ( b RIGHT ) `$
+이때  $f CIRC f  ^{`-1} `=I``$  ( $I`$ 는 항등함수)이므로
+$LEFT ( f CIRC f  ^{`-1} RIGHT )  ^{-1} LEFT ( b RIGHT ) =I  ^{`-1} (b)=I`(b)=b`$ 이다.
+한편, 주어진 그래프는 다음 그림과 같다.
+[그림]
+$f(d)=c`$ 이므로  $f  ^{`-1} (c)=d`$ 이고,
+$f(e)=d`$ 이므로  $f  ^{`-1} (d)=e`$ 이다.
+따라서  $LEFT ( f  ^{`-1}  CIRC f  ^{`-1} RIGHT ) LEFT ( c RIGHT ) =f  ^{`-1} (f  ^{`-1} (c))=f  ^{`-1} (d)=e`$ 이다.
+$THEREFORE ~ LEFT ( f  ^{`-1}  CIRC g RIGHT ) LEFT ( c RIGHT ) + LEFT ( f CIRC g RIGHT )  ^{-1} LEFT ( b RIGHT ) `=e+b$
+[그림]
+①  $a+b$ ②  $a +d$ ③  $b+c$ ④  $b+d$ ⑤  $b+e$
+함수  $f(x)= {3} over {2} x+4`$ 의 역함수를  $g(x)`$ 라 할 때, 두 함수
+[정답] ④
+함수  $y= {3} over {2} x+4`$ 의 그래프와 그 역함수의 그래프는 직선  $y=x`$ 에 대하여 대칭이고, 이때 두 함수의 교점은 직선  $y=x`$  위에 존재한다.
+즉, 구하는 교점의 좌표는 직선  $y= {3} over {2} x+4`$ 와 직선  $y=x`$ 의 교점의 좌표와 같고, 방정식  ${3} over {2} x+4=x`$ 에서  $x=it-8`$ 이므로 구하는 교점의 좌표는  $(-8,~-8)$ 이다.
+따라서  $a=it-8,~b=it-8$ 이므로
+$a+b= LEFT ( -8 RIGHT )+ LEFT ( -8 RIGHT )=it-16$
+$y=f(x),~y=g(x)`$ 의 그래프의 교점의 좌표는  $(a,~b)`$ 이다.  $a+b`$ 의 값은?
+①  $-2$ ②  $-4$ ③  $-8$ ④  $-16$ ⑤  $-32$
+일차함수  $y=f(x)`$ 의 그래프와 그 역함수의 그래프가 모두 점  $(-2,~1)`$ 을 지날 때,  $f(3)`$ 의 값은?
+[정답] ④
+일차함수  $f(x)=ax+b`$ ( $a,~b$ 는 실수)라 하면 함수  $y=f(x)$ 의 그래프가 점  $(-2,~1)$ 을 지나므로
+$f(-2)=1`$ 에서  $-2a+b=1$  $cdotscdots$ ㉠
+함수  $y=f  ^{`-1} (x)$ 의 그래프가 점  $(-2,~1)$ 을 지나므로
+$f  ^{`-1} (-2)=1`$ 에서  $f(1)=it-2$ 이므로  $a+b=it-2$  $cdotscdots$ ㉡
+㉠, ㉡을 연립하여 풀면  $a=it-1,~b=it-1$ 이므로
+$f(x)=it-x-1$
+$THEREFORE ~f(3)=it-3-1=it-4$
+[그림]
+함수  $y=f(x)$ 의 그래프가 점  $(-2,~1)$ 을 지난다.
+또한 함수  $y=f  ^{`-1} (x)$ 의 그래프가 점  $(-2,~1)$ 을 지나므로
+이와 직선  $y=x`$ 에 대하여 대칭인 함수  $y=f(x)`$ 의 그래프는
+점  $(1,~-2)$ 를 지난다.
+따라서 함수  $y=f(x)`$ 의 그래프는 두 점  $(-2,~1),~(1,~-2)$ 를 지나는 직선이다.
+즉,  $f LEFT ( x RIGHT )= { LEFT ( -2 RIGHT )-1 } over {1- LEFT ( -2 RIGHT ) }left{x- LEFT ( -2 RIGHT )right} +1=it-x-1$
+$THEREFORE ~f(3)=it-4$
+①  $-1$ ②  $-2$ ③  $-3$ ④  $-4$ ⑤  $-5$
+$x LEQ 0`$ 에서 정의된 함수  $f(x)=it-(x-2)  ^{2} `+`8`$ 의 역함수를  $g(x)`$ 라 할 때, 함수  $g(x)`$ 의 정의역의 원소 중 자연수의 개수는?
+[정답] ①
+함수  $f(x)`$ 의 역함수의 정의역은 함수  $f(x)`$ 의 치역과 같다.
+함수  $y=it-(x-2)  ^{2} +8~(x LEQ 0)$ 의 그래프가 다음 그림과 같으므로  $f(x) LEQ 4`$ 이다.
+[그림]
+함수  $f(x)$ 의 치역이  $LEFT { y`left|`y LEQ 4 RIGHT }$ 이므로 함수  $g(x)`$ 의 정의역은
+$LEFT { x`left|`x LEQ 4 RIGHT }$ 이다.
+따라서 함수  $g(x)$ 의 정의역의 원소 중 자연수는
+$1,~2,~3,~4$ 로  $4$ 개이다.
+①  $4$ ②  $5$ ③  $6$ ④  $7$ ⑤  $8$
+함수  $f(x)=x  ^{2} -6x+12`````(x GEQ 3)$ 의 역함수를  $g(x)`$ 라 할 때, 두 함수  $y=f(x),~y=g(x)`$ 의 그래프의 두 교점 사이의 거리는?
+[정답] ①
+함수  $y=f(x)`$ 의 그래프와 그 역함수  $y=g(x)`$ 의 그래프를 나타내면 다음 그림과 같다.
+[그림]
+함수  $y=f(x)`$ 의 그래프가  $x$ 의 값이 커질 때  $y$ 의 값도 커지는 형태이므로 역함수  $y=g(x)`$ 의 그래프와의 교점은 직선  $y=x`$  위에 존재한다.
+따라서 두 함수  $y=f(x),~y=g(x)$ 의 그래프의 교점은 함수  $y=f(x)`$ 의 그래프와 직선  $y=x`$ 의 교점과 같다.
+$x  ^{2} -6x+12=x`$ 에서
+$x  ^{2} -7x+12=(x-3)(x-4)=0$
+$THEREFORE ~x=3`$  또는  $x=4$
+따라서 두 교점의 좌표는  $(3,~3),~(4,~4)$ 이므로
+두 교점 사이의 거리는  $sqrt {1  ^{2} +1  ^{2}} `= sqrt {2}$ 이다.
+①  $sqrt {2}$ ②  $2 sqrt {2}$ ③  $3 sqrt {2}$ ④  $4 sqrt {2}$ ⑤  $5 sqrt {2}$
+[그림]
+05
+함수의 개수
+[그림]
+두 집합  $X= LEFT { 1,~2,~3 RIGHT } ,~Y= LEFT { 1,~2,~3,~4 RIGHT }$ 에 대하여 다음을
+[정답] (1)  $64$   (2)  $24$   (3)  $4$   (4)  $1$   (5)  $6$
+(1) 함수가 되려면 정의역의 각 원소에 치역의 원소가 하나씩 대응해야 한다.  $X$ 의 원소  $1,~2,~3$ 에 하나씩 대응할 수 있는  $Y$ 의 원소가 각각  $4$ 가지이므로
+구하는  $X$ 에서  $Y$ 로의 함수의 개수는
+ $4 TIMES 4 TIMES 4=64$ 이다.
+(2) 일대일함수이려면 정의역의 서로 다른 원소에 공역의 서로 다른 원소가 대응되어야 하므로
+ $1$ 에 대응할 수 있는 수는  $4$ 가지,
+ $2$ 에 대응할 수 있는 수는  $1$ 에 대응하는 수를 제외한  $3$ 가지,
+ $3$ 에 대응할 수 있는 수는  $1,~2$ 에 대응하는 수를 제외한 2가지이다.
+따라서 구하는  $X$ 에서  $Y$ 로의 일대일함수의 개수는
+ $4TIMES3 TIMES2=24$ 이다.
+(3)  $X$ 에서  $Y$ 로의 상수함수를  $f$ 라 할 때, 가능한 함수  $f$ 는
+ $f LEFT ( x RIGHT ) =1$  또는  $f LEFT ( x RIGHT ) =2$  또는  $f LEFT ( x RIGHT ) =3$  또는  $f LEFT ( x RIGHT ) =4$ 로  $4$ 개이다.
+(4)  $X$ 에서  $X$ 로의 함수  $f$ 가 항등함수일 때,  $f LEFT ( x RIGHT ) =x$ 로 함수  $f$ 는  $1$ 개이다.
+(5)  $X$ 에서  $X$ 로의 함수가 일대일대응이려면 정의역의 서로 다른 원소에 공역의 서로 다른 원소가 하나씩 대응해야 하므로
+ $1$ 에 대응할 수 있는 수는  $3$ 가지,
+ $2$ 에 대응할 수 있는 수는  $1$ 에 대응하는 수를 제외한  $2$ 가지,
+ $3$ 에 대응할 수 있는 수는  $1,~2$ 에 대응하는 수를 제외한  $1$ 가지이다.
+따라서 구하는  $X$ 에서  $X$ 로의 일대일대응의 개수는  $3 TIMES 2 TIMES 1=6$ 이다.
+구하시오.
+(1)  $X$ 에서  $Y$ 로의 함수의 개수
+(2)  $X$ 에서  $Y$ 로의 일대일함수의 개수
+(3)  $X$ 에서  $Y$ 로의 상수함수의 개수
+(4)  $X$ 에서  $X$ 로의 항등함수의 개수
+(5)  $X$ 에서  $X$ 로의 일대일대응의 개수
+두 집합  $X= LEFT { 1,~2,~3,~4 RIGHT } ,~Y= LEFT { 1,~2,~3,~4,~5 RIGHT }$ 에 대하여 다음 조건을 만족시키는 함수  $f`:`X`` ->`` Y$ 의 개수는?
+[정답] ②
+조건 (가)에 의하여 함수  $f$ 는 일대일함수이므로
+정의역의 서로 다른 원소에 공역의 서로 다른 원소가 대응해야
+한다.
+조건 (나)에 의하여  $f LEFT ( 1 RIGHT )  != 3,~f LEFT ( 3 RIGHT ) =2$ 이므로
+$f LEFT ( 1 RIGHT )$ 의 값은  $1,~2,~3,~4,~5$  중  $2,~3$ 을 제외한  $3$ 가지,
+$f LEFT ( 2 RIGHT )$ 의 값은  $1,~2,~3,~4,~5$  중  $f LEFT ( 1 RIGHT )$ 의 값과  $2$ 를 제외한  $3$ 가지,
+$f LEFT ( 4 RIGHT )$ 의 값은  $1,~2,~3,~4,~5$  중  $f LEFT ( 1 RIGHT ) ,~f LEFT ( 2 RIGHT )$ 의 값과  $2$ 를 제외한  $2$ 가지
+따라서 함수  $f$ 의 개수는  $3 TIMES 3 TIMES 2=18$ 이다.
+[그림]
+(가)  $X$ 의 임의의 원소  $x _{1} ,~x _{2}$ 에 대하여  $x _{1}  != x _{2}$ 이면
+ $f LEFT ( x _{1} RIGHT )  != f LEFT ( x _{2} RIGHT )$ 이다.
+(나)  $f LEFT ( 1 RIGHT )  != 3,``f LEFT ( 3 RIGHT ) =2$
+①  $12$ ②  $18$ ③  $24$ ④  $30$ ⑤  $36$
+[그림]
+두 집합  $X=left{1,~2,~3,~4,~5 right}$ ,  $Y=left{1,~2,~3,~4,~5,~6,~7,~8 right}$  에 대하여 다음 조건을 만족시키는 함수  $f`:`X ``->``Y$ 의 개수는?
+[정답] ①
+두 조건 (가), (나)에 의하여
+$f LEFT ( 1 RIGHT )<4$ 이므로  $f LEFT ( 1 RIGHT )$ 의 값을 정하는 경우의 수는  $3$
+$4<f LEFT ( 3 RIGHT )<f LEFT ( 4 RIGHT )<f LEFT ( 5 RIGHT )$ 이므로  $5,~6,~7,~8$  중 서로 다른 세 수를 선택하자.
+선택된 세 수를  $a,~b,~c$   $LEFT ( a<b<c RIGHT )$ 라 하면
+$f LEFT ( 3 RIGHT )=a,~f LEFT ( 4 RIGHT )=b,~f LEFT ( 5 RIGHT )=c$ 라 하면 된다.
+즉,  $f LEFT ( 3 RIGHT ),~f LEFT ( 4 RIGHT ),~f LEFT ( 5 RIGHT )$ 의 값을 정하는 경우의 수는
+$it_4 rmC _3 =4$
+따라서 구하는 함수의 개수는  $3 times 4 =12$ 이다.
+[그림]
+(가)  $f LEFT ( 2 RIGHT )=4$
+(나) 집합  $X$ 의 임의의 두 원소  $x_1$ ,  $x_2$ 에 대하여  $x_1 <x_2$ 이면  $f LEFT ( x_1 RIGHT )<f LEFT ( x_2 RIGHT )$ 이다.
+①  $12$ ②  $14$ ③  $16$ ④  $18$ ⑤  $20$
+[그림]
+[그림]
+01
+함수의 뜻과 그래프
+다음 <보기> 중 집합  $LEFT { -2,~-1,~0,~1,~2 RIGHT }$ 에서
+[정답] ③
+주어진 집합을  $X= LEFT { -2,~-1,~0,~1,~2 RIGHT }$ ,
+$Y= LEFT { -3,~-2,~-1,~0,~1,~2,~3 RIGHT }$ 이라 하자.
+ㄱ.  $f(-2)=f(2)=0,~f(-1)=f(1)=it-3,~f(0)=it-4$ 이다.
+이때  $f(0)=it-4$ 는 공역의 원소가 아니므로
+ $f`$ 는  $X$ 에서  $Y`$ 로의 함수가 아니다.
+ㄴ.  $g(x)= sqrt {x  ^{2} `} +1`= LEFT | `x` RIGHT | +1$ 이다.
+ $g(-2)=g(2)=3,~g(-1)=g(1)=2,~g(0)=1$ 이므로
+ $g`$ 는  $X$ 에서  $Y`$ 로의 함수이다.
+ㄷ.  $h(-2)=h(2)= LEFT [ - {16} over {5} RIGHT ] =it-4$ ,
+ $h(-1)=h(1)= LEFT [ - {4} over {5} RIGHT ] =it-1$ ,  $h(0)= LEFT [ `0` RIGHT ] =0$ 
+이때  $h(-2)=h(2)=it-4$ 는 공역의 원소가 아니므로
+ $h`$ 는  $X$ 에서  $Y`$ 로의 함수가 아니다.
+ㄹ.  $i(-2)=it-3,~i(-1)=it-1,~i(0)=1,~i(1)=it-3$ ,  $i(2)=it-2$  이므로  $i`$ 는  $X$ 에서  $Y`$ 로의 함수이다.
+ㅁ.  $j(-2)=3,~j(-1)=2,~j(0)=1,~j(1)=0,~j(2)=1$ 이므로  $j`$ 는  $X$ 에서  $Y`$ 로의 함수이다.
+따라서 함수인 것은 ㄴ, ㄹ, ㅁ으로  $3`$ 개이다.
+집합  $LEFT { -3,~-2,~-1,~0,~1,~2,~3 RIGHT }$ 으로의 함수인 것의 개수는?
+(단,  $LEFT [ x RIGHT ]$ 는  $x`$ 보다 크지 않은 최대의 정수이다.)
+[표]
+[ 보 기 ]
+ㄱ.  $f(x)=x  ^{2} -4$
+ㄴ.  $g(x)= sqrt {x  ^{2} `} +1$
+ㄷ.  $h(x)= LEFT [ - {4x  ^{2}} over {5} RIGHT ]$
+ㄹ.  $i(x)= {cases{`2x+1&~(x LEQ 0)#`x-4&~LEFT ( x>0` RIGHT )}}$
+ㅁ.  $j(x)= LEFT | `1-x` RIGHT |$
+①  $1$ ②  $2$ ③  $3$ ④  $4$ ⑤  $5$
+공집합이 아닌 집합  $X`$ 를 정의역으로 하는 두 함수
+[정답] ⑤
+정의역이  $X`$ 인 두 함수  $f(x)= LEFT | `4x` RIGHT | ,``g(x)=x  ^{2}$ 이 서로 같으려면 정의역  $X`$ 의 모든 원소  $x`$ 에 대하여  $f(x)=g(x)`$ 가 성립해야 한다. 방정식  $f(x)=g(x)`$ 를 만족시키는  $x`$ 의 값을 구하면
+$f(x)= LEFT | `4x` RIGHT | = cases{-4x&~(x<0)#`````4x&~(x GEQ 0)}$  이므로
+(ⅰ)  $x<0$ 일 때
+ $-4x=x  ^{2} `$ 에서  $x=it-4$
+(ⅱ)  $x ge 0$ 일 때
+ $4x=x  ^{2} `$ 에서  $x=0`$  또는  $x=4$
+(ⅰ), (ⅱ)에 의하여 정의역  $X`$ 의 원소로 가능한 것은  $-4$ ,  $0$ ,  $4$ 이다.
+따라서 정의역  $X``$ 는 집합  $left{-4,~0,~4 right}$ 의 부분집합 중 공집합이 아닌 것이므로 구하는 집합  $X`$ 의 개수는  $2  ^{3} -1=7`$ 이다.
+$f(x)= LEFT | `4x` RIGHT | ,~g(x)=x  ^{2}$
+에 대하여  $f=g`$ 가 되도록 하는 모든 집합  $X`$ 의 개수는?
+①  $3$ ②  $4$ ③  $5$ ④  $6$ ⑤  $7$
+집합  $S=left{n`left|`1 le n le 50,~n$ 은  $3$ 의 배수 $itright$ 의 공집합이 아닌 부분집합  $X$ 에 대하여 정의역이  $X$ 인 함수  $f$ 가
+[정답]  $189$
+$f LEFT ( 3 RIGHT )=f LEFT ( 24 RIGHT )=f LEFT ( 45 RIGHT )=3$ ,  $f LEFT ( 6 RIGHT )=f LEFT ( 27 RIGHT )=f LEFT ( 48 RIGHT )=6$ ,
+$f LEFT ( 9 RIGHT )=f LEFT ( 30 RIGHT )=2$ ,  $f LEFT ( 12 RIGHT )=f LEFT ( 33 RIGHT )=5$ ,
+$f LEFT ( 15 RIGHT )=f LEFT ( 36 RIGHT )=1 $ ,  $f LEFT ( 18 RIGHT )=f LEFT ( 39 RIGHT )=4$ ,
+$f LEFT ( 21 RIGHT )=f LEFT ( 42 RIGHT )=0$
+이므로
+함수  $f$ 의 치역이  $left{1,~2,~3,~4 right}$ 가 되려면
+$LEFT { 3,~24,~45 RIGHT }  SMALLINTER X !=  EMPTYSET $ ,  $LEFT { 9,~30 RIGHT }  SMALLINTER X !=  EMPTYSET $ ,
+$LEFT { 15,~36 RIGHT }  SMALLINTER X !=  EMPTYSET $ ,  $LEFT { 18,~39 RIGHT }  SMALLINTER X !=  EMPTYSET $ ,
+$LEFT { 6,~12,~21,~27,~33,~42,~48 RIGHT }  SMALLINTER X= EMPTYSET $
+이므로 구하는 집합  $X$ 의 개수는
+$LEFT ( 2^3 -1 RIGHT ) times LEFT ( 2^2 -1 RIGHT )times LEFT ( 2^2 -1 RIGHT ) times LEFT ( 2^2 -1 RIGHT )=189$
+$f LEFT ( n RIGHT )=left(n$ 을  $7$ 로 나눈 나머지 $itright)$
+일 때, 함수  $f $ 의 치역이  $left{1,~2,~3,~4 right}$ 가 되도록 하는 집합  $X$ 의 개수를 구하시오.
+$2$  이상의 자연수에서 정의된 함수  $f(x)$ 가 다음을 만족시킬 때,  $f(240)$ 의 값은?
+[정답] ②
+$240=2^4 times 3 times 5 =16 times15$ 이고,
+조건 (가)에 의하여  $f(2)=2$ ,  $f(3)=3$ ,  $f(5)=5$ 이다.
+조건 (나)에 의하여
+$f(15)=f(3)+f(5)-1=7$
+$f(4)=f(2)+f(2)-1=3$ 이므로
+$f(16)=f(4)+f(4)-1=5$
+$therefore~f LEFT ( 240 RIGHT )$  $=f LEFT ( 15 times 16 RIGHT )=f LEFT ( 15 RIGHT )+f LEFT ( 16 RIGHT )-1$ 
+ $=7+5-1=11$
+[그림]
+조건 (나)에 의하여  $2$  이상의 자연수  $a_1$ ,  $a_2$ ,  $cdots$ ,  $a_n$ 에 대하여
+$f(a  _{1}  TIMES a  _{2}  TIMES ` CDOTS ` TIMES a  _{n} )$
+$=f(a  _{1}  TIMES a  _{2}  TIMES ` CDOTS ` TIMES a  _{n-1} )+f(a  _{n} )-1$
+$=f(a  _{1}  TIMES a  _{2}  TIMES ` CDOTS ` TIMES a  _{n-2} )+f(a  _{n-1} )+f(a  _{n} )-2$
+$VDOTS$
+$=f(a  _{1} )+f(a  _{2} )+` CDOTS `+f(a  _{n} )-(n-1)$
+따라서  $f(240)=f(2^4 times 3 times 5)=4 timesf(2)+f(3)+f(5)-5$ 이고, 조건 (가)에 의하여  $f(2)=2$ ,  $f(3)=3$ ,  $f(5)=5$ 이므로
+$f(240)=4 times2 +3+5-5=11$
+[그림]
+(가)  $p$ 가 소수일 때,  $f(p)=p$ 이다.
+(나)  $2$  이상의 두 자연수  $m$ ,  $n$ 에 대하여  $f(mn)=f(m)+f(n)-1$ 이다.
+①  $10$ ②  $11$ ③  $12$ ④  $13$ ⑤  $14$
+함수  $f LEFT ( x RIGHT )$ 가 다음 조건을 만족시킨다.
+[정답]  $7$
+조건 (가)에서  $f LEFT ( x RIGHT )=cases{`x+1&~ LEFT ( -2 le x <0 RIGHT )#`-x+1&~ LEFT ( 0 le x le 2 RIGHT )$ 이고
+조건 (나)에서 함수  $y=f LEFT ( x RIGHT )$ 의 그래프는  $4$  간격으로 모양이 반복된다.
+따라서 함수  $ y=f LEFT ( x RIGHT )$ 의 그래프는 다음 그림과 같다.
+[그림]
+방정식  $f LEFT ( x RIGHT )= { 1} over {n }x$ 의 서로 다른 실근의 개수가  $7$ 이 되려면
+함수  $y= f LEFT ( x RIGHT )$ 의 그래프와 직선  $y= { 1} over {n }x$ 의 교점의 개수가  $7$ 이어야 한다.
+$g LEFT ( x RIGHT )= { 1} over {n }x$ 라 하면
+$g LEFT ( -6 RIGHT )=it- { 6} over {n }>it-1$ 에서  $n>6$ 이고
+$g LEFT ( 8 RIGHT )= { 8} over {n }>1$ 에서  $n<8$ 이어야 하므로
+구하는 자연수  $n$ 의 값은  $7$ 이다.
+[그림]
+(가)  $f LEFT ( x RIGHT )=it-left|x right|+1~ LEFT ( -2 le x le 2 RIGHT )$
+(나) 모든 실수  $x$ 에 대하여  $f LEFT ( x+4 RIGHT )=f LEFT ( x RIGHT )$ 이다.
+방정식  $f LEFT ( x RIGHT )= { 1} over {n }x$ 의 서로 다른 실근의 개수가  $7$ 이 되도록 하는 자연수  $n$ 의 값을 구하시오.
+함수  $f$ 가 임의의 두 실수  $x$ ,  $y$ 에 대하여
+[정답]  $132$
+$f(x-y)=f(x)-f(y)$  $cdotscdots$ ㉠
+㉠에  $x=0$ ,  $y=0$ 을 대입하면  $f(0)=f(0)-f(0)=0$
+㉠에  $x=0$ ,  $y$  대신  $-y$ 를 대입하면  $f(y)=f(0)-f(-y)$ 에서
+$f(-y)=it-f(y)$ 이다. $cdotscdots$ ㉡
+㉠에  $y$  대신  $-y$ 를 대입하면
+$f(x+y)=f(x)-f(-y)=f(x)+f(y)$   $left(because~$ ㉡ $itright)$
+이므로
+$f(2)=f(1+1)=f(1)+f(1)=2f(1)$
+$f(3)=f(2+1)=f(2)+f(1)=3f(1)$
+$f(4)=f(3+1)=f(3)+f(1)=4f(1)$
+$vdots$
+따라서  $f(n)=nf(1)$  ( $n$ 은 자연수)이다.
+$therefore~f(33)=33f(1)=33 times 4 =132$
+$f(x-y)=f(x)-f(y)$
+를 만족시키고,  $f(1)=4$ 일 때  $f(33)$ 의 값을 구하시오.
+함수  $f(x)$ 가  $0$ 이 아닌 모든 실수  $x$ 에 대하여
+[정답] ②
+주어진 등식의 양변에  $x=it-2$ 를 대입하면
+$1 over4 f(2)+2 f left( - 1 over2 right)=it-12$
+$f(2)+8f left(- 1over2 right)=it-48$   $cdotscdots$ ㉠
+주어진 등식의 양변에  $x = 1over2$ 을 대입하면
+$4f left( - 1 over2 right) - 1over2 f(2)=3$
+$8 f left( - 1over2 right)- f(2)=6$  $cdotscdots$ ㉡
+㉠에서 ㉡의 양변을 각각 빼면  $2f(2)=it-54$
+$therefore~f(2)=it-27$
+[그림]
+주어진 등식의 양변에  $x$  대신  $-x$ 를 대입하면
+$1 overx ^2 f(x)+xf left( - 1overx right)=it-6x$
+양변에  $x^2$ 을 각각 곱하면
+$f(x)+x^3 f left( - 1overx right) =it-6x^3$  $cdotscdots$ ㉠
+주어진 등식의 양변에  $x$  대신  $1 overx$ 을 대입하면
+$x^2 f left( - 1overx right) - 1 overx f(x)= 6 overx$
+양변에  $-x$ 를 각각 곱하면
+$f(x)- x^3 f left( - 1 overx right)=it-6$  $cdotscdots$ ㉡
+㉠과 ㉡의 양변을 각각 더하면
+$2f(x)=it-6x^3 -6$ ,  $f(x)=it-3x^3 -3$
+$therefore ~f(2)=it-24-3=it-27$
+$1 overx ^2 f(-x)-xf left( 1overx right)= 6x$
+를 만족시킬 때,  $f(2)$ 의 값은?
+①  $-30$ ②  $-27$ ③  $-24$ ④  $-21$ ⑤  $-18$
+집합  $X=left{x`left|`a le x le b right}$ 를 정의역으로 하는 함수  $y=left|x+2right|+2left|x-3 right|$ 의 치역이  $left{y`left|`5 le y le 13 right}$ 일 때, 실수  $a$ ,  $b$ 에 대하여  $a+b$ 의 최솟값은?
+[정답] ②
+$y=left|x+2right|+2left|x-3 right|$ 에서
+(ⅰ)  $x<it-2$ 일 때
+ $y=it- LEFT ( x+2 RIGHT )-2 LEFT ( x-3 RIGHT )=it-3x+4$
+(ⅱ)  $-2x le x <3$ 일 때
+ $y=x+2-2 LEFT ( x-3 RIGHT )=it-x+8$
+(ⅲ)  $x ge 3 $ 일 때
+ $y=x+2+2 LEFT ( x-3 RIGHT )=3x-4$
+(ⅰ) $sim$ (ⅲ)에서 주어진 함수의 그래프는 다음 그림과 같다.
+[그림]
+치역이  $left{y`left|`5 le y le 13 right}$ 이므로 정의역에  $3$ 이 포함되어야 하고  $a+b$ 의 값이 최소가 되려면  $b=3$ 이고,  $x=a$ 일 때 함숫값이  $13$ 이다.
+$x=it-2$ 일 때  $y=10$ 이므로  $a<it-2$ 이다.
+$-3a+4=13$ ,  $3a=it-9$ 에서  $a=it-3$
+따라서  $a+b$ 의 최솟값은  $LEFT ( -3 RIGHT )+3=0$ 이다.
+①  $-1$ ②  $0$ ③  $1$ ④  $2$ ⑤  $3$
+집합  $X=left{1,~2,~3,~4,~5,~6,~7,~8 right}$ 에 대하여 함수  $f `:`X``->``X$ 가 다음 조건을 만족시킨다.
+[정답]  $5$
+조건 (가)에서 함수  $f$ 의 치역의 원소의 개수가  $7$ 이므로 집합  $X$ 의 원소 중 치역에 속하지 않는 원소가  $1$ 개 존재한다. 즉, 집합  $X$ 의 원소 중  $6$ 개는 정의역의 원소와 하나씩 대응하고  $1$ 개는 정의역의 원소  $2$ 개와 대응하며  $1$ 개는 정의역의 원소와 대응하지 않는다.
+공역의 모든 원소의 합은  $1+2+3+4+5+6+7+8=36$ 이고
+조건 (나)에서
+$f LEFT ( 1 RIGHT )+f LEFT ( 2 RIGHT )+f LEFT ( 3 RIGHT )+f LEFT ( 4 RIGHT )+f LEFT ( 5 RIGHT )+f LEFT ( 6 RIGHT )+f LEFT ( 7 RIGHT )+f LEFT ( 8 RIGHT )=40$
+이므로 공역의 원소 중 저의역의 원소와 대응하지 않는 원소보다 정의역의 원소  $2$ 개와 대응하는 원소가  $4$  더 크다.
+조건 (다)에서 함수  $f $ 의 치역의 원소 중 최댓값과 최솟값의 차는  $6$ 이므로 치역의 원소 중  $1$ 과  $8$  중에 하나가 포함되지 않는다. 이때  $8$ 이 치역에 포함되지 않으면 조건 (나)를 만족시키지 않으므로 치역에  $1$ 이 포함되지 않고, 정의역의 원소  $2$ 개와 대응하는 원소는  $5$ 가 되어야 한다.
+따라서  $f LEFT ( x RIGHT )=k$ 를 만족시키는 집합  $X$ 의 원소  $x$ 의 개수가  $2$ 가 되려면  $k$ 는  $5$ 이어야 한다.
+[그림]
+(가) 함수  $f$ 의 치역의 원소의 개수는  $7$ 이다.
+(나)  $f LEFT ( 1 RIGHT )+f LEFT ( 2 RIGHT )+f LEFT ( 3 RIGHT )+f LEFT ( 4 RIGHT )+f LEFT ( 5 RIGHT )+f LEFT ( 6 RIGHT )+f LEFT ( 7 RIGHT )+f LEFT ( 8 RIGHT )$  $=40$
+(다) 함수  $f $ 의 치역의 원소 중 최댓값과 최솟값의 차는  $6$ 이다.
+자연수  $k$ 에 대하여  $f LEFT ( x RIGHT )=k$ 를 만족시키는 집합  $X$ 의 원소  $x$ 의 개수가  $2$ 일 때,  $k$ 의 값을 구하시오.
+[그림]
+02
+일대일함수, 일대일대응, 항등함수, 상수함수
+[그림]
+집합  $X= left{1,~2,~3,~6 right}$ 에 대하여  $X$ 에서  $X$ 로의 세 함수  $f$ ,  $g$ ,  $h$ 가 다음 조건을 만족시킬 때,  $f(2)+g(3)+h(6)$ 의 값은?
+[정답] ①
+조건 (가)에 의하여  $g(x)=x$ 이고,  $h(x)=k$  ( $k inX)$ 이므로  $g LEFT ( 3 RIGHT )=3$
+조건 (나)에서  $g(2)=2$ 이므로  $f(1)=2$ ,  $h(3)=k=2$
+따라서  $h(x)=2$ 이므로  $h LEFT ( 6 RIGHT )=2$
+조건 (다)에서  $2f(6)=f(3)$ 이고, 조건 (가)에 의하여 함수  $f$ 는 일대일대응이므로  $f(6)=3$ ,  $f(3)=6$ 이고,  $f(2)=1$ 이다.
+$therefore~f(2)+g(3)+h(6)=1+3+2=6$
+[그림]
+(가)  $f$ 는 일대일대응,  $g$ 는 항등함수,  $h$ 는 상수함수이다.
+(나)  $f(1)=g(2)=h(3)$
+(다)  $f(1)f(6)=f(3)$
+①  $6$ ②  $7$ ③  $8$ ④  $9$ ⑤  $10$
+다음 <보기>는 집합  $X= left{1,~2,~3,~4 right}$ 에서  $X$ 로의 함수이다. <보기>에서 상수함수의 개수를  $p$ , 항등함수의 개수를  $q$ , 일대일함수의 개수를  $r$ , 일대일대응의 개수를  $s$ 라 하자.  $p+q+r+s$ 의 값은?
+[정답] ②
+ㄱ.  $f(x)=5-x$ 라 하면 다음 그림과 같다.
+[그림]
+따라서 일대일함수이고, 일대일대응이다.
+ㄴ.  $g(x)=$ ( $x$ 를  $5$ 로 나눈 나머지)라 하면 다음 그림과 같다.
+[그림]
+따라서 항등함수이고, 일대일함수, 일대일대응이다.
+ㄷ.  $h(x)= left|x right|+left|x-6 right| -3$ 이라 하면
+ $x inX$ 에 대하여  $x>0$ ,  $x-6<0$ 이므로
+ $y= left|x right|+left|x-6 right|-3 =x-(x-6)-3=3$ 이다.
+[그림]
+따라서 상수함수이다.
+ㄹ.  $i(x)= left[x-1 over4 right]+1$ 이라 하면
+ $x in X$ 에 대하여  $0 le x-1 over4 <1$ 이므로
+ $y= left[x-1 over4 right]+1=0+1=1$ 이다.
+[그림]
+따라서 상수함수이다.
+ㅁ. [표]라 하면 다음 그림과 같다.
+$j LEFT ( x RIGHT )=$  $LEFT { pile{it#it#it} RIGHT .$
+$x+1$
+( $x$ 는 홀수)
+$x$
+( $x$ 는 짝수)
+[그림]
+따라서 상수함수, 항등함수, 일대일함수, 일대일대응 어떤 것에도 해당되지 않는다.
+따라서 <보기>에서
+상수함수는 ㄷ, ㄹ이므로  $p=2$ ,
+항등함수는 ㄴ이므로  $q=1$ ,
+일대일함수는 ㄱ, ㄴ이므로  $r=2$ ,
+일대일대응은 ㄱ, ㄴ이므로  $s=2$ 이다.
+$therefore~p+q+r+s=2+1+2+2=7$
+(단,  $[x]$ 는  $x$ 보다 크지 않은 최대의 정수이다.)
+[표]
+[ 보 기 ]
+ㄱ.  $y=5-x$
+ㄴ.  $y=left(x$ 를  $5$ 로 나눈 나머지 $itright)$
+ㄷ.  $y=left|x right|+left|x-6 right|-3$
+ㄹ.  $y= left[ x-1 over4 right]+1$
+ㅁ. [표]
+$y =$  $LEFT { pile{it#it#it} RIGHT .$
+$x+1$
+( $x$ 는 홀수)
+$x$
+( $x$ 는 짝수)
+①  $6$ ②  $7$ ③  $8$ ④  $9$ ⑤  $10$
+공집합이 아닌 집합  $X$ 를 정의역으로 하는 함수
+[정답] ①
+함수  $f LEFT ( x RIGHT ) =x ^{3} -x ^{2} -4x-3$ 이 항등함수이려면 집합  $X$ 의 각 원소  $x$ 에 대하여  $f LEFT ( x RIGHT ) =x$ 이어야 한다.
+$x ^{3} -x ^{2} -4x-3=x$ 에서  $x ^{3} -x ^{2} -5x-3=0$
+$LEFT ( x+1 RIGHT ) ^{2} LEFT ( x-3 RIGHT ) =0$     $THEREFORE  ~ x= it -1$  또는  $x=3$
+즉, 정의역  $X$ 의 원소로 가능한 것은  $-1,~3$ 이다.
+따라서 정의역  $X$ 는 집합  $LEFT { -1,~3 RIGHT }$ 의 부분집합 중 공집합이 아닌 것이므로 구하는 집합  $X$ 의 개수는  $2 ^{2} -1=3$ 이다.
+$f LEFT ( x RIGHT ) =x ^{3} -x ^{2} -4x-3$
+이 항등함수가 되도록 하는 모든 집합  $X$ 의 개수는?
+①  $3$ ②  $4$ ③  $5$ ④  $6$ ⑤  $7$
+[그림]
+집합  $ X= left{0, ~1, ~ 2 right}$ 에 대하여  $ X $ 에서  $X $ 로의 함수
+[정답] ②
+함수  $ f LEFT ( x  RIGHT )$ 는 상수함수이므로
+$f LEFT ( 0 RIGHT )= f LEFT ( 1 RIGHT )= f LEFT ( 2  RIGHT )$
+$ f LEFT ( 0 RIGHT )= 2 , ~ f LEFT ( 1 RIGHT )= 1 +a+b , ~ f LEFT ( 2 RIGHT ) = 4 + 2 a+ b $ 이다.
+$ f LEFT ( 0 RIGHT )= f LEFT ( 1  RIGHT )$ 에서  $ a +b=1$  $ cdots cdots $ ㉠
+$ f LEFT ( 0 RIGHT )= f LEFT ( 2 RIGHT )$ 에서  $ 2a +b= it-2 $  $ cdots cdots $ ㉡
+㉠, ㉡에 의하여  $ a=it-3 , ~ b= 4 $
+따라서  $ ab= it-12 $
+$ f LEFT ( x RIGHT )= cases {2x+2 &~ LEFT ( x < 1  RIGHT ) # x^2 +ax + b &~ LEFT (  x ge 1  RIGHT ) }$
+가 상수함수일 때,  $ a b $ 의 값은? (단,  $ a$ ,  $ b $ 는 상수이다.)
+①  $ -11$ ②  $ -12$ ③  $ -13$ ④  $ -14$ ⑤  $ - 15$
+집합  $ X= left{-2, ~0, ~ 2 right}$ 에 대하여  $X $ 에서  $ X $ 로의 함수  $ f LEFT ( x RIGHT )= ax^2 +bx - 2 $ 가 일대일대응일 때,  $ 4 LEFT (  LEFT |  `a`RIGHT |  + LEFT |  `b`RIGHT |   RIGHT )$ 의 값은?
+[정답] ⑤
+함수  $ f LEFT ( x  RIGHT )$ 가 일대일대응이고  $ f LEFT ( 0 RIGHT )= it-2 $ 이므로
+$ f LEFT ( -2 RIGHT ) = 0 , ~ f LEFT ( 2 RIGHT )= 2$  또는  $ f LEFT ( -2 RIGHT )= 2 , ~ f LEFT ( 2 RIGHT )=0 $ 이다.
+(ⅰ)  $ f LEFT ( -2 RIGHT )=0 , ~ f LEFT ( 2 RIGHT )= 2 $ 일 때
+ $ f LEFT ( -2 RIGHT )= 4a-2b -2 = 0 $  $ cdots cdots $ ㉠
+ $ f LEFT ( 2 RIGHT )= 4 a +2 b -2 = 2 $  $ cdots cdots $ ㉡
+㉠, ㉡에서  $ a= 3 over 4 , ~ b= 1over 2 $
+(ⅱ)  $ f LEFT ( -2 RIGHT )= 2 , ~ f LEFT ( 2 RIGHT )= 0 $ 일 때
+ $ f LEFT ( -2 RIGHT )= 4 a- 2 b- 2=2 $  $ cdots cdots $ ㉢
+ $ f LEFT ( 2 RIGHT )= 4 a +2b - 2  =0 $  $ cdots cdots $ ㉣
+㉢, ㉣에서  $ a =  3over 4 , ~ b= it- 1over 2 $
+(ⅰ), (ⅱ)에 의하여
+$ 4 LEFT ( LEFT |  `a`RIGHT |  + LEFT |  `b`RIGHT |  RIGHT )= 5 $
+(단,  $ a$ ,  $ b $ 는 상수이다.)
+①  $ 1 $ ②  $ 2 $ ③  $ 3 $ ④  $ 4 $ ⑤  $ 5 $
+[그림]
+실수 전체의 집합  $R$ 에서  $R$ 로의 함수
+[정답] ②
+함수  $f LEFT ( x RIGHT ) = {cases{x ^{2} -4x+3b&~LEFT ( x<2 RIGHT )#LEFT ( 2a-1 RIGHT ) x-b+1&~LEFT ( x GEQ  2 RIGHT )}}$ 에서
+$x<2$ 일 때 포물선  $y=x ^{2}  -4x+3b$ 의 축은  $x=2$ 이고, 아래로 볼록한 모양이므로
+$x<2$ 에서 함수  $y=f LEFT ( x RIGHT )$ 의 그래프는 다음 그림과 같다.
+[그림]
+함수  $f LEFT ( x RIGHT )$ 가 일대일대응이기 위해서 일대일함수이어야 하므로
+$x GEQ 2$ 에서 직선  $y= LEFT ( 2a-1 RIGHT ) x-b+1$ 의 기울기는 음수이어야 한다.
+$2a-1<0$ 에서  $a< {1} over {2}$  $CDOTS  CDOTS $ ㉠
+또한 치역이 공역과 같아야 하므로 치역이 실수 전체의 집합이 되기 위해서  $x=2$ 일 때 두 함수  $y=x ^{2} -4x+3b$ 와  $y= LEFT ( 2a-1 RIGHT ) x-b+1$ 의 함숫값이 같아야 한다.
+즉,  $-4+3b=4a-b-1$ 이므로  $4a-4b+3=0$ 에서  $b=a+ {3} over {4}$
+㉠에 의해서  $b=a+ {3} over {4} < {1} over {2} + {3} over {4} = {5} over {4}$
+따라서 정수  $b$ 의 최댓값은  $1$ 이다.
+$f LEFT ( x RIGHT ) = {cases{{x ^{2} -4x+3b&~LEFT ( x<2 RIGHT )}#LEFT ( 2a-1 RIGHT ) x-b+1&~LEFT ( x GEQ  2 RIGHT )}$
+가 일대일대응이 되도록 하는 정수  $b$ 의 최댓값은?
+(단,  $a$ 는 실수이다.)
+①  $0$ ②  $1$ ③  $2$ ④  $3$ ⑤  $4$
+실수 전체의 집합  $R$ 에서  $R$ 로의 함수
+[정답]  $b=2a+1$   $LEFT ( 0<a LEQ 2 RIGHT )$ , 풀이참조
+함수  $f LEFT ( x RIGHT ) = {cases{ax+2&~ LEFT ( x<1 RIGHT )#x ^{2} -ax+b&~ LEFT ( x GEQ  1 RIGHT )}}$ 에서
+$x GEQ 1$ 일 때 함수  $y=x ^{2} -ax+b= LEFT ( x- {a} over {2} RIGHT ) ^{2} +b- {a ^{2}} over {4}$ 이 일대일함수이기 위해서 꼭짓점의  $x$ 좌표는  $1$ 보다 작거나 같아야 하므로  ${a} over {2} LEQ 1$ 에서  $a LEQ 2$  $CDOTS  CDOTS $ ㉠
+이때  $x GEQ 1$ 에서 함수  $y=f LEFT ( x RIGHT )$ 의 그래프는 다음 그림과 같다.
+[그림]
+함수  $f LEFT ( x RIGHT )$ 가 일대일함수이려면  $x<1$ 에서 직선  $y=ax+2$ 의 기울기가 양수이어야 하므로
+$a>0$  $CDOTS  CDOTS $ ㉡
+또한 치역이 공역과 같아야 하므로 치역이 실수 전체의 집합이 되기 위해서  $x=1$ 일 때 두 함수  $y=x ^{2} -ax+b$ 와  $y=ax+2$ 의 함숫값이 같아야 한다.
+즉,  $1-a+b=a+2$ 이므로  $b=2a+1$  $CDOTS  CDOTS $ ㉢
+㉠, ㉡, ㉢에 의하여 점  $LEFT ( a,~b RIGHT )$ 의 자취의 방정식은
+$b=2a+1$   $LEFT ( 0<a LEQ 2 RIGHT )$ 이고, 좌표평면 위에 도형을 나타내면 다음 그림과 같다.
+[그림]
+$f LEFT ( x RIGHT ) = {cases{ax+2&~ LEFT ( x<1 RIGHT )#x ^{2} -ax+b&~ LEFT ( x GEQ 1 RIGHT )}}$
+가 일대일대응이 되도록 하는 두 실수  $a,~b$ 에 대하여 점  $LEFT ( a,~b RIGHT )$ 가 나타내는 도형의 방정식을 구하고, 좌표평면 위에 도형을 나타내시오.
+두 집합  $X= LEFT { x` LEFT | `x GEQ k RIGHT } RIGHT . ,~Y= LEFT { y` LEFT | `y GEQ 3 RIGHT } RIGHT .$ 에 대하여 함수  $f`:`X` rarrow `Y$ 가  $f LEFT ( x RIGHT ) =x ^{2} -2x+4$ 일 때, 다음 물음에 답하시오.
+[정답] (1)  $k GEQ 1$   (2)  $k LEQ 1$   (3)  $1$
+$f LEFT ( x RIGHT ) =x ^{2} -2x+4= LEFT ( x-1 RIGHT ) ^{2} +3$ 에서
+함수  $y= LEFT ( x-1 RIGHT ) ^{2} +3$ 의 그래프가 다음 그림과 같다.
+[그림]
+함수의 최솟값이  $3$ 이므로 치역은 항상  $Y= LEFT { y` LEFT | `y GEQ 3 RIGHT } RIGHT .$ 의 부분집합이다. 따라서 함수  $f`:`X`` rarrow ``Y$ 는 모든 실수  $k$ 에 대하여 정의된다.
+(1) 함수  $f$ 가 일대일함수이려면 이차함수 그래프의 축의 방정식이  $x=1$ 이므로  $k GEQ 1$ 이어야 한다.
+(2)  $k LEQ 1$ 이면 함수  $f$ 의 치역은  $LEFT { y` LEFT | `y GEQ 3 RIGHT } RIGHT .$ 이다.
+ $k>1$ 이면 함수  $f$ 의 치역은  $LEFT { y` LEFT | `y GEQ f LEFT ( k RIGHT ) RIGHT } RIGHT .$ 이고 이때
+ $f LEFT ( k RIGHT ) >3$ 이므로 치역이 집합  $Y$ 와 같지 않다.
+따라서 함수  $f$ 의 공역과 치역이 같으려면  $k LEQ 1$ 이어야 한다.
+(3) 함수  $f$ 가 일대일대응이려면 (1), (2)를 모두 만족시켜야 하므로  $k=1$ 이다.
+(1) 함수  $f$ 가 일대일함수가 되도록 하는 실수  $k$ 의 값의 범위를 구하시오.
+(2) 함수  $f$ 의 공역과 치역이 같도록 하는 실수  $k$ 의 값의 범위를 구하시오.
+(3) 함수  $f$ 가 일대일대응이 되도록 하는 실수  $k$ 의 값을 구하시오.
+[그림]
+다음 물음에 답하시오.
+[정답] (1)  $1$   (2)  $2$
+(1) 정의역이  $X= LEFT { x` LEFT | `x LEQ k RIGHT } RIGHT .$ 인 함수  $f LEFT ( x RIGHT ) =it-x ^{2} +4x-1$ 이 일대일함수이려면 이차함수  $y=it-x ^{2} +4x-1=it- LEFT ( x-2 RIGHT ) ^{2} +3$ 의 그래프의 축의 방정식이  $x=2$ 이므로  $k LEQ 2$ 이어야 한다.
+$CDOTS  CDOTS $ ㉠
+[그림]
+이때 치역은  $LEFT { y` LEFT | `y LEQ f LEFT ( k RIGHT ) RIGHT } RIGHT .$ 이므로 치역이 공역  $Y= LEFT { y` LEFT | `y LEQ 2 RIGHT } RIGHT .$ 와 같으려면  $f LEFT ( k RIGHT ) =2$ 이어야 한다.
+ $-k ^{2} +4k-1=2$ 에서
+ $k ^{2} -4k+3=0,~ LEFT ( k-1 RIGHT ) LEFT ( k-3 RIGHT ) =0$ 
+ $THEREFORE ~k=1$  ( $because$  ㉠)
+(2) 정의역이  $X= LEFT { x` LEFT | `x GEQ k RIGHT } RIGHT .$ 인 함수  $f LEFT ( x RIGHT ) =x ^{2} +2x-6$ 이 일대일함수이려면 이차함수  $y=x ^{2} +2x-6= LEFT ( x+1 RIGHT ) ^{2} -7$ 의 그래프의 축의 방정식이  $x=it-1$ 이므로  $k GEQ  -1$ 이어야 한다.
+$CDOTS CDOTS$ ㉡
+[그림]
+이때 치역은  $LEFT { y` LEFT | `y GEQ f LEFT ( k RIGHT ) RIGHT } RIGHT .$ 이므로 치역이 공역  $X= LEFT { x` LEFT | `x GEQ k RIGHT } RIGHT .$ 와 같으려면  $f LEFT ( k RIGHT ) =k$ 이어야 한다.
+ $k ^{2} +2k-6=k$ 에서
+ $k ^{2} +k-6=0,~ LEFT ( k-2 RIGHT ) LEFT ( k+3 RIGHT ) =0$ 
+ $THEREFORE ~k=2$  ( $because$  ㉡)
+(1) 두 집합  $X= LEFT { x` LEFT | `x LEQ k RIGHT } RIGHT . ,~Y= LEFT { y` LEFT | `y LEQ 2 RIGHT } RIGHT .$ 에 대하여  $X$ 에서  $Y$ 로의 함수  $f LEFT ( x RIGHT ) =it-x ^{2} +4x-1$ 이 일대일대응이 되도록 하는 실수  $k$ 의 값을 구하시오.
+(2) 집합  $X= LEFT { x` LEFT | `x GEQ k RIGHT } RIGHT .$ 에서  $X$ 로의 함수  $f LEFT ( x RIGHT ) =x ^{2} +2x-6$ 이 일대일대응이 되도록 하는 실수  $k$ 의 값을 구하시오.
+[그림]
+03
+합성함수
+두 함수  $f LEFT ( x RIGHT ) = LEFT | `x-1` RIGHT | -1,~g LEFT ( x RIGHT ) =it-2x ^{2} +4x+15$ 에 대하여  $-2 LEQ x LEQ 4$ 에서 함수  $LEFT ( g CIRC f RIGHT ) LEFT ( x RIGHT )$ 의 최댓값과 최솟값의 합은?
+[정답] ②
+$g LEFT ( x RIGHT ) =it-2 LEFT ( x-1 RIGHT ) ^{2} +17$ 이므로
+$x GEQ 1$ 일 때  $f LEFT ( x RIGHT ) =x-1-1=x-2$ 이고
+$g LEFT ( f LEFT ( x RIGHT ) RIGHT ) =it-2 LEFT ( x-3 RIGHT ) ^{2} +17$
+$x<1$ 일 때  $f LEFT ( x RIGHT ) =it-x+1-1=it-x$ 이고
+$g LEFT ( f LEFT ( x RIGHT ) RIGHT ) =it-2 LEFT ( x+1 RIGHT ) ^{2} +17$
+따라서 함수  $LEFT ( g CIRC f RIGHT ) LEFT ( x RIGHT )$ 의 그래프는 다음과 같다.
+[그림]
+$g LEFT ( f LEFT ( 1 RIGHT ) RIGHT ) = it -2 LEFT ( -2 RIGHT )  ^{2} +17=9$ ,
+$g LEFT ( f LEFT ( -2 RIGHT ) RIGHT ) =g LEFT ( f LEFT ( 4 RIGHT ) RIGHT ) = it -2 LEFT ( -1 RIGHT )  ^{2} +17=15$ ,
+$g LEFT ( f LEFT ( -1 RIGHT ) RIGHT ) =g LEFT ( f LEFT ( 3 RIGHT ) RIGHT ) =17$
+이므로  $-2 LEQ x LEQ 4$ 에서 함수  $LEFT ( g CIRC f RIGHT ) LEFT ( x RIGHT )$ 의 최솟값은  $9$ 이고 최댓값은  $17$ 이다.
+따라서 구하는 합은  $9+17=26$ 이다.
+①  $25$ ②  $26$ ③  $27$ ④  $28$ ⑤  $29$
+집합  $X= LEFT { 0,~1 RIGHT }$ 에서 정의된 두 함수
+[정답] ①
+합성함수  $f CIRC g$ 가 정의되기 위해서 함수  $g$ 의 치역이 함수  $f$ 의 정의역의 부분집합이어야 한다.
+$g LEFT ( 0 RIGHT ) =it-2a+b,~g LEFT ( 1 RIGHT ) =it-a$ 이므로 함수  $g$ 의 치역이 함수  $f$ 의 정의역  $LEFT { 0,~1 RIGHT }$ 의 부분집합이 되기 위해서 가능한 경우는 다음과 같다.
+(ⅰ)  $g LEFT ( 0 RIGHT ) =g LEFT ( 1 RIGHT ) =0$ 일 때
+ $-2a+b=0,~-a=0$ 에서
+ $a=0,~b=0$ 이므로  $a+b=0$
+(ⅱ)  $g LEFT ( 0 RIGHT ) =g LEFT ( 1 RIGHT ) =1$ 일 때
+ $-2a+b=1,~-a=1$ 에서
+ $a=it-1,~b=it-1$ 이므로  $a+b=it-2$
+(ⅲ)  $g LEFT ( 0 RIGHT ) =0,~g LEFT ( 1 RIGHT ) =1$ 일 때
+ $-2a+b=0,~-a=1$ 에서
+ $a=it-1,~b=it-2$ 이므로  $a+b=it-3$
+(ⅳ)  $g LEFT ( 0 RIGHT ) =1,~g LEFT ( 1 RIGHT ) =0$ 일 때
+ $-2a+b=1,~-a=0$ 에서
+ $a=0,~b=1$ 이므로  $a+b=1$
+(ⅰ)~(ⅳ)에서 모든  $a+b$ 의 값의 합은
+$0+ LEFT ( -2 RIGHT ) + LEFT ( -3 RIGHT ) +1=it-4$
+$f LEFT ( x RIGHT ) =3x+8,~g LEFT ( x RIGHT ) =ax ^{2} -bx-2a+b$
+에 대하여 합성함수  $LEFT ( f CIRC g RIGHT ) LEFT ( x RIGHT )$ 가 정의될 때, 모든  $a+b$ 의 값의 합은? (단,  $a,~b$ 는 실수이다.)
+①  $-4$ ②  $-2$ ③  $0$ ④  $2$ ⑤  $4$
+자연수 전체의 집합  $N$ 에서  $N$ 으로의 세 함수
+[정답]  $12$
+$7 ^{n}$ ( $n$ 은 자연수)의 일의 자리의 수는  $7,~9,~3,~1$ 의 네 수가 차례로 반복되므로
+$f LEFT ( 1 RIGHT ) =7,~f LEFT ( 2 RIGHT ) =9,~f LEFT ( 3 RIGHT ) =3,~f LEFT ( 4 RIGHT ) =1,~f LEFT ( 5 RIGHT ) =7,~ CDOTS $ 이다.
+$9 ^{n}$ ( $n$ 은 자연수)의 일의 자리의 수는  $9,~1$ 의 두 수가 차례로 반복되므로
+$n$ 이 홀수일 때  $g LEFT ( n RIGHT ) =9$ 이고,  $n$ 이 짝수일 때  $g LEFT ( n RIGHT ) =1$ 이다.
+즉,  $LEFT ( f CIRC g RIGHT ) LEFT ( 25 RIGHT ) =f LEFT ( g LEFT ( 25 RIGHT ) RIGHT ) =f LEFT ( 9 RIGHT ) =f LEFT ( 2 TIMES 4+1 RIGHT ) =f LEFT ( 1 RIGHT ) =7$
+$LEFT ( h CIRC f RIGHT ) LEFT ( 75 RIGHT )$  $=h LEFT ( f LEFT ( 75 RIGHT ) RIGHT )$ 
+ $=h LEFT ( f LEFT ( 4 TIMES 18+3 RIGHT ) RIGHT ) =h LEFT ( f LEFT ( 3 RIGHT ) RIGHT )$ 
+ $=h LEFT ( 3 RIGHT )$ 
+ $=(3 ^{6}$ 을  $5$ 로 나눈 나머지 $)+1$
+이때  $3 ^{n}$ ( $n$ 은 자연수)의 일의 자리의 수는  $3,~9,~7,~1$ 의 네 수가 차례로 반복되므로  $3 ^{6}$ 의 일의 자리의 수는  $9$ 이다.
+따라서  $3 ^{6}$ 을  $5$ 로 나눈 나머지는  $4$ 이므로
+$LEFT ( h CIRC f RIGHT ) LEFT ( 75 RIGHT ) =4+1=5$ 이다.
+$THEREFORE ~ LEFT ( f CIRC g RIGHT ) LEFT ( 25 RIGHT ) + LEFT ( h CIRC f RIGHT ) LEFT ( 75 RIGHT ) =7+5=12$
+$f LEFT ( n RIGHT ) =(7 ^{n}$ 의 일의 자리의 수 $)$
+$g LEFT ( n RIGHT ) =(9 ^{n}$ 의 일의 자리의 수 $)$
+$h LEFT ( n RIGHT ) =(n ^{6}$ 을  $5$ 로 나눈 나머지 $)+1$
+에 대하여  $LEFT ( f CIRC g RIGHT ) LEFT ( 25 RIGHT ) + LEFT ( h CIRC f RIGHT ) LEFT ( 75 RIGHT )$ 의 값을 구하시오.
+집합  $X= LEFT { 1,~2,~3,~4 RIGHT }$ 에 대하여  $f`:`X` `rarrow`  `X$ 를
+[정답] ③
+$f LEFT ( 1 RIGHT ) =(4$ 의 양의 약수의 개수 $)=3$ ,
+$f LEFT ( 2 RIGHT ) =1$ ,
+$f LEFT ( 3 RIGHT ) =(6$ 의 양의 약수의 개수 $)=4$ ,
+$f LEFT ( 4 RIGHT ) =(7$ 의 양의 약수의 개수 $)=2$
+이므로 함수  $f$ 는 다음 그림과 같다.
+[그림]
+(ⅰ)  $g LEFT ( 1 RIGHT ) =4$ 이므로  $LEFT ( f CIRC g RIGHT ) LEFT ( 1 RIGHT ) =f LEFT ( g LEFT ( 1 RIGHT ) RIGHT ) =f LEFT ( 4 RIGHT ) =2$ 이고,
+ $LEFT ( g CIRC f RIGHT ) LEFT ( 1 RIGHT ) =g LEFT ( f LEFT ( 1 RIGHT ) RIGHT ) =g LEFT ( 3 RIGHT )$ 이다.
+ $LEFT ( f CIRC g RIGHT ) LEFT ( 1 RIGHT ) = LEFT ( g CIRC f RIGHT ) LEFT ( 1 RIGHT )$ 이므로
+ $g LEFT ( 3 RIGHT ) =2$ 이다.
+(ⅱ)  $g LEFT ( 3 RIGHT ) =2$ 이므로  $LEFT ( f CIRC g RIGHT ) LEFT ( 3 RIGHT ) =f LEFT ( g LEFT ( 3 RIGHT ) RIGHT ) =f LEFT ( 2 RIGHT ) =1$ 이고,
+ $LEFT ( g CIRC f RIGHT ) LEFT ( 3 RIGHT ) =g LEFT ( f LEFT ( 3 RIGHT ) RIGHT ) =g LEFT ( 4 RIGHT )$ 이다.
+ $LEFT ( f CIRC g RIGHT ) LEFT ( 3 RIGHT ) = LEFT ( g CIRC f RIGHT ) LEFT ( 3 RIGHT )$ 이므로
+ $g LEFT ( 4 RIGHT ) =1$ 이다.
+(ⅲ)  $g LEFT ( 4 RIGHT ) =1$ 이므로  $LEFT ( f CIRC g RIGHT ) LEFT ( 4 RIGHT ) =f LEFT ( g LEFT ( 4 RIGHT ) RIGHT ) =f LEFT ( 1 RIGHT ) =3$ 이고,
+ $LEFT ( g CIRC f RIGHT ) LEFT ( 4 RIGHT ) =g LEFT ( f LEFT ( 4 RIGHT ) RIGHT ) =g LEFT ( 2 RIGHT )$ 이다.
+ $LEFT ( f CIRC g RIGHT ) LEFT ( 4 RIGHT ) = LEFT ( g CIRC f RIGHT ) LEFT ( 4 RIGHT )$ 이므로
+ $g LEFT ( 2 RIGHT ) =3$ 이다.
+(ⅰ)~(ⅲ)에서 함수  $g$ 는 다음 그림과 같다.
+[그림]
+$THEREFORE ~ LEFT ( g CIRC g RIGHT ) LEFT ( 3 RIGHT ) +g LEFT ( 4 RIGHT ) =g LEFT ( 2 RIGHT ) +1=3+1=4$
+[표]
+$f LEFT ( x RIGHT ) =$  $LEFT { pile{it#it#it} RIGHT .$
+$x+3$ 의 양의 약수의 개수
+$LEFT ( x != 2 RIGHT )$
+$1$
+$LEFT ( x=2 RIGHT )$
+로 정의한다. 함수  $g`:`X`` rarrow  ``X$ 에 대하여  $f CIRC g=g CIRC f$ 이고,  $g LEFT ( 1 RIGHT ) =4$ 일 때,  $LEFT ( g CIRC g RIGHT ) LEFT ( 3 RIGHT ) +g LEFT ( 4 RIGHT )$ 의 값은?
+①  $2$ ②  $3$ ③  $4$ ④  $5$ ⑤  $6$
+집합  $X= LEFT { 1,~2,~3,~4 RIGHT }$ 에서  $X$ 로의 두 함수  $f,~g$ 가 일대일대응이고,  $f LEFT ( 1 RIGHT ) =3$ ,  $g LEFT ( 2 RIGHT ) =4$ ,  $LEFT ( f CIRC g RIGHT ) LEFT ( 1 RIGHT ) =1$ ,  $LEFT ( g CIRC f RIGHT ) LEFT ( 4 RIGHT ) =2$ 를 만족시킬 때,  $g LEFT ( 3 RIGHT ) + LEFT ( g CIRC f RIGHT ) LEFT ( 2 RIGHT )$ 의 값은?
+[정답] ②
+$f LEFT ( 1 RIGHT ) =3,~g LEFT ( 2 RIGHT ) =4$ 이므로 다음 그림과 같다.
+[그림]
+이때  $LEFT ( f CIRC g RIGHT ) LEFT ( 1 RIGHT ) =1,~ LEFT ( g CIRC f RIGHT ) LEFT ( 4 RIGHT ) =2$ 를 만족시키는 경우를  $f LEFT ( 4 RIGHT )$ 의 값에 따라 살펴보면 다음과 같다.
+(ⅰ)  $f LEFT ( 4 RIGHT ) =1$ 이면
+ $LEFT ( g CIRC f RIGHT ) LEFT ( 4 RIGHT ) =2$ 에서  $g LEFT ( 1 RIGHT ) =2$ 이므로
+ $LEFT ( f CIRC g RIGHT ) LEFT ( 1 RIGHT ) =1$ 에서  $f LEFT ( 2 RIGHT ) =1$ 이다.
+따라서  $f LEFT ( 4 RIGHT ) =1,~f LEFT ( 2 RIGHT ) =1$ 이 되어 함수  $f$ 가 일대일대응이라는 조건을 만족시키지 않는다.
+(ⅱ)  $f LEFT ( 4 RIGHT ) =2$ 이면
+ $LEFT ( g CIRC f RIGHT ) LEFT ( 4 RIGHT ) =g LEFT ( 2 RIGHT ) =4$ 가 되어  $LEFT ( g CIRC f RIGHT ) LEFT ( 4 RIGHT ) =2$ 를 만족시키지 않는다.
+(ⅲ)  $f LEFT ( 4 RIGHT ) =3$ 이면
+ $f LEFT ( 1 RIGHT ) =3$ 이므로 함수  $f$ 가 일대일대응이라는 조건을 만족시키지 않는다.
+(ⅳ)  $f LEFT ( 4 RIGHT ) =4$ 이면
+ $LEFT ( g CIRC f RIGHT ) LEFT ( 4 RIGHT ) =2$ 에서  $g LEFT ( 4 RIGHT ) =2$ 이다.
+[그림]
+$LEFT ( f CIRC g RIGHT ) LEFT ( 1 RIGHT ) =1$ 에서  $g LEFT ( 1 RIGHT ) =1$ 이면  $LEFT ( f CIRC g RIGHT ) LEFT ( 1 RIGHT ) =3$ 이 되어 조건을 만족시키지 않으므로  $g LEFT ( 1 RIGHT ) =3$ 이고,  $LEFT ( f CIRC g RIGHT ) LEFT ( 1 RIGHT ) =1$ 에서  $f LEFT ( 3 RIGHT ) =1$ 이다.
+(ⅰ)~(ⅳ)에서 두 함수  $f,~g$ 는 다음 그림과 같다.
+[그림]
+$THEREFORE ~g LEFT ( 3 RIGHT ) + LEFT ( g CIRC f RIGHT ) LEFT ( 2 RIGHT ) =1+g LEFT ( 2 RIGHT ) =1+4=5$
+①  $4$ ②  $5$ ③  $6$ ④  $7$ ⑤  $8$
+[그림]
+음이 아닌 정수 전체의 집합에서 정의된 함수  $f$ 가 음이 아닌 정수  $n$ 과  $0 LEQ k LEQ 9$ 인 정수  $k$ 에 대하여 다음 조건을 만족시킨다.
+[정답] ③
+ㄱ.  $f LEFT ( 100 RIGHT )$  $=f LEFT ( 10 TIMES 10+0 RIGHT ) =f LEFT ( 10 RIGHT ) +0$ 
+ $=f LEFT ( 10 TIMES 1+0 RIGHT ) =f LEFT ( 1 RIGHT ) +0$ 
+ $=f LEFT ( 10 TIMES 0+1 RIGHT )$ 
+ $=f LEFT ( 0 RIGHT ) +1=1$  (참)
+ㄴ.  $f LEFT ( 999 RIGHT )$  $=f LEFT ( 10 TIMES 99+9 RIGHT ) =f LEFT ( 99 RIGHT ) +9$ 
+ $=f LEFT ( 10 TIMES 9+9 RIGHT ) +9=f LEFT ( 9 RIGHT ) +9+9$ 
+ $=f LEFT ( 10 TIMES 0+9 RIGHT ) +9+9=f LEFT ( 0 RIGHT ) +9+9+9$ 
+ $=9+9+9=27$
+$THEREFORE ~ LEFT ( f CIRC f RIGHT ) LEFT ( 999 RIGHT )$  $=f LEFT ( f LEFT ( 999 RIGHT ) RIGHT ) =f LEFT ( 27 RIGHT )$ 
+ $=f LEFT ( 10 TIMES 2+7 RIGHT ) =f LEFT ( 2 RIGHT ) +7$ 
+ $=f LEFT ( 10 TIMES 0+2 RIGHT ) +7=f LEFT ( 0 RIGHT ) +2+7$ 
+ $=2+7=9$  (참)
+ㄷ. (반례)  $n=15$ 일 때,
+$f LEFT ( 15 RIGHT )$  $=f LEFT ( 10 TIMES 1+5 RIGHT ) =f LEFT ( 1 RIGHT ) +5$ 
+ $=f LEFT ( 10 TIMES 0+1 RIGHT ) +5=f LEFT ( 0 RIGHT ) +1+5$ 
+ $=1+5=6$
+이때  $f LEFT ( 15 RIGHT ) =6$ 은  $6$ 의 배수이지만  $15$ 는  $6$ 의 배수가 아니다. (거짓)
+따라서 옳은 것은 ㄱ, ㄴ이다.
+[그림]
+(가)  $f LEFT ( 0 RIGHT ) =0$
+(나)  $f LEFT ( 10n+k RIGHT ) =f LEFT ( n RIGHT ) +k$
+<보기>에서 옳은 것만을 있는 대로 고른 것은?
+[표]
+[ 보 기 ]
+ㄱ.  $f LEFT ( 100 RIGHT ) =1$
+ㄴ.  $LEFT ( f CIRC f RIGHT ) LEFT ( 999 RIGHT ) =9$
+ㄷ.  $f LEFT ( n RIGHT )$ 이  $6$ 의 배수이면  $n$ 은  $6$ 의 배수이다.
+① ㄱ② ㄷ③ ㄱ, ㄴ④ ㄴ, ㄷ⑤ ㄱ, ㄴ, ㄷ
+두 집합  $X= LEFT { 1,~2,~3,~4 RIGHT } ,~Y= LEFT { 3,~4,~5,~6 RIGHT }$ 에 대하여 두 함수  $f`:`X`` rarrow  ``Y,~g`:`Y`` rarrow  ``X$ 가 모두 일대일대응이고, 다음 조건을 만족시킨다.
+[정답] ②
+조건 (다)에서 집합  $Y$ 의 어떤 원소  $x$ 에 대하여  $g LEFT ( x RIGHT ) =x$ 이므로  $g LEFT ( 3 RIGHT ) =3$  또는  $g LEFT ( 4 RIGHT ) =4$ 이다. 그런데 조건 (가)에서  $g LEFT ( 3 RIGHT ) =2$ 이므로  $g LEFT ( 4 RIGHT ) =4$ 이다.
+조건 (나)에서
+$f LEFT ( g LEFT ( f LEFT ( 1 RIGHT ) RIGHT ) RIGHT ) =3$  $CDOTS  CDOTS $ ㉠
+$f LEFT ( g LEFT ( f LEFT ( 2 RIGHT ) RIGHT ) RIGHT ) =4$  $CDOTS  CDOTS $ ㉡
+$f LEFT ( g LEFT ( f LEFT ( 3 RIGHT ) RIGHT ) RIGHT ) =5$  $CDOTS  CDOTS $ ㉢
+$f LEFT ( g LEFT ( f LEFT ( 4 RIGHT ) RIGHT ) RIGHT ) =6$  $CDOTS  CDOTS $ ㉣
+이고 조건 (가)에서  $f LEFT ( 2 RIGHT ) =6$ 이므로 ㉣에서
+$g LEFT ( f LEFT ( 4 RIGHT ) RIGHT ) =2,~f LEFT ( 4 RIGHT ) =3$   $LEFT ( BECAUSE ~g LEFT ( 3 RIGHT ) =2 RIGHT )$
+㉠에서  $g LEFT ( f LEFT ( 1 RIGHT ) RIGHT ) =4,~f LEFT ( 1 RIGHT ) =4$   $LEFT ( BECAUSE ~g LEFT ( 4 RIGHT ) =4 RIGHT )$
+㉡에서  $g LEFT ( f LEFT ( 2 RIGHT ) RIGHT ) =1,~g LEFT ( 6 RIGHT ) =1$   $LEFT ( BECAUSE ~f LEFT ( 2 RIGHT ) =6 RIGHT )$
+함수  $f, ~ g $ 가 일대일대응이므로  $f LEFT ( 3 RIGHT ) =5,~g LEFT ( 5 RIGHT ) =3$ 이고 두 함수  $f,~g$ 는 다음 그림과 같다.
+[그림]
+$LEFT ( g CIRC f CIRC g RIGHT ) LEFT ( k RIGHT ) =1$ 에서  $f LEFT ( g LEFT ( k RIGHT ) RIGHT ) =6,~g LEFT ( k RIGHT ) =2$ 이므로  $k=3$ 이다.
+[그림]
+(가)  $f LEFT ( 2 RIGHT ) =6,~g LEFT ( 3 RIGHT ) =2$
+(나) 집합  $X$ 의 모든 원소  $x$ 에 대하여  $LEFT ( f CIRC g CIRC f RIGHT ) LEFT ( x RIGHT ) =x+2$ 이다.
+(다) 집합  $Y$ 의 어떤 원소  $x$ 에 대하여  $g LEFT ( x RIGHT ) =x$ 이다.
+$LEFT ( g CIRC f CIRC g RIGHT ) LEFT ( k RIGHT ) =1$ 을 만족시키는 실수  $k$ 의 값은?
+①  $2$ ②  $3$ ③  $4$ ④  $5$ ⑤  $6$
+[그림]
+집합  $X= LEFT { 1,~2,~3 RIGHT }$ 에 대하여 함수  $f`:`X`` rarrow ``X$ 가 그림과 같을 때,  $f  ^{100} LEFT ( 1 RIGHT ) -f  ^{200} LEFT ( 3 RIGHT )$ 의 값을 구하시오.
+[정답]  $2$
+$f  `^{1} LEFT ( 1 RIGHT ) =f LEFT ( 1 RIGHT ) =3,$
+$f` ^{2} LEFT ( 1 RIGHT ) = LEFT ( f CIRC f RIGHT ) LEFT ( 1 RIGHT ) =f LEFT ( f LEFT ( 1 RIGHT ) RIGHT ) =f LEFT ( 3 RIGHT ) =2$ ,
+$f` ^{3} LEFT ( 1 RIGHT ) = LEFT ( f CIRC f` ^{2} RIGHT ) LEFT ( 1 RIGHT ) =f LEFT ( f` ^{2} LEFT ( 1 RIGHT ) RIGHT ) =f LEFT ( 2 RIGHT ) =1$ ,
+$f` ^{4} LEFT ( 1 RIGHT ) = LEFT ( f CIRC f` ^{3} RIGHT ) LEFT ( 1 RIGHT ) =f LEFT ( f` ^{3} LEFT ( 1 RIGHT ) RIGHT ) =f LEFT ( 1 RIGHT ) =3$ ,
+⋮
+따라서  $f  `^{n} LEFT ( 1 RIGHT )$ 의 값은  $3$ ,  $2$ ,  $1$ 의 세 수가 차례로 반복되므로
+$f ` ^{100} LEFT ( 1 RIGHT ) =f ` ^{3 TIMES 33+1} LEFT ( 1 RIGHT ) =f LEFT ( 1 RIGHT ) =3$ 이다.
+마찬가지 방법에 의하여
+$f ` ^{1} LEFT ( 3 RIGHT ) =f LEFT ( 3 RIGHT ) =2,$
+$f` ^{2} LEFT ( 3 RIGHT ) = LEFT ( f CIRC f RIGHT ) LEFT ( 3 RIGHT ) =f LEFT ( f LEFT ( 3 RIGHT ) RIGHT ) =f LEFT ( 2 RIGHT ) =1$ ,
+$f` ^{3} LEFT ( 3 RIGHT ) = LEFT ( f CIRC f` ^{2} RIGHT ) LEFT ( 3 RIGHT ) =f LEFT ( f` ^{2} LEFT ( 3 RIGHT ) RIGHT ) =f LEFT ( 1 RIGHT ) =3$ ,
+$f` ^{4} LEFT ( 3 RIGHT ) = LEFT ( f CIRC f` ^{3} RIGHT ) LEFT ( 3 RIGHT ) =f LEFT ( f` ^{3} LEFT ( 3 RIGHT ) RIGHT ) =f LEFT ( 3 RIGHT ) =2$ ,
+⋮
+따라서  $f `^{n} LEFT ( 3 RIGHT )$ 의 값은  $ 2, ~1, ~ 3 $ 의 세 수가 차례로 반복되므로
+$f `^{200} LEFT ( 3 RIGHT ) =f `^{3 TIMES  66+2} LEFT ( 3 RIGHT ) =f` ^{2} LEFT ( 3 RIGHT ) =1$ 이다.
+$THEREFORE ~f` ^{100} LEFT ( 1 RIGHT ) -f` ^{200} LEFT ( 3 RIGHT ) =3-1=2$
+[그림]
+$f LEFT ( 1 RIGHT ) =3$ ,  $f ` ^{2} LEFT ( 1 RIGHT ) =2$ ,  $f `^{3} LEFT ( 1 RIGHT ) =1$
+$f LEFT ( 2 RIGHT ) =1$ ,  $f ` ^{2} LEFT ( 2 RIGHT ) =3$ ,  $f ` ^{3} LEFT ( 2 RIGHT ) =2$
+$f LEFT ( 3 RIGHT ) =2$ ,  $f ` ^{2} LEFT ( 3 RIGHT ) =1$ ,  $f ` ^{3} LEFT ( 3 RIGHT ) =3$ 이므로
+$f ` ^{3} =I$  ( $I$ 는 항등함수)이다.
+$f  `^{100} LEFT ( 1 RIGHT ) =f ` ^{3 TIMES 33+1} LEFT ( 1 RIGHT ) =f LEFT ( 1 RIGHT ) =3$
+$f` ^{200} LEFT ( 3 RIGHT ) =f` ^{3 TIMES 66+2} LEFT ( 3 RIGHT ) =f` ^{2} LEFT ( 3 RIGHT ) =1$
+$THEREFORE ~f `^{100} LEFT ( 1 RIGHT ) -f` ^{200} LEFT ( 3 RIGHT ) =3-1=2$
+(단,  $f ^{1} =f$ 이고, 모든 자연수  $n$ 에 대하여  $f` ^{n+1} =f CIRC f` ^{n}$ 이다.)
+[그림]
+$0 LEQ x LEQ 1$ 에서 정의된 함수  $y=f LEFT ( x RIGHT )$ 의 그래프가 그림과 같다.
+[정답] ③
+주어진 함수  $y=f LEFT ( x RIGHT )$ 의 그래프에서
+$f LEFT ( x RIGHT ) = {cases{2x&~LEFT ( 0 LEQ x LEQ  {1} over {2} RIGHT )#-2x+2&~LEFT ( {1} over {2} LEQ x LEQ 1 RIGHT )}}$ 이다.
+$f LEFT ( {5} over {7} RIGHT ) =it-2 TIMES  {5} over {7} +2= {4} over {7}$
+$f ` ^{2} LEFT ( {5} over {7} RIGHT ) =f LEFT ( {4} over {7} RIGHT ) =it-2 TIMES  {4} over {7} +2= {6} over {7}$
+$f ` ^{3} LEFT ( {5} over {7} RIGHT ) =f LEFT ( {6} over {7} RIGHT ) = it -2 TIMES  {6} over {7} +2= {2} over {7}$
+$f  `^{4} LEFT ( {5} over {7} RIGHT ) =f LEFT ( {2} over {7} RIGHT ) =2 TIMES  {2} over {7} = {4} over {7}$
+$vdots$
+이므로  $f ` ^{n} LEFT ( {5} over {7} RIGHT )$ 의 값은  ${4} over {7}$ ,  ${6} over {7}$ ,  ${2} over {7}$ 가 차례로 반복된다.
+$16=3 TIMES 5+1$ 이므로
+$f LEFT ( {5} over {7} RIGHT ) +f  `^{2} LEFT ( {5} over {7} RIGHT ) +f ` ^{3} LEFT ( {5} over {7} RIGHT ) +` CDOTS `+f`  ^{16} LEFT ( {5} over {7} RIGHT )$
+$=5 TIMES  LEFT ( {4} over {7} + {6} over {7} + {2} over {7} RIGHT ) + {4} over {7} = {64} over {7}$
+[그림]
+$f  `^{1} =f$ ,  $f  `^{n+1} =f CIRC f ` ^{n}$  ( $n=1$ ,  $2$ ,  $3$ ,  $ CDOTS $ )이라 할 때,  $f LEFT ( {5} over {7} RIGHT ) +f  `^{2} LEFT ( {5} over {7} RIGHT ) +f ` ^{3} LEFT ( {5} over {7} RIGHT ) +` CDOTS `+f ` ^{16} LEFT ( {5} over {7} RIGHT )$ 의 값은?
+①  ${60} over {7}$ ②  ${62} over {7}$ ③  ${64} over {7}$ ④  ${66} over {7}$ ⑤  ${68} over {7}$
+집합  $X= LEFT { 1,~2,~3,~4 RIGHT }$ 에 대하여 함수  $f`:`X`` rarrow ``X$ 가 그림과 같다.
+[정답]  $5$
+$f LEFT ( 1 RIGHT ) =3$ ,  $f`  ^{2} LEFT ( 1 RIGHT ) =2$ ,  $f `^{3} LEFT ( 1 RIGHT ) =4$ ,  $f `^{4} LEFT ( 1 RIGHT ) =1$
+$f LEFT ( 2 RIGHT ) =4$ ,  $f `^{2} LEFT ( 2 RIGHT ) =1$ ,  $f `^{3} LEFT ( 2 RIGHT ) =3$ ,  $f ` ^{4} LEFT ( 2 RIGHT ) =2$
+$f LEFT ( 3 RIGHT ) =2$ ,  $f  `^{2} LEFT ( 3 RIGHT ) =4$ ,  $f ` ^{3} LEFT ( 3 RIGHT ) =1$ ,  $f ` ^{4} LEFT ( 3 RIGHT ) =3$
+$f LEFT ( 4 RIGHT ) =1$ ,  $f  `^{2} LEFT ( 4 RIGHT ) =3$ ,  $f  `^{3} LEFT ( 4 RIGHT ) =2$ ,  $f  `^{4} LEFT ( 4 RIGHT ) =4$
+에서  $f  `^{4} =I$  ( $I$ 는 항등함수)이다.
+$f ` ^{33} LEFT ( a RIGHT ) +f  `^{99} LEFT ( b RIGHT )$  $=f  `^{4 TIMES 8+1} LEFT ( a RIGHT ) +f ` ^{4 TIMES 24+3} LEFT ( b RIGHT )$ 
+ $=f LEFT ( a RIGHT ) +f  `^{3} LEFT ( b RIGHT )$
+이 값이 최대가 되려면  $f LEFT ( a RIGHT ) =f ` ^{3} LEFT ( b RIGHT ) =4$ 이어야 하므로
+$a=2$ ,  $b=1$
+$THEREFORE ~2a+b=2 TIMES 2+1=5$
+[그림]
+$f ` ^{1} =f$ ,  $f`  ^{n+1} =f CIRC f`  ^{n}$  ( $n=1$ ,  $2$ ,  $3$ ,  $ CDOTS $ )이라 할 때,  $f ` ^{33} LEFT ( a RIGHT ) +f`  ^{99} LEFT ( b RIGHT )$ 의 값이 최대가 되도록 하는 두 상수  $a$ ,  $b$ 에 대하여  $2a+b$ 의 값을 구하시오.
+실수 전체의 집합에서 정의된 함수
+[정답] ②
+$f ` ^{1} LEFT ( 50 RIGHT ) =49, $   $f ` ^{2} LEFT ( 50 RIGHT ) =48,$   $f `^{3} LEFT ( 50 RIGHT ) =47,$   $ cdots , $   $f` ^{50} LEFT ( 50 RIGHT ) =0,$
+$f`  ^{51} LEFT ( 50 RIGHT ) =it-1,$   $f` ^{52} LEFT ( 50 RIGHT ) =1,$   $f` ^{53} LEFT ( 50 RIGHT ) =0,$   $f `^{54} LEFT ( 50 RIGHT ) = it -1, ~cdots $
+이므로  $f  `^{n} LEFT ( 50 RIGHT )$ 의 값은  $n GEQ 51$ 부터  $-1$ ,  $1$ ,  $0$ 의 세 수가 차례로
+반복된다.
+$300=50+250=50+3 TIMES 83+1$ 이므로
+$f ` ^{300} LEFT ( 50 RIGHT ) =f ` ^{51} LEFT ( 50 RIGHT ) =it-1$
+$f LEFT ( x RIGHT ) = {cases{-x&~ LEFT ( x<0 RIGHT )#x-1&~ LEFT ( x GEQ  0 RIGHT )}}$
+에 대하여  $f `^{300} LEFT ( 50 RIGHT )$ 의 값은?
+(단,  $f `^{1} =f$ 이고 모든 자연수  $n$ 에 대하여  $f ` ^{n+1} =f CIRC f `^{n}$ 이다.)
+①  $-50$ ②  $-1$ ③  $0$ ④  $1$ ⑤  $49$
+실수 전체의 집합을  $R$ , 유리수 전체의 집합을  $Q$ 라 할 때, 함수  $f`:`R`` rarrow ``R$ 가 다음과 같이 정의된다.
+[정답] ①
+ㄱ. (ⅰ)  $x IN Q$ 일 때,  $f LEFT ( x RIGHT ) = sqrt {2}$ 이고
+ $LEFT ( f CIRC f CIRC f RIGHT ) LEFT ( x RIGHT )$  $=f LEFT ( f LEFT ( f LEFT ( x RIGHT ) RIGHT ) RIGHT ) =f LEFT ( f LEFT ( sqrt {2} RIGHT ) RIGHT )$  $=f LEFT ( 1 RIGHT ) = sqrt {2}$
+(ⅱ)  $x NOTIN Q$ 일 때,  $f LEFT ( x RIGHT ) =1$ 이고
+ $LEFT ( f CIRC f CIRC f RIGHT ) LEFT ( x RIGHT )$  $=f LEFT ( f LEFT ( f LEFT ( x RIGHT ) RIGHT ) RIGHT ) =f LEFT ( f LEFT ( 1 RIGHT ) RIGHT )$  $=f LEFT ( sqrt {2} RIGHT ) =1$
+(ⅰ), (ⅱ)에 의하여  $LEFT ( f CIRC f CIRC f RIGHT ) LEFT ( x RIGHT ) =f LEFT ( x RIGHT )$ 이다. (참)
+ㄴ. (ⅰ)  $x IN Q$ 일 때,  $f LEFT ( x RIGHT ) = sqrt {2}$ 이므로
+ $x+f LEFT ( x RIGHT ) =x+ sqrt {2}$ 는 무리수이다.
+따라서  $f LEFT ( x+f LEFT ( x RIGHT ) RIGHT ) =1$ 이다.
+(ⅱ)  $x NOTIN Q$ 일 때,  $f LEFT ( x RIGHT ) =1$ 이므로
+ $x+f LEFT ( x RIGHT ) =x+1$ 은 무리수이다.
+따라서  $f LEFT ( x+f LEFT ( x RIGHT ) RIGHT ) =1$ 이다.
+(ⅰ), (ⅱ)에 의하여 모든  $x IN R$ 에 대하여  $f LEFT ( x+f LEFT ( x RIGHT ) RIGHT ) =1$ 이므로
+함수  $g LEFT ( x RIGHT )$ 의 치역은  $LEFT { 1 RIGHT }$ 로 원소의 개수는  $1$ 이다. (거짓)
+ㄷ.  $f LEFT ( x  _{1} RIGHT )  != f LEFT ( x  _{2} RIGHT )$ 이므로  $x  _{1}$ ,  $x  _{2}$  중 하나는 유리수이고, 하나는 무리수이다.
+이 중  $x  _{1}$ 을 유리수라 할 때,
+ $x  _{1}  != 0$ 이면  $x  _{1} x  _{2}$ 는 무리수이므로  $f LEFT ( x  _{1} x  _{2} RIGHT ) =1$ 이지만
+ $x  _{1} =0$ 이면  $x  _{1} x  _{2} =0$ 이므로  $f LEFT ( x  _{1} x  _{2} RIGHT ) = sqrt {2}$ 이다. (거짓)
+따라서 옳은 것은 ㄱ이다.
+$f LEFT ( x RIGHT ) = {cases{sqrt {2}&~LEFT ( x IN  Q RIGHT )#1&~LEFT ( x NOTIN  Q RIGHT )}}$
+<보기>에서 옳은 것만을 있는 대로 고른 것은?
+[표]
+[ 보 기 ]
+ㄱ.  $LEFT ( f CIRC f CIRC f RIGHT ) LEFT ( x RIGHT ) =f LEFT ( x RIGHT )$
+ㄴ. 함수  $g LEFT ( x RIGHT ) =f LEFT ( x+f LEFT ( x RIGHT ) RIGHT )$ 의 치역의 원소의 개수는  $2$ 이다.
+ㄷ.  $x  _{1}  IN R$ ,  $x  _{2}  IN R$ 이고  $f LEFT ( x  _{1} RIGHT )  != f LEFT ( x  _{2} RIGHT )$ 이면  $f LEFT ( x  _{1} x  _{2} RIGHT ) =1$ 이다.
+① ㄱ② ㄴ③ ㄱ, ㄴ④ ㄱ, ㄷ⑤ ㄴ, ㄷ
+[그림]
+함수  $ f LEFT ( x RIGHT )= x^2 - 2 x + a $ 가
+[정답] ①
+$ f LEFT ( x RIGHT )= x^2 - 2 x +a$ 에서
+$ f LEFT ( 2 RIGHT ) = 2^2 -4 +a= a $
+$ f LEFT ( 4 RIGHT )= 4^ 2 -8  +a= a+8$
+$ LEFT ( f circ f  RIGHT ) LEFT ( 2  RIGHT )=  LEFT (   f circ f  RIGHT ) LEFT ( 4 RIGHT )$ 에서
+$f LEFT ( f LEFT ( 2 RIGHT ) RIGHT )= f LEFT (  f LEFT ( 4 RIGHT ) RIGHT )$
+$ f LEFT ( a RIGHT )= f LEFT ( a +8 RIGHT )$
+이때 함수  $ f LEFT ( x RIGHT )= x^2 - 2 x + a $ 에서
+$ f LEFT ( x RIGHT )= LEFT ( x-1 RIGHT )^2 +a-1$
+이므로 함수  $ y= f LEFT ( x  RIGHT )$ 의 그래프는 축이 직선  $ x = 1$ 이다.
+$ a ne a +8 $ 이므로  $ f LEFT ( a RIGHT )= f LEFT ( a+8 RIGHT )$ 이려면
+$ {a + LEFT ( a+8 RIGHT ) } over 2 = 1 $
+$ a= it - 3 $
+따라서 함수  $ f LEFT ( x RIGHT )$ 가  $ f LEFT ( x RIGHT )= x^2 - 2 x - 3 $ 이므로
+$ f LEFT ( 6 RIGHT )= 6^2 - 2 times 6 -3=21$
+[그림]
+$ f LEFT ( x RIGHT )= x^2  -2 x + a $ 에서
+$ f LEFT ( 2 RIGHT )= 2 ^2 - 4 +a= a $
+$ f LEFT ( 4 RIGHT )= 4^2 - 8 +a= a+8$
+$ LEFT (  f circ f  RIGHT ) LEFT ( 2 RIGHT )= LEFT (  f circ  f RIGHT ) LEFT ( 4  RIGHT )$ 에서
+$ f LEFT ( f LEFT ( 2 RIGHT ) RIGHT )= f LEFT ( f LEFT ( 4 RIGHT ) RIGHT )$
+$ f LEFT ( a RIGHT )= f LEFT ( a +8 RIGHT )$
+$ a^2 - 2 a +a= LEFT ( a+8 RIGHT )^2 - 2 LEFT ( a +8 RIGHT ) +a $
+$ 16a= it- 48$
+$ a=it-3 $
+따라서 함수  $ f LEFT ( x  RIGHT )$ 가  $ f LEFT ( x RIGHT ) = x^2 -2 x- 3 $ 이므로
+$ f LEFT ( 6 RIGHT )= 6^2 - 2 times6 -3= 21 $
+$ LEFT ( f circ f  RIGHT ) LEFT ( 2 RIGHT )= LEFT ( f circ f  RIGHT ) LEFT (  4  RIGHT )$
+를 만족시킬 때,  $ f LEFT (  6  RIGHT )$ 의 값은? (단,  $ a $ 는 상수이다.)
+①  $ 21 $ ②  $ 22 $ ③  $ 23 $ ④  $ 24$ ⑤  $ 25$
+집합  $X= LEFT { 1,~2,~3,~4,~5 RIGHT }$ 에 대하여  $f`:`X`` -> ``X$ 가 그림과 같을 때, 물음에 답하시오.
+[정답] (1)  $6$   (2)  $LEFT ( 1,~4 RIGHT )$ ,  $LEFT ( 2,~2 RIGHT )$ ,  $LEFT ( 5,~1 RIGHT )$
+(1)  $f LEFT ( 1 RIGHT ) =2$ ,  $f ` ^{2} LEFT ( 1 RIGHT ) =1$ 
+ $f LEFT ( 2 RIGHT ) =1$ ,  $f  `^{2} LEFT ( 2 RIGHT ) =2$ 이므로
+ $x=1$  또는  $x=2$  일 때  $f ` ^{2} LEFT ( x RIGHT ) =x$ 이다.
+ $f LEFT ( 3 RIGHT ) =4$ ,  $f ` ^{2} LEFT ( 3 RIGHT ) =5$ ,  $f ` ^{3} LEFT ( 3 RIGHT ) =3$ 
+ $f LEFT ( 4 RIGHT ) =5$ ,  $f `^{2} LEFT ( 4 RIGHT ) =3$ ,  $f  `^{3} LEFT ( 4 RIGHT ) =4$ 
+ $f LEFT ( 5 RIGHT ) =3$ ,  $f ` ^{2} LEFT ( 5 RIGHT ) =4$ ,  $f  `^{3} LEFT ( 5 RIGHT ) =5$ 이므로
+ $x=3$  또는  $x=4$  또는  $x=5$ 일 때  $f `^{3} LEFT ( x RIGHT ) =x$ 이다.
+따라서  $f `^{m}$ 이 항등함수가 되도록 하는 자연수  $m$ 의 최솟값은
+ $2$ 와  $3$ 의 최소공배수인  $6$ 이다.
+(2)  $f` ^{6} =I$  ( $I$ 는 항등함수)이므로
+ $f `^{1000} =f `^{6 TIMES  166+4} =f` ^{4} , $   $f  `^{2000} =f ` ^{6 TIMES 333+2} =f ` ^{2}$ 이고,
+ $f ` ^{1000} LEFT ( a RIGHT )$ 와  $f  `^{2000} LEFT ( b RIGHT )$ 의 값은 모두 공역  $X= LEFT { 1,~2,~3,~4,~5 RIGHT }$ 의
+원소이므로 합이  $4$ 가 되는 경우는 다음과 같다.
+(ⅰ)  $f` ^{4} LEFT ( a RIGHT ) =1,$   $f `^{2} LEFT ( b RIGHT ) =3$ 일 때  $a=1$ ,  $b=4$ 
+(ⅱ)  $f `^{4} LEFT ( a RIGHT ) =2,$   $f `^{2} LEFT ( b RIGHT ) =2$ 일 때  $a=2$ ,  $b=2$ 
+(ⅲ)  $f `^{4} LEFT ( a RIGHT ) =3,$   $f `^{2} LEFT ( b RIGHT ) =1$ 일 때  $a=5$ ,  $b=1$ 
+(ⅰ)~(ⅲ)에 의하여 구하는 모든 순서쌍  $LEFT ( a,~b RIGHT )$ 는
+ $LEFT ( 1,~4 RIGHT )$ ,  $LEFT ( 2,~2 RIGHT )$ ,  $LEFT ( 5,~1 RIGHT )$ 이다.
+(단,  $f ` ^{1} =f$ 이고, 모든 자연수  $n$ 에 대하여  $f `^{n+1} =f CIRC  f `^{n}$ 이다.)
+[그림]
+(1)  $f ` ^{m}$ 이 항등함수가 되도록 하는 자연수  $m$ 의 최솟값을 구하고, 그 과정을 서술하시오.
+(2)  $f ` ^{1000} LEFT ( a RIGHT ) +f`  ^{2000} LEFT ( b RIGHT ) =4$ 를 만족시키는 두 상수  $a$ ,  $b$ 의 순서쌍  $LEFT ( a,~b RIGHT )$ 를 모두 구하고, 그 과정을 서술하시오.
+[그림]
+실수 전체의 집합에서 정의된 함수
+[정답]  $ 6$
+$ LEFT (  f circ f  RIGHT ) LEFT ( a RIGHT )= f LEFT ( a  RIGHT )$ 에서
+$ f LEFT ( a RIGHT )= t $ 로 치환하면  $ f LEFT ( t RIGHT )= t $
+$ t < 2 $ 일 때  $ 2t+2= t $ 에서  $ t=it-2 $ 이고,
+$ t ge 2 $ 일 때  $ t^2 - 7t +16= t $ 에서  $ t= 4 $ 이다.
+(ⅰ)  $ t= it-2 $ 일 때
+ $ f LEFT ( a RIGHT )= it-2 $ 에서
+ $ a < 2 $ 일 때,  $ 2a +2= it-2 $ 에서  $ a=it-2 $ 
+ $ a ge 2 $ 일 때,  $ a^2 - 7a +16 = it-2 , $  즉  $ a^2 - 7a +18=0$ 
+방정식  $ a^2 -7a +18=0$ 의 판별식을  $ D$ 라 하면
+ $ D = LEFT ( -7 RIGHT )^2 - 4 times 1 times 18 = it-23 <0 $ 
+이므로  $ a ge 2 $ 일 때,  $ f LEFT ( a RIGHT )= it-2 $ 를 만족시키는
+실수  $ a $ 의 값이 존재하지 않는다.
+(ⅱ)  $ t=4$ 일 때
+ $ f LEFT ( a RIGHT ) = 4 $ 에서
+ $ a < 2 $ 일 때,  $ 2a +2= 4 $ 에서  $ a= 1 $ 
+ $ a ge 2 $ 일 때,  $ a^2 - 7a +16 = 4 , $ 
+ $ a ^2 -7a +12 = LEFT ( a-3 RIGHT ) LEFT ( a-4 RIGHT )=0 $ 
+즉,  $ a= 3 $  또는  $ a= 4 $
+(ⅰ), (ⅱ)에 의하여  $ LEFT ( f circ f  RIGHT ) LEFT ( a RIGHT )= f LEFT ( a  RIGHT )$ 를
+만족시키는 모든 실수  $ a $ 의 값의 합은
+$ LEFT ( -2 RIGHT ) +1+3+4 = 6$
+$ f LEFT ( x RIGHT )= cases {2x+2 &~ LEFT (  x < 2  RIGHT ) # x^2 - 7x +16 &~ LEFT (   x ge 2  RIGHT ) }$
+에 대하여  $ LEFT (  f circ f  RIGHT ) LEFT ( a RIGHT )= f LEFT (  a  RIGHT )$ 를 만족시키는 모든 실수  $ a $ 의 값의 합을 구하시오.
+그림과 같이 꼭짓점의 좌표가  $LEFT ( -2,~6 RIGHT )$ 인 이차함수  $y=f LEFT ( x RIGHT )$ 의 그래프와 직선  $y=g LEFT ( x RIGHT )$ 가 점  $LEFT ( 3,~0 RIGHT )$ 에서 만나고, 직선  $y=g LEFT ( x RIGHT )$ 의  $y$ 절편이  $1$ 일 때, <보기>에서 옳은 것만을 있는 대로 고른 것은?
+[정답] ③
+이차함수  $y=f LEFT ( x RIGHT )$ 의 그래프의 축이  $x=it-2$ 이므로 그래프가  $x$ 축과
+만나는 두 점은 직선  $x=it-2$ 에 대하여 대칭이다.
+따라서  $ f LEFT ( 3 RIGHT )=0 $ 에서  $ f LEFT ( -7 RIGHT )=0$ 이다.
+[그림]
+ㄱ.  $LEFT ( f CIRC g RIGHT ) LEFT ( x RIGHT ) =f LEFT ( g LEFT ( x RIGHT ) RIGHT ) =0$ 에서  $g LEFT ( x RIGHT ) =k$ 라 하면
+방정식  $f LEFT ( k RIGHT ) =0$ 에서  $k=it-7$  또는  $k=3$ 이므로
+ $g LEFT ( x RIGHT ) =it-7$  또는  $g LEFT ( x RIGHT ) =3$ 
+ $g LEFT ( x RIGHT )$ 가 일차함수이므로 두 방정식을 만족시키는 실수  $x$ 가 각각 하나씩 존재한다.
+그러므로 방정식  $LEFT ( f CIRC g RIGHT ) LEFT ( x RIGHT ) =0$ 의 서로 다른 실근의 개수는  $2$ 이다. (참)
+ㄴ.  $LEFT { f LEFT ( x RIGHT ) RIGHT }  ^{2} = LEFT { g LEFT ( x RIGHT ) RIGHT }  ^{2}$ 에서  $LEFT { f LEFT ( x RIGHT ) RIGHT }  ^{2} - LEFT { g LEFT ( x RIGHT ) RIGHT }  ^{2} =0$ 
+ $LEFT ( LEFT { f LEFT ( x RIGHT ) RIGHT } + LEFT { g LEFT ( x RIGHT ) RIGHT } RIGHT ) LEFT ( LEFT { f LEFT ( x RIGHT ) RIGHT } - LEFT { g LEFT ( x RIGHT ) RIGHT } RIGHT ) =0$ 이므로
+ $f LEFT ( x RIGHT ) =it-g LEFT ( x RIGHT )$  또는  $f LEFT ( x RIGHT ) =g LEFT ( x RIGHT )$ 
+함수  $y=it-g LEFT ( x RIGHT )$ 의 그래프는 함수  $y=g LEFT ( x RIGHT )$ 의 그래프를  $x$ 축에 대하여 대칭이동한 것이므로 두 함수  $y=f LEFT ( x RIGHT )$ ,  $y=g LEFT ( x RIGHT )$ 의 그래프의 교점 또는 두 함수  $y=f LEFT ( x RIGHT )$ ,  $y=it-g LEFT ( x RIGHT )$ 의 그래프의 교점은 다음과 같이 세 개 존재한다.
+[그림]
+따라서 방정식  $LEFT { f LEFT ( x RIGHT ) RIGHT }  ^{2} = LEFT { g LEFT ( x RIGHT ) RIGHT }  ^{2}$ 의 서로 다른 실근의 개수는
+ $3$ 이다. (거짓)
+ㄷ.  $LEFT ( f CIRC f RIGHT ) LEFT ( x RIGHT ) =f LEFT ( f LEFT ( x RIGHT ) RIGHT ) =0$ 에서  $f LEFT ( x RIGHT ) =t$ 라 하면
+방정식  $f LEFT ( t RIGHT ) =0$ 에서  $t=it-7$  또는  $t=3$ 이므로
+ $f LEFT ( x RIGHT ) =it-7$  또는  $f LEFT ( x RIGHT ) =3$ 
+방정식  $f LEFT ( x RIGHT ) =it-7$ 의 두 근의 합이  $2 TIMES  LEFT ( -2 RIGHT ) =it-4$ 이고,
+마찬가지로 방정식  $f LEFT ( x RIGHT ) =3$ 의 두 근의 합이  $-4$ 이다.
+그러므로 방정식  $LEFT ( f CIRC f RIGHT ) LEFT ( x RIGHT ) =0$ 의 모든 실근의 합은
+ $LEFT ( -4 RIGHT ) + LEFT ( -4 RIGHT ) =it-8$ 이다. (참)
+따라서 옳은 것은 ㄱ, ㄷ이다.
+[그림]
+[표]
+[ 보 기 ]
+ㄱ. 방정식  $LEFT ( f CIRC g RIGHT ) LEFT ( x RIGHT ) =0$ 의 서로 다른 실근의 개수는  $2$ 이다.
+ㄴ. 방정식  $LEFT { f LEFT ( x RIGHT ) RIGHT }  ^{2} = LEFT { g LEFT ( x RIGHT ) RIGHT }  ^{2}$ 의 서로 다른 실근의 개수는  $4$ 이다.
+ㄷ. 방정식  $LEFT ( f CIRC f RIGHT ) LEFT ( x RIGHT ) =0$ 의 모든 실근의 합은  $-8$ 이다.
+① ㄱ② ㄴ③ ㄱ, ㄷ④ ㄴ, ㄷ⑤ ㄱ, ㄴ, ㄷ
+그림과 같이 함수  $y=f LEFT ( x RIGHT )$ 의 그래프와 직선  $y=x$ 가 다음과 같이 서로 다른 네 점에서 만난다.
+[정답]  $12$
+다음 그림과 같이 함수  $y=f LEFT ( x RIGHT )$ 의 그래프와 직선  $y=x$ 의 교점의  $x$ 좌표를 각각  $a$ ,  $b$ ,  $c$ ,  $d$  ( $a<b<c<d$ )라 하자.
+[그림]
+$LEFT ( f CIRC f RIGHT ) LEFT ( x RIGHT ) =f LEFT ( f LEFT ( x RIGHT ) RIGHT ) =f LEFT ( x RIGHT )$ 에서  $f LEFT ( x RIGHT ) =k$ 라 하면
+방정식  $f LEFT ( k RIGHT ) =k$ 에서  $k=a$  또는  $k=b$  또는  $k=c$  또는  $k=d$ 이므로
+$f LEFT ( x RIGHT ) =a$  또는  $f LEFT ( x RIGHT ) =b$  또는  $f LEFT ( x RIGHT ) =c$  또는  $f LEFT ( x RIGHT ) =d$ 이다.
+(ⅰ)  $f LEFT ( x RIGHT ) =a$ 인 경우
+함수  $y=f LEFT ( x RIGHT )$ 의 그래프와 직선  $y=a$ 가 만나는 점의 개수가  $4$ 이므로 방정식  $f LEFT ( x RIGHT ) =a$ 를 만족시키는 서로 다른  $x$ 의 값의 개수는  $4$ 이다.
+(ⅱ)  $f LEFT ( x RIGHT ) =b$ 인 경우
+함수  $y=f LEFT ( x RIGHT )$ 의 그래프와 직선  $y=b$ 가 만나는 점의 개수가  $4$ 이므로 방정식  $f LEFT ( x RIGHT ) =b$ 를 만족시키는 서로 다른  $x$ 의 값의 개수는  $4$ 이다.
+(ⅲ)  $f LEFT ( x RIGHT ) =c$ 인 경우
+함수  $y=f LEFT ( x RIGHT )$ 의 그래프와 직선  $y=c$ 가 만나는 점의 개수가  $2$ 이므로 방정식  $f LEFT ( x RIGHT ) =c$ 를 만족시키는 서로 다른  $x$ 의 값의 개수는  $2$ 이다.
+(ⅳ)  $f LEFT ( x RIGHT ) =d$ 인 경우
+함수  $y=f LEFT ( x RIGHT )$ 의 그래프와 직선  $y=d$ 가 만나는 점의 개수가  $2$ 이므로 방정식  $f LEFT ( x RIGHT ) =d$ 를 만족시키는 서로 다른  $x$ 의 값의 개수는  $2$ 이다.
+(ⅰ)~(ⅳ)에서 방정식  $LEFT ( f CIRC f RIGHT ) LEFT ( x RIGHT ) =f LEFT ( x RIGHT )$ 를 만족시키는 서로 다른  $x$ 의 값의 개수는  $4+4+2+2=12$ 이므로  $ n LEFT ( X  RIGHT ) = 12 $
+집합  $X= LEFT { x` LEFT | ` LEFT ( f CIRC f RIGHT ) LEFT ( x RIGHT ) =f LEFT ( x RIGHT ) RIGHT . RIGHT .$ ,  $x$ 는 실수 $it right}$ 에 대하여  $n LEFT ( X RIGHT )$ 의 값을 구하시오.
+[그림]
+$0 LEQ x LEQ 4$ 에서 정의된 함수  $y=f LEFT ( x RIGHT )$ 의 그래프가 그림과 같을 때, 방정식  $LEFT ( f CIRC f RIGHT ) LEFT ( x RIGHT ) =5-f LEFT ( x RIGHT )$ 를 만족시키는 서로 다른 실근의 합은?
+[정답] ②
+주어진 함수  $f LEFT ( x RIGHT )$ 는
+$f LEFT ( x RIGHT ) = {cases{x+2&~ LEFT ( 0 LEQ x LEQ 2 RIGHT )#-2x+8&~ LEFT ( 2 LEQ x LEQ 4 RIGHT )}}$ 이다.
+방정식  $f LEFT ( f LEFT ( x RIGHT ) RIGHT ) =5-f LEFT ( x RIGHT )$ 에서  $f LEFT ( x RIGHT ) =t$ 라 하면
+방정식  $f LEFT ( t RIGHT ) =5-t$ 에서
+$0 LEQ t < 2$ 일 때,  $t+2=5-t$ 이므로  $t= {3} over {2}$
+$2 le t LEQ 4$ 일 때,  $-2t+8=5-t$ 이므로  $t=3$
+즉,  $t= {3} over {2}$  또는  $t=3$ 이므로  $f LEFT ( x RIGHT ) = {3} over {2}$  또는  $f LEFT ( x RIGHT ) =3$ 이다.
+(ⅰ)  $f LEFT ( x RIGHT ) = {3} over {2}$ 일 때
+ $2 le x LEQ 4$ 일 때,  $-2x+8= {3} over {2}$ 에서  $x= {13} over {4}$
+[그림]
+(ⅱ)  $f LEFT ( x RIGHT ) =3$ 일 때
+ $0 LEQ x < 2$ 일 때,  $x+2=3$ 에서  $x=1$ 
+ $2 le x LEQ 4$ 일 때,  $-2x+8=3$ 에서  $x= {5} over {2}$
+[그림]
+(ⅰ), (ⅱ)에서 구하는 서로 다른 실근의 합은
+${13} over {4} +1+ {5} over {2} = {27} over {4}$
+[그림]
+①  ${25} over {4}$ ②  ${27} over {4}$ ③  ${29} over {4}$ ④  ${31} over {4}$ ⑤  ${33} over {4}$
+두 함수  $ f ,~ g $ 가
+[정답] ④
+$ LEFT (  g circ f  RIGHT ) LEFT ( x RIGHT ) le 0 $ 을 만족시키는 실수  $ x $ 가 존재하지 않으므로
+모든 실수  $ x $ 에 대하여  $ LEFT ( g circ f  RIGHT ) >0$ 이다.
+$ g LEFT ( x RIGHT )= x^2 - x - 2 = LEFT (x-2 RIGHT ) LEFT ( x+1 RIGHT )>0$ 에서
+$ x< it- 1 $  또는  $ x > 2 $ 이므로
+모든 실수  $ x $ 에 대하여  $ g LEFT ( f LEFT ( x RIGHT ) RIGHT )>0 $ 이려면
+모든 실수  $ x $ 에 대하여  $ f LEFT ( x    RIGHT )< it- 1 $  또는  $f LEFT ( x RIGHT ) > 2 $ 이어야 한다.
+함수  $f LEFT ( x RIGHT ) =x  ^{2} -2kx+4k-1$ 에서 이차항의 계수가 양수이므로
+모든 실수  $x`$ 에 대하여  $f LEFT ( x RIGHT ) >2$ 이어야 한다.
+$f LEFT ( x RIGHT ) =x  ^{2} -2kx+4k-1$  $= LEFT ( x-k RIGHT )  ^{2} -k  ^{2} +4k-1$ 에서
+함수  $ y= f LEFT ( x  RIGHT )$ 의 그래프의 꼭짓점의  $ y$ 좌표는
+$  -k^2 +4k - 1 $ 이므로
+$ - k^2 +4k -1> 2 , ~ k^2 - 4k +3<0, ~ LEFT ( k-1 RIGHT ) LEFT ( k-3 RIGHT )<0 $
+즉,  $ 1 <k< 3 $ 이므로 구하는 정수  $ k$ 의 값은  $ 2 $ 이다.
+$ f LEFT ( x RIGHT )= x^2 - 2kx +4k-1, ~ g LEFT ( x RIGHT )= x^2 - x-2$
+일 때,  $LEFT ( g circ f RIGHT ) LEFT ( x RIGHT ) le0 $ 을 만족시키는 실수  $ x $ 가 존재하지 않도록 하는 정수  $ k $ 의 값은?
+①  $ - 4 $ ②  $ - 2$ ③  $ 0 $ ④  $ 2 $ ⑤  $ 4 $
+$0le{x LEQ 4$ 에서 정의된 두 함수  $y=f(x)$ ,  $y=g(x)$ 의 그래프가 그림과 같을 때, 함수  $y=(f circg)(x)$ 의 그래프와  $x$ 축,  $y$ 축 및 직선  $x=4$ 로 둘러싸인 도형의 넓이는?
+[정답] ②
+함수  $y=f(x)$ 의 그래프가  $x=1$ 일 때를 기준으로 함수식이 바뀌므로 방정식  $g(x)=1$ 의 두 근  $x= 1over2$ ,  $x=3$ 과  $y=g(x)$ 의 함수식이 바뀌는  $x=1$ ,  $x=2$ ,  $x=3$ 을 기준으로  $x$ 의 범위를 나누어 함수  $y=(f circ g)(x)$ 의 그래프를 그리면 다음과 같다.
+(ⅰ)  $0 LEQ  x <  {1} over {2}$ 일 때
+[그림]
+(ⅱ)  $1over2 le x < 1$ 일 때
+[그림]
+(ⅲ)  $1le x <2$ 일 때
+[그림]
+(ⅳ)  $2le x <  3$ 일 때
+[그림]
+(ⅴ)  $3 LEQ  x le 4$ 일 때
+[그림]
+(ⅰ)~(ⅴ)에 의하여 함수  $y=(f circg)(x)$ 의 그래프는 다음 그림과 같다.
+[그림]
+따라서 함수  $y=(f circg)(x)$ 의 그래프와  $x$ 축,  $y$ 축 및 직선  $x=4$ 로 둘러싸인 도형의 넓이는
+$1over2 + 1over4 +1+ 1over2 + 3over2 $  $ = 15over4$
+[그림]
+①  $13over4$ ②  $15over4$ ③  $17over4$ ④  $19over4$ ⑤  $21over4$
+집합  $ A = left{ x ` left|` 0 le x le 1 right}$ 에서 정의된 함수
+[정답]  $4$
+함수  $y=f(x)$ 의 그래프는 다음과 같다.
+[그림]
+함수  $f(x)$ 에서  $x= 1over2$ 일 때를 기준으로 함수식이 바뀌므로 방정식  $f(x)= 1over2$ 의 두 근  $x= 1over4 , $   $x= 3over4$ 과  $f(x)$ 의 함수식이 바뀌는  $x= 1over2$ 을 기준으로  $x$ 의 범위를 나누어 함수  $y=(f circf)(x)$ 의 그래프를 그리면 다음과 같다.
+(ⅰ)  $0le x < 1over4$ 일 때
+[그림]
+(ⅱ)  $1over4 le x < 1over2$ 일 때
+[그림]
+(ⅲ)  $1over2 le x < 3over4$ 일 때
+[그림]
+(ⅳ)  $3over4 le  x le1$ 일 때
+[그림]
+(ⅰ)~(ⅳ)에 의하여 함수  $y=(f circf)(x)$ 의 그래프는 다음 그림과 같다.
+[그림]
+마찬가지 방법으로 함수  $y=(f circ f circ f)(x)$ 의 그래프는 다음 그림과 같다.
+[그림]
+방정식  $h(x)= 1over4$ 을 만족시키는  $x$ 의 값은 함수  $y=h(x)$ 의 그래프와 직선  $y= 1over4$ 의 교점의  $x$ 좌표이고, 함수  $y=h(x)$ 의 그래프가 직선  $x= 1over2$ 에 대하여 대칭이므로 구하는 모든  $x$ 의 값의 합은  $8 times 1over2 =4$ 이다.
+$ f LEFT ( x RIGHT )= cases {1-2x &~ LEFT (   0 le x < 1over 2  RIGHT ) # 2x-1 &~ LEFT (  1 over 2 le x le 1  RIGHT ) }$
+에 대하여 함수  $ h LEFT ( x RIGHT )= LEFT ( f circ f circ f  RIGHT ) LEFT ( x  RIGHT )$ 라 하자. 집합  $ A $ 의 부분집합  $ B $ 에 대하여  $ B = left{ x ` left|` h LEFT ( x RIGHT )= 1 over 4 , ~ x $ 는 실수 $ pile{ `#` } right}$ 라 할 때, 집합  $ B $ 의 모든 원소의 합을 구하시오.
+실수 전체의 집합에서 정의된 두 함수
+[정답]  $11$
+방정식  $2 left{h(x)right}^3 -11left{h(x)right}^2 +19h(x)-10=0$ 에서
+$left{h(x)-1right}left{h(x)-2right}left{2h(x)-5right}=0$ 이므로
+$h(x)=1$  또는  $h(x)=2$  또는  $h(x)= 5over2$ 이다.
+[그림]
+함수  $g(x)=left|`x-1`right|+1$ 의 그래프가 위의 그림과 같으므로
+$h(x)=g(f(x))=1$ 일 때,  $f(x)=1$  $cdotscdots$ ㉠
+$h(x)=g(f(x))=2$ 일 때,  $f(x)=0$  또는  $f(x)=2$   $cdotscdots$ ㉡
+$h(x)=g(f(x))= 5over2$ 일 때,  $f(x)= it- 1over2$  또는  $f(x)= 5over2$
+$cdotscdots$ ㉢
+한편,  $f(x)= 2- left|`x^2 -2`right|$ 에 대하여 함수  $y=f(x)$ 의 그래프는  $y= left|`x^2 -2`right|$ 의 그래프를  $x$ 축에 대하여 대칭이동한 후  $y$ 축의 방향으로  $2$ 만큼 평행이동한 것이므로 다음 그림과 같다.
+[그림]
+㉠에서 방정식  $f(x)=1$ 의 서로 다른 실근의 개수는  $4$ ,
+㉡에서 방정식  $f(x)=0$ 의 서로 다른 실근의 개수는  $3$ ,
+㉡에서 방정식  $f(x)=2$ 의 서로 다른 실근의 개수는  $2$ ,
+㉢에서 방정식  $f(x)=it - 1over2$ 의 서로 다른 실근의 개수는  $2$ ,
+㉢에서 방정식  $f(x)= 5over2$ 의 서로 다른 실근의 개수는  $0$
+따라서 구하는 서로 다른 실근의 개수는  $4+3+2+2=11$ 이다.
+[그림]
+방정식  $2 left{h(x)right}^3 -11left{h(x)right}^2 +19h(x)-10=0$ 에서
+$left{h(x)-1right}left{h(x)-2right}left{2h(x)-5right}=0$ 이므로
+$h(x)=1$  또는  $h(x)=2$  또는  $h(x)= 5over2$ 이다.
+$h(x)$  $=g(f(x))$ 
+ $=left|`2-left|`x^2 -2`right|-1`right|+1$ 
+ $=left|`left|`x^2 -2`right|-1`right|+1$
+(ⅰ)  $-root2 le  x le root2$ 일 때
+ $h(x)=left|`left(-x^2 +2 right)-1`right|+1=left|`x^2 -1`right|+1$
+(ⅱ)  $x< it - root2$  또는  $x> root2$ 일 때
+ $h(x)=left|`x^2 -3`right|+1$
+(ⅰ), (ⅱ)에서 함수  $y=h(x)$ 의 그래프는 다음과 같다.
+[그림]
+따라서 방정식  $h(x)=1$ 의 서로 다른 실근의 개수는  $ 4$ ,
+방정식  $h(x)=2$ 의 서로 다른 실근의 개수는  $5$ ,
+방정식  $h(x)= 5over2$ 의 서로 다른 실근의 개수는  $2$ 이므로
+구하는 서로 다른 실근의 개수는  $4+5+2=11$ 이다.
+$f(x)=2-left|`x^2 -2 `right|$ ,  $g(x)=left|`x-1`right|+1$
+에 대하여  $h= g circf$ 라 할 때, 방정식
+$2 left{h(x)right}^3 -11 left{h(x)right}^2 +19h(x)-10=0$
+의 서로 다른 실근의 개수를 구하시오.
+[그림]
+04
+역함수
+역함수가 존재하는 함수  $f(x)$ 에 대하여  $f(3x-2)=2x+a$ 이고  $f^{`-1}(4)=it-5$ 일 때,  $f(10)+f^{`-1}(10)$ 의 값을 구하고, 그 과정을 서술하시오. (단,  $a$ 는 상수이다.)
+[정답]  $18$
+$f^{`-1}(4)=it-5$ 에서  $f(-5)=4$ 이다.
+$f left(3x-2 right)=2x+a$ 에서 $cdotscdots$ ㉠
+$3x-2 =it-5$ 일 때  $x=it-1$ 이므로 ㉠에  $x=it-1$ 을 대입하면
+$f(-5)=it-2+a=4$ 에서  $a=6$ 이다.
+따라서  $f(3x-2)=2x+6$  $cdotscdots$ ㉡
+$3x-2=10$ 일 때  $x=4$ 이므로 ㉡에  $x=4$ 를 대입하면
+$f(10)=14$ 이다.
+$f^{`-1}(10)=k$ 라 하면  $f(k)=10$ 이고,
+㉡에서  $2x+6=10$ 일 때  $x=2$ 이므로 ㉡에  $x=2$ 를 대입하면
+$f(4)=10$ 에서  $f^{`-1}(10)=4$ 이다.
+$THEREFORE~f(10)+f^{`-1}(10)=14+4=18$
+역함수가 존재하는 함수  $f(x)$ 에 대하여  $f^{`-1}(2)=it-3$ 이고, 모든 실수  $x$ 에 대하여  $f(1-x)=h(x)$ 라 할 때,  $h^{`-1}(2)$ 의 값은?
+[정답] ⑤
+$h^{`-1}(2)=k$ 라 하면  $h(k)=2$ 이다.
+$h(1-x)=h(x)$ 에서  $x=k$ 를 대입하면
+$f(1-k)=h(k)=2$  $cdotscdots$ ㉠
+이때  $f^{`-1}(2)=it-3$ 에서  $f(-3)=2$  $cdotscdots$ ㉡
+역함수를 가지는 함수  $f$ 는 일대일대응이므로
+㉠, ㉡에서  $1-k=it-3$ ,  $k=4$ , 즉  $h(4)=2$
+$THEREFORE~h^{`-1}(2)=4$
+[그림]
+$y=f(1-x)$ 에서  $x$ 에 대하여 정리하면
+$1-x=f^{`-1}(y)$ ,  $x= 1- f^{`-1}(y)$
+$x$ 와  $y$ 를 서로 바꾸면  $y=1- f^{`-1}(x)$ 이므로
+$h(x)=f(1-x)$ 의 역함수는
+$h^{`-1}(x)=1-f^{`-1}(x)$ 이다.
+$THEREFORE~h^{`-1}(2)$  $=1-f^{`-1}(2)$ 
+ $=1-(-3)=4$
+①  $0$ ②  $1$ ③  $2$ ④  $3$ ⑤  $4$
+함수  $f(x)$ 의 역함수를  $g(x)$ 라 할 때,  $f(2x-5)$ 의 역함수를  $g(x)$ 를 이용하여 나타내고, 그 과정을 서술하시오.
+[정답]  $y= {1} over {2} g(x)+ {5} over {2}$
+함수  $y=f(x)$ 의 역함수가  $y=g(x)$ 이므로  $g(x)=f^{`-1}(x)$ 이다.
+함수  $f(2x-5)$ 의 역함수를 구하면 다음과 같다.
+$y=f(2x-5)$ 를  $x$ 에 대하여 풀면
+$2x-5=f^{`-1}(y)$ ,  $x= 1over2 f^{`-1}(y)+ 5over2$
+$x$ 와  $y$ 를 서로 바꾸면
+$y= 1over2 f^{`-1}(x)+ 5over2$ ,  $y= 1over2 g(x)+ 5over2$
+따라서  $f(2x-5)$ 의 역함수는  $1over2 g(x)+ 5over2$ 이다.
+[그림]
+$h(x)= 2x-5$ 라 하면 $cdotscdots$ ㉠
+$f(2x-5)=(f circh)(x)$ 이므로
+$f(2x-5)$ 의 역함수는  $(f circ h)^{`-1}(x)$ 이다.
+㉠에서  $h^{`-1}(x)= 1over2 x + 5over2$ 이고,
+$f^{`-1}(x)=g(x)$ 이므로
+$(f circh)^{`-1}(x)$  $= LEFT ( h ^{`-1} CIRCf ^{`-1} RIGHT ) (x)=left(h^{`-1} circ g right)(x)$ 
+ $=h ^{`-1} LEFT ( g(x) RIGHT ) = {1} over {2} g(x)+ {5} over {2}$
+따라서  $f(2x-5)$ 의 역함수는  $1over2 g(x)+ 5over2$ 이다.
+실수 전체의 집합에서 정의된 두 함수  $f,~g$ 가 일대일대응이고, 다음 조건을 만족시킬 때,  $f^{`-1}(4)$ 의 값을 구하시오.
+[정답]  $3$
+조건 (가)에서  $g^{`-1} left( f left(2x-1 right)right)= 5x-3$ 이므로
+$g left( g^{`-1} left(f left(2x-1right)right)right)=g(5x-3)$
+$f(2x-1)=g(5x-3)$
+양변에  $x=2$ 를 대입하면
+$f(3)=g(7)=4$   $(BECAUSE~$ (나) $)$
+$THEREFORE~f^{`-1}(4)=3$
+[그림]
+조건 (나)에 의하여  $g^{`-1}(4)=7$ 이다. $cdotscdots$ ㉠
+조건 (가)에서  $g^{`-1} (f(2x-1))=5x-3$  $cdotscdots$ ㉡
+$5x-3=7$ 일 때  $x=2$ 이므로 ㉡에  $x=2$ 를 대입하면
+$g^{`-1}(f(3))=7$ 이다. $cdotscdots$ ㉢
+함수  $g^{`-1}$ 가 일대일대응이므로 ㉠, ㉢에서  $f(3)=4$ 이다.
+$THEREFORE~f^{`-1}(4)=3$
+[그림]
+(가)  $left(g^{`-1} circ f right)(2x-1)=5x-3$
+(나)  $g(7)=4$
+함수
+[정답] ③
+함수  $y=f(x)$ 의 그래프는 다음 그림과 같다.
+[그림]
+함수  $f(x)$ 가 일대일대응이므로 임의의 실수  $x$ 에 대하여
+$(f circg)(x)=x$ 일 때,  $g(x)= f^{`-1}(x)$ 이다.
+$( g circg circ g)(5)=g(g(g(5)))$  $cdotscdots$ ㉠
+$g(5)=a$ 라 하면  $f(a)=5$ ,  $a<2$ 이므로
+$-2a+7=5$ 에서  $a=1$
+㉠에서  $g(g(g(5)))=g(g(1))$  $cdotscdots$ ㉡
+$g(1)=b$ 라 하면  $f(b)=1$ ,  $b>2$ 이므로
+$- 1over2 (b-2)^2 +3=1$ 에서  $(b-2)^2 =4$ ,  $b=4$   $(BECAUSE~b>2)$
+㉡에서  $g(g(1))=g(4)$
+$g(4)=c$ 라 하면  $f(c)=4$ ,  $c<2$ 이므로
+$-2c+7=4$ ,  $c= 3over2$
+$THEREFORE~(g circ g circ g)(5)=g(g(g(5)))=g(g(1))=g(4)= 3over2$
+$f(x)=cases{ -2x+7&~(x<2)# - 1over2 (x-2)^2 +3&~(x ge2)$
+일 때, 임의의 실수  $x$ 에 대하여  $(f circg)(x)=x$ 를 만족시키는 함수  $g(x)$ 에 대하여  $(g circ g circ g)(5)$ 의 값은?
+①  $1over2$ ②  $1$ ③  $3over2$ ④  $2$ ⑤  $5over2$
+[그림]
+함수  $f$ 에 대하여
+[정답] ②
+$f(1)=3$ 이고, 함수  $f$ 가 일대일대응이므로
+$f(2)=1$ ,  $f(3)=2$  또는  $f(2)=2$ ,  $f(3)=1$ 이다.
+(ⅰ)  $f(2)=1$ ,  $f(3)=2$ 일 때
+$f(1)=3$ ,  $f` ^{2} (1)=2$ ,  $f` ^{3} (1)=1$
+$f(2)=1$ ,  $f` ^{2} (2)=3$ ,  $f` ^{3} (2)=2$
+$f(3)=2$ ,  $f` ^{2} (3)=1$ ,  $f` ^{3} (3)=3$
+이므로  $f` ^{3} =I$ 가 성립한다.
+(ⅱ)  $f(2)=2$ ,  $f(3)=1$ 이면
+$f(1)=3$ ,  $f` ^{2} (1)=1$ ,  $f` ^{3} (1)=3$
+이므로  $f`^3 ne I$ 가 되어 성립하지 않는다.
+(ⅰ), (ⅱ)에서  $f(1)=3$ ,  $f(2)=1$ ,  $f(3)=2$ 이므로
+$g(1)=2$ ,  $g(2)=3$ ,  $g(3)=1$ 이고,  $f`^3 =I$ 에서  $g^3 = left(f^{`-1} right)^3 =I$ 이다.
+따라서  $g^10 =g^{3times3+1 }=g$ ,  $g^11 = g^{3times3+2}=g^2$ 이므로
+$g`^10 (2)+ g`^11 (3)$  $=g(2)=g(g(3))$ 
+ $=3+g(1)=3+2=5$
+$f^{`2} (x)=f left(f(x)right)$ ,  $f ^{`3} (x)=f(f ^{`2} (x))$ ,  $cdots$
+로 정의하자. 집합  $X= left{1,~2,~3right$ 에 대하여 함수  $f`:`X`` rarrow  ``X$ 가 두 조건
+$f(1)=3,````f  ^{`3} =I$  ( $I$ 는 항등함수)
+를 만족시킨다. 함수  $f$ 의 역함수를  $g$ 라 할 때 $g^10 (2) + g^11 (3)$ 의 값은?
+①  $6$ ②  $5$ ③  $4$ ④  $3$ ⑤  $2$
+집합  $X= LEFT { 1,~2,~3,~4right$ 에 대하여 함수  $f`:`X`` rarrow  ``X$ 가 일대일대응이고
+[정답] ③
+$left(f^{`-1} circ f^{`-1} right)(3)=3$ 에서  $left(f circ f right)^{`-1}(3)=3$ 이므로  $left(f circ f right)(3)=3$ 이다.
+따라서  $(f circ f )(2)=1$ ,  $(f circf )(3)=3$ 을 만족시켜야 하므로  $f(2)$ 의 값에 따라 경우를 나누어 생각해보자.
+(ⅰ)  $f(2)=1$ 인 경우
+ $(f circf)(2)=f(f(2))=f(1)=1$ 에서
+ $f(2)=1$ ,  $f(1)=1$ 이 되어  $f$ 는 일대일대응이 아니므로
+성립하지 않는다.
+(ⅱ)  $f(2)=2$ 인 경우
+ $left(f circf right)(2)=f(f(2))=f(2)=2!=1$ 이므로
+성립하지 않는다.
+(ⅲ)  $f(2)=3$ 인 경우
+ $(f circf)(2)=f(f(2))=f(3)=1$ 이고,
+ $(f circf)(3)=f(f(3))=f(1)=3$ 에서
+ $f(2)=3$ ,  $f(1)=3$ 이 되어  $f$ 는 일대일대응이 아니므로
+성립하지 않는다.
+(ⅳ)  $f(2)=4$ 인 경우
+ $(f circf )(2)=f(f(2))=f(4)=1$ 이다.
+이때  $ f LEFT ( 3 RIGHT )= 2 $ 이면  $ LEFT ( f circ  f RIGHT ) LEFT ( 3 RIGHT )= f LEFT ( f LEFT ( 3 RIGHT ) RIGHT )= f LEFT ( 2 RIGHT )= 4 $ 이므로
+ $(f circ f )(3)=3$ 이려면  $f(3)=3$ 이어야 한다.
+따라서 함수  $f$ 는 다음 그림과 같다.
+[그림]
+(ⅰ)~(ⅳ)에서 조건을 만족시키는 함수  $f$ 는 (ⅳ)와 같으므로
+$f(1)=2$ ,  $f^{`-1}(4)=2$
+$THEREFORE~2f(1)+f^{`-1}(4)=2times2+2=6$
+$LEFT ( f CIRCf RIGHT ) (2)=1,~(f ^{`-1} CIRCf ^{`-1} )(3)=3$
+일 때,  $2f(1)+f ^{`-1} (4)$ 의 값은?
+①  $4$ ②  $5$ ③  $6$ ④  $7$ ⑤  $8$
+두 함수  $f,~g$ 에 대하여 <보기> 중 옳은 것만을 있는 대로 고르시오.
+[정답] ㄱ, ㄹ, ㅁ
+ㄱ. 일대일대응이면 일대일함수이므로 함수  $f$ 가 일대일함수인 것은
+함수  $f$ 가 일대일대응이기 위한 필요조건이다. (참)
+ㄴ. 함수  $f`:`X`` rarrow``Y$ 의 역함수가 존재할 때,
+함수  $f CIRC f^{`-1}$ 는  $Y$ 에서  $Y$ 로의 항등함수이고,
+함수  $ f^{`-1} CIRC f$ 는  $X$ 에서  $X$ 로의 항등함수이다.
+이때  $X !=Y$ 이면  $f CIRC f^{`-1} !=  f^{`-1} CIRC f$ 이다. (거짓)
+ㄷ. 두 함수  $f`:`X`` rarrow``Y,$   $g`:`Y`` rarrow``Z$ 에 대하여
+함수  $f circ g`:`Y`` rarrow``Y$ 가 정의되기 위한 필요충분조건은
+ $g LEFT ( Y RIGHT ) SUBSET X$ 이다. (거짓)
+ㄹ. 두 함수  $f`:`X`` rarrow``Y, $   $g`:`Z`` rarrow  ``W$ 에 대하여
+ $Y subset Z$ 일 때, 합성함수  $g CIRC  f`:`X`` rarrow  ``W$ 가 정의되고, 함수  $g circ f$ 의 정의역은 함수  $f$ 의 정의역과 같다. (참)
+ㅁ. 두 함수  $f`:`X`` rarrow``Y, $   $g`:`Y`` rarrow``Z$ 에 대하여
+ $g circ f`:`X`` rarrow``Z$ 가 항상 정의된다.
+두 함수  $f,~g$ 의 역함수가 모두 존재하면 두 함수  $f,~g$ 는 모두
+일대일대응이므로  $ x_1 ,~ x_2 in X $ 인 임의의  $ x_1 , ~ x_2$ 에 대하여  $ g LEFT ( f LEFT ( x_1 RIGHT ) RIGHT ) = g LEFT ( f LEFT ( x_2 RIGHT ) RIGHT )$ 이면  $ f LEFT ( x_1 RIGHT )= f LEFT ( x_2 RIGHT ), ~ x_1 = x_2$ 이다.
+즉, 함수  $g circ f$ 도 일대일대응이므로
+함수  $g circ f$ 의 역함수가 존재한다. (참)
+따라서 옳은 것은 ㄱ, ㄹ, ㅁ이다.
+[표]
+[ 보 기 ]
+ㄱ. 함수  $f$ 가 일대일함수인 것은 함수  $f$ 가 일대일대응이기 위한 필요조건이다.
+ㄴ. 함수  $f$ 의 역함수가 존재할 때, 두 함수  $f CIRC f^{`-1}$ 와  $ f^{`-1} CIRC f$ 는 항상 같다.
+ㄷ. 두 함수  $f`:`X`` rarrow  ``Y, $   $g`:`Y`` rarrow``Z$ 에 대하여 함수  $f CIRC  g`:`Y`` rarrow  ``Y$ 가 정의되기 위한 필요충분조건은  $X=Z$ 이다.
+ㄹ. 합성함수  $g circ f$ 가 정의될 때, 이 합성함수의 정의역은 함수  $f$ 의 정의역과 같다.
+ㅁ. 두 함수  $f`:`X`` rarrow``Y, $   $g`:`Y`` rarrow``Z$ 의 역함수가 모두 존재할 때, 합성함수  $g circ f$ 의 역함수가 존재한다.
+두 함수  $f(x)$ ,  $g(x)$ 에 대하여  $f(x)=3x-2$ 이고,  $left(f^{`-1}circ g right)(1-x)=2x+1$ 일 때, 두 함수  $y=f(x), $   $y=g(x)$ 의 그래프와  $y$ 축으로 둘러싸인 부분의 넓이를 구하시오.
+[정답]  $9over2$
+$f^{`-1}left( g(1-x)right)=2x+1$ 에서
+$g(1-x)=f(2x+1)$
+$1-x=t$ 라 하면  $x=1-t$ 이므로
+$g(t)$  $=f {left(2(1-t)+1right)=f{left(-2t+3right)$ 
+ $=3(-2t+3)-2=it-6t+7$
+이때 두 함수  $y=3x-2$ ,  $y=it-6x+7$ 의 그래프와  $y$ 축으로
+둘러싸인 부분은 다음과 같다.
+[그림]
+따라서 구하는 넓이는
+${1over2}timesleft{7-(-2)right}times1={9over2}$
+함수  $f(x)$ 의 역함수  $g(x)$ 에 대하여  $f{left(4x-3-2g(x)right)}=x$ 일 때, 방정식  $f(x)g(x)=0$ 의 모든 실근의 합은?
+[정답] ②
+$f{left(4x-3-2g(x)right)}=x$ 에서  $f^{`-1}(x)=4x-3-2g(x)$ 이고,
+$f^{`-1}(x)=g(x)$ 이므로  $3g(x)=4x-3$
+$therefore~g(x)={4over3}x-1$
+방정식  $f(x)g(x)=0$ 에서  $f(x)=0$  또는  $g(x)=0$
+(ⅰ) 방정식  $f(x)=0$ 의 실근을  $alpha$ 라 하면
+ $f(alpha)=0$ 이므로  $g(0)=alpha$ 에서  $alpha =it-1$
+(ⅱ) 방정식  $g(x)={4over3}x-1=0$ 의 실근은  $x={3over4}$
+따라서 구하는 모든 실근의 합은
+$LEFT ( -1 RIGHT ) +{3over4}=it-{1over4}$
+①  $-{3over4}$ ②  $-{1over4}$ ③  ${1over4}$ ④  ${3over4}$ ⑤  $5over4$
+함수  $ f LEFT ( x RIGHT )= x- 3 $ 과 두 집합  $ X = left{ x ` left|` a le x le b right}, $   $Y= LEFT { y` LEFT | `0 LEQ y LEQ 9 RIGHT } RIGHT .$ 에 대하여  $ X $ 에서  $ Y$ 로의 함수  $ g LEFT ( x RIGHT )= f LEFT ( x -3 RIGHT ) f LEFT ( LEFT |  `x-3`RIGHT |   RIGHT )$ 의 역함수가 존재할 때,  $ a + b $ 의 최댓값을 구하시오. (단,  $ a$ ,  $ b $ 는 실수이다.)
+[정답]  $ 15$
+$ g LEFT ( x  RIGHT )$  $ = LEFT ( x-6 RIGHT ) LEFT ( LEFT |  `x-3`RIGHT | -3   RIGHT )$ 
+ $ = cases {- x LEFT ( x-6 RIGHT ) &~  LEFT ( x < 3  RIGHT ) # LEFT ( x-6 RIGHT ) ^2 &~  LEFT (  x ge 3  RIGHT ) }$
+이므로 함수  $ g LEFT ( x  RIGHT )$ 의 그래프는 다음 그림과 같다.
+[그림]
+함수  $ g LEFT ( x  RIGHT )$ 의 역함수가 존재하려면 일대일대응이어야 하므로
+$ a=0, ~ b= 3 $  또는  $ a=3, ~ b= 6 $  또는  $a=6 ,~ b= 9$
+따라서  $ a+b$ 의 최댓값은  $ 15 $ 이다.
+함수  $y=x ^{2} -4x+k~ LEFT (  x ge 2  RIGHT )$ 의 그래프와 그 역함수의 그래프가 한 점  $rmP$ 에서 만난다.  ${rm bar OP}=6root2$ 일 때, 상수  $k$ 의 값을 구하시오.
+[정답]  $-6$
+$x geq 2$ 일 때 함수  $y=x^2 -4x+k=(x-2)^2 +k-4$ 의 그래프의
+개형은 다음 그림과 같다.
+[그림]
+함수의 그래프가  $ x $ 의 값이 커질 때  $ y$ 의 값도 커지는 형태이므로 함수의 그래프가 역함수의 그래프와 만나는 교점은 직선  $y=x$ 와의 교점과 같다.
+따라서 점  $rmP$ 가 직선  $y=x$  위에 존재하므로
+${rm barOP}=6root2$ 일 때,  ${rm P}(6,~6)$ 이다.
+함수  $y=x^2 -4x+k~ LEFT (  x ge 2  RIGHT )$ 의 그래프와 직선  $y=x$ 의 교점의  $x$ 좌표는 방정식  $x^2 -4x+k=x$ , 즉  $x^2 -5x+k=0$ 의 해이므로
+$x=6$ 이 방정식  $x^2 -5x+k=0$ 의 해이다.
+$36-30+k=0$
+$therefore~k=it-6$
+(단,  $rmO$ 는 원점이다.)
+역함수를 가지는 함수  $y=f(x)$ 의 그래프가 그림과 같을 때, 방정식
+[정답] ②
+방정식  $left{f^{`-1}(3x+1)right}^2 =f^{`-1}(3x+1)f(3x+1)$ 에서
+$f^{`-1}(3x+1)left{f^{`-1}(3x+1)-f(3x+1)   right} =0$ 이므로
+$f^{`-1}(3x+1)=0$  또는  $f^{`-1}(3x+1)=f(3x+1) $ 이다.
+(ⅰ)  $f^{`-1}(3x+1)=0$ 에서  $f(0)=3x+1$ 이고,
+주어진 그래프에서  $f(0)=2$ 이므로
+ $3x+1=2$ 에서  $x={1over3}$
+(ⅱ)  $f^{`-1}(3x+1)=f(3x+1) $ 에서
+ $3x+1=t$ 라 하면  $f^{`-1}(t)=f(t)$ 이다.
+함수  $y=f(x)$ 의 그래프가  $ x $ 의 값이 커질 때  $ y$ 의 값도 커지는 형태이므로 함수  $y=f(x)$ 의 그래프가 역함수  $y=f^{`-1}(x)$ 의 그래프와 만나는 교점은 직선  $y=x$ 와의 교점과 같으므로 방정식  $f^{`-1}(t)=f(t)$ 의 해는 방정식  $f(t)=t$ 의 해와 같다.
+주어진 그래프에서  $f(-2)=it-2$ ,  $f(5)=5$ 이고, 함수  $y=f(x)$ 의 그래프는 직선  $y=x$ 와 두 점에서 만나므로
+방정식  $f(t)=t$ 의 해는  $t=it-2$  또는  $t=5$ 이다.
+ $3x+1=it-2$ 에서  $x=it-1$ 
+ $3x+1=5$ 에서  $x={4over3}$
+(ⅰ), (ⅱ)에서 구하는 모든 실근의 합은
+${1over3}+(-1)+{4over3}={2over3}$
+$left{f^{`-1}(3x+1)right}^2 =f^{`-1}(3x+1)f(3x+1)$
+의 모든 실근의 합은?
+(단, 함수  $y=f(x)$ 의 그래프는 직선  $y=x$ 와 두 점에서 만난다.)
+[그림]
+①  $1over3$ ②  $2over3$ ③  $1$ ④  $4over3$ ⑤  $5over3$
+함수  $ f LEFT ( x RIGHT )= cases {1 over 2 x + 5over 2 &~ LEFT (  x < 1  RIGHT ) # 2x+1 &~ LEFT (  x ge 1  RIGHT ) }$ 과 실수  $ t $ 에 대하여 함수  $ g LEFT ( x  RIGHT )$ 를
+[정답] ①
+함수  $ y= f LEFT ( x RIGHT )$ 의 그래프는 다음 그림과 같다.
+[그림]
+즉, 함수  $ y= f LEFT (  x  RIGHT )$ 는  $ x $ 의 값이 커지면  $ y$ 의 값도 커진다.
+마찬가지로 함수  $ g LEFT ( x RIGHT )= f `^-1 LEFT ( x -t RIGHT ) - t $ 로  $ x $ 의 값이 커지면  $ y$ 의 값도 커진다.
+따라서 방정식  $ LEFT ( g circ g  RIGHT ) LEFT ( x RIGHT )= x , $  즉  $ g LEFT ( x RIGHT )= g `^-1 LEFT ( x  RIGHT )$ 의 실근이 존재하려면
+방정식  $ g LEFT ( x RIGHT )= x $ 의 실근이 존재해야 한다.
+$ f`^-1 LEFT ( x-t RIGHT ) - t= x $ 에서  $ x-t = f LEFT ( x+t RIGHT )$ 이고
+$ x+t  =p$ 라 하면  $ x-t = p-2t $ 이므로
+방정식  $ x-t = f LEFT ( x+t RIGHT )$ 의 실근이 존재하려면
+방정식  $ f LEFT ( p RIGHT )= p-2t $ 의 실근이 존재해야 한다.
+$ h LEFT ( p RIGHT )= p-2t $ 라 할 때,  $ h LEFT ( 1 RIGHT )ge 3 $ 이어야 하므로
+$ 1-2t ge 3 $ 에서  $ t le it-1 $ 이다.
+따라서 실수  $  t$ 의 최댓값은  $ -1 $ 이다.
+$ g LEFT ( x RIGHT )= f `^-1 LEFT ( x-t RIGHT ) - t $
+라 할 때, 방정식  $ LEFT ( g circ g  RIGHT ) LEFT ( x RIGHT )= x $ 의 실근이 존재하도록 하는 실수  $ t$ 의 최댓값은?
+①  $ -1$ ②  $ - 2 $ ③  $ - 3 $ ④  $ - 4 $ ⑤  $ - 5 $
+집합  $X= LEFT { 1,~2,~3,~4,~5,~6,~7 RIGHT }$ 에 대하여 함수  $f`:`X`` rarrow  `X`$ 가 다음 조건을 만족시킬 때,  $f LEFT ( 1 RIGHT ) +2f` ^{-1} LEFT ( 4 RIGHT ) +3f LEFT ( 4 RIGHT )$ 의 값은?
+[정답] ⑤
+조건 (가)에서 함수  $f$ 는 일대일대응이고
+조건 (나)에서  $x=3$ 을 대입하면
+$f LEFT ( f LEFT ( 3 RIGHT ) RIGHT ) -f` ^{-1} LEFT ( 3 RIGHT ) = it -6$ 이고
+$f` ^{-1} LEFT ( 3 RIGHT ) =7$ ,  $f LEFT ( f LEFT ( 3 RIGHT ) RIGHT ) =1$ 이다. $cdotscdots$ ㉠
+즉,  $f LEFT ( 7 RIGHT ) =3$ 이다.
+조건 (나)에서  $x=2$ 을 대입하면
+$f LEFT ( f LEFT ( 2 RIGHT ) RIGHT ) -f` ^{-1} LEFT ( 2 RIGHT ) = it -4$ 이고 ㉠이므로
+$f` ^{-1} LEFT ( 2 RIGHT ) =6$ ,  $f LEFT ( f LEFT ( 2 RIGHT ) RIGHT ) =2$ 이다. $cdotscdots$ ㉡
+즉,  $f LEFT ( 6 RIGHT ) =2$ 이다.
+또한  $f LEFT ( f LEFT ( 2 RIGHT ) RIGHT ) =2$ 에서  $f LEFT ( 2 RIGHT ) =6$ 이다.
+조건 (나)에서  $x=1$ 을 대입하면
+$f LEFT ( f LEFT ( 1 RIGHT ) RIGHT ) -f` ^{-1} LEFT ( 1 RIGHT ) = it -2$ 이고 ㉠, ㉡이므로
+$f` ^{-1} LEFT ( 1 RIGHT ) =5$ ,  $f LEFT ( f LEFT ( 1 RIGHT ) RIGHT ) =3$ 이다.
+즉,  $f LEFT ( 5 RIGHT ) =1$ 이다.
+또한  $f LEFT ( f LEFT ( 1 RIGHT ) RIGHT ) =3$ 에서  $f LEFT ( 1 RIGHT ) =7$   $LEFT ( BECAUSE ~f LEFT ( 7 RIGHT ) =3 RIGHT )$ 이고
+$f LEFT ( f LEFT ( 3 RIGHT ) RIGHT ) =1$ 에서  $f LEFT ( 3 RIGHT ) =5$   $LEFT ( BECAUSE ~f LEFT ( 5 RIGHT ) =1 RIGHT )$ 이다.
+따라서  $f LEFT ( 1 RIGHT ) =7$ ,  $f LEFT ( 2 RIGHT ) =6$ ,  $f LEFT ( 3 RIGHT ) =5$ ,  $f LEFT ( 5 RIGHT ) =1$ ,  $f LEFT ( 6 RIGHT ) =2$ ,  $f LEFT ( 7 RIGHT ) =3$ 이고 함수  $f$ 가 일대일대응이므로  $f LEFT ( 4 RIGHT ) =4$ 이다.
+$THEREFORE ~f LEFT ( 1 RIGHT ) +2f` ^{-1} LEFT ( 4 RIGHT ) +3f LEFT ( 4 RIGHT ) =7+2 TIMES  4+3 TIMES  4=27$
+[그림]
+(가) 집합  $X`$ 의 임의의 두 원소  $x _{1} ,~x _{2}$ 에 대하여  $x _{1} != x _{2}$ 이면  $f LEFT ( x _{1} RIGHT ) !=  f LEFT ( x _{2} RIGHT )$ 이다.
+(나)  $1 LEQ  x LEQ  3$ 일 때,  $LEFT ( f CIRC  f RIGHT ) LEFT ( x RIGHT ) -f` ^{-1} LEFT ( x RIGHT ) = it -2x$ 이다.
+①  $23$ ②  $24$ ③  $25$ ④  $26$ ⑤  $27$
+함수  $f LEFT ( x RIGHT ) = {cases{x ^{2} -4x+6&~ LEFT ( x<2 RIGHT )#kx+2-2k&~ LEFT ( x GEQ  2 RIGHT )}}$ 에 대하여 역함수  $f` ^{-1} LEFT ( x RIGHT )$ 가 존재한다.  $LEFT { x` LEFT | `f LEFT ( x RIGHT ) =f` ^{-1} LEFT ( x RIGHT ) RIGHT } RIGHT . = LEFT { 2,~ alpha  ,~ alpha  +6 RIGHT }$ 일 때,
+[정답]  $4$
+함수  $f LEFT ( x RIGHT )$ 에 대하여 역함수  $f` ^{-1} LEFT ( x RIGHT )$ 가 존재하므로
+함수  $f LEFT ( x RIGHT )$ 는 일대일대응이다.
+$LEFT { x` LEFT | `f LEFT ( x RIGHT ) =f` ^{-1} LEFT ( x RIGHT ) RIGHT } RIGHT . = LEFT { 2,~ alpha  ,~ alpha  +6 RIGHT }$ 이므로 함수  $y=f LEFT ( x RIGHT )$ 의 그래프와 역함수  $y=f` ^{-1} LEFT ( x RIGHT )$ 의 그래프의 교점의 개수가  $3$ 이고, 교점의  $x$ 좌표는 각각  $2,~ alpha  ,~ alpha  +6$ 이다.
+$f LEFT ( x RIGHT ) =x ^{2} -4x+6$   $LEFT ( x<2 RIGHT )$ 에서  $x ^{2} -4x+6= LEFT ( x-2 RIGHT ) ^{2} +2$ 이므로 함수  $y=f LEFT ( x RIGHT )$ 는  $x<2$ 에서  $x$ 의 값이 커지면  $y$ 의 값은 작아진다.
+$cdotscdots$ ㉠
+따라서  $f LEFT ( x RIGHT ) =k LEFT ( x-2 RIGHT ) +2$   $LEFT ( x GEQ  2 RIGHT )$ 에서  $k$ 의 값은 음수이다.
+$f LEFT ( 2 RIGHT ) =2$ 이므로 함수  $y=f LEFT ( x RIGHT )$ 의 그래프와 직선  $y=x$ 의 교점은  $LEFT ( 2,~2 RIGHT )$ 이고  $a<2$  $cdotscdots$ ㉡
+[그림]
+$f LEFT ( alpha  RIGHT ) =f` ^{-1} LEFT ( alpha  RIGHT ) = beta $ 라 하면 ㉠, ㉡에 이하여  $ beta  >2$ 이다.   $cdotscdots$ ㉢
+$f LEFT ( alpha  RIGHT ) = beta $ 에서  $f` ^{-1} LEFT ( beta  RIGHT ) = alpha $
+$f` ^{-1} LEFT ( alpha  RIGHT ) = beta $ 에서  $f LEFT ( beta  RIGHT ) = alpha $
+즉,  $f LEFT ( beta  RIGHT ) =f` ^{-1} LEFT ( beta  RIGHT )$ 이므로
+$x= beta $ 는 방정식  $f LEFT ( x RIGHT ) =f` ^{-1} LEFT ( x RIGHT )$ 의 근이다.
+㉢에 의하여  $beta  = alpha  +6$
+$f LEFT ( alpha  RIGHT ) = alpha  +6$ 에서
+$alpha  ^{2} -4 alpha  +6= alpha  +6$ ,  $alpha  ^{2} -5 alpha  =0$ ,  $alpha  LEFT ( alpha  -5 RIGHT ) =0$
+$THEREFORE ~ alpha  =0$  ( $BECAUSE $  ㉡)
+$f LEFT ( beta  RIGHT ) = alpha $ ,  $f LEFT ( alpha  +6 RIGHT ) = alpha $ , 즉  $f LEFT ( 6 RIGHT ) =4k+2=0$ 이므로
+$k= it - {1} over {2}$
+$THEREFORE ~16 LEFT ( k ^{2} + alpha  ^{2} RIGHT ) =16 LEFT ( {1} over {4} +0 RIGHT ) =4$
+$16 LEFT ( k ^{2} + alpha  ^{2} RIGHT )$ 의 값을 구하시오. (단,  $k$ 는 상수이다.)
+함수  $f LEFT ( x RIGHT ) =x-3+ LEFT | {1} over {2} x-3 RIGHT |$ 과 그 역함수  $g LEFT ( x RIGHT )$ 에 대하여 두 함수  $y=f LEFT ( x RIGHT )$ ,  $y=g LEFT ( x RIGHT )$ 의 그래프로 둘러싸인 부분의 넓이를 구하시오.
+[정답]  $36$
+${1} over {2} x-3 GEQ  0$ , 즉  $x GEQ  6$ 일 때
+$f LEFT ( x RIGHT ) =x-3+ LEFT ( {1} over {2} x-3 RIGHT ) = {3} over {2} x-6$
+${1} over {2} x-3< 0$ , 즉  $x< 6$ 일 때
+$f LEFT ( x RIGHT ) =x-3- LEFT ( {1} over {2} x-3 RIGHT ) = {1} over {2} x$
+이므로 함수  $y=f LEFT ( x RIGHT )$ 의 그래프와 그 역함수  $g LEFT ( x RIGHT )$ 의 그래프는 다음 그림과 같다.
+[그림]
+두 함수  $y=f LEFT ( x RIGHT )$ ,  $y=g LEFT ( x RIGHT )$ 의 그래프가 만나는 한 교점은 두 직선  $y= {1} over {2} x$ 와  $y=x$ 의 교점인  $LEFT ( 0,~0 RIGHT )$ 이고,
+다른 한 교점은 두 직선  $y= {3} over {2} x-6$ 과  $y=x$ 의 교점이므로
+${3} over {2} x-6=x$ 에서  $x=12$ , 즉  $LEFT ( 12,~12 RIGHT )$ 이다.
+두 교점 사이의 거리는  $12 sqrt {2}$ 이고,
+점  $LEFT ( 6,~3 RIGHT )$ 과 직선  $y=x$  사이의 거리는  ${LEFT | 6-3 RIGHT |} over {sqrt {1 ^{2} + LEFT ( -1 RIGHT ) ^{2}}} = {3 sqrt {2}} over {2}$  이므로 직선  $y=x$ 와 함수  $y=f LEFT ( x RIGHT )$ 의 그래프로 둘러싸인 부분의 넓이는
+${1} over {2} TIMES  12 sqrt {2} TIMES  {3 sqrt {2}} over {2} =18$ 이다.
+따라서 두 함수  $y=f LEFT ( x RIGHT )$ ,  $y=g LEFT ( x RIGHT )$ 의 그래프로 둘러싸인 부분의 넓이는  $2TIMES 18=36$ 이다.
+[그림]
+그림과 같이 함수  $y=f LEFT ( x RIGHT )$ 의 그래프 위의 점  $rm A LEFT ( 3,~1 RIGHT )$ 을 지나는  $x$ 축과 평행한 직선이 함수  $y=f` ^{-1} LEFT ( x RIGHT )$ 의 그래프와 만나는 점을  $rm B$ 라 하자. 함수  $y=f` ^{-1} LEFT ( x RIGHT )$ 의 그래프 위의 점  $rm C$ 와 함수  $y=f LEFT ( x RIGHT )$ 의 그래프 위의 점  $rm D$ 에 대하여 두 선분  $rm AC,~BD$ 가 직선  $y=x$ 에 수직이다.  $2f` ^{-1} LEFT ( 1 RIGHT ) +f LEFT ( 1 RIGHT ) =1$ 일 때, 사각형  $rm ACBD$ 의 넓이를 구하시오.
+[정답]  $32$
+점  $rm A LEFT ( 3,~1 RIGHT )$ 이 함수  $y=f LEFT ( x RIGHT )$ 의 그래프 위의 점이므로
+$f LEFT ( 3 RIGHT ) =1$ 이고  $f` ^{-1} LEFT ( 1 RIGHT ) =3$ 이다.
+$2f` ^{-1} LEFT ( 1 RIGHT ) +f LEFT ( 1 RIGHT ) =1$ 에 대입하면
+$f LEFT ( 1 RIGHT ) =1-2f` ^{-1} LEFT ( 1 RIGHT ) =1-2 TIMES  3= it -5$ 에서  $f` ^{-1} LEFT ( -5 RIGHT ) =1$ 이므로
+$rm B LEFT ( -5,~1 RIGHT )$ 이다.
+이때 두 선분  $rm AC,~BD$ 가 직선  $y=x$ 에 수직이고, 두 함수  $y=f LEFT ( x RIGHT )$ ,  $y=f` ^{-1} LEFT ( x RIGHT )$ 의 그래프가 직선  $y=x$ 에 대하여 서로 대칭이므로 두 점  $rm A,~B$ 를 직선  $y=x$ 에 대하여 대칭이동한 점이 각각  $rm C,~D$ 이다.
+즉,  $rm C LEFT ( 1,~3 RIGHT )$ ,  $rm D LEFT ( 1,~-5 RIGHT )$ 이다.
+사다리꼴  $rm ACBD$ 에서  ${bar{rm AC}} =2 sqrt {2}$ ,  ${bar{rm BD}} =6 sqrt {2}$ 이고, 높이는 선분  $rm AC$ 의 중점  $LEFT ( 2,~2 RIGHT )$ 와 선분  $rm BD$ 의 중점  $LEFT ( -2,~-2 RIGHT )$  사이의 거리와 같으므로  $4 sqrt {2}$ 이다.
+따라서 사다리꼴  $rm ACBD$ 의 넓이는
+${1} over {2} TIMES  LEFT ( 2 sqrt {2} +6 sqrt {2} RIGHT ) TIMES  4 sqrt {2} =32$
+[그림]
+[그림]
+05
+함수의 개수
+집합  $X= LEFT { -2,~-1,~0,~1,~2 RIGHT }$ 에서  $X`$ 로의 함수  $f$ 에 대하여  $f LEFT ( -x RIGHT ) =f LEFT ( x RIGHT )$ 를 만족시키는 함수  $f$ 의 개수는?
+[정답] ⑤
+$f LEFT ( -x RIGHT ) =f LEFT ( x RIGHT )$ 를 만족시키려면
+$f LEFT ( -2 RIGHT ) =f LEFT ( 2 RIGHT )$ ,  $f LEFT ( -1 RIGHT ) =f LEFT ( 1 RIGHT )$ 을 만족시켜야 한다.
+$f LEFT ( -2 RIGHT ) =f LEFT ( 2 RIGHT )$ ,  $f LEFT ( -1 RIGHT ) =f LEFT ( 1 RIGHT )$ ,  $f LEFT ( 0 RIGHT )$ 이 될 수 있는 값이 각각  $-2,~-1,~0,~1,~2$ 로  $5$ 개씩이므로 조건을 만족시키는 함수  $f$ 의 개수는  $5 TIMES  5 TIMES  5= 125$ 이다.
+①  $25$ ②  $50$ ③  $60$ ④  $75$ ⑤  $125$
+집합  $X= LEFT { 1,~2,~3,~4 RIGHT }$ 에 대하여 함수  $f$ 가  $X`$ 에서  $X`$ 로의 함수일 때,
+[정답]  $148$
+$X`$ 에서  $X`$ 로의 모든 함수의 개수는  $4 ^{4}$ 이므로
+구하는 함수의 개수는  $4 ^{4}$ 에서
+$LEFT { f LEFT ( 1 RIGHT ) -3 RIGHT } LEFT { f LEFT ( 2 RIGHT ) -2 RIGHT } LEFT { f LEFT ( 3 RIGHT ) -2 RIGHT } != 0$ 을 만족시키는 함수  $f$ 의 개수를 빼주면 된다.
+$f LEFT ( 1 RIGHT ) !=  3$ ,  $f LEFT ( 2 RIGHT ) !=  2$ ,  $f LEFT ( 3 RIGHT ) !=  2$ 일 때,
+$f LEFT ( 1 RIGHT )$ 로 가능한 값은  $1,~2,~4$  중 하나이므로  $3$ 가지,
+$f LEFT ( 2 RIGHT )$ 로 가능한 값은  $1,~3,~4$  중 하나이므로  $3$ 가지,
+$f LEFT ( 3 RIGHT )$ 으로 가능한 값은  $1,~3,~4$  중 하나이므로  $3$ 가지,
+$f LEFT ( 4 RIGHT )$ 로 가능한 값은  $4$ 가지이므로
+함수의 개수는  $4 TIMES  3 ^{3}$ 이다.
+따라서 구하는 함수의 개수는
+$4 ^{4} -4 TIMES  3 ^{3} =4 LEFT ( 4 ^{3} -3 ^{3} RIGHT ) =4 TIMES  37=148$
+[그림]
+$LEFT { f LEFT ( 1 RIGHT ) -3 RIGHT } LEFT { f LEFT ( 2 RIGHT ) -2 RIGHT } LEFT { f LEFT ( 3 RIGHT ) -2 RIGHT } =0$ 을 만족시키려면
+$f LEFT ( 1 RIGHT ) = 3$  또는  $f LEFT ( 2 RIGHT ) = 2$  또는  $f LEFT ( 3 RIGHT ) = 2$ 를 만족시켜야 한다.
+$f LEFT ( 1 RIGHT ) = 3$ 을 만족시키는 함수의 집합을  $A$ ,
+$f LEFT ( 2 RIGHT ) = 2$ 를 만족시키는 함수의 집합을  $B`$ ,
+$f LEFT ( 3 RIGHT ) = 2$ 를 만족시키는 함수의 집합을  $C`$ 라 하면
+구하는 함수  $f$ 의 개수는  $n LEFT ( A CUP  B` CUP  C` RIGHT )$ 이다.
+$n LEFT ( A RIGHT ) =n LEFT ( B` RIGHT ) =n LEFT ( C` RIGHT ) =4 ^{3}$
+$n LEFT ( A SMALLINTER  B` RIGHT ) =n LEFT ( B` SMALLINTER  C` RIGHT ) =n LEFT ( C` SMALLINTER  A RIGHT ) =4 ^{2}$
+$n LEFT ( A SMALLINTER  B` SMALLINTER  C` RIGHT ) =4$ 이므로
+$n LEFT ( A CUP  B` CUP  C` RIGHT )$
+$=n LEFT ( A RIGHT ) +n LEFT ( B` RIGHT ) +n LEFT ( C` RIGHT ) -n LEFT ( A SMALLINTER  B` RIGHT ) -n LEFT ( B` SMALLINTER  C` RIGHT ) -n LEFT ( C` SMALLINTER  A RIGHT )$
+$+n LEFT ( A SMALLINTER  B` SMALLINTER  C` RIGHT )$
+$=3 TIMES  4 ^{3} -3 TIMES  4 ^{2} +4=148$
+$LEFT { f LEFT ( 1 RIGHT ) -3 RIGHT } LEFT { f LEFT ( 2 RIGHT ) -2 RIGHT } LEFT { f LEFT ( 3 RIGHT ) -2 RIGHT } =0$
+을 만족시키는 함수  $f$ 의 개수를 구하시오.
+두 집합
+[정답]  $384$
+조건 (나)에 의하여 함수  $f$ 는 일대일함수이다.
+조건 (가)에서  $f LEFT ( 1 RIGHT ) +f LEFT ( 2 RIGHT ) +f LEFT ( 3 RIGHT )$ 이 홀수인 경우는 다음과 같다.
+(ⅰ)  $f LEFT ( 1 RIGHT ) ,~f LEFT ( 2 RIGHT ) ,~f LEFT ( 3 RIGHT )$ 이 모두 홀수인 경우
+ $f LEFT ( 1 RIGHT )$ 로 가능한 값은  $1,~3,~5,~7$ 로  $4$ 개이고,
+ $f LEFT ( 2 RIGHT )$ 로 가능한 값은  $1,~3,~5,~7$  중  $f LEFT ( 1 RIGHT )$ 을 제외한  $3$ 개이고,
+ $f LEFT ( 3 RIGHT )$ 으로 가능한 값은  $1,~3,~5,~7$  중  $f LEFT ( 1 RIGHT )$ ,  $f LEFT ( 2 RIGHT )$ 을 제외한  $2$ 개이고,
+ $f LEFT ( 4 RIGHT )$ 로 가능한 값은  $1,~2,~3,~ CDOTS ,~7$  중  $f LEFT ( 1 RIGHT )$ ,  $f LEFT ( 2 RIGHT )$ ,  $f LEFT ( 3 RIGHT )$ 을 제외한  $4$ 개이므로
+함수  $f$ 의 개수는  $4 TIMES  3 TIMES  2 TIMES  4=96$ 이다.
+(ⅱ)  $f LEFT ( 1 RIGHT ) ,~f LEFT ( 2 RIGHT ) ,~f LEFT ( 3 RIGHT )$  중 하나만 홀수인 경우
+ $f LEFT ( 1 RIGHT )$ 이 홀수인 경우를 구해 보면 다음과 같다.
+ $f LEFT ( 1 RIGHT )$ 로 가능한 값은  $1,~3,~5,~7$ 로  $4$ 개이고,
+ $f LEFT ( 2 RIGHT )$ 로 가능한 값은  $2,~4,~6$ 으로  $3$ 개이고,
+ $f LEFT ( 3 RIGHT )$ 으로 가능한 값은  $2,~4,~6$  중  $f LEFT ( 2 RIGHT )$ 을 제외한  $2$ 개이고,
+ $f LEFT ( 4 RIGHT )$ 로 가능한 값은  $1,~2,~3,~ CDOTS ,~7$  중  $f LEFT ( 1 RIGHT )$ ,  $f LEFT ( 2 RIGHT )$ ,  $f LEFT ( 3 RIGHT )$ 을 제외한  $4$ 개이므로
+함수  $f$ 의 개수는  $4 TIMES  3 TIMES  2 TIMES  4=96$ 이다.
+ $f LEFT ( 2 RIGHT )$ ,  $f LEFT ( 3 RIGHT )$ 이 홀수인 경우도 마찬가지이므로
+구하는 함수  $f$ 의 개수는  $96 TIMES  3$ 이다.
+(ⅰ), (ⅱ)에서 구하는 함수  $f$ 의 개수는
+$96+96 TIMES  3=96 TIMES  4=384$
+$X= LEFT { 1,~2,~3,~4 RIGHT }$ ,  $Y= LEFT { 1,~2,~3,~4,~5,~6,~7 RIGHT }$
+에 대하여 다음 조건을 만족시키는 함수  $f`:`X`` rarrow  `Y`$ 의 개수를 구하시오.
+[그림]
+(가)  $f LEFT ( 1 RIGHT ) +f LEFT ( 2 RIGHT ) +f LEFT ( 3 RIGHT )$ 은 홀수이다.
+(나)  $x _{1}  IN  X`,~x _{2}  IN  X`$ 에 대하여  $x _{1} != x _{2}$ 이면  $f LEFT ( x _{1} RIGHT ) !=  f LEFT ( x _{2} RIGHT )$ 이다.
+두 집합
+[정답] ②
+조건 (가)에서  $x !=  y$ 에 대하여  $f LEFT ( x RIGHT ) !=  f LEFT ( y RIGHT )$ 이므로
+함수  $f$ 는 일대일함수이다.
+이때 조건 (나)를 만족시키는 함수  $f$ 를 구하면 다음과 같다.
+(ⅰ)  $x=0$ 이고,  $ y=1$  또는  $y= it -1$ 일 때
+ $f LEFT ( 0 TIMES  y RIGHT ) =f LEFT ( 0 RIGHT ) f LEFT ( y RIGHT )$ 에서  $f LEFT ( 0 RIGHT ) =f LEFT ( 0 RIGHT ) f LEFT ( y RIGHT )$ 
+ $f LEFT ( 0 RIGHT ) LEFT { f LEFT ( y RIGHT ) -1 RIGHT } =0$ 이므로
+ $f LEFT ( 0 RIGHT ) =0$  또는  $f LEFT ( y RIGHT ) =1$ 이다.
+ $f LEFT ( 0 RIGHT ) !=  0$ 이면  $f LEFT ( 1 RIGHT ) =1$ ,  $f LEFT ( -1 RIGHT ) =1$ 이어야 하므로 함수  $f$ 가 일대일함수라는 조건에 모순이다.
+즉,  $f LEFT ( 0 RIGHT ) =0$ 이다.
+(ⅱ)  $x= it -1$ ,  $ y=1$ 일 때
+ $f LEFT ( -1 TIMES  1 RIGHT ) =f LEFT ( -1 RIGHT ) f LEFT ( 1 RIGHT )$ 에서  $f LEFT ( -1 RIGHT ) =f LEFT ( -1 RIGHT ) f LEFT ( 1 RIGHT )$ 
+ $f LEFT ( -1 RIGHT ) LEFT { f LEFT ( 1 RIGHT ) -1 RIGHT } =0$ 이므로
+ $f LEFT ( -1 RIGHT ) =0$  또는  $f LEFT ( 1 RIGHT ) =1$ 이다.
+(ⅰ)에서  $f LEFT ( 0 RIGHT ) =0$ 이고,  $f$ 가 일대일함수이므로  $f LEFT ( -1 RIGHT ) !=  0$ 이다.
+즉,  $f LEFT ( 1 RIGHT ) =1$ 이다.
+(ⅰ), (ⅱ)에서  $f LEFT ( 0 RIGHT ) =0$ ,  $f LEFT ( 1 RIGHT ) =1$ 이고,
+$f LEFT ( -1 RIGHT )$ 로 가능한 값은  $-4,~-3,~-2,~ CDOTS  ,~4$ 의  $9$ 개 중  $0,~1$ 을 제외한  $7$ 개이다.
+따라서 구하는 함수  $f$ 의 개수는  $7$ 이다.
+$A= LEFT { -1,~0,~1 RIGHT }$ ,  $B= LEFT { x` LEFT | `-4 LEQ  x LEQ  4,~x RIGHT . RIGHT .$ 는 정수 $it right}$
+에 대하여 함수  $f`:`A` rarrow  `B`$ 가 집합  $A$ 의 임의의 서로 다른 두 원소  $x,~y$ 에 대하여 다음을 만족시킬 때, 함수  $f$ 의 개수는?
+[그림]
+(가)  $f LEFT ( x RIGHT ) !=  f LEFT ( y RIGHT )$
+(나)  $f LEFT ( xy RIGHT ) =f LEFT ( x RIGHT ) f LEFT ( y RIGHT )$
+①  $6$ ②  $7$ ③  $8$ ④  $9$ ⑤  $10$
+집합  $X= LEFT { 1,~2,~3,~4 RIGHT }$ 에 대하여 다음 조건을 만족시키는 함수  $f`:`X`` rarrow  `X`$ 의 개수는?
+[정답] ②
+명제 ‘ $a !=  b$ 인 어떤  $a` IN  X`,~b` IN  X`$ 에 대하여  $f LEFT ( a RIGHT ) =f LEFT ( b RIGHT )$ 이다.’의 부정 ‘ $a !=  b$ 인 모든  $a` IN  X`,~b` IN  X`$ 에 대하여  $f LEFT ( a RIGHT ) !=  f LEFT ( b RIGHT )$ 이다.’를 만족시키는 함수  $f$ 는 일대일함수이다.
+따라서 구하는 함수의 개수는  $X`$ 에서  $X`$ 로의 함수의 개수에서  $X`$ 에서  $X`$ 로의 일대일함수의 개수를 뺀 것과 같다.
+$X`$ 에서  $X`$ 로의 함수의 개수는  $4 ^{4}$ 이고,  $X`$ 에서  $X`$ 로의 일대일함수의 개수는  $4!$ 이므로
+구하는 함수의 개수는  $4 ^{4} -4= 232$ 이다.
+[그림]
+집합  $X`$ 의 어떤 두 원소  $a,~b$   $LEFT ( a !=  b RIGHT )$ 에 대하여  $f LEFT ( a RIGHT ) =f LEFT ( b RIGHT )$ 이다.
+①  $230$ ②  $232$ ③  $234$ ④  $236$ ⑤  $238$
+[그림]
+두 집합  $X= LEFT { 1,~2,~3,~4,~5 RIGHT }$ ,  $Y= LEFT { 1,~2,~3 RIGHT }$ 에 대하여 치역이 공역과 같은 함수  $f`:`X`` rarrow  `Y`$ 의 개수를 구하시오.
+[정답]  $150$
+치역이  $LEFT { 1,~2,~3 RIGHT }$ 이어야 하므로 정의역의 원소는  $3$ 개/ $1$ 개/ $1$ 개 또는  $2$ 개/ $2$ 개/ $1$ 개로 나누어 공역에 대응되어야 한다.
+(ⅰ)  $3$ 개/ $1$ 개/ $1$ 개로 나누는 경우
+ $` _{5} rm C _{3} TIMES  ` _{2} rm C _{1} TIMES  ` _{1} rm C _{1} TIMES  {1} over {2!} =10 TIMES  2 TIMES  1 TIMES  {1} over {2} =10$
+(ⅱ)  $2$ 개/ $2$ 개/ $1$ 개로 나누는 경우
+ $` _{5} rm C _{2} TIMES  ` _{3} rm C _{2} TIMES  ` _{1} rm C _{1} TIMES  {1} over {2!} =10 TIMES  3 TIMES  1 TIMES  {1} over {2} =15$
+(ⅰ), (ⅱ)에서 정의역의 원소를  $3$ 묶음으로 나누는 방법의 수는  $10+15=25$ 이고,
+이 세 묶음을 치역의 원소  $1,~2,~3$ 에 하나씩 대응시키는 방법의 수가  $3!`=6$ 이므로 구하는 함수  $f$ 의 개수는
+$25 TIMES  6=150$ 이다.
+두 집합  $X= LEFT { 1,~2,~3,~4,~5 RIGHT }$ ,  $Y= LEFT { 1,~2,~3,~4,~5,~6 RIGHT }$ 에 대하여 함수  $f`:`X`` rarrow  `Y`$ 가 다음 조건을 만족시킬 때, 함수  $f$ 의 개수는?
+[정답] ①
+조건 (나)에서  $f LEFT ( 3 RIGHT ) =6$ 이다.
+[그림]
+조건 (가)에 의하여 함수  $f$ 는 일대일함수이다.
+$f LEFT ( 4 RIGHT ) =1$  또는  $f LEFT ( 4 RIGHT ) =2$ 이면 조건 (다)를 만족시키지 못하므로
+$f LEFT ( 4 RIGHT ) GEQ  3$ 이고  $f LEFT ( 4 RIGHT ) !=  6$ 이므로
+$f LEFT ( 4 RIGHT ) =3$  또는  $f LEFT ( 4 RIGHT ) =4$  또는  $f LEFT ( 4 RIGHT ) =5$ 이다.
+$f LEFT ( 4 RIGHT )$ 의 값에 따라 함수  $f$ 의 개수를 구해 보면 다음과 같다.
+(ⅰ)  $f LEFT ( 4 RIGHT ) =3$ 일 때
+ $f LEFT ( 1 RIGHT )$ 로 가능한 값은  $1,~2$ 로  $2$ 개
+ $f LEFT ( 2 RIGHT )$ 로 가능한 값은  $1,~2$  중  $f LEFT ( 1 RIGHT )$ 을 제외한  $1$ 개
+ $f LEFT ( 5 RIGHT )$ 로 가능한 값은  $1,~2,~4,~5$  중  $f LEFT ( 1 RIGHT )$ ,  $f LEFT ( 2 RIGHT )$ 을 제외한  $2$ 개이므로
+함수  $f$ 의 개수는  $2 TIMES  1 TIMES  2=4$
+(ⅱ)  $f LEFT ( 4 RIGHT ) =4$ 일 때
+ $f LEFT ( 1 RIGHT )$ 로 가능한 값은  $1,~2,~3$ 으로  $3$ 개
+ $f LEFT ( 2 RIGHT )$ 로 가능한 값은  $1,~2,~3$  중  $f LEFT ( 1 RIGHT )$ 을 제외한  $2$ 개
+ $f LEFT ( 5 RIGHT )$ 로 가능한 값은  $1,~2,~3,~5$  중  $f LEFT ( 1 RIGHT )$ ,  $f LEFT ( 2 RIGHT )$ 을 제외한  $2$ 개이므로
+함수  $f$ 의 개수는  $3 TIMES  2 TIMES  2=12$
+(ⅲ)  $f LEFT ( 4 RIGHT ) =5$ 일 때
+ $f LEFT ( 1 RIGHT )$ 로 가능한 값은  $1,~2,~3,~4$ 로  $4$ 개
+ $f LEFT ( 2 RIGHT )$ 로 가능한 값은  $1,~2,~3,~4$  중  $f LEFT ( 1 RIGHT )$ 을 제외한  $3$ 개
+ $f LEFT ( 5 RIGHT )$ 로 가능한 값은  $1,~2,~3,~4$  중  $f LEFT ( 1 RIGHT )$ ,  $f LEFT ( 2 RIGHT )$ 을 제외한  $2$ 개이므로
+함수  $f$ 의 개수는  $4 TIMES  3 TIMES  2=24$
+(ⅰ)~(ⅲ)에 의하여 구하는 함수  $f$ 의 개수는  $4+12+24=40$ 이다.
+[그림]
+(가) 집합  $X`$ 의 임의의 두 원소  $x _{1} ,~x _{2}$ 에 대하여  $f LEFT ( x _{1} RIGHT ) = f LEFT ( x _{2} RIGHT )$ 이면  $x _{1} =x _{2}$ 이다.
+(나)  $f LEFT ( 3 RIGHT ) =6$
+(다)  $f LEFT ( 1 RIGHT ) <f LEFT ( 4 RIGHT )$ ,  $f LEFT ( 2 RIGHT ) <f LEFT ( 4 RIGHT )$
+①  $40$ ②  $50$ ③  $60$ ④  $70$ ⑤  $80$
+[그림]
+집합  $X= LEFT { 1,~2,~3,~4,~5,~6 RIGHT }$ 에서  $X`$ 로의 함수  $f$ 에 대하여  $f LEFT ( 5 RIGHT ) =6$ 이고,  $LEFT ( f CIRC  f RIGHT ) LEFT ( x RIGHT ) =x$ 를 만족시키는 서로 다른 함수  $f$ 의 개수는?
+[정답] ⑤
+$LEFT ( f CIRC  f RIGHT ) LEFT ( x RIGHT ) =x$ 이면 집합  $X`$ 의 임의의 두 원소  $a,~b$ 에 대하여  $f LEFT ( a RIGHT ) =b$ 일 때  $f LEFT ( b RIGHT ) =a$ 를 만족시켜야 한다.
+즉,  $f LEFT ( a RIGHT ) =a$ 이거나 ( $a=b$ 인 경우)
+$f LEFT ( a RIGHT ) =b$ ,  $f LEFT ( b RIGHT ) =a$ 이어야 한다. ( $a != b$ 인 경우)
+$f LEFT ( 5 RIGHT ) =6$ 에서  $f LEFT ( 6 RIGHT ) =5$ 이므로  $5,~6$ 에 대한 대응은 생각하지 않고 집합  $X`$ 의 나머지 원소  $1,~2,~3,~4$ 에 대해서 이와 같은 조건을 만족시키는 함수  $f$ 의 개수를 구하면 다음과 같다.
+(ⅰ)  $f LEFT ( a RIGHT ) =b$ ,  $f LEFT ( b RIGHT ) =a$   $LEFT ( a !=  b RIGHT )$ 를 만족시키는 두 수  $a,~b$ 가 존재하지 않는 경우
+ $f LEFT ( 1 RIGHT ) =1$ ,  $f LEFT ( 2 RIGHT ) =2$ ,  $f LEFT ( 3 RIGHT ) =3$ ,  $f LEFT ( 4 RIGHT ) =4$ 로 함수  $f$ 의 개수는  $1$ 이다.
+[그림]
+(ⅱ)  $f LEFT ( a RIGHT ) =b$ ,  $f LEFT ( b RIGHT ) =a$   $LEFT ( a !=  b RIGHT )$ 를 만족시키는 두 수  $a,~b$ 가 한 쌍 존재하는 경우
+두 수  $a,~b$ 가 될 수 있는 값은
+ $LEFT { 1,~2 RIGHT }$ ,  $LEFT { 1,~3 RIGHT }$ ,  $LEFT { 1,~4 RIGHT }$ ,  $LEFT { 2,~3 RIGHT }$ ,  $LEFT { 2,~4 RIGHT }$ ,  $LEFT { 3,~4 RIGHT }$ 로  $6$ 가지이고, 이때 나머지  $2$ 개의 원소는 모두 자기 자신에게 대응되면 되므로 함수  $f$ 의 개수는  $6$ 이다.
+[그림]
+(ⅲ)  $f LEFT ( a RIGHT ) =b$ ,  $f LEFT ( b RIGHT ) =a$   $LEFT ( a !=  b RIGHT )$ 를 만족시키는 두 수  $a,~b$ 가 두 쌍 존재하는 경우
+ $1,~2,~3,~4$ 의 네 수를 두 원소씩 두 쌍으로 묶는 경우는
+ $LEFT { 1,~2 RIGHT }$ ,  $LEFT { 3,~4 RIGHT }$  또는  $LEFT { 1,~3 RIGHT }$ ,  $LEFT { 2,~4 RIGHT }$  또는  $LEFT { 1,~4 RIGHT }$ ,  $LEFT { 2,~3 RIGHT }$ 의  $3$ 가지이므로 함수  $f$ 의 개수는  $3$ 이다.
+[그림]
+(ⅰ)~(ⅲ)에서 구하는 함수  $f$ 의 개수는  $1+6+3=10$ 이다.
+①  $6$ ②  $7$ ③  $8$ ④  $9$ ⑤  $10$
+집합  $X= LEFT { 1,~2,~3,~4,~5 RIGHT }$ 에서 집합  $Y= LEFT { 1,~2,~3,~4,~5,~6,~7,~8,~9 RIGHT }$ 로의 함수  $f$  중에서 다음 조건을 만족시키는 함수의 개수는?
+[정답] ⑤
+조건 (가)에 의하여
+$f LEFT ( 1 RIGHT ) <f LEFT ( 2 RIGHT ) <f LEFT ( 3 RIGHT ) <f LEFT ( 4 RIGHT ) <f LEFT ( 5 RIGHT )$
+조건 (나)에서  $f LEFT ( 4 RIGHT ) =f LEFT ( 1 RIGHT ) +5$ 이므로
+다음과 같이 나누어 생각할 수 있다.
+(ⅰ)  $f LEFT ( 1 RIGHT ) =1$ ,  $f LEFT ( 4 RIGHT ) =6$ 일 때
+ $1<f LEFT ( 2 RIGHT ) <f LEFT ( 3 RIGHT ) <6$ 이므로
+ $f LEFT ( 2 RIGHT )$ ,  $f LEFT ( 3 RIGHT )$ 의 값을 정하는 경우의 수는  $` _{4} rm C _{2} =6$ 
+ $f LEFT ( 5 RIGHT ) >6$ 에서  $f LEFT ( 5 RIGHT )$ 의 값은  $7,~8,~9$  중 하나이므로
+ $f LEFT ( 5 RIGHT )$ 의 값을 정하는 경우의 수는  $3$ 
+따라서 함수  $f$ 의 개수는  $6 TIMES  3=18$
+(ⅱ)  $f LEFT ( 1 RIGHT ) =2$ ,  $f LEFT ( 4 RIGHT ) =7$ 일 때
+ $2<f LEFT ( 2 RIGHT ) <f LEFT ( 3 RIGHT ) <7$ 이므로
+ $f LEFT ( 2 RIGHT )$ ,  $f LEFT ( 3 RIGHT )$ 의 값을 정하는 경우의 수는  $` _{4} rm C _{2} =6$ 
+ $f LEFT ( 5 RIGHT ) >7$ 에서  $f LEFT ( 5 RIGHT )$ 의 값은  $8,~9$  중 하나이므로
+ $f LEFT ( 5 RIGHT )$ 의 값을 정하는 경우의 수는  $2$ 
+따라서 함수  $f$ 의 개수는  $6 TIMES  2=12$
+(ⅲ)  $f LEFT ( 1 RIGHT ) =3$ ,  $f LEFT ( 4 RIGHT ) =8$ 일 때
+ $3<f LEFT ( 2 RIGHT ) <f LEFT ( 3 RIGHT ) <8$ 이므로  $f LEFT ( 2 RIGHT )$ ,  $f LEFT ( 3 RIGHT )$ 의 값을 정하는 경우의 수는  $` _{4} rm C _{2} =6$ 
+ $f LEFT ( 5 RIGHT ) >8$ 에서  $f LEFT ( 5 RIGHT )$ 의 값은  $9$ 이므로  $f LEFT ( 5 RIGHT )$ 의 값을 정하는 경우의 수는  $1$ 
+따라서 함수  $f$ 의 개수는  $6 TIMES  1=6$
+(ⅰ)~(ⅲ)에 의하여 구하는 함수  $f$ 의 개수는
+$18+12+6=36$
+[그림]
+(가)  $f LEFT ( n RIGHT ) +1 LEQ  f LEFT ( n+1 RIGHT )$   $LEFT ( n=1,~2,~3,~4 RIGHT )$
+(나)  $f LEFT ( 4 RIGHT ) =f LEFT ( 1 RIGHT ) +5$
+①  $20$ ②  $24$ ③  $28$ ④  $32$ ⑤  $36$
+집합  $X= LEFT { 1,~2,~3,~4,~5 RIGHT }$ 에 대하여  $X`$ 에서  $X`$ 로의 함수  $f$  중에서 다음 조건을 만족시키는 함수의 개수는?
+[정답] ④
+조건 (다)에서  $f LEFT ( 1 RIGHT ) =2$  또는  $f LEFT ( 2 RIGHT ) =4$ 이다.
+(ⅰ)  $f LEFT ( 1 RIGHT ) =2$ 일 때
+ $f LEFT ( 3 RIGHT ) =3$ 이면  $f LEFT ( 2 RIGHT )$ ,  $f LEFT ( 4 RIGHT )$ ,  $f LEFT ( 5 RIGHT )$ 의 값을 정하는 경우의 수는  $3!`=6$ 
+ $f LEFT ( 3 RIGHT ) =1$ 이면  $f LEFT ( f LEFT ( 3 RIGHT ) RIGHT ) =f LEFT ( 1 RIGHT ) =2 != 3$ 이므로
+ $f LEFT ( 3 RIGHT )  !=  1$ 이다.
+ $f LEFT ( 3 RIGHT ) =4$ 이면  $f LEFT ( f LEFT ( 3 RIGHT ) RIGHT ) =f LEFT ( 4 RIGHT ) = 3$ 이고
+ $f LEFT ( 2 RIGHT )$ ,  $f LEFT ( 5 RIGHT )$ 의 값을 정하는 경우의 수는  $2!`=2$ 
+마찬가지로  $f LEFT ( 3 RIGHT ) =5$ 이면  $f LEFT ( 5 RIGHT ) =3$ 이고
+ $f LEFT ( 2 RIGHT )$ ,  $f LEFT ( 4 RIGHT )$ 의 값을 정하는 경우의 수는  $2!`=2$ 
+따라서 함수  $f$ 의 개수는  $6+2 TIMES  2=10$
+(ⅱ)  $f LEFT ( 2 RIGHT ) =4$ 일 때
+(ⅰ)의 경우와 마찬가지로 함수  $f$ 의 개수는
+ $6+2 TIMES  2=10$
+(ⅲ)  $f LEFT ( 1 RIGHT ) =2$ ,  $f LEFT ( 2 RIGHT ) =4$ 일 때
+ $f LEFT ( 3 RIGHT ) =1$  또는  $f LEFT ( 3 RIGHT ) =3$  또는  $f LEFT ( 3 RIGHT ) =5$ 이다.
+ $f LEFT ( 3 RIGHT ) =3$ 이면  $f LEFT ( 4 RIGHT )$ ,  $f LEFT ( 5 RIGHT )$ 의 값을 정하는 경우의 수는  $2!`=2$ 
+ $f LEFT ( 3 RIGHT ) =1$ 이면  $f LEFT ( f LEFT ( 3 RIGHT ) RIGHT ) =f LEFT ( 1 RIGHT ) =2 != 3$ 이므로
+ $f LEFT ( 3 RIGHT )  !=  1$ 
+ $f LEFT ( 3 RIGHT ) =5$ 이면  $f LEFT ( f LEFT ( 3 RIGHT ) RIGHT ) =f LEFT ( 5 RIGHT ) =3$ 이므로  $f LEFT ( 4 RIGHT ) =1$ 
+따라서 함수  $f$ 의 개수는  $2+ 1=3$
+(ⅰ)~(ⅲ)에서 구하는 함수  $f$ 의 개수는
+$10+10-3=17$
+[그림]
+(가) 함수  $f$ 는 일대일대응이다.
+(나)  $f LEFT ( f LEFT ( 3 RIGHT ) RIGHT ) =3$
+(나) 집합  $X`$ 의 어떤 원소  $x$ 에 대하여  $f LEFT ( x RIGHT ) =2x$ 이다.
+①  $11$ ②  $13$ ③  $15$ ④  $17$ ⑤  $19$
+[그림]
+함수  $f$ 가 모든 자연수  $n$ 에 대하여
+[정답] ⑤
+ㄱ.  $f LEFT ( 2n RIGHT ) =f LEFT ( n RIGHT )$ 에 의하여
+ $f LEFT ( 100 RIGHT ) =f LEFT ( 50 RIGHT ) =f LEFT ( 25 RIGHT )$ 
+ $f LEFT ( 2n-1 RIGHT ) = LEFT ( -1 RIGHT ) ^{n}$ 에 의하여
+ $f LEFT ( 25 RIGHT ) =f LEFT ( 2 TIMES  13-1 RIGHT ) = LEFT ( -1 RIGHT ) ^{13} = it -1$  (참)
+ㄴ.  $f LEFT ( 2n-1 RIGHT ) = LEFT ( -1 RIGHT ) ^{n}$ 에서
+ $n=1$ 일 때  $f LEFT ( 1 RIGHT ) = it -1$ ,
+ $n=2$ 일 때  $f LEFT ( 3 RIGHT ) =1$ ,
+ $n=3$ 일 때  $f LEFT ( 5 RIGHT ) = it -1$ ,
+ $n=4$ 일 때  $f LEFT ( 7 RIGHT ) =1$ ,
+ $n=5$ 일 때  $f LEFT ( 9 RIGHT ) = it -1$ 이다.
+ $f LEFT ( 2n RIGHT ) =f LEFT ( n RIGHT )$ 에 의하여
+ $f LEFT ( 2 RIGHT ) =f LEFT ( 1 RIGHT ) = it -1$ ,
+ $f LEFT ( 4 RIGHT ) =f LEFT ( 2 RIGHT ) =f LEFT ( 1 RIGHT ) = it -1$ ,
+ $f LEFT ( 6 RIGHT ) =f LEFT ( 3 RIGHT ) =1$ ,
+ $f LEFT ( 8 RIGHT ) =f LEFT ( 4 RIGHT ) =f LEFT ( 2 RIGHT ) =f LEFT ( 1 RIGHT ) = it -1$ ,
+ $f LEFT ( 10 RIGHT ) =f LEFT ( 5 RIGHT ) = it -1$ 
+ $THEREFORE ~f LEFT ( 1 RIGHT ) +f LEFT ( 2 RIGHT ) +f LEFT ( 3 RIGHT ) +` CDOTS `+f LEFT ( 10 RIGHT ) = it -4$  (참)
+ㄷ.  $n$ 이 홀수이므로  $n=2k-1$  ( $k$ 는 자연수)이라 하면
+ $f LEFT ( n RIGHT ) =f LEFT ( 2k-1 RIGHT ) = LEFT ( -1 RIGHT ) ^{k}$
+$f LEFT ( n+8 RIGHT )$  $=f LEFT ( 2k+7 RIGHT )$ 
+ $=f LEFT ( 2 LEFT ( k+4 RIGHT ) -1 RIGHT ) = LEFT ( -1 RIGHT ) ^{k+4}$
+이때  $k$ 가 홀수이면  $k+4$ 도 홀수이므로
+$f LEFT ( n RIGHT ) =f LEFT ( n+8 RIGHT ) = it -1$
+$k$ 가 짝수이면  $k+4$ 도 짝수이므로
+$f LEFT ( n RIGHT ) =f LEFT ( n+8 RIGHT ) =1$
+$THEREFORE ~f LEFT ( n RIGHT ) =f LEFT ( n+8 RIGHT )$  (참)
+따라서 옳은 것은 ㄱ, ㄴ, ㄷ이다.
+$f LEFT ( 2n RIGHT ) =f LEFT ( n RIGHT )$ ,  $f LEFT ( 2n-1 RIGHT ) = LEFT ( -1 RIGHT ) ^{n}$
+을 만족시킬 때, <보기>에서 옳은 것만을 있는 대로 고른 것은?
+[표]
+[ 보 기 ]
+ㄱ.  $f LEFT ( 100 RIGHT ) = it -1$
+ㄴ.  $f LEFT ( 1 RIGHT ) +f LEFT ( 2 RIGHT ) +f LEFT ( 3 RIGHT ) +` CDOTS `+f LEFT ( 10 RIGHT ) = it -4$
+ㄷ.  $n$ 이 홀수이면  $f LEFT ( n RIGHT ) =f LEFT ( n+8 RIGHT )$ 이다.
+① ㄱ② ㄱ, ㄴ③ ㄱ, ㄷ④ ㄴ, ㄷ⑤ ㄱ, ㄴ, ㄷ
+함수  $f LEFT ( x RIGHT )$ 가
+[정답]  $3$
+$f LEFT ( x RIGHT ) = {cases{-2x-1&~ LEFT ( x<0 RIGHT )#``````x-1&~ LEFT ( x GEQ  0 RIGHT )}}$ 이므로
+함수  $y=f LEFT ( x RIGHT )$ 의 그래프는 다음 그림과 같다.
+[그림]
+$f LEFT ( f LEFT ( x RIGHT ) RIGHT ) = {cases{-2f LEFT ( x RIGHT ) -1&~ LEFT ( f LEFT ( x RIGHT ) <0 RIGHT )#``````f LEFT ( x RIGHT ) -1&~ LEFT ( f LEFT ( x RIGHT ) GEQ  0 RIGHT )}}$
+에서
+$f LEFT ( f LEFT ( x RIGHT ) RIGHT ) = {cases{``````f LEFT ( x RIGHT ) -1&~ LEFT ( x LEQ  it - {1} over {2} RIGHT )#-2f LEFT ( x RIGHT ) -1&~ LEFT ( - {1} over {2} <x<1 RIGHT )#``````f LEFT ( x RIGHT ) -1&~ LEFT ( x GEQ  1 RIGHT )}}$
+즉,  $f LEFT ( f LEFT ( x RIGHT ) RIGHT ) = {cases{-2x-2&~ LEFT ( x LEQ  it - {1} over {2} RIGHT )#```4x+1&~ LEFT ( - {1} over {2} <x<0 RIGHT )#-2x+1&~ LEFT ( 0 LEQ  x<1 RIGHT )#`````x-2&~ LEFT ( x GEQ  1 RIGHT )}}$
+이므로 함수  $y=f LEFT ( f LEFT ( x RIGHT ) RIGHT )$ 의 그래프는 다음 그림과 같다.
+[그림]
+$f LEFT ( f LEFT ( f LEFT ( x RIGHT ) RIGHT ) RIGHT ) =f LEFT ( x RIGHT ) +1$ 에서  $f LEFT ( x RIGHT ) =t$ 라 하면
+$f LEFT ( f LEFT ( t RIGHT ) RIGHT ) =t+1$
+즉,  $t= it -1$  또는  $t=0$
+방정식  $f LEFT ( x RIGHT ) = it -1$ 의 서로 다른 실근의 개수는  $1$ 이고
+방정식  $f LEFT ( x RIGHT ) =0$ 의 서로 다른 실근의 개수는  $2$ 이므로
+방정식  $f LEFT ( f LEFT ( f LEFT ( x RIGHT ) RIGHT ) RIGHT ) =f LEFT ( x RIGHT ) +1$ 의 서로 다른 실근의 개수는  $3$ 이다.
+$f LEFT ( x RIGHT ) = {3} over {2} LEFT | x RIGHT | - {1} over {2} x-1$
+일 때, 방정식  $f LEFT ( f LEFT ( f LEFT ( x RIGHT ) RIGHT ) RIGHT ) =f LEFT ( x RIGHT ) +1$ 의 서로 다른 실근의 개수를 구하시오.
+$0 LEQ  x LEQ  3$ 에서 정의된 두 함수  $y=f LEFT ( x RIGHT )$ 와  $y= LEFT ( g CIRC  f RIGHT ) LEFT ( x RIGHT )$ 의 그래프가 그림과 같다.
+[정답] ④
+함수  $f LEFT ( x RIGHT )$ 는 주어진 그래프에 의하여
+$f LEFT ( x RIGHT ) = {cases{2-x&~ LEFT ( 0 LEQ  x<1 RIGHT )#``````1&~ LEFT ( 1 LEQ  x<2 RIGHT )#3-x&~ LEFT ( 2 LEQ  x<3 RIGHT )}}$
+이고 함수  $y= LEFT ( g CIRC  f RIGHT ) LEFT ( x RIGHT )$ 는 주어진 그래프에 의하여
+$LEFT ( g CIRC  f RIGHT ) LEFT ( x RIGHT ) = {cases{``````2x&~ LEFT ( 0 LEQ  x<1 RIGHT )#````````2&~ LEFT ( 1 LEQ  x<2 RIGHT )#6-2x&~ LEFT ( 2 LEQ  x<3 RIGHT )}}$
+(ⅰ)  $0 LEQ  x<1$ 일 때,  $1<f LEFT ( x RIGHT )  LEQ  2$ 이고
+ $g LEFT ( f LEFT ( x RIGHT ) RIGHT ) =2x$ 이므로  $g LEFT ( 2-x RIGHT ) =2x$ 
+ $2-x=t$ 라 하면  $x=2-t$ 이다.
+즉,  $g LEFT ( t RIGHT ) =2 LEFT ( 2-t RIGHT ) =4-2t$ 에서
+ $g LEFT ( x RIGHT ) =4-2x$   $LEFT ( 1<x LEQ  2 RIGHT )$ 이다.
+(ⅱ)  $2 LEQ  x LEQ  3$ 일 때,  $0 LEQ  f LEFT ( x RIGHT ) LEQ  1$ 이고
+ $g LEFT ( f LEFT ( x RIGHT ) RIGHT ) =6-2x$ 이므로  $g LEFT ( 3-x RIGHT ) =6-2x$ 
+ $3-x=t$ 라 하면  $x=3-t$ 이다.
+즉,  $g LEFT ( t RIGHT ) =6-2 LEFT ( 3-t RIGHT ) =2t$ 에서
+ $g LEFT ( x RIGHT ) =2x$   $LEFT ( 0 LEQ  x LEQ  1 RIGHT )$
+(ⅰ), (ⅱ)에 의하여  $g LEFT ( x RIGHT ) = {cases{`````2x&~ LEFT ( 0 LEQ  x LEQ  1 RIGHT )#4-2x&~ LEFT ( 1<x LEQ  2 RIGHT )}}$ 이고 그래프는 다음 그림과 같다.
+[그림]
+이때 방정식  $LEFT ( g CIRC  g RIGHT ) LEFT ( x RIGHT ) =x$ 의 서로 다른 실근의 개수는 함수  $y= LEFT ( g CIRC  g RIGHT ) LEFT ( x RIGHT )$ 의 그래프와 직선  $y=x$ 의 교점의 개수와 같다.
+함수  $g LEFT ( x RIGHT )$ 에서  $x=1$ 일 때를 기준으로 함수식이 바뀌므로 방정식  $g LEFT ( x RIGHT ) =1$ 의 두 근  $x= {1} over {2} ,~x= {3} over {2}$ 과  $g LEFT ( x RIGHT )$ 의 함수식이 바뀌는  $x=1$ 을 기준으로  $x$ 의 범위를 나누어 함수  $y= LEFT ( g CIRC  g RIGHT ) LEFT ( x RIGHT )$ 의 그래프를 그리면 다음 그림과 같다.
+[그림]
+따라서 방정식  $LEFT ( g CIRC  g RIGHT ) LEFT ( x RIGHT ) =x$ 의 서로 다른 실근의 개수는  $4$ 이다.
+[그림]
+$0 LEQ  x LEQ  2$ 에서 정의된 함수  $y=g LEFT ( x RIGHT )$ 에 대하여 방정식  $LEFT ( g CIRC  g RIGHT ) LEFT ( x RIGHT ) =x$ 의 서로 다른 실근의 개수는?
+①  $1$ ②  $2$ ③  $3$ ④  $4$ ⑤  $5$
+다항함수  $f LEFT ( x RIGHT )$ 가 다음 조건을 만족시킬 때, 함수  $g LEFT ( x RIGHT ) =x ^{2} +3x+1$ 에 대하여 함수  $LEFT ( g CIRC  f RIGHT ) LEFT ( x RIGHT )$ 는  $x=m$ 에서 최솟값  $n$ 을 가진다. 실수  $m,~n$ 에 대하여  $6m+4n$ 의 값을 구하시오.
+[정답]  $10$
+다항함수  $f LEFT ( x RIGHT )$ 가  $k$ 차 ( $k$ 는 자연수)일 때,
+$f LEFT ( f LEFT ( x RIGHT ) RIGHT )$ 의 최고차항은  $LEFT ( x ^{k} RIGHT ) ^{k} =x ^{k ^{2}}$ 항이므로 차수가  $k ^{2}$ 이다.
+따라서 조건 (가)를 만족시키려면  $k ^{2} =1$ 에서  $k=1$ 이므로
+$f LEFT ( x RIGHT )$ 는 일차함수이다.
+일차함수인  $f LEFT ( x RIGHT )$ 는 역함수가 존재하므로
+$f LEFT ( f LEFT ( x RIGHT ) RIGHT ) =x$ 에서  $f LEFT ( x RIGHT ) =f` ^{-1} LEFT ( x RIGHT )$ 이다.
+따라서 조건 (나)에서  $f LEFT ( -1 RIGHT ) =2$ 이면  $f` ^{-1} LEFT ( -1 RIGHT ) =f LEFT ( -1 RIGHT ) =2$ 이므로  $f LEFT ( 2 RIGHT ) = it -1$ 이다.
+$f LEFT ( x RIGHT ) =ax+b$  ( $a,~b$ 는 실수)라 하면
+$f LEFT ( -1 RIGHT ) =2$ ,  $f LEFT ( 2 RIGHT ) = it -1$ 이므로
+$-a+b=2$ ,  $2a+b= it -1$ 에서  $a= it -1,~b=1$
+$THEREFORE ~f LEFT ( x RIGHT ) = it -x+1$
+$g LEFT ( x RIGHT ) =x ^{2} +3x+1= LEFT ( x+ {3} over {2} RIGHT ) ^{2} - {5} over {4}$ 에서
+$g LEFT ( f LEFT ( x RIGHT ) RIGHT ) = LEFT ( -x+ {5} over {2} RIGHT ) ^{2} - {5} over {4} = LEFT ( x- {5} over {2} RIGHT ) ^{2} - {5} over {4}$ 이므로
+함수  $LEFT ( g CIRC  f RIGHT ) LEFT ( x RIGHT )$ 는  $x= {5} over {2}$ 에서 최솟값  $- {5} over {4}$ 를 가진다.
+따라서  $m= {5} over {2}$ ,  $n= it - {5} over {4}$ 이므로
+$6m+4n=6 TIMES  {5} over {2} +4 TIMES  LEFT ( - {5} over {4} RIGHT ) =10$
+[그림]
+(가) 모든 실수  $x$ 에 대하여  $f LEFT ( f LEFT ( x RIGHT ) RIGHT ) =x$ 이다.
+(나)  $f LEFT ( -1 RIGHT ) =2$
+공집합이 아닌 집합  $X`$ 를 정의역으로 하는 두 함수
+[정답]  $8$
+$f LEFT ( x RIGHT ) =g LEFT ( x RIGHT )$ 가 되도록 하는  $x$ 의 값은
+$x ^{2} +2x=x ^{3} -ax ^{2} +ax+2a$ 에서
+$x ^{3} - LEFT ( a+1 RIGHT ) x ^{2} + LEFT ( a-2 RIGHT ) x+2a=0$
+$LEFT ( x+1 RIGHT ) LEFT ( x-2 RIGHT ) LEFT ( x-a RIGHT ) =0$
+$THEREFORE ~x= it -1$  또는  $x=2$  또는  $x=a$
+이때  $a= it -1$  또는  $a=2$ 일 경우 집합  $X`$ 가 될 수 있는 집합은
+$X= LEFT { -1 RIGHT }$ ,  $X= LEFT { 2 RIGHT }$ ,  $X= LEFT { -1,~2 RIGHT }$ 이므로
+각 집합  $X`$ 의 모든 원소의 합은
+$-1+2+ LEFT ( -1+2 RIGHT ) =2$ 에서 주어진 조건을 만족시키지 않는다.
+따라서  $a !=  it -1$ ,  $a !=  2$ 이고, 집합  $X`$ 는  $-1,~2,~a$  중에서 원소를 갖는 집합이므로 집합  $X`$ 의 개수는  $k=2 ^{3} -1=7$ 이고, 각 집합은
+$LEFT { -1 RIGHT }$ ,  $LEFT { 2 RIGHT }$ ,  $LEFT { a RIGHT }$ ,  $LEFT { -1,~2 RIGHT }$ ,  $LEFT { -1,~a RIGHT }$ ,  $LEFT { 2,~a RIGHT }$ ,  $LEFT { -1,~2,~a RIGHT }$
+이므로 각 집합의 모든 원소의 합은
+$4 TIMES  LEFT ( -1+2+a RIGHT ) =8$ 에서  $a=1$
+$THEREFORE ~a+k=1+7=8$
+$f LEFT ( x RIGHT ) =x ^{2} +2x$ ,  $g LEFT ( x RIGHT ) =x ^{3} -ax ^{2} +ax+2a$
+에 대하여  $f=g$ 가 되도록 하는 집합  $X`$ 의 개수는  $k$ 이고,  $f=g$ 가 되도록 하는 각 집합  $X`$ 의 모든 원소의 합은  $8$ 이다. 상수  $a,~k$ 에 대하여  $a+k$ 의 값을 구하시오.
+양수  $a$ 에 대하여 집합  $X`$ 를 정의역으로 하는 함수
+[정답]  $11$
+$g LEFT ( a RIGHT )$ 의 값은 방정식  $f LEFT ( x RIGHT ) =x$ 의 서로 다른 실근의 개수와 같다.
+(ⅰ)  $ x<4$ 일 때
+ $f LEFT ( x RIGHT ) =x$ 에서  $x ^{2} -3x+a=x$ 
+즉,  $x ^{2} -4x+a=0$ 
+이때 이차방정식  $x ^{2} -4x+a=0$ 의 판별식을  $D`$ 라 하면
+ ${D} over {4} =4-a$ 이므로
+ $0<a<4$ 이면  ${D} over {4} >0$ 이고, 이차함수  $y=x ^{2} -4x+a$ 의 축의 방정식은  $x=2$ 이므로
+방정식  $x ^{2} -4x+a=0$ 은  $x<4$ 에서 서로 다른 두 실근을 갖는다.
+ $a=4$ 이면  ${D} over {4} =0$ 이므로 방정식  $x ^{2} -4x+a=0$ 은 중근을 갖는다.
+ $a>4$ 이면  ${D} over {4} <0$ 이므로 방정식  $x ^{2} -4x+a=0$ 은 실근을 갖지 않는다.
+(ⅱ)  $ x GEQ  4$ 일 때
+ $f LEFT ( x RIGHT ) =x$ 에서  $a+2=x$ 이므로
+ $a<2$ 이면 방정식  $f LEFT ( x RIGHT ) =x$ 는 실근을 갖지 않는다.
+ $a GEQ  2$ 이면 방정식  $f LEFT ( x RIGHT ) =x$ 는 오직 하나의 실근을 갖는다.
+(ⅰ), (ⅱ)에서  $g LEFT ( a RIGHT )$ 는 다음과 같다.
+$g LEFT ( a RIGHT ) = {cases{2&~ LEFT ( 0<a<2 RIGHT )#3&~ LEFT ( 2 LEQ  a<4 RIGHT )#2&~ LEFT ( a=4 RIGHT )#1&~ LEFT ( a>4 RIGHT )}}$
+$therefore~$  $g LEFT ( 1 RIGHT ) +g LEFT ( 2 RIGHT ) +g LEFT ( 3 RIGHT ) +g LEFT ( 4 RIGHT ) +g LEFT ( 5 RIGHT )$ 
+ $=2+3+3+2+1$ 
+ $=11$
+$f LEFT ( x RIGHT ) = {cases{x ^{2} -3x+a&~ LEFT ( x<4 RIGHT )#````````````a+2&~ LEFT ( x GEQ  4 RIGHT )}}$
+가 항등함수일 때, 집합  $X`$ 의 원소의 개수의 최댓값을  $g LEFT ( a RIGHT )$ 라 하자.  $g LEFT ( 1 RIGHT ) +g LEFT ( 2 RIGHT ) +g LEFT ( 3 RIGHT ) +g LEFT ( 4 RIGHT ) +g LEFT ( 5 RIGHT )$ 의 값을 구하시오.
+집합  $X= LEFT { 1,~2,~3,~4 RIGHT }$ 에서 집합  $Y= LEFT { 1,~2,~3,~4,~5 RIGHT }$ 로의 함수  $f$ 에 대하여 두 집합  $A,~B`$ 를
+[정답] ④
+$n LEFT ( A CUP  B` RIGHT ) =n LEFT ( A RIGHT ) +n LEFT ( B` RIGHT ) -n LEFT ( A SMALLINTER  B` RIGHT )$ 이다.
+(ⅰ)  $n LEFT ( A RIGHT )$ 는  $f LEFT ( 2 RIGHT ) LEQ  f LEFT ( 3 RIGHT )$ 을 만족시키는 함수  $f$ 의 개수이다.
+ $f LEFT ( 2 RIGHT ) =1$ 일 때,  $f LEFT ( 3 RIGHT )$ 으로 가능한 값은  $1,~2,~3,~4,~5$ 로  $5$ 개
+ $f LEFT ( 2 RIGHT ) =2$ 일 때,  $f LEFT ( 3 RIGHT )$ 으로 가능한 값은  $2,~3,~4,~5$ 로  $4$ 개
+ $f LEFT ( 2 RIGHT ) =3$ 일 때,  $f LEFT ( 3 RIGHT )$ 으로 가능한 값은  $3,~4,~5$ 로  $3$ 개
+ $f LEFT ( 2 RIGHT ) =4$ 일 때,  $f LEFT ( 3 RIGHT )$ 으로 가능한 값은  $4,~5$ 로  $2$ 개
+ $f LEFT ( 2 RIGHT ) =5$ 일 때,  $f LEFT ( 3 RIGHT )$ 으로 가능한 값은  $5$ 로  $1$ 개
+따라서  $f LEFT ( 2 RIGHT )$ ,  $f LEFT ( 3 RIGHT )$ 의 값을 정하는 방법의 수는
+ $5+4+3+2+1=15$ 이고,
+ $f LEFT ( 1 RIGHT )$ ,  $f LEFT ( 4 RIGHT )$ 의 값을 정하는 방법의 수가 각각  $5$ 이므로
+ $n LEFT ( A RIGHT ) =15 TIMES  5 TIMES  5=375$
+(ⅱ)  $n LEFT ( B` RIGHT )$ 는 일대일함수인  $f$ 의 개수이므로
+ $n LEFT ( B` RIGHT ) =` _{5} rm P _{4} =5 TIMES  4 TIMES  3 TIMES  2=120$
+(ⅲ)  $n LEFT ( A SMALLINTER  B` RIGHT )$ 는  $f LEFT ( 2 RIGHT ) LEQ  f LEFT ( 3 RIGHT )$ 이면서 일대일함수인  $f$ 의 개수이다.
+즉,  $f LEFT ( 2 RIGHT ) <f LEFT ( 3 RIGHT )$ 이면서 일대일함수인  $f$ 의 개수이다.
+ $1 LEQ  f LEFT ( 2 RIGHT ) <f LEFT ( 3 RIGHT ) LEQ  5$ 이므로
+ $f LEFT ( 2 RIGHT )$ ,  $f LEFT ( 3 RIGHT )$ 의 값을 정하는 방법의 수는
+ $` _{5} rm C _{2} =10$ 이고,
+ $f LEFT ( 1 RIGHT )$ 로 가능한 값은  $1,~2,~3,~4,~5$  중  $f LEFT ( 2 RIGHT )$ ,  $f LEFT ( 3 RIGHT )$ 의 값을 제외한  $3$ 개,
+ $f LEFT ( 4 RIGHT )$ 로 가능한 값은  $1,~2,~3,~4,~5$  중  $f LEFT ( 1 RIGHT )$ ,  $f LEFT ( 2 RIGHT )$ ,  $f LEFT ( 3 RIGHT )$ 의 값을 제외한  $2$ 개이므로
+ $n LEFT ( A SMALLINTER  B` RIGHT ) =10 TIMES  3 TIMES  2=60$
+(ⅰ)~(ⅲ)에서  $n LEFT ( A CUP  B` RIGHT ) =375+120-60=435$
+$A= LEFT { f` LEFT | `f LEFT ( 2 RIGHT ) LEQ f LEFT ( 3 RIGHT ) RIGHT } RIGHT .$ ,
+$B= LEFT { f` LEFT | `x _{1} ,~x _{2} IN  X` RIGHT . RIGHT .$ 일 때,  $x _{1} != x _{2}$ 이면  $f LEFT ( x _{1} RIGHT ) !=  f LEFT ( x _{2} RIGHT )$ 이다. $it right}$
+로 정의할 때,  $n LEFT ( A CUP  B` RIGHT )$ 의 값은?
+①  $345$ ②  $375$ ③  $405$ ④  $435$ ⑤  $465$
+정의역과 공역이 자연수 전체의 집합인 두 함수  $f,~g$ 를
+[정답] (1)  $15$   (2)  $50$
+(1)  $2 ^{x}$ 의 일의 자리의 수는 네 수  $2,~4,~8,~6$ 이 차례로 반복된다.
+따라서 함수  $LEFT ( g CIRC  f RIGHT ) LEFT ( x RIGHT )$ 의 함숫값은
+ $g LEFT ( f LEFT ( 1 RIGHT ) RIGHT ) =2k$ ,  $g LEFT ( f LEFT ( 2 RIGHT ) RIGHT ) =4k$ ,  $g LEFT ( f LEFT ( 3 RIGHT ) RIGHT ) =8k$ ,  $g LEFT ( f LEFT ( 4 RIGHT ) RIGHT ) =6k$ 가 차례로 반복되므로
+함수  $g CIRC  f$ 의 치역은  $LEFT { 2k,~4k,~8k,~6k RIGHT }$   $LEFT ( k !=  0 RIGHT )$ 이고,
+치역의 모든 원소의 합은  $2k+4k+6k+8k=20k$ 이다.
+ $20k=300$ 에서  $k=15$
+(2) 함수  $LEFT ( f CIRC  g RIGHT ) LEFT ( x RIGHT ) =$ ( $2 ^{kx}$ 의 일의 자리의 수)이므로
+자연수  $m$ 에 대하여
+ $k=1,~5,~9,~ CDOTS  ,~4m-3$ 일 때,
+함수  $f CIRC  g$ 의 치역은  $LEFT { 2,~4,~8,~6 RIGHT }$ ,
+ $k=2,~6,~10,~ CDOTS  ,~4m-2$ 일 때,
+함수  $f CIRC  g$ 의 치역은  $LEFT { 4,~6 RIGHT }$ ,
+ $k=3,~7,~11,~ CDOTS  ,~4m-1$ 일 때,
+함수  $f CIRC  g$ 의 치역은  $LEFT { 8,~4,~2,~6 RIGHT }$ ,
+ $k=4,~8,~12,~ CDOTS  ,~4m$ 일 때,
+함수  $f CIRC  g$ 의 치역은  $LEFT { 6 RIGHT }$  이다.
+즉,  $LEFT . n LEFT ( LEFT { LEFT ( f CIRC  g RIGHT ) LEFT ( x RIGHT ) ` LEFT | `x RIGHT . RIGHT . RIGHT . RIGHT .$ 는 자연수 $LEFT . LEFT . it RIGHT } RIGHT ) =2$ 를 만족시키는 자연수  $k$ 는  $k=4m-2$  ( $m$ 은 자연수)이므로 조건을 만족시키는  $20$  이하의 자연수  $k$ 는  $2,~6,~10,~14,~18$ 이다.
+따라서 구하는 합은  $2+6+10+14+18=50$ 이다.
+$f LEFT ( x RIGHT ) =$ ( $2 ^{x}$ 의 일의 자리의 수),  $g LEFT ( x RIGHT ) =kx$
+로 정의할 때, 다음 물음에 답하시오.
+(1) 함수  $g CIRC  f$ 의 치역의 모든 원소의 합이  $300$ 이 되는 상수  $k$ 의 값을 구하시오.
+(2)  $LEFT . n LEFT ( LEFT { LEFT ( f CIRC  g RIGHT ) LEFT ( x RIGHT ) ` LEFT | `x RIGHT . RIGHT . RIGHT . RIGHT .$ 는 자연수 $LEFT . LEFT . it RIGHT } RIGHT ) =2$ 를 만족시키는  $20$  이하의 자연수  $k$ 의 값의 합을 구하시오.
+자연수  $a$ 에 대하여 집합
+[정답]  $318$
+함수  $f LEFT ( n RIGHT )$ 의 역함수가 존재하려면 일대일대응이어야 한다.
+따라서 집합  $X`$ 의 원소의 개수는  $9$ 이고
+$x _{1} != x _{2}$   $LEFT ( x _{1} ,~ x _{2} ` IN  ` X` RIGHT )$ 인 임의의 원소  $x _{1} ,~ x _{2}$ 에 대하여
+$f LEFT ( x _{1} RIGHT ) != f LEFT ( x _{2} RIGHT )$
+즉,  $x _{1} ,~ x _{2}$ 를  $9$ 로 나눈 나머지가 서로 달라야 한다.
+$f LEFT ( 11 RIGHT ) =f LEFT ( 110 RIGHT ) =2$ ,  $f LEFT ( 22 RIGHT ) =f LEFT ( 121 RIGHT ) =4$ ,
+$f LEFT ( 33 RIGHT ) =f LEFT ( 132 RIGHT ) =6$ ,  $f LEFT ( 44 RIGHT ) =f LEFT ( 143 RIGHT ) =8$ ,
+$f LEFT ( 55 RIGHT ) =f LEFT ( 154 RIGHT ) =1$ ,  $f LEFT ( 66 RIGHT ) =f LEFT ( 165 RIGHT ) =3$ ,
+$f LEFT ( 77 RIGHT ) =5$ ,  $f LEFT ( 88 RIGHT ) =7$ ,  $f LEFT ( 99 RIGHT ) =0$
+이므로 함수  $f LEFT ( n RIGHT )$ 의 역함수가 존재하도록 하는 집합  $X`$ 의 개수가  $32=2 ^{5}$ 이 되려면
+$154` IN  `X`$ 이고  $165 NOTIN X`$ 이어야 하므로
+$154 LEQ  a<165$
+따라서 자연수  $a$ 의 최댓값과 최솟값의 합은
+$164+154=318$
+$S= LEFT { n` LEFT | `1 LEQ  n LEQ  a,~n RIGHT . RIGHT .$ 은  $11$ 의 배수 $it right}$ 의 공집합이 아닌 부분집합  $X`$ 와 집합  $Y= LEFT { n` LEFT | `0 LEQ  n LEQ  8,~n RIGHT . RIGHT .$ 은 정수 $it right}$ 가 있다. 함수  $f`:`X`` rarrow  `Y`$ 를
+$f LEFT ( n RIGHT ) =$ ( $n$ 을  $9$ 로 나눈 나머지)
+라 할 때, 함수  $f LEFT ( n RIGHT )$ 의 역함수가 존재하도록 하는 집합  $X`$ 의 개수는  $32$ 이다.  $a$ 의 최댓값과 최솟값의 합을 구하시오.
+집합  $A= LEFT { 1,~2 RIGHT }$ 에서  $A$ 로의 세 함수  $f,~g,~h$ 에 대하여 합성합수  $h CIRC  g CIRC  f$ 가 상수함수가 되도록 하는 세 함수  $f,~g,~h$ 의 순서쌍  $LEFT ( f,~g,~h RIGHT )$ 의 개수는?
+[정답] ②
+합성합수  $h CIRC  g CIRC  f$ 가 상수함수가 되는 경우를 살펴보면 다음과 같다.
+(ⅰ) 함수  $h$ 가 상수함수인 경우
+[그림]
+모든 함수  $f,~g$ 에 대하여  $h CIRC  g CIRC  f$ 는 상수함수이다.
+함수  $h$ 가 상수함수인 경우는  $h LEFT ( x RIGHT ) =1$  또는  $h LEFT ( x RIGHT ) =2$ 의  $2$ 가지이고, 함수  $f$ 와  $g$ 의 개수는 각각  $2 ^{2} =4$ 이므로 구하는 함수의 개수는
+ $2 TIMES  4 TIMES  4=32$
+(ⅱ) 함수  $h$ 가 상수함수가 아닌 경우
+함수  $h$ 는  $h LEFT ( 1 RIGHT ) =1$ ,  $h LEFT ( 2 RIGHT ) =2$  또는  $h LEFT ( 1 RIGHT ) =2$ ,  $h LEFT ( 2 RIGHT ) =1$ 의  $2$ 가지이다.
+ⓐ 함수  $g$ 가 상수함수인 경우
+[그림]
+모든 함수  $f$ 에 대하여  $h CIRC  g CIRC  f$ 는 상수함수이다.
+함수  $g$ 가 상수함수인 경우는  $g LEFT ( x RIGHT ) =1$  또는  $g LEFT ( x RIGHT ) =2$ 의 
+ $2$ 가지이고, 함수  $f$ 의 개수는  $2 ^{2} =4$ 이므로 구하는 함수의
+개수는
+ $2 TIMES  2 TIMES  4=16$
+ⓑ 함수  $g$ 가 상수함수가 아닌 경우
+[그림]
+ $h CIRC  g CIRC  f$ 는 상수함수이려면  $f$ 가 상수함수이어야 한다.
+함수  $g$ 가 상수함수가 아닌 경우는
+ $g LEFT ( 1 RIGHT ) =1$ ,  $g LEFT ( 2 RIGHT ) =2$  또는  $g LEFT ( 1 RIGHT ) =2$ ,  $g LEFT ( 2 RIGHT ) =1$ 의  $2$ 가지이고,
+함수  $f$ 가 상수함수인 경우는  $f LEFT ( x RIGHT ) =1$  또는  $f LEFT ( x RIGHT ) =2$ 의     $2$ 가지이므로 구하는 함수의 개수는
+ $2 TIMES  2 TIMES  2=8$
+(ⅰ), (ⅱ)에서 구하는 함수의 개수는
+$32+16+8=56$
+①  $48$ ②  $56$ ③  $64$ ④  $72$ ⑤  $80$
+함수  $f LEFT ( x RIGHT ) = {cases{-x ^{2} +2x+a-3&~ LEFT ( x<1 RIGHT )#```````2x ^{2} -4x+a&~ LEFT ( x GEQ  1 RIGHT )}}$ 과 그 역함수  $g LEFT ( x RIGHT )$ 에 대하여 방정식  $f LEFT ( x RIGHT ) =g LEFT ( x RIGHT )$ 가 서로 다른 세 실근을 갖도록 하는 실수  $a$ 의 값의 범위를 구하시오.
+[정답]  ${11} over {4} <a< {25} over {8}$
+함수  $f LEFT ( x RIGHT )$ 에서
+$x<1$ 일 때,  $y= it - LEFT ( x-1 RIGHT ) ^{2} +a-2$ 의 그래프는 꼭짓점의 좌표가  $LEFT ( 1,~a-2 RIGHT )$ 이고 위로 볼록하고,
+$x GEQ  1$ 일 때,  $y=2 LEFT ( x-1 RIGHT ) ^{2} +a-2$ 의 그래프는 꼭짓점의 좌표가  $LEFT ( 1,~a-2 RIGHT )$ 이고 위로 볼록하다.
+즉, 함수  $y=f LEFT ( x RIGHT )$ 의 그래프의 개형은 다음 그림과 같다.
+[그림]
+방정식  $f LEFT ( x RIGHT ) =g LEFT ( x RIGHT )$ 가 서로 다른 세 실근을 가지려면 두 함수  $y=f LEFT ( x RIGHT )$ ,  $y=g LEFT ( x RIGHT )$ 의 그래프가 서로 다른 세 점에서 만나야 한다. 이때 함수  $y=f LEFT ( x RIGHT )$ 의 그래프가  $x$ 의 값이 커질 때  $y$ 의 값도 커지는 형태이므로 함수의 그래프가 역함수의 그래프와 만나는 교점은 직선  $y=x$ 와의 교점과 같다.
+즉, 함수  $y=f LEFT ( x RIGHT )$ 의 그래프와 직선  $y=x$ 가 서로 다른 세 점에서 만나야 한다.
+(ⅰ)  $x<1$ 에서 함수  $y=f LEFT ( x RIGHT )$ 의 그래프가 직선  $y=x$ 와 접할 때
+이차방정식  $-x ^{2} +2x+a-3=x$ , 즉  $x ^{2} -x-a+3=0$ 의 판별식을  $D` _{1}$ 이라 하면  $D` _{1} =1+4a-12=0$ 이므로  $a= {11} over {4}$
+(ⅱ)  $x GEQ  1$ 에서 함수  $y=f LEFT ( x RIGHT )$ 의 그래프가 직선  $y=x$ 와 접할 때
+이차방정식  $2x ^{2} -4x+a=x$ , 즉  $2x ^{2} -5x+a=0$ 의 판별식을  $D` _{2}$ 라 하면  $D` _{2} =25-8a=0$ 이므로  $a= {25} over {8}$ 
+[그림]
+(ⅰ), (ⅱ)에 의하여 함수  $y=f LEFT ( x RIGHT )$ 의 그래프와 직선  $y=x$ 는
+$a< {11} over {4}$  또는  $a> {25} over {8}$ 일 때 한 점에서 만나고,
+$a= {11} over {4}$  또는  $a= {25} over {8}$ 일 때 두 점에서 만나고,
+${11} over {4} <a< {25} over {8}$ 일 때 세 점에서 만난다.
+따라서 구하는 실수  $a$ 의 값의 범위는  ${11} over {4} <a< {25} over {8}$ 이다.
+[그림]
+양의 실수 전체의 집합에서 정의된 함수  $f LEFT ( x RIGHT )$ 가 다음 조건을 만족시킬 때,  $f LEFT ( 2015 RIGHT )$ 의 값을 구하시오.
+[정답]  $172$
+조건 (가)에 의하여
+$f LEFT ( x RIGHT ) = {cases{````x-1&~ LEFT ( 1 LEQ  x<2 RIGHT )#-x+3&~ LEFT ( 2 LEQ  x LEQ  3 RIGHT )}}$  $cdotscdots$ ㉠
+조건 (나)에 의하여
+$f LEFT ( 2015 RIGHT )$  $=f LEFT ( 3 TIMES  {2015} over {3} RIGHT )$ 
+ $=3f LEFT ( {2015} over {3} RIGHT ) =3f LEFT ( 3 TIMES  {2015} over {3 ^{2}} RIGHT )$ 
+ $=3 ^{2} f LEFT ( {2015} over {3 ^{2}} RIGHT ) =3 ^{2} f LEFT ( 3 TIMES  {2015} over {3 ^{3}} RIGHT )$ 
+ $VDOTS $ 
+ $=3 ^{6} f LEFT ( {2015} over {3 ^{6}} RIGHT )$
+이때  $2 LEQ  {2015} over {3 ^{6}} LEQ  3$ 이므로
+$f LEFT ( 2015 RIGHT )$  $=3 ^{6} f LEFT ( {2015} over {3 ^{6}} RIGHT ) =3 ^{6} TIMES  LEFT ( - {2015} over {3 ^{6}} +3 RIGHT )$  ( $BECAUSE $  ㉠)
+ $=3 ^{6} TIMES  {172} over {3 ^{6}} =172$
+[그림]
+(가)  $f LEFT ( x RIGHT ) =1- LEFT | `x-2` RIGHT |$   $LEFT ( 1 LEQ  x LEQ  3 RIGHT )$
+(나) 모든 양의 실수  $x$ 에 대하여  $f LEFT ( 3x RIGHT ) =3f LEFT ( x RIGHT )$ 이다.
+함수  $f LEFT ( x RIGHT )$ 가 임의의 두 실수  $x,~y$ 에 대하여 다음 조건을 만족시킨다.
+[정답] ④
+조건 (가)에서  $x=0$ 을 대입하면
+$f LEFT ( 0 RIGHT ) GEQ  0$  $cdotscdots$ ㉠
+조건 (나)에서  $x=y=0$ 을 대입하면
+$f LEFT ( 0 RIGHT ) GEQ  f LEFT ( 0 RIGHT ) +f LEFT ( 0 RIGHT )$ 에서
+$0 GEQ  f LEFT ( 0 RIGHT )$  $cdotscdots$ ㉡
+㉠, ㉡에 의하여
+$f LEFT ( 0 RIGHT ) = 0$  $cdotscdots$ ㉢
+조건 (가)에서  $x$  대신  $-x$ 를 대입하면
+$f LEFT ( -x RIGHT ) GEQ  it -2x$  $cdotscdots$ ㉣
+조건 (나)에서  $y$  대신  $-x$ 를 대입하면
+$f LEFT ( 0 RIGHT ) GEQ  f LEFT ( x RIGHT ) +f LEFT ( -x RIGHT )$ , 즉  $0 GEQ  f LEFT ( x RIGHT ) +f LEFT ( -x RIGHT )$  ( $BECAUSE $  ㉢)
+따라서  $f LEFT ( x RIGHT ) LEQ  it -f LEFT ( -x RIGHT ) LEQ  2x$  ( $BECAUSE $  ㉣)
+이므로  $f LEFT ( x RIGHT ) = 2x$ 이다.
+$THEREFORE ~f LEFT ( 10 RIGHT ) =20$
+[그림]
+(가)  $f LEFT ( x RIGHT ) GEQ 2x$
+(나)  $f LEFT ( x+y RIGHT ) GEQ  f LEFT ( x RIGHT ) +f LEFT ( y RIGHT )$
+$f LEFT ( 10 RIGHT )$ 의 값은?
+①  $5$ ②  $10$ ③  $15$ ④  $20$ ⑤  $25$
+실수 전체의 집합에서 정의된 함수  $f$ 가 임의의 두 실수  $x,~y$ 에 대하여
+[정답] ①
+$f LEFT ( x+y RIGHT ) =f LEFT ( x RIGHT ) f LEFT ( y RIGHT ) -f LEFT ( x-y RIGHT )$ 에  $x=1$ ,  $y=0$ 을 대입하면
+$f LEFT ( 1 RIGHT ) =f LEFT ( 1 RIGHT ) f LEFT ( 0 RIGHT ) -f LEFT ( 1 RIGHT )$ 이고,  $f LEFT ( 1 RIGHT ) =1$ 이므로  $f LEFT ( 0 RIGHT ) =2$ 이다.
+$f LEFT ( 2 RIGHT )$  $=f LEFT ( 1+1 RIGHT ) =f LEFT ( 1 RIGHT ) f LEFT ( 1 RIGHT ) -f LEFT ( 1-1 RIGHT )$ 
+ $=f LEFT ( 1 RIGHT ) -f LEFT ( 0 RIGHT ) =1-2= it -1$
+$f LEFT ( 3 RIGHT )$  $=f LEFT ( 2+1 RIGHT ) =f LEFT ( 2 RIGHT ) f LEFT ( 1 RIGHT ) -f LEFT ( 2-1 RIGHT )$ 
+ $=f LEFT ( 2 RIGHT ) -f LEFT ( 1 RIGHT ) = LEFT ( -1 RIGHT ) -1= it -2$
+$f LEFT ( 4 RIGHT )$  $=f LEFT ( 3+1 RIGHT ) =f LEFT ( 3 RIGHT ) f LEFT ( 1 RIGHT ) -f LEFT ( 3-1 RIGHT )$ 
+ $=f LEFT ( 3 RIGHT ) -f LEFT ( 2 RIGHT ) = LEFT ( -2 RIGHT ) - LEFT ( -1 RIGHT ) = it -1$
+$f LEFT ( 5 RIGHT )$  $=f LEFT ( 4+1 RIGHT ) =f LEFT ( 4 RIGHT ) f LEFT ( 1 RIGHT ) -f LEFT ( 4-1 RIGHT )$ 
+ $=f LEFT ( 4 RIGHT ) -f LEFT ( 3 RIGHT ) = LEFT ( -1 RIGHT ) - LEFT ( -2 RIGHT ) =1$
+$f LEFT ( 6 RIGHT )$  $=f LEFT ( 5+1 RIGHT ) =f LEFT ( 5 RIGHT ) f LEFT ( 1 RIGHT ) -f LEFT ( 5-1 RIGHT )$ 
+ $=f LEFT ( 5 RIGHT ) -f LEFT ( 4 RIGHT ) =1- LEFT ( -1 RIGHT ) =2$
+$f LEFT ( 7 RIGHT )$  $=f LEFT ( 6+1 RIGHT ) =f LEFT ( 6 RIGHT ) f LEFT ( 1 RIGHT ) -f LEFT ( 6-1 RIGHT )$ 
+ $=f LEFT ( 6 RIGHT ) -f LEFT ( 5 RIGHT ) =2-1=1$ 
+ $VDOTS $
+이므로 자연수  $n$ 에 대하여  $f LEFT ( n RIGHT )$ 의 값은  $1,~-1,~-2,~-1,~1,~2$ 가 반복된다.
+이때  $999=6 TIMES 166+3$ 이므로
+$f LEFT ( 999 RIGHT ) =f LEFT ( 3 RIGHT ) = it -2$
+$f LEFT ( x+y RIGHT ) =f LEFT ( x RIGHT ) f LEFT ( y RIGHT ) -f LEFT ( x-y RIGHT )$
+를 만족시키고  $f LEFT ( 1 RIGHT ) =1$ 일 때,  $f LEFT ( 999 RIGHT )$ 의 값은?
+①  $-2$ ②  $-1$ ③  $0$ ④  $1$ ⑤  $2$
+역함수가 존재하는 함수  $f$ 가 임의의 두 실수  $x,~y$ 에 대하여  $f LEFT ( x+y RIGHT ) =f LEFT ( x RIGHT ) f LEFT ( y RIGHT )$ 를 만족시키고  $f LEFT ( 1 RIGHT ) =2$ 일 때, <보기>에서 옳은 것만을 있는 대로 고른 것은?
+[정답] ④
+$f LEFT ( x+y RIGHT ) =f LEFT ( x RIGHT ) f LEFT ( y RIGHT )$  $cdotscdots$ ㉠
+ㄱ. ㉠에  $x=1$ ,  $y=0$ 을 대입하면
+ $f LEFT ( 1 RIGHT ) =f LEFT ( 1 RIGHT ) f LEFT ( 0 RIGHT )$ 에서  $f LEFT ( 1 RIGHT ) =2$ 이므로
+ $2=2f LEFT ( 0 RIGHT )$ 에서  $f LEFT ( 0 RIGHT ) =1$ 이다. (거짓)
+ㄴ.  $f LEFT ( 1 RIGHT ) =2$ 이므로
+ $f LEFT ( 2 RIGHT ) =f LEFT ( 1+1 RIGHT ) =f LEFT ( 1 RIGHT ) f LEFT ( 1 RIGHT ) =4$ 
+ $f LEFT ( 3 RIGHT ) =f LEFT ( 2+1 RIGHT ) =f LEFT ( 2 RIGHT ) f LEFT ( 1 RIGHT ) =8$ 
+ $f LEFT ( 4 RIGHT ) =f LEFT ( 3+1 RIGHT ) =f LEFT ( 3 RIGHT ) f LEFT ( 1 RIGHT ) =16$ 
+ $f LEFT ( 5 RIGHT ) =f LEFT ( 4+1 RIGHT ) =f LEFT ( 4 RIGHT ) f LEFT ( 1 RIGHT ) =32$  (참)
+ㄷ.  $f LEFT ( x RIGHT ) =a$ ,  $f LEFT ( y RIGHT ) =b$ 라 하면
+ $x=f` ^{-1} LEFT ( a RIGHT )$ ,  $y=f` ^{-1} LEFT ( b RIGHT )$ 이다.
+㉠에서  $f LEFT ( x+y RIGHT ) =f LEFT ( x RIGHT ) f LEFT ( y RIGHT ) =ab$ 이므로
+ $f` ^{-1} LEFT ( ab RIGHT ) =x+y=f` ^{-1} LEFT ( a RIGHT ) +f` ^{-1} LEFT ( b RIGHT )$ 이다. (참)
+따라서 옳은 것은 ㄴ, ㄷ이다.
+[표]
+[ 보 기 ]
+ㄱ.  $f LEFT ( 0 RIGHT ) =0$
+ㄴ.  $f LEFT ( 5 RIGHT ) =32$
+ㄷ. 임의의 두 양수  $a,~b$ 에 대하여
+ $f` ^{-1} LEFT ( ab RIGHT ) =f` ^{-1} LEFT ( a RIGHT ) +f` ^{-1} LEFT ( b RIGHT )$ 이다.
+① ㄴ② ㄷ③ ㄱ, ㄴ④ ㄴ, ㄷ⑤ ㄱ, ㄴ, ㄷ
+함수  $f$ 에 대하여  $f` ^{2} LEFT ( x RIGHT ) =f LEFT ( f LEFT ( x RIGHT ) RIGHT )$ ,  $f` ^{3} LEFT ( x RIGHT ) =f LEFT ( f LEFT ( f LEFT ( x RIGHT ) RIGHT ) RIGHT )$ ,  $CDOTS $ 라 하자. 집합  $X= LEFT { 1,~2,~3,~4,~5 RIGHT }$ 에 대하여 다음 조건을 만족시키는 함수  $f`:`X`` rarrow  `X`$ 의 개수를  $n$ 이라 할 때,  $n+f LEFT ( 5 RIGHT )$ 의 최댓값을 구하시오.
+[정답]  $6$
+조건 (나)에서  $f` ^{5} =I`$  ( $I`$ 는 항등함수)
+즉,  $f CIRC f` ^{4} =I`$ ,  $f` ^{4} CIRC  f=I`$
+따라서 함수  $f$ 의 역함수가  $ f` ^{4}$ 으로 존재하므로 함수  $f$ 는 일대일대응이다.
+만약  $f` ^{2} LEFT ( 1 RIGHT ) =1$ 이면  $f` ^{5} LEFT ( 1 RIGHT ) =f LEFT ( 1 RIGHT ) =3 != 1$ 이므로
+$f` ^{2} LEFT ( 1 RIGHT )  !=  1$
+마찬가지로 생각하면
+$f` ^{3} LEFT ( 1 RIGHT ) !=  1$ ,  $f` ^{4} LEFT ( 1 RIGHT ) !=  1$  $cdotscdots$ ㉠
+따라서 다음과 같이 나누어 생각할 수 있다.
+(ⅰ)  $f LEFT ( 3 RIGHT ) =2$ 인 경우
+ $f LEFT ( 5 RIGHT ) =1$ 이면  $f` ^{4} LEFT ( 1 RIGHT ) = 1$ 이므로 모순이다.  ( $BECAUSE $  ㉠)
+따라서  $f LEFT ( 5 RIGHT ) =4$ 이므로  $f LEFT ( 4 RIGHT ) =1$ 이다.
+(ⅱ)  $f LEFT ( 3 RIGHT ) =4$ 인 경우
+ $f LEFT ( 4 RIGHT ) =1$ 이면  $f` ^{3} LEFT ( 1 RIGHT ) =1$ 이므로 모순이다.  ( $BECAUSE $  ㉠)
+따라서  $f LEFT ( 4 RIGHT ) =2$ 이므로  $f LEFT ( 5 RIGHT ) =1$ 이다.
+(ⅰ), (ⅱ)에 의하여  $n+f LEFT ( 5 RIGHT )$ 의 최댓값은
+$2+4=6$
+[그림]
+(가)  $f LEFT ( 1 RIGHT ) =3$ ,  $f LEFT ( 2 RIGHT ) =5$
+(나) 집합  $X`$ 의 모든 원소  $x$ 에 대하여  $f` ^{5} LEFT ( x RIGHT ) =x$
+두 집합  $X= LEFT { 1,~2,~3,~4,~5,~6 RIGHT }$ ,  $Y= LEFT { 1,~3,~5,~7 RIGHT }$ 에 대하여 다음 조건을 만족시키는 함수  $f`:`X`` rarrow  `Y`$ 의 개수를 구하시오.
+[정답]  $25$
+$f LEFT ( x RIGHT ) =x$ 인  $x$ 의 값을  $x _{1} ,~x _{2} ,~ CDOTS  ,~x _{n}$ 이라 하면
+$f LEFT ( x _{1} RIGHT ) =x _{1}$ ,  $ f LEFT ( x _{2} RIGHT ) =x _{2}$ ,  $ CDOTS $ ,  $f LEFT ( x _{n} RIGHT ) =x _{n}$
+조건 (나)에서  $f LEFT (  g LEFT ( y RIGHT ) RIGHT ) =g LEFT ( y RIGHT )$
+$g LEFT ( y RIGHT )$ 의 값은  $x _{1} ,~x _{2} ,~ CDOTS  ,~x _{n}$  중 하나이다.
+함수  $g$ 의 정의역  $Y`$ 의 원소의 개수가  $4$ 이므로
+조건 (나)를 만족시키는 함수  $g$ 의 개수는  $n ^{4}$ 이고
+$n ^{4} =16$ 에서  $n=2$ 이다.
+따라서 다음과 같이 나누어 생각할 수 있다.
+(ⅰ)  $f LEFT ( 1 RIGHT ) =1$ ,  $f LEFT ( 3 RIGHT ) =3$ ,  $f LEFT ( 5 RIGHT )  !=  5$ 일 때
+조건 (가)에서  $1 LEQ  f LEFT ( 2 RIGHT ) <f LEFT ( 4 RIGHT ) <f LEFT ( 6 RIGHT )$ 이므로
+ $f LEFT ( 2 RIGHT )$ ,  $f LEFT ( 4 RIGHT )$ ,  $f LEFT ( 6 RIGHT )$ 의 값을 정하는 경우의 수는
+ $` _{4} rm C _{3} =4$ 
+ $f LEFT ( 5 RIGHT )$ 의 값을 정하는 경우의 수는  $3$ 
+따라서 함수  $f$ 의 개수는  $4 TIMES  3=12$
+(ⅱ)  $f LEFT ( 1 RIGHT ) =1$ ,  $f LEFT ( 3 RIGHT ) !=  3$ ,  $f LEFT ( 5 RIGHT ) = 5$ 일 때
+조건 (가)에서  $1 LEQ  f LEFT ( 2 RIGHT ) <f LEFT ( 4 RIGHT ) <f LEFT ( 6 RIGHT )$ 이므로
+ $f LEFT ( 2 RIGHT )$ ,  $f LEFT ( 4 RIGHT )$ ,  $f LEFT ( 6 RIGHT )$ 의 값을 정하는 경우의 수는
+ $` _{4} rm C _{3} =4$ 
+ $f LEFT ( 3 RIGHT )$ 의 값을 정하는 경우의 수는  $3$ 
+따라서 함수  $f$ 의 개수는  $4 TIMES  3=12$
+(ⅲ)  $f LEFT ( 1 RIGHT ) !=  1$ ,  $f LEFT ( 3 RIGHT ) =3$ ,  $f LEFT ( 5 RIGHT ) = 5$ 일 때
+조건 (가)에서  $f LEFT ( 1 RIGHT ) =3$ 이고
+ $3 LEQ  f LEFT ( 2 RIGHT ) <f LEFT ( 4 RIGHT ) <f LEFT ( 6 RIGHT )$ 이므로
+ $f LEFT ( 2 RIGHT )$ ,  $f LEFT ( 4 RIGHT )$ ,  $f LEFT ( 6 RIGHT )$ 의 값을 정하는 경우의 수는
+ $` _{3} rm C _{3} =1$ 
+따라서 함수  $f$ 의 개수는  $1$
+(ⅰ)~(ⅲ)에서 구하는 함수  $f$ 의 개수는
+$12+12+1=25$
+[그림]
+(가)  $f LEFT ( 1 RIGHT ) LEQ  f LEFT ( 2 RIGHT ) <f LEFT ( 4 RIGHT ) <f LEFT ( 6 RIGHT )$
+(나)  $Y`$ 의 모든 원소  $y$ 에 대하여  $LEFT ( f CIRC  g RIGHT ) LEFT ( y RIGHT ) =g LEFT ( y RIGHT )$ 를 만족시키는 함수  $g`:`Y`` rarrow  `X`$ 의 개수는  $16$ 이다.
+집합  $X= LEFT { 1,~2,~3,~4,~5 RIGHT }$ 에 대하여 다음 조건을 만족시키는 함수  $f`:`X`` rarrow  `X`$ 의 개수는?
+[정답] ③
+$f LEFT ( 5 RIGHT ) =4$ 이므로
+조건 (나)에서  $LEFT ( f CIRC  f CIRC  f RIGHT ) LEFT ( 5 RIGHT ) = LEFT ( f CIRC  f RIGHT ) LEFT ( 4 RIGHT ) =3$ 이다.
+이때  $f LEFT ( 4 RIGHT ) =4$  또는  $f LEFT ( 4 RIGHT ) =5$ 이면  $LEFT ( f CIRC  f RIGHT ) LEFT ( 4 RIGHT ) =4$ 가 되므로
+$f LEFT ( 4 RIGHT ) =1$  또는  $f LEFT ( 4 RIGHT ) =2$  또는  $f LEFT ( 4 RIGHT ) =3$ 이다.
+$LEFT ( f CIRC  f RIGHT ) LEFT ( 1 RIGHT ) =1$ 이기 위한 조건으로 경우를 나누어 생각하면 다음과 같다.
+(ⅰ)  $f LEFT ( 1 RIGHT ) =1$ 인 경우
+[그림]
+ $LEFT ( f CIRC  f RIGHT ) LEFT ( 4 RIGHT ) =3$ 이 되려면  $f LEFT ( 4 RIGHT ) !=  1$ 이어야 한다.
+ $f LEFT ( 4 RIGHT ) =2$ ,  $f LEFT ( 2 RIGHT ) =3$ 일 때  $f LEFT ( 3 RIGHT )$ 으로 가능한 값은
+ $1,~2,~3,~4,~5$ 로  $5$ 개이고,
+ $f LEFT ( 4 RIGHT ) =3$ ,  $f LEFT ( 3 RIGHT ) =3$ 일 때  $f LEFT ( 2 RIGHT )$ 로 가능한 값은
+ $1,~2,~3,~4,~5$ 로  $5$ 개이므로
+함수  $f$ 의 개수는  $5+5=10$ 이다.
+(ⅱ)  $f LEFT ( 1 RIGHT ) =2$ ,  $f LEFT ( 2 RIGHT ) =1$ 인 경우
+[그림]
+ $LEFT ( f CIRC  f RIGHT ) LEFT ( 4 RIGHT ) =3$ 이 되려면  $f LEFT ( 4 RIGHT ) !=  1$ ,  $f LEFT ( 4 RIGHT ) !=  2$ 이어야 한다.
+ $f LEFT ( 4 RIGHT ) =3$ ,  $f LEFT ( 3 RIGHT ) =3$ 일 때  $1$ 개이므로
+함수  $f$ 의 개수는  $1$ 이다.
+(ⅲ)  $f LEFT ( 1 RIGHT ) =3$ ,  $f LEFT ( 3 RIGHT ) =1$ 인 경우
+[그림]
+ $LEFT ( f CIRC  f RIGHT ) LEFT ( 4 RIGHT ) =3$ 이 되려면  $f LEFT ( 4 RIGHT ) !=  3$ 이어야 한다.
+ $f LEFT ( 4 RIGHT ) =1$ 일 때  $f LEFT ( 2 RIGHT )$ 로 가능한 값은
+ $1,~2,~3,~4,~5$ 로  $5$ 개이고,
+ $f LEFT ( 4 RIGHT ) =2$ ,  $f LEFT ( 2 RIGHT ) =3$ 일 때  $1$ 개이므로
+함수  $f$ 의 개수는  $5+1=6$ 이다.
+(ⅳ)  $f LEFT ( 1 RIGHT ) =4$ ,  $f LEFT ( 4 RIGHT ) =1$ 이면  $LEFT ( f CIRC  f RIGHT ) LEFT ( 4 RIGHT ) =4$ 이므로 조건을 만족시키지 못하고,
+ $f LEFT ( 1 RIGHT ) =5$ 이면  $f LEFT ( 5 RIGHT ) =4$ 에서  $LEFT ( f CIRC  f RIGHT ) LEFT ( 1 RIGHT ) =4$ 이므로 조건을 족시키지 못한다.
+(ⅰ)~(ⅳ)에서 구하는 함수  $f$ 의 개수는
+$10+1+6=17$ 이다.
+[그림]
+(가)  $f LEFT ( 5 RIGHT ) =4$
+(나)  $LEFT ( f CIRC  f RIGHT ) LEFT ( 1 RIGHT ) =1$ ,  $LEFT ( f CIRC  f CIRC  f RIGHT ) LEFT ( 5 RIGHT ) =3$
+①  $15$ ②  $16$ ③  $17$ ④  $18$ ⑤  $19$
+두 함수  $f LEFT ( x RIGHT ) = it -2x ^{2} +4x-a$ ,  $g LEFT ( x RIGHT ) =x ^{2} +2x+a$ 에 대하여 방정식  $f LEFT ( x RIGHT ) =g LEFT ( x RIGHT )$ 가 서로 다른 두 실근  $alpha  ,~ beta $   $LEFT ( alpha  < beta  RIGHT )$ 를 가질 때, 두 함수  $h _{1} LEFT ( x RIGHT ) ,~h _{2} LEFT ( x RIGHT )$ 를
+[정답] ②
+$f LEFT ( x RIGHT ) =g LEFT ( x RIGHT )$ , 즉  $3x ^{2} -2x+2a=0$ 이 서로 다른 두 실근을 가진다.
+이차방정식  $3x ^{2} -2x+2a=0$ 의 판별식을  $D`$ 라 하면
+ ${D} over {4} =1-6a>0$ 에서  $a< {1} over {6}$  $cdotscdots$ ㉠
+$f LEFT ( x RIGHT ) = it -2 LEFT ( x-1 RIGHT ) ^{2} +2-a$ ,  $g LEFT ( x RIGHT ) = LEFT ( x+1 RIGHT ) ^{2} +a-1$ 이므로
+함수  $y=f LEFT ( x RIGHT )$ 의 꼭짓점의 좌표는  $LEFT ( 1,~2-a RIGHT )$
+함수  $y=g LEFT ( x RIGHT )$ 의 꼭짓점의 좌표는  $LEFT ( -1,~a-1 RIGHT )$
+함수  $f LEFT ( x RIGHT )$ 의 최고차항의 계수가 음수이고, 함수  $g LEFT ( x RIGHT )$ 의 최고차항의 계수가 양수이므로
+$y=h _{1} LEFT ( x RIGHT )$ 의 역함수가 존재하려면  $x$ 의 값이 커질 때,  $y$ 의 값도 커져야 한다.
+따라서  $alpha  GEQ  it -1$ 이어야 하므로
+$f LEFT ( -1 RIGHT ) LEQ g LEFT ( -1 RIGHT )$ 에서  $-6-a LEQ  a-1$ ,  $a GEQ  it - {5} over {2}$  $cdotscdots$ ㉡
+마찬가지로 함수  $h _{2} LEFT ( x RIGHT )$ 의 역함수가 존재하려면
+$beta  LEQ  1$ 이어야 하므로
+$f LEFT ( 1 RIGHT ) LEQ  g LEFT ( 1 RIGHT )$ 에서  $2-a LEQ  a+3$ ,  $a GEQ  it - {1} over {2}$  $cdotscdots$ ㉢
+㉠~㉢에서 구하는 실수  $a$ 의 값의 범위는
+$- {1} over {2} LEQ  a< {1} over {6}$
+$THEREFORE ~p+q= LEFT ( - {1} over {2} RIGHT ) + {1} over {6} = it - {1} over {3}$
+$h _{1} LEFT ( x RIGHT ) = {cases{f LEFT ( x RIGHT )&~ LEFT ( x< alpha  RIGHT )#g LEFT ( x RIGHT )&~ LEFT ( x GEQ  alpha  RIGHT )}}$ ,  $h _{2} LEFT ( x RIGHT ) = {cases{f LEFT ( x RIGHT )&~ LEFT ( x< beta  RIGHT )#g LEFT ( x RIGHT )&~ LEFT ( x GEQ  beta  RIGHT )}}$
+라 하자. 두 함수  $h _{1} LEFT ( x RIGHT ) ,~h _{2} LEFT ( x RIGHT )$ 의 역함수가 모두 존재하도록 하는 실수  $a$ 의 값의 범위가  $p LEQ  a<q$ 일 때,  $p+q$ 의 값은?
+(단,  $p,~q$ 는 상수이다.)
+①  $- {1} over {6}$ ②  $- {1} over {3}$ ③  $- {1} over {2}$ ④  $- {2} over {3}$ ⑤  $- {5} over {6}$
+[그림]
+두 이차함수  $f LEFT ( x RIGHT ) =x ^{2} -4x-3$ ,  $g LEFT ( x RIGHT ) =x ^{2} +2x+a$ 가 있다.  $x$ 에 대한 방정식  $f LEFT ( g LEFT ( x RIGHT ) RIGHT ) =f LEFT ( x RIGHT )$ 의 서로 다른 실근의 개수가  $2$ 가 되도록 하는 정수  $a$ 의 개수는?
+[정답] ④
+$f LEFT ( g LEFT ( x RIGHT ) RIGHT ) =f LEFT ( x RIGHT )$ 에서
+$LEFT { g LEFT ( x RIGHT ) RIGHT } ^{2} -4 LEFT { g LEFT ( x RIGHT ) RIGHT } -3=x ^{2} -4x-3$
+$LEFT { g LEFT ( x RIGHT ) RIGHT } ^{2} -x ^{2} -4 LEFT { g LEFT ( x RIGHT ) -x RIGHT } =0$
+$LEFT { g LEFT ( x RIGHT ) +x RIGHT } LEFT { g LEFT ( x RIGHT ) -x RIGHT } -4 LEFT { g LEFT ( x RIGHT ) -x RIGHT } =0$
+$LEFT { g LEFT ( x RIGHT ) -x RIGHT } LEFT { g LEFT ( x RIGHT ) +x-4 RIGHT } =0$
+따라서  $g LEFT ( x RIGHT ) =x$  또는  $g LEFT ( x RIGHT ) = it -x+4$ 이므로
+$x ^{2} +2x+a=x$ 에서  $x ^{2} +x+a=0$  $cdotscdots$ ㉠
+$x ^{2} +2x+a= it -x+4$ 에서  $x ^{2} +3x+a-4=0$  $cdotscdots$ ㉡
+이차방정식 ㉠의 판별식을  $D` _{1}$ 이라 하면
+$D` _{1} =1-4a$
+이차방정식 ㉡의 판별식을  $D` _{2}$ 라 하면
+$D` _{2} =3 ^{2} -4 LEFT ( a-4 RIGHT ) =25-4a$
+이때 방정식  $f LEFT ( g LEFT ( x RIGHT ) RIGHT ) =f LEFT ( x RIGHT )$ 의 서로 다른 실근의 개수가  $2$ 가 되는 경우는 다음과 같다.
+(ⅰ) 방정식 ㉠은 서로 다른 두 실근을 갖고, 방정식 ㉡은 실근을 갖지 않는 경우
+ $D` _{1} >0$ 에서  $1-4a>0$ ,  $a< {1} over {4}$ 
+ $D` _{2} <0$ 에서  $25-4a<0$ ,  $a> {25} over {4}$ 
+따라서 조건을 만족시키는 실수  $a$ 의 값은 존재하지 않는다.
+(ⅱ) 방정식 ㉠은 실근을 갖지 않고, 방정식 ㉡이 서로 다른 두 실근을 갖는 경우
+ $D` _{1} <0$ 에서  $1-4a<0$ ,  $a> {1} over {4}$ 
+ $D` _{2} >0$ 에서  $25-4a>0$ ,  $a< {25} over {4}$ 
+따라서 조건을 만족시키는 실수  $a$ 의 값의 범위는  ${1} over {4} <a< {25} over {4}$ 이다.
+(ⅲ) 두 방정식 ㉠, ㉡이 모두 증근을 갖는 경우
+ $D` _{1} =0$ 에서  $1-4a=0$ ,  $a= {1} over {4}$ 
+ $D` _{2} =0$ 에서  $25-4a=0$ ,  $a= {25} over {4}$ 
+따라서 조건을 만족시키는 실수  $a$ 의 값은 존재하지 않는다.
+(ⅰ)~(ⅲ)에서 구하는 정수  $a$ 는  $1,~2,~3,~4,~5,~6$ 으로  $6$ 개이다.
+①  $3$ ②  $4$ ③  $5$ ④  $6$ ⑤  $7$
+실수 전체의 집합  $R`$ 에 대하여 함수  $f`:`R`` rarrow  `R`$ 의 역함수  $f` ^{-1}$ 가 존재하고, 임의의 두 실수  $x,~y$ 에 대하여  $f LEFT ( x+y RIGHT ) =f` ^{-1} LEFT ( x RIGHT ) +f` ^{-1} LEFT ( y RIGHT )$ 를 만족시킬 때, <보기>에서 옳은 것의 개수를 구하시오.
+[정답]  $4$
+$f LEFT ( x+y RIGHT ) =f` ^{-1} LEFT ( x RIGHT ) +f` ^{-1} LEFT ( y RIGHT )$  $cdotscdots$ ㉠
+ㄱ. ㉠에  $x=f LEFT ( a RIGHT )$ ,  $y=f LEFT ( b RIGHT )$ 를 대입하면
+ $f LEFT ( f LEFT ( a RIGHT ) +f LEFT ( b RIGHT ) RIGHT ) =f` ^{-1} LEFT ( f LEFT ( a RIGHT ) RIGHT ) +f` ^{-1} LEFT ( f LEFT ( b RIGHT ) RIGHT ) =a+b$  (참)
+ㄴ.  $f LEFT ( 1 RIGHT ) =1$ 이면  $f` ^{-1} LEFT ( 1 RIGHT ) =1$ 이므로 ㉠에  $x=y=1$ 을 대입하면
+ $f LEFT ( 2 RIGHT ) =f` ^{-1} LEFT ( 1 RIGHT ) +f` ^{-1} LEFT ( 1 RIGHT ) =1+1=2$ 이므로  $f` ^{-1} LEFT ( 2 RIGHT ) =2$ 
+㉠에  $x=1$ ,  $y=2$ 를 대입하면
+ $f LEFT ( 3 RIGHT ) =f` ^{-1} LEFT ( 1 RIGHT ) +f` ^{-1} LEFT ( 2 RIGHT ) =1+2=3$ 
+㉠에  $x=y=2$ 를 대입하면
+ $f LEFT ( 4 RIGHT ) =f` ^{-1} LEFT ( 2 RIGHT ) +f` ^{-1} LEFT ( 2 RIGHT ) =2+2=4$ 
+ $THEREFORE ~f LEFT ( 4 RIGHT ) -f LEFT ( 3 RIGHT ) =4-3=1$  (참)
+ㄷ.  $f LEFT ( a RIGHT ) =p$ ,  $f LEFT ( b RIGHT ) =q$  ( $p,~q$ 는 실수)라 하면
+ $f` ^{-1} LEFT ( p RIGHT ) =a$ ,  $f` ^{-1} LEFT ( q RIGHT ) =b$ 이다.
+㉠에  $x=p$ ,  $y=q$ 를 대입하면
+ $f LEFT ( p+q RIGHT ) =f` ^{-1} LEFT ( p RIGHT ) +f` ^{-1} LEFT ( q RIGHT ) =a+b$ 이므로
+ $f` ^{-1} LEFT ( a+b RIGHT ) =p+q=f LEFT ( a RIGHT ) +f LEFT ( b RIGHT )$ 이다. (참)
+ㄹ. ㉠에  $y= it -x$ 를 대입하면
+ $f LEFT ( 0 RIGHT ) =f` ^{-1} LEFT ( x RIGHT ) +f` ^{-1} LEFT ( -x RIGHT )$  $cdotscdots$ ㉡
+㉠에  $x=y=0$ 을 대입하면
+ $f LEFT ( 0 RIGHT ) =f` ^{-1} LEFT ( 0 RIGHT ) +f` ^{-1} LEFT ( 0 RIGHT ) =2f` ^{-1} LEFT ( 0 RIGHT )$  $cdotscdots$ ㉢
+㉡, ㉢에서
+ $f` ^{-1} LEFT ( x RIGHT ) +f` ^{-1} LEFT ( -x RIGHT ) =2f` ^{-1} LEFT ( 0 RIGHT )$ 
+ $THEREFORE ~ {f` ^{-1} LEFT ( a RIGHT ) +f` ^{-1} LEFT ( -a RIGHT )} over {2} =f` ^{-1} LEFT ( 0 RIGHT )$  (참)
+따라서 옳은 것의 개수는  $4$ 이다.
+[표]
+[ 보 기 ]
+ㄱ.  $f LEFT ( f LEFT ( a RIGHT ) +f LEFT ( b RIGHT ) RIGHT ) =a+b$
+ㄴ.  $f LEFT ( 1 RIGHT ) =1$ 일 때,  $f LEFT ( 4 RIGHT ) -f LEFT ( 3 RIGHT ) =1$ 이다.
+ㄷ.  $f` ^{-1} LEFT ( a+b RIGHT ) =f LEFT ( a RIGHT ) +f LEFT ( b RIGHT )$
+ㄹ.  ${f` ^{-1} LEFT ( a RIGHT ) +f` ^{-1} LEFT ( -a RIGHT )} over {2} =f` ^{-1} LEFT ( 0 RIGHT )$
+$0 LEQ  x LEQ  1$ 에서 정의된 함수  $y=f LEFT ( x RIGHT )$ 가 다음 조건을 만족시킬 때,  $f LEFT ( {14} over {15} RIGHT )$ 의 값을 구하시오.
+[정답]  ${7} over {8}$
+조건 (가)에 의하여 함수  $y=f LEFT ( x RIGHT )$ 의 그래프는
+점  $LEFT ( {1} over {2} ,~ {1} over {2} RIGHT )$ 에 대하여 대칭이다. $cdotscdots$ ㉠
+조건 (나)의 식에  $x=0$ 을 대입하면
+$f LEFT ( 0 RIGHT ) = {f LEFT ( 0 RIGHT )} over {2}$ 에서  $f LEFT ( 0 RIGHT ) =0$ 이고, ㉠에 의하여  $f LEFT ( 1 RIGHT ) =1$ 이다.
+조건 (나)의 식에  $x=1$ 을 대입하면
+$f LEFT ( {1} over {3} RIGHT ) = {f LEFT ( 1 RIGHT )} over {2} = {1} over {2}$ 이고, ㉠에 의하여  $f LEFT ( {2} over {3} RIGHT ) = {1} over {2}$ 이다.
+즉, 함수  $y=f LEFT ( x RIGHT )$ 의 그래프가
+세 점  $LEFT ( {1} over {3} ,~ {1} over {2} RIGHT )$ ,  $LEFT ( {1} over {2} ,~ {1} over {2} RIGHT )$ ,  $LEFT ( {2} over {3} ,~ {1} over {2} RIGHT )$ 을 지나므로
+조건 (다)에 의하여  ${1} over {3} LEQ  x LEQ  {2} over {3}$ 일 때,  $f LEFT ( x RIGHT ) = {1} over {2}$ 이다.
+[그림]
+이때 조건 (나)에 의하여  ${1} over {9} LEQ  x LEQ  {2} over {9}$ 에서  $f LEFT ( x RIGHT ) = {1} over {4}$ 이고,
+다시 조건 (나)에 의하여  ${1} over {27} LEQ  x LEQ  {2} over {27}$ 일 때,  $f LEFT ( x RIGHT ) = {1} over {8}$ 이다.
+[그림]
+조건 (가)에 의하여  $f LEFT ( {14} over {15} RIGHT ) =1-f LEFT ( {1} over {15} RIGHT )$ 이고,
+${1} over {27} LEQ  {1} over {15} LEQ  {2} over {27}$ 이므로  $f LEFT ( {1} over {15} RIGHT ) = {1} over {8}$
+$THEREFORE ~f LEFT ( {14} over {15} RIGHT ) =1- {1} over {8} = {7} over {8}$
+[그림]
+(가)  $f LEFT ( 1-x RIGHT ) =1-f LEFT ( x RIGHT )$
+(나)  $f LEFT ( {x} over {3} RIGHT ) = {f LEFT ( x RIGHT )} over {2}$
+(다)  $x _{1} < x _{2}$ 이면  $f LEFT ( x _{1} RIGHT ) LEQ  f LEFT ( x _{2} RIGHT )$ 이다.
+함수  $y=f LEFT ( x RIGHT )$ 의 그래프는 점  $LEFT ( a,~a RIGHT )$   $LEFT ( a>0 RIGHT )$ 를 지나고 기울기가  $1$ 보다 큰 직선이다. 함수  $g LEFT ( x RIGHT )$ 는
+[정답] ③
+함수  $y=f LEFT ( x RIGHT )$ 의 그래프가 점  $LEFT ( a,~a RIGHT )$   $LEFT ( a>0 RIGHT )$ 를 지나고 기울기가  $1$ 보다 큰 직선이므로 이와 직선  $y=x$ 에 대하여 대칭인 함수  $y=f` ^{-1} LEFT ( x RIGHT )$ 의 그래프는 점  $LEFT ( a,~a RIGHT )$ 를 지나고 기울기가  $1$ 보다 작은 직선이다.
+즉, 함수  $g LEFT ( x RIGHT ) = {cases{````f LEFT ( x RIGHT )&~ LEFT ( x<a RIGHT )#f` ^{-1} LEFT ( x RIGHT )&~ LEFT ( x GEQ  a RIGHT )}}$ 의 그래프는 다음 그림과 같다.
+[그림]
+ㄱ.  $LEFT ( h CIRC  h ^{-1} RIGHT ) LEFT ( x RIGHT ) =x$ 이므로 방정식  $g LEFT ( x RIGHT ) = LEFT ( h CIRC  h ^{-1} RIGHT ) LEFT ( x RIGHT )$ 의 해는 함수  $y=g LEFT ( x RIGHT )$ 의 그래프와 직선  $y=x$ 의 교점의  $x$ 좌표와 같다. 두 그래프가 점  $LEFT ( a,~a RIGHT )$ 에서만 만나므로 방정식의 해는  $x=a$ 뿐이다. (참)
+ㄴ.  $g LEFT ( h LEFT ( x RIGHT ) RIGHT ) =g LEFT ( x+a RIGHT )$ ,  $h LEFT ( g LEFT ( x RIGHT ) RIGHT ) =g LEFT ( x RIGHT ) +a$ 이다.
+함수  $y=g LEFT ( x+a RIGHT )$ 의 그래프는 함수  $y=g LEFT ( x RIGHT )$ 의 그래프를  $x$ 축의 방향으로  $-a$ 만큼 평행이동한 것이고,
+함수  $y=g LEFT ( x RIGHT ) +a$ 의 그래프는 함수  $y=g LEFT ( x RIGHT )$ 의 그래프를  $y$ 축의 방향으로  $a$ 만큼 평행이동한 것이므로
+다음 그림과 같이 한 점에서만 만난다.
+[그림]
+따라서 방정식  $g LEFT ( h LEFT ( x RIGHT ) RIGHT ) =h LEFT ( g LEFT ( x RIGHT ) RIGHT )$ 의 해의 개수는  $1$ 이다. (거짓)
+ㄷ.  $h LEFT ( x RIGHT ) =x+a$ 의 역함수는  $h ^{-1} LEFT ( x RIGHT ) =x-a$ 이므로
+$LEFT ( h CIRC  g CIRC  h ^{-1} RIGHT ) LEFT ( x RIGHT )$  $= LEFT ( h CIRC  g RIGHT ) LEFT ( x-a RIGHT ) =h LEFT ( g LEFT ( x-a RIGHT ) RIGHT )$ 
+ $=g LEFT ( x-a RIGHT ) +a$
+에서 이 함수의 그래프는 함수  $y=g LEFT ( x RIGHT )$ 의 그래프를  $x$ 축의 방향으로  $a$ 만큼,  $y$ 축의 방향으로  $a$ 만큼 평행이동한 것이다.
+$h CIRC  g ^{-1} CIRC  h ^{-1} = LEFT ( h CIRC  g CIRC  h ^{-1} RIGHT ) ^{-1}$
+에서 함수  $y= LEFT ( h CIRC  g ^{-1} CIRC  h ^{-1} RIGHT ) LEFT ( x RIGHT )$ 가 함수  $y= LEFT ( h CIRC  g CIRCh ^{-1} RIGHT ) LEFT ( x RIGHT )$ 의 역함수이므로 두 함수의 그래프는 직선  $y=x$ 에 대하여 대칭이다.
+[그림]
+따라서 모든 실수  $x$ 에 대하여
+$LEFT ( h CIRC  g CIRC  h ^{-1} RIGHT ) LEFT ( x RIGHT ) LEQ  LEFT ( h CIRC  g ^{-1} CIRC  h ^{-1} RIGHT ) LEFT ( x RIGHT )$ 이다. (참)
+따라서 옳은 것은 ㄱ, ㄷ이다.
+$g LEFT ( x RIGHT ) = {cases{````f LEFT ( x RIGHT )&~ LEFT ( x<a RIGHT )#f` ^{-1} LEFT ( x RIGHT )&~ LEFT ( x GEQ  a RIGHT )}}$
+이고,  $h LEFT ( x RIGHT ) =x+a$ 일 때, <보기>에서 옳은 것만을 있는 대로 고른 것은?
+[표]
+[ 보 기 ]
+ㄱ. 방정식  $g LEFT ( x RIGHT ) = LEFT ( h CIRC  h ^{-1} RIGHT ) LEFT ( x RIGHT )$ 의 해는  $x=a$ 뿐이다.
+ㄴ. 방정식  $g LEFT ( h LEFT ( x RIGHT ) RIGHT ) =h LEFT ( g LEFT ( x RIGHT ) RIGHT )$ 의 서로 다른 실근의 개수는  $3$ 이다.
+ㄷ. 모든 실수  $x$ 에 대하여
+ $LEFT ( h CIRC  g CIRC  h ^{-1} RIGHT ) LEFT ( x RIGHT ) LEQ  LEFT ( h CIRC  g ^{-1} CIRC  h ^{-1} RIGHT ) LEFT ( x RIGHT )$ 이다.
+① ㄱ② ㄴ③ ㄱ, ㄷ④ ㄴ, ㄷ⑤ ㄱ, ㄴ, ㄷ
+[그림]
+최고차항의 계수가 양수인 이차함수  $f LEFT ( x RIGHT )$ 에 대하여 함수  $g LEFT ( x RIGHT )$ 를 다음과 같이 정의하자.
+[정답] ⑤
+ㄱ. 함수  $g LEFT ( x RIGHT )$ 의 정의역과 치역이 모두 실수 전체의 집합이고 함수  $g LEFT ( x RIGHT )$ 의 역함수가 존재하므로 함수  $g LEFT ( x RIGHT )$ 는 일대일대응이다. 따라서 함수  $y=g LEFT ( x RIGHT )$ 의 그래프의 개형은 다음 그림과 같이 두 가지이다.
+[그림]
+[그림]
+따라서  $f LEFT ( -2 RIGHT ) +f LEFT ( 1 RIGHT ) =g LEFT ( -2 RIGHT ) +g LEFT ( 1 RIGHT ) =3$  (참)
+[ $g LEFT ( -2 RIGHT ) =6$ ,  $g LEFT ( 1 RIGHT ) = it -3$ 일 때]
+[ $g LEFT ( -2 RIGHT ) = it -3$ ,  $g LEFT ( 1 RIGHT ) =6$ 일 때]
+ㄴ.  $g LEFT ( 0 RIGHT ) =f LEFT ( 0 RIGHT ) = it -1$ 에서
+ $f LEFT ( x RIGHT ) =ax ^{2} +bx-1$  ( $a$ 는 양의 상수,  $b$ 는 상수)
+로 놓을 수 있다.
+ $g LEFT ( 1 RIGHT ) =f LEFT ( 1 RIGHT ) = it -3$ 이면  $f LEFT ( -2 RIGHT ) =6$ 이므로
+ $a+b-1= it -3$ 에서  $a+b= it -2$  $cdotscdots$ ㉠
+ $4a-2b-1=6$ 에서  $4a-2b=7$  $cdotscdots$ ㉡
+㉠, ㉡에 의하여  $a= {1} over {2}$ ,  $b= it - {5} over {2}$ 
+따라서
+ $f LEFT ( x RIGHT ) = {1} over {2} x ^{2} - {5} over {2} x-1= {1} over {2} LEFT ( x- {5} over {2} RIGHT ) ^{2} - {33} over {8}$ 
+이므로 곡선  $y=f LEFT ( x RIGHT )$ 의 꼭짓점의  $x$ 좌표는  ${5} over {2}$ 이다. (참)
+ㄷ. 곡선  $y=f LEFT ( x RIGHT )$ 의 꼭짓점의  $x$ 좌표가  $-2$ 이므로
+ $f LEFT ( x RIGHT ) =a LEFT ( x+2 RIGHT ) ^{2} +p$  ( $a$ 는 양의 상수,  $b$ 는 상수)
+라 할 수 있다.
+이때 함수  $g LEFT ( x RIGHT )$ 가 일대일대응이므로
+ $f LEFT ( -2 RIGHT ) = it -3$ ,  $f LEFT ( 1 RIGHT ) =6$ 이다.
+ $p= it -3$ ,  $9a+p=6$ 에서  $a=1$ 이므로
+ $f LEFT ( x RIGHT ) = LEFT ( x+2 RIGHT ) ^{2} -3$ 
+따라서  $g LEFT ( 0 RIGHT ) =f LEFT ( 0 RIGHT ) =1$ 이므로  $g ^{-1} LEFT ( 1 RIGHT ) =0$  (참)
+따라서 옳은 것은 ㄱ, ㄴ, ㄷ이다.
+$g LEFT ( x RIGHT ) = {cases{-x+4&~ LEFT ( x< it -2 RIGHT )#f LEFT ( x RIGHT )&~ LEFT ( -2 LEQ  x LEQ  1 RIGHT )#-x-2&~ LEFT ( x>1 RIGHT )}}$
+함수  $g LEFT ( x RIGHT )$ 의 치역이 실수 전체의 집합이고, 함수  $g LEFT ( x RIGHT )$ 의 역함수가 존재할 때, <보기>에서 옳은 것만을 있는 대로 고른 것은?
+[표]
+[ 보 기 ]
+ㄱ.  $f LEFT ( -2 RIGHT ) +f LEFT ( 1 RIGHT ) =3$
+ㄴ.  $g LEFT ( 0 RIGHT ) = it -1$ ,  $g LEFT ( 1 RIGHT ) = it -3$ 이면 곡선  $y=f LEFT ( x RIGHT )$ 의 꼭짓점의  $x$ 좌표는  ${5} over {2}$ 이다.
+ㄷ. 곡선  $y=f LEFT ( x RIGHT )$ 의 꼭짓점의  $x$ 좌표가  $-2$ 이면  $g ^{-1} LEFT ( 1 RIGHT ) =0$ 이다.
+① ㄱ② ㄴ③ ㄱ, ㄴ④ ㄱ, ㄷ⑤ ㄱ, ㄴ, ㄷ
+[그림]
+내신고쟁이 공통수학2
+07.함수
+[정답] ②
+[정답] ⑤
+[정답] ⑤
+[정답] ③
+[정답] ③
+[정답] ④
+[정답] ④
+[정답] ⑤
+[정답] (1) ㄱ, ㄷ, ㄹ, ㅂ  (2) ㄱ, ㄴ, ㄹ, ㅂ
+(3) ㄱ, ㄹ, ㅂ  (4) ㄱ  (5) ㅁ
+[정답] ⑤
+[정답]  $4$
+[정답] ④
+[정답] ④
+[정답] ⑤
+[정답] ③
+[정답] (1)  $22$   (2)  $2$   (3)  $10$
+[정답]  $2$
+[정답] ②
+[정답] ④
+[정답] ③
+[정답] ⑤
+[정답] ①
+[정답] (1)  $2$   (2)  $4$   (3)  $3$   (4)  $2$   (5)  $-8$
+[정답] ④
+[정답] ①
+[정답] ③
+[정답]  $7$
+[정답] ⑤
+[정답] (1)  $h(x)=it-2x+5$  (2)  $h(x)=it-2x+1$
+[정답]  $h  ^{-1} (x)=3x-13$
+[정답] ②
+[정답] ③
+[정답] ⑤
+[정답] ④
+[정답] ④
+[정답] ①
+[정답] ①
+[정답] (1)  $64$   (2)  $24$   (3)  $4$   (4)  $1$   (5)  $6$
+[정답] ②
+[정답] ①
+[정답] ③
+[정답] ⑤
+[정답]  $189$
+[정답] ②
+[정답]  $7$
+[정답]  $132$
+[정답] ②
+[정답] ②
+[정답]  $5$
+[정답] ①
+[정답] ②
+[정답] ①
+[정답] ②
+[정답] ⑤
+[정답] ②
+[정답]  $b=2a+1$   $LEFT ( 0<a LEQ 2 RIGHT )$ , 풀이참조
+[정답] (1)  $k GEQ 1$   (2)  $k LEQ 1$   (3)  $1$
+[정답] (1)  $1$   (2)  $2$
+[정답] ②
+[정답] ①
+[정답]  $12$
+[정답] ③
+[정답] ②
+[정답] ③
+[정답] ②
+[정답]  $2$
+[정답] ③
+[정답]  $5$
+[정답] ②
+[정답] ①
+[정답] ①
+[정답] (1)  $6$   (2)  $LEFT ( 1,~4 RIGHT )$ ,  $LEFT ( 2,~2 RIGHT )$ ,  $LEFT ( 5,~1 RIGHT )$
+[정답]  $ 6$
+[정답] ③
+[정답]  $12$
+[정답] ②
+[정답] ④
+[정답] ②
+[정답]  $4$
+[정답]  $11$
+[정답]  $18$
+[정답] ⑤
+[정답]  $y= {1} over {2} g(x)+ {5} over {2}$
+[정답]  $3$
+[정답] ③
+[정답] ②
+[정답] ③
+[정답] ㄱ, ㄹ, ㅁ
+[정답]  $9over2$
+[정답] ②
+[정답]  $ 15$
+[정답]  $-6$
+[정답] ②
+[정답] ①
+[정답] ⑤
+[정답]  $4$
+[정답]  $36$
+[정답]  $32$
+[정답] ⑤
+[정답]  $148$
+[정답]  $384$
+[정답] ②
+[정답] ②
+[정답]  $150$
+[정답] ①
+[정답] ⑤
+[정답] ⑤
+[정답] ④
+[정답] ⑤
+[정답]  $3$
+[정답] ④
+[정답]  $10$
+[정답]  $8$
+[정답]  $11$
+[정답] ④
+[정답] (1)  $15$   (2)  $50$
+[정답]  $318$
+[정답] ②
+[정답]  ${11} over {4} <a< {25} over {8}$
+[정답]  $172$
+[정답] ④
+[정답] ①
+[정답] ④
+[정답]  $6$
+[정답]  $25$
+[정답] ③
+[정답] ②
+[정답] ④
+[정답]  $4$
+[정답]  ${7} over {8}$
+[정답] ③
+[정답] ⑤

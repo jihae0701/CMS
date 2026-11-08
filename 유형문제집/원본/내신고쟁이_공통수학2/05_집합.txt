@@ -1,0 +1,2125 @@
+[그림]
+[그림][그림]
+[그림]
+[표]
+내신고쟁이_공통수학2
+05.집합
+[그림]
+01
+집합의 뜻과 표현
+[그림]
+<보기>에서 집합인 것만을 있는 대로 고른 것은?
+[정답] ④
+ㄱ. ‘큰 자연수의 모임’은 그 대상을 분명하게 결정할 수 없으므로 집합이 아니다.
+ㄴ. ‘수학을 잘하는 학생들의 모임’은 그 대상을 분명하게 결정할 수 없으므로 집합이 아니다.
+ㄷ. ‘가장 작은 자연수’는  $1$ 이므로 그 대상을 분명히 알 수 있다.
+즉, ‘가장 작은 자연수의 모임’은 집합이다.
+ㄹ. ‘ $100$ 에 가까운 수의 모임’은 그 대상을 분명하게 결정할 수 없으므로 집합이 아니다.
+ㅁ. ‘ $1$ 보다 작은 소수’는 없으므로 그 대상을 분명히 알 수 있다.
+즉, ‘ $1$ 보다 작은 소수의 모임’은 집합이다.
+따라서 집합인 것은 ㄷ, ㅁ이다.
+[표]
+[ 보 기 ]
+ㄱ. 큰 자연수의 모임
+ㄴ. 수학을 잘하는 학생들의 모임
+ㄷ. 가장 작은 자연수의 모임
+ㄹ.  $100$ 에 가까운 수의 모임
+ㅁ. 1보다 작은 소수의 모임
+① ㄱ, ㄴ② ㄴ, ㄷ③ ㄷ, ㄹ④ ㄷ, ㅁ⑤ ㄹ, ㅁ
+집합  $A= LEFT { x` LEFT | `x RIGHT . RIGHT .$ 는  $10$  이하의 소수 $LEFT. it RIGHT }$ 에 대하여 다음 물음에 답하시오.
+[정답] (1)  $A= LEFT { 2,~3,~5,~7 RIGHT }$  (2)  $ NOTIN ,~ IN ,~ NOTIN ,~ IN $
+(1)  $10 $  이하의 소수는  $2,~3,~5,~7`$ 이다.
+ $THEREFORE ~A= LEFT { 2,~3,~5,~7 RIGHT }$
+(2) (1)에 의하여
+ $1$ 은 집합  $A$ 의 원소가 아니므로  $1` {BOX{`` NOTIN ``}} `A,$ 
+ $2$ 는 집합  $A$ 의 원소이므로  $2` {BOX{`` IN ``}} `A,$ 
+ $4$ 는 집합  $A$ 의 원소가 아니므로  $4` {BOX{` NOTIN `}} `A,$ 
+ $7$ 은 집합  $A$ 의 원소이므로  $7` {BOX{` IN `}} `A$ 
+따라서  ${BOX{~~}} `$  안에 알맞은 것은 순서대로  $ NOTIN ,~ IN ,~ NOTIN ,~ IN $ 이다.
+(1) 집합  $A$ 를 원소나열법으로 나타내시오.
+(2) 다음  ${BOX{~~}} `$  안에 기호  $IN ,~ NOTIN $  중 알맞은 것을 순서대로 쓰시오.
+$1` {BOX{~~}} `A,~~2` {BOX{~~}} `A,~~4` {BOX{~~}} `A,~~7` {BOX{~~}} `A$
+다음 중 집합  $LEFT { 2,~4,~6 RIGHT }$ 을 조건제시법으로 바르게 나타낸 것은?
+[정답] ⑤
+①  $6$ 의 양의 약수는  $1,~2,~3,~6`$ 이므로
+ $LEFT { x` LEFT | `x RIGHT . RIGHT .$ 는  $6$ 의 양의 약수 $LEFT. it RIGHT }$  $= LEFT { 1,~2,~3,~6 RIGHT }$
+②  $1<x<6`$ 인 짝수  $x$ 는  $2,~4$ 이므로
+ $LEFT { x` LEFT | `1<x<6,~x RIGHT . RIGHT .$ 는 짝수 $LEFT. it RIGHT }$  $= LEFT { 2,~4 RIGHT }$
+③ 방정식  $x LEFT ( x-2 RIGHT ) LEFT ( x-4 RIGHT ) LEFT ( x-6 RIGHT ) =0`$ 의 해는
+ $x=0$  또는  $x=2$  또는  $x=4$  또는  $x=6 $ 이므로
+ $LEFT { x` LEFT  `x LEFT ( x-2 RIGHT ) LEFT ( x-4 RIGHT ) LEFT ( x-6 RIGHT ) =0 RIGHT } = LEFT { 0,~2,~4,~6 RIGHT } RIGHT .$
+④  $6$ 보다 작은 홀수  $n$ 은  $1,~3,~5$ 이므로
+ $n=1`$ 일 때,  $2n=2$ 
+ $n=3`$ 일 때,  $2n=6$ 
+ $n=5`$ 일 때,  $2n=10$ 
+ $ therefore~  $  $LEFT { x` LEFT | `x=2n,~n RIGHT . RIGHT .$ 은  $6$ 보다 작은 홀수 $LEFT. it RIGHT }$  $= LEFT { 2,~6,~10 RIGHT }$
+⑤  $-1 LEQ x LEQ 1`$ 인 정수  $x$ 는  $-1,~0,~1$ 이므로
+ $x= it -1$ 일 때,  $2x+4=2$ 
+ $x=0 $ 일 때,  $2x+4=4$ 
+ $x=1$ 일 때,  $2x+4=6$ 
+ $ therefore~ $  $LEFT { 2x+4` LEFT | `-1 LEQ x LEQ 1,~x RIGHT . RIGHT .$ 는 정수 $LEFT. it RIGHT }$  $= LEFT { 2,~4,~6 RIGHT }$
+따라서 집합  $LEFT { 2,~4,~6 RIGHT }$ 을 조건제시법으로 바르게 나타낸 것은 ⑤이다.
+①  $LEFT { x` LEFT | `x RIGHT . RIGHT .$ 는  $6$ 의 양의 약수 $LEFT. it RIGHT }$
+②  $LEFT { x` LEFT | `1<x<6,~x RIGHT . RIGHT .$ 는 짝수 $LEFT. it RIGHT }$
+③  $LEFT { x`left`x LEFT ( x-2 RIGHT ) LEFT ( x-4 RIGHT ) LEFT ( x-6 RIGHT ) =0 RIGHT }$
+④  $LEFT { x` LEFT | `x=2n,~n RIGHT . RIGHT .$ 은  $6$ 보다 작은 홀수 $LEFT. it RIGHT }$
+⑤  $LEFT { 2x+4` LEFT | `-1 LEQ x LEQ 1,~x RIGHT . RIGHT .$ 는 정수 $LEFT. it RIGHT }$
+세 집합
+[정답]  $19$
+집합  $A$ 의 원소는  $0,~1`$ 로  $2$ 개이므로  $n LEFT ( A RIGHT ) =2$
+집합  $B`$ 에서  $LEFT | `x` RIGHT |  LEQ 5 $ , 즉  $-5 LEQ x LEQ 5$ 를 만족시키는 정수  $x$ 는  $-5,``-4,```-3,```-2,```-1,````0,~1,~2,~3,~4,~5`$ 의  $11$ 개이므로
+$n LEFT ( B` RIGHT ) =11$
+집합  $C`$ 에서  $12$ 의 양의 약수는  $1,~2,~3,~4,~6,~12$ 의  $6$ 개이므로
+$n LEFT ( C`` RIGHT ) =6$
+$therefore$   $n LEFT ( A` RIGHT ) +n LEFT ( B` RIGHT ) +n LEFT ( C` RIGHT ) =2+11+6=19$
+$A= LEFT { 0,~1 RIGHT }$ ,
+$B= LEFT { x` LEFT | ` LEFT | `x` RIGHT |  LEQ 5,~x RIGHT . RIGHT .$ 는 정수 $LEFT. it RIGHT }$ ,
+$C= LEFT { x` LEFT | `x RIGHT . RIGHT .$ 는  $12$ 의 양의 약수 $LEFT. it RIGHT }$
+에 대하여  $n LEFT ( A` RIGHT ) +n LEFT ( B` RIGHT ) +n LEFT ( C` RIGHT )$ 의 값을 구하시오.
+다음 중 옳지 않은 것은?
+[정답] ③
+① 집합  $LEFT {  0 RIGHT }$ 의 원소는  $0$ 의  $1$ 개이므로  $n LEFT ( LEFT {  0 RIGHT } RIGHT ) =1$ 이다. (참)
+② 공집합  $EMPTYSET$ 의 원소는 존재하지 않으므로  $n LEFT ( EMPTYSET  RIGHT ) =0$ 이다. (참)
+③ 집합  $LEFT { EMPTYSET RIGHT }$ 의 원소는  $EMPTYSET$ 의  $1$ 개이므로  $n LEFT ( LEFT {   EMPTYSET  RIGHT } RIGHT ) =1 != 0$ 이다. (거짓)
+④ 집합  $LEFT { EMPTYSET,~ LEFT { EMPTYSET RIGHT } RIGHT }$ 의 원소는  $EMPTYSET,~ LEFT { EMPTYSET RIGHT }$ 의  $2$ 개이므로
+ $n LEFT ( LEFT { ` EMPTYSET ,``` LEFT { EMPTYSET  RIGHT } RIGHT } RIGHT ) =2$ 이다. (참)
+⑤ 집합  $LEFT { 1,~2 RIGHT }$ 의 원소는  $1,~2$ 의  $2$ 개이므로  $n LEFT (   LEFT { 1,~   2 RIGHT }   RIGHT ) =2$ 
+집합  $LEFT { 1,~2,~3 RIGHT }$ 의 원소는  $1,~2,~3$ 의  $3$ 개이므로  $n LEFT (   LEFT { 1,~   2,~   3 RIGHT }   RIGHT ) =3$ 
+ $THEREFORE ~n LEFT (   LEFT { 1,~   2 RIGHT }   RIGHT ) -n LEFT (   LEFT { 1,~   2,~   3 RIGHT }   RIGHT ) =2-3= it -1$  (참)
+따라서 옳지 않은 것은 ③이다.
+①  $n LEFT ( LEFT {  0 RIGHT } RIGHT ) =1$
+②  $n LEFT ( EMPTYSET  RIGHT ) =0$
+③  $n LEFT ( LEFT {   EMPTYSET  RIGHT } RIGHT ) =0$
+④  $n LEFT ( LEFT {   EMPTYSET ,~    LEFT { EMPTYSET  RIGHT } RIGHT } RIGHT ) =2$
+⑤  $n LEFT ( LEFT { 1,~2 RIGHT } RIGHT ) -n LEFT ( LEFT { 1,~2,~3 RIGHT } RIGHT ) = it -1$
+[그림]
+02
+집합 사이의 포함 관계
+다음 중  $LEFT { 1,~2,~3 RIGHT }$ 의 부분집합이 아닌 것은?
+[정답] ④
+집합  $A$ 의 모든 원소가 집합  $B`$ 의 원소일 때, 집합  $A$ 는 집합  $B`$ 의 부분집합이다.
+따라서 ①  $EMPTYSET$ , ②  $LEFT { `2 RIGHT $ ,, ③  $LEFT { 1,~3 RIGHT }$ , ⑤  $LEFT { 1,~2,~3 RIGHT }$ 은
+모두 집합  $LEFT { 1,~2,~3 RIGHT }$ 의 부분집합이다.
+④  $LEFT { 1,~4 RIGHT }$ 에서  $4 NOTIN  LEFT { 1,~2,~3 RIGHT }$ 이므로 집합  $LEFT { 1,~4 RIGHT }$ 는 집합  $LEFT { 1,~2,~3 RIGHT }$ 의 부분집합이 아니다.
+①  $EMPTYSET$ ②  $LEFT {  2  RIGHT }$ ③  $LEFT {  1,~   3  RIGHT }$ ④  $LEFT { 1,~4 RIGHT }$ ⑤  $LEFT { 1,~2,~3 RIGHT }$
+다음 중 두 집합  $A$ ,  $B$  사이의 포함관계로 가장 적절한 것을 다음 중 하나 고르시오.
+[정답] (1)  $A SUBSET B$  (2)  $A=B$  (3)  $B SUBSET A$
+(1)  $A= LEFT { `x````x ^{2} -1=0 RIGHT } `= LEFT { -1,~1 RIGHT } ,~B= LEFT { -1,~0,~1 RIGHT }$ 이므로  $A SUBSET B$
+(2)  $A= LEFT { 2,~    3,~    5 RIGHT }$ ,  $B= LEFT { x` LEFT | `x RIGHT . RIGHT .$ 는  $5 $  이하의 소수 $LEFT. it RIGHT }$  $= LEFT { 2,~3,~5 RIGHT }$  이므로  $A=B$
+(3)  $A= LEFT { x` LEFT | `x RIGHT . RIGHT .$ 는  $2 $ 의 배수인 자연수 $LEFT. it RIGHT }$ ,
+ $B= LEFT { x` LEFT | `x RIGHT . RIGHT .$ 는  $6$ 의 배수인 자연수 $LEFT. it RIGHT }$ 에서 모든  $6$ 의 배수는  $2$ 의 배수이므로
+ $B SUBSET A$
+[그림]
+$A subset B$ ,  $B subset A$ ,  $A=B$
+(1)  $A= LEFT { x`left`x ^{2} -1=0 RIGHT } $ ,  $B= LEFT { -1,~0,~1 RIGHT }$
+(2)  $A= LEFT { 2,~    3,~    5 RIGHT }$ ,  $B= LEFT { x` LEFT | `x RIGHT . RIGHT .$ 는  $5 $  이하의 소수 $LEFT. it RIGHT }$
+(3)  $A= LEFT { x` LEFT | `x RIGHT . RIGHT .$ 는  $2 $ 의 배수인 자연수 $LEFT. it RIGHT }$ ,
+ $B= LEFT { x` LEFT | `x RIGHT . RIGHT .$ 는  $6$ 의 배수인 자연수 $LEFT. it RIGHT }$
+<보기>에서 옳은 것만을 있는 대로 고른 것은?
+[정답] ③
+ㄱ.  $0$ 은  $EMPTYSET$ 의 원소가 아니므로  $0 NOTIN EMPTYSET$  (거짓)
+ㄴ. 공집합은 모든 집합의 부분집합이므로  $EMPTYSET  SUBSET  LEFT { `0 RIGHT }$  (참)
+ㄷ.  $1$ 은 집합  $LEFT { 1,~2,~3 RIGHT }$ 의 원소이므로  $1 IN  LEFT { 1,~2,~3 RIGHT }$  (거짓)
+ㄹ. 모든 집합은 자기 자신의 부분집합이므로  $LEFT { `1 RIGHT }  SUBSET  LEFT { `1 RIGHT }$  (참)
+따라서 옳은 것은 ㄴ, ㄹ이다.
+[표]
+[ 보 기 ]
+ㄱ.  $0 IN EMPTYSET$ ㄴ.  $EMPTYSET  SUBSET  LEFT {  0 RIGHT }$
+ㄷ.  $1 SUBSET  LEFT { 1,~2,~3 RIGHT }$ ㄹ.  $LEFT {  1  RIGHT }  SUBSET  LEFT {  1  RIGHT }$
+① ㄱ, ㄴ② ㄴ, ㄷ③ ㄴ, ㄹ④ ㄷ, ㄹ⑤ ㄱ, ㄴ, ㄹ
+[그림]
+집합  $A= LEFT { EMPTYSET ,~1,~ LEFT { 1,~2 RIGHT } ,~2 RIGHT }$ 에 대하여 다음 중 옳지 않은 것은?
+[정답] ③
+①  $EMPTYSET$ 은 집합  $A$ 의 원소이므로  $EMPTYSET IN A$  (참)
+②  $EMPTYSET$ 은 집합  $A$ 의 부분집합이므로  $EMPTYSET SUBSET A$  (참)
+③  $LEFT { `1` RIGHT }$ 은 집합  $A$ 의 원소가 아니므로  $LEFT { `1` RIGHT }  NOTIN A$  (거짓)
+④  $LEFT { 1,~2 RIGHT }$ 는 집합  $A$ 의 원소이므로  $LEFT { 1,~2 RIGHT }  IN A$  (참)
+⑤  $LEFT { 1,~2 RIGHT }$ 는 집합  $A$ 의 부분집합이므로  $LEFT { 1,~2 RIGHT }  SUBSET A$  (참)
+따라서 옳지 않은 것은 ③이다.
+①  $EMPTYSET  IN A$ ②  $EMPTYSET  SUBSET A$ ③  $LEFT {  1  RIGHT }  IN A$ ④  $LEFT { 1,~2 RIGHT }  IN A$ ⑤  $LEFT { 1,~2 RIGHT }  SUBSET A$
+두 집합  $A= LEFT { 1,~12,~a RIGHT } $ ,  $B= LEFT { 1,~5,~a+b RIGHT }$ 에 대하여  $A=B`$ 일 때,  $a{times{b$ 의 값은? (단,  $a$ ,  $b$ 는 실수이다.)
+[정답] ②
+두 집합  $A= LEFT { 1,~12,~a RIGHT } ,~B= LEFT { 1,~5,~a+b RIGHT }$ 에 대하여
+$A=B`$ 이므로  $5 IN B`$ 에서  $5 IN A$ 이어야 한다.
+따라서  $a=5`$ 이므로  $B= LEFT { 1,~5,~a+b RIGHT }$
+또한  $12 IN A$ 에서  $12 IN B`$ 이어야 하므로
+$b+5=12 $ 에서  $b=7 $
+$therefore~ab=5TIMES7=35$
+①  $30$ ②  $35$ ③  $40$ ④  $45$ ⑤  $50$
+두 집합  $A= left{-1 ,~3 right}$ ,  $B = left{x ` left| ` x^2 +ax +b =0 right}$ 에 대하여  $A subset B$ 일 때, 상수  $a$ ,  $b$ 의 곱  $a times b$ 의 값은?
+[정답] ⑤
+$A subset B$ 이므로  $B=left{x `left|` x^2 +ax +b  = 0right}$ 에서
+이차방정식  $x^2 +ax +b =0$ 의 두 근이  $-1$ ,  $3$ 이다.
+근과 계수의 관계에 의하여
+$-a = LEFT ( -1 RIGHT ) +3$ 에서  $a= it -2$ 이고
+$b= LEFT ( -1 RIGHT ) times 3 = it -3$ 이다.
+$therefore$   $a timesb = LEFT ( -2  RIGHT ) times LEFT ( -3  RIGHT ) =6$
+①  $-6$ ②  $-3$ ③  $0$ ④  $3$ ⑤  $6$
+집합
+[정답] ④
+$x in A$ ,  $y inA$ 일 때,  $x+y$ 의 값은 다음 표와 같다.
+[표]
+$+$
+$-1$
+$0$
+$1$
+$-1$
+$-2$
+$-1$
+$0$
+$0$
+$-1$
+$0$
+$1$
+$1$
+$0$
+$1$
+$2$
+즉,  $B= LEFT { -2,~  -1,~    0,~    1,~    2 RIGHT }$
+$x in A$ ,  $y inA$ 일 때,  $x times y$ 의 값은 다음 표와 같다.
+[표]
+$TIMES$
+$-1$
+$0$
+$1$
+$-1$
+$1$
+$0$
+$-1$
+$0$
+$0$
+$0$
+$0$
+$1$
+$-1$
+$0$
+$1$
+즉,  $C= LEFT { -1,~0,~1 RIGHT }$
+따라서 세 집합  $A,~B,~C`$ 의 포함관계는  $A=C SUBSET B`$ 이다.
+$A= LEFT { -1,~0,~1 RIGHT }$ ,
+$B= LEFT { x+y` LEFT  `x IN A,~y IN A RIGHT } RIGHT .$ ,
+$C= LEFT { x times y`left`x IN A,~y IN A RIGHT }$
+사이의 포함관계를 바르게 나타낸 것은?
+①  $A SUBSET B SUBSET C$ ②  $A SUBSET B=C$ ③  $A=B SUBSET C$ ④  $A=C SUBSET B$ ⑤  $A=B=C$
+[그림]
+03
+집합의 연산
+전체집합  $U`$ 의 두 부분집합  $A$ ,  $B$ 에 대하여 다음 중 항상 성립하는 것이 아닌 것은?
+[정답] ⑤
+①  $U ^{C} = EMPTYSET $  (참)
+②  $A SMALLINTER A ^{C} = EMPTYSET $  (참)
+③ 합집합에 대한 교환법칙이 성립하므로
+ $A SMALLUNION B=B SMALLUNION A$  (참)
+④  $A CUP A ^{C} =U$  (참)
+⑤ 여집합과 차집합의 성질에 의하여
+ $A-B=A SMALLINTER B ^{C}$  (거짓)
+따라서 항상 성립하는 것이 아닌 것은 ⑤이다.
+①  $U ^{C} = EMPTYSET $ ②  $A SMALLINTER A ^{C} = EMPTYSET $ ③  $A SMALLUNION B=B SMALLUNION A$ ④  $A CUP A ^{C} =U$ ⑤  $A-B=B SMALLINTER A ^{C}$
+전체집합  $U`$ 의 두 부분집합  $A$ ,  $B$ 에 대하여 다음 중 옳은 것은?
+[정답] ④
+①  $A CUP B= LEFT { x` LEFT | `x IN A RIGHT . RIGHT .$  또는  $x in B$  $LEFT. it RIGHT }$  (거짓)
+②  $A SMALLINTER B= LEFT { x` LEFT | `x IN A RIGHT . RIGHT .$  그리고  $x in B$  $LEFT. it RIGHT }$  (거짓)
+③  $A ^{C} = LEFT { x` LEFT | `x IN U RIGHT . RIGHT .$  그리고  $x NOTIN A$  $LEFT. it RIGHT }$  (거짓)
+④  $A-B= LEFT { x` LEFT | `x IN A RIGHT . RIGHT .$  그리고  $x NOTIN B$  $LEFT. it RIGHT }$  (참)
+⑤  $LEFT ( A SMALLINTER B` RIGHT ) ^{C} =A ^{C}  CUP B ^{C} = LEFT { x` LEFT | `x NOTIN A RIGHT . RIGHT .$  또는  $x NOTIN B$  $LEFT. it RIGHT }$  (거짓)
+따라서 선지 중 옳은 것은 ④이다.
+①  $A CUP B= LEFT { x` LEFT | `x IN A RIGHT . RIGHT .$  그리고  $x in B$  $LEFT. it RIGHT }$
+②  $A SMALLINTER B= LEFT { x` LEFT | `x IN A RIGHT . RIGHT .$  또는  $x in B$  $LEFT. it RIGHT }$
+③  $A ^{C} = LEFT { x` LEFT | `x IN U RIGHT . RIGHT .$  또는  $x NOTIN A$  $LEFT. it RIGHT }$
+④  $A-B= LEFT { x` LEFT | `x IN A RIGHT . RIGHT .$  그리고  $x NOTIN B$  $LEFT. it RIGHT }$
+⑤  $LEFT ( A SMALLINTER B` RIGHT ) ^{C} = LEFT { x` LEFT | `x NOTIN A RIGHT . RIGHT .$  그리고  $x NOTIN B$  $LEFT. it RIGHT }$
+[그림]
+전체집합  $U= LEFT { 1,~  2,~  3,~  4,~  5,~  6,~  7,~  8 RIGHT }$ 의 두 부분집합  $A= LEFT { 1,~  3,~  5 RIGHT } $ ,  $  B= LEFT { 2,~  3,~  5,~  8 RIGHT }$ 에 대하여 다음 중 옳지 않은 것은?
+[정답] ⑤
+주어진 집합을 벤 다이어그램으로 나타내면 다음 그림과 같다.
+[그림]
+①  $A SMALLUNION B= LEFT { 1,~  2,~  3,~  5,~  8 RIGHT }$  (참)
+②  $A SMALLINTER B= LEFT { 3,~5 RIGHT }$  (참)
+③  $B ^{C} = LEFT { 1,~4,~6,~7 RIGHT }$  (참)
+④  $A-B= LEFT { 1 RIGHT }$  (참)
+⑤  $A ^{C}  SMALLINTER B ^{C} =(A CUP B) ^{C} = LEFT { 4,~6,~7 RIGHT }  !=  LEFT { 2,~8 RIGHT }$  (거짓)
+따라서 선지 중 옳지 않은 것은 ⑤이다.
+①  $A SMALLUNION B= LEFT { 1,~  2,~  3,~  5,~  8 RIGHT }$ ②  $A SMALLINTER B= LEFT { 3,~  5 RIGHT }$ ③  $B ^{C} = LEFT { 1,~4,~6,~7 RIGHT }$ ④  $A-B= LEFT { 1 RIGHT }$ ⑤  $A ^{C}  SMALLINTER B ^{C} = LEFT { 2,~8 RIGHT }$
+자연수 전체의 집합의 두 부분집합
+[정답] (1)  $LEFT { 5,~6 RIGHT }$  (2)  $LEFT { 5,~6,~7,~9 RIGHT }$
+$A= LEFT { 1,~  3,~  5,~  6 RIGHT } $ ,  $B= LEFT { 1,~  3,~  7,~  9 RIGHT }$ 이므로
+이를 벤 다이어그램으로 나타내면 다음 그림과 같다.
+[그림]
+(1)  $A SMALLINTER (A SMALLINTER B) ^{C}$  $=A-(A SMALLINTER B)$ 
+ $= LEFT { 1,~3,~5,~6 RIGHT } - LEFT { 1,~3 RIGHT }$ 
+ $=LEFT { 5,~  6 RIGHT }$
+$⑵$   $(A-B) CUP (B-A)$  $= LEFT { 5,~6 RIGHT }  CUP  LEFT { 7,~9 RIGHT }$ 
+ $=LEFT { 5,~  6,~  7,~  9 RIGHT }$
+$A= LEFT { 1,~  3,~  5,~  6 RIGHT }$ ,
+$B= LEFT { x` LEFT | `x LEQ 10,~x RIGHT . RIGHT .$ 는  $10$ 과 서로소인 자연수 $LEFT. it RIGHT }$
+에 대하여 다음 집합을 구하시오.
+(1)  $A SMALLINTER (A SMALLINTER B`) ^{C}$
+(2)  $(A-B`) CUP (B-A)$
+[그림]
+전체집합  $U`$ 의 두 부분집합  $A$ ,  $B$ 에 대하여  $A SUBSET B`$ 가 성립할 때, 다음 중 항상 옳은 것은?
+[정답] ③
+$A SUBSET B$ 이므로 이를 벤 다이어그램으로 나타내면 다음 그림과 같다.
+[그림]
+[표]
+①
+$A SMALLINTER B=A$  (거짓)
+②
+$A SMALLUNION B=B$  (거짓)
+[그림]
+[그림]
+③
+$A ^{C}  CUP B=U$  (참)
+④
+$B-A != EMPTYSET$  (거짓)
+[그림]
+[그림]
+⑤
+$B ^{C}  SUBSET A ^{C}$  (거짓)
+[그림]
+따라서 항상 옳은 것은 ③이다.
+①  $A SMALLINTER B=B$ ②  $A SMALLUNION B=A$ ③  $A ^{C}  CUP B=U$ ④  $B-A= EMPTYSET$ ⑤  $A ^{C}  SUBSET B ^{C}$
+전체집합  $U`$ 의 두 부분집합  $A$ ,  $B$ 가 서로소일 때, <보기>에서 옳은 것의 개수는? (단,  $A!= EMPTYSET$ ,  $B != EMPTYSET$ 이다.)
+[정답] ③
+두 집합  $A,~B`$ 가 서로소이므로 이를 벤 다이어그램으로 나타내면 다음 그림과 같다.
+[그림]
+ㄱ.  $A SMALLINTER B= EMPTYSET$  (참)
+ㄴ.  $A SMALLUNION B !=U$  (거짓)
+ㄷ.  $A-B=A$  (참)
+ㄹ. 벤 다이어그램에서
+[그림]
+이므로  $A SUBSET B ^{C}$  (참)
+ㅁ.  $A ^{C}  SUBSET (B-A)$ 에서  $B-A=B$ 이므로  $A ^{C}  SUBSET B$ 
+그런데 벤 다이어그램에서
+[그림]
+이므로  $A ^{c}  NSUBSET B$  (거짓)
+따라서 옳은 것은 ㄱ, ㄷ, ㄹ의  $3$ 개이다.
+[표]
+[ 보 기 ]
+ㄱ.  $A SMALLINTER B= EMPTYSET$ ㄴ.  $A SMALLUNION B=U$
+ㄷ.  $A-B=A$ ㄹ.  $A SUBSET B ^{C}$
+ㅁ.  $A ^{C}  SUBSET (B-A)$
+①  $1$ ②  $2$ ③  $3$ ④  $4$ ⑤  $5$
+다음은 전체집합  $U$ 의 세 부분집합  $A$ ,  $B$ ,  $C$ 에 대하여
+[정답] ④
+$A- left ( B SMALLINTER C right ) $
+$=A SMALLINTER  left ( B SMALLINTER C right )  ^{C~}  CDOTS  CDOTS $  여집합과 차집합의 성질
+$=A SMALLINTER  LEFT ( {BOX{`````(B ^{C}  CUP C ^{C} )`````}} RIGHT ) ~ CDOTS  CDOTS $  드모르간의 법칙
+$=(A SMALLINTER B ^{C} ) CUP (A SMALLINTER C ^{C} )~ CDOTS  CDOTS $  [그림]
+집합의 연산에 대한 분배법칙
+$=(A-B) SMALLUNION(A-C)~ CDOTS CDOTS$  여집합과 차집합의 성질
+(가)  $B ^{C}  CUP C ^{C}$ , (나) : 집합의 연산에 대한 분배법칙이다.
+$A- LEFT ( B SMALLINTER C` RIGHT ) = LEFT ( A-B` RIGHT )  CUP  LEFT ( A-C` RIGHT )$
+가 성립하는 것을 증명하는 과정이다.
+[그림]
+$A- left ( B SMALLINTER C` right ) $
+$=A SMALLINTER  left ( B SMALLINTER C` right )  ^{C}$   $CDOTS  CDOTS $  여집합과 차집합의 성질
+$=A SMALLINTER  LEFT ( {BOX{~~㈎~~}} RIGHT )$   $CDOTS  CDOTS $  드 모르간의 법칙
+$= LEFT ( A SMALLINTER B ^{C} ` RIGHT )  CUP  LEFT ( A SMALLINTER C ^{C} ` RIGHT )$   $CDOTS  CDOTS $   ${BOX{~~㈏~~}}$
+$= LEFT ( A-B` RIGHT )  CUP  LEFT ( A-C` RIGHT )$   $CDOTS  CDOTS $  여집합과 차집합의 성질
+위의 증명에서 (가), (나)에 알맞은 것은?
+[표]
+(가)
+(나)
+①
+$B SMALLUNION C$
+집합에 연산에 대한 결합법칙
+②
+$B ^{C}  SMALLINTER C ^{C}$
+집합에 연산에 대한 분배법칙
+③
+$B ^{C}  SMALLINTER C ^{C}$
+집합에 연산에 대한 결합법칙
+④
+$B ^{C}  CUP C ^{C}$
+집합에 연산에 대한 분배법칙
+⑤
+$B ^{C}  CUP C ^{C}$
+집합에 연산에 대한 결합법칙
+전체집합  $U= LEFT { x` LEFT | `x RIGHT . RIGHT .$ 는  $10$  이하의 자연수 $LEFT. it RIGHT }$ 의 세 부분집합  $A$ ,  $B$ ,  $C$ 에 대하여  $A SMALLINTER B= LEFT { 1,~  3,~  5 RIGHT }$ ,  $A SMALLINTER C= LEFT { 1,~  2,~  5,~  7 RIGHT }$ 일 때,  $A SMALLINTER  LEFT ( B CUP C` RIGHT )$ 의 모든 원소의 합을 구하시오.
+[정답]  $18$
+집합의 연산에 대한 분배법칙을 이용하면
+$A SMALLINTER  LEFT ( B CUP C` RIGHT )$  $= LEFT ( A SMALLINTER B` RIGHT )  CUP  LEFT ( A SMALLINTER C` RIGHT )$ 
+ $=LEFT { 1,~  2,~  3,~  5,~  7 RIGHT }$
+따라서 구하는 모든 원소의 합은
+$1+2+3+5+7=18$
+[그림]
+전체집합  $U`$ 의 세 부분집합  $A$ ,  $B$ ,  $C$  사이의 관계를 나타낸 벤 다이어그램이 그림과 같을 때, 색칠한 부분을 바르게 나타낸 집합은?
+[정답] ④
+각각 벤 다이어그램으로 나타내면 다음 그림과 같다.
+①  $A- LEFT ( B SMALLINTER C` RIGHT )$ 를 나타내는 부분은
+[그림]
+②  $A SMALLINTER  LEFT ( B-C` RIGHT )$ 를 나타내는 부분은
+[그림]
+③  $A- LEFT ( B-C` RIGHT )$ 를 나타내는 부분은
+[그림]
+④  $LEFT ( A-B` RIGHT )  SMALLINTER  LEFT ( A-C` RIGHT )$ 를 나타내는 부분은
+[그림]
+⑤  $LEFT ( A CUP C` RIGHT )  SMALLINTER B ^{C} = LEFT ( A CUP C` RIGHT ) -B`$ 를 나타내는 부분은
+[그림]
+따라서 색칠한 부분을 바르게 나타낸 것은 ④이다.
+[그림]
+①  $A- LEFT ( B SMALLINTER C` RIGHT )$ ②  $A SMALLINTER  LEFT ( B-C` RIGHT )$ ③  $A- LEFT ( B-C` RIGHT )$ ④  $LEFT ( A-B` RIGHT )  SMALLINTER  LEFT ( A-C` RIGHT )$ ⑤  $LEFT ( A CUP C` RIGHT )  SMALLINTER B ^{C}$
+전체집합  $U= LEFT { x` LEFT | `x RIGHT . RIGHT .$ 는  $10$  이하의 자연수 $LEFT. it RIGHT }$ 의 두 부분집합  $A$ ,  $B$ 에 대하여  $A ^{C}  SMALLINTER B= LEFT { 6,~8 RIGHT }$ ,  $A ^{C}  SMALLINTER B ^{C} = LEFT { 4,~7,~10 RIGHT }$ 일 때, 다음 중 집합  $A$ 를 바르게 나타낸 것은?
+[정답] ③
+$A ^{C}  SMALLINTER B=B SMALLINTER A ^{C} =B-A= LEFT { 6,~8 RIGHT }$ ,
+$A ^{C}  SMALLINTER B ^{C} =(A CUP B) ^{C} = LEFT { 4,~7,~10 RIGHT }$ 이므로
+이를 벤 다이어그램으로 나타내면 다음 그림과 같다.
+[그림]
+$THEREFORE ~A= LEFT { 1,~2,~3,~5,~9 RIGHT }$
+①  $A= LEFT { 1,~  2,~  3,~  5 RIGHT }$
+②  $A= LEFT { 3,~  6,~  8,~  9 RIGHT }$
+③  $A= LEFT { 1,~  2,~  3,~  5,~  9 RIGHT }$
+④  $A= LEFT { 3,~  4,~  6,~  7,~  10 RIGHT }$
+⑤  $A= LEFT { 1,~  2,~  4,~  5,~  7,~  10 RIGHT }$
+자연수  $n$ 에 대하여
+[정답] ③
+$6$ 의 양의 약수는 모두  $12$ 의 양의 약수이다.
+즉,  $A_6 SUBSET A_12$ 이므로  $A_6 SMALLUNION A_12 =A_12$
+$THEREFORE ~p=12$
+$12$ 의 양의 약수이면서  $18$ 의 양의 약수인 수는
+$12$ 와  $18$ 의 최대공약수인  $6$ 의 약수와 같으므로
+$A_12 SMALLINTER A_18 =A_6$   $ therefore~  $  $q=6$
+$THEREFORE ~p+q=12+6=18$
+$A _{n} = LEFT { x` LEFT | `x RIGHT . RIGHT .$ 는  $n$ 의 양의 약수 $LEFT. it RIGHT }$
+라 할 때,  $A_p =A_6 SMALLUNION A_12$ ,  $A _{q} =A _{12}  SMALLINTER A _{18}$ 을 만족시키는 두 자연수  $p$ ,  $q$ 에 대하여  $p+q$ 의 값은?
+①  $6$ ②  $12$ ③  $18$ ④  $24$ ⑤  $30$
+자연수  $n$ 에 대하여
+[정답]  $②$
+ㄱ.  $4$ 의 배수는  $2$ 의 배수이므로  $A  _{4}  SUBSET A  _{2}$ 
+따라서  $A  _{2}  CUP A  _{4} =A  _{2}$  (참)
+ㄴ.  $2$ 의 배수와  $3$ 의 배수 중 공통인 수는  $6$ 의 배수이므로
+ $A  _{2}  SMALLINTER A  _{3} =A  _{6}$  (참)
+ㄷ.  $A _{2}  SMALLINTER  LEFT ( A _{3}  CUP A _{4} RIGHT )$  $= LEFT ( A _{2}  SMALLINTER A _{3} RIGHT )  CUP  LEFT ( A _{2}  SMALLINTER A _{4} RIGHT )$ 
+ $=A _{6}  CUP A _{4} ~ LEFT ( BECAUSE ~A _{4}  SUBSET A _{2} RIGHT )$ 
+ $=A  _{4}  CUP A  _{6}$
+이때,  $2 IN A  _{2}  CUP A  _{6}$ 이지만  $2 NOTIN A  _{4}  CUP A  _{6}$ 이므로
+$A _{4}  CUP A _{6}  != A _{2}  CUP A _{6}$ 이다. (거짓)
+따라서 옳은 것은 ㄱ, ㄴ이다.
+$A _{n} = LEFT { x` LEFT | `x RIGHT . RIGHT .$ 는  $n$ 의 배수인 자연수 $LEFT. it RIGHT }$
+라 할 때, <보기>에서 옳은 것만을 있는 대로 고른 것은?
+[표]
+[ 보 기 ]
+ㄱ.  $A  _{2}  CUP A  _{4} =A  _{2}$
+ㄴ.  $A  _{2}  SMALLINTER A  _{3} =A  _{6}$
+ㄷ.  $A _{2}  SMALLINTER  LEFT ( A _{3}  CUP A _{4} RIGHT ) =A _{2}  CUP A _{6}$
+① ㄱ② ㄱ, ㄴ③ ㄱ, ㄷ④ ㄴ, ㄷ⑤ ㄱ, ㄴ, ㄷ
+[그림]
+04
+합집합의 원소의 개수
+두 집합  $A$ ,  $B$ 에 대하여
+[정답] ①
+$n LEFT ( A-B RIGHT ) $  $=n LEFT ( A  cup B RIGHT ) -n LEFT ( B RIGHT )$ 
+ $= 24 - 18 = 6$
+$n LEFT ( A CUP B` RIGHT ) =24$ ,  $n LEFT ( B` RIGHT ) =18$
+일 때,  $n LEFT ( A-B` RIGHT )$ 의 값은?
+①  $6$ ②  $8$ ③  $10$ ④  $12$ ⑤  $14$
+전체집합  $U`$ 의 두 부분집합  $A$ ,  $B$ 가 서로소이고,  $n LEFT ( U` RIGHT ) =50$ ,  $n LEFT ( A RIGHT ) =13$ ,  $n LEFT ( B` RIGHT ) =26$ 일 때,  $n LEFT ( A ^{C}  SMALLINTER B ^{C} ` RIGHT )$ 의 값을 구하시오.
+[정답]  $11$
+두 집합  $A,~  B $ 가 서로소이므로  $A SMALLINTER B= EMPTYSET $
+$ therefore~  $  $n LEFT ( A SMALLINTER B RIGHT ) =0$
+$n LEFT ( A CUP B RIGHT ) $  $=n LEFT ( A RIGHT ) +n LEFT ( B RIGHT )$ 
+ $ =13+26$ 
+ $=39$
+이므로
+$n LEFT ( A ^{C}  SMALLINTER B ^{C} ` RIGHT )$  $=n LEFT ( LEFT ( A CUP B RIGHT ) ^{C} ` RIGHT )$ 
+ $=n LEFT ( U` RIGHT ) -n LEFT ( A SMALLINTER B` RIGHT )$ 
+ $=50-39$ 
+ $=11$
+[그림]
+전체집합  $U`$ 의 두 부분집합  $A$ ,  $B$ 에 대하여  $n LEFT ( U` RIGHT ) =30$ ,  $n LEFT ( A RIGHT ) =10$ ,  $n LEFT ( B` RIGHT ) =15$ ,  $n LEFT ( A ^{C}  CUP B ^{C} ` RIGHT ) =24$ 일 때,  $n LEFT ( A CUP B` RIGHT )$ 의 값은?
+[정답] ②
+$n LEFT ( A ^{C}  CUP B ^{C} ` RIGHT )$  $=n LEFT ( LEFT ( A SMALLINTER B RIGHT ) ^{C} ` RIGHT )$ 
+ $=n LEFT ( U` RIGHT ) -n LEFT ( A SMALLINTER B` RIGHT )$
+이므로  $24=30-n LEFT ( A SMALLINTER B` RIGHT )$ 에서
+$n LEFT ( A SMALLINTER B RIGHT ) =6$
+$THEREFORE ~n LEFT ( A CUP B` RIGHT )$  $=n LEFT ( A RIGHT ) +n LEFT ( B` RIGHT ) -n LEFT ( A SMALLINTER B` RIGHT )$ 
+ $=10+15-6=19$
+①  $18$ ②  $19$ ③  $20$ ④  $21$ ⑤  $22$
+어느 학급의 학생 중 수학자 유클리드를 아는 학생은  $18$ 명, 수학자 페르마를 아는 학생은  $12$ 명이다. 수학자 유클리드 또는 수학자 페르마를 아는 학생이  $23$ 명일 때, 두 수학자를 모두 아는 학생 수는?
+[정답] ③
+수학자 유클리드를 아는 학생의 집합을  $A$ ,
+수학자 페르마를 아는 학생의 집합을  $B`$ 라 하면
+수학자 유클리드 또는 수학자 페르마를 아는 학생의 집합은  $A CUP B$ 이고, 두 수학자를 모두 아는 학생의 집합은  $A SMALLINTER B$ 이다.
+이때, 주어진 조건에 의하여
+$n LEFT ( A RIGHT ) =18,~   n LEFT ( B RIGHT ) =12,~n LEFT ( A CUP B RIGHT ) =23$ 이므로
+$n LEFT ( A CUP B RIGHT ) =n LEFT ( A RIGHT ) +n LEFT ( B RIGHT ) -n LEFT ( A SMALLINTER B RIGHT )$ 에서
+$23=18+12-n LEFT ( A SMALLINTER B RIGHT )$
+$THEREFORE ~n LEFT ( A SMALLINTER B RIGHT ) =7$
+따라서 두 수학자를 모두 아는 학생 수는  $7$ 이다.
+①  $5$ ②  $6$ ③  $7$ ④  $8$ ⑤  $9$
+$1$ 부터  $100$ 까지의 자연수 중에서  $3$ 의 배수와  $5$ 의 배수의 집합을 각각  $A$ ,  $B$ 라 할 때,  $n LEFT ( A CUP B` RIGHT )$ 의 값을 구하시오.
+[정답]  $47$
+$100$  이하의  $3$ 의 배수는  $3 TIMES 1,~  3 TIMES 2,~   CDOTS ,~  3 TIMES 33$ 이므로
+$n LEFT ( A RIGHT ) =33$
+$100$  이하의  $5$ 의 배수는  $5 TIMES 1,~  5 TIMES 2,~   CDOTS ,~  5 TIMES 20$ 이므로
+$n LEFT ( B RIGHT ) =20$
+$3$ 과  $5$ 의 최소공배수는  $15$ 이므로
+$100$  이하의  $15$ 의 배수는  $15 TIMES 1,~ 15 TIMES 2,~   CDOTS ,~  15 TIMES 6$ 이므로
+$n LEFT ( A SMALLINTER B RIGHT ) =6$
+$THEREFORE ~n LEFT ( A CUP B RIGHT )$  $=n LEFT ( A RIGHT ) +n LEFT ( B RIGHT ) -n LEFT ( A SMALLINTER B RIGHT )$ 
+ $=33+20-6=47$
+[그림]
+05
+부분집합의 개수
+집합  $A= LEFT { x` LEFT | `x RIGHT . RIGHT .$ 는  $15$  이하의 소수 $LEFT. it RIGHT }$ 에 대하여 집합  $A$ 의 부분집합의 개수는?
+[정답] ⑤
+$A= LEFT { 2,~3,~5,~7,~11,~13 RIGHT }$ 이므로
+집합  $A$ 의 모든 부분집합의 개수는  $2  ^{6} =64$ 이다.
+①  $32$ ②  $40$ ③  $48$ ④  $56$ ⑤  $64$
+집합  $LEFT { 1,~2,~3,~ LEFT { 1,~2 RIGHT } RIGHT }$ 의 진부분집합의 개수를 구하시오.
+[정답]  $15$
+집합  $LEFT { 1,~2,~3,~ LEFT { 1,~2 RIGHT } RIGHT }$ 의 원소는  $1,~  2,~  3,~   LEFT { 1,~  2 RIGHT }$ 의  $4$ 개이므로 집합  $LEFT { 1,~  2,~  3,~   LEFT { 1,~  2 RIGHT } RIGHT }$ 의 진부분집합의 개수는  $2  ^{4} -1=15$ 이다.
+집합  $A= LEFT { 1,~  2,~  3,~  4 RIGHT }$ 의 부분집합 중  $4$ 를 원소로 갖는 부분집합의 개수는?
+[정답] ②
+$4$ 를 원소로 갖는 집합  $A$ 의 부분집합은
+집합  $LEFT { 1,~  2,~  3 RIGHT }$ 의 부분집합에  $4$ 를 원소로 추가한 것과 같으므로 구하는 부분집합의 개수는 집합  $LEFT { 1,~  2,~  3 RIGHT }$ 의 부분집합의 개수와 같다.
+따라서 구하는 부분집합의 개수는  $2 ^{3} =8$ 이다.
+①  $4$ ②  $8$ ③  $12$ ④  $16$ ⑤  $20$
+집합  $LEFT { a,~  b,~  c,~  d,~  e RIGHT }$ 의 부분집합 중에서 집합  $LEFT { a,~  c  RIGHT }$ 와 서로소인 집합의 개수는?
+[정답] ①
+집합  $LEFT { a,~  c RIGHT }$ 와 서로소이기 위해서는
+$a,``c$ 를 포함하지 않아야 한다.
+집합  $LEFT { a,~  b,~  c,~  d,~  e  RIGHT }$ 의 부분집합 중
+$a,``c`$ 를 원소로 갖지 않는 부분집합의 개수는
+집합  $LEFT { b,~  d,~  e RIGHT }$ 의 부분집합의 개수와 같다.
+따라서 구하는 집합의 개수는  $2  ^{3} =8$ 이다.
+①  $8$ ②  $10$ ③  $12$ ④  $14$ ⑤  $16$
+집합  $A= LEFT { x` LEFT | `-2 LEQ x<5,~x RIGHT . RIGHT .$ 는 정수 $LEFT. it RIGHT }$ 에 대하여  $0$ 과  $4$ 는 반드시 속하고,  $-1$ 은 속하지 않는 집합  $A$ 의 부분집합의 개수는?
+[정답] ③
+집합  $A= LEFT { -2,~  -1,~  0,~  1,~  2,~  3,~  4 RIGHT }$ 의 부분집합 중
+두 원소  $0,~4$ 는 속하고, 원소  $-1$ 은 속하지 않는 것은
+집합  $LEFT { -2,~  1,~  2,~  3 RIGHT }$ 의 부분집합에
+$0,~  4$ 를 원소로 추가한 것과 같다.
+따라서 구하는 부분집합의 개수는 집합  $LEFT { -2,~  1,~  2,~  3 RIGHT }$ 의 부분집합의 개수와 같으므로  $2^4 =16 $ 이다.
+①  $4$ ②  $8$ ③  $16$ ④  $32$ ⑤  $64$
+집합  $X= left{1,~ 2,~3, ~4,~5,~ 6,~ 7,~ 8 ,~ 9 right}$ 의 부분집합 중 홀수  $3$ 개와 적어도  $2$ 개의 짝수를 원소로 갖는 집합의 개수는?
+[정답] ③
+집합  $X$ 의 원소 중 홀수는  $1$ ,  $3$ ,  $5$ ,  $7$ ,  $9$ 의  $5$ 개이므로
+이 중  $3$ 개를 선택하는 방법의 수는  ${}_5 {rmC }_3 = 10$
+또한  $2$ 개 이상의 짝수를 원소로 가지므로 구하는 부분집합의 개수는
+$10 times LEFT ( {}_4 rmC_2 + {}_4 C_3 + {}_4 C_4  RIGHT ) = 10 times LEFT ( 6+4+1 RIGHT ) = 110$ 이다.
+①  $90$ ②  $100$ ③  $110$ ④  $120$ ⑤  $130$
+두 집합  $A= LEFT { 1,~4,~5,~7 RIGHT } $ ,  $B= LEFT { 2,~3,~4,~7,~8 RIGHT }$ 에 대하여  $LEFT ( B-A RIGHT )  SUBSET X SUBSET B`$ 를 만족시키는 집합  $X`$ 의 개수를 구하시오.
+[정답]  $4$
+$B-A= LEFT { 2,~  3,~  8 RIGHT }$ 이므로
+$LEFT ( B-A RIGHT )  SUBSET X SUBSET B`$ 를 만족시키는 집합  $X`$ 의 개수는
+세 원소  $2,~  3,~  8$ 을 모두 원소로 가지는 집합  $B`$ 의 부분집합의 개수와 같다.
+즉, 집합  $X$ 는 집합  $B`$ 의 원소 중  $2,~  3,~  8$ 을 제외한 나머지 원소  $4,~  7$ 을 속할 수도 있고 속하지 않을 수도 있다.
+따라서 구하는 집합  $X`$ 의 개수는 집합  $LEFT { 4,~  7 RIGHT }$ 의 부분집합의 개수와 같으므로  $2 ^{2} =4$ 이다.
+집합  $A= LEFT { x` LEFT | `x RIGHT . RIGHT .$ 는  $18$ 의 양의 약수 $LEFT. it RIGHT }$ 에 대하여 적어도 하나의 소수를 반드시 포함하는 집합  $A$ 의 부분집합의 개수를 구하시오.
+[정답]  $48$
+$A= LEFT { 1,~  2,~  3,~  6,~  9,~  18 RIGHT }$ 이므로
+집합  $A$ 의 부분집합의 개수는  $2  ^{6} =64$
+한편, 집합  $A$ 의 부분집합 중
+소수를 한 개도 원소로 갖지 않는 집합의 개수는
+집합  $LEFT { 1,~  6,~  9,~  18 RIGHT }$ 의 부분집합의 개수와 같으므로  $2  ^{4} =16$
+따라서 구하는 부분집합의 개수는  $64-16=48$ 이다.
+전체집합  $U= left{1 ,~2 ,~3,~ cdots, ~ 10 right}$ 의 두 부분집합  $A$ ,  $B$ 가  $A subset B subset U$ 를 만족시킬 때, 순서쌍  $LEFT ( A,~ B RIGHT )$ 의 개수는?
+[정답] ④
+다음과 같이 전체집합의 각각의 원소  $1$ ,  $2$ ,  $3$ ,  $cdots$ ,  $10$ 은
+세 집합 ㉠  $A$ , ㉡  $B-A$ , ㉢  $U-B$  중 한 곳에 속하게 된다.
+[그림]
+따라서 구하는 순서쌍  $LEFT ( A,~B RIGHT )$ 의 개수는
+$underbrace {3이 ~10개} {3 TIMES3 TIMES3 times` cdots` TIMES3 }     = 3^10$ 이다.
+①  $2^9$ ②  $2^10$ ③  $3^9$ ④  $3^10$ ⑤  $4^9$
+[그림]
+[그림]
+01
+집합의 뜻과 표현
+두 집합
+[정답]  $7$
+$A= LEFT { a` LEFT | `a=2n ^{2} +1,~n LEQ 3 RIGHT . RIGHT .$ 인 자연수 $LEFT. it RIGHT }$ 에서
+$n LEQ3$ 인 자연수  $n$ 은  $1,~  2,~  3$ 이다.
+$n=1$ 일 때,  $2 TIMES 1  ^{2} +1=3$
+$n=2$ 일 때,  $2 TIMES 2  ^{2} +1=9$
+$n=3$ 일 때,  $2 TIMES 3  ^{2} +1=19$
+$THEREFORE ~A= LEFT { 3,~9,~19 RIGHT }$
+$B= LEFT { b` LEFT | `b RIGHT . RIGHT .$ 는  $a$ 를  $5$ 로 나누었을 때의 나머지,  $a IN A RIGHT }$ 에서
+$a=3$ 일 때,  $3$ 을  $5$ 로 나누었을 때의 나머지는  $3$
+$a=9$ 일 때,  $9$ 를  $5$ 로 나누었을 때의 나머지는  $4$
+$a=19$ 일 때,  $19$ 를  $5$ 로 나누었을 때의 나머지는  $4$
+$THEREFORE ~B= LEFT { 3,~4 RIGHT }$
+따라서 집합  $B`$ 의 모든 원소의 합은  $3+4=7$
+$A= LEFT { a` LEFT | `a=2n ^{2} +1,~n LEQ 3 RIGHT . RIGHT .$ 인 자연수 $LEFT. it RIGHT }$ ,
+$B= LEFT { b` LEFT | `b RIGHT . RIGHT .$ 는  $a$ 를  $5$ 로 나누었을 때의 나머지,  $a IN A RIGHT }$
+에 대하여 집합  $B`$ 의 모든 원소의 합을 구하시오.
+자연수  $m$ 에 대하여 집합
+[정답] ④
+$sqrt {10}$  이하의 자연수는  $1,~  2,~  3$ 의  $3$ 개이므로  $n LEFT ( A _{10} RIGHT ) =3$
+$sqrt {20}$  이하의 자연수는  $1,~  2,~  3,~  4$ 의  $4$ 개이므로  $n LEFT ( A  _{20} RIGHT ) =4$
+$n LEFT ( A  _{k} RIGHT ) $  $=n LEFT ( A  _{10} RIGHT ) +n LEFT ( A  _{20} RIGHT )$ 
+ $=3+4=7$
+이므로  $sqrt {k}$  이하의 자연수의 개수가  $7$ 이려면  $7 LEQ  sqrt {k} <8$ 이어야 한다.
+따라서  $49 LEQ k<64$ 를 만족시키는 자연수  $k$ 는  $49,~  50,~   CDOTS ,~  63$ 의  $15$ 개이다.
+$A _{m} = LEFT { x` LEFT | `x RIGHT . RIGHT .$ 는  $sqrt { m}$  이하의 자연수 $LEFT. it RIGHT }$
+라 할 때,  $n LEFT ( A _{k} RIGHT ) =n LEFT ( A _{10} RIGHT ) +n LEFT ( A _{20} RIGHT )$ 을 만족시키는 자연수  $k$ 의 개수는?
+①  $12$ ②  $13$ ③  $14$ ④  $15$ ⑤  $16$
+서로 다른 네 실수  $a$ ,  $b$ ,  $c$ ,  $d$ 에 대하여 세 집합  $A$ ,  $B$ ,  $C$ 는  $A= LEFT { a,~  b,~  c,~  d RIGHT }$ ,
+[정답]  $131$
+$a$ ,  $b$ ,  $c$ ,  $d$ 는 서로 다른 양수이므로  $a<b<c<d$ 라 하면
+가장 작은 두 수의 합과 곱을 각각  $7,~  12$ 이므로
+$a+b=7,~  ab=12$ 에서  $a=3,~  b=4$
+또한 가장 큰 두수의 합과 곱이 각각  $14,~15$ 이므로
+$c+d=14,~  c times d=45$ 에서  $c=5,~  d=9$
+$THEREFORE ~a ^{2} +b ^{2} +c ^{2} +d ^{2} =3 ^{2} +4 ^{2} +5 ^{2} +9 ^{2} =131$
+$B= LEFT { x+y` LEFT | `x IN X,~y IN Y,~x != y RIGHT } RIGHT .$ ,
+$C= LEFT { x times y` LEFT | `x IN X,~y IN Y,~x != y RIGHT } RIGHT .$
+이다. 두 집합  $B$ ,  $C$ 가  $B= LEFT { 7,~  8,~  9,~  12,~  13,~  14 RIGHT }$ ,  $C= LEFT { 12,~  15,~  20,~  27,~  36,~  45 RIGHT }$ 일 때,  $a  ^{2} +b  ^{2} +c  ^{2} +d  ^{2}$ 의 값을 구하시오.
+자연수 전체의 집합의 두 부분집합  $A= left{a,~ b, ~b-a,~ a+b over 5 right}$ ,  $B=left{ roota , ~ rootb ,~ roota+b ,~ root4a+4b right}$ 에 대하여 집합  $B$ 에서 가장 큰 원소는  $10$ 이다. 집합  $X = left{x` left|` x inA$ 이고  $x nin B right}$ 의 모든 원소의 합은?
+[정답] ①
+집합  $A$ 는 자연수 전체의 집합의 부분집합이므로
+$a  in A$ ,  $b inA$ 에서  $a$ ,  $b$ 는 자연수이고,  $b-a in A$ 에서  $b>a$ 이다.
+따라서 집합  $B$ 에서  $root a  < root b < roota+b <root4a+4b$
+이때 집합  $B$ 에서 가장 큰 원소는  $10$ 이므로
+$root4a+4b = 2roota+b = 10$ 에서  $root a+b =5 $ ,  $a+b =25$ 이다.
+이때 집합  $B$ 는 자연수 전체의 집합의 부분집합이므로
+$root a in B$ ,  $root b inB$ 에서  $roota$ ,  $sqrt { b}$ 는 자연수이므로  $a$ ,  $b$ 는 제곱수이다.
+$therefore$   $a=9$ ,  $b=16$  ( $because$   $a+b =25$ ,  $b>a$ )
+따라서  $A=left{ 9 ,~  16 , ~7, ~ 5 right}$ ,  $B= left{3 ,~4 ,~5,~10  right}$ 이므로
+$X= left{9, ~16 ,~7right}$ 이고, 집합  $X$ 의 모든 원소의 합은
+$9+16+7 =32$ 이다.
+①  $32$ ②  $34$ ③  $36$ ④  $38$ ⑤  $40$
+[그림]
+02
+집합 사이의 포함 관계
+[그림]
+두 집합  $A= LEFT { 1,~a ^{2} -a RIGHT } $ ,  $B= LEFT { 2,~a ^{2} -3 RIGHT }$ 에 대하여  $A SUBSET B`$ 이고  $B SUBSET A$ 일 때, 상수  $a$ 의 값은?
+[정답] ⑤
+두 집합  $A= LEFT { 1,~  a  ^{2} -a RIGHT } ,~  B= LEFT { 2,~  a  ^{2} -3 RIGHT }$ 에 대하여
+$A SUBSET B`$ 이고  $B SUBSET A$ 이면  $A=B`$ 이다.
+이때  $1 IN A$ 이므로  $1 IN B$ 이어야 한다.
+즉,  $a  ^{2} -3=1$ 에서  $a  ^{2} =4$
+$THEREFORE ~a= it -2$  또는  $a=2$
+(ⅰ)  $a=it-2$ 일 때,
+ $A= LEFT { 1,~  6 RIGHT } ,~  B= LEFT { 2,~  1 RIGHT }$ 이므로  $A != B`$ 이다.
+(ⅱ)  $a=2$ 일 때,
+ $A= LEFT { 1,~  2 RIGHT } ,~  B= LEFT { 2,~  1 RIGHT }$ 이므로  $A=B`$ 이다.
+(ⅰ), (ⅱ)에 의하여  $a=2$ 이다.
+①  $-2$ ②  $-1$ ③  $0$ ④  $1$ ⑤  $2$
+두 집합  $A= LEFT { 1,~2-a RIGHT } $ ,  $B= LEFT { 3,~a-4,~2a-5 RIGHT }$ 에 대하여  $A SUBSET B`$ 가 성립할 때, 상수  $a$ 의 값을 구하고, 그 과정을 서술하시오.
+[정답]  $a=3$
+$A= LEFT { 1,~  2-a RIGHT } ,~  B= LEFT { 3,~  a-4,~  2a-5 RIGHT }$ 에서
+$A SUBSET B$ 이므로  $1 IN A$ 에서  $1 IN B`$ 이어야 한다.
+(ⅰ)  $a-4=1$ 일 때,
+ $a=5$ 이므로  $A= LEFT { 1,~  -3 RIGHT } ,~  B= LEFT { 3,~  1,~  5 RIGHT }$ 
+따라서  $A NSUBSET B`$ 이다.
+(ⅱ)  $2a-5=1$ 일 때,
+ $a=3$ 이므로  $A= LEFT { 1,~-1 RIGHT } ,~B= LEFT { 3,~-1,~1 RIGHT }$ 
+따라서  $A SUBSET B`$ 이다.
+(ⅰ), (ⅱ)에 의하여  $a=3$ 이다.
+실수 전체의 집합의 두 부분집합
+[정답] ②
+$A= LEFT { x` LEFT | `-1<x-a LEQ 0 RIGHT } RIGHT .$ 에서  $a-1<x LEQa$
+$B= LEFT { x` LEFT | `x ^{2} -7x+6<0 RIGHT } RIGHT .$ 에서  $LEFT ( x-1 RIGHT ) LEFT ( x-6 RIGHT ) <0$ , 즉  $1<x<6$
+이때  $A SUBSET B`$ 이려면 집합  $A$ 의 모든 원소가 집합  $B`$ 에 속해야 한다.
+[그림]
+따라서  $1 LEQ a-1$ 과  $a<6$ 을 만족시켜야 한다.
+즉,  $2 LEQ a<6$ 을 만족시키는 자연수  $a$ 는  $2,~  3,~  4,~  5$ 이므로 그 합은  $2+3+4+5=14$
+$A= LEFT { x` LEFT | `-1<x-a LEQ 0 RIGHT } RIGHT .$ ,  $B= LEFT { x` LEFT | `x ^{2} -7x+6<0 RIGHT } RIGHT .$
+에 대하여  $A SUBSET B`$ 를 만족시키는 모든 자연수  $a$ 의 값의 합은?
+①  $12$ ②  $14$ ③  $16$ ④  $18$ ⑤  $20$
+다음 조건을 만족시키는 집합  $A$ 의 개수는?
+[정답] ①
+조건 (가)에서  $0 inA$
+조건 (나)에서  $a inA$ 이면  $a^2 -2 inA$ 이므로
+$0 inA$ 에서  $0^2 -2 = it -2 inA$
+$-2 inA$ 에서  $LEFT ( -2 RIGHT )^2 -2 = 4 - 2 = 2 inA$
+$2 inA $ 에서  $2^2 -2 = 2 inA$
+$therefore$   $left{-2 ,~ 0,~ 2 right} subsetA$
+조건 (다)에서  $n LEFT ( A RIGHT ) = 4$ 이므로
+$A=left{-2 ,~0 ,~ 2,~k right}$  (단,  $k ne it -2$ ,  $k ne 0$ ,  $k ne 2$ )라 하자.
+$k inA$ 이면  $k^2 -2  inA$ 이므로  $k^2 - 2$ 의 값은  $-2$ ,  $0$ ,  $2$ ,  $k$  중 하나이다.
+(ⅰ)  $k ^2 - 2 = it -2$ 인 경우
+ $k^2 =0$ 에서  $k=0$ 
+이는  $k ne 0$ 에 모순이다.
+(ⅱ)  $k^2 -2 = 0$ 인 경우
+ $k^2 =2$ 에서  $k = it - root2$  또는  $k= root2$
+(ⅲ)  $k^2 - 2 = 2$ 인 경우
+ $k^2 = 4$ 에서  $k= it -2$  또는  $k=2$ 
+이는  $k ne it -2$ ,  $k ne 2$ 에 모순이다.
+(ⅳ)  $k^2 -2 = k$ 인 경우
+ $k^2 -k  -2 = 0$ ,  $LEFT ( k-2  RIGHT ) LEFT ( k+1 RIGHT ) =0$ 에서  $k= it -1$  ( $because$   $k ne 2$ )
+(ⅰ)~(ⅳ)에 의하여  $k= it -root2$  또는  $k= root2$  또는  $k= it -1$ 이다.
+따라서 조건을 만족시키는 집합  $A$ 는
+$left{-2 , ~0 ,~2, ~ - root2 right}$ ,  $left{-2 , ~0 ,~2, ~  root2 right}$ ,  $left{-2 , ~0 ,~2, ~ - 1 right}$ 의  $3$ 개이다.
+[그림]
+(가)  $left{0 right} subset A subset left{x ` left|` x$ 는 실수 $itright}$
+(나)  $a inA$ 이면  $a^2 - 2 in A$ 이다.
+(다)  $n LEFT ( A RIGHT )  =4$
+①  $3$ ②  $4$ ③  $5$ ④  $6$ ⑤  $7$
+[그림]
+03
+집합의 연산
+전체집합  $U= LEFT { x` LEFT | `x RIGHT . RIGHT .$ 는  $10$  이하의 자연수 $LEFT. it RIGHT }$ 의 두 부분집합  $A$ ,  $B$ 가 다음 조건을 만족시킨다.
+[정답] ①
+조건 (나)에서
+$A^C  SMALLINTER  B^C = left ( A CUP B` right ) ^C =  left { 3,~ 9,~ 10 right }  $ 이므로
+$A CUP B=  left { 1,~ 2,~ 4,~ 5,~ 6,~ 7,~ 8  right }  $
+조건 (가)에서  $A SMALLINTER B= left {  5,~ 7 right }  $ 이므로
+$S` left ( A CUP B` right ) =1+2+4+5+6+7+8=33,~ S` left ( A SMALLINTER B` right ) =5+7=12 $
+$S` left ( A-B` right ) =x $ 라 하면  $S` left ( A right ) =x+12,~S` left ( B` right ) =33-x$
+이때  $S` left ( A right ) =2S` left ( B` right )  $ 이므로
+$x+12=2 left ( 33-x right )  $ 에서  $3x=54$
+$∴~x=18$
+즉, 집합  $A-B` $ 의 모든 원소의 합이  $18$ 이므로
+$A-B=  left { 4,~ 6,~ 8 right }  $ 이고  $A=  left { 4,~ 5,~ 6,~ 7,~ 8 right }  $ 이다.
+따라서 집합  $A $ 의 원소가 아닌 것은  $2$ 이다.
+[그림]
+(가)  $A SMALLINTER B= LEFT { 5,~7 RIGHT }$
+(나)  $A ^{C}  SMALLINTER B ^{C} = LEFT { 3,~9,~10 RIGHT }$
+집합  $X` $ 의 모든 원소의 합을  $S` left ( X` right )  $ 라 할 때,  $S` left ( A` right ) =2S` left ( B` right )  $ 가 되도록 하는 두 집합  $A$ ,  $B$ 에 대하여 집합  $A $ 의 원소가 아닌 것은?
+①  $2$ ②  $4$ ③  $5$ ④  $6$ ⑤  $8$
+원소의 개수가  $3$ 인 두 집합
+[정답] ②
+$A capB = left{-3,~ 1 right}$ 에서  $-3 in A$
+(ⅰ)  $k-1 = it -3$ 인 경우
+ $k=  it -2$ 이므로  $A= left{-3 ,~ 1,~ 7 right}$ ,  $B= left{-3, ~9, ~1 right}$ 이고
+ $A cap B = left{-3 ,~ 1 right}$ 이다.
+(ⅱ)  $k^2 -3k - 3=  it- 3$ 인 경우
+ $k LEFT ( k-3 RIGHT ) =0$ 에서  $k=0$  또는  $k=3$ 
+ $k=0$ 이면,  $A= left{-1, ~1, ~ -3 right}$ ,  $B=left{-3 ,~1,~ 5  right}$ 이므로
+ $A cap B = left{-3 ,~1  right}$ 이다.
+ $k=3$ 이면,  $A= left{2,~1, ~ -3 right}$ ,  $B=left{-3 ,~4, ~ 11 right}$ 이므로
+ $A cap B ne left{-3 , ~ 1 right}$ 이다.
+(ⅰ), (ⅱ)에서  $A cap B = left{-3, ~ 1 right}$ 을 만족시키는 실수  $k$ 는  $-2$ ,  $0$ 이므로 최댓값은  $0$ , 최솟값은  $-2$ 이다.
+따라서 최댓값과 최솟값의 차는  $0- LEFT ( -2 RIGHT ) = 2$ 이다.
+$A=left{ k-1,~1 ,~ k^2 -3k - 3 right}$ ,
+$B= left{-3 ,~k^2 -2k +1 , ~2k+5 right}$
+에 대하여  $A cap B = left{-3,~1  right}$ 을 만족시키는 실수  $k$ 의 최댓값과 최솟값의 차는?
+①  $1$ ②  $2$ ③  $3$ ④  $4$ ⑤  $5$
+[그림]
+전체집합  $U = left{1 ,~2 ,~4,~8, ~ 16, ~ 32 right}$ 의 두 부분집합  $A$ ,  $B$ 가 다음 조건을 만족시킨다.
+[정답]  $22$
+집합  $B-A$ 의 모든 원소의 합을  $k$ 라 하자.
+$A cup B^C  = LEFT ( A^C cap B RIGHT )^C = LEFT ( B-A RIGHT )^C$ 이고
+조건 (가)에서 집합  $A cupB^C$ 의 모든 원소의 합은  $6k$ 이므로
+전체집합  $U$ 의 모든 원소의 합은  $7k$ 이다.
+$7k = 1+2+4+8+16+32 = 63$   $therefore$   $k=9$
+집합  $B-A$ 의 모든 원소의 합이  $9$ 이므로  $B-A= left{1, ~8 right}$
+한편,  $A cap LEFT ( B-A RIGHT ) = emptyset$ 이므로  $A subset LEFT ( B-A RIGHT )^C = left{2, ~4, ~16 , ~ 32 right}$
+이때  $A cupB  = A cup LEFT ( B-A RIGHT )$ 이므로
+$n LEFT ( A cupB RIGHT ) = n LEFT ( A RIGHT ) + n LEFT ( B-A RIGHT )$ 이고
+조건 (나)에서  $n LEFT ( A cupB RIGHT ) = 5$ 이므로  $n LEFT ( A RIGHT ) =3$
+따라서 집합  $A$ 의 모든 원소의 합의 최솟값은  $A= left{2 ,~4, ~16 right}$ 일 때  $2+4+16 =22$
+[그림]
+(가) 집합  $A cup B^C$ 의 모든 원소의 합은 집합  $B-A$ 의 모든 원소의 합의  $6$ 배이다.
+(나)  $n LEFT ( A cupB RIGHT )  =5$
+집합  $A$ 의 모든 원소의 합의 최솟값을 구하시오.
+(단,  $2 le n LEFT ( B-A RIGHT ) le 4$ )
+두 집합
+[정답]  $a le it -1$  또는  $a=3$
+$A-B=A$ 이므로 두 집합  $A$ ,  $B$ 는 서로소, 즉  $A capB = emptyset$ 이어야 한다.
+이때  $left|` x-a` right| <2$ ,  $-2 <x -a < 2$ 에서
+$a-2 <x <a+2$ 이므로  $A=left{x `left|` a-2 <x <a+2 right}$ 이다.
+따라서  $2a -5 le a -2$ 이고  $a+2 le a^2 -a-1 $ 이어야 한다.
+$2a -5 le a-2$ 에서  $a le 3$
+$a+2 le a^2 -a-1$ 에서  $a^2 -2a -3 ge 0$ ,  $LEFT ( a-3 RIGHT ) LEFT ( a+1 RIGHT ) ge 0$ 이므로
+$a le it -1$  또는  $a ge 3$
+따라서  $a$ 의 값의 범위는  $a le it -1$  또는  $a=3$ 이다.
+$A= left{x ` left|` left|` x-a ` right| <2  right}$
+$B=left{x ` left|` x le 2a-5$  또는  $x ge a^2 -a - 1 right}$
+에 대하여  $A-B=A$ 를 만족시키는 실수  $a$ 의 값의 범위를 구하고, 그 과정을 서술하시오.
+자연수 전체의 집합의 부분집합  $A _{k}$ 를 자연수  $k$ 의 배수의 집합이라 하자.
+[정답]  $54$
+$A_9 cap A_15$ 는  $9$ 의 배수이면서  $15$ 의 배수인 자연수의 집합이므로  $9$ 와  $15$ 의 공배수의 집합이다.
+$9$ 와  $15$ 의 최소공배수가  $45$ 이므로  $A_9 cap A_15 = A_45$ 이다.
+따라서  $A_m subset A_45$ 에서  $m$ 은  $45$ 의 배수이어야 하므로  $m$ 의 최솟값은  $45$ 이다.
+$(A_18 cup A_45 ) subset A_n$ 이려면  $A_18 subset A_n$ ,  $A_45 subset A_n$ 이어야 하므로
+$n$ 은  $18$ 의 약수이면서  $45$ 의 약수이어야 한다.
+$18$ 과  $45$ 의 최대공약수가  $9$ 이므로  $n$ 의 최댓값은  $9$ 이다.
+따라서 구하는 값은  $45+9=54$ 이다.
+$A _{m}  SUBSET  LEFT ( A _{9}  SMALLINTER A _{15} RIGHT )$ ,  $LEFT ( A _{18}  CUP A _{45} RIGHT )  SUBSET A _{n}$
+을 만족시키는 두 자연수  $m$ ,  $n$ 에 대하여  $m$ 의 최솟값과  $n$ 의 최댓값의 합을 구하시오.
+자연수  $k$ 에 대하여 집합  $A_k$ 를
+[정답] ⑤
+$y= left[  k overx right]$ 에서  $x ge 1$ 이므로
+$x=1$ 일 때  $y= left[ k right] = k$ 이고
+$x$ 의 값이 커지면  $k over x$ 의 값은 작아지므로
+$A_k = left{y ` left|`y = left[ k overx right] , ~ x ge 1 right} $  $= left{0, ~ 1, ~2, ~ cdots ,~k right}$ 이다.
+ㄱ.  $A_5 = left{0,~1,~2, ~3, ~4 ,~5 right}$ 이므로  $n LEFT ( A_5 RIGHT ) =6$ 이다. (참)
+ㄴ.  $A_8 = left{0,~1,~2,~ cdots, ~ 8 right}$ ,  $A_6 = left{0, ~ 1, ~ 2, ~ cdots ,~6  right}$ 에서
+ $A_6 subset A_8 $ 이므로  $A_8 cap A_6 = A_6$ 이다. (참)
+ㄷ.  $A_l = left{0, ~1,~2,~ cdots, ~l right}$ ,  $A_m = left{0,~1, ~ 2, ~  cdots, ~ m right}$ 이므로
+ $n LEFT ( A_ l - A_m RIGHT ) = 4$ 이기 위해서는  $l = m +4$ 
+따라서  $A_m subset A_l$ 이므로  $A_l cup A_m = A_l$ 에서
+ $n LEFT ( A_l cup A_m RIGHT ) = n LEFT ( A_l RIGHT ) =15$   $therefore$   $l= 14$ 
+따라서  $m=10$ 이므로  $l+m = 14 + 10 =24$ 이다. (참)
+따라서 옳은 것은 ㄱ, ㄴ, ㄷ이다.
+$A_k = left{y ` left|` y = left[ k over x right] , ~ x ge 1 right}$
+이라 할 때, <보기>에서 옳은 것만을 있는 대로 고른 것은?
+(단,  $left[x right]$ 는  $x$ 보다 크지 않은 최대의 정수이다.)
+[표]
+[ 보 기 ]
+ㄱ.  $n LEFT ( A_5  RIGHT ) =6$
+ㄴ.  $A _8 cap A_6  =A_6$
+ㄷ. 두 자연수  $l$ ,  $m$ 에 대하여  $n LEFT ( A_l - A_m   RIGHT ) =4$ ,  $n LEFT ( A_l cup A_m  RIGHT ) =15$ 일 때,  $l+m  =24$ 이다.
+① ㄱ② ㄷ③ ㄱ, ㄴ④ ㄱ, ㄷ⑤ ㄱ, ㄴ, ㄷ
+모든 자연수  $k$ 에 대하여 집합  $A_k$ 는 연속한 자연수  $LEFT ( 2k+1 RIGHT )$ 개를 원소로 가지고 다음 조건을 만족시킨다.
+[정답]  $21$
+집합  $A_k$ 의 원소는 연속하는  $LEFT ( 2k+1 RIGHT )$ 개의 자연수이므로
+조건 (가)에서  $n LEFT ( A_k - A_k+1  RIGHT ) =2$ 이고,
+조건 (나)에서  $a_k < a_k+1$ 이기 위해서는  $a_k +2  = a_k+1$ 이어야 한다.
+$a_2 =4$ 이므로  $a_1 +2 =4$ 에서  $a_1 =2 $
+$a_3 = a_2 + 2$ 에서  $a_3 = 6$
+$a_4 = a_3 +2$ 에서  $a_4 = 8$
+$a_5 = a_4  + 2$ 에서  $a_5 =10$
+$vdots$
+$a_10  =a_9 + 2$ 에서  $a_10 = 20$
+이때  $n LEFT ( A_10 RIGHT )=21$ 이므로 집합  $A_10$ 의 가장 큰 원소는  $40$ 이다.
+따라서  $A_10 cap A_m = emptyset$ 을 만족시키려면  $a_m > 40$ 이어야 한다.
+$a_k = 2k$ 이므로  $a_20 = 40$ 이고  $a_21 =42$
+따라서  $A_10 cap A_m = emptyset$ 을 만족시키는 자연수  $m$ 의 최솟값은  $21$ 이다.
+[그림]
+(가)  $n LEFT ( A_k - A_k+1 RIGHT ) =2$
+(나) 집합  $A_k$ 의 원소 중 가장 작은 값을  $a_k$ 라 할 때,  $a_k < a_k+1$ 이다.
+$a_2 = 4$ 일 때,  $A_10 cap A_m = emptyset$ 을 만족시키는  $10$  이상의 자연수  $m$ 의 최솟값을 구하시오.
+[그림]
+전체집합  $U$ 의 세 부분집합  $A$ ,  $B$ ,  $C$ 에 대하여 <보기>에서 옳은 것의 개수는?
+[정답] ②
+ㄱ.  $left{ LEFT ( A cup B RIGHT ) cap LEFT ( A cap B^C RIGHT ) right} cup LEFT ( A^C cap B RIGHT )$ 
+ $= left{ LEFT ( A cupB  RIGHT )cap LEFT ( A-B RIGHT ) right} cup LEFT ( B-A RIGHT )$ 
+ $= LEFT ( A-B RIGHT ) cup LEFT ( B-A RIGHT )$ 
+좌변과 우변을 각각 벤 다이어그램으로 나타내면
+[그림]
+이므로  $LEFT ( A-B RIGHT ) cup LEFT ( B-A RIGHT ) ne LEFT ( A capB RIGHT )^C$  (거짓)
+ㄴ.  $LEFT ( A-B RIGHT ) cap LEFT ( A-C RIGHT )  =A- LEFT ( B cupC RIGHT )$ 의 좌변을
+벤 다이어그램으로 나타내면
+[그림]
+이고 우변을 벤 다이어그램으로 나타내면
+[그림]
+이므로  $LEFT ( A-B RIGHT ) cap LEFT ( A-C RIGHT )  =A - LEFT ( B cupC RIGHT )$  (참)
+ㄷ. 좌변은  $LEFT ( A-B^C RIGHT )  -C = LEFT ( A cap B RIGHT ) -C$ 이고 우변은  $A- LEFT ( B^C -C RIGHT ) = A- LEFT ( B^C cap C^C  RIGHT ) =A - LEFT ( B cup C RIGHT )^C = A cap LEFT ( B cupC RIGHT )$ 
+좌변과 우변을 각각 벤 다이어그램으로 나타내면
+[그림]
+이므로  $LEFT (  A capB RIGHT ) - C ne A cap LEFT ( B cupC RIGHT )$  (거짓)
+ㄹ.  $left{ LEFT ( A cup B RIGHT ) cap LEFT ( A^C cup B RIGHT ) right} cap left{ LEFT ( B^C cap C RIGHT ) cup LEFT ( B cupC  RIGHT )^C right}$ 
+ $= left{  LEFT ( A cap A^C  RIGHT ) cup B right} cap left{ LEFT ( B^C cap C RIGHT ) cup LEFT ( B^C cap C^C RIGHT ) right}$ 
+ $= LEFT ( emptyset cup B  RIGHT )cap left{ B^C cap LEFT ( C cup C^C RIGHT ) right}$ 
+ $=B cap LEFT ( B^C cap U RIGHT )$ 
+ $=B cap B^C = emptyset$  (거짓)
+따라서 옳은 것은 ㄴ의  $1$ 개이다.
+[표]
+[ 보 기 ]
+ㄱ.  $left{ LEFT ( A cup B RIGHT ) cap LEFT ( A cap B^C RIGHT ) right} cup LEFT ( A^C cap B RIGHT ) = LEFT ( A cap B RIGHT )^C$
+ㄴ.  $LEFT ( A-B RIGHT ) cap LEFT ( A-C RIGHT ) = A - LEFT ( B cupC RIGHT )$
+ㄷ.  $LEFT ( A- B^C RIGHT ) - C = A- LEFT ( B^C - C RIGHT )$
+ㄹ.  $left{ LEFT (  A cupB RIGHT ) cap LEFT ( A^C cupB RIGHT ) right} cap left{  LEFT ( B^C cap C RIGHT ) cup LEFT ( B cupC RIGHT )^C right} = U$
+①  $0$ ②  $1$ ③  $2$ ④  $3$ ⑤  $4$
+[그림]
+전체집합  $U`$ 의 두 부분집합  $A$ ,  $B$ 에 대하여
+[정답] ⑤
+$ left ( A CUP B` right )  SMALLINTER  left ( A-B` right )  ^{C}$  $= left ( A CUP B` right )  SMALLINTER  left ( A SMALLINTER B ^{C} ` right )  ^{C}$ 
+ $= LEFT ( A CUP B` RIGHT )  SMALLINTER  LEFT ( A ^{C}  CUP B` RIGHT )$ 
+ $= LEFT ( A SMALLINTER A` ^{C} ` RIGHT )  CUP B$ 
+ $= EMPTYSET  CUP B=B$
+이므로  $B= A cap B$ 에서  $B subset A$ 이다.
+이를 벤 다이어그램으로 나타내면 다음 그림과 같다.
+[그림]
+①  $A NSUBSET B$  (거짓)
+②  $A != B ^{C}$  (거짓)
+③  $A cup B = A$  (거짓)
+④  $A-B !=  EMPTYSET $  (거짓)
+⑤  $A ^{C}  SMALLINTER B= EMPTYSET $ 이므로 두 집합  $A ^{C}$ 와  $B`$ 는 서로소이다. (참)
+따라서 항상 옳은 것은 ⑤이다.
+[그림]
+$LEFT ( A CUP B` RIGHT )  SMALLINTER  LEFT ( A-B` RIGHT ) ^{C}$ 를 다음과 같이 정리할 수도 있다.
+$LEFT ( A CUP B` RIGHT )  SMALLINTER  LEFT ( A-B` RIGHT ) ^{C} = LEFT ( A CUP B` RIGHT ) - LEFT ( A-B` RIGHT )$   $CDOTS  CDOTS $  ㉠
+이를 벤 다이어그램으로 나타내면 다음과 같다.
+[그림]
+즉, ㉠에서  $LEFT ( A CUP B` RIGHT ) - LEFT ( A-B` RIGHT ) =B$ 이다.
+이후는 본풀이와 동일하다.
+$LEFT ( A CUP B` RIGHT )  SMALLINTER  LEFT ( A-B` RIGHT ) ^{C} =A SMALLINTER B$
+일 때, 다음 중 항상 옳은 것은?
+①  $A SUBSET B$ ②  $A=B ^{C}$ ③  $A CUP B=B$ ④  $A-B= EMPTYSET $ ⑤ 두 집합  $A ^{C} `$ 과  $B`$ 는 서로소이다.
+전체집합  $U``$ 의 공집합이 아닌 세 부분집합  $A,~B,~C``$ 가 다음 조건을 만족시킨다.
+[정답] ③
+조건 (가)에서
+$A cap left(C cup A^C `right)$  $= left(A capC `right) cup left(A cap A^C`right)$ 
+ $= A capC$  $= emptyset$
+이므로 두 집합  $A,~C``$ 는 서로소이다.
+조건 (나)에서
+$left{ left (A-C`right) cup left( B-C`right) right} cup left{ C- left( A cup B ` right)^C right}$
+$= left{ left(A cap C``^C `right) cup left( B cap C``^C `right) right} cup left{ C cap left( A cup B`right) right}$
+$= left{ left( A cup B `right) cap C``^C right} cup left{ C cap left(A cup B `right) right}$
+$= left( A cup B`right) cap left(C``^C cup C`right)$
+$=A cup B$  $=B$
+이므로  $A subset B``$ 이다.
+ㄱ.  $A subset C``^C``$ 이므로  $A cap C``^C =A``$ 이다. (참)
+ㄴ.  $left(A cap C``^C`right) cup left( A^C cap B`right)$ 
+ $= left(A-C`right) cup left(B-A right)$ 
+ $= A cup left(B-A`right) =B``$  (참)
+ㄷ.  $C``^C cap left(B cup C`right) $  $= left (C``^C capB`right) cup left(C``^C cap C ` right)$ 
+ $= left (B-C `right)cup emptyset$ 
+ $= B-C$
+이때  $B-C=B``$ 이기 위해서는 두 집합  $B,~C``$ 가 서로소이어야 하지만 이는 알 수 없다. (거짓)
+따라서 옳은 것은 ㄱ, ㄴ이다.
+[그림]
+(가)  $A cap left( C cap A^C `right) = emptyset$
+(나)  $left{ left( A-C`right) cup left( B - C`right) right}| cup left{ C - left( A cup B `right)^C right} = B$
+<보기>에서 옳은 것만을 있는 대로 고른 것은?
+[표]
+[ 보 기 ]
+ㄱ.  $A cap C``^C =A$
+ㄴ.  $left( A cap C``^C `right) cup left( A^C cap B`right) =B$
+ㄷ.  $C``^C cap left( B cup C``right) =B$
+① ㄱ② ㄴ③ ㄱ, ㄴ④ ㄱ, ㄷ⑤ ㄱ, ㄴ, ㄷ
+실수 전체의 집합  $R``$ 의 두 부분집합
+[정답]  $- 9 over2 `$
+$x^2 +3x -18 = (x+6)(x-3)le 0`$ 에서  $B= left{x`left|`-6 le x le 3 right}`$ 이므로 두 조건 (가), (나)를 동시에 만족시키는 집합  $A``$ 를 수직선 위에 나타내면 다음 그림과 같다.
+[그림]
+조건을 만족시키는 집합  $A`$ 는
+$A= left{x `left|`ax^2 +bx -6 <0 right} = left{ x`left|`(x+6)(x+2)>0 right}`$
+따라서 부등식  $ax^2 +bx-6 <0`$ 에서  $a<0`$ 이고
+양변을  $a`$ 로 나누면  $x^2 + b overa x - 6 overa >0$
+$x^2 + b overa x - 6 overa = left(x+6 right) left(x+2 right)$
+$x^2 + b overa x - 6 overa = x^2 +8x +12$
+에서  $- 6 overa =12`$ 이므로  $a= it - 1over2 `$ 이고,
+$b over a =8`$ 이므로  $b= it -4$ 이다.
+$therefore$   $a+b = left( - 1over2 right) +  (-4) = it - 9 over2$
+$A= left{ x`left|`ax^2 +bx -6 <0 right}$
+$B= left{x`left|`x^2 +3x -18 le 0 right}$
+이 다음 조건을 만족시킬 때,  $a+b`$ 의 값을 구하시오.
+(단,  $a,~b`$ 는 상수이다.)
+[그림]
+(가)  $A cup B = R$
+(나)  $A cap B = left{`x`left |`-2<x le 3 right}`$
+두 집합  $X,~Y``$ 에 대하여 연산  $triangle`$ 를
+[정답] ③
+①  $A triangle U $  $= left(A-U` right) cup left( U-A`right) $  $= emptyset cup A^C$  $= A^C$  (참)
+②  $A triangle A^C $  $= left(A- A^C`right) cup left( A^C -A`right)$  $= A cup A`^C $  $=U``$ (참)
+③  $A triangle emptyset $  $= left(A- emptyset right) cup left( emptyset - A`right)$  $= A cup emptyset$  $=A``$ (거짓)
+④  $A^C triangle B``^C$  $= left(A^C -B``^C` right) cup left(B``^C -A^C`right)$ 
+ $= left(A^C cap B`right) cup left( B``^C cap A`right)$ 
+ $= left(B-A `right) cup left(A-B`right)$ 
+ $= left (A-B`right) cup left(B-A`right) $  $= A triangle B$  (참)
+⑤  $A triangle B =A``$ 이면  $left(A-B `right)cup left( B-A`right)=A``$   $cdots cdots$ ㉠
+이때  $left(B-A`right) nsubset A`$ 이므로  $B-A = emptyset`$ 이어야 한다.
+ $therefore$   $B subset A``$  $cdotscdots$ ㉡
+㉠에서  $left(A-B` right) cup emptyset =A$ , 즉  $A-B=A``$ 이므로
+ $A cup B= emptyset$ 
+이때 ㉡에 의하여  $A cap B =B``$ 이므로  $B= emptyset`$ 이다. (참)
+따라서 옳지 않은 것은 ③이다.
+$X triangle Y = left(X-Y `right) cup left( Y-X`right)$
+라 할 때, 전체집합  $U``$ 의 두 부분집합  $A,~B``$ 에 대하여 다음 중 옳지 않은 것은? (단,  $U ne emptyset`$ 이다.)
+①  $A triangle U= A^C$ ②  $A triangle A^C = U$ ③  $A triangle  emptyset = emptyset$ ④  $A^C triangle B`^C = A triangle B$ ⑤  $A triangle B = A``$ 이면  $B= emptyset `$ 이다.
+$30`$  이하의 자연수  $k`$ 에 대하여 두 집합
+[정답] ②
+$n left (A capB`right) =2`$ 이므로 집합  $A cap B``$ 는  $left{2,~5 right}`$ 또는  $left{2,~6 right}`$ 또는  $left{5,~6 right}`$ 이다.
+(ⅰ)  $A capB = left{2,~5 right}`$ 일 때,
+ $2,~5`$ 는  $k`$ 의 약수이고  $6`$ 은  $k`$ 의 약수가 아닌  $30`$ 이하의 자연수  $k`$ 는  $10,~20`$ 이다.
+ $k=10`$ 인 경우,
+ $A= left{1,~2,~5,~10 right}`$ 이고  $A-B= left{1,~10 right}`$ 이므로
+집합  $A-B ``$ 의 모든 원소의 합은  $1+10=11$ 
+ $k=20`$ 인 경우,
+ $A= left{1,~2,~4,~5,~10,~20 right}`$ 이고
+ $A-B= left{1,~4,~10,~20 right}`$ 이므로
+집합  $A-B``$ 의 모든 원소의 합은  $1+4+10+20=35$
+(ⅱ)  $A capB = left{2,~6 right}`$ 일 때,
+ $2,~6`$ 은  $k`$ 의 약수이고  $5`$ 는  $k`$ 의 약수가 아닌  $30`$ 이하의 자연수  $k`$ 는  $6,~12,~18,~24`$ 이다.
+ $k=6`$ 인 경우, 
+ $A= left{1,~2,~3,~6 right}`$ 이고  $A-B= left{1,~3 right}`$ 이므로
+집합  $A-B``$ 의 모든 원소의 합은  $1+3=4$ 
+ $k=12`$ 인 경우, 
+ $A= left{1,~2,~3,~4,~6,~12 right}`$ 이고  $A-B= left{1,~3,~4,~12 right}`$ 이므로
+집합  $A-B``$ 의 모든 원소의 합은  $1+3+4+12=20$ 
+ $k=18`$ 인 경우,
+ $A= left{1,~2,~3,~6,~9,~18 right}`$ 이고  $A-B= left{1,~3,~9,~18 right}`$ 이므로
+집합  $A-B``$ 의 모든 원소의 합은  $1+3+9+18=31$ 
+ $k=24`$ 인 경우,
+ $A= left{1,~2,~3,~4,~6,~8,~12,~24 right}`$ 이고
+ $A-B= left{1,~3,~4,~8,~12,~24 right}`$ 이므로 
+집합  $A-B``$ 의 모든 원소의 합은  $1+3+4+8+12+24 =52$
+(ⅲ)  $A cap B = left{5,~6 right}`$ 일 때, 
+ $5,~6`$ 은  $k`$ 의 약수이고  $2`$ 는  $k`$ 의 약수가 아닌 자연수  $k`$ 는 존재하지 않는다.
+(ⅰ) $sim$ (ⅲ)에 의하여 집합  $A-B``$ 의 모든 원소의 합이 홀수가 되는 자연수  $k`$ 의 값의 합은  $10+20+18=48$
+$A= left{ x`left |`x`$ 는  $k`$ 의 양의 약수 $itright}$ ,  $B= left{2,~5,~6 right}{$
+이 있다.  $n left(A capB`right) =2`$ 일 때, 집합  $A-B``$ 의 모든 원소의 합이 홀수가 되는 모든  $k`$ 의 값의 합은?
+①  $46$ ②  $48$ ③  $50$ ④  $52$ ⑤  $54$
+복소수 전체의 두 부분집합  $A,~B``$ 가  $0`$ 이 아닌 두 복소수  $z_1 = a+bi$ ,  $z_2 =b+ai$  ( $a,~b`$ 는 음이 아닌 정수)에 대하여
+[정답]  $left{-1,~1,~6,~6i right}$
+$z_1 = a+bi`$ 에 대하여
+$z_1 + bar{z_1} $  $=a+bi + (a-bi) $  $=2a$ ,  $z_1 - bar{z_1} $  $=a+bi -(a-bi)$  $=2bi$ ,
+$z_1 bar{z_1}$  $= left (a+bi right) left(a-bi right)$  $=a^2 +b^2$ ,  ${bar{z_1} over{z_1} = {a-bi} over{a+bi}$  $= { a^2 -b^2 -2abi} over{a^2 +b^2}$
+이므로  $A= left{2a,~2bi,~a^2 +b^2 ,~{a^2 -b^2 -2abi} over{a^2 +b^2} right}`$
+$z_2 = b+ai`$ 에 대하여
+$z_2 + bar{z_2} = b+ai +(b-ai)=2b$ ,  $z_2 - bar{z_2} = b+ai -(b-ai)=2ai$ ,
+$z_2 bar{z_2}  $  $= (b+ai)(b-ai)$  $= a^2 +b^2$ ,  ${bar{z_2} over{z_2} = {b-ai} over{b+ai} = { b^2 -a^2 -2abi} over{a^2 +b^2 }$
+이므로  $B= left{ 2b ,~2ai,~a^2 +b^2 ,~{b^2 -a^2 -2abi} over{a^2 +b^2} right}$
+$A capB= left{0,~9 right}`$ 이므로  $a^2 +b^2 =0`$  또는  $a^2 +b^2 =9`$ 이다.
+이때,  $a^2 +b^2 =0`$ 이면  $a=b=0`$ 에서  $z_1 =z_2 =0`$ 이므로 조건을 만족하지 않는다.
+따라서  $a^2 +b^2 =9`$ 이고,  $0 in left(A capB`right)`$ 이기 위해서는  $a=0$  또는  $b=0`$ 이어야 한다.
+$a=0`$ 이라 하면  $b=3`$ 이고
+$A= left{0,~6i,~9,~-1 right}$ ,  $B= left{ 6,~0,~9,~1 right}$
+$therefore$   $left(A cupB `right) cap left(A^C cup B`^C `right)$  $= left(A cupB`right) cap left(A cap B`right)^C$ 
+ $= left(A cup B` right) - left(A cap B`right)$ 
+ $= left{-1,~0,~1,~6,~9,~6i  right} - left{0,~9 right}$ 
+ $= left{-1,~1,~6,~6i right}$
+$A= left{ z_1 + bar{z_1} ,~z_1 -bar{z_1} ,~z_1 barz_1 ,~ {bar{z_1} over{z_1} right}$ ,
+$B= left{ z_2 + bar{z_2} ,~z_2 - bar{z_2} ,~z_2 bar{z_2} ~{bar{z_2} over{z_2} right}$
+이다.  $A cap B= left{0,~9 right}`$ 일 때, 집합  $left( A cup B`right) cap left( A^C cup B``^C `right)`$ 를 구하시오. (단,  $bar{z} `$ 는  $z`$ 의 켤레복소수이고,  $i= root{-1} `$ 이다.)
+[그림]
+04
+합집합의 원소의 개수
+어느 학급의  $32`$ 명의 학생을 대상으로 축구와 농구 중 좋아하는 스포츠를 조사하였다. 축구를 좋아하는 학생은  $20`$ 명이고, 농구를 좋아하는 학생은  $13`$ 명이고, 축구와 농구를 모두 좋아하지 않는 학생은  $7`$ 명일 때, 다음 물음에 답하고, 그 과정을 서술하시오.
+[정답] (1)  $25$   (2)  $8$   (3)  $5$
+주어진 학습의 학생 전체의 집합을  $U$ ,
+그 중 축구를 좋아하는 학생의 집합을  $A$ ,
+농구를 좋아하는 학생의 집합을  $B``$ 라 하면
+축구와 농구를 모두 좋아하지 않는 학생의 집합은  $A^C capB``^C`$ 이므로
+주어진 조건에 의하여
+$n left(U`right) =32$ ,  $n left(A`right)=20$ ,  $n left(B`right) =13$ ,  $n left (A^C cap B``^C `right) =7`$ 이다.
+(1) 축구와 농구 중 적어도 하나를 좋아하는 학생의 집합은  $A cupB``$ 이므로
+$n left(A cupB`right)$  $= n left(U`right) - n left( left( A cupB`right)^C `right)$ 
+ $= n left(U `right) - n left(A^C cap B``^C `right)$ 
+ $= 32 -7$  $= 25$
+따라서 축구와 농구 중 적어도 하나를 좋아하는 학생 수는  $25`$ 이다.
+(2) 축구와 농구를 모두 좋아하는 학생의 집합은  $A cap B``$ 이므로
+ $n left(A cupB`right) = n left(A`right) + n left(B`right) - n left(A cap B` right)`$ 에서
+ $25 = 20 +13 - n left(A cap B`right)$ ,  $therefore$   $n left(A cap B`right)=8$ 
+따라서 축구와 농구를 모두 좋아하는 학생 수는  $8`$ 이다.
+(3) 농구만 좋아하는 학생의 집합은  $B-A``$ 이므로
+$n left(B-A`right) $  $= n left(B` right) - n left (A capB`right)$ 
+ $=13-8$  $=5$
+따라서 농구만 좋아하는 학생 수는  $5`$ 이다.
+(1) 축구와 농구 중 적어도 하나를 좋아하는 학생수를 구하시오.
+(2) 축구와 농구를 모두 좋아하는 학생 수를 구하시오.
+(3) 농구만 좋아하는 학생 수를 구하시오.
+전체집합  $U``$ 의 두 부분집합  $A,~B``$ 에 대하여
+[정답] ④
+$A^C cup B = left(A cap B``^C `right) ^C = left(A-B `right)^C ``$ 에서  $S`left(A,~B` right) = n left(left(A-B`right)^C `right)$
+ㄱ.  $A`$ 와  $B``$ 가 서로소이면
+ $S`left(A,~B` right)$  $= n left( left( A-B `right)^C `right)= n left(A^C `right)$ 
+ $S`left(B,~A`right) = n left( left(B-A`right)^C `right) = n left (B``^C `right)$ 
+이므로  $n left(A^C `right) ne n left(B``^C `right) `$ 이다. (거짓)
+ㄴ.  $n left( left( B-A right)^C`right)$  $= n left(U`right) - n left(B-A`right)$ 
+ $= n  left( U`right) - left{ n left(B`right) - n left(A capB`right) right}$
+$n left ( left( A-B`right)^C`right )$  $= n left(U`right) - n left(A-B`right)$ 
+ $= n left(U`right) - left { n left(A`right) - n left(A capB `right) right}$
+$S`left(B,~A`right) - S`left(A,~B`right)$
+$= n left(U`right) - n left( B`right)+ n left( A cap B`right) - left{ n left(U`right) - n left(A`right) + n left(A cap B`right) right}$
+$= n left(A `right) - n left (B`right)$
+$=n left(A cap B`right) - n left( A cup B`right)$   $( because ~A subset B`right)$  (참)
+ㄷ.  $S`left (A,~B`right) ge S`left(B,~A right)`$ 에서
+ $n left ( left(A -B`right)^C `right) ge n left( left(B-A`right)^C `right)`$ 이다. 이때
+ $n left( left(A - B`right)^C`right) = n left(U`right) - left{n left(A`right) - n left(A cap B`right)right}$ 
+ $n left( left(B-A`right)^C `right) = n left( U`right) - left{ n left(B `right)- n left(A capB`right) right}$ 
+이므로
+ $n left ( U`right) - left{ n left(A`right) - n left(A capB`right) right} ge n left(U `right)- left{ n left(B`right) - n left( A cap B`right) right}$ 
+ $n left (A`right) le n left(B `right)`$ 이다. (참)
+따라서 옳은 것은 ㄴ, ㄷ이다.
+$S `left(A,~B `right) = n left( A^C cup B`right)`$ 라 할 때, <보기>에서 옳은 것만을 있는 대로 고른 것은?
+[표]
+[ 보 기 ]
+ㄱ.  $A`$ 와  $B``$ 가 서로소이면  $S`left(A,~B`right)=S`left (B,~A right)`$ 이다.
+ㄴ.  $A subset B``$ 이면
+ $S`left( B,~A right) - S ` left(A,~B`right) = n left( A cap B`right) - n left(A cup B`right)`$ 이다.
+ㄷ.  $S `left(A,~B`right) ge S `left(B,~A right)`$ 이면  $n left(A right) le n left(B` right)`$ 이다.
+① ㄱ② ㄴ③ ㄷ④ ㄴ, ㄷ⑤ ㄱ, ㄴ, ㄷ
+전체집합  $U``$ 의 두 부분집합  $A,~B``$ 에 대하여  $n left(U`right) = 36$ ,  $n left(A right) = 23$ ,  $n left(B`right) =19`$ 일 때, $n left(A cap B`right)`$ 의 최댓값과 최솟값의 합은?
+[정답] ①
+(ⅰ)  $n left(A cap B`right)`$ 의[그림] 값이 최대인 경우
+ $B subset A `$ 일 때이므로
+ $n left (A cap B`right) `$ 의 최댓값은
+ $n left (B `right) =19$
+(ⅱ)  $n left (A capB`right)`$ 의[그림] 값이 최소인 경우
+ $A cup B = U``$ 일 때이므로
+ $n left(A cap B` right)`$ 의 최솟값은
+ $n left(A`right) + n left(B`right)- n left (A cup B`right)$ 
+ $= 23 +19-36 $  $=6$
+(ⅰ), (ⅱ)에 의하여 구하는 최댓값과 최솟값의 합은  $19+6=25`$ 이다.
+①  $25$ ②  $23$ ③  $21$ ④  $19$ ⑤  $17$
+[그림]
+어느 놀이동산 입장객  $50`$ 명을 대상으로 회전목마와 롤러코스터를 이용한 입장객 수를 조사하였더니, 회전목마를 이용한 입장객은  $26`$ 명, 롤러코스터를 이용한 입장객은  $28`$ 명이었다. 다음 물음에 답하시오.
+[정답] (1)  $30$   (2)  $48$
+주어진 놀이동산 입장객의 전체의 집합을  $U$ ,
+그 중 회전목마를 이용한 입장객의 집합을  $A$ ,
+롤러코스터를 이용한 입장객의 집합을  $B``$ 라 하면
+주어진 조건에 의하여
+$n left(U`right) = 50$ ,  $n left(A`right) =26$ ,  $n left(B`right)=28`$ 이다.
+(1) 두 놀이기구를 모두 이용한 입장객의 집합은  $A capB``$ 이므로
+(ⅰ)  $n left(A cap B`right)`$ 의[그림] 값이 최대인 경우
+ $A subset B``$ 일 때이므로
+ $n left(A cap B`right) `$ 의 최댓값은
+ $n left(A`right)=26$
+(ⅱ)  $n left(A cap B`right)`$ 의[그림] 값이 최소인 경우
+ $A cup B= U``$ 일 때이므로
+ $n left (A cap B`right)`$ 의 최솟값은 
+ $n left(A `right) + n left(B`right)-n left(A cup B`right)$ 
+ $= 26+28-50=4$
+(ⅰ), (ⅱ)에 의하여 구하는 최댓값과 최솟값의 합은  $26+4 =30`$ 이다.
+(2) 롤러코스터만 이용한 입장객의 집합은
+$n left (B-A`right) $  $= n left(B`right) - n left (A cap B`right)$ 
+ $= 28- n left(A capB`right)$   $cdots cdots$ ㉠
+이때 (1)에서  $4 le n left(A capB`right) le 26`$ 이므로
+㉠에서  $2 le n left(B-A`right) le 24`$ 이다.
+따라서  $n left(B-A`right)`$ 의 최댓값은  $24$ , 최솟값은  $2`$ 이므로
+구하는 곱은  $24 times 2 = 48`$ 이다.
+(1) 두 놀이기구를 모두 이용한 입장객 수의 최댓값과 최솟값의 합을 구하시오.
+(2) 롤러코스터만 이용한 입장객 수의 최댓값과 최솟값의 곱을 구하시오.
+[그림]
+어느 음료수 회사에서 소비자  $100`$ 명을 대상으로 두 음료수  $rm A,~B``$ 의 선호도를 조사하였다. 음료수  $rm A`$ 를 선호하는 사람은  $56`$ 명, 음료수  $rm B`$ 를 선호하는 사람은  $28`$ 명일 때, 두 음료수 중 어느 것도 선호하지 않는 사람 수의 최댓값을  $M$ , 최솟값을  $m`$ 이라 하자.  $M-m`$ 의 값은?
+[정답] ⑤
+주어진  $100`$ 명의 소비자 전체의 집합을  $U$ ,
+그 중 음료수  $rmA`$ 를 선호하는 사람의 집합을  $A`$ ,
+음료수  $rm B`$ 를 선호하는 사람의 집합을  $B``$ 라 하면
+주어진 조건에 의하여
+$n left(U`right) =100$ ,  $n left(A`right) =56$ ,  $n left(B`right) =28`$ 이다.
+이때 두 음료수 중 어느 것도 선호하지 않는 사람의 집합은  $A^C cap B``^C = left(A cup B`right)^C `$ 이므로
+$n left(A ^C cap B`^C `right)$  $= n left(U`right)- n left( A cup B`right)$ 
+ $= 100-n left( A cup B`right)$
+(ⅰ) [그림] $n left(A^C cap B``^C `right)`$ 의 값이 최대인 경우
+ $n left (A cup B`right) `$ 의 값이 최소이어야 하므로  $B subset A``$ 일 때이다.
+즉,  $n left( A cup B`right)`$ 의 최솟값은
+ $n left(A `right) = 56`$ 이므로
+ $M=100-56 =44$
+(ⅱ) [그림] $n left (A^C cap B`^C `right) `$ 의 값이 최소인 경우
+ $n left ( A cup B`right)`$ 의 값이 최대이어야 하므로
+ $A cap B= emptyset `$ 일 때이다. 
+즉,  $n left(A cup B`right)`$ 의 최댓값은
+ $n left (A `right) + n left(B`right) = 56 +28 =84$ 
+이므로  $m=100-84 =16$
+(ⅰ), (ⅱ)에 의하여  $M-m=44-16=28$
+①  $24$ ②  $25$ ③  $26$ ④  $27$ ⑤  $28$
+전체집합  $U= left{x`left|`x`$ 는  $10`$ 이하의 자연수 $it right}`$ 의 두 부분집합  $A,~B``$ 에 대하여  $n left(A`right) = 5$ ,  $n left(B`right) = 7`$ 일 때, 집합  $A cap B``$ 의 모든 원소의 합의 최댓값을  $M$ , 최솟값을  $m`$ 이라 하자.  $M+m`$ 의 값을 구하시오.
+[정답]  $43$
+$n left(A `right)=5$ ,  $n  (B`) =7`$ 이므로  $n (A cap B )`$ 의 값은
+$A cup B =U``$ 일 때 최솟값
+$n(A)+n(B)-n(U`) = 5+7-10=2`$ 를 갖고
+$A subset B``$ 일 때 최댓값  $n(A)=5`$ 를 갖는다.
+$therefore$   $2 le n  (A capB) le 5$
+집합  $U``$ 의 모든 원소가 자연수이므로
+$A capB``$ 의 모든 원소의 합은
+$n LEFT ( A{cap{B RIGHT ) =5$ 이고 집합  $A{cap{B LEFT ( =A RIGHT )$ 의 원소  $5$ 개가
+$6,~7,~8,~9,~10$ 일 때 최댓값을 갖고,
+$n  (A cap B)=2`$ 이고 집합  $A capB``$ 의 원소  $2`$ 개가
+$1,~2`$ 일 때 최솟값을 갖는다.
+즉,  $M=6+7+8+9+10=40$ ,  $m=1+2=3`$ 이므로
+$M+m =40+3=43$
+전체집합  $U``$ 의 세 부분집합  $A,~B,~C``$ 에 대하여 다음과 같은 조건이 주어질 때,  $n left(A^C cap B`^C cap C`right)`$ 의 최댓값  $M$ , 최솟값  $m`$ 을 각각 구하시오.
+[정답] (1)  $M=25 ,~m=10$   (2)  $M=16,~m=3$
+(1)  $A^C cap B``^C capC$  $=(A cupB)^C capC=C- (A cup B)`$ 이므로
+ $n (A cup B)`$ 가 최소일 때  $n left (C-(A cup B) right)`$ 가 최대이다.
+ $A subset B``$ 일 때  $n (A cupB)`$ 가 최소이므로 최솟값은  $n (A cupB)= n(B)=19$ 
+따라서  $n left  (C-(A cup B) right)`$ 의 최댓값은
+ $M= n left(A cup B cup C `right) - n left( A cupB `right)=44-19=25$ 
+ $n left(A cup B`right)`$ 가 최대일 때  $n left(C - left(A cup B`right) right)`$ 가 최소이다.
+ $A cap B = emptyset`$ 일 때,  $n left(A cup B`right)`$ 가 최대이므로 최댓값은 
+ $n left(A cup B`right) $  $= n left (A `right) + n left(B `right) = 15+19=34$ 
+따라서  $n left( C- left(A cup B`right) right)`$ 의 최솟값은
+ $m=n left(A cup B cup C`right) - n left(A cup B`right) = 44-34 =10$
+(2)  $n left ( A cupB`right)$  $= n left(A `right) + n left( B`right) - n left( A`cap B`right)$ 
+ $= 13+18-9=22$
+이고  $A^C cap B``^C cap C = left(A cup B`right)^C cap C =C- left(A cup B`right)`$ 이므로
+ $n left ( C `cap left(A cup B`right)  right)`$ 가 최소일 때  $n left(C- left(A cup B`right) right)`$ 가 최대이고,
+ $n left( C `cap left(A cup B`right) right)`$ 가 최대일 때  $n left(C- left(A cup B`right) right)`$ 가 최소이다.
+ $n left( A cap B capC`right)=5`$ 에서  $5 le n left( C cap left(A cup B`right) right) le 18`$ 이므로
+ $n left(C - left(A cup B`right) right)`$ 의 최댓값과 최솟값은
+ $M= n left(C`right) - n left( C cap left(A cup B`right) right)= 21-5=16$
+$m=n left(C`right) - n left(C cap left(A cup B`right) right) = 21 -18 =3$
+(1)  $n left(A`right)=15$ ,  $n left(B`right) =19$ ,  $n left(A cup B cup C`right) = 44$
+(2)  $n left(A right) =13$ ,  $n left(B `right) =18$ ,  $n left (C`right) =21$ ,  $n left(A cap B`right) =9$ ,  $n left(A cap B cap C `right) =5$
+[그림]
+어느 반 학생  $40`$ 명이 각각 방학 중 특정  $3`$ 일 동안 적어도 하루는 봉사 활동을 했다. 첫째 날은  $23`$ 명, 둘째 날은  $15`$ 명, 셋째 날은  $17`$ 명이 봉사활동을 했고,  $3`$ 일 모두 봉사활동을 한 학생은  $5`$ 명이다. 하루만 봉사활동을 한 학생 수를 구하시오.
+[정답]  $30$
+첫째 날 봉사활동을 한 학생의 집합을  $A$ ,
+둘째 날 봉사활동을 한 학생의 집합을  $B$ ,
+셋째 날 봉사활동을 한 학생의 집합을  $C``$ 라 하면
+주어진 조건에 의하여
+$n left(A`right)=23$ ,  $n left(B`right)=15$ ,  $n left(C`right)=17$ ,  $n left(A cap B` capC` right) =5$ ,
+$n left(A cup B cup C`right)=40`$
+이때 집합의 원소의 개수를 벤 다이어그램으로 나타내면 다음 그림과 같다.
+[그림]
+$n left ( A cup B cup C`right)$  $=$  $ n left(A `right) + n left(B`right) + n left(C`right)$ 
+ $- n left(A cap B`right) -n left(B capC`right) - n left(C cap A`right)$ 
+ $+ n left(A capB cap C`right)$
+에서  $40=23 +15+17 -(d+5)-(e+5)-(f+5)+5`$ 이므로
+$d+e+f=5$
+$therefore$   $a+b+c $  $= n left(A cup B cupC `right) - (d+e+f `right) -5$ 
+ $= 40-5-5=30$
+따라서 하루만 봉사활동을 한 학생 수는  $30`$ 이다.
+서로 다른 두 실수  $p,~q`$ 에 대하여 두 집합  $A,~B``$ 는
+[정답] ③
+$x^2 -x-2 = (x-2)(x+1)=0`$ 에서
+$x=2 $  또는  $x=it -1`$
+$n left (A cup B`right) =5$ ,  $n left(A cap B`right)=3`$ 이므로
+두 방정식  $x^2 +px +q=0`$ ,  $x^2 +qx +p=0`$ 은 각각 서로 다른 두 실근을 갖고, 서로 공통인 실근을 하나 갖는다.
+두 방정식의 양변을 각각 빼면
+$(p-q)x = p-q`$ 에서  $x=`1$   $(because~p ne q right)$
+이를 방정식  $x^2 +px+q=0`$ 에 대입하면
+$1+p+q=0`$   $cdots cdots$ ㉠
+㉠에서  $p=it -q -1`$ 이므로 방정식  $x^2 +px+q=0`$ 에 대입하면
+$x^2 -(q+1)x+q =(x-1)(x-q)=0`$ 이므로
+$x=1$  또는  $x=q$
+㉠에서  $q= it -p-1`$ 이므로 방정식  $x^2 +qx +p=0`$ 에 대입하면
+$x^2 -(p+1)x+p=(x-1)(x-p)=0`$ 이므로
+$x=1$  또는  $x=p$
+즉,  $A= left{-1,~1,~2,~q right}$ ,  $B = left{-1,~1,~2,~p right}`$ 이고
+$A cup B= left{-1,~1,~2,~p,~q right}$  (단,  $p,~q ne it -1 ,~1,~2 $ )
+따라서 집합  $A cup B``$ 의 모든 원소의 합은
+$(-1)+1+2+p+q=1$  ( $because$  ㉠)
+$A= left{ x`left|`left(x^2 -x-2 right) left(x^2 +px+q right) =0 right}$ ,
+$B= left{} x`left|`left(x^2 -x-2 right) left (x^2 +q x +p right) =0 right}$
+이다.  $n left(A cup B`right) =5$ ,  $n left(A cap B`right) =3`$ 일 때, 집합  $A cup B``$ 의 모든 원소의 합은?
+①  $-1$ ②  $0$ ③  $1$ ④  $2$ ⑤  $3$
+어느 블로그에서 방문한 음식점을 다음과 같은 세 가지 기준으로 평가하여 별점을 주려고 한다.
+[정답]  $9$
+방문한  $45`$ 개의 음식점 전체의 집합을  $U$ ,
+기준 (가), (나), (다)를 만족시키는 음식점의 집합을 각각  $A,~B,~C``$ 라 하면 주어진 조건에 의하여
+$n left( U`right) = 45$ ,  $n left(A `right)=36$ ,  $n left (B`right) =25$ ,  $n left (C`right)=23`$ 이고,
+$times`$ 표시를 받은 음식점의 집합을  $left(A cup B cupC`right)^C``$ 이므로
+$n left( left(A cup B cup C`right)^C `right)=4$
+이때 집합의 원소의 개수를 벤 다이어그램으로 나타내면 다음 그림과 같다.
+[그림]
+별점  $2`$ 개를 받은 음식점의 수는  $25`$ 이므로
+색칠한 부분의 원소의 개수는  $25`$ 이고,
+별점  $3`$ 개를 받은 음식점의 수를  $x`$ 라 하면  $x= n left(A capB cap C`right)`$ 이므로
+$n LEFT ( A{cup{B{cup{C RIGHT ) =n LEFT ( A RIGHT ) +n LEFT ( B RIGHT ) +n LEFT ( C RIGHT ) -25-2x$
+$n left ( A cup B cupC`right) = n left (U`right) - n left( left(A cup B cup C `right)^C`right) = 45-4=41`$ 이므로
+$41 =36 +25 +23 -25 -2x$  $therefore$   $x=9$
+따라서 별점  $3`$ 개를 받은 음식점의 개수는  $9`$ 이다.
+[그림]
+(가) 인테리어 분위기가 좋고 서비스가 우수하다.
+(나) 다시 방문하고 싶을 만큼 맛이 좋았다.
+(다) 가격이 적당하다.
+세 가지 기준 (가), (나), (다) 중 세 가지, 두 가지, 한 가지를 만족시킬 때 각각 별점  $3`$ 개,  $2`$ 개,  $1`$ 개를 주고, 어느 기준도 만족시키지 않을 때  $times`$ 표시를 주기로 하였다. 방문한 전체 음식점  $45`$ 곳 중 기준 (가), (나), (다)를 만족시키는 음식점이 각각  $36`$ 곳,  $25`$ 곳,  $23`$ 곳이고  $times`$ 표시를 받은 음식점이  $4`$ 곳, 별점  $2`$ 개를 받은 음식점이  $25`$ 곳일 때, 별점  $3`$ 개를 받은 음식점의 개수를 구하시오.
+어느 독서동아리 학생  $50`$ 명을 대상으로 ‘심청전’, ‘춘향전’, ‘구운몽’을 읽은 학생을 조사하였다. ‘심청전’, ‘춘향전’, ;구운몽‘을 읽은 학생은 각각  $33`$ 명,  $32`$ 명,  $27`$ 명이고, 세 권 중 두 권만 읽은 학생은  $30`$ 명일 때, 세 권을 모두 읽은 학생 수의 최솟값은?
+[정답] ①
+주어진 독서동아리 학생 전체의 집합을  $U$ ,
+‘심청전’, ‘춘향전’, ‘구운몽’을 읽은 학생의 집합을 각각  $A,~B,~C``$ 라 하면 주어진 조건에 의하여
+$n left(U`right) = 50$ ,  $n left (A`right) = 33$ ,  $n left(B`right) =32$ ,  $n left(C`right) =27$
+이때 집합의 원소의 개수를 벤 다이어그램으로 나타내면 다음 그림과 같다.
+[그림]
+세 권 중 두 권만 읽은 학생이  $30`$ 명이므로
+색칠한 부분의 원소의 개수는  $30`$ 이고,
+세 권을 모두 읽은 학생 수를  $x`$ 라 하면  $x=n left( A cap B cap C`right)`$ 이므로
+$n left (A cup B cupC`right)$  $= n left(A `right) + n left(B`right) + n left (C`right) -30 -2x$ 
+ $= 33 +32 +27 -30-2x$ 
+ $= 62 -2x$
+이때  $n left(A cup B cup C `right) le n left(U` right)`$ 이므로
+$62 -2x le 50`$ 에서  $x ge 6$
+따라서 세 권을 모두 읽은 학생 수의 최솟값은  $6`$ 이다.
+①  $6$ ②  $9$ ③  $12$ ④  $15$ ⑤  $18$
+[그림]
+05
+부분집합의 개수
+전체집합  $U= left{ x`left|`x`$ 는  $30`$ 이하의 자연수 $it right}`$ 의 부분집합  $A`$ 가 다음 조건을 만족시킬 때, 집합  $A`$ 의 모든 원소의 합의 최댓값은?
+[정답] ③
+집합  $A`$ 의 원소의 개수가  $n`$ 일 때
+집합  $A`$ 의 진부분집합의 개수는  $2^n -1`$ 이므로
+조건 (가)에서  $2^n -1 =7$ ,  $2^n =8=2^8 `$  $therefore$   $n=3$
+조건 (나)에 의하여 집합  $A`$ 의 원소의 최댓값은  $15`$ 이므로
+$A= left{13,~14,~15 right}`$ 일 때, 집합  $A`$ 의 모든 원소의 합이 최대가 된다.
+따라서 구하는 최댓값은  $13+14+15=42`$ 이다.
+[그림]
+(가) 집합  $A`$ 의 진부분집합의 개수는  $7`$ 이다.
+(나) 집합  $A`$ 의 원소 중 가장 큰 원소는  $15`$ 이다.
+①  $38$ ②  $40$ ③  $42$ ④  $44$ ⑤  $46$
+두 집합
+[정답]  $16$
+$A= left{ 1,~3,~5,~7,~9,~11,~13,~15 right}`$ 이고,
+$B= left{x`left |`x`$ 는  $7^n `$ 의 일의 자리의 수,  $n`$ 은 자연수 $it right}`$ 에서
+$n=1,~2,~3,~4,~5,~cdots`$ 일 때,
+$7^n `$ 의 일의 자리의 수는  $7,~9,~3,~1`$ 이 이 순서대로 반복되므로
+$B= left{1,~3,~7,~9 right}`$ 이다.
+이때  $A  cup X =A``$ 에서  $X subset A``$ 이고,  $B cap X= B``$ 에서  $B subset X``$ 이므로
+$B subset X subset A``$ 를 만족시키는 집합  $X``$ 는
+집합  $A``$ 의 부분집합 중 집합  $B``$ 의 네 원소  $1,~3,~7,~9`$ 를 모두 원소로 가지는 부분집합이다.
+따라서 구하는 집합  $X``$ 의 개수는 집합  $left{5,~11,~13,~15 right}`$ 의 부분집합의 개수와 같으므로  $2^4 =16`$ 이다.
+$A= left{x`left|`x`$ 는  $15`$ 이하의 홀수 $it right}$ ,
+$B= left{x `left|`x`$ 는  $7^n `$ 의 일의 자리의 수,  $n`$ 은 자연수 $it right}`$
+에 대하여  $A cup X=A$ ,  $B cap X = B``$ 를 만족시키는 집합  $X``$ 의 개수를 구하시오.
+[그림]
+두 집합  $A,~B``$ 를 벤 다이어그램으로 나타내면 그림과 같을 때,  $left(A cup B`right) cap X = X$ ,  $left( A cap B`right) cup X =X``$ 를 만족시키는 집합  $X``$ 의 개수는?
+[정답] ④
+주어진 벤 다이어그램에 의하여
+$A cup B =  left{1,~2,~3,~4,~5,~6,~7 right}$ ,  $A cap B= left{2,~5 right}`$
+$left(A cupB` right) cap X = X``$ 에서  $X subset left(A cup B`right)`$ 이고,
+$LEFT ( A CUP B` RIGHT ) cup{X=X``$ 에서  $LEFT ( A SMALLINTER B` RIGHT ) ` SUBSET X$ 이므로
+$left(A cap B`right) subset X subset left(A cup B `right)`$ 를 만족시키는 집합  $X``$ 는
+집합  $A cup B``$ 의 부분집합 중 두 원소  $2,~5`$ 를 모두 원소로 가지는 부분집합이다.
+따라서 구하는 집합  $X``$ 의 개수는 집합  $left{1,~3,~4,~6,~7 right}`$ 의 부분집합의 개수와 같으므로  $2^5 =32`$ 이다.
+[그림]
+①  $4$ ②  $8$ ③  $16$ ④  $32$ ⑤  $64$
+두 집합
+[정답]  $8$
+$A= left{1,~3,~5,~7,~9 right}$ ,  $B= left { 1,~3,~9 right}`$ 에 대하여
+$A= B cup C``$ 를 만족시키기 위해서
+집합  $C``$ 는 집합  $A``$ 의 원소 중  $5,~7`$ 응 모두 원소로 가져야 하고,
+나머지 세 원소  $1,~3,~9`$ 는 가질 수도 있고 가지지 않을 수도 있다.
+따라서 구하는 집합  $C``$ 의 개수는 집합  $left{1,~3,~9 right}`$ 의 부분집합의 개수와 같으므로  $2^3 =8`$ 이다.
+$A= left{ x`left|`x=2n-1,~n`$ 은  $5`$ 이하의 자연수 $it right}$ ,
+$B= left{x`left|`x`$ 는  $9`$ 의 양의 약수 $it right}`$
+에 대하여  $A= B cup C``$ 를 만족시키는 집합  $C``$ 의 개수를 구하시오.
+집합  $U= left{1,~2,~3,~4,~5 right}`$ 에 대하여  $left{1,~2,~4 right} cap X ne emptyset`$ 을 만족시키는 집합  $U``$ 의 진부분집합  $X``$ 의 개수는?
+[정답] ③
+집합  $U``$ 의 진부분집합의 개수는  $2^5 -1 =31`$
+한편,  $left{`1,~2,~4 right} cap X ne emptyset`$ 이므로 집합  $X``$ 는 원소  $1,~2,~4`$ 중 적어도 하나의 원소를 가져야 한다.
+집합  $U``$ 의 부분집합 중에서
+원소  $1,~2,~4`$ 중 한 개도 가지지 않은 집합의 개수는
+집합  $left{3,~5 right}`$ 의 부분집합의 개수와 같으므로  $2^2 =4$
+따라서 구하는 집합  $U``$ 의 진부분집합  $X``$ 의 개수는  $31-4=27`$ 이다.
+①  $25$ ②  $26$ ③  $27$ ④  $28$ ⑤  $29$
+[그림]
+전체집합  $U= left{1,~2,~3,~4,~5,~6,~7,~8,~9,~10 right}`$ 의 두 부분집합  $A= left{1,~3,~5,~7,~9 right}$ ,  $B= left{3,~6,~9 right}`$ 가 있다.  $A cup C = B` cup C``$ 가 성립하는 집합  $U``$ 의 부분집합  $C``$ 의 개수를 구하시오.
+[정답]  $64$
+$A cup C =B cupC``$ 가 성립하기 위해서는
+$left(A - B`right) subset C$ ,  $left (B-A `right) subset C``$ 가 성립해야 한다.
+$A= left{1,~3,~5,~7,~9 right}$ ,  $B= left{3,~6,~9 right}`$ 에서
+$A-B= left{1`,~5,~7 right}$ ,  $B-A = left{6 right}`$ 이므로
+집합  $C``$ 는 세 원소  $1,~5,~7`$ 과 원소  $6`$ 을 모두 원소로 가져야 한다.
+즉, 집합  $left{2,~3,~4,~8,~9 ,~10 right}`$ 의 부분집합에  $1,~5,~6,~7`$ 을 원소로 추가한 것과 같다.
+따라서 집합  $C``$ 의 개수는 집합  $left{2,~3,~4,~8,~9 ,~10 right}`$ 의 부분집합의 개수와 같으므로  $2^6 =64`$ 이다.
+전체집합  $U= left{1,~2,~3,~4,~5,~6 right}`$ 의 두 부분집합  $A,~B``$ 에 대하여  $n left (A `right) <5`$ 이고,  $A cap B= left{6 right}`$ 을 만족시킨다. 두 집합  $A,~B``$ 의 순서쌍  $left(A,~B`right)`$ 의 개수를 구하시오.
+[정답]  $232$
+전체집합  $U``$ 와 두 부분집합  $A,~B``$ 에 대하여 다음 그림과 같이 각각의 원소가 포함되는 부분은 ㉠, ㉡, ㉢, ㉣ 중 하나이다.
+[그림]
+원소  $6`$ 은 반드시 ㉢에 속하고
+나머지 원소  $1,~2,~3,~4,~5`$ 는 각각 ㉠, ㉡, ㉣ 중 하나에 속하므로
+$3 times 3 times 3 times 3 times 3 =243$
+이때  $n left(A`right) <5`$ 이므로  $n left(A `right) =5$  또는  $n left (A`right)=6`$ 인 경우를 제외시켜야 한다.
+(ⅰ)  $n left(A `right)=5`$ 인 경우
+ $6`$ 을 제외한  $5`$ 개의 원소 중 ㉡에 포함될  $4`$ 개의 원소를 선택하는 방법의 수는  $it _ 5 rm C _4 =5`$ 이고,
+나머지  $1`$ 개의 원소는 ㉠, ㉣ 중 하나에 속하므로  $5 times 2 =10$
+(ⅱ)  $n left (A `right)=6`$ 인 경우
+ $6`$ 을 제외한  $5`$ 개의 원소가 모두 ㉡에 포함되므로 경우의 수는  $1`$ 이다.
+(ⅰ), (ⅱ)에서  $n left(A`right)=5$  또는  $n left(A `right)=6`$ 인 경우의 수는  $10+1=11`$
+따라서 두 집합  $A,~B``$ 의 순서쌍  $left(A,~B`right)`$ 의 개수는  $243-11=232`$ 이다.
+[그림][그림]
+자연수 전체의 집합의 부분집합  $A`$ 에 대하여
+[정답]  $31$
+집합  $A`$ 는 자연수 전체의 집합의 부분집합이므로
+$x`$ 가 집합  $A`$ 의 원소이면  $x`$ 는 자연수이고,
+$36 overx `$ 도 집합  $A`$ 의 원소이므로  $36 overx `$ 도 자연수이다.
+따라서  $x`$ 는  $36`$ 의 약수이어야 하므로
+$1,~2,~3,~4,~6,~9,~12,~18,~36`$ 이 될 수 있다.
+이때 주어진 조건에 의하여
+$left{1,~36 right} subset A$  또는  $left{2,~18 right} subset A$  또는  $left{3,~12 right} subset A$  또는  $left{4,~9 right} subset A$  또는  $left{6 right} subset A``$ 이므로
+$1`$ 과  $36$ ,  $2`$ 와  $18$ ,  $3`$ 과  $12$ ,  $4`$ 와  $9`$ 를 각각 한 개의 원소로 생각하면 집합  $A``$ 의 개수는 원소가  $5`$ 개인 집합의 공집합이 아닌 부분집합의 개수와 같다.
+따라서 구하는 집합  $A`$ 의 개수는  $2^5 -1=31`$ 이다.
+’ $x in A $  이면  $36 overx in A`$ 이다.‘
+를 만족시키는 집합  $A`$ 의 개수를 구하시오. (단,  $A ne emptyset`$ 이다.)
+정수 전체의 집합의 두 부분집합  $A,~B``$ 가
+[정답]  $18$
+$x^2 <2x+3`$ 에서  $x^2 -2x-3=(x-3)(x+1) <0`$ 이므로
+$A= left{x`left|`-1 <x<3 right}`$ 에서  $A^C = left{x`left|`x le it -1 $  또는  $x ge 3 right}$
+$4x^2 +(2-2k)x >k`$ 에서
+$4x^2 +(2-2k)x -k = (2x-k)(2x+1)>0`$ 이므로
+$B= left{ x`left|`x < it- 1over2$  또는  $x > k over2 right}$
+이때  $A  ^{C} -B !=  EMPTYSET `$ 이려면 다음 그림과 같이  $k  over2 ge 3$ , 즉  $k ge 6`$ 이어야 한다.
+[그림]
+따라서  $A^C -B= left{x`left|` 3 le x le k  over2 right}`$ 이다.
+집합  $A^C -B``$ 의 원소의 개수가  $n`$ 이면 부분집합의 개수는  $2^n`$ 이고,  $2^6 = 64$ ,  $2^7 = 128`$ 에서  $2^n ge 100`$ 을 만족시키려면  $n ge 7`$ 이다.
+즉,  $k over2 ge 9 $ ,  $k ge 18`$ 에서 자연수  $k`$ 의 최솟값은  $18`$ 이다.
+$A= left{x `left|` x^2 <2x +3 right}$
+$B= left{ x`left|`4x^2 +(2-2k)x>k it right}$
+일 때, 집합  $A^C -B``$ 의 부분집합의 개수가  $100$  이상이 되도록 하는 자연수  $k`$ 의 최솟값을 구하시오.
+전체집합  $U= left{x`left|`x`$ 는  $15$  이하의 자연수 $it right}`$ 의 부분집합  $A`$ 에 대하여  $A``$ 의 원소 중 소수의 개수를  $S`left(A`right)`$ 라 할 때, <보기>에서 옳은 것의 개수는? (단,  $B``$ 는  $U``$ 의 부분집합이다.)
+[정답] ③
+ㄱ.  $A= left{x`left|`x`$ 는  $10`$ 이하의 홀수 $it right}`$  $= left{1,~3,~5,~7,~9 right}`$ 의 원소 중 소수는  $3,~5,~7`$ 이므로  $S`left(A`right)=3`$ 이다 (거짓)
+ㄴ. 전체집합  $U``$ 의 원소 중 소수는  $2,~3,~5,~7,~11,~13`$ 의  $6`$ 개이다. 따라서  $S`(A`right)`$ 의 최댓값은  $6`$ 이고, 최솟값은  $0`$ 이므로 최댓값과 최솟값의 합은  $6`$ 이다. (참)
+ㄷ. 전체집합  $U``$ 에서 소수를 제외한 나머지 원소의 개수가  $9`$ 이므로 소수를 원소로 가지지 않는 부분집합의 개수는  $2^9`$ 이다.
+이 부분집합에 소수  $2,~3,~5,~7,~11,~13`$ 중 하나를 원소로 추가하여 집합  $A``$ 를 만들면  $S`(A`)=1`$ 이므로
+ $S`(A)=1`$ 인 집합  $A`$ 의 개수는
+ $2^9 times 6 = 2 ^9 times 2 times 3 = 2^10 times 3`$ 이다. (참)
+ㄹ.  $S`(A cup B`) =0`$ 이면 집합  $A cup B `$ 의 원소 중 소수가 존재하지 않는다.
+즉, 전체집합  $U``$ 의 두 부분집합  $A,~B``$ 가 모두 소수를 원소로 가지지 않는다.
+ㄷ에서 소수를 원소로 가지지 않는 부분집합의 개수는  $2^9 `$ 이고, 이 중 집합  $A,~B``$ 를 하나씩 선택하면 되므로
+집합  $A,~B``$ 의 모든 순서쌍  $(A,~B`)`$ 의 개수는
+ $2^9 times 2^9 = 2^18 `$ 이다 (거짓)
+따라서 옳은 것은 ㄴ, ㄷ의  $2`$ 개이다.
+[표]
+[ 보 기 ]
+ㄱ.  $A= left{x`left|`x`$ 는  $10`$ 이하의 홀수 $it right}`$ 이면  $S`left(A`right)=2`$ 이다.
+ㄴ.  $S`left(A`right) `$ 의 최댓값과 최솟값의 합은  $6`$ 이다.
+ㄷ.  $S`left(A`right) =1`$ 인 집합  $A`$ 의 개수는  $2^10 times 3`$ 이다.
+ㄹ.  $S`left(A cupB`right)=0`$ 을 만족하는 집합  $A,~B``$ 의 모든 순서쌍  $left( A,~B`right)`$ 의 개수는  $2^9 `$ 이다.
+①  $0$ ②  $1$ ③  $2$ ④  $3$ ⑤  $5$
+전체집합  $U= left{1,~3,~5,~7,~9,~11,~13 right}`$ 의 공집합이 아닌 두 부분집합  $A,~B``$ 에 대하여
+[정답] ③
+$left{left(A-B`right) cup left(B-A`right) right}^C = emptyset`$ 에서
+$left( A-B`right) cup left(B-A`right) =U``$ 이다.
+이때 집합  $(A-B`)cup(B-A)`$ 가 나타내는 부분을 벤 다이어그램으로 나타내면 다음 그림과 같다.
+[그림]
+$(A-B`) cup (B-A)=U``$ 이려면  $A cap B= emptyset`$ 이고,
+$(A cup B `)^C = emptyset`$ 이어야 하므로
+전제집합의 모든 원소는 두 집합  $A$  또는  $B``$ 중 하나에만 속해야 하고, 두 집합  $A,~B``$ 는 공집합이 아니므로 적어도 하나 이상의 원소를 가져야 한다.
+따라서 구하는 순서쌍  $(A,~B`)`$ 의 개수는
+$2^7 -2=126$
+$left{ left(A-B`right) cup left( B-A`right) right}^C = emptyset $
+을 만족시키는 순서쌍  $left(A,~B`right)`$ 의 개수는?
+①  $62$ ②  $64$ ③  $126$ ④  $128$ ⑤  $130$
+[그림]
+집합  $A= left{ 1,~ 1 over2 , ~ 1 over 2^2 ,~ 1 over 2^3 ,~ 1 over 2^4 right}`$ 의 공집합이 아닌 서로 다른 부분집합을 각각  $A  _{1} ,~A  _{2} ,~A  _{3} ,~ CDOTS ,~A  _{31} `$ 이라 하자. 집합  $A  _{k} ~(k=1,~2,~3,~ CDOTS ,~31)`$ 의 원소 중 최소인 것을  $a_k `$ 라 할 때,  $a  _{1} +a  _{2} +a  _{3} +` CDOTS `+a  _{31} `$ 의 값을 구하시오.
+[정답]  $5$
+집합  $A`$ 의 원소의 크기를 비교하면  $1 > 1 over2 > 1 over {2^2} > 1over {2^3} > 1 over{2^4} `$ 이다.
+(ⅰ)  $a_k =1`$ 일 때,
+집합  $A_k `$ 는  $left{1 right}`$ 의  $1`$ 개뿐이다.
+따라서  $a_k =1`$ 인  $k`$ 의 개수는  $1`$ 이다.
+(ⅱ)  $a_k = 1over2 `$ 일 때, 
+집합  $A_k `$ 는  $1 over2 `$ 을 원소로 갖고  $ 1over 2^2  ,~ 1 over2^3 ,~ 1 over 2^4 `$ 을 원소로 갖지 않는 부분집합이므로 집합  $A_k `$ 의 개수는 집합  $left{1 right}`$ 의 부분집합의 개수와 같다.
+따라서  $a_k = 1over2 `$ 인  $k`$ 의 개수는  $2^1 `$ 이다.
+(ⅲ)  $a_k = 1over 2^2 `$ 일 때,
+집합  $A_k `$ 는  $1 over2^2 `$ 을 원소로 갖고  $1 over 2^3 ,~ 1 over 2^4 `$ 을 원소로 갖지 않는 부분집합이므로 집합  $A_k `$ 의 개수는 집합  $left{1,~ 1over2 right}`$ 의 부분집합의 개수와 같다.
+따라서  $a_k = 1over2^2 `$ 인  $k`$ 의 개수는  $2^2 `$ 이다.
+(ⅳ)  $a_k = 1over2^3 `$ 일 때,
+집합  $A_k `$ 는  $1 over 2^3 `$ 을 원소로 갖고  $1 over 2^4 `$ 을 원소로 갖지 않는 부분집합이므로 집합  $A_k `$ 의 개수는 집합  $left{1,~ 1 over2 ,~ 1 over 2^2 right}`$ 의 부분집합의 개수와 같다.
+따라서  $a_k = 1over 2^3 `$ 인  $k`$ 의 개수는  $2^3 `$ 이다.
+(ⅴ)  $a_k = 1over 2^4 `$ 일 때,
+집합  $A_k `$ 는  $1 over 2^4 `$ 을 원소로 갖는 부분집합이므로 집합  $A_k `$ 의 개수는 집합  $left{1,~ 1over2 ,~ 1over 2^2 ,~ 1over 2^3 right}`$ 의 부분집합의 개수와 같다.
+따라서  $a_k = 1over2^4 `$ 인  $k`$ 의 개수는  $2^4 `$ 이다.
+(ⅰ) $sim$ (ⅴ)에 의하여
+$a  _{1} +a  _{2} +a  _{3} +` CDOTS `+a  _{31}$
+$= (1 times 1) + left( 1over2 times 2^1 right) +left( 1 over 2^2 times 2^2 right) + left( 1 over 2^3 times 2^3 right) + left( 1over 2^4 times 2^4 right)$
+$=5$
+자연수 전체의 집합의 두 부분집합  $A,~B``$ 가
+[정답]  $96$
+$A= left{x`left|`x`$ 는  $20$  이하의 소수 $it right}`$ 에서
+$A= left{2,~3,~5,~7,~11,~13,~17,~19 right}`$
+한편, 모든 자연수  $x`$ 에 대하여  $(x-5)^2 ge 0`$ 이므로
+$(x-5)^2  left(x^2 -17x +30 right) <0`$ 에서  $x ne 5`$ 이고
+$x^2 -17x +30=(x-2)(x-15) <0`$ 에서
+$B= left{x `left|`2 <x<5 ,~5 <x<15 right}`$
+조건 (가)에서  $X subset A``$ 이고 조건 (나)에서  $left(A-B`right)subset X``$ 이다.
+이때  $A-B= left{2,~5,~17,~19 right} subset X``$ 이므로
+$left{2,~5,~17,~19 right} subset X subset left{ 2,~3,~5,~7,~11,~13,~17,~19 right}$
+이를 만족시키는 집합  $X``$ 의 개수는  $2^8-4 = 2^4 =16`$ 에서  $m=16`$ 이다.
+집합  $X``$ 는  $2,~5,~17,~19`$ 를 모두 원소로 갖고,  $3,~7,~11,~13`$ 중  $a`$ 개 ( $0 le a le 4$ )를 선택하고 원소로 추가하여 부분집합을 만들면 되므로
+원소의 개수가  $(a+4)`$ 인 집합  $X``$ 의 개수는  $it  _{4} rm C it rm  _{ita} `$ 이다.
+$therefore$   $n LEFT ( X  _{1} RIGHT ) +n LEFT ( X  _{2} RIGHT ) +n LEFT ( X  _{3} RIGHT ) +` CDOTS `+n LEFT ( X  _{m} RIGHT )$ 
+ $= it _4 rm C_0 times 4 + _4 C_1 times 5 + _4 C_2 times 6 + _4 C_3 times 7 + _4 C_4 times 8$ 
+ $= 4 +20+36+28+8$  $=96$
+$A= left{x`left|`x`$ 는  $20`$ 이하의 소수 $it right}`$ ,
+$B= left{x`left|`(x-5)^2 left(x^2 -17x +30 right) <0 right}$
+일 때, 다음 조건을 만족시키는 자연수 전체의 집합의 모든 부분집합  $X``$ 를 각각
+$X_1 ,~X_2 ,~X_3 ,~cdots~,~X_m $  ( $m`$ 은 자연수)
+이라 하자.
+[그림]
+(가)  $left(X-A`right) subset left( A-X`right)$
+(나)  $left(A-B`right) cup X =X$
+$n LEFT ( X  _{1} RIGHT ) +n LEFT ( X  _{2} RIGHT ) +n LEFT ( X  _{3} RIGHT ) +` CDOTS `+n LEFT ( X  _{m} RIGHT ) `$ 의 값을 구하시오.
+[그림]
+집합  $A= left{ emptyset , ~left{ emptyset right} ,~ left{ emptyset ,~ left{ emptyset right} right} right}`$ 에 대하여 <보기>에서 옳은 것만을 있는 대로 고른 것은?
+[정답] ③
+ㄱ.  $left{ emptyset right}`$ 은 집합  $A`$ 의 원소이므로  $left{ emptyset right} in A$  (참)
+ㄴ. 집합  $A`$ 의 원소는  $emptyset ,~left{ emptyset right},~left{ emptyset ,~ left{ emptyset right} right}`$ 의  $3`$ 개이므로 집합  $A`$ 의 진부분집합의 개수는  $2^3 -1 =7`$ 이다. (참)
+ㄷ.  $A cup left{A right} = left{ emptyset ,~left{ emptyset right} , ~left{  emptyset ,~left{ emptyset right} right} ,~A right}`$ 이므로 집합  $A cup left{A right}`$ 의 원소는  $emptyset ,~left{ emptyset right} ,~left{ emptyset ,~left{ emptyset right} right}`,~A`$ 의  $4`$ 개이다.
+따라서  $n left(A cup left{A right} right)=4$  (거짓)
+따라서 옳은 것은 ㄱ, ㄴ이다.
+[표]
+[ 보 기 ]
+ㄱ.  $left{ emptyset right} in A$
+ㄴ. 집합  $A`$ 의 진부분집합의 개수는  $7`$ 이다.
+ㄷ.  $n left( A cup left{A right} right) =6$
+① ㄱ② ㄴ③ ㄱ, ㄴ④ ㄴ, ㄷ⑤ ㄱ, ㄴ, ㄷ
+집합  $A`$ 에 대하여  $P `left(A right) = left{X`left|`X subset A right}`$ 라 할 때, <보기>에서 옳은 것만을 있는 대로 고른 것은?
+[정답] ③
+집합  $P`(A) = left{X`left|`X subset A right}`$ 의 원소는 집합  $A`$ 의 모든 부분집합이다.
+ㄱ.  $A subset B``$ 이면 집합  $A`$ 의 모든 부분집합은 집합  $B``$ 의 부분집합이므로  $P`(A) subset P`(B`)$  (참)
+ㄴ. 집합  $A`$ 의 부분집합이면서 집합  $B``$ 의 부분집합인 것은 집합  $A cap B``$ 의 부분집합과 같다.
+따라서  $P`(A SMALLINTER B`)=P`(A) SMALLINTER P`(B)$  (참)
+ㄷ.  $A= left{1,~2 right}$ ,  $B= left {2,~3 right}`$ 이라 하면
+ $left{1,~3 right} in P`left(A cup B`right)`$ 이지만
+ $left{1,~3 right} nin P`(A)$ ,  $left{1,~3 right} nin P`(B`)`$ 이므로
+ $P`(A cup B`) ne P`(A) P`(B`) $  (거짓)
+따라서 옳은 것은 ㄱ, ㄴ이다.
+[표]
+[ 보 기 ]
+ㄱ.  $A subset B ``$ 이면  $P`left(A right) subset P `left(B`right)`$ 이다.
+ㄴ.  $P`left (A cap B`right) = P` left(A right) cap P`left(B `right)`$
+ㄷ.  $P`left(A cup B`right) = P`left(A right) cup P`left(B` right) $
+① ㄱ② ㄴ③ ㄱ, ㄴ④ ㄴ, ㄷ⑤ ㄱ, ㄴ, ㄷ
+집합  $U=  left{ z`left|`z`$ 는 복소수,  $z(z-1)ne 0 right}`$ 의 부분집합  $A`$ 가 다음 조건을 만족시킬 때, <보기>에서 옳은 것만을 있는 대로 고른 것은?
+[정답] ③
+조건 (가), (나)에 의하여
+$1over2 in A`$ 에서  ${1 over2 - 1} over{ 1over2} = it - 1 in A$ ,  $-1 in A`$ 에서  ${-1-1} over{-1 } =2 in A$ ,
+$2 in A`$ 에서  ${2-1} over2 = 1over2 in A`$ 이다.
+$therefore$   $left{1 over2 ,~-1,~2 right} subset A$
+ㄱ.  $2 in A$  (참)
+ㄴ.  $a in A`$ 이면  ${a-1} over  a in  A`$ 이고,  ${a-1} over a in A`$ 에서
+ ${{a-1} over a -1} over{ {a-1} over a } = {-1} over{a-1} in A$ ,
+ $-1 over{a-1} in A `$ 에서  ${{-1} over{a-1} -1} over{ -1  over{a-1} } =a in A`$ 이다.
+즉,  $a in A `$ 이면  ${a-1} overa $  $in A$ ,  $-1 over{a-1} in A`$ 이다.
+이때  $a= {a-1} over a `$ 이면  $a^2 =a-1`$ 에서  $a^2 -a +1=0`$ 
+ ${a-1} over {a} = {-1} over {a-1}$ 이면  $LEFT ( a-1 RIGHT )  ^{2} =it-a$ 에서  $a  ^{2} -a+1=0$ 
+ $a= it {-1} over{a-1}`$ 이면  $a(a-1)=it -1`$ 에서  $a^2 -a +1=0`$ 
+이고,  $a^2 -a +1=0`$ 에서 근의 공식에 의하여
+ $a= {1+- root{(-1)^2 -4} } over2 = {1+- root3 i} over2 `$ 이므로
+ $n left(A right)=5$ , 즉  $3`$ 의 배수가 아니려면 
+ $A= left{ 1 over2 ,~-1,~2,~{1+root3 i} over2 ,~{1- root3 i} over2 right}`$ 이어야 한다.
+따라서  $n left(A )=5`$ 이면 집합  $A`$ 의 모든 원소의 곱은
+ $1 over2 times (-1) times 2 times {1-root3 i} over2 times { 1+ root3 i} over2 = it -1`$ 이다. (참)
+ㄷ. ㄴ에 의하여  $a in A`$ 이면  ${a-1} overa in A$ ,  ${-1} over {a-1} in A`$ 이다.
+이때  $a times { a-1} over a times { -1}  over {a-1} = it -1`$ 이므로
+ $n left(A `right) `$ 가  $3`$ 의 배수이면서
+홀수이면 집합  $A`$ 의 모든 원소의 곱은  $-1$ ,
+짝수이면 집합  $A`$ 의 모든 원소의 곱은  $1`$ 이다. (거짓)
+따라서 옳은 것은 ㄱ, ㄴ이다.
+[그림]
+(가)  $1 over2 in A$
+(나)  $x in A``$ 이면  ${x-1} over x in A``$ 이다.
+[표]
+[ 보 기 ]
+ㄱ.  $2 in A$
+ㄴ.  $n left(A right) =5`$ 이면 집합  $A`$ 의 모든 원소의 곱은  $-1`$ 이다.
+ㄷ.  $n left(A right)`$ 가  $3`$ 의 배수이면 집합  $A`$ 의 모든 원소의 곱은  $1`$ 이다.
+① ㄱ② ㄷ③ ㄱ, ㄴ④ ㄴ, ㄷ⑤ ㄱ, ㄷ
+전체집합  $U``$ 의 두 부분집합  $A,~B``$ 에 대하여 연산  $＊$ 를
+[정답] ⑤
+ㄱ.  $A ＊ B$  $= left(A cap B`right) cup left(A cup B`right)^C$ 
+ $= left(B cap A `right) cup left(B cup A `right)^C $  $= B ＊A$  (참)
+ㄴ. 집합  $A＊B``$ 를 벤 다이어그램으로 나타내면 다음 그림과 같다.
+[그림]
+두 집합  $(A＊B`)＊C``$ 와  $A＊left (B＊C`right)`$ 를 각각 벤다이어그램으로 나타내면
+[그림]
+[그림]
+이므로  $left(A ＊B`right) ＊C= A ＊ left(B ＊C`right)$  (참)
+ㄷ.  $A＊A$  $= left(A cap A `right) cup left( A cup A `right)^C$  $= A cup A ^C $  $=U$
+$A ＊A＊A$  $= U ＊A$  $= left( U cap A right) cup left( U cup A`right)^C$ 
+ $= A cup U`^C = A cup emptyset =A$
+$A＊A＊A＊A = A＊A=U$
+$vdots$
+이므로 자연수  $n`$ 에 대하여
+$UNDERBRACE {A`가~~(2n-1)`개} {A＊A＊` CDOTS `＊A} =A$ ,  $UNDERBRACE {A`가~~2n`개} {A＊A＊` CDOTS `＊A} =U$
+즉,  $UNDERBRACE {A`가~99개} {A＊A＊` CDOTS `＊A} =A$  (참)
+따라서 옳은 것은 ㄱ, ㄴ, ㄷ이다.
+$A ＊B = left( A cap B `right) cup left(A cup B`right)^C$
+라 할 때, <보기>에서 옳은 것만을 있는 대로 고른 것은?
+[표]
+[ 보 기 ]
+ㄱ.  $A＊B = B＊A$
+ㄴ.  $left(A＊B `right) ＊C = A ＊ left(B ＊C `right)$  (단,  $C subset U`$ )
+ㄷ.  $UNDERBRACE {A`가``99개} {A＊A＊` CDOTS `＊A} =A$
+① ㄱ② ㄷ③ ㄱ, ㄴ④ ㄱ, ㄷ⑤ ㄱ, ㄴ, ㄷ
+자연수 전체의 집합  $N``$ 의 두 부분집합  $A,~B``$ 가 자연수  $n`$ 에 대하여
+[정답] ③
+ㄱ. 집합  $A_9 `$ 는  $9`$ 와 서로소인 모든 자연수를 원소로 갖는다. 이때  $9=3^2`$ 이므로  $9`$ 와 서로소인 자연수는  $3`$ 과 서로소인 자연수와 같다. 즉,  $A_9 = A_3 `$ 이고 집합  $B_3 `$ 은  $3`$ 의 배수인 모든 자연수를 원소로 가지므로  $A_9 cup B_3 =N ``$ 이다. (참)
+ㄴ.  $B_12 cap B_p = B_36 `$ 을 만족시키려면  $12`$ 와  $p`$ 의 최소공배수가  $36`$ 이어야 한다.
+ $36`$ 의 약수는  $1,~2,~3,~4,~6,~9,~12,~18,~36`$ 이고, 이 중  $12`$ 와 최소공배수가  $36`$ 인 자연수는  $9,~18,~36`$ 이다.
+따라서 자연수  $p`$ 의 합은  $9+18+36=63`$ 이다. (참)
+ㄷ.  $A_2 cap A_3 cap A_8 `$ 에서  $8=2^3 `$ 이므로  $A_8 =  A_2 `$ 이다.
+즉,  $A_2 cap A_3 cap A_8  = A_2 cap A_3 `$ 이다.
+집합  $A_2 cap A_3 `$ 은  $2`$ 와  $3`$ 모두와 서로소인 자연수를 원소로 가지므로 자연수  $q`$ 는  $2`$ 와  $3`$ 만을 소인수로 가지는 자연수이다.
+따라서  $30`$  이하의 자연수  $q`$ 는  $2 times 3$ ,  $2^2 times 3$ ,  $2 times 3^2$ ,  $2 ^3 times 3`$ 의  $4`$ 개이다. (거짓)
+따라서 옳은 것은 ㄱ, ㄴ이다.
+$A_n = left{x`left|`x`$ 는  $n`$ 과 서로소인 자연수 $it right}$ ,
+$B_n = left{x`left|`x`$ 는  $n`$ 의 배수인 자연수 $it right}$
+일 때, <보기>에서 옳은 것만을 있는 대로 고른 것은?
+[표]
+[ 보 기 ]
+ㄱ.  $A_9 cup B_3 = N$
+ㄴ.  $B_12 cap B_p = B_36 `$ 을 만족시키는 자연수  $p`$ 의 합은  $63`$ 이다.
+ㄷ.  $A_2 cap A_3 cap A_8 = A_q `$ 를 만족시키는  $30$  이하의 자연수  $q`$ 의 개수는  $5`$ 이다.
+① ㄱ② ㄴ③ ㄱ, ㄴ④ ㄴ, ㄷ⑤ ㄱ, ㄴ, ㄷ
+두 집합  $X,~Y``$ 에 대하여 연산  $◉$ 를
+[정답] ④
+집합  $left(A◉B`right) ◉C``$ 를 벤 다이어그램으로 나타내면 다음 그림과 같다.
+[그림]
+$n (A)`$ 는  $3`$ 의 배수인  $100`$ 이하의 자연수의 개수이므로  $n(A)=33$
+$n(B)`$ 는  $4`$ 의 배수인  $100`$ 이하의 자연수의 개수이므로  $n(B)=25$
+$n(C`)`$ 는  $5`$ 의 배수인  $100`$ 이하의 자연수의 개수이므로  $n(C`)=20$
+$n left (A cap B`)`$ 는  $12`$ 의 배수인  $100`$ 이하의 자연수의 개수이므로  $n left(A cap B`right)=8$
+$n left(B cap C`right) `$ 는  $20`$ 의 배수인  $100`$ 이하의 자연수의 개수이므로  $n left(B cap C`right)=5$
+$n left( C cap A right) `$ 는  $15`$ 의 배수인  $100`$ 이하의 자연수의 개수이므로  $n left (C cap A )=6$
+$n left (A capB cap C`right)`$ 는  $60`$ 의 배수인  $100`$ 이하의 자연수의 개수이므로  $n left (A cap B cap C` right)=1`$ 이다.
+집합의 원소의 개수를 벤 다이어그램으로 나타내면 다음 그림과 같다.
+[그림]
+따라서 구하는 집합  $left(A◉B`right)◉C``$ 의 원소의 개수는  $20+13+10+1=44`$ 이다.
+$X`◉Y= left(X cup Y `right) cap left( X^C cup Y`^C `right)`$ 라 하자.
+전체집합  $U= left{ x`left|`x`$ 는  $100`$ 이하의 자연수 $it right}`$ 의 세 부분집합
+$A=  left{x`left|`x`$ 는  $3`$ 의 배수 $itright}$ ,
+$B= left{x`left|`x`$ 는  $4`$ 의 배수 $it right}$ ,
+$C= left{x`left|`x`$ 는  $5`$ 의 배수 $it right}$
+에 대하여 집합  $left(A`◉B`right)  ◉C``$ 의 원소의 개수는?
+①  $41$ ②  $42$ ③  $43$ ④  $44$ ⑤  $45$
+전체집합  $U= left{x`left|`x`$ 는 자연수 $it right}`$ 의 두 부분집합  $A,~B``$ 는  $n left(A `right) = n left(B`right) =5`$ 이고 다음 조건을 만족시킨다.
+[정답]  $72$
+조건 (나)에 의하여  $12in A`$ 이므로
+$A= left{a,~b,~c,~d,~12 right}`$
+( $a,~b,~c,~d`$ 는  $12`$ 가 아닌 서로 다른 네 자연수)라 하면
+$B= left{ ak,~bk,~ck,~dk,~12k right}`$
+조건 (다)에서  $a+b+c+d+12=25$ ,
+$a+b+c+d=13$   $cdots cdots$ ㉠
+이고,  $A cap B = left{12,~a right}`$ 라 할 때, 집합  $A cup B``$ 의 모든 원소의 합은
+$(a+b+c+d+12 )+k(a+ b+c+d+12 )- (12+a)=157$
+$25+25k -12 -a =157$  ( $ because$  ㉠)
+$25k = 144+a`$ 이다.  $cdots cdots$ ㉡
+이때  $b+c+d`$ 의 값이 최소, 즉  $b=1$ ,  $c=2$ ,  $d=3`$ 인 경우를 생각하면 ㉠에서  $a=7`$ 이므로
+$a,~b,~c,~d`$ 가 서로 다른 네 자연수일 때 ㉠을 만족시키기 위해서는  $a`$ 는  $7`$ 이하의 자연수이다.
+또한 ㉡에서 좌변은 자연수이고,  $ak in B``$ 에서  $ak`$ 는 자연수이므로
+우변  $144 +a`$ 는  $25`$ 의 배수이다. $therefore$   $a=6 ,~k=6$
+이때  $b+c+d =7`$ 을 만족하는 서로 다른 세 자연수  $b,~c,~d`$ 는 크기가 작은 수부터 크기순으로 나열하면  $1,~2,~4`$ 이다.
+따라서  $A= left{1,~2,~4,~6,~12 right}$ ,  $B= left{ 6,~12,~24,~36,~72 right}`$ 이고
+집합  $B``$ 의 원소 중 최댓값은  $72`$ 이다.
+[그림]
+(가)  $B= left{kx`left|`x in A right}`$  (단,  $k`$ 는 상수)
+(나)  $12 in left(A cap B`right) $ ,  $n left(A cap B`right) =2$
+(다) 집합  $A`$ 의 모든 원소의 합은  $25`$ 이고, 집합  $A cup B``$ 의 모든 원소의 합은  $157`$ 이다.
+집합  $B``$ 의 원소 중 최댓값을 구하시오.
+전체집합  $U= left{1,~2,~3,~4,~5,~6,~7,~8 right}`$ 의 두 부분집합  $A,~B``$ 가 다음 조건을 만족시킨다.
+[정답] ③
+집합  $B``$ 의 원소는 자연수이므로 조건(가)에서
+$1 in A``$ 이면  ${-1+9} over 2 =4 in B$ ,  $2 in A`$ 이면  ${2+8} over 2 = 5 in B$ ,
+$3 in A`$ 이면  ${-3+9} over2 =3 in B$ ,  $4 in A`$ 이면  ${4+8} over2 =6 in B$ ,
+$5 in A`$ 이면  ${-5+9} over 2 = 2 in B$ ,  $6 in A `$ 이면  ${6+8} over 2 = 7 in B$ ,
+$7 in A`$ 이면  ${-7+9} over{2} =1 in B$ ,  $8 in A `$ 이면  ${8+8} over2 =8 in B``$ 이다.
+$A-B= left {4,~7 right}`$ 이고, 조건 (나)에 의하여
+집합  $A`$ 는 반드시  $4,~7`$ 을 원소로 가지고, 집합  $B``$ 는 전체집합에서  $4,~7`$ 을 제외한 나머지 모든 원소를 원소로 가지므로  $B= left{1,~2,~3,~5,~6,~8 right}`$ 이다.
+이때 집합  $B``$ 가  $4,~7`$ 을 원소로 가지지 않으려면  $1 nin A$ ,  $6 nin A`$ 이다.
+따라서 집합  $A`$ 의 원소의 개수가 최대일 때
+$A= left{2,~3,~4,~5,~7,~8 right}`$ 이고,  $A cap B = left{2,~3,~5,~8 right}`$ 이다.
+또한 집합  $A`$ 의 원소의 개수가 최소일 때
+$A= left{4,~7 right}`$ 이고,  $A cap B = emptyset `$ 이다.
+따라서  $S`(A capB`)`$ 의 최댓값은  $2+3+5+8=18`$ 이고, 최솟값은  $0`$ 이므로 최댓값과 최솟값의 합은  $18+0=18`$ 이다.
+[그림]
+(가)  $a in A``$ 이면  ${-a+9} over2 inB$  또는  ${a+8} over2 inB``$ 이다.
+(나) 전체집합  $U``$ 의 부분집합  $X``$ 에 대하여 집합  $left(A cup X`right) -B``$ 의 원소의 개수는  $2`$ 이다.
+집합  $X``$ 의 모든 원소의 합을  $S`left(X`right)`$ 라 하자.  $A-B= left{4,~7 right}`$ 일 때,  $S`left(A capB`right)`$ 의 최댓값과 최솟값의 합은? (단,  $S `left( emptyset right)=0`$ 이다.)
+①  $14$ ②  $16$ ③  $18$ ④  $20$ ⑤  $22$
+자연수 전체의 집합의 두 부분집합  $A,~B``$ 에 대하여  $n left(A`right) = n left(B`right) =5$ ,  $B= left{ {x+k} over2  `left| pile{ it# it } `x in A right}`$ 이다. 두 집합  $A,~B``$ 가 다음 조건을 만족시킬 때, 집합  $B``$ 의 모든 원소의 합은?
+[정답] ④
+조건 (가)에서  $A cap B = left{4,~6,~8 right}`$ 이고
+${x+k} over 2 =4`$  에서  $x=8-k$ ,  ${x+k} over 2 =6`$ 에서  $x=12 -k`$
+${x+k} over2 =8 `$ 에서  $x= 16-k`$ 이므로
+$B= left{ {x+k} over 2 `left|` pile{it #it } x in A right}`$ 에서
+$(8-k) in A$ ,  $(12-k) in A$ ,  $(16-k) inA`$ 이다.
+이때 집합  $A`$ 의 원소는 모두 자연수이므로  $k < 8 `$ 이고
+$n  (A) =5`$ 이므로  $(8-k) in left{4,~6,~8 right}`$  또는  $(12-k) in left{ 4,~6,~8 right}`$
+또는  $(16-k ) in left{4,~6,~8 right}`$
+따라서  $k`$ 는  $8`$ 보다 작은 짝수인 자연수이다.
+(ⅰ)  $k=2`$ 일 때,
+ $A= left{4,~6,~8,~10,~14 right}$ ,  $B= left{3,~4,~5,~6,~8 right}`$ 이고,
+ $(A-B`right)  cup left(B-A right) = left{3,~5,~10,~14 right}`$ 에서 모든 원소의 합은  $32`$ 이다.
+(ⅱ)  $k=4`$ 일 때,
+ $n left(A  right) = n left(B`right) =5`$ 이므로  $alpha nin left{4,~6,~8,~12 right}`$ ,  $beta nin left{4,~5,~6,~8 right}`$ 인 두 자연수  $alpha ,~beta `$   $(alpha ne beta )`$ 에 대하여
+ $A= left{4,~6,~8,~12,~alpha right}$ ,  $B= left{ 4,~5,~6,~8,~beta right}`$ 라 하면
+ $beta = { alpha +4} over2 = alpha over2 +2$ 
+이때  $A-B= left{12,~alpha right},~B-A = left{5,~beta right}`$ 이므로
+ $12+ alpha +5+beta = 17 + alpha + left( alpha over2 +2 right) = 3 over2 alpha + 19 = 24`$ 에서
+ $3 over2 alpha =5$  $therefore$   $alpha = 10  over3$ 
+이때  $alpha`$ 는 자연수가 아니므로 조건을 만족시킬 수 없다.
+(ⅲ)  $k=6`$ 일 때,
+ $A= left{2,~4,~6,~8,~10 right}`$ ,  $B= left{4,~5,~6,~7,~8 right}`$ 이고,
+ $(A-B`) cup (B-A`)= left{2,~5,~7,~10 right}`$ 에서 모든 원소의 합은  $24`$ 이다.
+(ⅰ) $sim$ (ⅲ)에 의하여 조건을 만족시키는 자연수  $k`$ 의 값은  $6`$ 이고,
+$A= left{ 2,~4,~6,~8,~10 right}$ ,  $B= left{4,~5,~6,~7,~8 right}`$ 이므로
+집합  $B``$ 의 모든 원소의 합은  $30`$ 이다.
+(단,  $k`$ 는 자연수이다.)
+[그림]
+(가)  $A cap B = left{4,~6,~8 right}$
+(나) 집합  $left(A-B`right) cup left(B-A`right)`$ 의 모든 원소의 합은  $24`$ 이다.
+①  $24$ ②  $26$ ③  $28$ ④  $30$ ⑤  $32$
+전체집합  $U= left{1,~2,~3,~4,~5,~6 right}`$ 의 부분집합  $X``$ 에 대하여  $S`left(X`right) `$ 를 집합  $X``$ 의 모든 원소의 합이라 하자. 전체집합  $U``$ 의 두 부분집합  $A,~B``$ 에 대하여 <보기>에서 옳은 것만을 있는 대로 고른 것은? (단,  $S`left( emptyset right)=0$ )
+[정답] ④
+ㄱ.  $A= left{1,~2 right}$ ,  $B= left{6 right}`$ 이면  $S`(A) < S`(B)`$ 이지만  $A subset B``$ 가 성립하지 않는다. (거짓)
+ㄴ.  $A^C = B``$ 이면  $A cap B = emptyset `$ 이고  $A cup B = U``$ 이므로
+ $S`(A) +S`(B`)= S`(U`)=7`$ 이므로
+ $S`left(A ) le S`left(B`right) `$ 에서  $7 le S`left(B`right)`$ 를 만족시켜야 한다.
+이때  $S`left(U`right)=21`$ 이므로  $0 le S`left(B`right) le 21`$ 이고 구하는 집합  $B``$ 의 개수는 전체집합  $U``$ 의 모든 부분집합의 개수  $2^6 = 64`$ 에서
+ $0 le S`(B`) <7`$ 인 집합  $B``$ 의 개수를 빼면 되므로 집합  $B``$ 의 원소의 개수를 기준으로 생각해 보면 다음과 같다.
+(ⅰ)  $n left(B ` right)=0`$ 일 때,
+가능한 집합  $B``$ 는  $emptyset `$ 의  $1`$ 개
+(ⅱ)  $n left(B`right)=1`$ 일 때,
+가능한 집합  $B``$ 는  $left{1 right} ,~left{2 right} ,~left{3 right} ,~left{4 right} ,~left{5 right} ,~left{6 right} `$ 의  $6`$ 개
+(ⅲ)  $n left(B`right) =2`$ 일 때,
+가능한 집합  $B``$ 는  $left{1,~2 right} ,~left{1,~3 right},~left{1,~4 right} ,~left{1,~5 right} ,~left{2,~3 right} ,~left{2,~4 right}`$ 의  $6`$ 개
+(ⅳ)  $n left(B`right) =3`$ 일 때,
+가능한 집합  $B``$ 는  $left{1,~2,~3 right}`$ 의  $1`$ 개
+(ⅴ)  $n left (B`right) ge 4`$ 일 때,
+ $S`left(B`right) `$ 의 최솟값은  $B= left{1,~2,~3,~4 right}`$ 일 때  $10`$ 이므로 가능한 집합  $B``$ 가 존재하지 않는다.
+(ⅰ) $sim$ (ⅴ)에 의하여 구하는 집합  $B``$ 의 개수는
+$64-(1+6+6+1)=50`$ 이다. (참)
+따라서 옳은 것은 ㄴ, ㄷ이다.
+[표]
+[ 보 기 ]
+ㄱ.  $S`left(A`right) < S `left(B`right)`$ 이면  $A subset B``$ 이다.
+ㄴ.  $A^C =B``$ 이면  $S`left( A`right) + S`left(B`right) =21`$ 이다.
+ㄷ.  $A= left{1,~2,~4 right}`$ 일 때,  $S`left(A`right) le S`left(B`right) `$ 를 만족시키는 집합  $B``$ 의 개수는  $50`$ 이다.
+① ㄱ② ㄴ③ ㄷ④ ㄴ, ㄷ⑤ ㄱ, ㄴ, ㄷ
+[그림]
+$n left(U`right) =5`$ 인 전체집합  $U``$ 의 세 부분집합  $A,~B,~C``$ 에 대하여
+[정답] ⑤
+ㄱ.  $n left ( A cap B capC`right)=0`$ 이고  $n left (B cap C right)=2`$ 이면
+ $n left(A^C cap B cap C `right)=2`$ 
+이때  $n left(B-A right)  ge n left( A^C cap B capC `right)=2`$ 이므로
+ $n left (B-A`right)=1`$ 을 만족시키지 않는다.
+ $therefore$   $n left(A cap B cap C`right) ne 0`$  (참)
+ㄴ. [그림]
+$n left(A cap B cap C`right)=2`$ 이면
+ $n left( B cap C`right) = n left(A cap B cap C`right) + n left(A ^C cap B cap C`right)`$ 
+이므로  $n left(A^C cap B cap C `right)=0`$ 
+ $n left (B-A`right) = n left(A^C cap B cap C`right) + n left(A^C cap B cap C``^C `right)=1$ 
+이므로  $n left(A ^C cap B  cap C``^C` right)=1$ 
+ $n left(C-A`right) = n left(A ^C cap B capC `right) + n left(A^C cap B`^C capC`right)=2$ 
+이므로  $n left (A^C cap B``^C capC`right)=2$ 
+ $n left( A cap B cap C`right) + n left(A^C cap B cap C``^C `right) + n left(A^C cap B`^C capC`right)$  $= 5 = n left(U`right)$ 
+따라서  $n left(C `right) = n left(A cap B cap C`right) + n left(A^C cap B``^C cap C`right)=4`$  (참)
+ㄷ. [그림]
+$n left(B cap C`right)=2`$ 이므로 ㄱ에 의하여
+ $n left( A cap B cap C `right)=1`$  또는  $n left (A cap B capC`right)=2`$
+(ⅰ)  $n left(A cap B cap C `right)=2`$ 일 때
+ㄴ에 의하여
+ $n left(A right) = n left(A cap B cap C`right)=2$ 
+ $n left (B `right)= n left(A cap B cap C`right) + n left(A ^C cap B cap C``^C `right)=3$ 
+ $n left(A right) times n left(B`right)times n left(C`right) = 2times 3 times 4 = 24$
+(ⅱ)  $n left (A cap B capC`right)=1`$ 일 때,
+ $n left (B cap C`right)=2`$ 에서  $n left(A^C cap B capC`right)=1$ 
+ $n left(B-A`right)=1`$ 에서  $n left( A^C cap B cap C``^C `right)=0$ 
+ $n left(C-A`right)=2`$ 에서  $n left(A^C cap B`^C capC`right)=1$ 
+각 집합의 원소의 개수를 벤 다이어그램에 나타내면 다음 그림과 같다.
+[그림]
+ $n left(A`right) =a+b+c+1$ 
+ $n left (B`right)=b+2$ 
+ $n left(C`right) = c+3$ 
+이고  $a+b+c+d=2`$ 이다.
+ $n left(A`right) times n left(B`right) times n left(C`right)  `$ 의 값이 최소가 되기 위해서는
+ $a=b=c=0$ ,  $d=2$ 
+이때  $n left(A`right)$  $times n left(B`right) times n left(C`right)= 1 times 2 times 3 =6`$ 
+ $n left(A`right) times n left(B `right) times n left(C`right)`$ 의 값이 최대가 되기 위해서는
+ $a=d=0$ ,  $b+c=2$
+ⓐ  $b=2$ ,  $c=0`$ 일 때,
+ $n left(A right) times n left(B`right) times n left(C`right)= 3 times 4 times 3 = 36$
+ⓑ  $b=1$ ,  $c=1`$ 일 때,
+ $n left(A right) times n left(B`right) times n left(C`right) = 3 times 3 times 4 = 36$
+ⓒ  $b=0$ ,  $c=2`$ 일 때,
+ $n left(A`right) times n left(B` right) times n left(C`right) = 3 times 2 times 5 = 30$
+(ⅰ), (ⅱ)에 의하여  $n left (A right) times n left(B `right) times n left(C`right)`$ 의 최댓값은  $36$ , 최솟값은  $6`$ 이다.
+따라서  $n left(A`right) times n left (B`right) times n left(C`right)`$ 의 최댓값과 최솟값의 합은  $42`$ 이다. (참)
+따라서 옳은 것은 ㄱ, ㄴ, ㄷ이다.
+$n left(B` cap C` right)=2$ ,  $n left(B-A`right) =1$ ,  $n left (C-A`right)=2$
+일 때, <보기>에서 옳은 것만을 있는 대로 고른 것은? [4점]
+[표]
+[ 보 기 ]
+ㄱ.  $n left( A cap B capC`right) ne 0$
+ㄴ.  $n  left ( A capB capC`right)=2`$ 이면  $n left(C`right) =4`$ 이다.
+ㄷ.  $n left (A right) times n left(B `right) times n left(C`right) `$ 의 최댓값과 최솟값의 합은  $42`$ 이다.
+① ㄱ② ㄱ, ㄴ③ ㄱ, ㄷ④ ㄴ, ㄷ⑤ ㄱ, ㄴ, ㄷ
+어느 학교 전교생을 대상으로 국어, 영어, 수학 보충 수업 신청자를 조사하였더니 결과가 다음과 같았다.
+[정답] ①
+주어진 학교 전교생 전체의 집합을  $U$ ,
+국어, 영어, 수학을 보충 수업으로 신청한 학생의 집합을 각각  $A$ ,  $B$ ,  $C$ , 전체 학생 수를  $x`$ 라 하면
+주어진 조건에 의하여
+$n left(U`right) = x$ ,  $n left(A`right) = 0.6`x$ ,  $n left (B`right) = 0.3`x$ ,  $n left(C`right) = 0.2`x$ ,  $n left(A cap B cap C`right) = 0.1`x`$ 이다.
+집합의 원소의 개수를 벤 다이어그램으로 나타내면 다음 그림과 같다.
+[그림]
+이때 오직 한 과목만 신청한 학생은 전교생의  $50`%`$ 이므로
+식칠한 부분의 원소의 개수는  $0.5`x`$ 이고,
+두 과목만 신청한 학생 수를  $y`$ 라 하면
+빗금 친 부분의 원소의 개수가  $y`$ 이다.
+$0.5`x$  $= n left(A `right) + n left(B`right) + n left(C`right) -y-2 times n left(A cap B capC`right)$ 
+ $= 0.6`x + 0.3`x + 0.2`x - 2y -3 times 0.1`x$
+$therefore$   $y= 0.15`x$   $cdots cdots$ ㉠
+$n left(A cup B cup C`right)$  $= n left(A`right) + n left(B`right) + n left(C`right) - y-2 times n  left(A capB cap C`right)$ 
+ $= 0.6`x + 0.3`x +0.2`x  - 0.15`x -0.2`x$  ( $because$  ㉠)
+ $= 0.75`x$
+이때 어느 과목도 신청하지 않은 학생이  $140`$ 명이므로
+$n left( left(A cup B cup C`right)^C`right) = n left( U`right) - n left(A cup B cup C`right)`$ 에서
+$140=x - 0.75`x$  $therefore$   $x= 560$
+따라서 두 과목만 신청한 학생 수는
+$y= 0.15 times 560 = 84`$ 이다. ( $because$  ㉠)
+[그림]
+전교생의  $60`%`$ 가 국어를,  $30`%`$ 가 영어를,  $20`%`$ 가 수학을 신청하였다.
+세 과목 중 오직 한 과목만 신청한 학생은 전교생의  $50`%`$ 이고, 세 과목 모두 신청한 학생은 전교생의  $10`%`$ 이다.
+어느 과목도 신청하지 않은 학생은  $140`$ 명일 때, 두 과목만 신청한 학생 수는?
+①  $84$ ②  $88$ ③  $102$ ④  $106$ ⑤  $110$
+집합  $U= left{1,~2,~x,~4,~5 right}`$ 의 부분집합 중 원소의 개수가  $2`$ 인 부분집합을 각각  $A  _{1} ,~A  _{2} ,~A  _{3} ,~ CDOTS ,~A  _{n} `$ 이라 하고,
+[정답] (1)  $10$   (2)  $18$
+(1) 집합  $U= left{ 1,~2,~x,~4,~5 right}`$ 의 부분집합 중 원소의 개수가  $2`$ 인 부분집합은
+ $left{1,~2 right}$ ,  $left{1,~x right}$ ,  $left{1,~4 right}$ ,  $left{1,~5  right}$ ,
+ $left{2,~x right}$ ,  $left{2,~4 right}$ ,  $left{2,~5 right}$ ,
+ $left{x,~4 right}$ ,  $left{x,~5 right}$ , 
+ $left{4,~5 right}`$ 의  $10`$ 개이다.
+ $therefore$   $n=10`$
+(2) 집합  $U``$ 의 부분집합 중  $1`$ 이 속하고 원소의 개수가  $2`$ 인 부분집합의 개수는  $4`$ 이다.
+마찬가지로  $2,~x,~4,~5`$ 가 각각 속하고 원소의 개수가  $2`$ 인 부분집합의 개수도  $4`$ 이므로
+ $s  _{1} +s  _{2} +s  _{3} +` CDOTS `+s  _{n} =4 TIMES  LEFT ( 1+2+x+4+5 RIGHT )$ 
+ $4 (x+12)=120$ 
+ $therefore$   $x=18$
+[그림]
+(1) 집합  $U= left{1,~2,~x,~4,~5 right}`$ 의 부분집합 중 원소의 개수가  $2`$ 인 부분집합은  $it _5 rm C _2 =10`$ 개이다.
+ $therefore$   $n=10$
+집합  $A_k ~(k=1,~2,~3,~cdots,~n right)`$ 의 모든 원소의 합을  $s_k `$ 라 할 때, 다음 물음에 답하고, 그 과정을 서술하시오. (단,  $n left(U`right)=5`$ 이다.)
+(1)  $n`$ 의 값을 구하시오.
+(2)  $s  _{1} +s  _{2} +s  _{3} +` CDOTS `+s  _{n} =120`$ 일 때,  $x`$ 의 값을 구하시오.
+집합  $LEFT { 1,~2,~3,~4,~5 RIGHT }$ 의 부분집합 중 원소의 개수가  $2$  이상인 모든 집합에 대하여 각 집합의 원소 중 최대인 것을 모두 더한 값을 구하시오.
+[정답]  $114$
+(ⅰ) 최대인 원소가  $1$ 일 때.
+원소의 개수가  $2$  이상인 부분집합은 존재하지 않는다.
+(ⅱ)최대인 원소가  $2$ 일 때,
+ $2$ 를 원소로 갖고  $3,~4,~5$ 를 원소로 갖지 않는 부분집합 중 원소의 개수가  $2$  이상인 집합은  $LEFT { 1,~2 RIGHT }$ 의  $1$ 개뿐이다.
+(ⅲ) 최대인 원소가  $3$ 일 때,
+ $3$ 을 원소로 갖고  $4,~5$ 를 원소로 갖지 않는 부분집합 중 원소의 개수가  $2$  이상인 집합의 개수는 집합  $LEFT { 1,~2 RIGHT }$ 의 부분집합 중 공집합이 아닌 집합의 개수와 같다.
+따라서  $2^{2}-1=3$  (개)
+(ⅳ) 최대인 원소가  $4$ 일 때,
+ $4$ 를 원소로 갖고  $5$ 를 원소로 갖지 않는 부분집합 중 원소의 개수가  $2$  이상인 집합의 개수는 집합  $LEFT { 1,~2,~3 RIGHT }$ 의 부분집합 중 공집합이 아닌 집합의 개수와 같다.
+따라서  $2^{3}-1=7$ (개)
+(ⅴ) 최대인 원소가  $5$ 일 때,
+ $5$ 를 원소로 갖는 부분집합 중 원소의 개수가  $2$  이상인 집합의 개수는 집합  $LEFT { 1,~2,~3,~4 RIGHT }$ 의 부분집합 중 공집합이 아닌 집합의 개수와 같다.
+따라서  $2^{4}-1=15$ (개)
+(ⅰ)~(ⅳ)에 의하여 각 집합의 원소 중 최대인 것을 모두 더한 값은  $1 TIMES0+2 TIMES1+3 TIMES3+4 TIMES7+5 TIMES15=114$
+전체집합  $U= LEFT { 1,~2,~3,~4,~5,~6,~7,~8 RIGHT }$ 의 세 부분집합  $A,~B,~C$ 에 대하여  $A= LEFT { 1,~2,~4,~6,~8 RIGHT }$ ,  $B= LEFT { 1,~a,~b RIGHT }$ 이고,  $A CUPC=B CUPC  $ 를 만족시키는 집합  $C$ 의 개수가  $16$ 이 되도록 하는 두 상수  $a,~b$ 의 순서쌍  $(a,~b)$ 의 개수는? (단,  $1<a<b< LEQ8$ )
+[정답] ③
+$A cupC=B cupC$ 를 만족시키려면
+$(A-B) SUBSETC,~(B-A) SUBSETC$ 를 만족시켜야 한다.
+$n((A-B) cup(B-A))=k$ 이면
+집합  $C$ 는  $(A-B) cup(B-A)$ 의  $k$ 개의 원소를 모두 원소로 갖는  $U$ 의 부분집합이고, 집합  $C$ 의 개수는  $2^{8-k$ 이므로
+$2^{8-k}=16=2^{4}$ 에서  $k=4$
+즉,  $n(A CAPB)=2 $ 이어야 하고  $1IN(A capB)$ 이므로
+$a,~b$  중 하나는  $2,~4,~6,~8$  중 하나의 값, 다른 하나는  $3,~5,~7$  중 하나의 값을 가져야 하고, 선택된 값 중 작은 값이  $a,$  큰 값이  $b$ 이다.  $(because~a<b)$
+따라서 구하는 순서쌍  $(a,~b)$ 의 개수는  $4 TIMES3=12$ 이다.
+①  $6$ ②  $9$ ③  $12$ ④  $15$ ⑤  $18$
+[그림]
+집합  $S= LEFT { a,~b,~c RIGHT }$ 의 부분집합을 원소로 갖는 집합  $X$ 가 다음 두 조건을 만족시킨다.
+[정답] ④
+주어진 조건에 의하여
+(ⅰ)  $EMPTYSET IN{X$ 이면  $S- EMPTYSET =S{IN{X$
+(ⅱ)  $LEFT { a RIGHT } {IN{X$ 이면  $LEFT { b,~c RIGHT }$  $IN{X$ 이고  $LEFT { a RIGHT }  CUP  LEFT { b,~c RIGHT } =S{IN{X$ 이므로  $EMPTYSET IN{X$
+(ⅲ)  $LEFT { b RIGHT } IN{X$ 이면  $LEFT { a,~c RIGHT }$  $IN{X$ 이고  $S IN X$ 이므로  $EMPTYSET IN{X$
+(ⅳ)  $LEFT { c RIGHT } IN{X$ 이면  $LEFT { a,~b RIGHT }$  $IN{X$ 이고  $S IN X$ 이므로  $EMPTYSET IN{X$
+(ⅴ)  $LEFT { a RIGHT } IN{X,~ LEFT { b RIGHT } IN{X$ 이면  $LEFT { a,~b RIGHT } IN{X$ 이므로  $LEFT { c RIGHT }$  $IN{X$ 
+따라서 집합  $S$ 의 모든 부분집합이  $X$ 의 원소이다.
+마찬가지로  $LEFT { b RIGHT } IN{X,~ LEFT { c RIGHT } IN{X$ 일 때와  $LEFT { c RIGHT } IN{X$ ,  $LEFT { a RIGHT } IN{X$ 일 때도 집합  $S$ 의 모든 부분집합이  $X$ 의 원소이다.
+(ⅰ)~(ⅴ)에 의하여 조건을 만족시키는 집합  $X$ 는
+$LEFT { EMPTYSET,~S RIGHT },~ LEFT { EMPTYSET,~ LEFT { a RIGHT },~ LEFT { b,~c RIGHT },~S RIGHT }$
+$LEFT { EMPTYSET,~ LEFT { b RIGHT },~ LEFT { a,~c RIGHT } ,~S RIGHT },~ LEFT { EMPTYSET,~ LEFT { c RIGHT },~ LEFT { a,~b RIGHT },~S RIGHT }$
+$LEFT { EMPTYSET,~ LEFT { a RIGHT },~ LEFT { b RIGHT },~ LEFT { c RIGHT },~ LEFT { a,~b RIGHT },~ LEFT { b,~c RIGHT } ,~ LEFT { a,~c RIGHT },~S RIGHT }$ 의  $5$ 개이다.
+[그림]
+(가)  $A{IN{X$ 이면  $(S-A){IN{X$
+(나)  $A{IN{X,~B{IN{X$ 이면  $(A CUP B){IN{X$
+집합  $X$ 의 개수는? (단,  $X!= EMPTYSET$ 이다.)
+①  $2$ ②  $3$ ③  $4$ ④  $5$ ⑤  $6$
+복소수 전체의 집합의 세 부분집합
+[정답] ④
+$x^{3}-1=(x-1)(x^{2}+x+1)=0$ 이고
+이차방정식  $x^{2}+x+1=0$ 의 근은  $x={-1+-sqrt{3}i}over{2}$ 이므로
+$A= LEFT { 1,~{-1+sqrt{3}i}over{2},~{-1-sqrt{3}i}over{2} RIGHT }$
+$i^{n}+{1overi^{n}$ 에서 자연수  $k$ 에 대하여
+$n=4k-3$ 일 때  $i^{4k-3}=i$ 이므로  $i+{1overi}=i-i=0$
+$n=4k-2$ 일 때  $i^{4k-2}=it-1$ 이므로  $-1-1=it-2$
+$n=4k-1$ 일 때  $i^{4k-1}=it-i$ 이므로  $-i-{1overi}=it-i+i=0$
+$n=4k$ 일 때  $i^{4k}=1$ 이므로  $1+1=2$
+따라서  $B= LEFT { 0,~-2,~2 RIGHT }$ 이다.
+$z^{2}=bar{z$ 에서  $z^{4}=(z^{2})^{2}={bar{z}}^{2}={bar{z}^{2}}={bar{barz}}=z $
+$z^{4}-z=z(z^{3}-1)=z(z-1)(z^{2}+z+1)$  $=0$ 이므로
+집합  $A$ 를 구하는 과정을 이용하면
+$C= LEFT { 0,~1,~{-1+sqrt{3}i}over{2},~{-1-sqrt{3}i}over{2} RIGHT }$ 이다.
+$therefore~A cupB cupC= LEFT { -2,~0,~1,~2,~{-1+sqrt{3}i}over{2},~{-1-sqrt{3}i}over{2} RIGHT }$
+이 중 적어도 하나의 실수를 원소로 갖는 부분집합의 개수는 모든 부분집합의 개수에서 허수만을 원소로 갖는 부분집합의 개수를 빼주면 되므로
+$2^{6}-2^{2}=60$
+$A= LEFT { x`left|`x  ^{3} =1 RIGHT }$
+$B= LEFT { i  ^{n} + {1} over {i  ^{n}} ` pile{it#it} LEFT | pile{it#it} `n RIGHT . RIGHT .$ 은 자연수 $pile{it#it} }right$
+$C= LEFT { z`left|`z  ^{2} = {bar{rm itz it}} RIGHT }$
+에 대하여 집합  $A CUPB CUPC $ 의 부분집합 중 적어도 하나의 실수를 원소로 갖는 것의 개수는?
+(단,  $i=sqrt-1$ 이고  $barz$ 는  $z$ 의 켤레복소수이다.)
+①  $48$ ②  $52$ ③  $56$ ④  $60$ ⑤  $64$
+자연수  $k$ 에 대하여 집합  $A_{k}$ 를
+[정답] ④
+ㄱ. 모든 자연수  $1$ 을 약수로 가지므로
+ $n(A_{10} CAPA_{m})=1 $ 이면  $A_{10} capA_{m}= LEFT { 1 RIGHT }$ 이다.
+즉, 자연수  $m$ 이  $10$ 과 서로소이면  $n(A_{10} CAPA_{m})=1 $ 이다.
+예를 들어  $m=9$ 이면  $A_{9}= LEFT { 1,~3,~9 RIGHT }$ 이고
+ $A_{10}= LEFT { 1,~2,~5,~10 RIGHT }$ 이므로
+ $n(A_{10} CAPA_{9})=1 $ 이지만 이때  $9$ 는 소수가 아니다. (거짓)
+ㄴ.  $A_{21}= LEFT { 1,~3,~7,~21 RIGHT }$ 이므로  $n(A_{21}-A_{m})=1$ 이면
+ $n(A_{21} CapA_{m})=3$ 이다.
+이때 집합  $A_{21} CAPA_{m} $ 은  $1$ 을 반드시 원소로 가지므로 집합  $A_{m}$ 이  $3,~7,~2`1$  중  $2$ 개만 원소로 가져야 한다.
+하지만 집합  $A_{m}$ 이  $3,~7$ 을 모두 원소로 가지면  $21$ 도 반드시 원소로 가지고,
+ $21$ 을 원소로 가지면 반드시  $3,~7$ 도 원소로 가지므로 어떠한 경우도 집합  $A_{m}$ 이  $3,~7,~21$  중  $2$ 개만 원소로 가질 수 없다. (참)
+ㄷ.  $n(A_m})$ 이 홀수, 즉  $m$ 의 양의 약수의 개수가 홀수이면  $m$ 은 제곱수이다.
+또한  $A_{6}= LEFT { 1,~2,~3,~6 RIGHT }$ 이므로  $n(A_{6}-A_{m})=2$ 이면
+ $n(A_{6} capA_{m})=2$ 
+따라서  $m$ 은 제곱수이면서  $2,~3$  중 하나만 인수로 가져야 하므로 이를 만족시키는  $200$  이하의 자연수  $m$ 은  $2^{2},~3^{2},~4^{2},~8^{2},~9^{2},~10^{2},~14^{2}$ 의  $7$ 개이다. (참)
+따라서 옳은 것은 ㄴ, ㄷ이다.
+$A  _{k} =left{x`left|`x$ 는  $k$ 의 양의 약수 $it}right$
+라 할 때, <보기>에서 옳은 것만을 있는 대로 고른 것은?
+[표]
+[ 보 기 ]
+ㄱ.  $n(A_{10} SMALLINTERA_{m})=1$ 이면 자연수  $m$ 은 소수이다.
+ㄴ.  $n(A_{21}-A_{m})=1$ 을 만족시키는 자연수  $m$ 는 존재하지 않는다.
+ㄷ.  $n(A_{m})$ 이 홀수이고  $n(A_{6}-A_{m})=2$ 를 만족시키는  $200$  이하의 자연수  $m$ 의 개수는  $7$ 이다.
+① ㄱ② ㄴ③ ㄱ, ㄴ④ ㄴ, ㄷ⑤ ㄱ, ㄴ, ㄷ
+실수  $a$ 에 대하여 두 집합  $A,~B$ 를 각각
+[정답]  $7+sqrt15$
+집합  $A$ 의 원소를 좌표평면 위에 나타내면 곡선  $y=(x-a)^{2}-3$ 이고
+집합  $B$ 의 원소를 좌표평면 위에 나타내면 직선  $y=1$ 이므로 이차방정식  $(x-a)^{2}-3=1$ 에서
+$(x-a)^{2}=4,~x-a=+-2$
+$therefore~x=a+2$  또는  $x=a-2$
+따라서  $rmP(ita-2,~1),~rmQ(ita+2,~1)$ 이라 하면
+삼각형  $rmOPQ$ 가 이등변삼각형이 되는 경우는 다음과 같다.
+(ⅰ)  ${bar{rmOP}}={bar{rmOQ}}  $ 인 경우
+다음 그림과 같이 곡선  $y=(x-a)^{2}-3$ 의 대칭축이  $y$ 축일 때이므로  $a=0$ 이다.
+[그림]
+(ⅱ)  ${bar{rmOP}}= {bar{rmPQ}} $ 인 경우
+ ${bar{rmOP}}=sqrt{(ita-2)^{2}+1^{2}},~{bar{rmPQ}}=(ita+2)-(a-2)=4  $ 이므로
+ $sqrt{(a-2)^{2}+1^{2}}=4,~(a-2)^{2}+1=16,~(a-2)^{2}=15$ 
+ $a-2=+-sqrt15$ 에서  $a=2+sqrt15$  또는  $a=2-sqrt15$ 이다.
+[그림]
+(ⅲ)  ${bar{rmOQ}}={bar{rmPQ}}  $ 인 경우
+ ${bar{rmOQ}} =sqrt{(ita+2)^{2}+1^{2}$ 이므로
+ $sqrt{(a+2)^{2}+1^{2}}=4,~(a+2)^{2}+1=16,~(a+2)^{2}=15$ 
+ $a+2=+-sqrt15$ 에서  $a=it-2+sqrt15$  또는  $a=it-2-sqrt15$ 이다.
+[그림]
+(ⅰ)~(ⅲ)에 의하여 조건을 만족시키는 실수  $a$ 의 개수는  $m=5$ 이고, 최댓값은  $S=2+sqrt15$ 이다.
+$therefore~m+S=5+(2+sqrt15 )=7+sqrt15$
+$A=left{ LEFT ( x,~ LEFT ( x-a RIGHT )  ^{2} -3 RIGHT ) `left|`x$ 는 실수 $it}right$
+$B=left{` LEFT ( x,~1 RIGHT ) `left|`x$ 는 실수 $it}right$
+라 하자. 집합  $A SMALLINTER B$ 의 두 원소를 좌표평면 위에 나타낸 점을 각각  $rmP,~Q$ 라 할 때, 원점  $rmO$ 에 대하여 삼각형  $rmOPQ$ 가 이등변삼각형이 되도록 하는 실수  $a$ 의 개수를  $m$ , 최댓값을  $S$ 라 하자.  $m+S$ 의 값을 구하시오.
+[그림]
+$1$ 보다 큰 자연수  $k$ 에 대하여 전체집합
+[정답]  $189$
+$n(A) TIMES n((A CUP B)  ^{C} )=15$ 에서  $n(A)$ 는  $15$ 의 양의 약수이다.
+(ⅰ)  $n(A)=1$ 일 때
+ $A= LEFT { 2 RIGHT }$ 이므로  $k=2$  또는  $k=3$ 
+ $k=2$ 이면  $U= LEFT { 1,~2 RIGHT },~B= LEFT { 1,~2 RIGHT }$ 에서
+ $(A CUP B)  ^{C} = EMPTYSET ,~n((A CUP B)  ^{C} )=0$ 이므로 조건을 만족시키지 않는다.
+ $k=3$ 이면  $U= LEFT { 1,~2,~3 RIGHT }$ ,  $B= LEFT { 1,~3 RIGHT }$ 에서
+ $(A CUP B)  ^{C} = EMPTYSET ,~n((A CUP B)  ^{C} )=0$ 이므로 조건을 만족시키지 않는다.
+(ⅱ)  $n(A)=3$ 일 때
+ $A= LEFT { 2,~4,~6 RIGHT }$ 이므로  $k=6$  또는  $k=7$ 
+ $k=6$ 이면  $U= LEFT { 1,~2,~3,~ CDOTS ,~6 RIGHT }$ ,  $B= LEFT { 1,~2,~3,~6 RIGHT }$ 에서
+ $(A CUP B)  ^{C} = LEFT { 5 RIGHT } ,~n((A CUP B)  ^{C} )=1$ 이므로 조건을 만족시키지 않는다.
+ $k=7$ 이면  $U= LEFT { 1,~2,~3,~ CDOTS ,~7 RIGHT } ,~B= LEFT { 1,~7 RIGHT }$ 에서
+ $(A CUP B)  ^{C} = LEFT { 3,~5 RIGHT } ,~n((A CUP B)  ^{C} )=2$ 이므로 조건을 만족시키지 않는다.
+(ⅲ)  $n(A)=5$ 일 때
+ $A= LEFT { 2,~4,~6,~8,~10 RIGHT }$ 이므로  $k=10$  또는  $k=11$ 
+ $k=10$ 이면  $U= LEFT { 1,~2,~3,~ CDOTS ,~10 RIGHT } ,~B= LEFT { 1,~2,~5,~10 RIGHT }$ 에서
+ $(A CUP B)  ^{C} = LEFT { 3,~7,~9 RIGHT } ,~n((A CUP B)  ^{C} )=3$ 이므로 조건을 만족시킨다.
+ $k=11$ 이면  $U= LEFT { 1,~2,~3,~ CDOTS ,~11 RIGHT } ,~B= LEFT { 1,~11 RIGHT }$ 에서
+ $(A CUP B)  ^{C} = LEFT { 3,~5,~7,~9 RIGHT } ,~n((A CUP B)  ^{C} )=4$ 이므로 조건을 만족시키지 않는다.
+(ⅳ)  $n(A)=15$ 일 때
+ $A= LEFT { 2,~4,~ CDOTS ,~30 RIGHT } ,~B= LEFT { 1,~2,~3,~5,~6,~10,~15,~30 RIGHT }$ 에서
+ $(A CUP B)  ^{C} = LEFT { 7,~9,~11,~13,~17,~19,~21,~23,~25,~27,~29 RIGHT }$ .  $n((A CUP B)  ^{C} )=11$ 이므로 조건을 만족시키지 않는다.
+ $k=31$ 이면  $U= LEFT { 1,~2,~3,~ CDOTS ,~31 RIGHT } ,~B= LEFT { 1,~31 RIGHT }$ 에서
+ $(A CUP B)  ^{C} = LEFT { 3,~5,~7,~ CDOTS ,~29 RIGHT } ,~n((A CUP B)  ^{C} )=14$ 이므로 조건을 만족시키지 않는다.
+(ⅰ)~(ⅳ)에서 두 집합  $A,~B$ 기 조건을 만족시키도록 하는  $k$ 는  $k=10$ 이고
+$U= LEFT { 1,~2,~3,~ CDOTS ,~10 RIGHT } ,~A= LEFT { 2,~4,~6,~8,~10 RIGHT }$ ,  $B= LEFT { 1,~2,~5,~10` RIGHT }$ ,  $(A CUP B)  ^{C} = LEFT { 3,~7,~9 RIGHT }$ 이므로
+집합  $(A CUP B)  ^{C} = LEFT { 3,~7,~9 RIGHT }$ 의 모든 원소의 곱은
+$3 TIMES7 TIMES9=189  $
+[그림]
+$1$ 보다 큰 자연수  $k$ 에 대하여
+$k$ 가 홀수일 때  $n LEFT ( A RIGHT ) = {k-1} over {2}$
+$k$ 가 짝수일 때  $n LEFT ( A RIGHT ) = {k} over {2}$
+이고  $1{in{B$ ,  $k{in{B$ 이므로  $n LEFT ( A{cup{B RIGHT ) ge {k} over {2} +1$ 이다.
+$n LEFT ( LEFT ( A{cupB RIGHT )  ^{C} RIGHT )$  $=n LEFT ( U RIGHT ) -n LEFT ( A{cup{B RIGHT )$ 
+ $le{k- LEFT ( {k} over {2} +1 RIGHT ) = {k} over {2} -1$
+따라서  $n LEFT ( A RIGHT ) >n LEFT ( LEFT ( A{cup{B RIGHT )  ^{C} RIGHT )$ 이다.
+이때  $15=5times3=15times1$ 이므로
+본풀이에서  $n LEFT ( A RIGHT ) =5$  또는  $n LEFT ( A RIGHT ) =15$ 인 경우만 생각해보면 된다.
+$U=left{x`left|`x$ 는  $k$  이하의 자연수 $it}right$
+의 두 부분집합
+$A=left{x`left|`x$ 는  $k$  이하의 짝수 $it}right$ ,  $B=left{x`left|`x$ 는  $k$ 의 약수 $it}right$
+가  $n(A) TIMES n((A CUP B)  ^{C} )=15$ 를 만족시킨다. 집합  $(A CUP B)  ^{C}$ 의 모든 원소의 곱을 구하시오.
+자연수  $k$ 에 대하여 집합  $A  _{k} = LEFT { x` LEFT | `left[`kx`right]=kx,~x>0 RIGHT } RIGHT .$ 이라 할 때, <보기>에서 옳은 것만을 있는 대로 고른 것은?
+[정답] ②
+$LEFT [ `kx` RIGHT ]$ 는 자연수이므로  $LEFT [ `kx` RIGHT ] =kx$ 이기 위해선  $kx$ 의 값이 자연수이어야 한다.
+즉, 자연수  $a$ 에 대하여  $kx=a$ 에서  $k={a overk$  꼴이다.
+$therefore~A_{k}$  $=left{ {a} over {k} `left| pile{it#it} `a$ 는 자연수 $pile{it#it} }right$ 
+ $= LEFT { {1} over {k} ,~ {2} over {k} ,~ {3} over {k} ,~ CDOTS ,~1,~ {k+1} over {k} ,~ CDOTS ,~2,~ {2k+1} over {k} ,~ CDOTS  RIGHT }$
+ㄱ. 모든 자연수는 두 집합  $A_{m},~A_{n}$ 의 원소이므로
+ $A_{m} CAPA_{n} != EMPTYSET $  (거짓)
+ㄴ.  $m$ 이  $n$ 의 약수이면 어떤 자연수  $h$ 에 대하여  $n=mh$ 가 성립하므로
+ $A_{m}= LEFT { {1overm},~{2overm},~{3overm},~CDOTS RIGHT }= LEFT { {h overmh},~{2h overmh},~{3h overmh},~CDOTS  RIGHT }$ ,
+ $A_{n}= LEFT { {1overn},~{2overn},~{3overn},~CDOTS RIGHT }={ LEFT { {1overmh},~{2 over{mh},~{3overmh},~CDOTS RIGHT }$ 
+따라서  $A_{m} SUBSETA_{n{$ 이므로 집합  $A_m$ 은 집합  $A_{n}$ 의 부분집합이다 (참)
+ㄷ.  $A_{2}= LEFT { {1over2},~1,~{3over2},~2,~CDOTS RIGHT }$ ,  $A_{3}= LEFT { {1over3},~{2over3},~1,~{4over3},~{5over3},~2,~CDOTS RIGHT }$ , $A_{6}= LEFT { {1over6},~{1over3},~{1over2},~{2over3},~{5over6},~1,~CDOTS RIGHT }$ 
+이때  $1over6 NOTINA_{2},~ 1over6 NOTINA_{3}$ 이므로
+ $A_{2} CUPA_{3} != A_{6} $ 이다. (거짓)
+따라서 옳은 것은 ㄴ이다.
+(단,  $left[`x`right]$ 는  $x$ 보다 크지 않은 최대의 정수이다.)
+[표]
+[ 보 기 ]
+ㄱ.  $m$ 과  $n$ 이 서로소이면  $A_{m} SMALLINTERA_{n}= EMPTYSET$ 이다.
+ㄴ.  $m$ 이  $n$ 의 약수이면 집합  $A_{m}$ 은 집합  $A_{n}$ 의 부분집합이다.
+ㄷ.  $m$ 과  $n$ 의 최소공배수가  $l$ 이면  $A_{m} CUPA_{n}=A_{i} $ 이다.
+① ㄱ② ㄴ③ ㄷ④ ㄴ, ㄷ⑤ ㄱ, ㄴ, ㄷ
+[그림]
+전체집합  $U=left{`x`left|`x$ 는  $20$  이하의 자연수 $it}right$ 의 두 부분집합  $A,~B$ 가 다음 조건을 만족시킨다.
+[정답]  $63$
+조건 (가), (나), (다)를 만족시키는 두 집합  $A,~B$ 에 대하여  $S(A)-S(B)$ 의 값이 최대가 되려면  $S(A)$ 의 값이 최대이고  $S(B)$ 이 값이 최소이어야 한다.
+$9$ 로 나눈 나머지가 같은 원소들로 이루어진 부분집합을 표로 나타내면 다음과 같다.
+[표]
+나머지
+부분집합
+나머지
+부분집합
+$1$
+$LEFT { 1,~10,~19 RIGHT }$
+$8$
+$LEFT { 8,~17 RIGHT }$
+$2$
+$LEFT { 2,~11,~20 RIGHT }$
+$7$
+$LEFT { 7,~16 RIGHT }$
+$3$
+$LEFT { 3,~12 RIGHT }$
+$6$
+$LEFT { 6,~15 RIGHT }$
+$4$
+$LEFT { 4,~13 RIGHT }$
+$5$
+$LEFT { 5,~14 RIGHT }$
+$0$
+$LEFT { 9 RIGHT }$
+$0$
+$LEFT { 18 RIGHT }$
+나머지의 합이  $0$  또는  $9$ 가 되는 두 부분집합 중 한 집합의 원소들만 집합  $A$ 에 속할 수 있다.
+따라서  $S(A)$ 가 최대가 되려면 집합  $U$ 의 부분집합  $LEFT { 1,~10,~19 RIGHT }$ ,  $LEFT { 2,~11,~20 RIGHT },~ LEFT { 6,~15 RIGHT },~ LEFT { 5,~14 RIGHT },~ LEFT { 18 RIGHT }$ 의 원소 중 큰 수부터 차례대로 집합  $A$ 의 원소가 되어야 한다.
+조건 (가)에서  $n(A)=8$ 이므로
+$S(A)$ 가 최대가 되기 위해 가능한 집합  $A$ 는  $LEFT { 6,~10,~11,~14,~15,~18,~19,~20 RIGHT }$  $CDOTSCDOTS$ ㉠
+$10$ 으로 나눈 나머지가 같은 원소들로 이루어진 부분집합을 표로 나타내면 다음과 같다.
+[표]
+나머지
+부분집합
+나머지
+부분집합
+$1$
+$LEFT { 1,~11 RIGHT }$
+$9$
+$LEFT { 9,~19 RIGHT }$
+$2$
+$LEFT { 2,~12 RIGHT }$
+$8$
+$LEFT { 8,~18 RIGHT }$
+$3$
+$LEFT { 3,~13 RIGHT }$
+$7$
+$LEFT { 7,~17 RIGHT }$
+$4$
+$LEFT { 4,~14 RIGHT }$
+$6$
+$LEFT { 6,~16 RIGHT }$
+$5$
+$LEFT { 5 RIGHT }$
+$5$
+$LEFT { 15 RIGHT }$
+$0$
+$LEFT { 10 RIGHT }$
+$0$
+$LEFT { 20 RIGHT }$
+나머지의 합이  $0$  또는  $10$ 이 되는 두 부분집합 중 한 집합의 원소들만 집합  $B$ 에 속할 수 있다.
+따라서  $S(B)$ 가 최소가 되려면 집합  $U$ 의 부분집합  $LEFT { 1,~11 RIGHT } ,~ LEFT { 2,~12 RIGHT } ,~ LEFT { 3,~13 RIGHT } ,~ LEFT { 4,~14 RIGHT } ,~ LEFT { 5 RIGHT } ,~ LEFT { 10 RIGHT }$ 의 원소 중 작은 수부터 차례대로 집합  $B$ 의 원소가 되어야 한다.
+조건 (가)에서  $n(B)$  $=8$ 이므로
+$S(B)$ 가 최소가 되기 위해 가능한 집합  $B$ 는  $LEFT { 1,~2,~3,~4,~5,~10,~11,~12 RIGHT }$  $CDOTS  CDOTS $ ㉡
+㉠, ㉡에서 조건 (가)의  $n(A capB)=1$ 을 만족시키려면  $10,~11$ 은 동시에 집합  $A capB$ 에 속할 수 없다,
+$10 INB,~11 INB  $ 이면  $ 10 NOTINA$  또는  $11 NOTINA$ 이다.
+이때  $1,~2,~5$  중 적어도 하나가 집합  $A$ 에 속해야 하므로
+$n(A capB)!=1$ 이 되어 조건 (가)를 만족시키지 않는다.
+$S(B)$ 가 최소가 되려면  $10 INB,~11 NOTINB $ 이어야 한다.
+따라서  $A= LEFT { 6,~10,~11,~14,~15,~18,~19,~20 RIGHT }$ ,  $B= LEFT { 1,~2,~3,~4,~5,~10,~12,~13 RIGHT }$ 일 때
+$S(A)-S(B)$ 의 최댓값은  $63$ 이다.
+[그림]
+(가)  $n(A)=n(B)=8,~n(A SMALLINTERB)=1$
+(나) 집합  $A$ 의 임의의 서로 다른 두 원소의 합은  $9$ 의 배수가 아니다.
+(다) 집합  $B$ 의 임의의 서로 다른 두 원소의 합은  $10$ 의 배수가 아니다.
+집합  $A$ 의 모든 원소의 합은  $S(A)$ , 집합  $B$ 의 모든 원소의 합을  $S(B)$ 라 할 때,  $S(A)-S(B)$ 의 최댓값을 구하시오.
+[그림]
+내신고쟁이 공통수학2
+05.집합
+STEP 1
+[정답] ④
+[정답] (1)  $A= LEFT { 2,~3,~5,~7 RIGHT }$  (2)  $ NOTIN ,~ IN ,~ NOTIN ,~ IN $
+[정답] ⑤
+[정답]  $19$
+[정답] ③
+[정답] ④
+[정답] (1)  $A SUBSET B$  (2)  $A=B$  (3)  $B SUBSET A$
+[정답] ③
+[정답] ③
+[정답] ②
+[정답] ⑤
+[정답] ④
+[정답] ⑤
+[정답] ④
+[정답] ⑤
+[정답] (1)  $LEFT { 5,~6 RIGHT }$  (2)  $LEFT { 5,~6,~7,~9 RIGHT }$
+[정답] ③
+[정답] ③
+[정답] ④
+[정답]  $18$
+[정답] ④
+[정답] ③
+[정답] ③
+[정답]  $②$
+[정답] ①
+[정답]  $11$
+[정답] ②
+[정답] ③
+[정답]  $47$
+[정답] ⑤
+[정답]  $15$
+[정답] ②
+[정답] ①
+[정답] ③
+[정답] ③
+[정답]  $4$
+[정답]  $48$
+[정답] ④
+STEP 2
+[정답]  $7$
+[정답] ④
+[정답]  $131$
+[정답] ①
+[정답] ⑤
+[정답]  $a=3$
+[정답] ②
+[정답] ①
+[정답] ①
+[정답] ②
+[정답]  $22$
+[정답]  $a le it -1$  또는  $a=3$
+[정답]  $54$
+[정답] ⑤
+[정답]  $21$
+[정답] ②
+[정답] ⑤
+[정답] ③
+[정답]  $- 9 over2 `$
+[정답] ③
+[정답] ②
+[정답]  $left{-1,~1,~6,~6i right}$
+[정답] (1)  $25$   (2)  $8$   (3)  $5$
+[정답] ④
+[정답] ①
+[정답] (1)  $30$   (2)  $48$
+[정답] ⑤
+[정답]  $43$
+[정답] (1)  $M=25 ,~m=10$   (2)  $M=16,~m=3$
+[정답]  $30$
+[정답] ③
+[정답]  $9$
+[정답] ①
+[정답] ③
+[정답]  $16$
+[정답] ④
+[정답]  $8$
+[정답] ③
+[정답]  $64$
+[정답]  $232$
+[정답]  $31$
+[정답]  $18$
+[정답] ③
+[정답] ③
+[정답]  $5$
+[정답]  $96$
+STEP 3
+[정답] ③
+[정답] ③
+[정답] ③
+[정답] ⑤
+[정답] ③
+[정답] ④
+[정답]  $72$
+[정답] ③
+[정답] ④
+[정답] ④
+[정답] ⑤
+[정답] ①
+[정답] (1)  $10$   (2)  $18$
+[정답]  $114$
+[정답] ③
+[정답] ④
+[정답] ④
+[정답] ④
+[정답]  $7+sqrt15$
+[정답]  $189$
+[정답] ②
+[정답]  $63$
