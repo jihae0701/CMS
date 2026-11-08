@@ -466,6 +466,77 @@ lo2, hi2 = slope_range(3, -Q(21, 2))
 R.append(("m2329 k=-21/2 제외", not (abs(lo2) < 2e-3 and abs(hi2 - 4 / 3) < 2e-3), (lo2, hi2), "다름"))
 chk("m2329", abs(3 + (-18)), 15)
 
+# 2026-11-08 도형 f(x, y)=0의 이동 4문항 -------------------------------------------
+from fractions import Fraction as _F
+def _imgs(shape_pts, T):
+    return {T(*p) for p in shape_pts}
+# n1795: f = 계단 모양(격자 0.5 간격의 점으로), g = 그림
+_g = [_F(i, 2) for i in range(-30, 31)]
+fS = {(x, y) for x in _g for y in _g if (4 <= x <= 7 and 0 <= y <= _F(3, 2)) or (_F(11, 2) <= x <= 7 and 0 <= y <= 3)}
+gS = {(x - 10, -y - 3) for x, y in fS}
+cands = [lambda x, y: (-x - 10, y + 3), lambda x, y: (-x - 10, -y - 3), lambda x, y: (x + 10, y + 3), lambda x, y: (x + 10, -y + 3), lambda x, y: (x + 10, -y - 3)]
+# g(x, y)=f(T(x, y)) ⟺ g 위의 점 (x, y)를 T로 보낸 점들이 f와 같다
+_ok = [i for i, T in enumerate(cands) if {T(x, y) for x, y in gS} == fS]
+chk("n1795", "①②③④⑤"[_ok[0]] if len(_ok) == 1 else None, "⑤")
+fT = {(x, y) for x in _g for y in _g if 2 <= x <= 3 and 1 <= y <= 2 and x + y >= 4}
+gT = {(x, y) for x in _g for y in _g if 2 <= x <= 3 and 1 <= y <= 2 and x + y <= 4}
+cands = [lambda x, y: (x - 5, y - 3), lambda x, y: (x + 5, y + 3), lambda x, y: (-x - 5, -y - 3), lambda x, y: (-x + 5, -y + 3), lambda x, y: (y - 5, x - 3)]
+_ok = [i for i, T in enumerate(cands) if {T(x, y) for x, y in gT} == fT]
+chk("n1933", "①②③④⑤"[_ok[0]] if len(_ok) == 1 else None, "④")
+# e10-7: f(-y+6, x+2)=0 은 (u, v)∈F 일 때 (x, y)=(v-2, 6-u). 둘러싸인 삼각형의 넓이를 격자로 센다
+def _onF(u, v):
+    return (v == 2 and u <= 3) or (3 <= u <= 4 and abs(v - (2 - 2 * (u - 3))) < 1e-12)
+seg = [(_F(3) + _F(k, 100), 2 - 2 * _F(k, 100)) for k in range(0, 101)]
+img = [(v - 2, 6 - u) for u, v in seg]          # (0,3)→(-2,2)
+assert img[0] == (0, 3) and img[-1] == (-2, 2)
+cnt = 0; N_ = 400
+for i in range(N_):
+    for j in range(N_):
+        x = -2 + 2 * (i + 0.5) / N_; y = 2 + 1 * (j + 0.5) / N_
+        if y <= 3 + (x - 0) * 0.5 and y >= 2 and x <= 0:   # 선분 (−2,2)-(0,3) 아래, y=2 위, y축 왼쪽
+            cnt += 1
+near("e10-7", cnt * (2 * 1) / N_ ** 2, 1, 0.01)
+# n1862: 다각형 자르기로 넓이
+def _clip(subj, clp):
+    def ins(p, a, b): return (b[0] - a[0]) * (p[1] - a[1]) - (b[1] - a[1]) * (p[0] - a[0]) >= 0
+    def inter(p, q, a, b):
+        x1, y1 = p; x2, y2 = q; x3, y3 = a; x4, y4 = b
+        dd = (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4)
+        tt = ((x1 - x3) * (y3 - y4) - (y1 - y3) * (x3 - x4)) / dd
+        return (x1 + tt * (x2 - x1), y1 + tt * (y2 - y1))
+    out = subj
+    for i in range(len(clp)):
+        a, b = clp[i], clp[(i + 1) % len(clp)]
+        inp, out = out, []
+        if not inp: break
+        s_ = inp[-1]
+        for e in inp:
+            if ins(e, a, b):
+                if not ins(s_, a, b): out.append(inter(s_, e, a, b))
+                out.append(e)
+            elif ins(s_, a, b): out.append(inter(s_, e, a, b))
+            s_ = e
+    return out
+def _area(P_):
+    return abs(sum(P_[i][0] * P_[(i + 1) % len(P_)][1] - P_[(i + 1) % len(P_)][0] * P_[i][1] for i in range(len(P_)))) / 2 if len(P_) > 2 else 0
+_T = [(3, 0), (5, 0), (4, 2)]
+_fa = lambda m: _area(_clip([(-m, -1), (2 - m, 0), (-m, 1)][::-1], _T)) - 2 / 3
+roots = []
+ms = [-8 + k / 10000 for k in range(80001)]
+vs = [_fa(m) for m in ms]
+for k in range(len(ms) - 1):
+    if vs[k] == 0: roots.append(ms[k])
+    elif vs[k] * vs[k + 1] < 0:
+        lo_, hi_ = ms[k], ms[k + 1]
+        for _ in range(60):
+            mid = (lo_ + hi_) / 2
+            if _fa(lo_) * _fa(mid) <= 0: hi_ = mid
+            else: lo_ = mid
+        roots.append((lo_ + hi_) / 2)
+_ch = [-1 - math.sqrt(30) / 3, -3 + (math.sqrt(6) - math.sqrt(30)) / 3, -5 - math.sqrt(30) / 3, -6 - (math.sqrt(6) - math.sqrt(30)) / 3, -10 + (math.sqrt(6) - math.sqrt(30)) / 3]
+_k = [i for i, c in enumerate(_ch) if abs(c - sum(roots)) < 1e-6]
+chk("n1862", "①②③④⑤"[_k[0]] if len(roots) == 2 and len(_k) == 1 else None, "③")
+
 if __name__ == "__main__":
     bad = [r_ for r_ in R if not r_[1]]
     for r_ in bad:
