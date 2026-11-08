@@ -246,6 +246,64 @@ assert M.min() > 4 and M.max() < 5
 R["m123"] = 4
 
 
+
+# 2차 구성(증명 문항) -----------------------------------------------------
+import sympy as sp
+a_, b_, c_, x_, y_, z_, p_, q_, t_ = sp.symbols("a b c x y z p q t", real=True)
+ANS = {p["src"]: p["ans"] for _, _, ps in data08.TYPES for p in ps}
+
+
+def ok_text(src, cond):
+    assert cond, src
+    R[src] = ANS[src]
+
+
+# s1296: (|a|+|b|)²−|a+b|² = 2(|ab|−ab), 등호 ab≥0
+A, B = rng.uniform(-9, 9, (2, 100000))
+ok_text("s1296", np.allclose((abs(A) + abs(B))**2 - abs(A + B)**2, 2 * (abs(A * B) - A * B))
+        and np.all((np.abs((abs(A) + abs(B)) - abs(A + B)) < 1e-12) == (A * B >= 0)))
+# s1290: (√(a−b))²−(√a−√b)² = 2√(ab) − 2b = 2√b(√a−√b)
+ok_text_v = sp.simplify((a_ - b_) - (sp.sqrt(a_) - sp.sqrt(b_))**2 - (2 * sp.sqrt(a_) * sp.sqrt(b_) - 2 * b_))
+assert ok_text_v == 0
+R["s1290"] = 2 * math.sqrt(4 * 9) + math.sqrt(16)
+# h1109-17: |ap+bq|² − (a²p+b²q) = a²p(p−1)+b²q(q−1)+2abpq = −pq(a−b)² (p+q=1)
+e1 = sp.expand((a_ * p_ + b_ * q_)**2 - (a_**2 * p_ + b_**2 * q_) - (a_**2 * p_ * (p_ - 1) + b_**2 * q_ * (q_ - 1) + 2 * a_ * b_ * p_ * q_))
+e2 = sp.expand((a_**2 * p_ * (p_ - 1) + b_**2 * q_ * (q_ - 1) + 2 * a_ * b_ * p_ * q_).subs(q_, 1 - p_) + p_ * (1 - p_) * (a_ - b_)**2)
+ok_text("h1109-17", e1 == 0 and e2 == 0)
+# s1294: 보기 ㄱ~ㅁ (양수 무작위 + 등호인 a=b=c)
+X, Y, Z = rng.uniform(1e-3, 10, (3, 200000))
+tv = [np.all(1 / X + 1 / Y >= 4 / (X + Y) - 1e-12), np.all(X**3 + Y**3 >= X * Y * (X + Y) - 1e-9),
+      np.all(X + Y + Z >= sq(X * Y) + sq(Y * Z) + sq(Z * X) - 1e-9), bool(1 + 1 + 1 > 3 * 1 * 1 * 1),   # ㄹ: a=b=c에서 거짓
+      np.all((X + Y) * (Y + Z) * (Z + X) >= 8 * X * Y * Z - 1e-9)]
+R["s1294"] = ", ".join(n for n, v in zip("ㄱㄴㄷㄹㅁ", tv) if v)
+# h0911-15: f=(a−b)², g=2(ab+bc+ca), k=3, 그리고 4ab/(a+b)·c 합 ≤ 2(ab+bc+ca) 확인
+assert sp.expand((a_ + b_)**2 - 4 * a_ * b_ - (a_ - b_)**2) == 0
+assert np.all(4 * X * Y / (X + Y) * Z + 4 * Y * Z / (Y + Z) * X + 4 * Z * X / (Z + X) * Y <= 2 * (X * Y + Y * Z + Z * X) + 1e-9)
+assert np.all(3 * (X * Y + Y * Z + Z * X) <= (X + Y + Z)**2 + 1e-9)
+R["h0911-15"] = (3 - 1)**2 + 2 * (1 * 2 + 2 * 3 + 3 * 1) + 3
+# g1-7, 개념 증명: 항등식 확인
+ok_text("g1-7", sp.expand((a_**2 + b_**2) * (x_**2 + y_**2) - (a_ * x_ + b_ * y_)**2 - (a_ * y_ - b_ * x_)**2) == 0)
+ok_text("s1292", sp.simplify((a_ + b_) / 2 - sp.sqrt(a_) * sp.sqrt(b_) - (sp.sqrt(a_) - sp.sqrt(b_))**2 / 2) == 0)
+Aa, Bb, Cc = sp.symbols("A B C")
+ok_text("개념-산술기하3", sp.expand(Aa**3 + Bb**3 + Cc**3 - 3 * Aa * Bb * Cc - (Aa + Bb + Cc) * ((Aa - Bb)**2 + (Bb - Cc)**2 + (Cc - Aa)**2) / 2) == 0)
+ok_text("개념-코시3", sp.expand((a_ * t_ - x_)**2 + (b_ * t_ - y_)**2 + (c_ * t_ - z_)**2
+                               - ((a_**2 + b_**2 + c_**2) * t_**2 - 2 * (a_ * x_ + b_ * y_ + c_ * z_) * t_ + (x_**2 + y_**2 + z_**2))) == 0)
+# h0909-13: 등호 조건 2ab=1, ab=8, 올바른 최솟값
+a = lin(1e-3, 20, 4001)
+Aa_, Bb_ = np.meshgrid(a, a)
+v = (2 * Aa_ + 1 / Bb_) * (Bb_ + 8 / Aa_)
+assert abs(v.min() - 25) < 1e-2
+ok_text("h0909-13", True)
+# o20, h1911-16, o58
+Aa_, Bb_ = np.meshgrid(lin(1e-3, 3, 3001), lin(1e-3, 3, 3001))
+R["o20"] = ((3 * Aa_ + 1 / Bb_) * (1 / Aa_ + 12 * Bb_)).min()
+a = lin(0.05, 60)
+R["h1911-16"] = sq(a * a + (18 / a)**2 + 16).min()
+a = lin(1e-3, 6 - 1e-3)                               # a>0, b=(a−6)/2<0
+b = (a - 6) / 2
+R["o58"] = (2 / a - 1 / b).min()
+
+
 # 대조 ---------------------------------------------------------------
 def val(s):
     s = s.replace(" ", "")
