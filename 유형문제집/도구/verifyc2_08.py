@@ -154,6 +154,13 @@ inside = 2 * px + 3 * py < 6
 d_ab, d_bc = px[inside], py[inside]; d_ca = (6 - 2 * px[inside] - 3 * py[inside]) / sq(13)
 chk("s1334", (d_ab**2 + d_bc**2 + d_ca**2).min(), "18/13")
 
+# s1393: P(2cosθ, 2sinθ), M·N 중점, AN·BM 최댓값
+th = lin(1e-6, math.pi - 1e-6)
+Px, Py = 2 * np.cos(th), 2 * np.sin(th)
+Mx, My = (Px - 2) / 2, Py / 2; Nx, Ny = (Px + 2) / 2, Py / 2
+chk("s1393", (np.hypot(Nx + 2, Ny) * np.hypot(Mx - 2, My)).max(), 10)
+r = np.exp(lin(-10, 10)); chk("s1394", ((1 + sq(r)) / sq(1 + r)).max(), "sqrt(2)")
+
 # 고난도 --------------------------------------------------------------
 G2 = np.meshgrid(lin(1e-2, 10, 2001), lin(1e-2, 10, 2001))
 chk("m2011-16", (0.5 / G2[0] * (G2[1] + G2[0]**2 / G2[1])).min(), 1)
