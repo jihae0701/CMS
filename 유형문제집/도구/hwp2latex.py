@@ -96,6 +96,7 @@ def convert(script):
     s = re.sub(r"\bBOX\s*\{", r"\\boxed{", s)     # 빈칸 추론의 빈칸
     s = re.sub(r"(?<!\\)\boverline\s*\{", r"\\overline{", s)
     s = s.replace("+-", r"\pm ").replace("-+", r"\mp ")
+    s = re.sub(r"\broot\s*\{([^{}]*)\}\s*of\s*\{", r"\\sqrt[\1]{", s)   # 한글 수식 n제곱근: root {3} of {abc}
     s = re.sub(r"\bsqrt\s*\{", r"\\sqrt{", s)
     s = re.sub(r"\bsqrt\s+([A-Za-z0-9]+)", r"\\sqrt{\1}", s)
     # over
