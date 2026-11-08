@@ -1,0 +1,142 @@
+[표][표]
+[그림][그림]
+[그림]
+2025년 청주시 운호고 1-2 기말고사 공수2
+시험 범위
+명제 ~ 무리함수
+다음 중 참인 명제는?
+④
+①  $2x+7 > 19`$
+②  $ sqrt{2}`$ 는 유리수이다.
+③ 직사각형은 마름모이다.
+④  $a`$ 와  $b`$ 가 모두 홀수이면  $a+b`$ 는 짝수이다.
+⑤ 모든 실수  $x`$ 에 대하여  $x^{2}-x-2=0`$ 이다.
+명제  $p``rarrow`` sim q`$ 가 참일 때, 다음 명제 중에서 항상 참인 것은?
+③
+①  $ sim p``rarrow`` q`$ ②  $q``rarrow`` p`$ ③  $q``rarrow`` sim p`$
+④  $ sim q``rarrow`` p`$ ⑤  $ sim q``rarrow`` sim p$
+다음 <보기> 에서 두 조건  $p`$ ,  $q`$ 가 다음과 같을 때,  $p`$ 는  $q`$ 이기 위한 무슨 조건인지 알맞은 것은?
+④
+[그림]
+[그림] [그림]
+[보 기]
+(가)  $p`:`x`$ 는  $18`$ 의 약수 $q`:`x`$ 는  $6`$ 의 약수
+(나)  $p`:`x^{2}-6x+9=0`$  $q`:`x=3$
+[표]
+(가)
+(나)
+①
+충분
+충분
+②
+충분
+필요
+③
+필요
+충분
+④
+필요
+필요충분
+⑤
+필요충분
+필요충분
+함수  $f left(x right)=`-x+16`$ 에 대하여  $f`^{-1} left(2 right)=a`$ 를 만족할 때  $a`$ 의 값은?
+④
+①  $11`$ ②  $12`$ ③  $13`$
+④  $14`$ ⑤  $15$
+두 함수  $f left(x right)=3x+5`$ ,  $g left(x right)=`-x^{2}+11`$ 에 대하여  $ left(g circ f right) left(-2 right)`$ 의 값은?
+③
+①  $2`$ ②  $6`$ ③  $10`$
+④  $14`$ ⑤  $18$
+${-1} over {x-3} times{x^{2}-x-6} over {12}`$ 을 간단히 계산하면  ${- left(x+b right)} over {a}`$ 일 때,  $a+b`$ 의 값은? (단,  $x ne 3`$ 이고  $a`$ ,  $b`$ 는 상수)
+③
+①  $12`$ ②  $13`$ ③  $14`$
+④  $15`$ ⑤  $16$
+함수  $y=`- sqrt{2x-2}+5`$ 의 정의역이  $ left {x left|` 3 le x le 9 right }`$ 일 때, 최댓값과 최솟값의 합을 구하면?
+①
+①  $4`$ ②  $6`$ ③  $8`$
+④  $10`$ ⑤  $12$
+$x > 2`$ 일 때,  $4x+5+{4} over {x-2}`$ 의 최솟값을  $a`$ , 그때의  $x`$ 의 값을  $b`$ 라 하자. 이때  $a+b`$ 의 값은?
+⑤
+①  $20`$ ②  $21`$ ③  $22`$
+④  $23`$ ⑤  $24$
+함수  $f left(x right)={1} over {3}x^{2}-2x+k~ left(x ge 3 right)`$ 과 그 역함수  $y=f`^{-1} left(x right)`$ 의 그래프의 서로 다른 교점의 개수가  $2`$ 개 되도록 하는 실수  $k`$ 의 값의 범위는  $a le k < b`$ 이다.  $b-a`$ 의 값은?
+②
+①  ${1} over {3}`$ ②  ${3} over {4}`$ ③  ${5} over {6}`$
+④  ${7} over {8}`$ ⑤  ${9} over {10}$
+함수  $y={ax+6} over {x+b}`$ 의 그래프가 두 직선  $y=x+{1} over {2}`$ ,  $y=`-x+{1} over {3}`$ 에 대하여 대칭일 때,  $a+b`$ 의 값은?
+①
+①  ${1} over {2}`$ ②  ${1} over {4}`$ ③  ${1} over {6}`$
+④  ${1} over {8}`$ ⑤  ${1} over {10}$
+두 함수  $f left(x right)= sqrt{x+6}`$ 의 그래프와 그 역함수  $y=f`^{-1} left(x right)`$ 의 그래프가 만나는 점을  ${rm{A}it}`$ 라 하고, 직선  $y=`-x-4`$ 가 두 곡선  $y=f left(x right)`$ ,  $y=f`^{-1} left(x right)`$ 와 만나는 점을  ${rm{B}it}`$ ,  ${rm{C}it}`$ 라 하자. 다음 그림에서 삼각형  ${rm{ABC}it}`$ 의 넓이는?
+⑤
+[그림]
+①  $10`$ ②  $15`$ ③  $20`$
+④  $25`$ ⑤  $30$
+두 실수  $x`$ ,  $y`$ 에 대하여 다음 중에서 그 역과 대우가 모두 참인 명제는?
+⑤
+①  $xy < 0`$ 이면  $x^{2}+y^{2} > 0`$ 이다.
+②  $x+y=0`$ 이면  $x=0`$ 이고  $y=0`$ 이다.
+③  $x > 0`$ 이고  $y > 0`$ 이면  $xy= left|` xy`right| `$ 이다.
+④  $x le 2$  또는  $y le 2`$ 이면  $x+y le 4`$ 이다.
+⑤ 세 집합  $A``$ ,  $B``$ ,  $C``$ 에 대하여  $A` subset left(B` cap C` right)`$ 이면  $A` subset B``$ 이고  $A` subset C``$ 이다.
+전체집합  $U``$ 에 대하여 두 조건  $p`$ ,  $q`$ ,  $r`$ 의 진리집합을 각각  $P``$ ,  $Q``$ ,  $R``$ 라 할 때  $P` cup Q`=P``$ ,  $Q` subset R`^{C`}`$ 이 성립한다. 항상 옳은 것은? (단,  $P` ne Q``$ )
+②
+①  $p`$ 는  $ sim r`$ 이기 위한 필요조건이다.
+②  $ sim p`$ 는  $ sim q`$ 이기 위한 충분조건이다.
+③  $ sim p`$ 는  $r`$ 이기 위한 필요조건이다.
+④  $r`$ 는  $q`$ 이기 위한 충분조건이다.
+⑤  $ sim r`$ 는  $q`$ 이기 위한 필요충분조건이다.
+유리함수  $y={ax+b} over {x+c}`$ 의 그래프가 다음 그림과 같을 때,  $a+b+c`$ 값은? (단,  $a`$ ,  $b`$ ,  $c`$ 는 상수)
+④
+[그림]
+①  $12`$ ②  $13`$ ③  $14`$
+④  $15`$ ⑤  $16$
+유리함수  $f left(x right)={ax+4} over {x+b}`$ 에 대하여 함수  $y=f left(x right)`$ 의 그래프는 점  $ left(2,``6 right)`$ 을 지나고  $f=f^{-1}`$ 이다. 함수  $y=f left(x right)`$ 의 그래프 위의 점 중에서  $x`$ 좌표,  $y`$ 좌표가 모두 정수인 점의 개수는? (단,  $a`$ ,  $b`$ 는  $ab ne 4`$ 인 상수)
+②
+①  $3`$ ②  $4`$ ③  $5`$
+④  $6`$ ⑤  $7$
+일차함수  $f left(x right)`$ 의 역함수를  $g left(x right)`$ 라 할 때 함수  $f left(4x+2 right)`$ 의 역함수를  $g left(x right)`$ 로 바르게 나타낸 것은?
+①
+①  ${1} over {4}g left(x right)-{1} over {2}`$ ②  ${1} over {4}g left(x right)+{1} over {2}`$ ③  ${1} over {4}g left(x right)+1`$
+④  $4g left(x right)-1`$ ⑤  $4g left(x right)+1$
+무리함수  $y= sqrt{ax+b}+c`$ 의 그래프가 다음 그림과 같다.  $g left(x right)={cx+6} over {ax+b}`$ 일 때,  $g`^{-1} left(1 right)`$ 값은? (단,  $a`$ ,  $b`$ ,  $c`$ 는 상수)
+②
+[그림]
+①  $-2`$ ②  $-1`$ ③  $0`$
+④  $1`$ ⑤  $2$
+정의역이  $ left {x left|` x ge 0,``x ne 2 right }`$ 인 함수  $f left(x right)= left|` {-3x+12} over {x-2}`right| `$ 에 대하여 함수  $y=f left(x right)`$ 의 그래프와 직선  $y=t`$ 의 서로 다른 교점의 개수를  $g left(t right)`$ 라 할 때,  $g left(2 right)+g left(3 right)+g left(6 right)+g left(7 right)`$ 의 값은?
+③
+①  $5`$ ②  $6`$ ③  $7`$
+④  $8`$ ⑤  $9$
+일대일대응인 함수  $f`$ 와 함수  $g left(x right)=`-2x+3`$ 이 모든 실수  $x`$ 에 대하여  $ left(g circ f right) left(x right)=3x+5`$ 를 만족시킬 때,  $ left(g circ left(g circ f^{-1} right)^{-1} right) left(2 right)`$ 의 값은?
+⑤
+①  $-{13} over {2}`$ ②  $-{5} over {2}`$ ③  $0`$
+④  ${5} over {2}`$ ⑤  ${13} over {2}$
+$f left(x right)= sqrt{2x+1}+ sqrt{2x-1}`$ 에 대하여  ${1} over {f left(1 right)}+{1} over {f left(2 right)}+{1} over {f left(3 right)}+`cdots` +{1} over {f left(144 right)}`$ 의 값은?
+①
+①  $8`$ ②  $9`$ ③  $10`$
+④  $11`$ ⑤  $12$
+일차함수  $g left(x right)=ax+b`$ 가  $g left(1 right)=3`$ 이고 모든 실수  $x`$ 에 대하여  $g left(x right)=g`^{-1} left(x right)`$ 를 만족시킨다.  $f left(x right)={g left(x right)-8} over {g left(x right)+8}`$ 일 때, 함수  $y=f left(x right)`$ 의 그래프 위의 점  ${rm{P}it}`$ 와 점  ${rm{A}it} left(12,``1 right)$  사이 거리의 최솟값은? (단,  $a`$ ,  $b`$ 는  $0`$ 이 아닌 상수)
+①
+①  $4 sqrt{2}`$ ②  $5 sqrt{2}`$ ③  $6 sqrt{2}`$
+④  $7 sqrt{2}`$ ⑤  $84 sqrt{2}$
+두 조건  $p`$ ,  $q`$ 가
+$33$
+$p`:`x^{2}+2mx+4 le 0`$ ,  $q`:`x^{2}+nx+9 > 0`$
+일 때, <보기> 에서 두 문장이 모두 참인 명제가 되도록 하는 정수  $m`$ ,  $n`$ 의 순서쌍  $ left(m,``n right)`$ 의 개수를 구하시오.
+[그림]
+[그림] [그림]
+[보 기]
+(가) 모든 실수  $x`$ 에 대하여  $ sim p`$ 이다.
+(나)  $ sim p`$ 는  $q`$ 이기 위한 충분조건이다.
+두 상수  $p`$ ,  $q`$ 에 대하여 실수 전체집합에서 정의된 함수  $f left(x right)`$ 를
+$190$
+$f left(x right)= cases {``{3x+p} over {x-3} & & left(x < 2 right) #`` sqrt{x-q}+q+1 & & left(x ge 2 right)}`$
+라 하자. 실수  $t`$ 에 대하여 직선  $y=f left(x right)`$ 와  $y=t`$ 가 만나는 점의 개수를  $g left(t right)`$ 라 할 때, 두 함수  $f left(x right)`$ ,  $g left(t right)`$ 가 다음 <보기> 조건을 만족시킨다.
+[그림]
+[그림] [그림]
+[보 기]
+(가) 함수  $f left(x right)`$ 의 치역은  $ left {y`left|` y ge 3 right }`$ 이다.
+(나)  $g left(t right)=1`$ 을 만족시키는 실수  $t`$ 값의 범위는  $t=3$  또는  $t ge 6`$ 이다.
+함수  $f left(5 right)=4`$ 를 만족시킬 때,  $20 left {f left(1 right)+f left(10 right) right }`$ 을 구하시오.

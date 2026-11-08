@@ -1,0 +1,121 @@
+[표][표]
+[그림][그림]
+[그림]
+2025년 청주 충북사대부고 1-2 기말고사 공수2
+시험 범위
+명제 ~ 무리함수
+그림은 함수  $f`:`X```rarrow`` Y``$ 를 나타낸 것이다.
+③
+[그림]
+$f left(1 right)+f left(3 right)`$ 의 값은?
+①  $6`$ ②  $8`$ ③  $10`$
+④  $12`$ ⑤  $14$
+두 함수  $f left(x right)=3x-1`$ ,  $g left(x right)=x^{2}`$ 에 대하여  $ left(g circ f right) left(1 right)`$ 의 값은?
+③
+①  $1`$ ②  $2`$ ③  $4`$
+④  $5`$ ⑤  $9$
+유리함수  $y=`-{3} over {x-1}-2`$ 의 점근선의 방정식은?
+①
+①  $x=1`$ ,  $y=`-2`$ ②  $x=1`$ ,  $y=2`$
+③  $x=`-1`$ ,  $y=2`$ ④  $x=`-3`$ ,  $y=2`$
+⑤  $x=3`$ ,  $y=`-2$
+함수  $y= sqrt{2x-4}+1`$ 에 대한 설명으로 옳은 것은?
+②
+① 정의역은  $ left {x`left|` x le 2 right }`$ 이다.
+② 치역은  $ left {y`left|` y ge 1 right }`$ 이다.
+③ 점  $ left(4,``4 right)`$ 를 지난다.
+④ 그래프는 제  $1`$ 사분면과 제  $2`$ 사분면을 지난다.
+⑤  $y= sqrt{2x}`$ 의 그래프를  $x`$ 축으로  $4`$ 만큼,  $y`$ 축으로  $1`$ 만큼 평행이동한 것이다.
+그림은  $x ge 0`$ 에서 정의된 두 함수  $y=f left(x right)`$ ,  $y=g left(x right)`$ 의 그래프와 직선  $y=x`$ 의 그래프를 나타낸 것이다.  $ left(f circ g right)`^{-1} left(b right)`$ 의 값은? (단,  $f`$ 와  $g`$ 는 역함수가 존재하는 함수이다.)
+②
+[그림]
+①  $a`$ ②  $b`$ ③  $c`$
+④  $d`$ ⑤  $e$
+전체집합  $U``$ 에 대하여 두 조건  $p`$ ,  $q`$ 의 진리집합을 각각  $P``$ ,  $Q``$ 라고 하자. 명제  $p``rarrow`` sim q`$ 가 참일 때, 옳은 것은?
+②
+①  $P` subset Q``$ ②  $Q` subset P`^{C`}`$ ③  $P` cup Q`=U``$
+④  $P` cap Q` ne EMPTYSET `$ ⑤  $P`-Q`= EMPTYSET $
+절대부등식인 것은? (단,  $x`$ ,  $y`$ 는 실수이다.)
+④
+①  $x-1 > x`$ ②  $x^{2}-2 > x`$
+③  $ left|` x+2`right| > 0`$ ④  $x^{2}+3y^{2} ge 2xy`$
+⑤  $ left|` x+1`right| > left|` x-1`right| $
+명제
+③
+‘어떤 실수  $x`$ 에 대하여  $x^{2}+2ax+9 < 0`$ 이다.’
+가 거짓이 되도록 하는 정수  $a`$ 의 개수는?
+①  $5`$ ②  $6`$ ③  $7`$
+④  $8`$ ⑤  $9$
+함수  $f left(x right)=2x^{2}-4x+5`$ 에 대하여 실수 전체의 집합에서 정의된 함수  $g left(x right)`$ 가
+①
+$g left({1} over {3}x-1 right)={1} over {2}f left(x right)+{3} over {2}`$
+을 만족시킬 때, 함수  $g left(x right)`$ 의 최솟값은?
+①  $3`$ ②  ${7} over {2}`$ ③  $4`$
+④  ${9} over {2}`$ ⑤  $5$
+무리함수  $y= sqrt{ax+b}+c`$ 의 그래프가 다음 그림과 같을 때, 유리함수  $y={b} over {x+a}+c`$ 의 그래프의 개형으로 알맞은 것은? (단,  $a`$ ,  $b`$ ,  $c`$ 는 상수이다.)
+③
+[그림]
+[표]
+①
+[그림]
+②
+[그림]
+③
+[그림]
+④
+[그림]
+⑤
+[그림]
+집합  $X`= left {x`left|` x ge k right }`$ 에 대하여  $X``$ 에서  $X``$ 로의 함수  $f left(x right)=x^{2}-4x+4`$ 가 일대일대응이 되도록 하는 상수  $k`$ 의 값은?
+④
+①  $1`$ ②  $2`$ ③  $3`$
+④  $4`$ ⑤  $5$
+집합  $X`= left {1,``3,``4 right }`$ 에 대하여  $X``$ 에서  $X``$ 로의 세 함수  $f`$ ,  $g`$ ,  $h`$ 가 다음 조건을 만족시킨다.
+⑤
+[그림]
+(가) 함수  $f`$ 는 일대일대응, 함수  $g`$ 는 항등함수, 함수  $h`$ 는 상수함수이다.
+(나)  $f left(4 right) times g left(3 right)=h left(3 right)$
+(다)  $h left(3 right)+g left(1 right)=f left(3 right)$
+$f left(1 right)+g left(4 right)+h left(1 right)`$ 의 값은?
+①  $6`$ ②  $7`$ ③  $8`$
+④  $9`$ ⑤  $10$
+두 집합  $X`= left {1,``2,``3,``4,``5 right }`$ ,  $Y`= left {1,``2,``3,``4,``5,``6,``7 right }`$ 에 대하여  $X``$ 에서  $Y``$ 로의 함수 중 다음 세 조건을 동시에 만족시키는 함수  $f`$ 의 개수는?
+⑤
+[그림]
+(가) 정의역  $X``$ 의 임의의 두 원소  $x_{1}`$ ,  $x_{2}`$ 에 대하여  $x_{1} ne x_{2}`$ 이면  $f left(x_{1} right) ne f left(x_{2} right)`$ 이다.
+(나)  $f left(1 right)+f left(2 right)+f left(3 right)=10$
+(다)  $f left(4 right) < f left(5 right)$
+①  $72`$ ②  $90`$ ③  $108`$
+④  $126`$ ⑤  $144$
+두 양수  $a`$ ,  $b`$ 에 대하여  $a+b=3`$ 일 때,  ${1} over {a}+{4} over {b}`$ 의 최솟값을  $m`$ , 그때의  $a`$ 와  $b`$ 의 값을 각각  $p`$ ,  $q`$ 라고 하자. 상수  $m`$ ,  $p`$ ,  $q`$ 에 대하여  $m-p+q`$ 의 값은?
+①
+①  $4`$ ②  $5`$ ③  $6`$
+④  $7`$ ⑤  $8$
+실수  $x`$ 에 대하여 두 조건  $p`$ ,  $q`$ 가 다음과 같다.
+⑤
+$p`:`x^{2}-x-2 < 0`$
+$q`:`x^{2}+ left(5-a right)x-5a < 0`$
+$ sim q`$ 는  $p`$ 이기 위한 필요조건이 되도록 하는 실수  $a`$ 의 값의 범위는?
+①  $-5 < a <`-1`$ ②  $-5 < a leq`-1`$
+③  $-5 le a leq`-1`$ ④  $a <`-1`$
+⑤  $a leq`-1$
+정의역이  $ left {x left|` -6 le x < 2 right }`$ 인 무리함수  $f left(x right)=`- sqrt{-2x+4}+a`$ 의 최솟값이  $-1`$ 일 때,  $y=f left(x right)`$ 의 그래프와 직선  $y=x+k`$ 의 그래프가 서로 다른 두 점에서 만나도록 하는 실수  $k`$ 의 값의 범위는? (단,  $a`$ 는 상수이다.)
+①
+①  ${1} over {2} < k < 1`$ ②  ${1} over {2} < k le 1`$ ③  ${1} over {2} < k < 5`$
+④  ${1} over {2} < k le 5`$ ⑤  $1 < k le 5$
+정의역이  $ left {x left|` x < 0,``x ne`-1 right }`$ 인 함수  $f left(x right)= left|` {-2x-3} over {x+1}`right| `$ 에 대하여 함수  $y=f left(x right)`$ 의 그래프와 직선  $y=t`$ 의 서로 다른 교점의 개수를  $g left(t right)`$ 라 할 때,  $g left(0 right)+g left(1 right)+g left(2 right)+g left(3 right)+g left(4 right)`$ 의 값은? (단,  $t`$ 는 실수이다.)
+④
+①  $4`$ ②  $5`$ ③  $6`$
+④  $7`$ ⑤  $8$
+함수  $f left(x right)=ax+b`$ 의 역함수  $f`^{-1} left(x right)`$ 에 대하여
+$7$
+$f`^{-1} left(5 right)=0`$ ,  $f`^{-1} left(9 right)=2`$
+일 때,  $f left(1 right)`$ 의 값을 구하시오. (단,  $a`$ ,  $b`$ 는 상수이다.)
+실수 전체에서 정의된 함수
+$-2$
+$f left(x right)= cases {`` left(a+1 right)x-1 & & left(x le 1 right) #`` left(2-a right)x+b & & left(x > 1 right)}`$
+이 있다. 상수  $a`$ ,  $b`$ 에 대하여, 함수  $f left(x right)`$ 의 역함수가 존재하도록 하는  $b`$ 의 값의 범위가  $ alpha < b < beta`$ 일 때,  $ alpha + beta`$ 의 값을 구하시오. (단,  $ alpha`$ ,  $ beta`$ 는 실수이다.)
+$n left(X` right)=2`$ 인 집합  $X``$ 에 대하여 함수  $f`:`X```rarrow`` X``$ 가  $f left(x right)=2x^{2}+4x+1`$ 일 때, 다음 물음에 답하시오.
+(1)  $X = left { - 1 ,~ - 1 over 2 right$  (2)  $X = left { - 3 over 2 ,~ - 1 over 2 right$
+(1) 함수  $f left(x right)`$ 가 항등함수일 때, 집합  $X``$ 를 구하시오.
+(2) 함수  $f left(x right)`$ 가 상수함수일 때, 집합  $X``$ 를 구하시오.
