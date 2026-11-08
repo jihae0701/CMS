@@ -201,7 +201,7 @@ def fig_057():
     F.seg(A, D)
     F.pt(A, "A", "cb", 0, -6); F.pt(B, "B", "rc", -8, 0); F.pt(C, "C", "lc", 8, 0); F.pt(D, "D", "ct", 0, 6)
     dim_arc(F, B, A, "9", -1); dim_arc(F, A, C, "7", -1)
-    F.lab(((A[0] + D[0]) / 2, (A[1] + D[1]) / 2), "6", "lc", 6, 0)
+    small_arc(F, D, A, "6", -1, 24)      # AD=6도 점선 호(2026-11-08 사용자 요청)
     return F.render()
 
 
