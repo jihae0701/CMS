@@ -262,6 +262,11 @@ def ok_text(src, cond):
 A, B = rng.uniform(-9, 9, (2, 100000))
 ok_text("s1296", np.allclose((abs(A) + abs(B))**2 - abs(A + B)**2, 2 * (abs(A * B) - A * B))
         and np.all((np.abs((abs(A) + abs(B)) - abs(A + B)) < 1e-12) == (A * B >= 0)))
+# m128: |a|−|b| ≤ |a−b|, 차 = 2(|ab|−ab), 등호 |a|≥|b|이고 ab≥0
+A, B = rng.uniform(-9, 9, (2, 100000))
+ok_text("m128", np.allclose(abs(A - B)**2 - (abs(A) - abs(B))**2, 2 * (abs(A * B) - A * B))
+        and np.all(abs(A) - abs(B) <= abs(A - B) + 1e-12)
+        and np.all((np.abs(abs(A - B) - (abs(A) - abs(B))) < 1e-9) == ((abs(A) >= abs(B)) & (A * B >= 0))))
 # s1290: (√(a−b))²−(√a−√b)² = 2√(ab) − 2b = 2√b(√a−√b)
 ok_text_v = sp.simplify((a_ - b_) - (sp.sqrt(a_) - sp.sqrt(b_))**2 - (2 * sp.sqrt(a_) * sp.sqrt(b_) - 2 * b_))
 assert ok_text_v == 0
