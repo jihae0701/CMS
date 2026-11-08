@@ -5,7 +5,9 @@ from hwp2latex import convert
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 KATEX = os.environ.get("KATEX_DIR", os.path.join(HERE, "npmk", "node_modules", "katex", "dist"))  # npm install katex 위치
-CHROME = "/opt/pw-browsers/chromium-1194/chrome-linux/chrome"
+import os
+import glob as _glob
+CHROME = os.environ.get("CHROME") or next(iter(sorted(_glob.glob("/opt/pw-browsers/chromium-*/chrome-linux*/chrome"), reverse=True)), "/opt/pw-browsers/chromium/chrome-linux/chrome")
 
 PAGE = """<!doctype html><html><head><meta charset="utf-8">
 <link rel="stylesheet" href="file://%s/katex.min.css">

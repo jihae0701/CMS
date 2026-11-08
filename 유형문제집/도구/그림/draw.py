@@ -12,7 +12,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 KATEX = os.environ["KATEX_DIR"]
 STROKE = 3.2
 ZOOM = 1.0     # 그림 크기만 키우거나 줄임(글자 크기는 그대로). 문서 폭에 1픽셀=6.4 HWPUNIT로 맞출 때 쓴다
-CHROME = os.environ.get("CHROME", "/opt/pw-browsers/chromium-1194/chrome-linux/chrome")
+import glob as _glob
+CHROME = os.environ.get("CHROME") or next(iter(sorted(_glob.glob("/opt/pw-browsers/chromium-*/chrome-linux*/chrome"), reverse=True)), "/opt/pw-browsers/chromium/chrome-linux/chrome")
 
 
 FONT = 22      # 그림 안 글씨 크기는 모두 같게(사용자 요청). 면을 채우는 큰 글씨(정육면체)만 예외

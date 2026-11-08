@@ -91,8 +91,27 @@ def fig_n1862():
     return F.render()
 
 
+def fig_g259():
+    # 기본서 4단원 156번(고쟁이 259): 정사각형 ABCD(한 변 6), AE:ED=CF:FD=1:2, BE·BF로 접어 A→A', C→C'
+    A, B, C, D = (0, 6), (0, 0), (6, 0), (6, 6)
+    E, F = (2, 6), (6, 2)
+    A2, C2 = (3.6, 4.8), (4.8, 3.6)
+    F_ = geo((-0.9, 6.9), (-0.9, 6.9), 40, (20, 20, 20, 20))
+    F_.poly([B, E, A2], PINK); F_.poly([B, F, C2], SKY)
+    poly_line(F_, [E, D, F], 2.4)                       # 접은 뒤에도 남는 종이의 변
+    for p, q in ((A, B), (A, E), (B, C), (C, F)):       # 접혀서 옮겨 간 원래 자리는 점선
+        F_.seg(p, q, THIN, DOT)
+    F_.seg(B, E, LN); F_.seg(B, F, LN)
+    poly_line(F_, [E, A2, B], LN); poly_line(F_, [F, C2, B], LN)
+    F_.pt(A, "A", "rb", -6, -4); F_.pt(B, "B", "rt", -6, 4); F_.pt(C, "C", "lt", 6, 4); F_.pt(D, "D", "lb", 6, -4)
+    F_.pt(E, "E", "cb", 0, -6); F_.pt(F, "F", "lc", 6, 0)
+    F_.lab(A2, r"\mathrm{A'}", "cb", 0, -6); F_.lab(C2, r"\mathrm{C'}", "lc", 6, 0)
+    return F_.render()
+
+
 FIGS = (("c2_4_f417.png", fig_f417, 8500), ("c2_4_n1795.png", fig_n1795, 9000), ("c2_4_n1933.png", fig_n1933, 7000),
-        ("c2_4_e10-7.png", fig_e10_7, 7000), ("c2_4_n1862.png", fig_n1862, 7000))
+        ("c2_4_e10-7.png", fig_e10_7, 7000), ("c2_4_n1862.png", fig_n1862, 7000),
+        ("c2_4_g259.png", fig_g259, 6000))
 
 if __name__ == "__main__":
     for name, fn, wd in FIGS:

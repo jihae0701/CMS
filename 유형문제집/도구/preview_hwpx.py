@@ -146,7 +146,7 @@ table.syn{border-collapse:collapse;margin:2mm auto} table.syn td{padding:.5mm 3m
 path = OUT + ".html"
 open(path, "w", encoding="utf-8").write(doc)
 with sync_playwright() as pw:
-    b = pw.chromium.launch(executable_path="/opt/pw-browsers/chromium-1194/chrome-linux/chrome")
+    import glob as _g; b = pw.chromium.launch(executable_path=next(iter(sorted(_g.glob("/opt/pw-browsers/chromium-*/chrome-linux*/chrome"), reverse=True))))
     pg = b.new_page()
     pg.goto("file://" + os.path.abspath(path))
     pg.wait_for_timeout(500)
