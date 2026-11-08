@@ -21,7 +21,7 @@ Basecamp(b##, 사용자 지시 2026-11-06 'Basecamp는 기본서에만 넣기(�
 """
 import re
 
-UNIT_NO, UNIT_TITLE, START = "5.", "집합의 뜻과 표현", 160
+UNIT_NO, UNIT_TITLE, START = "5.", "집합의 뜻과 표현", 161   # 2026-11-08 기본서 1~4단원 완성본 등록(4단원 119~160)으로 161부터
 
 
 def S(*xs):

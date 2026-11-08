@@ -28,7 +28,7 @@ Basecamp(b##, 사용자 지시 2026-11-06 'Basecamp는 기본서에만 넣기(�
 """
 import re
 
-UNIT_NO, UNIT_TITLE, START = "6.", "집합의 연산", 200
+UNIT_NO, UNIT_TITLE, START = "6.", "집합의 연산", 201   # 5단원 161~200에 이어서
 
 
 def S(*xs):
