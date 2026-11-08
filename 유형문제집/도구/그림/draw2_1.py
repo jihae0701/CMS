@@ -73,6 +73,19 @@ def fig_058():
     return F.render()
 
 
+def small_arc(F, p, q, label, side, bulge):
+    """dim_arc와 같은 모양(가운데를 끊은 점선 호)이되 최소 휨 없이 bulge(픽셀)만큼만 휜다"""
+    from draw import cut_arc
+    (x1, y1), (x2, y2) = F.P(*p), F.P(*q)
+    dx, dy = x2 - x1, y2 - y1
+    n = math.hypot(dx, dy)
+    nx, ny = -dy / n * side, dx / n * side
+    cx, cy = (x1 + x2) / 2 + nx * 2 * bulge, (y1 + y2) / 2 + ny * 2 * bulge
+    arcs, (lx, ly) = cut_arc(x1, y1, cx, cy, x2, y2, label, 20)
+    F.svg += arcs
+    F.labels.append((lx, ly, label, 20, "cc", "dim"))
+
+
 def fig_053():
     # AB=BC=6, AC=4, BD=DE=EC=2, AD=a, AE=b
     B, C, D, E = (0, 0), (6, 0), (2, 0), (4, 0)
@@ -85,8 +98,9 @@ def fig_053():
     F.pt(D, "D", "ct", 0, 6); F.pt(E, "E", "ct", 0, 6)
     dim_arc(F, B, A, "6", -1); dim_arc(F, A, C, "4", -1)
     dim_arc(F, B, D, "2", -1, 12); dim_arc(F, D, E, "2", -1, 12); dim_arc(F, E, C, "2", -1, 12)
-    F.lab(((A[0] + D[0]) / 2, (A[1] + D[1]) / 2), "a", "rc", -6, 0)
-    F.lab(((A[0] + E[0]) / 2, (A[1] + E[1]) / 2), "b", "lc", 5, 4)
+    # AD=a, AE=b도 다른 길이처럼 점선 호의 가운데를 끊고 쓴다(2026-11-08 사용자 요청: a, b 양옆에 점선)
+    # 선분 사이가 좁아 dim_arc의 최소 휨(길이의 0.2배)을 쓰면 AB·AC와 겹치므로 조금만 휘게 직접 그린다
+    small_arc(F, D, A, "a", 1, 24); small_arc(F, A, E, "b", -1, 18)
     return F.render()
 
 
