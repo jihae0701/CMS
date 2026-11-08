@@ -109,9 +109,47 @@ def fig_g259():
     return F_.render()
 
 
+def fig_n1713():
+    # 기본서 4단원 122번(내신 n1713): 삼각형 OAB와 t만큼 옮긴 삼각형 O'C'D' (t=6일 때의 모습, 공통부분 색칠)
+    t = 6
+    O, A, B = (0, 0), (0, 8), (8, 0)
+    C, D = (0, -8), (-8, 0)
+    O2, C2, D2 = (t, t), (t, t - 8), (t - 8, t)
+    F_ = geo((-9.4, 10.2), (-9.2, 9.6), 17, (20, 20, 20, 20))
+    F_.axes()
+    F_.poly([(4, 0), (6, 0), (6, 2), (2, 6), (0, 6), (0, 4)], PINK)
+    poly_line(F_, [C, D], THIN, DOT)
+    poly_line(F_, [A, B], 2.4)
+    poly_line(F_, [O2, C2, D2, O2], 2.4)
+    F_.pt(O, "O", "rt", -4, 5)
+    F_.pt(A, "A", "lc", 6, 0); F_.pt(B, "B", "cb", 0, -6)
+    F_.pt(C, "C", "lc", 6, 0); F_.pt(D, "D", "cb", 0, -6)
+    F_.lab(O2, r"\mathrm{O'}", "lb", 4, -4); F_.lab(C2, r"\mathrm{C'}", "lc", 6, 0); F_.lab(D2, r"\mathrm{D'}", "rc", -6, 0)
+    return F_.render()
+
+
+def fig_g261():
+    # 기본서 4단원 123번(고쟁이 261): 삼각형 OAB를 x축 방향 t, 삼각형 OCD를 y축 방향 2t만큼 옮긴 T1, T2 (t=0.8, 공통부분 색칠)
+    t = 0.8
+    O, A, B, C, D = (0, 0), (0, 2), (-2, 0), (0, -2), (2, 0)
+    T1 = [(t, 0), (t, 2), (t - 2, 0)]
+    T2 = [(0, 2 * t), (0, 2 * t - 2), (2, 2 * t)]
+    hexa = [(0, 0), (2 - 2 * t, 0), (t, 3 * t - 2), (t, 2 * t), (2 - 2 * t, 2 * t), (0, 2 - t)]   # 공통부분(육각형)의 꼭짓점
+    F_ = geo((-2.6, 3.0), (-2.6, 2.8), 62, (20, 20, 20, 20))
+    F_.axes()
+    F_.poly(hexa, PINK)
+    poly_line(F_, [A, B], THIN, DOT); poly_line(F_, [C, D], THIN, DOT)
+    poly_line(F_, T1 + [T1[0]], 2.4); poly_line(F_, T2 + [T2[0]], 2.4)
+    F_.pt(O, "O", "rt", -4, 5)
+    F_.pt(A, "A", "rc", -6, 0); F_.pt(B, "B", "ct", 0, 6); F_.pt(C, "C", "rc", -6, 0); F_.pt(D, "D", "ct", 0, 6)
+    F_.lab((-0.45, 0.4), "T_{1}", "cc", 0, 0); F_.lab((1.3, 2 * t - 0.35), "T_{2}", "cc", 0, 0)
+    return F_.render()
+
+
 FIGS = (("c2_4_f417.png", fig_f417, 8500), ("c2_4_n1795.png", fig_n1795, 9000), ("c2_4_n1933.png", fig_n1933, 7000),
         ("c2_4_e10-7.png", fig_e10_7, 7000), ("c2_4_n1862.png", fig_n1862, 7000),
-        ("c2_4_g259.png", fig_g259, 6000))
+        ("c2_4_g259.png", fig_g259, 6000),
+        ("c2_4_n1713.png", fig_n1713, 7500), ("c2_4_g261.png", fig_g261, 7500))
 
 if __name__ == "__main__":
     for name, fn, wd in FIGS:

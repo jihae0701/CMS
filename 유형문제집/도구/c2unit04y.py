@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# 기본서 4단원 156번(고쟁이 259, 정사각형 종이 접기)만 따로 만든 파일 (2026-11-08 사용자 요청). 문항은 기본서2/data04.py에서 그대로 가져온다.
+# 기본서 4단원 문항을 따로 만든 파일: 156번(고쟁이 259, 정사각형 종이 접기) — c2unit04z.py는 122·123번 (2026-11-08 사용자 요청). 문항은 기본서2/data04.py에서 그대로 가져온다.
 import os, sys, copy
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, "기본서2"))
