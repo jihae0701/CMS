@@ -95,9 +95,9 @@ def fig_053():
         F.seg(p, q, STROKE)
     F.seg(A, D); F.seg(A, E)
     F.pt(A, "A", "cb", 0, -6); F.pt(B, "B", "rc", -8, 0); F.pt(C, "C", "lc", 8, 0)
-    F.pt(D, "D", "ct", 0, 6); F.pt(E, "E", "ct", 0, 6)
+    F.pt(D, "D", "rb", -4, -4); F.pt(E, "E", "rb", -4, -4)   # 아래쪽에 길이 호가 있어 D, E는 점의 왼쪽 위에
     dim_arc(F, B, A, "6", -1); dim_arc(F, A, C, "4", -1)
-    dim_arc(F, B, D, "2", -1, 12); dim_arc(F, D, E, "2", -1, 12); dim_arc(F, E, C, "2", -1, 12)
+    dim_arc(F, B, D, "2", 1, 12); dim_arc(F, D, E, "2", 1, 12); dim_arc(F, E, C, "2", 1, 12)   # BC 아래쪽(사용자 요청)
     # AD=a, AE=b도 다른 길이처럼 점선 호의 가운데를 끊고 쓴다(2026-11-08 사용자 요청: a, b 양옆에 점선)
     # 선분 사이가 좁아 dim_arc의 최소 휨(길이의 0.2배)을 쓰면 AB·AC와 겹치므로 조금만 휘게 직접 그린다
     small_arc(F, D, A, "a", 1, 24); small_arc(F, A, E, "b", -1, 18)
