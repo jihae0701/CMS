@@ -37,7 +37,9 @@ def segments(P):
             a -= 1
         out.append((a, e))
         b = e
-        while b + 1 < len(P) and not blank(P[b + 1]) and not is_heading(P[b + 1]) and "<hp:endNote " not in P[b + 1]:
+        # 다음 문항의 번호 문단(새 단 맨 위에서 빈 줄 없이 이어지는 경우)은 앞 문항 꼬리로 붙이지 않는다(2026-11-08)
+        while (b + 1 < len(P) and not blank(P[b + 1]) and not is_heading(P[b + 1]) and "<hp:endNote " not in P[b + 1]
+               and num_text(P[b + 1]) is None):
             b += 1
         prev = b
     return out
