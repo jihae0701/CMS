@@ -27,6 +27,7 @@ ans = {it.get("v", i): it["ans"] for i, it in enumerate(items, 1)}
 
 
 def conv(s):
+    raw = s
     s = s.strip().strip("$")
     if re.match(r"^[①-⑤ㄱ-ㅎ]", s):
         return s
@@ -36,7 +37,10 @@ def conv(s):
     s = re.sub(r"root\s*\{?(\d+)\}?", r"sqrt(\1)", s)
     s = re.sub(r"(\d|\))\s*pi", r"\1*pi", s)       # 74 pi, ((9)/(2)) pi
     s = re.sub(r"(\d)\s*sqrt", r"\1*sqrt", s).replace(" ", "")
-    return sympify(s)
+    try:
+        return sympify(s)
+    except Exception:          # 범위처럼 글로 쓴 답은 검산 파일의 글과 그대로 견준다
+        return raw
 
 
 bad = 0
