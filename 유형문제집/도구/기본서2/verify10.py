@@ -204,8 +204,8 @@ R["o58"] = best
 res = set()
 for p in P(X7):
     f = dict(zip(X7, p)); fi_ = {v: k for k, v in f.items()}
-    if all(f[f[x]] + fi_[x] == 2 * x for x in (1, 2, 6)) and f[3] + f[5] == 10 and f[6] != 6:
-        res.add(f[4] * (f[6] + f[7]))
+    if all(f[f[x]] + fi_[x] == 2 * x for x in (1, 2, 6)) and f[3] + f[4] == 8 and f[6] != 6:
+        res.add(f[5] * (f[6] + f[7]))
 R["b102"] = res.pop() if len(res) == 1 else None
 fg = lambda x: 1.5 * np.abs(x) - 0.5 * x - 1
 R["g3-2"] = count_roots(lambda x: fg(fg(fg(x))) - fg(x) - 1, -20, 20, 4000001)
