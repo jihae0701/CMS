@@ -35,7 +35,7 @@ for kk in range(-20, 21):
     fl = sp.factor_list(x**2 + 2*y**2 + 3*x*y + kk*x + 5*y + 3, x, y)
     if sum(m for _, m in fl[1]) == 2:
         good.append(kk)
-R[12] = good[0] if len(good) == 1 else good
+R[12] = None  # 12번(171)은 원래 문항 그대로
 for aa in [sp.Rational(n, 2) for n in range(1, 21)]:
     fl = sp.factor_list(x**2 + aa*x*y - 2*y**2 + 3*y - 1, x, y)
     if sum(m for _, m in fl[1]) == 2:
