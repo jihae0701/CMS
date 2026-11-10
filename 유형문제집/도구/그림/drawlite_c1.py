@@ -7,6 +7,8 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from draw import HERE
 from draw5 import fit_shoot
 from draw6 import geo, dim_arc
+from draw import cut_arc
+import math
 
 TOP, FRONT, SIDE = "#ebf6fd", "#d6ecfb", "#c1e1f7"   # 정육면체 세 면(하늘색 명도만 다르게)
 STROKE = 3.2
@@ -39,6 +41,20 @@ def clip(subj, clipper):
 def ccw(pts):
     s = sum(pts[i][0] * pts[(i + 1) % len(pts)][1] - pts[(i + 1) % len(pts)][0] * pts[i][1] for i in range(len(pts)))
     return pts if s > 0 else pts[::-1]
+
+
+def dim2(F, p, q, label, side, k=1.0, chars=None, size=22):
+    """dim_arc와 같은 점선 호(가운데를 끊고 길이)인데, 휘는 정도를 k배로 바꾸고 끊는 길이를 보이는 글자 수(chars)로 맞춘다."""
+    (x1, y1), (x2, y2) = F.P(*p), F.P(*q)
+    mx, my = (x1 + x2) / 2, (y1 + y2) / 2
+    dx, dy = x2 - x1, y2 - y1
+    n = math.hypot(dx, dy)
+    bulge = 0.2 * n * k
+    nx, ny = -dy / n * side, dx / n * side
+    cx, cy = mx + nx * 2 * bulge, my + ny * 2 * bulge
+    arcs, (lx, ly) = cut_arc(x1, y1, cx, cy, x2, y2, label, size, chars=chars)
+    F.svg += arcs
+    F.labels.append((lx, ly, label, size, "cc", "dim"))
 
 
 def fig_cube():
@@ -75,7 +91,7 @@ def fig_cube():
             F.seg(q[k], q[(k + 1) % 4])
     F.seg(A0, K); F.seg(K, Kr); F.seg(K, Ku)
     F.seg(*side_line); F.seg(*top_line)
-    dim_arc(F, P(0, 0, 0), P(L, 0, 0), "2x+y", 1)
+    dim2(F, P(0, 0, 0), P(L, 0, 0), "2x+y", 1, k=0.9, chars=5.6)   # 아래 호: 곡률 10% 줄임(사용자 요청), 글자와 점선 띄움
     dim_arc(F, P(0, 0, 0), P(0, L, 0), "2x+y", -1)
     dim_arc(F, front[3], front[2], "x+y", -1, 10)
     return F.render()
