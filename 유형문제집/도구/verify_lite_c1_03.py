@@ -59,7 +59,7 @@ R[15] = cnt
 sp_ = importlib.util.spec_from_file_location("s", os.path.join(os.path.dirname(os.path.abspath(__file__)), "lite_c1_03.py"))
 S = importlib.util.module_from_spec(sp_); sp_.loader.exec_module(S)
 bad = 0
-for kk, it in S.REPLACE.items():
+for kk, it in S.REPLACE.items():  # REPLACE에 있는 것만 대조
     exp, got = it["ans"], R.get(kk)
     ok = (got == exp) if isinstance(got, str) else (sp.simplify(got - sp.sympify(exp)) == 0)
     if not ok:

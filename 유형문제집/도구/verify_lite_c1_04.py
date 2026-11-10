@@ -35,7 +35,7 @@ r1 = 4 + 2*sp.sqrt(3); r2 = 4 - 2*sp.sqrt(3); av = -(r1 + r2); bv = sp.expand(r1
 sp_ = importlib.util.spec_from_file_location("s", os.path.join(os.path.dirname(os.path.abspath(__file__)), "lite_c1_04.py"))
 S = importlib.util.module_from_spec(sp_); sp_.loader.exec_module(S)
 bad = 0
-for k, it in S.REPLACE.items():
+for k, it in S.REPLACE.items():  # REPLACE에 있는 것만 대조
     exp = sp.sympify(it["ans"].replace("{", "(").replace("}", ")").replace(" over ", "/"))
     if sp.simplify(R.get(k) - exp) != 0:
         bad += 1; print("불일치", k, it["ans"], R.get(k))
