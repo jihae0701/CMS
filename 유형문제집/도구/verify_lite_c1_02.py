@@ -11,9 +11,11 @@ R[2] = sp.rem(sp.expand((x + 1) * f.subs(x, 2*x)), 4*x - 1, x)
 f2, g2 = sp.symbols("f2 g2"); s = sp.solve([f2 + 2*g2, f2 - g2 + 1], [f2, g2])
 F = sp.interpolate([(2, s[f2]), (5, 1)], x); G = sp.interpolate([(2, s[g2]), (7, 3)], x)
 R[3] = sp.rem(sp.expand(3*x*F.subs(x, 2*x) - 6*x*G.subs(x, 2*x)), x - 1, x)
-fx = sp.expand((1 + 2*x**2 - 4*x - 3) / 2); gx = 1 - fx
-assert sp.expand(fx**2 - gx**2 - (2*x**2 - 4*x - 3)) == 0
-R[4] = sp.rem(sp.expand(fx.subs(x, x + 1) * gx.subs(x, x - 1)), x - 2, x)
+Q, r = sp.div(x**20 + 20, x + 1, x)
+ga, na, da = -1, r, 11
+ra, ma = (Q.subs(x, 11) * 12 + r - (11**20 + 20) == 0) and (r // 12), r % 12   # 21=12*1+9
+truth = [ga == 1, na == 20, da == -1, ra == 2, ma == 9]
+R[4] = "①②③④⑤"[truth.index(True)] if truth.count(True) == 1 else truth
 f = sp.expand(x*(x - 1)*(x - 2)*(x + 5) + sp.interpolate([(0, 1), (1, 3), (2, 3)], x))
 assert sp.rem(f, x**2 - x, x) == 2*x + 1 and f.subs(x, 2) == 3
 rr = sp.rem(f, x*(x - 1)*(x - 2), x)

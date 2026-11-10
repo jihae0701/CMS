@@ -84,7 +84,7 @@ def choices_paras(b, ch):
         for k, (mark, v) in enumerate(items):
             pre = (tab if k else "") + mark + " "
             run.append("<hp:t>%s</hp:t>" % pre.replace("&", "&amp;") if not k else "<hp:t>%s</hp:t>" % (tab + mark + " "))
-            run.append(b.eq(v.strip("$")))
+            run.append(b.inline(v)[:-len("<hp:t/>")] if "$" in v else b.eq(v.strip("$")))   # '(가): $1$'처럼 글이 섞인 선지
         run.append("<hp:t/>")
         return ('<hp:p id="0" paraPrIDRef="3" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">'
                 '<hp:run charPrIDRef="8">%s</hp:run></hp:p>' % "".join(run))
@@ -123,7 +123,10 @@ def build(src, spec_path, out):
                     b.collect(ln)
             elif "ch" in q:
                 for v in q["ch"]:
-                    b.need.add(v.strip("$"))
+                    if "$" in v:
+                        b.collect(v)
+                    else:
+                        b.need.add(v.strip("$"))
         for ln in it["sol"]:
             b.collect(ln)
         a = it["ans"]
