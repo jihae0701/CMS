@@ -44,7 +44,7 @@ def ccw(pts):
 def fig_cube():
     """구멍 뚫린 정육면체(올림포스 유형편 03-69). 원본 그림을 따라 그린다(사용자 지시 2026-11-10):
     - 앞면 구멍: 왼쪽 아래 꼭짓점에서 구멍 가운데쯤까지 비스듬한 선, 그 끝에서 위쪽 변·오른쪽 변까지 선(안쪽은 칠하지 않음)
-    - 윗면 구멍: 테두리만 / 옆면 구멍: 아래쪽에 벽 끝선 하나
+    - 윗면 구멍: 뒤쪽 왼쪽 꼭짓점에서 앞쪽 변까지 세로선 / 옆면 구멍: 뒤쪽 아래 꼭짓점에서 왼쪽 변까지 가로선
     - 색칠은 정육면체 세 면의 하늘색만, 길이 표시는 처음 방식(앞면 아래·왼쪽 2x+y, 구멍 윗변 x+y)."""
     L, h = 3.0, 1.1                      # 정육면체 모서리, 구멍 한 변(원본 비율)
     ox, oy = 0.5, 0.42                   # 깊이 방향 한 칸의 비스듬한 이동
@@ -55,14 +55,12 @@ def fig_cube():
     top = [P(a, L, a), P(b, L, a), P(b, L, b), P(a, L, b)]
     side = [P(L, a, a), P(L, a, b), P(L, b, b), P(L, b, a)]
     A0 = front[0]
-    t = 0.55 * h / ox                    # 비스듬한 선의 끝이 구멍 가로의 0.55쯤에 오게
+    t = 0.47 * h / ox                    # 비스듬한 선의 끝이 구멍 가로의 0.47쯤에 오게(원본)
     K = (A0[0] + t * ox, A0[1] + t * oy)
     Kr, Ku = (front[1][0], K[1]), (K[0], front[3][1])
-    s0, s1 = side[0], side[1]            # 옆면 구멍 아래 변
-    w = 0.22                             # 옆면 아래 벽이 보이는 폭(화면 왼쪽으로)
-    side_end = (s1[0] - w, s1[1])
-    slope = (s1[1] - s0[1]) / (s1[0] - s0[0])
-    side_cut = (s0[0], side_end[1] - (side_end[0] - s0[0]) * slope)   # 끝선(아래 변과 평행)이 구멍 왼쪽 변과 만나는 점
+    s0, s1 = side[0], side[1]            # 옆면 구멍: 뒤쪽 아래 꼭짓점에서 왼쪽 변까지 가로선(원본)
+    side_line = (s1, (s0[0], s1[1]))
+    top_line = (top[3], (top[3][0], top[0][1]))   # 윗면 구멍: 뒤쪽 왼쪽 꼭짓점에서 앞쪽 변까지 세로선(원본)
     for q in (front, top, side):         # poly는 맨 아래 층에 끼워 넣으므로 구멍(흰색)부터
         F.poly(q, "#ffffff")
     F.poly([P(0, 0, 0), P(L, 0, 0), P(L, L, 0), P(0, L, 0)], FRONT)
@@ -76,7 +74,7 @@ def fig_cube():
         for k in range(4):
             F.seg(q[k], q[(k + 1) % 4])
     F.seg(A0, K); F.seg(K, Kr); F.seg(K, Ku)
-    F.seg(side_cut, side_end); F.seg(side_end, s1)
+    F.seg(*side_line); F.seg(*top_line)
     dim_arc(F, P(0, 0, 0), P(L, 0, 0), "2x+y", 1)
     dim_arc(F, P(0, 0, 0), P(0, L, 0), "2x+y", -1)
     dim_arc(F, front[3], front[2], "x+y", -1, 10)
