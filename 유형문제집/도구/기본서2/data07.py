@@ -17,7 +17,7 @@
 """
 import re
 
-UNIT_NO, UNIT_TITLE, START = "7.", "명제", 241   # 6단원 201~240에 이어서
+UNIT_NO, UNIT_TITLE, START = "7.", "명제", 237   # 6단원 200~236에 이어서 (2026-11-10 5·6단원 완성본 등록으로 번호 당김)
 
 
 def S(*xs):

@@ -358,4 +358,6 @@ io.write(OUT, f, order)
 sys.path.insert(0, TOOL)
 import eqfix
 eqfix.fix_file(OUT)
+import eqstyle   # 공통수학2 수식 표기 기준(사용자 5·6단원 완성본, 2026-11-10): 여집합 ∁, 조건제시법 left|, 한글은 수식 밖, + it CDOTS it +
+print("수식 표기:", eqstyle.style_file(OUT))
 print("문항", nprob, "문단", len(P), "그림", len(new_imgs), "->", OUT)

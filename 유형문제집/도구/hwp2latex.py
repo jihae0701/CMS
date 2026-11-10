@@ -57,6 +57,26 @@ def _atom_after(s, start):
         return m.group(0), k + m.end()
     return "", k
 
+def _balance(s):
+    """짝이 없는 \\left·\\right는 괄호 글자로 바꾼다(조건제시법을 수식과 글로 나눈 조각: 'U=LEFT { x left| x ', 'x notin B RIGHT }')."""
+    toks = list(re.finditer(r"\\(left|right)(\\\{|\\\}|[\(\)\[\]\|\.])", s))
+    stack, bare = [], set()
+    for i, m in enumerate(toks):
+        if m.group(1) == "left":
+            stack.append(i)
+        elif stack:
+            stack.pop()
+        else:
+            bare.add(i)
+    bare |= set(stack)
+    for i in sorted(bare, reverse=True):
+        m = toks[i]
+        d = m.group(2)
+        d = r"\mid " if d == "|" else ("" if d == "." else d)
+        s = s[:m.start()] + d + s[m.end():]
+    return s
+
+
 def convert(script):
     s = script
     s = s.replace("`", " ").replace("~", r"\ ").replace("∥", r"\parallel ")
@@ -72,7 +92,7 @@ def convert(script):
         if name == "pmatrix":
             return r"\begin{pmatrix}" + r"\\".join(rows) + r"\end{pmatrix}"
         return r"\begin{matrix}" + r"\\".join(rows) + r"\end{matrix}"
-    for name in ("cases", "rpile", "matrix", "pmatrix"):
+    for name in ("cases", "rpile", "lpile", "pile", "matrix", "pmatrix"):   # pile{it#it}: 사용자가 큰 중괄호 높이를 맞추는 빈 줄
         while True:
             m = re.search(r"\b%s\s*\{" % name, s)
             if not m:
@@ -88,6 +108,8 @@ def convert(script):
     s = re.sub(r"\bright\s*\}", r"\\right\\}", s)
     s = re.sub(r"\bleft\s*([\(\[\|\.])", r"\\left\1", s)
     s = re.sub(r"\bright\s*([\)\]\|\.])", r"\\right\1", s)
+    s = re.sub(r"(?<!\\)\bright\b", lambda m: "\\}", s)     # 조건제시법을 수식·글로 나눈 닫는 수식 'it right'(사용자 5·6단원 완성본)
+    s = _balance(s)
     # rm / it
     s = re.sub(r"\brm\s*\{([^{}]*)\}", r"\\mathrm{\1}", s)
     s = re.sub(r"\brm\s+([A-Za-z]+)", r"\\mathrm{\1}", s)

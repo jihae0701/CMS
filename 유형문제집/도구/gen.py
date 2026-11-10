@@ -711,6 +711,8 @@ def main():
     if getattr(U, "DESIGN", None) == "c2":          # 공통수학2 유형서: 사용자 완성본(2026-11-06) 디자인을 입힌다
         import c2design
         c2design.apply(OUT, UNITFILE)
+        import eqstyle   # 공통수학2 수식 표기 기준(사용자 5·6단원 완성본, 2026-11-10): 여집합 ∁, 조건제시법 left|, 한글은 수식 밖, + it CDOTS it +
+        print("수식 표기:", eqstyle.style_file(OUT))
 
 
 if __name__ == "__main__":

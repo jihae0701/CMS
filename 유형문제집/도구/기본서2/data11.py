@@ -20,7 +20,7 @@ Basecamp 2-2의 장 구분대로 11 유리식과 유리함수, 12 무리식과 �
 """
 import re
 
-UNIT_NO, UNIT_TITLE, START = "11.", "유리식과 유리함수", 402   # 10단원 362~401에 이어서
+UNIT_NO, UNIT_TITLE, START = "11.", "유리식과 유리함수", 398   # 10단원 358~397에 이어서 (2026-11-10 5·6단원 완성본 등록으로 번호 당김)
 
 
 def P(q, ans, sol, rep=False, src=""):

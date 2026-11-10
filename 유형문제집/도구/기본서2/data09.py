@@ -22,7 +22,7 @@ Basecamp 2-2의 장 구분대로 7 명제, 8 절대부등식, 9 함수, 10 합�
 """
 import re
 
-UNIT_NO, UNIT_TITLE, START = "9.", "함수", 322   # 8단원 281~321에 이어서
+UNIT_NO, UNIT_TITLE, START = "9.", "함수", 318   # 8단원 277~317에 이어서 (2026-11-10 5·6단원 완성본 등록으로 번호 당김)
 
 
 def P(q, ans, sol, rep=False, src=""):

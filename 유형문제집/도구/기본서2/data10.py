@@ -20,7 +20,7 @@ Basecamp 2-2의 장 구분대로 9 함수, 10 합성함수와 역함수(2026-11-
 """
 import re
 
-UNIT_NO, UNIT_TITLE, START = "10.", "합성함수와 역함수", 362   # 9단원 322~361에 이어서
+UNIT_NO, UNIT_TITLE, START = "10.", "합성함수와 역함수", 358   # 9단원 318~357에 이어서 (2026-11-10 5·6단원 완성본 등록으로 번호 당김)
 
 
 def P(q, ans, sol, rep=False, src=""):

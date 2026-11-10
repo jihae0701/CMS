@@ -31,7 +31,7 @@ Basecamp 2-2의 장 구분대로 7 명제, 8 절대부등식(2026-11-08 사용�
 """
 import re
 
-UNIT_NO, UNIT_TITLE, START = "8.", "절대부등식", 281   # 7단원 241~280에 이어서
+UNIT_NO, UNIT_TITLE, START = "8.", "절대부등식", 277   # 7단원 237~276에 이어서 (2026-11-10 5·6단원 완성본 등록으로 번호 당김)
 
 
 def P(q, ans, sol, rep=False, src=""):
