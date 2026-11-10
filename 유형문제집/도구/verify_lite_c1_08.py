@@ -4,8 +4,13 @@ R = {}
 X = np.arange(-50, 51)
 f = lambda x: 0.5 * (x + 1) * (x - 4); g = lambda x: -0.5 * (x + 1) * (x - 2)   # 그림과 같은 두 그래프(만나는 점 x=-1, 3)
 R[1] = int(np.sum(f(X) <= g(X) + 1e-12))
-F = lambda t: (t - 4) * (t - 16)
-R[2] = int(sum(x for x in X if F(-3 * x + 1) < 0))
+xs2 = np.linspace(-10, 10, 20001); found = []
+for p in range(-30, 31):
+    for q in range(-30, 31):
+        if p + q != 5: continue
+        sol = (2 * (xs2 - 1)**2 + p) <= ((xs2 - 1)**2 + q) + 1e-12
+        if sol.any() and abs(xs2[sol].min() + 2) < 1e-6 and abs(xs2[sol].max() - 4) < 1e-6: found.append(p * p + q * q)
+assert len(found) == 1; R[2] = found[0]
 # 3: a=1(양수 아무거나), b=-6a, c=5a 로 놓고 ax^2-cx+b>0의 해를 격자에서 확인 -> 선지 ②(x<-1 또는 x>6)
 xs = np.linspace(-20, 20, 400001); a, b, c = 2.0, -12.0, 10.0
 assert np.all(((a * xs**2 + b * xs + c) < 0) == ((xs > 1) & (xs < 5)))
@@ -14,7 +19,7 @@ R[3] = "②" if np.all(sol == ((xs < -1) | (xs > 6))) else "?"
 xs = np.linspace(-200, 200, 400001)
 R[4] = next(a for a in range(1, 100) if np.all(a * xs**2 - 4 * (a + 2) * xs + 4 * a + 18 > 0))
 best = None
-for a in np.linspace(-5, 5, 10001):
+for a in (-2.0, 0.0):
     if abs(a) < 1e-9: continue
     if abs(a * a + 2 * a) > 1e-9: continue           # x^2-2ax-2a<=0 의 해가 한 개
     for b in np.linspace(-20, 20, 40001):

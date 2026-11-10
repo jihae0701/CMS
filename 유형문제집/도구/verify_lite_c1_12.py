@@ -10,8 +10,7 @@ R[4] = sp.solve(sum(X.subs(Xs)) + 10, k)[0]
 A, B = sp.Matrix(2, 2, sp.symbols("p0:4")), sp.Matrix(2, 2, sp.symbols("q0:4"))
 s = sp.solve(list(A + 2 * B - sp.Matrix([[1, 2], [-1, 0]])) + list(A - B - sp.Matrix([[-2, -1], [5, 0]])), list(A) + list(B), dict=True)[0]
 R[5] = (A.subs(s) * B.subs(s))[1, 0]
-M = sp.Matrix([[1, 1], [-1, 1]])**16
-assert M[0, 1] == 0 and M[1, 0] == 0 and M[0, 0] == M[1, 1]; R[6] = M[0, 0]
+R[6] = next(n for n in range(1, 50) if sum(sp.Matrix([[n, 0], [n - 1, 1]])**11) == 2**34)
 sp_ = importlib.util.spec_from_file_location("s", os.path.join(os.path.dirname(os.path.abspath(__file__)), "lite_c1_12.py"))
 S = importlib.util.module_from_spec(sp_); sp_.loader.exec_module(S)
 bad = 0

@@ -2,7 +2,7 @@
 import numpy as np, importlib.util, os
 R = {}
 I = np.arange(-100, 101)
-R[1] = int(I[np.abs(I - 1) > 2 * I + 7].max())
+R[1] = sum(a for a in range(1, 200) if np.sum(np.abs(4 * I - a) <= a) == 2)
 xs = np.linspace(-20, 20, 4000001)
 ok = 2 * np.abs(xs + 1) - np.abs(xs - 1) >= 3
 a = xs[ok & (xs < 0)].max(); b = xs[ok & (xs > 0)].min()
@@ -21,8 +21,7 @@ for k in range(1, 100):
 R[6] = cnt
 ks = [k for k in np.arange(0.01, 5, 0.01) if np.sum((I**2 + I - 6 < 0) & (np.abs(I + 1) <= k + 1e-12)) == 3]
 R[7] = (round(min(ks), 2), round(max(ks), 2))          # [1, 2) 이면 (1.0, 1.99)
-s = xs[(np.abs(xs - 1) <= 2) & (xs**2 + 2 * xs - 8 <= 1e-12)]
-R[8] = round(s.min() + s.max(), 3)
+R[8] = sum(n for n in range(1, 200) if np.sum((I**2 - 8 * I - 48 <= 0) & (np.abs(2 * I - 4) > n)) == 3)
 R[9] = sum(1 for a in range(1, 100) if a + a + 3 > a + 6 and (a + 6)**2 > a * a + (a + 3)**2)
 sp_ = importlib.util.spec_from_file_location("s", os.path.join(os.path.dirname(os.path.abspath(__file__)), "lite_c1_09.py"))
 S = importlib.util.module_from_spec(sp_); sp_.loader.exec_module(S)
