@@ -8,6 +8,7 @@
        → 수식 'U=LEFT { x left| x' + 글자 '는 ' + 수식 '10' + 글자 '이하의 자연수' + 수식 'it right'
      (조건이 수식으로 끝나면 마지막 수식에 'RIGHT }'를 그대로 둔다: 수식 'X=LEFT { x left| x in A' + 글자 '이고 ' + 수식 'x notin B RIGHT }')
   4. 합의 줄임표: s_{1} + CDOTS +s_{n} → s_{1} + it CDOTS it +s_{n} (목록 '1,~2,~CDOTS,~10'은 그대로)
+  5. 수식 바로 뒤의 '이하·이상·미만·초과·또는·그리고' 앞은 한 칸 띄운다: '10 이하의 자연수' (사용자 요청 2026-11-10)
 
 python eqstyle.py 파일.hwpx [...]   (그 자리에서 고친다)
 gen.py(DESIGN="c2")와 기본서2/compose01.py가 저장할 때 자동으로 부른다.
@@ -137,6 +138,11 @@ def esc(s):
     return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
 
+# 5. 수식 바로 뒤에 오는 낱말(조사가 아닌 것) 앞은 띄운다: '10 이하의 자연수', 'x<-6 또는 x>-2' (2026-11-10 사용자 요청 '숫자와 한글 사이에 빈칸')
+SPACE_WORDS = ("이하", "이상", "미만", "초과", "또는", "그리고")
+SPACE = re.compile(r"(</hp:equation>(?:</hp:run><hp:run\b[^>]*>)?<hp:t>)((?:%s))" % "|".join(SPACE_WORDS))
+
+
 def style_xml(xml, stat=None):
     stat = stat if stat is not None else {}
     ids = [int(x) for x in re.findall(r'<hp:equation\b[^>]*\bid="(\d+)"', xml)]
@@ -179,7 +185,10 @@ def style_xml(xml, stat=None):
             out.append("".join(pieces))
         last = m.end()
     out.append(xml[last:])
-    return "".join(out), stat
+    xml2, k = SPACE.subn(lambda m: m.group(1) + " " + m.group(2), "".join(out))
+    if k:
+        stat["space"] = stat.get("space", 0) + k
+    return xml2, stat
 
 
 def style_file(path):
