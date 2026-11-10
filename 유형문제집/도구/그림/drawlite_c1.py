@@ -42,12 +42,11 @@ def ccw(pts):
 
 
 def fig_cube():
-    """구멍 뚫린 정육면체(올림포스 유형편 03-69). 원본 그림처럼 그린다(사용자 지시 2026-11-10):
-    - 앞면 구멍: 터널 벽의 깊이는 (모서리−구멍)/2이고 그 뒤는 가운데 빈 공간이므로, 구멍 왼쪽 아래 꼭짓점에서
-      비스듬한 선 하나와 그 끝에서 위·오른쪽으로 뻗는 선 둘만 긋고, 왼쪽 벽·아래 벽만 칠한다.
-    - 윗면 구멍은 테두리만, 옆면 구멍은 아래 벽의 끝선 하나.
-    - 색칠은 하늘색만(세 면, 벽은 같은 방향 면의 색), 길이 표시는 처음 방식(앞면 아래·왼쪽 2x+y, 구멍 윗변 x+y)."""
-    L, h = 3.0, 1.3                      # 정육면체 모서리, 구멍 한 변(그림은 개형)
+    """구멍 뚫린 정육면체(올림포스 유형편 03-69). 원본 그림을 따라 그린다(사용자 지시 2026-11-10):
+    - 앞면 구멍: 왼쪽 아래 꼭짓점에서 구멍 가운데쯤까지 비스듬한 선, 그 끝에서 위쪽 변·오른쪽 변까지 선(안쪽은 칠하지 않음)
+    - 윗면 구멍: 테두리만 / 옆면 구멍: 아래쪽에 벽 끝선 하나
+    - 색칠은 정육면체 세 면의 하늘색만, 길이 표시는 처음 방식(앞면 아래·왼쪽 2x+y, 구멍 윗변 x+y)."""
+    L, h = 3.0, 1.1                      # 정육면체 모서리, 구멍 한 변(원본 비율)
     ox, oy = 0.5, 0.42                   # 깊이 방향 한 칸의 비스듬한 이동
     P = lambda x, y, z: (x + z * ox, y + z * oy)
     F = geo((-0.2, L + L * ox + 0.2), (-0.2, L + L * oy + 0.2), 70, (120, 30, 30, 90))
@@ -55,17 +54,16 @@ def fig_cube():
     front = [P(a, a, 0), P(b, a, 0), P(b, b, 0), P(a, b, 0)]
     top = [P(a, L, a), P(b, L, a), P(b, L, b), P(a, L, b)]
     side = [P(L, a, a), P(L, a, b), P(L, b, b), P(L, b, a)]
-    # 앞면 구멍 안
-    v = (a * ox * 0.8, a * oy * 0.8)     # 벽이 끝나는 깊이(화면)
-    A0, B0, C0, D0 = front
-    K = (A0[0] + v[0], A0[1] + v[1])
-    Kr, Ku = (B0[0], K[1]), (K[0], D0[1])
-    side_wall = clip(ccw([P(L, a, a), P(L, a, b), (P(L, a, b)[0] - 0.35, P(L, a, b)[1]), (P(L, a, a)[0] - 0.35, P(L, a, a)[1])]), ccw(side))
-    # poly는 맨 아래 층에 끼워 넣으므로 위에 보일 것부터
-    F.poly([A0, K, Ku, D0], SIDE)        # 왼쪽 벽(오른쪽을 향함)
-    F.poly([A0, B0, Kr, K], TOP)         # 아래 벽(위를 향함)
-    F.poly(side_wall, TOP)
-    for q in (front, top, side):
+    A0 = front[0]
+    t = 0.55 * h / ox                    # 비스듬한 선의 끝이 구멍 가로의 0.55쯤에 오게
+    K = (A0[0] + t * ox, A0[1] + t * oy)
+    Kr, Ku = (front[1][0], K[1]), (K[0], front[3][1])
+    s0, s1 = side[0], side[1]            # 옆면 구멍 아래 변
+    w = 0.22                             # 옆면 아래 벽이 보이는 폭(화면 왼쪽으로)
+    side_end = (s1[0] - w, s1[1])
+    slope = (s1[1] - s0[1]) / (s1[0] - s0[0])
+    side_cut = (s0[0], side_end[1] - (side_end[0] - s0[0]) * slope)   # 끝선(아래 변과 평행)이 구멍 왼쪽 변과 만나는 점
+    for q in (front, top, side):         # poly는 맨 아래 층에 끼워 넣으므로 구멍(흰색)부터
         F.poly(q, "#ffffff")
     F.poly([P(0, 0, 0), P(L, 0, 0), P(L, L, 0), P(0, L, 0)], FRONT)
     F.poly([P(0, L, 0), P(L, L, 0), P(L, L, L), P(0, L, L)], TOP)
@@ -78,14 +76,10 @@ def fig_cube():
         for k in range(4):
             F.seg(q[k], q[(k + 1) % 4])
     F.seg(A0, K); F.seg(K, Kr); F.seg(K, Ku)
-    e0, e1 = P(L, a, a), P(L, a, b)
-    sw = [u for u in side_wall if min(abs(u[0] - e[0]) + abs(u[1] - e[1]) for e in (e0, e1)) > 1e-6]   # 옆면 아래 벽의 끝선
-    if len(sw) >= 2:
-        sw.sort(key=lambda u: u[0]); F.seg(sw[0], sw[-1])
-        F.seg(e1, (e1[0] - 0.35 * F.sx, e1[1]) if False else sw[-1])      # 뒤쪽 아래 꼭짓점에서 벽 끝까지
+    F.seg(side_cut, side_end); F.seg(side_end, s1)
     dim_arc(F, P(0, 0, 0), P(L, 0, 0), "2x+y", 1)
     dim_arc(F, P(0, 0, 0), P(0, L, 0), "2x+y", -1)
-    dim_arc(F, P(a, b, 0), P(b, b, 0), "x+y", -1, 10)
+    dim_arc(F, front[3], front[2], "x+y", -1, 10)
     return F.render()
 
 
