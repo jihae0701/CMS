@@ -166,7 +166,16 @@ def fig_fg():
     return F.render()
 
 
-FIGS = (("lite1_03_cube.png", fig_cube, 10000), ("lite1_05_quad.png", fig_quad, 10000), ("lite1_05_root.png", fig_root, 9000), ("lite1_06_pq.png", fig_pq, 9000), ("lite1_08_fg.png", fig_fg, 9000))
+def fig_seg():
+    F = Frame((-0.2, 4.2), (-0.2, 1.4), 60, 60, (12, 12, 12, 12))
+    for y in (0, 1.2):
+        F.seg((0, y), (4, y))
+        for x in range(5):
+            dot(F, (x, y), 4)
+    return F.render()
+
+
+FIGS = (("lite1_03_cube.png", fig_cube, 10000), ("lite1_05_quad.png", fig_quad, 10000), ("lite1_05_root.png", fig_root, 9000), ("lite1_06_pq.png", fig_pq, 9000), ("lite1_08_fg.png", fig_fg, 9000), ("lite1_11_seg.png", fig_seg, 9000))
 
 if __name__ == "__main__":
     for name, fn, wd in FIGS:
