@@ -1,0 +1,216 @@
+[표]
+범위 : 집합의 연산 ~ 무리함수
+[그림][표]
+[중산고1 2025년 2학기 공수2 기말고사]
+[그림]
+이름
+점수
+두 집합  $A = LEFT {  1, 2, 4, 8, 9 RIGHT } $ ,  $B = LEFT {  2, 4, 6, 8, 10 RIGHT } $ 에 대하여  $n ( A SMALLINTER B ) $ 의 값은? [4.1점]
+$③$
+$A cap B= left{2`,``4`,``8 right} `,$   $n LEFT ( A cap B RIGHT )=3$
+① 1② 2③ 3
+④ 4⑤ 5
+다음 대응 중 집합  $X$ 에서 집합  $Y$ 로의 함수인 것만을 <보기>에서 있는 대로 고른 것은? [4.1점]
+$①$
+ㄱ, ㄴ으로 자명하다.
+[표]
+<보기>
+ㄱ
+ㄴ
+[그림]
+[그림]
+ㄷ
+ㄹ
+[그림]
+[그림]
+① ㄱ, ㄴ② ㄱ, ㄷ③ ㄷ, ㄹ
+④ ㄱ, ㄴ, ㄹ⑤ ㄴ, ㄷ, ㄹ
+명제 ' $x^{2} - 3ax + 8 != 0$ 이면  $x != -2$ 이다.' 가 참일 때, 상수  $a$ 의 값은? [4.2점]
+$①$
+대우 ‘ $x=-2$ 이면  $x^2 -3ax+8=0$ 이다.’가 참이고,
+$4+6a+8=0 `,$   $a=-2$
+① -2② -1③ 0
+④ 1⑤ 2
+무리함수  $f ( x )  = sqrt { -4x +a} + b$ 의 그래프가 그림과 같을 때,  $a +b$ 의 값은? (단,  $a, b$ 는 상수이다.) [4.2점]
+$②$
+출발점  $LEFT ( 4`,``-3 RIGHT )$ 이므로  $f LEFT ( x RIGHT )=sqrt{-4 LEFT ( x-4 RIGHT )}-3=sqrt{-4x+16}-3$
+따라서  $a=16 `,$   $b=-3$ 이고,  $a+b=13$
+[그림]
+① 11② 13③ 15
+④ 17⑤ 19
+세 조건  $p, q, r$ 에 대하여 두 명제  $p rarrow SIM q$ 와  $SIM r rarrow q$ 가 모두 참일 때, 다음 명제 중 항상 참이라고 할 수 없는 것은? [4.3점]
+$⑤$
+$p` RARROW`simq `,$   $simq ` RARROW`r$ 이므로,
+$p` RARROW`simq ` RARROW`r `,$   $simr ` RARROW`q ` RARROW`simp$
+①  $p rarrow r$ ②  $SIM q rarrow r$ ③  $SIM r rarrow SIM p$
+④  $q rarrow SIM p$ ⑤  $SIM p rarrow r$
+다음 중 역이 참인 명제는? (단,  $a$ ,  $b$ 는 실수이다.) [4.3점]
+$④$
+$left|a + b right|  le left|a right|+ left|b right|$ 는 절대부등식이고,
+등호 성립조건은  $ab ge0$ 이므로,
+④ ‘ $ab ge0$ 이면  $ab ge0$ 이다.’는 참
+[표]
+$left|a right|+ left|b right| ge 0 `,$   $left|a+b right|ge 0$ 이므로 제곱을 비교한다.
+$LEFT ( left|a right|+ left|b right| RIGHT )^2 - left|a+b right|^2$  $= 2 LEFT ( left|ab right|- ab RIGHT )$
+$ab ge 0$ 일 때  $2 LEFT ( left|ab right|-ab RIGHT )=2 LEFT ( ab-ab RIGHT )=0 `,$
+$ab <0$ 일 때  $2 LEFT ( left|ab right|-ab RIGHT )= 2 LEFT ( -ab-ab RIGHT )=-4ab >0$
+따라서  $LEFT ( left|a right|+ left|b right| RIGHT )^2 ge left|a+b right|^2$  즉  $left|a right|+ left|b right| ge left|a + b right|$
+등호는  $ab ge 0$ 일 때 성립한다.
+①  $a  GEQ sqrt {3}$ 이면  $a^{2}  GEQ 3$ 이다.
+② 마름모는 평행사변형이다.
+③ 6의 약수는 4의 약수이다.
+④  $ab  GEQ 0$ 이면  $ LEFT | a +b RIGHT | = LEFT | a RIGHT | + LEFT | b RIGHT | $ 이다.
+⑤  $a$ 와  $b$ 가 유리수이면  $a +b$ 는 유리수이다.
+정의역이  $ LEFT {  0, 1 RIGHT } $ 인 두 함수  $f ( x ) =a LEFT | 1 -3x RIGHT | +b$ ,  $g ( x ) =x^{2} -2x +5$ 에 대하여  $f =g$ 가 성립할 때,  $a +b$ 의 값은? (단,  $a$ ,  $b$ 는 상수이다.) [4.4점]
+$⑤$
+$f LEFT ( 0 RIGHT )=g LEFT ( 0 RIGHT )$ 에서  $a+b=5$
+① 1② 2③ 3
+④ 4⑤ 5
+전체집합  $U$ 의 두 부분집합  $A$ ,  $B$ 에 대하여 다음 중
+$①$
+$LEFT ( A cup B RIGHT )cap LEFT ( A cap B^c RIGHT )^c$  $=LEFT ( A cup B RIGHT )cap LEFT ( A^c cup B RIGHT )$
+$=LEFT ( A cap A^c RIGHT )cup B$  $=emptyset cup B$  $=B$  $=A cupB$
+따라서  $A subset B$ 와 필요충분조건
+$(A CUP B) SMALLINTER (A -B)^{C} = A CUP B$
+이기 위한 필요충분조건인 것은? [4.5점]
+①  $A SUBSET B$ ②  $B SUBSET A$ ③  $A SMALLINTER B = EMPTYSET$
+④  $A = U$ ⑤  $A CUP B = U$
+실수  $x$ 에 대한 두 조건
+$③$
+$simp `:` 1 le x le3$ 이고 ‘ $simp$ 이면  $q$ 이다.’가 참이므로,
+$cases{` a-4 <1 #` 3<a+4}$ 에서  $-1 <a<5$ 이고 정수  $a$  개수  $left{5- LEFT ( -1 RIGHT )right}-1 =5$
+$p:x<1또는x>3,~~q: LEFT | x-a RIGHT | <4$
+에 대하여  $q$ 가  $SIM p$ 이기 위한 필요조건이 되도록 하는 모든 정수  $a$ 의 개수는? [4.5점]
+① 3② 4③ 5
+④ 6⑤ 7
+그림은  $x  GEQ 0$ 에서 정의된 두 함수  $y =f ( x ) $ ,  $y =g ( x ) $ 의 그래프와 직선  $y =x$ 를 나타낸 것이다.  $ ( f^{ -1} CIRC g )  ( a )  -  ( f CIRC g ) ^{ -1} ( b ) $ 의 값은? (단, 모든 점선은  $x$ 축 또는  $y$ 축에 평행하다.) [4.6점]
+$③$
+$f^-1 LEFT ( g LEFT ( a RIGHT ) RIGHT )-g^-1 LEFT ( f^-1 LEFT ( b RIGHT ) RIGHT )$  $=f^-1 LEFT ( b RIGHT )-g^-1 LEFT ( c RIGHT )$  $=c-b$
+[그림]
+①  $a -b$ ②  $b -c$ ③  $c -b$
+④  $c -d$ ⑤  $d -c$
+$200$  이하의 자연수 중에서  $9$ 의 배수가 아니고  $10$ 으로 나누었을 때의 나머지가  $4$ 가 아닌 자연수의 개수는? [4.6점]
+$②$
+$200$  이하의 자연수의 집합을  $U$ 라 하고,
+$9$ 의 배수의 집합을  $A `,$   $10$ 으로 나눈 나머지  $4$ 인 수들의 집합을  $B$
+$n LEFT ( A^c cap B^c RIGHT )$  $=n LEFT ( U RIGHT )-n LEFT ( A cup B RIGHT )$  $=200-left{n LEFT ( A RIGHT )+n LEFT ( B RIGHT )-n LEFT ( A cap B RIGHT )right}$
+$=200- LEFT ( 22+20-2 RIGHT )$  $=200-40$  $=160$
+①  $158$ ②  $160$ ③  $162$
+④  $164$ ⑤  $166$
+두 집합  $X = LEFT {  x| -2  LEQ x  LEQ 5 RIGHT } $ ,  $Y= LEFT { y`vert  ` LEFT | y RIGHT | LEQ  a,``a>0 RIGHT }$ 에 대하여  $X$ 에서  $Y$ 로의 함수  $f ( x ) = -2x +b$ 의 역함수가 존재할 때,  $a^{2} +b^2$ 의 값은? (단,  $a, b$ 는 상수이다.) [4.7점]
+$④$
+감소함수이므로  $cases{`f LEFT ( -2 RIGHT )=a=4+b #` f LEFT ( 5 RIGHT )=-a=-10+b}`,$   $a=7 `,$   $b=3 `,$   $a^2 +b^2 =58$
+①  $52$ ②  $54$ ③  $56$
+④  $58$ ⑤  $60$
+$a>0, b>0$ 이고  $3a +4b =1$ 일 때,  ${4} over {a} +{3} over {b}$ 의 최솟값은? [4.7점]
+$⑤$
+$4 overa + 3 over b$  $=1 times LEFT ( 4 overa + 3 over b RIGHT )$  $=LEFT ( 3a+4b RIGHT ) LEFT ( 4 overa + 3 over b RIGHT )$  $= 9a overb + 16b overa +24$
+산술, 기하평균의 관계에서,
+$9a over b = 16b overa `,$   $LEFT ( a over b RIGHT )^2 = 16 over 9 `,$   $a over b = 4 over3$ 일 때,
+최솟값  $12+12+24=48$
+①  $40$ ②  $42$ ③  $44$
+④  $46$ ⑤  $48$
+유리함수  $f LEFT ( x RIGHT ) ={ax +7} over {x -b}$ 의 그래프가 점  $ ( 2, 1 ) $ 을 지나고 점  $ ( 1, c ) $ 에 대하여 대칭이다. 옳은 것만을 <보기>에서 있는 대로 고른 것은? (단,  $a, b, c$ 는 상수이다.) [4.8점]
+$③$
+$f LEFT ( x RIGHT )= ax+7 over x-b$ 의 대칭점  $LEFT ( b `,``a RIGHT )= LEFT ( 1 `,``c RIGHT )$ 이고  $b=1 `,$   $c=a$
+$f LEFT ( x RIGHT )= ax+7 over x-1$ 이 점  $LEFT ( 2 `,``1 RIGHT )$ 을 지나므로  $a=c=-3$
+따라서  $a+b+c=-5$
+$f LEFT ( x RIGHT )= -3x+7 over x-1$ 의 두 점근선  $x=1 `,$   $y=-3$ 이고,
+$y$ 절편  $-7$ 이므로 제 $1 `,$   $3 `,$   $4$ 사분면을 지난다.
+$x<1$ 에서 감소함수이고  $-5 le x le -2$ 에서 최솟값  $f LEFT ( -5 RIGHT )= - 11 over3$
+따라서 <보기> 중 옳은 것은 ㄱ, ㄴ이다.
+[그림]
+<보 기>
+ㄱ.  $a +b +c = -5$ 이다.
+ㄴ. 함수  $y =f ( x ) $ 의 그래프는 제2사분면을 지나지 않는다.
+ㄷ.  $ -5  LEQ x  LEQ -2$ 에서  $y =f ( x ) $ 의 최댓값은  $ -{13} over {3}$ 이다.
+① ㄱ② ㄷ③ ㄱ, ㄴ
+④ ㄴ, ㄷ⑤ ㄱ, ㄴ, ㄷ
+함수  $f(x)= {cases{{3} over {4} x-3~~~~(x<2)#{11} over {4} x-7~~~(x GEQ  2)}}$ 의 역함수를  $f^{ -1} ( x ) $ 라 할 때, 두 함수  $y =f ( x ) $ ,  $y =f^{ -1} ( x ) $ 의 그래프로 둘러싸인 도형의 넓이는? [4.8점]
+$②$
+$y=f LEFT ( x RIGHT )$ 는 실수 전체의 집합에서 증가함수이므로,
+$y=f^-1 LEFT ( x RIGHT )$ 와의 교점은  $y=x$ 와의 교점과 동일하다.
+$x<2 `,$  방정식  $3over4 x -3= x `,$   $x=-12$ 이고 교점  $rmA LEFT ( -12`,``-12 RIGHT )$
+$x ge2 `,$  방정식  $11 over4 x -7=x `,$   $x=4$ 이고 교점  $rmB LEFT ( 4`,``4 RIGHT )$
+$bar{rmAB}= 16 sqrt2$ 이고 꺽임점  $rmC LEFT ( 2 `,``- 3 over2 RIGHT )$
+점  $rmC$ 에서 직선  $x-y=0$ 까지 거리  ${left|2+ 3 over 2 right|} over sqrt{1+1} = 7 over {2 sqrt2}$
+구하려는 도형의 넓이는,  $2 times 1 over2 times 16 sqrt2 times 7 over {2 sqrt2}$  $= 56$
+①  $49$ ②  $56$ ③  $63$
+④  $70$ ⑤  $77$
+집합  $X = LEFT {  4, 6, 8 RIGHT } $ 에 대하여  $X$ 에서  $X$ 로의 세 함수  $f, g, h$ 가 다음 조건을 만족시킨다.
+$②$
+$g LEFT ( x RIGHT )=k$ 라 하자.
+(다)  $4+k=h LEFT ( 8 RIGHT )$ 에서  $k=4 `,$   $h LEFT ( 8 RIGHT )=8$ 로 결정되고,
+$h LEFT ( x RIGHT )$ 가 항등함수 아닌 일대일이므로,  $h LEFT ( 4 RIGHT )=6 `,$   $h LEFT ( 6 RIGHT )=4$
+따라서  $f LEFT ( 6 RIGHT )+g LEFT ( 8 RIGHT )-h LEFT ( 4 RIGHT )= 6+4-6=4$
+[그림]
+(가) 함수  $f$ 는 항등함수이고, 함수  $g$ 는 상수함수이다.
+(나) 함수  $h$ 는 항등함수가 아닌 일대일대응이다.
+(다)  $f ( 4 ) +g ( 6 ) =h ( 8 ) $
+$f ( 6 ) +g ( 8 ) -h ( 4 ) $ 의 값은? [4.9점]
+①  $2$ ②  $4$ ③  $6$
+④  $8$    ⑤  $10$
+자연수  $k$ 에 대하여 전체집합  $U = LEFT {  x|x$ 는  $20$  이하의 자연수 $ RIGHT } $ 의 두 부분집합  $A = LEFT {  x|x$ 는  $6$  이하의 소수 $ RIGHT } $ ,  $B = LEFT {  x|x$ 는  $k$ 의 약수 $ RIGHT } $ 가 다음 조건을 만족시키는 모든  $k$ 의 값의 합은? [5.1점]
+$④$
+$A= left{2`,``3`,``5 right} `,$   $B= left{x left|x는```k의```약수 right}$ 에 대하여
+$n LEFT ( A cap B RIGHT )=2 `,$   $B-A$ 의 원소합 짝수여야 하고,
+$k=15 `,$   $B= left{1`,``3`,``5`,``15 right}$
+$k=18 `,$   $B= left{1`,``2`,``3`,``6`,``9`,``18 right}$ 일 때 조건을 만족한다.
+따라서 가능한  $k$ 의 값의 합은  $33$
+[그림]
+(가)  $n ( A SMALLINTER B ) =2$
+(나) 집합  $A ^{C} SMALLINTER  B$ 의 모든 원소의 합은 짝수이다.
+①  $21$ ②  $25$ ③  $28$
+④  $33$ ⑤  $35$
+함수  $f ( x ) ={ax +b} over {x +c}$ 의 정의역을  $A$ , 치역을  $B$ 라 하자.
+$①$
+(가) 치역  $left{y left|y ne -1 right} `,$  정의역  $left{x left|x ne 2 right}$ 이므로
+$f LEFT ( x RIGHT )= -x+b over x-2 `,$   $a=-1 `,$   $c=-2$ 이고,
+$f LEFT ( x RIGHT )= b-2 over x-2 -1 `,$  (나)  $y= 2x-3 over x+1 = -5 over x+1 +2$ 이므로
+$b-2 =-5 `,$   $b=-3$ 이고,  $a+b+c=-6$
+두 집합  $A, B$ 와 함수  $y =f ( x ) $ 가 다음 조건을 만족시킬 때,  $a +b +c$ 의 값은? (단,  $a, b, c$ 는 상수이고,  $b  !=  ac$ 이다.) [5.2점]
+[그림]
+(가) 집합  $A -B = LEFT {  -1 RIGHT } $ ,  $B -A = LEFT {  2 RIGHT } $ 이다.
+(나) 함수  $y =f ( x ) $ 의 그래프를 적당히 평행이동하면
+$y ={2x -3} over {x +1}$ 의 그래프와 일치한다.
+①  $ -6$ ②  $ -4$ ③  $ -2$
+④  $0$ ⑤  $2$
+[논술형 1] 명제 '모든 실수  $x$ 에 대하여  $x^{2} -k  GEQ -9$ 이다.'는 참이고, 명제 '어떤 실수  $x$ 에 대하여  $1 -x^{2}  GEQ k$ 이다.'는 거짓일 때, 정수  $k$ 의 개수를 구하고, 그 풀이 과정을 논술하시오. [5.0점]
+$8$
+‘모든 실수  $x$ 에 대하여  $x^2 ge k-9$ 이다.’가 참이므로,  $k-9 le0 `,$   $k le9$
+‘어떤 실수  $x$ 에 대하여  $x^2 le 1-k$ 이다.’가 거짓이므로, 그 부정
+‘모든 실수  $x$ 에 대하여  $x^2 > 1-k$ 이다.’가 참이고,  $1-k <0 `,$   $k>1$
+따라서  $1<k le9$ 이고, 정수  $k$ 의 개수는  $9-1=8$
+[논술형 2] 두 함수
+$12 over5 `,$   $19 over4$
+$f LEFT ( g LEFT ( 1 RIGHT ) RIGHT )+g LEFT ( f LEFT ( 3 RIGHT ) RIGHT )=30$
+$f LEFT ( a+1 RIGHT )+f LEFT ( 3 RIGHT )left{f LEFT ( 3 RIGHT )+a right}-30=0$
+$a+2+f LEFT ( 3 RIGHT )left{f LEFT ( 3 RIGHT )+a right}-30=0$
+$a-28 +f LEFT ( 3 RIGHT )left{f LEFT ( 3 RIGHT )+a right}=0$
+ⅰ)  $3 gea $
+$a-28 +4 LEFT ( 4+a RIGHT )=0 `,$   $a= 12 over5$
+ⅱ)  $3<a$
+$a-28 +3 LEFT ( 3+a RIGHT )=0 `,$   $a= 19 over4$
+$f(x)= {cases{x+1~~~(x GEQ  a)#2x-3~~(x<a)}} ,~~~g(x)=x ^{2} +ax$
+에 대하여  $ ( f CIRC g )  ( 1 )  +  ( g CIRC f )  ( 3 )  = 30$ 을 만족시키는 모든 실수  $a$ 의 값을 구하고, 그 풀이 과정을 논술하시오. [6.0점]
+[논술형 3] 함수  $f ( x )  = sqrt {3x +1} +1$ 에 대하여 다음 물음에 답하시오. [총 7.0점]
+(1)  $g LEFT ( x RIGHT )= 1 over3 LEFT ( x-1 RIGHT )^2 - 1 over3`,$   $left{x left|x ge 1 right}$  (2)  $50 over 9 pi$
+(1)
+$f LEFT ( x RIGHT )= sqrt{3 LEFT ( x+ 1 over3 RIGHT )} +1$ 의 정의역  $left{x left|x ge - 1 over3 right} `,$  치역  $left{y left|y ge 1 right}$
+역함수  $g LEFT ( x RIGHT )$ 를 구하면,
+$sqrt{3x+1}=y-1 `,$   $3x+1= LEFT ( y-1 RIGHT )^2 `,$
+$3x= LEFT ( y-1 RIGHT )^2 -1 `,$   $x= 1 over3 LEFT ( y-1 RIGHT )^2 - 1 over3$
+따라서  $g LEFT ( x RIGHT )= 1 over3 LEFT ( x-1 RIGHT )^2 - 1 over3 `,$   $left{x left|x ge 1 right}$
+(2)
+방정식  $f LEFT ( x RIGHT )=x `,$   $sqrt{3x+1} +1=x `,$   $sqrt{3x+1} =x-1$
+$3x+1=x^2 -2x+1 `,$   $x^2 -5x=x LEFT ( x-5 RIGHT )=0 `,$   $x=5$
+$rmA LEFT ( 5 `,``5 RIGHT )$ 이고  $rmB LEFT ( 1`,``3 RIGHT )`,$   $rmC LEFT ( 3`,``1 RIGHT )$
+두 점  $rmB `,$   $rmC$ 가  $y=x$  대칭이고 점  $rmA$ 도  $y=x$  위의 점이므로
+삼각형  $rmABC$ 의 외접원의 중심은  $y=x$  위의 점으로,
+원의 중심을  $rmD LEFT ( ita `,``a RIGHT )$ 라 하면  ${bar{rmDA}}^2 ={bar{rmDB}}^2$ 에서
+$LEFT ( a-5 RIGHT )^2 + LEFT ( a-5 RIGHT )^2 = LEFT ( a-1 RIGHT )^2 + LEFT ( a-3 RIGHT )^2$
+$2a^2 -20a+50=a^2 -8a+10 `,$   $40=12a `,$   $a= 10 over3$ 이고,
+$r^2 = LEFT ( - 5 over3 RIGHT )^2 + LEFT ( - 5 over3 RIGHT )^2 = 50 over 9$ 이므로 외접원의 넓이는  $50 over 9 pi$
+3-1) 함수  $f ( x )  = sqrt {3x +1} +1$ 의 역함수를  $g ( x ) $ 라 할 때, 함수  $g ( x ) $ 를 구하고, 그 풀이 과정을 논술하시오. [2.0점]
+3-2) 함수  $y =f ( x ) $ 와 그 역함수  $y =g ( x ) $ 의 그래프가 만나는 점을 A라 하자. 함수  $y =f ( x ) $  위의 점 B $ ( 1, f ( 1 )  ) $ 를 지나고 기울기가  $ -1$ 인 직선  $l$ 이 함수  $y =g ( x ) $ 의 그래프와 만나는 점을 C라 할 때, 삼각형 ABC의 외접원의 넓이를 구하고, 그 풀이 과정을 논술하시오. [5.0점]
+2025년 2학기기말 중산고1 공통수학2 정답 및 해설

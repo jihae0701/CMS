@@ -1,0 +1,346 @@
+[표][표]
+[그림][그림]
+[그림]
+2025년 수원시 유신고 1-2 기말고사 공수2
+시험 범위
+명제 ~ 무리함수
+명제에 해당하는 설명으로 옳은 것은?
+$②$
+① 정의의 정의
+② 명제의 정의
+③ 집합의 정의
+④ 함수의 정의
+⑤ 방정식의 정의
+① 용어의 뜻을 명확하게 정한 것이다.
+② 참 또는 거짓을 명확하게 판별할 수 있는 문장이나 식이다.
+③ 어떤 기준에 따라 대상을 분명하게 정할 수 있을 때, 그 대상들의 모임이다.
+④ 두 집합 중 한 집합의 각 원소에 다른 집합의 원소가 오직 하나씩 대응하는 것이다.
+⑤ 변수를 포함하는 문장이나 식 중에서 변수의 값에 따라 참, 거짓을 판별할 수 있는 것이다.
+전체집합  $U``$ 에 대하여 조건  $p`$ 의 진리집합을  $P``$ 라 할 때, 명제 ‘어떤  $x`$ 에 대하여  $p`$ 가 아니다.’에 대한 설명으로 옳은 것은?
+$①$
+‘ $P=U$ 이지 않다.’이므로  $P neU$ 이면 참이고  $P=U$ 이면 거짓
+①  $P` ne U``$ 이면 참이고,  $P`=U``$ 이면 거짓이다.
+②  $P` ne U``$ 이면 참이고,  $P` ne EMPTYSET `$ 이면 거짓이다.
+③  $P` ne U``$ 이면 참이고,  $P`= EMPTYSET `$ 이면 거짓이다.
+④  $P`=U``$ 이면 참이고,  $P` ne U``$ 이면 거짓이다.
+⑤  $P`= EMPTYSET `$ 이면 참이고,  $P` ne EMPTYSET `$ 이면 거짓이다.
+함수  $f left(x right)=ax+b`$ 에 대한 설명으로 옳은 것은? (단,  $a ne 0`$ ,  $a`$ ,  $b`$ 는 상수)
+$④$
+① 일차함수를 두 번 합성해도 일차함수
+② 일차함수의 역함수도 일차함수
+③  $a=-1$ 인 경우  $b$ 의 값에 관계없이  $f=f^-1$
+④  $a ne0$ 이므로 일대일함수이다.
+⑤  $a=1 `,$   $b ne0$ 인 경우 평행가능하다.
+①  $ left(f circ f right) left(x right)`$ 는 이차함수이다.
+②  $f`^{-1} left(x right)`$ 는 다항함수가 아닌 유리함수이다.
+③  $f=f^{-1}`$ 을 만족하는 순서쌍  $ left(a,``b right)= left(1,``0 right)`$ 뿐이다.
+④ 정의역의 원소  $x_{1}`$ ,  $x_{2}`$ 에 대하여  $x_{1} ne x_{2}`$ 이면  $f left(x_{1} right) ne f left(x_{2} right)`$ 이다.
+⑤  $y=f left(x right)`$ 의 그래프와  $y=f`^{-1} left(x right)`$ 의 그래프가 평행하는 경우는 없다.
+정의역과 공역이 모두 실수 전체의 집합인 함수
+$②$
+$LEFT ( 3-2a RIGHT ) LEFT ( a+4 RIGHT )>0 `,$   $LEFT ( 2a-3 RIGHT ) LEFT ( a+4 RIGHT )<0 `,$   $-4 < a < 3 over2$
+따라서 정수  $a$ 는  $-3$ 부터  $1$ 까지의  $5$ 개
+$f left(x right)= cases {`` left(3-2a right)x+5a & & left(x ge 2 right) #`` left(a+4 right)x-a-2 & & left(x < 2 right)}`$
+가 일대일대응이 되도록 하는 정수  $a`$ 의 개수는?
+①  $4`$ ②  $5`$ ③  $6`$
+④  $7`$ ⑤  $8$
+함수  $y={ax+b} over {x+c}`$ 의 그래프가 그림과 같을 때, 상수  $a`$ ,  $b`$ ,  $c`$ 에 대하여  $abc`$ 의 값은? (단,  $ac ne b`$ )
+$⑤$
+두 점근선  $x=1 `,$   $y=-3$ 이므로  $y= -3x+b over x-1`,$   $a=-3 `,$   $c=-1$
+점  $LEFT ( 0 `,``-1 RIGHT )$ 을 지나므로  $-1 = -b `,$   $b=1$  따라서  $abc=3$
+[그림]
+①  $-5`$ ②  $-3`$ ③  $-1`$
+④  $1`$ ⑤  $3$
+모든 실수  $x`$ 에 대하여  $ sqrt{kx^{2}-2kx+10}`$ 의 값이 실수가 되기 위한 정수  $k`$ 의 개수는?
+$⑤$
+$k=0$ 일 때 조건을 만족시킨다.
+$k ne 0$ 일 때,  $k>0 `,$  방정식  $kx^2 -2kx+10 =0$ 의 판별식  $D le0$
+$D/4=k^2 -10k=k LEFT ( k-10 RIGHT )le 0 `,$   $0 le k le 10$  따라서  $0<k le 10$
+그런데  $k=0$ 일 때도 성립하므로  $0 le k le10$ 이고 정수  $k$ 는  $11$ 개
+①  $7`$ ②  $8`$ ③  $9`$
+④  $10`$ ⑤  $11$
+두 집합  $X`= left {a,``2 right },``Y`= left {y left|` y right.`$ 는 실수 $ left.` right }`$ 에 대하여  $X``$ 에서  $Y``$ 로의 두 함수  $f`$ ,  $g`$ 를  $f left(x right)=x^{2}-3x+b`$ ,  $g left(x right)=`-2x+2-4a`$ 로 정의한다.  $f=g`$ 일 때, 두 상수  $a`$ ,  $b`$ 에 대하여  $a+b`$ 의 값은? (단,  $a ne 2`$ )
+$⑤$
+방정식  $f LEFT ( x RIGHT )=g LEFT ( x RIGHT )$ 의 두 근이  $a `,$   $2$ 이다.
+$x^2 -3x+b=-2x+2-4a `,$   $x^2 -x+4a+b-2=0$
+두 근의 합  $a+2=1 `,$   $a=-1$ 이고,
+두 근의 곱  $-2=-4+b-2 `,$   $b=4$  따라서  $a+b=3$
+①  $-6`$ ②  $-4`$ ③  $-1`$
+④  $1`$ ⑤  $3$
+무리함수  $y=`- sqrt{2x+6}+5`$ 에 대하여 <보기> 에서 옳은 것만을 있는 대로 고른 것은?
+$①$
+$y=-sqrt{2 LEFT ( x+3 RIGHT )}+5$ 는 출발점  $LEFT ( -3 `,``5 RIGHT )$ 인 우하향곡선
+정의역  $left{x left|x ge -3 right} `,$  치역  $left{y left|y le 5 right}$
+$y$ 절편  $- sqrt6 +5 >0$ 이므로 제 $1 `,$   $2 `,$   $4$ 사분면을 지난다.
+$y=-sqrt{2 LEFT ( x+3 RIGHT )}+5$ 를  $x$ 축방향  $3$ 만큼,  $y$ 축방향  $-5$ 만큼
+평행이동하면  $y=- sqrt{2x}$ 와 일치한다.
+따라서 <보기> 중 옳은 것은 ㄱ뿐이다.
+[그림]
+[그림] [그림]
+[보 기]
+ㄱ. 정의역은  $ left {x`left|` x geq`-3 right }`$ 이고, 치역은  $ left {y`left|` y le 5 right }`$ 이다.
+ㄴ. 그래프는 제  $3`$ 사분면을 지난다.
+ㄷ. 함수  $y=`- sqrt{2x+6}+5`$ 를  $x`$ 축으로  $-3`$ 만큼,  $y`$ 축으로  $-5`$ 만큼 평행이동시키면  $y=`- sqrt{2x}`$ 와 일치한다.
+① ㄱ② ㄱ, ㄴ③ ㄴ, ㄷ
+④ ㄱ, ㄷ⑤ ㄱ, ㄴ, ㄷ
+대우를 이용한 증명법으로 증명할 수 있는 명제로 알맞은 것은?
+$④$
+① 귀류법
+② 귀류법
+③ 양수,  $0 `,$  음수 세 가지 경우로 나누어 증명
+④ 대우증명법
+⑤ 직접증명
+① 소수는 무수히 많다.
+②  $ sqrt{2}`$ 는 유리수가 아니다.
+③ 모든 실수  $x`$ 에 대하여  $x^{2} ge 0`$ 이다.
+④ 자연수  $n`$ 에 대하여  $n^{2}`$ 이 짝수이면  $n`$ 도 짝수이다.
+⑤ 자연수  $n`$ 에 대하여  $n`$ 이  $4`$ 의 배수이면  $n^{2}`$ 은  $2`$ 의 배수이다.
+실수  $a`$ ,  $b`$ 에 대한 절대부등식만을 <보기> 에서 고른 것은?
+$②$
+ㄱ.
+$LEFT ( a^2 +b^2 RIGHT )-ab$  $=a^2 -ba +b^2$
+$= a^2 - ba + b^2 over4 + 3 over4 b^2$
+$=LEFT ( a- b over2 RIGHT )^2 + 3 over 4 b^2$  $ ge0$
+등호는  $a=b=0$ 일 때 성립
+ㄴ.
+$LEFT ( a+b RIGHT )-2 sqrtab$  $=LEFT ( sqrta RIGHT )^2 + LEFT ( sqrtb RIGHT )^2 -2 sqrta sqrtb$
+$=LEFT ( sqrta - sqrtb RIGHT )^2$  $ge0$
+등호는  $a=b$ 일 때 성립
+ㄷ.
+양변  $0$  이상이므로 제곱끼리 비교
+$left|a+b right|^2 - LEFT ( left|a right|+ left|b right| RIGHT )^2$
+$=LEFT ( a+b RIGHT )^2 - LEFT ( left|a right|^2 + left|b right|^2 +2 left|a right| left|b right| RIGHT )$
+$=LEFT ( a^2 +b^2 +2ab RIGHT )- LEFT ( a^2 +b^2 +2 left|ab right| RIGHT )$
+$=2 LEFT ( ab - left|ab right| RIGHT )$  $le0$
+따라서  $left|a+b right|^2 le LEFT ( left|a right|+ left|b right| RIGHT )^2$ 이고,
+$left|a +b right| le left|a right|+ left|b right|$  등호는  $ab ge0$ 일 때 성립
+ㄹ.
+양변  $0$  이상이므로 제곱끼리 비교
+$left|a-b right|^2 - LEFT ( left|a right|+ left|b right| RIGHT )^2$
+$=LEFT ( a-b RIGHT )^2 - LEFT ( left|a right|^2 + left|b right|^2 +2 left|a right| left|b right| RIGHT )$
+$=LEFT ( a^2 +b^2 -2ab RIGHT )- LEFT ( a^2 +b^2 +2 left|ab right| RIGHT )$
+$=-2 LEFT ( ab + left|ab right| RIGHT )$  $le 0$
+따라서  $left|a-b right|^2 le LEFT ( left|a right|+ left|b right| RIGHT )^2$ 이고,
+$left|a -b right| le left|a right|+ left|b right|$  등호는  $ab le 0$ 일 때 성립
+ㅁ.
+$left|a-b right|ge0 `,$   $left| left|a right|- left|b right| right| ge0$ 이므로 제곱끼리 비교
+$left|a-b right|^2 - left| left|a right|- left|b right| right|^2$  $=LEFT ( a-b RIGHT )^2 - LEFT ( left|a right|- left|b right| RIGHT )^2$
+$=LEFT ( a^2 +b^2 -2ab RIGHT )- LEFT ( a^2 +b^2 -2 left|ab right| RIGHT )$
+$=2 LEFT ( left|ab right|-ab RIGHT )$  $ge0$
+따라서  $left|a-b right|^2 ge left| left|a right|- left|b right| right|^2$ 이므로
+$left|a-b right| ge left| left|a right|- left|b right| right|$ 가 성립한다.
+이때 등호는  $ab ge0$ 일 때 성립한다.
+따라서 <보기> 중 적당한 것은 ㄱ, ㄴ, ㅁ이다.
+[그림]
+[그림] [그림]
+[보 기]
+ㄱ.  $a^{2}+b^{2} ge ab`$
+ㄴ.  $a+b ge 2 sqrt{ab}$  (단,  $a > 0`$ ,  $b > 0`$ )
+ㄷ.  $ left|` a+b`right| ge left|` a`right| + left|` b`right| `$
+ㄹ.  $ left|` a-b`right| ge left|` a`right| + left|` b`right| `$
+ㅁ.  $ left|` a-b`right| ge left|` left|` a`right| - left|` b`right| `right| $
+① ㄱ, ㄴ, ㄷ② ㄱ, ㄴ, ㅁ③ ㄱ, ㄷ, ㄹ
+④ ㄴ, ㄷ, ㄹ⑤ ㄴ, ㄹ, ㅁ
+다음은 명제 ‘ $2`$ 보다 크거나 같은 자연수  $n`$ 에 대하여  $ sqrt{2^{n}-1}`$ 은 무리수이다.’가 참임을 증명하는 과정이다.
+$③$
+$p^2 LEFT ( 2^n -1 RIGHT )=q^2$ 에서
+$p$ 는  $q^2$ 의 약수이고,  $p$ 와  $q$ 는 서로소인 자연수이므로
+$p=1`,$   $2^n -1 =q^2 `,$   $2^n = q^2 +1$ 에서  $f LEFT ( q RIGHT )=q^2 +1$
+$q=2k$ 일 때  $2^n = LEFT ( 2k RIGHT )^2 +1 = 4k^2 +1$
+$q=2k+1$ 일 때  $2^n = LEFT ( 2k+1 RIGHT )^2 +1 =4k^2 +4k +2 =4 LEFT ( k^2 +k RIGHT )+2$
+$g LEFT ( k RIGHT )=2k+1$
+$n$ 이  $2$  이상인 자연수이므로  $2^n$ 은 항상  $4$ 의 배수인데,
+우변은  $4$ 로 나누었을 때의 나머지가  $1$  또는  $2$ 이므로 모순
+$a=4 `,$   $b=2$ 이고,  $f LEFT ( a RIGHT )+g LEFT ( b RIGHT )=17+5=22$
+[그림]
+$ sqrt{2^{n}-1}`$ 이 무리수가 아니라고 가정하면
+$ sqrt{2^{n}-1}={q} over {p}~ left(p,``q right.`$ 는 서로소인 자연수 $ left.` right)`$ 로 놓을 수 있다.
+$2^{n}-1= left({q} over {p} right)^{2}`$ 이므로  $p`^{2} left(2^{n}-1 right)=q^{2}`$ 이다.
+$p`$ 는  $q^{2}`$ 의 약수이고,  $p`$ 와  $q`$ 는 서로소인 자연수이므로
+$2^{n}= box{~ left(가 right)~}`$
+자연수  $k`$ 에 대하여
+(i)  $q=2k`$ 일 때
+$2^{n}= box{~ left(가 right)~}``=4k^{2}+1$
+(ii)  $q= box{~ left(나 right)~}`$ 일 때
+$2^{n}= box{~ left(가 right)~}``=4k^{2}+4k+2=4 left(k^{2}+k right)+2`$
+$n`$ 이  $2$  이상인 자연수이므로  $2^{n}`$ 은 항상  $ box{~ left(다 right)~}`$ 의 배수인데, 우변은  $ box{~ left(다 right)~}`$ 로 나누었을 때의 나머지가  $1$  또는  $ box{~ left(라 right)~}`$ 이므로 모순이다.
+따라서  $ sqrt{2^{n}-1}`$ 은 무리수이다.
+위의 (가), (나)에 알맞은 식을 각각  $f left(q right)`$ ,  $g left(k right)`$ 라 하고 (다), (라)에 들어갈 숫자를 각각  $a`$ ,  $b`$ 라 할 때  $f left(a right)+g left(b right)`$ 의 값은?
+①  $20`$ ②  $21`$ ③  $22`$
+④  $23`$ ⑤  $24$
+유리함수  $f left(x right)={2} over {x}+k`$ 에 대하여 함수  $y= left|` f left(x right)`right| `$ 의 그래프와 직선  $y=3`$ 이 오직 한 점에서만 만날 때, 등식  $k+f`^{-1} left(1 right)=a`$ 를 만족시킨다. 모든 실수  $a`$ 의 값의 곱은? (단,  $k ne 0`$ 인 실수)
+$③$
+$f LEFT ( x RIGHT )= 2 over x +k = kx+2 over x$
+$y= left|f LEFT ( x RIGHT )right|$ 의 그래프와 직선  $y=3$ 이 한 점에서만 만나므로
+ⅰ)  $k=3$ 일 때  $f LEFT ( x RIGHT )= 3x+2 overx `,$   $f^-1 LEFT ( x RIGHT )= 2 over x-3 `,$   $a=2$
+ⅱ)  $k=-3$ 일 때  $f LEFT ( x RIGHT )= -3x+2 over x `,$   $f^-1 LEFT ( x RIGHT )= 2 over x+3 `,$   $a=- 5 over2$
+따라서  $a$ 값들의 곱은  $2 times LEFT ( - 5 over 2  RIGHT )=-5$
+①  $-9`$ ②  $-7`$ ③  $-5`$
+④  $-3`$ ⑤  $-1$
+집합  $ left {x left|` right.x >`-3 right }`$ 에서 정의된 함수  $f left(x right)`$ 를
+$④$
+$-3 <x<1 `,$   $f LEFT ( x RIGHT )<0 `,$   $x ge1 `,$   $f LEFT ( x RIGHT )ge0$
+$f^-1 LEFT ( -3 RIGHT )=k$ 로 두면  $-3<k<1 `,$   $f LEFT ( k RIGHT )=-3= k-1 over k+3 `,$   $k=-2$
+$f^-1 LEFT ( 2 RIGHT )=l$ 로 두면  $l ge1`,$   $f LEFT ( l RIGHT )=2= sqrt{2l-2} `,$   $l=3$
+따라서  $f^-1 LEFT ( -3 RIGHT )+f^-1 LEFT ( 2 RIGHT )= -2+3=1$
+$f left(x right)= cases {``{x-1} over {x+3} & & left(-3 < x < 1 right) #`` sqrt{2x-2} & & left(x ge 1 right)}`$
+이라 할 때,  $f`^{-1} left(-3 right)+f`^{-1} left(2 right)`$ 의 값은?
+①  $-2`$ ②  $-1`$ ③  $0`$
+④  $1`$ ⑤  $2$
+함수  $f left(x right)={3x+1} over {x+2}`$ 의 그래프와 직선  $kx-y+k+3=0`$ 이 만나지 않도록 하는 정수  $k`$ 의 개수는?
+$③$
+$f LEFT ( x RIGHT )= 3x+1 over x+2 = -5 over x+2 +3$ 의 두 점근선  $x=-2 `,$   $y=3$
+$k<0$ 이면 서로 다른 두 점에서 만나고,
+$k=0$ 일 때부터 안만나되, 접하기 전까지 안만난다.
+방정식  $3x+1 over x+2 =kx+k+3 `,$
+$kx^2 +3kx+2k+5=0$ 의 판별식  $D=0$
+$D= 9k^2 -4k LEFT ( 3k+5 RIGHT )=0 `,$   $k^2 -20k=k LEFT ( k-20 RIGHT )=0 `,$   $k=20$
+따라서 만나지 않도록 하는  $k$ 의 값의 범위는  $0 le k <20$ 이고,
+정수  $k$ 의 개수는  $20$ 이다.
+①  $18`$ ②  $19`$ ③  $20`$
+④  $21`$ ⑤  $22$
+집합  $X`= left {x`left|` 0 le x le 4 right }`$ 에 대하여  $X``$ 에서  $X``$ 로의 두 함수
+$①$
+$n$ 축방법 또는 수식방법을 이용  $LEFT ( f circg RIGHT ) LEFT ( x RIGHT )$ 를 구하면
+$LEFT ( f circg RIGHT ) LEFT ( x RIGHT )= cases{` 4x ````` LEFT ( 0 le x <1 RIGHT ) #` -8x+12 ````` LEFT ( 1 le x < 3 over2 RIGHT ) #` 8x-12 ````` LEFT ( 3 over2 le x <2 RIGHT ) #` -4x+12 ````` LEFT ( 2 le x <3 RIGHT ) #` 2x-6 ````` LEFT ( 3 le x le4 RIGHT )}$
+[그림]
+$y= LEFT ( f circg RIGHT ) LEFT ( x RIGHT )$ 와  $y=k$ 의 교점은  $4$ 개이고,
+$x$ 좌표를 작은 순으로  $alpha `,$   $beta `,$   $gamma `,$   $delta$ 라 하면
+$alpha `,$   $delta$ 가  $x= 3 over2$  선대칭,  $beta `,$   $gamma$ 가  $x= 3 over2$  선대칭이므로
+$alpha+beta+gamma+delta$  $=LEFT ( alpha+delta RIGHT )+ LEFT ( beta+gamma RIGHT )$  $= 3+3$  $=6$
+$f left(x right)= cases {``-2x+4 & & left(0 le x < 2 right) #`` 2x-4 & & left(2 le x le 4 right)}`$ ,
+$ left.g left(x right)= cases {``-2x+2 & & left(0 le x < 1 right) #`` 4x-4 & & left(1 le x < 2 right) #`` -2x+8 & & left(2 le x < 3 right) #`` x-1 & & left(3 le x le 4 right)} right.`$
+의 그래프가 그림과 같을 때,  $2 < k < 4`$ 인 양의 실수  $k`$ 에 대하여  $ left(f circ g right) left(x right)=k`$ 의 모든 실근의 합은?
+[그림][그림]
+①  $6`$ ②  $7`$ ③  $8`$
+④  $9`$ ⑤  $10$
+최고차항의 계수가 양수이고 꼭짓점의  $x`$ 좌표가  $2`$ 인 이차함수  $f left(x right)`$ 에 대하여 함수  $g left(x right)`$ 를 다음과 같이 정의하자.
+$③$
+$f LEFT ( x RIGHT )$ 가 최고차항 계수 양수이고 꼭짓점  $x$ 좌표  $2$ 인 이차함수이므로
+$-1 le x le 1$ 에서  $f LEFT ( x RIGHT )$ 는 감소하고,  $f LEFT ( -1 RIGHT )=6 `,$   $f LEFT ( 1 RIGHT )=-2$ 여야 한다.
+$f LEFT ( x RIGHT )=a LEFT ( x-2 RIGHT )^2 +b `,$   $cases{`f LEFT ( 1 RIGHT )=a+b=-2 #` f LEFT ( -1 RIGHT )=9a+b=6}$
+두 조건을 연립하면  $a=1 `,$   $b=-3$
+$f LEFT ( x RIGHT )= LEFT ( x-2 RIGHT )^2 -3 = x^2 -4x+1$
+$f LEFT ( -1 RIGHT )+f LEFT ( 0 RIGHT )+f LEFT ( g^-1 LEFT ( 1 RIGHT ) RIGHT )$  $=6+1+f LEFT ( g^-1 LEFT ( 1 RIGHT ) RIGHT )$  $=7+f LEFT ( g^-1 LEFT ( 1 RIGHT ) RIGHT )$
+$g^-1 LEFT ( 1 RIGHT )=k$ 로 두면  $f LEFT ( k RIGHT )=1=k^2 -4k+1 `,$   $k=0$
+따라서  $7+f LEFT ( 0 RIGHT )$  $=7+1$  $=8$
+$g left(x right)= cases {``x-1 & & left(x <`-1 right) #`` f left(x right) & & left(-1 le x le 1 right) #`` 2x+4 & & left(x > 1 right)}`$
+함수  $g left(x right)`$ 의 치역이 실수 전체의 집합이고, 함수  $g left(x right)`$ 의 역함수가 존재할 때,  $f left(-1 right)+f left(0 right)+ left(f circ g^{-1} right) left(1 right)`$ 의 값은?
+①  $6`$ ②  $7`$ ③  $8`$
+④  $9`$ ⑤  $10$
+실수 전체의 집합에서 정의된 함수  $f left(x right)= cases {``{1} over {2}x+2 & & left(x ge 2 right) #`` 3x-3 & & left(x < 2 right)}`$ 의 역함수를  $g left(x right)`$ 라 할 때, <보기> 에서 옳은 것만을 있는 대로 고른 것은?
+$⑤$
+$x ge2 `,$   $f LEFT ( x RIGHT )ge3 `,$   $x<2 `,$   $f LEFT ( x RIGHT )<3$ 이므로
+$g LEFT ( x RIGHT )=cases{` 1 over3 x +1 ````` LEFT ( x<3 RIGHT ) #``` 2x-4 `````` LEFT ( x ge3 RIGHT )}$
+ㄱ.
+$f LEFT ( f LEFT ( 8 RIGHT ) RIGHT )=f LEFT ( 6 RIGHT )=5$
+ㄴ.
+$g LEFT ( g LEFT ( g LEFT ( 3 RIGHT ) RIGHT ) RIGHT )=g LEFT ( g LEFT ( 2 RIGHT ) RIGHT )=g LEFT ( 5 over3 RIGHT )= 14 over 9$
+ㄷ.
+$x ge 2 `,$   $1 over 2 x +2 =x `,$   $rmA LEFT ( 4 `,``4 RIGHT )$
+$x<2 `,$   $3x-3 =x `,$   $rmB LEFT ( 3 over2 `,`` 3 over 2 RIGHT )$ 이고,  $bar{rmAB}= 5 over 2 sqrt2$
+꺾임점  $rmC LEFT ( 2 `,``3 RIGHT )$ 에서 직선  $x-y=0$ 까지 거리  ${left|2-3 right|} over sqrt{1+1} = 1 over sqrt2$
+$y=x$ 와  $y=f LEFT ( x RIGHT )`,$   $y=x$ 와  $y=g LEFT ( x RIGHT )$ 로 둘러싸인 각 부분의
+넓이가 같으므로, 구하려는 넓이는,
+$2 triangle rm rmABC$  $=2 times 1 over2 times {5 over2 sqrt2 times 1 over sqrt2$  $= 5 over 2$
+[그림]
+[그림] [그림]
+[보 기]
+ㄱ.  $ left(f circ f right) left(8 right)=5`$
+ㄴ.  $ left(g circ g circ g right) left(3 right)={14} over {9}`$
+ㄷ. 두 함수  $y=f left(x right)`$ ,  $y=g left(x right)`$ 의 그래프로 둘러싸인 부분의 넓이는  ${5} over {2}`$ 이다.
+① ㄱ② ㄱ, ㄴ③ ㄱ, ㄷ
+④ ㄴ, ㄷ⑤ ㄱ, ㄴ, ㄷ
+실수  $x`$ 에 대하여 두 조건  $p`$ 와  $q`$ 가
+$④$
+(가)가 참이면
+$LEFT ( x-3 RIGHT )^2 =x^2 -6x+9=x^2 - LEFT ( a+b+3 RIGHT )x +3 LEFT ( a+b RIGHT )$ 이므로  $a+b=3$
+이때 (나)도 참이면  $simq ` RARROW`p$ 이고  $simp ` RARROW`q$ 이므로
+$x=3$ 일 때  $q$ 가 성립,  $9-6 sqrtab -3t+2t sqrtab ge0$
+$2t sqrtab -3t-6 sqrtab +9 ge0$
+$LEFT ( 2 sqrtab -3 RIGHT ) LEFT ( t-3 RIGHT )ge0$ 이고,
+$a >0 `,$   $b>0$ 이므로 산술, 기하평균 관계가 성립하되,
+$a neb$ 이므로  $a+b > 2 sqrtab `,$   $2 sqrtab <3$
+즉  $2 sqrtab -3 <0$ 이므로  $t-3 le0 `,$   $t le3$  따라서  $M=3$
+(가)가 참이고 (나)가 거짓이면
+$x=3$ 일 때  $simq$ 가 성립.  $LEFT ( 2 sqrtab -3 RIGHT ) LEFT ( t-3 RIGHT )<0 `,$   $t>3$
+따라서  $m=4$ 이고,  $M+m =7$
+$p`:`x^{2}- left(a+b+3 right)x+3 left(a+b right) > 0`$
+$q`:`x^{2}- left(2 sqrt{ab}+t right)x+2t sqrt{ab} ge 0`$
+이다. 다음 두 명제가 모두 참이 되도록 하는 정수  $t`$ 의 값의 최댓값을  $M``$ , 두 명제 중 (가)는 참이고 (나)는 거짓이 되도록 하는 정수  $t`$ 의 최솟값을  $m`$ 이라 할 때,  $M`+m`$ 의 값은?
+(단,  $a`$ ,  $b`$ 는 서로 다른 양수)
+[그림]
+(가)  $x ne 3`$ 인 모든 실수  $x`$ 에 대하여  $p`$ 이다.
+(나)  $p`$ 는  $ sim q`$ 이기 위한 필요조건이다.
+①  $1`$ ②  $3`$ ③  $5`$
+④  $7`$ ⑤  $9$
+역함수가 존재하기 위한 조건을 제시하고, 함수  $f left(x right)=2x-7`$ 의 역함수를 구하는 풀이 과정과 답을 쓰시오.
+일대일대응,  $f^-1 LEFT ( x RIGHT )= x+7 over2$
+역함수가 존재하려면 원래 함수  $f LEFT ( x RIGHT )$ 가 일대일대응이어야 한다.
+$2x=y+7 `,$   $x= y+7 over 2$ 이므로,  $f^-1 LEFT ( x RIGHT )= x+7 over2$
+유리함수  $f left(x right)={ax+b} over {x+2}`$ 에 대하여  $y=f left(x right)`$ 의 그래프가 점  $ left(2,``1 right)`$ 을 지나고, 정의역의 모든 원소  $x`$ 에 대하여  $ left(f circ f right) left(x right)=x`$ 를 만족하는 상수  $a`$ ,  $b`$ 에 대하여  $a+b`$ 의 값을 구하는 풀이 과정과 답을 쓰시오. (단,  $b ne 2a`$ )
+$6$
+$f^-1 LEFT ( x RIGHT )= -2x+b over x-a = f LEFT ( x RIGHT )$ 이므로  $a=-2$
+$f LEFT ( x RIGHT )= -2x+b over x+2$ 가 점  $LEFT ( 2 `,``1 RIGHT )$ 을 지나므로  $1= -4+b over4 `,$   $b=8$
+따라서  $a+b=6$
+세 함수  $f`$ ,  $g`$ ,  $h`$ 에 대하여
+$LEFT ( -2 `,``-2 RIGHT )`,$   $LEFT ( -3 `,``0 RIGHT )$
+$LEFT ( LEFT ( f circg RIGHT ) circh RIGHT ) LEFT ( 2 RIGHT )$  $=LEFT ( f circg RIGHT ) LEFT ( -4+b RIGHT )$  $=a LEFT ( b-4 RIGHT )+3$  $=15 `,$
+$LEFT ( LEFT ( h circf RIGHT )circg  RIGHT ) LEFT ( 1 RIGHT )$  $=h LEFT ( LEFT ( f circg RIGHT ) LEFT ( 1 RIGHT ) RIGHT )$  $=h LEFT ( a+3 RIGHT )$  $=-2 LEFT ( a+b RIGHT )+b$  $=2b$
+$b=-2a-6$ 을  $a LEFT ( b-4 RIGHT ) =12$ 에 대입하면
+$a LEFT ( -2a-10 RIGHT )=12 `,$   $a^2 +5b+6= LEFT ( a+2 RIGHT ) LEFT ( a+3 RIGHT )=0$
+$a=-2$ 일 때  $b=-2 `,$   $a=-3$ 일 때  $b=0$ 이므로
+순서쌍  $LEFT ( a `,``b RIGHT )$ 는  $LEFT ( -2 `,``-2 RIGHT )`,$   $LEFT ( -3 `,``0 RIGHT )$
+$ left(f circ g right) left(x right)=ax+3`$ ,
+$h left(x right)=`-2x+b`$ ,
+$ left( left(f circ g right) circ h right) left(2 right)=15`$ ,
+$ left( left(h circ f right) circ g right) left(1 right)=2b`$
+를 만족시키는 두 실수  $a`$ ,  $b`$ 의 모든 순서쌍  $ left(a,``b right)`$ 를 구하는 풀이 과정과 답을 쓰시오.
+무리함수  $y= sqrt{2x-5}+3`$ 과 직선  $y=kx+2`$ 의 그래프가 서로 다른 두 점에서 만나도록 하는 실수  $k`$ 의 값의 범위를 구하는 풀이 과정과 답을 쓰시오.
+$2 over5  le k < {1+ sqrt6} over5$
+$y=kx+2$ 가 무리함수의 출발점  $LEFT ( 5 over2 `,``3 RIGHT )$ 을 지날 때,  $k= 2 over5$ (교점 $2$ 개)
+양수  $k$ 에 대하여,  $y=kx+2$ 가 무리함수와 접할 때
+방정식  $sqrt{2x-5}+3 =kx+2 `,$   $sqrt{2x-5} = kx-1$
+$2x-5=k^2 x^2 -2kx +1 `,$   $k^2 x^2 -2 LEFT ( k+1 RIGHT )x +6=0$ 의 판별식  $D =0$
+$D/4= LEFT ( k+1 RIGHT )^2 -6k^2 =0 `,$   $-5k^2 +2k+1=0$
+$5k^2 -2k-1=0 `,$   $k= {1+- sqrt6} over 5 `,$   $k= {1+ sqrt6} over5$ (교점 $1$ 개)
+따라서 교점이  $2$ 개 되는  $k$ 의 값의 범위는  $2 over5 le k < {1+ sqrt6} over 5$
+두 실수  $a`$ ,  $b`$ 에 대하여 다음 부등식이 항상 성립함을 증명하시오. (단, 등호가 성립하는 조건도 함께 구하시오.)
+해설참고
+[부등식 증명]
+부등식의 좌변에서 우변을 뺀 차를  $D$ 라 하고,  $D  GEQ 0$ 임을 보인다.
+$D = 2(a^{4} + b^{4}) - (a +b)(a^{3} + b^{3})$
+먼저 우변을 전개하면
+$(a +b)(a^{3} + b^{3}) = a^{4} + a b^{3} + b a^{3} + b^4$
+$D$ 를 정리하면
+$D = 2a^{4} + 2b^{4} - (a^{4} + b^{4} + a^{3} b + a b^{3})$
+$D = a^{4} + b^{4} - a^{3} b - a b^3$
+식을 인수분해하기 위해 항을 묶는다.
+$D = a^{3} (a - b) - b^{3} (a - b)$
+$D = (a - b) (a^{3} - b^{3})$
+이때, 인수분해 공식  $a^{3} - b^{3} =  ( a -b )  ( a^{2} + ab + b^{2} ) $ 를 사용한다.
+$D = (a - b) [(a - b)(a^{2} + ab + b^{2})]$
+$D = (a - b)^{2} (a^{2} + ab + b^{2})$
+$a, b$ 는 실수이므로  $ ( a - b ) ^2  GEQ 0$ 이다.
+$a^{2} + ab + b^{2} =  LEFT(a + {b} over {2} RIGHT)^{2} + {3} over {4} b^2$
+$a, b$ 는 실수이므로  $ LEFT ( a + {b} over {2} RIGHT ) ^2  GEQ 0$ 이고,  ${3} over {4} b^{2}  GEQ 0$ 이다. (∵ 실수의 제곱은 항상 0 이상이다.)
+따라서  $a^{2} + ab + b^{2}  GEQ 0$ 이다.
+결론적으로  $D$ 는 0 이상의 두 실수의 곱이므로  $D  GEQ 0$ 이다.
+$2(a^{4} + b^{4}) - (a +b)(a^{3} + b^{3})  GEQ 0$
+따라서  $2 ( a^{4} + b^{4} )   GEQ  ( a +b )  ( a^{3} + b^{3} ) $ 은 항상 성립한다.
+[등호 성립 조건]
+등호는  $D = 0$ 일 때 성립한다.
+$(a - b)^{2} (a^{2} + ab + b^{2}) = 0$
+곱이 0이 되려면  $ ( a - b ) ^2 = 0$ 이거나  $a^{2} + ab + b^{2} = 0$ 이어야 한다.
+1.   $ ( a - b ) ^2 = 0$  이면  $a = b$ 이다.
+2.   $a^{2} + ab + b^{2} = 0$  이면  $ LEFT ( a + {b} over {2} RIGHT ) ^2 + {3} over {4} b^{2} = 0$ 이므로  $b =0$ 이고  $a + {b} over {2} = 0$ 이다. 즉,  $a =0, b =0$ 이다.
+$a =b$  조건은  $a =0, b =0$ 인 경우를 포함하는 더 일반적인 조건이다.
+따라서 등호는  $a =b$ 일 때 성립한다.
+$2 left(a^{4}+b^{4} right) ge left(a+b right) left(a^{3}+b^{3} right)$
+[그림]
+[그림] [그림]
+[보 기]
+(가) 부등식의 성립함을 보이기 위해 ‘두 수의 차’를 이용하는 방법을 사용할 것.
+(나) 식을 정리하는 과정에서 사용된 인수분해 공식을 과정에 포함할 것.
+(다) 도출된 최종 식이 왜  $0$  이상인지에 대한 논리적 근거(실수의 성질 등)를 문장이나 수식으로 명확히 서술할 것.
+2025년 2학기기말 유신고1 공통수학2 정답 및 해설

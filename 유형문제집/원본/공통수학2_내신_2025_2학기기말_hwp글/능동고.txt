@@ -1,0 +1,217 @@
+두 집합  $A= LEFT { x`|`x는`16의`약수 RIGHT }$ ,
+[표]
+공통수학2
+2025년 2학기기말
+능동고 1학년
+기말고사 기출문제
+집합의 연산~무리함수
+[그림]
+$③$
+$A= left{1`,``2`,``4`,``8`,``16 right}`,$   $B= left{1`,``2`,``3`,``4`,``6`,``12 right}$
+$A cap B = left{1`,``2`,``4 right}$ 이므로  $n LEFT ( A cap B RIGHT )=3$
+$B= LEFT { x`|`x는`12의`약수 RIGHT }$ 에 대하여  $n LEFT ( A SMALLINTER B RIGHT )$ 의 값은?
+[ $4.1$ 점]
+①  $1$ ②  $2$ ③  $3$
+④  $4$ ⑤  $5$
+서로소인 두 집합  $A,`B$ 에 대하여  $n LEFT ( A RIGHT ) =7,`n LEFT ( B RIGHT ) =5$ 일 때,  $n LEFT ( A CUP B RIGHT )$ 의 값은?[ $4.1$ 점]
+$⑤$
+$A cap B=emptyset$ 이므로  $n LEFT ( A cup B RIGHT )=n LEFT ( A RIGHT )+n LEFT ( B RIGHT )=12$
+①  $8$ ②  $9$ ③  $10$
+④  $11$ ⑤  $12$
+명제
+$⑤$
+자명하게 ‘어떤 실수  $x$ 에 대하여  $x^2 > 2x-1$ 이다.’
+‘모든 실수  $x$ 에 대하여  $x ^{2}  LEQ 2x-1$ 이다.’
+의 부정은?[ $4.1$ 점]
+① 모든 실수  $x$ 에 대하여  $x ^{2}  GEQ 2x-1$ 이다.
+② 모든 실수  $x$ 에 대하여  $x ^{2} >2x-1$ 이다.
+③ 어떤 실수  $x$ 에 대하여  $x ^{2}  LEQ 2x-1$ 이다.
+④ 어떤 실수  $x$ 에 대하여  $x ^{2}  GEQ 2x-1$ 이다.
+⑤ 어떤 실수  $x$ 에 대하여  $x ^{2} >2x-1$ 이다.
+두 함수  $f LEFT ( x RIGHT ) =x ^{2} -4x,`g LEFT ( x RIGHT ) =3x+1$ 에 대하여
+$①$
+$g LEFT ( f LEFT ( 1 RIGHT ) RIGHT )$  $=g LEFT ( -3 RIGHT )$  $=-8$
+$LEFT ( g CIRC f RIGHT ) LEFT ( 1 RIGHT )$ 의 값은?[ $4.2$ 점]
+①  $-8$ ②  $-6$ ③  $-4$
+④  $-2$ ⑤  $0$
+함수  $f LEFT ( x RIGHT ) = {3} over {2x-4} +a$ 의 정의역과 치역이 같을 때, 상수  $a$ 의 값은?[ $4.2$ 점]
+$②$
+정의역  $left{x left|x ne 2 right} `,$  치역  $left{y left|y ne a right}$ 이므로  $a=2$
+①  $1$ ②  $2$ ③  $3$
+④  $4$ ⑤  $5$
+정의역이  $LEFT { -1,```2 RIGHT }$ 인 두 함수  $f LEFT ( x RIGHT ) =x ^{2} +3x+1$ ,  $g LEFT ( x RIGHT ) =ax+b$ 에 대하여  $f=g$ 가 성립할 때,  $a+b$ 의 값은?(단,  $a,b$ 는 상수이다.)[ $4.3$ 점]
+$①$
+방정식  $x^2 +3x+1=ax+b `,$
+$x^2 + LEFT ( 3-a RIGHT )x + LEFT ( 1-b RIGHT )=0$ 의 두 근이  $-1 `,$   $2$ 이므로
+합  $a-3=1 `,$   $a=4 `,$  곱  $1-b=-2 `,$   $b=3$ 이고  $a+b=7$
+①  $7$ ②  $8$ ③  $9$
+④  $10$ ⑤  $11$
+전체집합  $U= LEFT { x`|`x는`0 LEQ x LEQ 4인`정수 RIGHT }$ 에 대하여 조건 ‘ $LEFT ( x-2 RIGHT ) ^{2}  GEQ 3$ ’의 진리집합은?[ $4.3$ 점]
+[표]
+$②$
+$x=0 `,$   $4$ 가 조건을 만족하므로 진리집합은  $left{0 `,``4 right}$
+①  $LEFT { 4 RIGHT }$ ②  $LEFT { 0,``4 RIGHT }$ ③  $LEFT { 1,`2,`3 RIGHT }$
+④  $LEFT { 0,`1,`3,`4 RIGHT }$ ⑤  $LEFT { 0,`1,`2,`3,`4 RIGHT }$
+그림은 함수  $y=- sqrt {4x}$ 의 그래프를  $x$ 축의 방향으로  $-9$ 만큼,  $y$ 축의 방향으로  $a$ 만큼 평행이동한 그래프를 나타낸 것이다.
+$③$
+그래프의 관계식은  $y-a=-sqrt{4 LEFT ( x+9 RIGHT )} $ 이고
+점  $LEFT ( 0`,``7 RIGHT )$ 을 지나므로  $7-a=-6 `,$   $a=13$
+[그림]
+상수  $a$ 의 값은?[ $4.4$ 점]
+①  $11$ ②  $12$ ③  $13$
+④  $14$ ⑤  $15$
+함수  $f LEFT ( x RIGHT ) = {3x-2} over {x+a}$ 의 그래프가 점  $LEFT ( 2,``b RIGHT )$ 에 대하여 대칭일 때, 상수  $a,`b$ 에 대하여  $a+b$ 의 값은?[ $4.4$ 점]
+$①$
+대칭점  $LEFT ( -a `,``3 RIGHT )= LEFT ( 2`,``b RIGHT )$ 이므로  $a=-2 `,$   $b=3 `,$   $a+b=1$
+①  $1$ ②  $2$ ③  $3$
+④  $4$ ⑤  $5$
+$n LEFT ( U RIGHT ) =30$ 인 전체집합  $U$ 의 두 부분집합  $A,`B$ 에 대하여  $n LEFT ( A SMALLINTER B RIGHT ) =4,``n LEFT ( A ^{C}  SMALLINTER B ^{C} RIGHT ) =9$  일 때,
+$④$
+$n LEFT ( A^c cap B^c RIGHT )=9$ 이므로  $n LEFT ( A cup B RIGHT )=21$ 이고,
+$n LEFT ( LEFT ( A-B RIGHT )cup LEFT ( B-A RIGHT ) RIGHT )$  $=n LEFT ( A cup B RIGHT )-n LEFT ( A cap B RIGHT )$  $=17$
+$n LEFT ( LEFT ( A-B RIGHT )  CUP  LEFT ( B-A RIGHT ) RIGHT )$ 의 값은?[ $4.5$ 점]
+①  $11$ ②  $13$ ③  $15$
+④  $17$ ⑤  $19$
+실수  $x$ 에 대한 두 조건
+$④$
+$q`:` LEFT ( x-1 RIGHT ) LEFT ( x-2 RIGHT ) LEFT ( x-5 RIGHT )$ 이면  $simp`:` LEFT ( x-a RIGHT ) LEFT ( x+1 RIGHT )ge0$ 가 참
+$x=1 `,$   $2 LEFT ( 1-a RIGHT )ge0 `,$   $a le1$
+$x=2 `,$   $3 LEFT ( 2-a RIGHT )ge0 `,$   $a le2$
+$x=-5 `,$   $-4 LEFT ( -5-a RIGHT )ge0 `,$   $a ge-5$ 이므로  $-5 le a le1$
+따라서  $M-m=1- LEFT ( -5 RIGHT )=6$
+$p`:` LEFT ( x-a RIGHT ) LEFT ( x+1 RIGHT ) <0$ ,  $q`:`x ^{3} +2x ^{2} -13x+10=0$
+이 있다.  $q$ 가  $SIM p$ 이기 위한 충분조건이 되도록 하는 실수  $a$ 의 최댓값을  $M$ , 최솟값을  $m$ 이라 할 때,  $M-m$ 의 값은?[ $4.5$ 점]
+①  $3$ ②  $4$ ③  $5$
+④  $6$ ⑤  $7$
+$100$ 이하의 자연수 중에서  $5$ 의 배수도 아니고  $6$ 의 배수도 아닌 자연수의 개수는?[ $4.5$ 점]
+$⑤$
+$5$ 의 배수의 집합을  $A `,$   $6$ 의 배수의 집합을  $B$
+$n LEFT ( A^c cap B^c RIGHT )$  $=n LEFT ( U RIGHT )-n LEFT ( A cup B RIGHT )$
+$= 100-left{n LEFT ( A RIGHT )+n LEFT ( B RIGHT )-n LEFT ( A cap B RIGHT )right}$
+$=100- LEFT ( 20+16-3 RIGHT )$  $=100-33$  $=67$
+①  $63$ ②  $64$ ③  $65$
+④  $66$ ⑤  $67$
+두 함수  $f LEFT ( x RIGHT ) =2x+a,``g LEFT ( x RIGHT ) = {4x-3} over {x}$ 에 대하여 함수  $y= LEFT ( g CIRC f RIGHT ) LEFT ( x RIGHT )$ 의 그래프와 함수  $y= LEFT ( f ^{-1}  CIRC g ^{-1} RIGHT ) LEFT ( x RIGHT )$ 의 그래프가 모두 점  $LEFT ( b,``1 RIGHT )$ 을 지난다. 정수  $a,`b$ 에 대하여  $b-a$ 의 값은?[ $4.6$ 점]
+$②$
+$g LEFT ( f LEFT ( x RIGHT ) RIGHT )= {4 LEFT ( 2x+a RIGHT )-3} over 2x+a = {8x+4a-3} over {2x+a}$ 이고,
+$g LEFT ( f LEFT ( x RIGHT ) RIGHT )$ 가 점  $LEFT ( b `,``1 RIGHT )$ 을 지나므로  $g LEFT ( f LEFT ( b RIGHT ) RIGHT )=1$ 이고
+$LEFT ( g circf RIGHT )^-1$ 가 점  $LEFT ( b `,``1 RIGHT )$ 을 지나므로  $g LEFT ( f LEFT ( 1 RIGHT ) RIGHT )=b$
+$g LEFT ( f LEFT ( 1 RIGHT ) RIGHT )= {4a+5} over {2+a} =b `,$   $4a+5=b LEFT ( 2+a RIGHT )$   $cdots ㉠$
+$g LEFT ( f LEFT ( b RIGHT ) RIGHT )= {8b+4a-3} over {2b+a} =1 `,$   $a=1-2b$ 를  $㉠$ 에 대입
+$4 LEFT ( 1-2b RIGHT )+5=b LEFT ( 3-2b RIGHT )`,$   $2b^2 -11b+9=0$
+$LEFT ( b-1 RIGHT ) LEFT ( 2b-9 RIGHT )=0 `,$   $b=1 `,$   $a=-1$ 이고  $b-a=2$
+①  $1$ ②  $2$ ③  $3$
+④  $4$ ⑤  $5$
+두 양수  $x$ 와  $y$ 에 대하여
+$④$
+$LEFT ( y^2 -4y+1 RIGHT )+ LEFT ( 2x^2 +y^2 +2 RIGHT )+ 64 over {2x^2 +y^2 +2}$
+$f LEFT ( y RIGHT )=y^2 -4y+1$ 은 축  $y=2$ 에서 최솟값  $-3$ 을 갖고,
+$ LEFT ( 2x^2 +y^2 +2 RIGHT )+ 64 over {2x^2 +y^2 +2}$ 은
+산술, 기하평균의 관계에서,
+$2x^2 +y^2 +2 = 64 over {2x^2 +y^2 +2}$ 일 때,
+$2x^2 +y^2 =2=8`,$   $x=1$ 일 때,
+최솟값  $8+8=16$ 을 갖는다.
+따라서  $x=1 `,$   $y=2$ 일 때 최솟값  $13$ 을 갖고,
+$a+b+c=1+2+13=16$
+${64} over {2x ^{2} +y ^{2} +2} +2x ^{2} +2y ^{2} -4y+3$
+은  $x=a$ 이고  $y=b$ 일 때 최솟값  $c$ 를 갖는다. 이때, 상수  $a,`b$ 에 대하여  $a+b+c$ 의 값은?[ $4.6$ 점]
+①  $13$ ②  $14$ ③  $15$
+④  $16$ ⑤  $17$
+세 함수  $f LEFT ( x RIGHT ) =4x-1,`g LEFT ( x RIGHT ) =- {1} over {2} x+3$ ,  $h LEFT ( x RIGHT )$ 에 대하여  $LEFT ( f ^{-1}  CIRC h CIRC g ^{-1} RIGHT ) LEFT ( x RIGHT ) =f LEFT ( x RIGHT )$ 가 성립할 때,  $h LEFT ( 4 RIGHT )$ 의 값은?[ $4.7$ 점]
+$①$
+$g^-1 LEFT ( x RIGHT )= -2x+6`,$   $f LEFT ( f LEFT ( x RIGHT ) RIGHT )=4 LEFT ( 4x-1 RIGHT )-1 =16x-5$
+$f LEFT ( LEFT ( f^-1 circh circg^-1  RIGHT ) LEFT ( x RIGHT ) RIGHT )=f LEFT ( f LEFT ( x RIGHT ) RIGHT )$
+$h LEFT ( g^-1 LEFT ( x RIGHT ) RIGHT )=f LEFT ( f LEFT ( x RIGHT ) RIGHT )`,$   $h LEFT ( -2x+6 RIGHT )=16x-5$
+$x=1$ 을 대입하면  $h LEFT ( 4 RIGHT )=11$
+①  $11$ ②  $12$ ③  $13$
+④  $14$ ⑤  $15$
+어느 학급 학생  $35$ 명을 대상으로 가입한 운동 동아리를 조사하였더니 농구 동아리에 가입한 학생은  $18$ 명, 축구 동아리에 가입한 학생은  $24$ 명이다. 축구 동아리에만 가입한 학생 수의 최댓값과 최솟값의 합은?[ $4.7$ 점]
+$③$
+농구, 축구 동아리에 가입한 학생의 집합 각각  $A `,$   $B$
+$n LEFT ( U RIGHT )=35 `,$   $n LEFT ( A RIGHT )=18 `,$   $n LEFT ( B RIGHT )=24$
+$n LEFT ( A cap B RIGHT )$ 의 최댓값은  $n LEFT ( A RIGHT )`,$   $n LEFT ( B RIGHT )$  중 작은 값인  $18$
+$n LEFT ( A cup B RIGHT )=n LEFT ( A RIGHT )+n LEFT ( B RIGHT )-n LEFT ( A cap B RIGHT )le n LEFT ( U RIGHT )$ 이므로
+$n LEFT ( A cap B RIGHT )$ 의 최솟값은  $7$
+$n LEFT ( B-A RIGHT )$ 의 최댓값  $24-7=17`,$  최솟값  $24-18=6$
+따라서 그 합은  $23$ 이다.
+①  $21$ ②  $22$ ③  $23$
+④  $24$ ⑤  $25$
+함수  $f LEFT ( x RIGHT ) = {1} over {4} x+k$ 의 역함수를  $g LEFT ( x RIGHT )$ 라 하고, 두 함수  $y=f LEFT ( x RIGHT ) ,`y=g LEFT ( x RIGHT )$ 의 그래프의 교점을  $P$ 라 하자. 원점과 점  $P$ 사이의 거리가  $4 sqrt {2}$ 가 되도록 하는 모든 실수  $k$ 의 값의 곱은?[ $4.8$ 점]
+$④$
+$y=f LEFT ( x RIGHT )$ 는 증가함수이므로,
+$y=g LEFT ( x RIGHT )$ 와의 교점은  $y=x$ 와의 교점과 동일하다.
+방정식  $f LEFT ( x RIGHT )=x `,$   $1 over4 x +k =x `,$   $x= 4 over3 k `,$   $rmP` LEFT ( it 4 over3 k `,`` 4 over3 k RIGHT )$
+$bar{rmOP}$  $= left| 4 over3 k right|sqrt2 $  $=4 sqrt2 `,$   $left|k right|=3$ 이고  $k$ 값의 곱은  $-9$
+①  $-6$ ②  $-7$ ③  $-8$
+④  $-9$ ⑤  $-10$
+그림과 같이 함수  $f LEFT ( x RIGHT ) = sqrt {kx} ` LEFT ( k>0 RIGHT )$ 와 그 역함수  $f ^{-1} LEFT ( x RIGHT )$ 에 대하여 직선  $y=-x+10$ 이 두 곡선  $y=f LEFT ( x RIGHT )$ ,  $y=f ^{-1} LEFT ( x RIGHT )$ 와 만나는 점을 각각  $P,`Q$ 라 하자. 삼각형  $OPQ$ 의 넓이가  $20$ 일 때, 상수  $k$ 의 값은?
+$⑤$
+$rmP LEFT ( italpha `,``10-alpha RIGHT )$ 로 두면  $rmQ LEFT ( it10-alpha `,``alpha RIGHT )$ 이고,
+기울기  $-1$ 인 직선 위의 두 점이므로  $bar{rmPQ}= LEFT ( 10-2alpha RIGHT )sqrt2$
+원점에서 직선  $x+y-10=0$ 까지 거리는
+${left|0+0-10 right|} over sqrt{1+1} = 10 over sqrt2$ 이므로
+$triangle rmOPQ$  $= 1 over2 times LEFT ( 10-2alpha RIGHT )sqrt2 times 10 over sqrt2$  $=5 LEFT ( 10-2alpha RIGHT )$  $=20$
+$alpha=3$ 이므로  $rmP LEFT ( 3 `,``7 RIGHT )$ 이고, 점  $rmP$ 가  $y= sqrt{kx}$  위의 점이므로
+$7=sqrt{3k} `,$  따라서  $k= 49 over3$
+(단,  $O$ 는 원점이다.)[ $4.8$ 점]
+[그림]
+①  $5$ ②  ${47} over {6}$ ③  ${32} over {3}$
+④  ${27} over {2}$ ⑤  ${49} over {3}$
+상수  $a,`b$ 에 대하여 함수  $f LEFT ( x RIGHT ) =- sqrt {ax-3} +b$ 가 다음 조건을 만족시킨다.
+$③$
+(가)  $a=-1$
+(나)  $y=-sqrt{-x-3}+b$ 가  $y=x$ 에 접할 때  $b$ 가 최대
+방정식  $-sqrt{-x-3}+b=x `,$   $b-x=sqrt{-x-3}$
+$x^2 -2bx+b^2 =-x-3 `,$
+$x^2 - LEFT ( 2b-1 RIGHT )x +b^2 +3=0$ 의 판별식  $D=0$
+$D= LEFT ( 2b-1 RIGHT )^2 -4 LEFT ( b^2 +3 RIGHT )=0 `,$   $b= - 11 over4$
+따라서  $a-4c = -1+ 11 =10$
+[표]
+(가) 함수  $y=f LEFT ( x RIGHT )$ 의 그래프를 평행이동하면 함수  $y=- sqrt {-x}$ 의 그래프와 일치한다.
+(나) 함수  $y=f LEFT ( x RIGHT )$ 의 그래프와 그 역함수  $y=f ^{-1} LEFT ( x RIGHT )$ 의 그래프가 한 점에서 만난다.
+$b$ 의 최댓값을  $c$ 라 할 때,  $a-4c$ 의 값은?[ $4.9$ 점]
+①  $8$ ②  $9$ ③  $10$
+④  $11$ ⑤  $12$
+집합  $X= LEFT { 1,`2,`3,`4,`5 RIGHT }$ 에 대하여 일대일대응인 함수  $f`:`X`` -> ``X$ 가 다음 조건을 만족시킨다.
+$②$
+(가), (나) 조건에 맞는 함수  $f LEFT ( x RIGHT )$ 를 구하면
+$f LEFT ( 2 RIGHT )=3 `,$   $f LEFT ( 5 RIGHT )=5 `,$   $f LEFT ( 4 RIGHT )=2 `,$   $f LEFT ( 3 RIGHT )=4 `,$   $f LEFT ( 1 RIGHT )=1$
+따라서  $f LEFT ( 2 RIGHT )+f LEFT ( 4 RIGHT )=3+2=5$
+[표]
+(가)  $f LEFT ( 3 RIGHT ) -f LEFT ( 1 RIGHT ) =f LEFT ( 5 RIGHT ) -f LEFT ( 4 RIGHT ) =f LEFT ( 2 RIGHT )$
+(나)  $f LEFT ( 4 RIGHT ) <f LEFT ( 3 RIGHT ) <f LEFT ( 5 RIGHT )$
+$f LEFT ( 2 RIGHT ) +f LEFT ( 4 RIGHT )$ 의 값은?[ $5.0$ 점]
+①  $4$ ②  $5$ ③  $6$
+④  $7$ ⑤  $8$
+실수  $x$ 에 대한 두 조건
+$③$
+$p`:` LEFT ( x+3a RIGHT ) LEFT ( x-a RIGHT )<0 `,$   $-3a<x<a$
+$q`:` 2-6 le x le 2+6 `,$   $-4 le x le8$
+$p`⇏`q$ 이고  $q`⇏`p$ 이므로
+예컨데,
+$a=1$ 이면  $p`:` -3 <x<1$ 이면  $p` RARROW`q$ 이고,
+$a=2$ 이면  $p`:`-6<x<2$ 이면  $p`⇏`q$ 이고  $q`⇏`p$
+$a=2 `,$   $3 `,$   $4 `,$   $cdots `,$   $8$ 이 조건을 만족하고, 자연수  $a$ 는  $7$ 개
+$p`:`x ^{2} +2ax-3a ^{2} <0$ ,  $q`:` LEFT | x-2 RIGHT |  LEQ 6$
+이 있다. 명제  $p`` -> ``q$ 와 명제  $p`` -> ``q$ 의 역이 모두 거짓이 되도록 하는 자연수  $a$ 의 개수는?[ $5.1$ 점]
+①  $3$ ②  $5$ ③  $7$
+④  $9$ ⑤  $11$
+집합  $X= LEFT { x`|`0 LEQ x LEQ 2 RIGHT }$ 에 대하여  $X$ 에서  $X$ 로의 두 함수  $y=f LEFT ( x RIGHT ) ,`y=g LEFT ( x RIGHT )$ 의 그래프가 그림과 같을 때, 함수  $y= LEFT ( f CIRC g RIGHT ) LEFT ( x RIGHT )$ 의 그래프는?[ $5.2$ 점]
+$⑤$
+$n$ 축방법 또는 수식방법을 사용해  $LEFT ( f circg RIGHT ) LEFT ( x RIGHT )$ 를 구하면
+$LEFT ( f circg RIGHT ) LEFT ( x RIGHT )= cases{```````````` 2x ``````````````````` LEFT ( 0 le x <1 RIGHT ) #` -4x+6 ````` LEFT ( 1 le x < 3 over2 RIGHT ) #````` 4x-6 `````````` LEFT ( 3 over2 le x le 2 RIGHT )}$
+[표]
+[그림]
+[그림]
+[표]
+①
+[그림]
+②
+[그림]
+③
+[그림]
+④
+[그림]
+⑤
+[그림]
+2025년 2학기기말 능동고1 공통수학2 정답 및 해설
