@@ -318,20 +318,20 @@ for p in P(Xk):
     if fd[2] + fd[7] == fd[3] and fid[7] + fid[3] == 7:
         res.add(5 * fd[5] + fd[fd[3]])
 chk("k6-15", res.pop() if len(res) == 1 else -1, 42)
-pr = [2, 3, 5, 7, 11, 13, 17, 19]
-chk("mj156", sum(1 for p in P(pr, 5) if sum(p[c - 1] - p[c + 2] == 10 for c in (1, 2)) == 1), 464)
+Xs5 = [1, 2, 3, 4, 5]; best = 0
+for p in P(Xs5):
+    fd = dict(zip(Xs5, p)); fid = inv_dict(fd)
+    if fd[1] + fd[3] == 7 and fid[1] - fid[3] == 3:
+        best = max(best, fd[4] + fid[2])
+chk("o58", best, 7)
+fg = lambda t: 1.5 * np.abs(t) - 0.5 * t - 1
+chk("g3-2", nroots(lambda t: fg(fg(fg(t))) - fg(t) - 1, -20, 20), 3)
 c = 0
-for v_ in itertools.product(range(1, 7), repeat=6):
-    fd = dict(zip(range(1, 7), v_))
-    if all(fd[fd[t]] == fd[t] for t in fd) and len(set(v_)) == 3 and all(v_.count(y) == 2 for y in set(v_)):
+for v_ in itertools.product(Xs5, repeat=5):
+    fd = dict(zip(Xs5, v_))
+    if fd[5] == 4 and fd[fd[1]] == 1 and fd[fd[fd[5]]] == 3:
         c += 1
-chk("mj153", c, 120)
-c = 0
-for v_ in itertools.product(X4, repeat=4):
-    fd = dict(zip(X4, v_))
-    if fd[4] == 3 and all(fd[a] <= fd[b] for a in X4 for b in X4 if fd[a] <= b):
-        c += 1
-chk("mj158", c, 8)
+chk("g3-18", c, 17)
 
 if __name__ == "__main__":
     bad = [r_ for r_ in R if not r_[1]]

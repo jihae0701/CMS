@@ -224,6 +224,23 @@ for r in range(1, 6):
 R["h1611-29"] = cnt
 
 
+
+# 무장해제(유형서 10단원에서 옮김, 2026-11-10) -----------------------------
+pr = [2, 3, 5, 7, 11, 13, 17, 19]
+R["m156"] = sum(1 for p in P(pr, 5) if sum(p[c - 1] - p[c + 2] == 10 for c in (1, 2)) == 1)
+c = 0
+for v_ in itertools.product(range(1, 7), repeat=6):
+    fd = dict(zip(range(1, 7), v_))
+    if all(fd[fd[t]] == fd[t] for t in fd) and len(set(v_)) == 3 and all(v_.count(y) == 2 for y in set(v_)):
+        c += 1
+R["m153"] = c
+X4 = [1, 2, 3, 4]; c = 0
+for v_ in itertools.product(X4, repeat=4):
+    fd = dict(zip(X4, v_))
+    if fd[4] == 3 and all(fd[a] <= fd[b] for a in X4 for b in X4 if fd[a] <= b):
+        c += 1
+R["m158"] = c
+
 # 대조 ---------------------------------------------------------------
 def val(s):
     s = s.replace(" ", "").replace("it-", "-")

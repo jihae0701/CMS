@@ -182,15 +182,23 @@ import itertools
 lhs_ok = all(sum(ak / (i + 1)**2 for i, ak in enumerate(perm)) >= sum(1 / (i + 1) for i in range(n)) - 1e-12
              for perm in itertools.permutations(range(1, n + 1)))
 chk("g3-20", "②" if lhs_ok else "?", "②")
-xs_ = np.round(lin(-10, 10, 2000001), 6)
-okx = np.abs(4 * xs_ - 3) + np.abs(xs_ + 2) + np.abs(xs_**3 - xs_) <= np.abs(3 * xs_ - 5) + 1e-9
-chk("mj120", len(set(xs_[okx].tolist())), 2)
-r = lin(1e-4, 40); a = sq(7 / (2 + 7 * r + 3 * r * r)); b = r * a
-chk("mj111", 2 * ((a + sq(3 * a * b) + 2 * b)**2).max(), 28)
-a = lin(1e-6, 1 - 1e-6); chk("mj116", (1 / (1 + a) + a / (2 - a)).min(), "2*sqrt(2)/3")
 a = lin(0, 2); b = 2 - a; chk("g3-18", (1 / (a + 3) - b / (2 * a + 12)).min(), "1/6")
-a = lin(1e-5, 1 - 1e-5); b = 2 - 2 * a; chk("mj114", (4 * (a - 1 / (2 * a))**2 + (2 / b - b)**2).min(), 2)
-s = lin(1, 4); tt = 5 - s; v = 1 / s**2 + 1 / tt**2; chk("mj126", v.min() * v.max(), "17/50")
+
+# 기본서에서 옮긴 문항·새 내신(2026-11-10) ---------------------------------
+Aa_, Bb_ = np.meshgrid(lin(1e-3, 3, 3001), lin(1e-3, 3, 3001))
+chk("o20", ((3 * Aa_ + 1 / Bb_) * (1 / Aa_ + 12 * Bb_)).min(), 27)
+a = lin(1e-3, 6 - 1e-3); b = (a - 6) / 2
+chk("o58", (2 / a - 1 / b).min(), "4/3")
+r = np.exp(lin(-8, 8))
+chk("g3-13", ((24 + 26 * r + 6 * r * r) / (4 + 4 * r + r * r)).max(), "25/4")
+best = 1e9
+for _ in range(40):
+    a, b, c = rng.uniform(1e-3, 10, (3, 200000))
+    v = (3 * a / 4 + 2 * b + 5 * c / 2) * (1 / (3 * a + 2 * b) + 1 / (3 * b + 5 * c))
+    best = min(best, v.min())
+chk("g3-4", best, "3/4+sqrt(2)/2")
+a = lin(1.0001, 30, 3000001); b = 5 / (2 - 2 / a)        # 2/a+5/b=2, a>1
+chk("가좌고", (a + b).min(), "7/2+sqrt(10)")
 
 if __name__ == "__main__":
     bad = [r_ for r_ in R if not r_[1]]
