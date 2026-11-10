@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 """CMS 스토리 라이트 공통수학1 그림. python 그림/drawlite_c1.py [파일 ...]  (KATEX_DIR 필요)
+- lite1_05_quad.png: 5단원 o5-18 — y=x²−4x와 y=−2x+3, 사각형 ADBC(연분홍)
+- lite1_05_root.png: 5단원 o5-26 — 위로 볼록, x절편 1, 3인 y=f(x)
 - lite1_03_cube.png: 3단원 o3-69 — 모서리 2x+y인 정육면체의 각 면 가운데에 한 변이 x+y인 정사각형 구멍을 뚫은 입체
 """
 import os, sys
@@ -7,6 +9,8 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from draw import HERE
 from draw5 import fit_shoot
 from draw6 import geo, dim_arc
+from draw5 import Frame, roots
+from draw10y import dot
 from draw import cut_arc
 import math
 
@@ -97,7 +101,37 @@ def fig_cube():
     return F.render()
 
 
-FIGS = (("lite1_03_cube.png", fig_cube, 10000),)
+def fig_quad():
+    f = lambda t: t * t - 4 * t
+    g = lambda t: -2 * t + 3
+    A, B, C, D = (-1, 5), (3, -3), (5, 5), (1, -3)
+    F = Frame((-2.4, 6.6), (-5.0, 7.0), 40, 24, (20, 12, 30, 40))
+    F.poly([A, D, B, C], "#ffd9e6")
+    F.axes()
+    F.curve(f, roots(f, -3, 2, 6.8)[0], roots(f, 2, 7, 6.8)[0])
+    F.curve(g, -1.9, 4.0)
+    F.seg(A, C); F.seg(D, B)
+    for q in (A, B, C, D):
+        dot(F, q, 4)
+    F.pt(A, "A", "rc", -14, 6); F.pt(C, "C", "lc", 12, 6); F.pt(D, "D", "rt", -8, 8); F.pt(B, "B", "lc", 16, 2)
+    F.pt((0, 0), "O", "rt", -4, 4)
+    F.lab((5.55, f(5.55)), "y=f(x)", "lc", 10, 0)
+    F.lab((4.0, g(4.0)), "y=-2x+3", "lc", 10, 4)
+    return F.render()
+
+
+def fig_root():
+    f = lambda t: -2.2 * (t - 1) * (t - 3)
+    F = Frame((-1.2, 4.6), (-3.6, 3.2), 50, 40, (20, 12, 30, 12))
+    F.axes()
+    F.curve(f, roots(f, -1, 2, -3.3)[0], roots(f, 2, 5, -3.3)[0])
+    F.pt((0, 0), "O", "rt", -4, 4)
+    F.lab((1, 0), "1", "rb", -8, -6); F.lab((3, 0), "3", "lb", 8, -6)
+    F.lab((3.3, f(3.3)), "y=f(x)", "lc", 10, 0)
+    return F.render()
+
+
+FIGS = (("lite1_03_cube.png", fig_cube, 10000), ("lite1_05_quad.png", fig_quad, 10000), ("lite1_05_root.png", fig_root, 9000))
 
 if __name__ == "__main__":
     for name, fn, wd in FIGS:
