@@ -103,6 +103,8 @@ def build(src, spec_path, out):
     xml = dict((i.filename, d) for i, d in items)[name].decode("utf-8")
     h = xml.find("단원 종합 문제")
     if h < 0:
+        h = xml.find("단원종합문제")      # 3단원 완성본은 붙여 씀
+    if h < 0:
         raise SystemExit("'단원 종합 문제' 제목이 없음")
     allp = top_paras(xml, 0, len(xml))
     hp = [k for k, (a, z) in enumerate(allp) if a <= h < z][0]   # 제목(그리기 개체 안 글)이 든 맨 위 문단
@@ -130,8 +132,10 @@ def build(src, spec_path, out):
         for ln in it["sol"]:
             b.collect(ln)
         a = it["ans"]
-        if not re.match(r"[①-⑤ㄱ-ㅎ]", a):
-            b.need.add(a.strip("$"))
+        if "$" in a:
+            b.collect(a)
+        elif not re.match(r"[①-⑤ㄱ-ㅎ]", a):
+            b.need.add(a)
     b.sizes()
     box_tpl = None
     for blk in blocks:
@@ -152,7 +156,12 @@ def build(src, spec_path, out):
         auto = re.search(r"<hp:ctrl><hp:autoNum .*?</hp:ctrl>", en, re.S).group(0)
         head = re.match(r"<hp:endNote [^>]*><hp:subList [^>]*>", en).group(0)
         ans = it["ans"]
-        ans_x = "<hp:t>%s</hp:t>" % esc(ans) if re.match(r"[①-⑤ㄱ-ㅎ]", ans) else b.eq(ans.strip("$"))
+        if re.match(r"[①-⑤ㄱ-ㅎ]", ans):
+            ans_x = "<hp:t>%s</hp:t>" % esc(ans)
+        elif "$" in ans:                  # '$a=1$, $x+2y-1$'처럼 글과 수식이 섞인 답
+            ans_x = b.inline(ans)[:-len("<hp:t/>")]
+        else:
+            ans_x = b.eq(ans)
         sp0 = ('<hp:p id="0" paraPrIDRef="23" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">'
                '<hp:run charPrIDRef="26">%s<hp:t> [정답] </hp:t>%s<hp:t/></hp:run></hp:p>' % (auto, ans_x))
         sol = "".join(b.para(ln, pp="23", cp="26") for ln in it["sol"])
