@@ -9,15 +9,15 @@ R[(1, 1)] = sp.pi * dist2((s[x], s[y]), B)
 tot = 0
 for av in sp.solve(sp.Eq(a**2 + 1, (a-2)**2 + 1), a) + sp.solve(sp.Eq(a**2 + 1, 4), a) + sp.solve(sp.Eq((a-2)**2 + 1, 4), a):
     if av > 0: tot += av
-R[(1, 2)] = sp.nsimplify(tot)
+R[(1, 3)] = sp.nsimplify(tot)
 g = np.linspace(-2, 8, 1001); X, Y = np.meshgrid(g, g); P = [(0, 0), (4, 0), (6, 8), (0, 3)]
-R[(1, 3)] = round(float(sum(np.hypot(X - p[0], Y - p[1]) for p in P).min()), 2)
+R[(1, 93)] = round(float(sum(np.hypot(X - p[0], Y - p[1]) for p in P).min()), 2)
 Cc = lambda P, Q, m, n: ((n*P[0] + m*Q[0]) / (m + n), (n*P[1] + m*Q[1]) / (m + n))
 cnt = 0
 for m in range(1, 200):
     p1 = Cc((-1, -2), (10, 2), 1, m); q1 = Cc((-1, -2), (10, 2), 1, m + 1)
     if p1[0] > 0 and p1[1] < 0 and q1[0] > 0 and q1[1] < 0: cnt += 1
-R[(1, 7)] = cnt
+R[(1, 9)] = cnt
 import random
 vals = set()
 for _ in range(5):
@@ -26,22 +26,22 @@ for _ in range(5):
     C1 = Cc((av, bv), (cv, dv), 2, 3); D1 = Cc((av, bv), (cv, dv), 3, 2)
     assert (C1[0] + D1[0]) / 2 == 2.5 and (C1[1] + D1[1]) / 2 == -1
     vals.add((av + cv) - (bv + dv))
-R[(1, 4)] = vals.pop()
+R[(1, 8)] = vals.pop()
 Bv, Cv = sp.symbols("B0 B1", real=True), None
-G = ((3 + 2*(-2)) / sp.Integer(3), (2 + 2*1) / sp.Integer(3)); R[(1, 8)] = G[0] + G[1]
+G = ((3 + 2*(-2)) / sp.Integer(3), (2 + 2*1) / sp.Integer(3)); R[(1, 10)] = G[0] + G[1]
 bx, by, cx, cy, dx, dy = sp.symbols("bx by cx cy dx dy", real=True)
 s = sp.solve([-2 + bx + cx + 6, 0 + by + cy + 12, -2 + bx + dx + 2, 0 + by + dy + 4, -2 + cx - bx - dx, cy - by - dy], [bx, by, cx, cy, dx, dy])
-AB2 = dist2((-2, 0), (s[bx], s[by])); assert AB2 == dist2((-2, 0), (s[dx], s[dy])); R[(1, 9)] = sp.sqrt(AB2)
+AB2 = dist2((-2, 0), (s[bx], s[by])); assert AB2 == dist2((-2, 0), (s[dx], s[dy])); R[(1, 99)] = sp.sqrt(AB2)
 ys = sp.symbols("ys", positive=True)
 sol = [v for v in sp.solve(sp.Eq(sp.sqrt(1 + ys**2) / sp.sqrt(1) , 0) , ys)]  # 자리만
 # 각의 이등분선: OD 방향이 OA, OB 단위벡터의 합과 평행
 u = sp.Matrix([1, 0]) + sp.Matrix([1, 2]) / sp.sqrt(5); tt = 1 / u[0]; Dp = u * tt; assert Dp[0] == 1
-R[(1, 10)] = sp.nsimplify(sp.simplify(Dp[0]**2 + Dp[1]**2))
+R[(1, 11)] = sp.nsimplify(sp.simplify(Dp[0]**2 + Dp[1]**2))
 best = 1e9
 for h in [3.0]:
     for ax in np.linspace(-6, 6, 12001):
         best = min(best, (ax + 2)**2 + h*h + (ax - 2)**2 + h*h)
-R[(1, 11)] = round(best, 4)
+R[(1, 91)] = round(best, 4)
 Bq, Cq = np.array([0., 0.]), np.array([6., 0.]); Aq = np.array([2., 8.])  # 넓이 24인 삼각형 하나
 Dq = (Aq + Bq) / 2; Eq = Bq + (Cq - Bq) / 3
 def area(*P): return abs(sum(P[i][0]*P[(i+1) % len(P)][1] - P[(i+1) % len(P)][0]*P[i][1] for i in range(len(P)))) / 2
