@@ -112,7 +112,7 @@ def pic_para(tpl, img_id, fn, width, pid):
             '<hp:run charPrIDRef="8">%s<hp:t/></hp:run></hp:p>' % x)
 
 
-def choices_paras(b, ch):
+def choices_paras(b, ch, per=3):
     tab = '      <hp:tab width="4284" leader="0" type="1"/>'
     def line(items):
         run = []
@@ -124,7 +124,8 @@ def choices_paras(b, ch):
         return ('<hp:p id="0" paraPrIDRef="3" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">'
                 '<hp:run charPrIDRef="8">%s</hp:run></hp:p>' % "".join(run))
     marks = "①②③④⑤"
-    return line(list(zip(marks[:3], ch[:3]))) + line(list(zip(marks[3:], ch[3:])))
+    items = list(zip(marks, ch))
+    return "".join(line(items[i:i + per]) for i in range(0, 5, per))   # per=2: 선지가 길 때 두 개씩
 
 
 def build(src, spec_path, out):
@@ -226,7 +227,7 @@ def build(src, spec_path, out):
                 bx = re.sub(r'(<hp:sz width="10000" widthRelTo="COLUMN" height=")\d+(")', lambda m: m.group(1) + str(hgt) + m.group(2), bx)
                 new_q.append(bx)
             elif "ch" in q:
-                new_q.append(choices_paras(b, q["ch"]))
+                new_q.append(choices_paras(b, q["ch"], q.get("per", 3)))
             elif "img" in q:
                 fn = q["img"]
                 if fn not in newpics:

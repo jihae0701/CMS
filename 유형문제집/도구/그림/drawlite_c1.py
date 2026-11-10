@@ -151,7 +151,22 @@ def fig_pq():
     return F.render()
 
 
-FIGS = (("lite1_03_cube.png", fig_cube, 10000), ("lite1_05_quad.png", fig_quad, 10000), ("lite1_05_root.png", fig_root, 9000), ("lite1_06_pq.png", fig_pq, 9000))
+def fig_fg():
+    f = lambda u: 0.5 * (u + 1) * (u - 4)
+    g = lambda u: -0.5 * (u + 1) * (u - 2)
+    F = Frame((-2.0, 5.4), (-3.8, 3.4), 46, 44, (40, 12, 110, 12))
+    F.axes()
+    F.curve(f, roots(f, -3, 1.5, 3.2)[0], roots(f, 1.5, 6, 3.2)[0])
+    F.curve(g, -1.75, roots(g, 0.5, 6, -3.6)[0])
+    F.seg((3, 0), (3, f(3)), extra='stroke-dasharray="6,5"')
+    F.pt((0, 0), "O", "lt", 6, 6)
+    F.lab((-1, 0), "-1", "rb", -22, -4); F.lab((3, 0), "3", "cb", 0, -6); F.lab((4, 0), "4", "lt", 6, 6)
+    F.lab((4.9, f(4.9)), "y=f(x)", "lc", 10, 0)
+    F.lab((3.6, g(3.6)), "y=g(x)", "lc", 10, 0)
+    return F.render()
+
+
+FIGS = (("lite1_03_cube.png", fig_cube, 10000), ("lite1_05_quad.png", fig_quad, 10000), ("lite1_05_root.png", fig_root, 9000), ("lite1_06_pq.png", fig_pq, 9000), ("lite1_08_fg.png", fig_fg, 9000))
 
 if __name__ == "__main__":
     for name, fn, wd in FIGS:
