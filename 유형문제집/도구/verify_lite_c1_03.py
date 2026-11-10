@@ -41,7 +41,13 @@ for aa in [sp.Rational(n, 2) for n in range(1, 21)]:
     if sum(m for _, m in fl[1]) == 2:
         R[13] = "$a=%s$, $%s$, $%s$" % (aa, "x+2y-1", "x-y+1")
         assert sp.expand((x + 2*y - 1)*(x - y + 1) - (x**2 + aa*x*y - 2*y**2 + 3*y - 1)) == 0
-R[14] = sp.divisor_count(2*19**3 + 6*19**2 + 6*19 + 2)
+A3, B3 = 2*x + y, x + y
+V = sp.factor(A3**3 - 3*A3*B3**2 + 2*B3**3)
+# 직접 세기: 모서리 a인 정육면체에서 세 축 방향 기둥(단면 b×b)을 뺀 부피 = 포함·배제
+Vd = A3**3 - (3*A3*B3**2 - 3*B3**3 + B3**3)
+assert sp.expand(V - Vd) == 0
+opts = [(2*x + y)*x**2, (3*x + 2*y)*x**2, (4*x + 3*y)*x**2, (5*x + 4*y)*x**2, (6*x + 5*y)*x**2]
+R[14] = "①②③④⑤"[[sp.expand(V - o) == 0 for o in opts].index(True)]
 cnt = 0
 for A_ in range(1, 11):
     for B_ in range(1, 11):

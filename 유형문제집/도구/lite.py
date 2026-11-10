@@ -77,6 +77,41 @@ class Builder:
                 '<hp:run charPrIDRef="%s">%s</hp:run></hp:p>' % (pp, cp, self.inline(text)))
 
 
+PIC_DIR = os.path.join(HERE, "그림")
+
+
+def png_size(path):
+    import struct
+    with open(path, "rb") as f:
+        d = f.read(24)
+    return struct.unpack(">II", d[16:24])
+
+
+def pic_para(tpl, img_id, fn, width, pid):
+    """그림 문단(가운데 정렬 paraPr 1). tpl: 문서 안의 아무 hp:pic"""
+    pw, ph = png_size(os.path.join(PIC_DIR, fn))
+    W, H = int(width), round(int(width) * ph / pw)
+    x = tpl
+    x = re.sub(r'binaryItemIDRef="[^"]+"', 'binaryItemIDRef="%s"' % img_id, x)
+    x = re.sub(r'(<hp:pic\b[^>]*\bid=")\d+(")', lambda m: m.group(1) + str(pid) + m.group(2), x, count=1)
+    x = re.sub(r'(<hp:pic\b[^>]*\binstid=")\d+(")', lambda m: m.group(1) + str(pid + 1) + m.group(2), x, count=1)
+    x = re.sub(r'<hp:orgSz [^>]*/>', '<hp:orgSz width="%d" height="%d"/>' % (W, H), x)
+    x = re.sub(r'<hp:curSz [^>]*/>', '<hp:curSz width="%d" height="%d"/>' % (W, H), x)
+    x = re.sub(r'centerX="\d+" centerY="\d+"', 'centerX="%d" centerY="%d"' % (W // 2, H // 2), x)
+    x = re.sub(r'<hc:scaMatrix [^>]*/>', '<hc:scaMatrix e1="1" e2="0" e3="0" e4="0" e5="1" e6="0"/>', x)
+    x = re.sub(r'<hp:imgRect>.*?</hp:imgRect>', '<hp:imgRect><hc:pt0 x="0" y="0"/><hc:pt1 x="%d" y="0"/><hc:pt2 x="%d" y="%d"/>'
+               '<hc:pt3 x="0" y="%d"/></hp:imgRect>' % (W, W, H, H), x, flags=re.S)
+    x = re.sub(r'<hp:imgClip [^>]*/>', '<hp:imgClip left="0" right="%d" top="0" bottom="%d"/>' % (W, H), x)
+    x = re.sub(r'<hp:imgDim [^>]*/>', '<hp:imgDim dimwidth="%d" dimheight="%d"/>' % (W, H), x)
+    x = re.sub(r'<hp:sz width="\d+" widthRelTo="ABSOLUTE" height="\d+"', '<hp:sz width="%d" widthRelTo="ABSOLUTE" height="%d"' % (W, H), x)
+    x = re.sub(r'<hp:pos [^>]*/>', '<hp:pos treatAsChar="1" affectLSpacing="0" flowWithText="1" allowOverlap="0" holdAnchorAndSO="0" '
+               'vertRelTo="PARA" horzRelTo="PARA" vertAlign="TOP" horzAlign="LEFT" vertOffset="0" horzOffset="0"/>', x, count=1)
+    if "<hp:shapeComment>" not in x:
+        x = x.replace("</hp:pic>", "<hp:shapeComment>그림입니다.</hp:shapeComment></hp:pic>") if False else x
+    return ('<hp:p id="0" paraPrIDRef="1" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">'
+            '<hp:run charPrIDRef="8">%s<hp:t/></hp:run></hp:p>' % x)
+
+
 def choices_paras(b, ch):
     tab = '      <hp:tab width="4284" leader="0" type="1"/>'
     def line(items):
@@ -146,6 +181,9 @@ def build(src, spec_path, out):
         if box_tpl:
             break
     edits = []
+    newpics = {}
+    m = re.search(r"<hp:pic\b.*?</hp:pic>", xml, re.S)
+    pic_tpl = m.group(0) if m else None
     for no, it in spec.REPLACE.items():
         blk = blocks[no - 1]
         first = xml[blk[0][0]:blk[0][1]]
@@ -189,6 +227,12 @@ def build(src, spec_path, out):
                 new_q.append(bx)
             elif "ch" in q:
                 new_q.append(choices_paras(b, q["ch"]))
+            elif "img" in q:
+                fn = q["img"]
+                if fn not in newpics:
+                    newpics[fn] = "image%d" % (301 + len(newpics))
+                new_q.append(pic_para(pic_tpl, newpics[fn], fn, q.get("w", 9000), b.nid))
+                b.nid += 2
         new_blk = first2 + "".join(new_q) + "".join(empties)
         edits.append((blk[0][0], blk[-1][1], new_blk))
     for a, z, new in sorted(edits, reverse=True):
@@ -197,7 +241,16 @@ def build(src, spec_path, out):
     for info, data in items:
         if info.filename == name:
             data = xml.encode("utf-8")
+        elif info.filename == "Contents/content.hpf" and newpics:
+            hpf = data.decode("utf-8")
+            k = hpf.index("/>", hpf.rindex('<opf:item id="image')) + 2
+            add = "".join('<opf:item id="%s" href="BinData/%s.png" media-type="image/png" isEmbeded="1"/>' % (v, v) for v in newpics.values())
+            data = (hpf[:k] + add + hpf[k:]).encode("utf-8")
         out_items.append((info, data))
+    for fn, v in newpics.items():
+        zi = zipfile.ZipInfo("BinData/%s.png" % v, date_time=(2026, 11, 10, 0, 0, 0))
+        zi.compress_type = zipfile.ZIP_DEFLATED
+        out_items.append((zi, open(os.path.join(PIC_DIR, fn), "rb").read()))
     os.makedirs(os.path.dirname(out), exist_ok=True)
     with zipfile.ZipFile(out, "w") as z:
         for info, data in out_items:
