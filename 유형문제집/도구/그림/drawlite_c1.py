@@ -189,7 +189,35 @@ def fig_rect():
     return F.render()
 
 
-FIGS = (("lite1_03_cube.png", fig_cube, 10000), ("lite1_05_quad.png", fig_quad, 10000), ("lite1_05_root.png", fig_root, 9000), ("lite1_06_pq.png", fig_pq, 9000), ("lite1_08_fg.png", fig_fg, 9000), ("lite1_11_seg.png", fig_seg, 9000), ("lite1_07_rect.png", fig_rect, 10000))
+def fig_two_rect():
+    F = Frame((-4.0, 5.2), (-0.8, 6.2), 40, 40, (20, 12, 30, 24))
+    r1 = [(-3, 5), (-1, 5), (-1, 4), (-3, 4)]
+    r2 = [(1, 3), (4, 3), (4, 1), (1, 1)]
+    F.poly(r1, "#fbe3e3"); F.poly(r2, "#dbe9f7")
+    F.axes()
+    for r in (r1, r2):
+        for i in range(4):
+            F.seg(r[i], r[(i + 1) % 4])
+    dash = 'stroke-dasharray="5,4"'
+    F.seg((-3, 4), (-3, 0), 1.2, dash); F.seg((-1, 4), (-1, 0), 1.2, dash)
+    F.seg((-1, 5), (0, 5), 1.2, dash); F.seg((-1, 4), (0, 4), 1.2, dash)
+    F.seg((1, 1), (1, 0), 1.2, dash); F.seg((4, 1), (4, 0), 1.2, dash)
+    F.seg((0, 3), (1, 3), 1.2, dash); F.seg((0, 1), (1, 1), 1.2, dash)
+    F.pt((-3, 5), "A", "rc", -6, 0); F.pt((-1, 5), "D", "cb", 0, -6)
+    F.pt((-3, 4), "B", "rc", -6, 0); F.pt((-1, 4), "C", "lt", 6, 6)
+    F.pt((1, 3), "E", "lb", 6, -6); F.pt((4, 3), "H", "lb", 4, -6)
+    F.pt((1, 1), "F", "lt", 6, 6); F.pt((4, 1), "G", "lt", 4, 6)
+    F.pt((0, 0), "O", "lt", 4, 4)
+    for x in (-3, -1, 1, 4):
+        F.lab((x, 0), str(x), "ct", 0, 6, 19)
+    for y in (4, 5):
+        F.lab((0, y), str(y), "lc", 6, 0, 19)
+    for y in (1, 3):
+        F.lab((0, y), str(y), "rc", -6, 0, 19)
+    return F.render()
+
+
+FIGS = (("lite1_03_cube.png", fig_cube, 10000), ("lite1_05_quad.png", fig_quad, 10000), ("lite1_05_root.png", fig_root, 9000), ("lite1_06_pq.png", fig_pq, 9000), ("lite1_08_fg.png", fig_fg, 9000), ("lite1_11_seg.png", fig_seg, 9000), ("lite1_07_rect.png", fig_rect, 10000), ("lite2_02_rect2.png", fig_two_rect, 15000))
 
 if __name__ == "__main__":
     for name, fn, wd in FIGS:

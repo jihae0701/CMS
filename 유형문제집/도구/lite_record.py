@@ -6,6 +6,8 @@ import sys, re, html, zipfile, importlib.util, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from lite import top_paras
 HERE = os.path.dirname(os.path.abspath(__file__))
+SUBJ = os.environ.get("LITE_SUBJ", "c1")                 # c1 공통수학1(lite_c1_NN.py), c2 공통수학2(lite_c2_NN.py)
+LABEL = {"c1": "공통수학1", "c2": "공통수학2"}[SUBJ]
 
 
 def txt(x, n=90):
@@ -17,7 +19,7 @@ def txt(x, n=90):
 
 
 def main(nn, src, start, name, extra=""):
-    sp = importlib.util.spec_from_file_location("s", os.path.join(HERE, "lite_c1_%s.py" % nn))
+    sp = importlib.util.spec_from_file_location("s", os.path.join(HERE, "lite_%s_%s.py" % (SUBJ, nn)))
     S = importlib.util.module_from_spec(sp); sp.loader.exec_module(S)
     s = zipfile.ZipFile(src).read('Contents/section0.xml').decode()
     h = s.find('단원 종합 문제'); h = h if h >= 0 else s.find('단원종합문제')
@@ -45,12 +47,12 @@ def main(nn, src, start, name, extra=""):
                         ' (그림)' if any(isinstance(x, dict) and 'img' in x for x in it["q"]) else '', it["src"], it["ans"].replace('$', '')))
     p = os.path.join(HERE, '..', '스토리라이트', '바뀐문항_기록.md')
     md = open(p, encoding='utf-8').read()
-    summ = "| 공통수학1 | %s | %s | %d | %s |" % (name, ", ".join(changed), len(changed), ", ".join(x.split(' ')[0] for x in mock) or "없음")
+    summ = "| %s | %s | %s | %d | %s |" % (LABEL, name, ", ".join(changed), len(changed), ", ".join(x.split(' ')[0] for x in mock) or "없음")
     lines = md.split('\n')
-    last = max(i for i, l in enumerate(lines) if l.startswith('| 공통수학1 |'))
+    last = max(i for i, l in enumerate(lines) if l.startswith('| 공통수학1 |') or l.startswith('| %s |' % LABEL))
     lines.insert(last + 1, summ)
     md = '\n'.join(lines)
-    md += "\n## 공통수학1 %s (단원종합문제 %03d~%03d)\n" % (name, first, first + len(blocks) - 1)
+    md += "\n## %s %s (단원종합문제 %03d~%03d)\n" % (LABEL, name, first, first + len(blocks) - 1)
     md += "그대로 둔 모의고사: %s. %s\n\n" % (", ".join(mock) or "없음", extra)
     md += "| 번호 | 유형서(원래 문항) | 정답 | 라이트(새 문항) | 출처 | 정답 |\n|---|---|---|---|---|---|\n" + "\n".join(rows) + "\n"
     open(p, 'w', encoding='utf-8').write(md)
