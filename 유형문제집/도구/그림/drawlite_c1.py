@@ -175,7 +175,21 @@ def fig_seg():
     return F.render()
 
 
-FIGS = (("lite1_03_cube.png", fig_cube, 10000), ("lite1_05_quad.png", fig_quad, 10000), ("lite1_05_root.png", fig_root, 9000), ("lite1_06_pq.png", fig_pq, 9000), ("lite1_08_fg.png", fig_fg, 9000), ("lite1_11_seg.png", fig_seg, 9000))
+def fig_rect():
+    F = Frame((-0.6, 9.0), (-0.6, 3.6), 40, 40, (16, 14, 16, 14))
+    r1 = [(0, 2.2), (2.2, 2.2), (2.2, 0.8), (0, 0.8)]
+    r2 = [(4.6, 3.2), (8.4, 3.2), (8.4, 0), (4.6, 0)]
+    for r in (r1, r2):
+        for i in range(4):
+            F.seg(r[i], r[(i + 1) % 4])
+    F.pt(r1[0], "A", "rc", -6, 0); F.pt(r1[1], "D", "lc", 6, 0); F.pt(r1[3], "B", "rc", -6, 0); F.pt(r1[2], "C", "lc", 6, 0)
+    F.lab(r2[0], r"\mathrm{A'}", "rc", -6, 0); F.lab(r2[1], r"\mathrm{D'}", "lc", 6, 0)
+    F.lab(r2[3], r"\mathrm{B'}", "rc", -6, 0); F.lab(r2[2], r"\mathrm{C'}", "lc", 6, 0)
+    F.lab((3.4, 1.5), r"\Rightarrow", "cc", 0, 0, 26)
+    return F.render()
+
+
+FIGS = (("lite1_03_cube.png", fig_cube, 10000), ("lite1_05_quad.png", fig_quad, 10000), ("lite1_05_root.png", fig_root, 9000), ("lite1_06_pq.png", fig_pq, 9000), ("lite1_08_fg.png", fig_fg, 9000), ("lite1_11_seg.png", fig_seg, 9000), ("lite1_07_rect.png", fig_rect, 10000))
 
 if __name__ == "__main__":
     for name, fn, wd in FIGS:
