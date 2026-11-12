@@ -120,6 +120,47 @@ for v_ in sp.solve(sp.Eq((a**2 - 4 - 1)**2, 1), a) + sp.solve(sp.Eq((a - 3 - 2)*
     if v_ > 0: S_.add(v_)
 for v_ in S_: prod *= v_
 R[(4, 13)] = sp.simplify(prod)
+# ---- 5단원 (집합의 뜻과 표현)
+dv = lambda m: [x for x in range(1, m+1) if m % x == 0]
+primes = lambda n: [p for p in range(2, n+1) if all(p % q for q in range(2, p))]
+R[(5, 1)] = next(kk for kk in range(1, 100) if len({kk // m for m in range(1, kk+1) if kk % m == 0}) > len(primes(10)))
+gx5 = np.linspace(-200, 200, 8001)
+R[(5, 2)] = sum(1 for av in range(-50, 51) if np.all(~(gx5 > 4) | (gx5 >= av/2)) and np.all(~(gx5 >= 2*av) | (gx5 > 4)))
+R[(5, 3)] = [av for av in range(-20, 21) if len({2, av}) == 2 and len({1, av*av+1, -av+7}) == 3 and {2, av} <= {1, av*av+1, -av+7}][0]
+R[(5, 4)] = [av for av in range(-20, 21) if len({1, av, av*av-1}) == 3 and {1, av, av*av-1} == {av+5, -av+4, 2*av-3}][0]
+subs = lambda S: [set(c) for r in range(len(S)+1) for c in it.combinations(S, r)]
+R[(5, 5)] = sum(1 for X in subs(range(1, 8)) if len(X) >= 3 and all(x % 2 for x in X))
+R[(5, 7)] = sum(1 for X in subs(range(1, 6)) if len(X & {4, 5, 6, 7}) == 1)
+R[(5, 8)] = sum(kk for kk in range(5, 60) if sum(1 for X in subs(primes(kk)) if {2, 5} <= X and 3 not in X) == 16)
+R[(5, 9)] = sum(1 for X in subs(range(1, 9)) if 1 in X and all(12 % x == 0 for x in X))
+R[(5, 10)] = sum(1 for X in subs(range(1, 8)) if X and any(x % 2 == 0 for x in X) and sum(X) <= 24)
+# ---- 6단원 (집합의 연산)
+Uu = set(range(1, 11)); A6 = {1, 2, 3, 6, 9}; vals = set()
+for Bm in range(1 << 10):
+    B6 = {i+1 for i in range(10) if Bm >> i & 1}
+    if not {3, 9} <= B6: continue
+    for C6 in ({3, 9} | (Uu - B6), {3, 9}):
+        if B6 & C6 == {3, 9}: vals.add(sum((A6 & (Uu - B6)) | (A6 & (Uu - C6))))
+assert len(vals) == 1; R[(6, 1)] = vals.pop()
+R[(6, 2)] = [sum(B6) for B6 in subs(range(0, 10)) if ({1, 3, 5, 7} | B6) - ({1, 3, 5, 7} & B6) == {1, 2, 3, 4, 5}][0]
+mul = lambda n: {x for x in range(1, 3000) if x % n == 0}
+R[(6, 3)] = sum(kk for kk in range(1, 300) if set(dv(12)) & set(dv(18)) <= set(dv(kk)) and (mul(6) & mul(8)) <= mul(kk))
+g6 = np.linspace(-20, 20, 40001); Am = g6**2 - 2*g6 - 8 > 0; ab = None
+for av in range(-20, 21):
+    for bv in range(-40, 41):
+        Bm6 = g6**2 + av*g6 + bv <= 1e-9
+        if np.all(Am | Bm6) and np.array_equal(Am & Bm6, (g6 > 4) & (g6 <= 7 + 1e-9)): ab = av*bv
+R[(6, 4)] = ab
+best = set()
+for yab in range(36):
+    for ybc in range(40):
+        for yca in range(36):
+            xa, xb, xc = 35-yab-yca, 39-yab-ybc, 43-ybc-yca
+            if min(xa, xb, xc) >= 0 and xa+xb+xc+yab+ybc+yca == 100: best.add(xa+xb+xc)
+assert len(best) == 1; best = best.pop()
+R[(6, 10)] = best
+inter = [na+nb-u for na in range(0, 28) for nb in range(0, 28) if na+nb == 32 for u in range(max(na, nb), 28) if na+nb-u <= min(na, nb)]
+R[(6, 12)] = max(inter) + min(inter)
 # ---- 명세와 대조
 def hwp2sym(s):
     s = s.replace("pi", "*pi").replace(" ", "")
@@ -131,7 +172,7 @@ def hwp2sym(s):
     s = s.lstrip("*")
     return sp.sympify(s)
 bad = n = 0
-for u in (1, 2, 3, 4):
+for u in (1, 2, 3, 4, 5, 6):
     sp_ = importlib.util.spec_from_file_location("s", os.path.join(os.path.dirname(os.path.abspath(__file__)), "lite_c2_%02d.py" % u))
     S = importlib.util.module_from_spec(sp_); sp_.loader.exec_module(S)
     for i, v_ in S.REPLACE.items():
