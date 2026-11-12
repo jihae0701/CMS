@@ -161,6 +161,13 @@ assert len(best) == 1; best = best.pop()
 R[(6, 10)] = best
 inter = [na+nb-u for na in range(0, 28) for nb in range(0, 28) if na+nb == 32 for u in range(max(na, nb), 28) if na+nb-u <= min(na, nb)]
 R[(6, 12)] = max(inter) + min(inter)
+R[(6, 6)] = next(na+nb-u for na in range(21) for nb in range(21) for u in range(21) if u == 13 and na+nb-u >= 0 and u-(na+nb-u) == 11)
+U7 = set(range(1, 8)); r7 = set()
+for X in subs(range(1, 8)):
+    for Y in subs(range(1, 8)):
+        if X - Y == {4, 5} and (U7 - (X & Y)) & (X | (U7 - Y)) == {4, 5, 6, 7}: r7.add(sum(X | Y))
+assert len(r7) == 1; R[(6, 7)] = r7.pop()
+R[(6, 15)] = min(sum(Y) for X in subs(range(1, 6)) for Y in subs(range(1, 6)) if all(x % 2 for x in X) and len(X | Y) == 5 and len(Y) == 3 and not (X & Y))
 # ---- 명세와 대조
 def hwp2sym(s):
     s = s.replace("pi", "*pi").replace(" ", "")

@@ -188,7 +188,7 @@ def build(src, spec_path, out):
     for no, it in spec.REPLACE.items():
         blk = blocks[no - 1]
         first = xml[blk[0][0]:blk[0][1]]
-        if re.search(r"\d{4}년 \d+월", first):
+        if re.search(r"\d{4}년 \d+월", first) and not it.get("mock_ok"):   # 모의고사는 사용자가 지시한 문항(mock_ok)만 바꾼다
             raise SystemExit("%d번은 모의고사 문항 — 바꾸지 않는다" % no)
         # 미주(풀이) 다시 쓰기
         en = re.search(r"<hp:endNote .*?</hp:endNote>", first, re.S).group(0)
@@ -205,6 +205,14 @@ def build(src, spec_path, out):
                '<hp:run charPrIDRef="26">%s<hp:t> [정답] </hp:t>%s<hp:t/></hp:run></hp:p>' % (auto, ans_x))
         sol = "".join(b.para(ln, pp="23", cp="26") for ln in it["sol"])
         first2 = first.replace(en, head + sp0 + sol + "</hp:subList></hp:endNote>")
+        if it.get("mock_ok") and re.search(r"\d{4}년 \d+월", first):
+            # 모의고사 칸을 바꿀 때: 출처 줄을 없애고 첫 문단을 모의고사가 아닌 문항의 첫 문단 꼴로 맞춘다(쪽·단 나눔은 그대로)
+            tpl = next(xml[b2[0][0]:b2[0][1]] for b2 in blocks if not re.search(r"\d{4}년 \d+월", xml[b2[0][0]:b2[0][1]]))
+            ten = re.search(r"<hp:endNote .*?</hp:endNote>", tpl, re.S).group(0)
+            first2 = tpl.replace(ten, head + sp0 + sol + "</hp:subList></hp:endNote>")
+            for att in ("pageBreak", "columnBreak"):
+                v = re.search(r'%s="(\d)"' % att, first).group(1)
+                first2 = re.sub(r'(<hp:p [^>]*?%s=")\d(")' % att, lambda m: m.group(1) + v + m.group(2), first2, count=1)
         # 문제 문단: 빈 문단이 아닌 것을 모두 빼고 새 문단을 넣는다. 빈 문단(풀이 칸)은 그대로
         empties = []
         for a, z in blk[1:]:
