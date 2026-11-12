@@ -36,7 +36,7 @@ def main(nn, src, start, name, extra=""):
         m = re.search(r'(\d{4})년 (\d+)월 고(\d) (\d+)번', body)
         a = re.search(r'\[정답\]\s*([①-⑤])', en) or re.search(r'\[정답\]\s*</hp:t>(.*?)</hp:run>', en, re.S)
         oans = txt(a.group(1), 30) if a else '?'
-        if m:
+        if m and i not in S.REPLACE:          # 사용자가 바꾸라고 한 모의고사(mock_ok)는 '그대로 둔 모의고사'에서 뺀다
             mock.append('%03d (%s)' % (no, m.group(0)))
         if i in S.REPLACE:
             it = S.REPLACE[i]
