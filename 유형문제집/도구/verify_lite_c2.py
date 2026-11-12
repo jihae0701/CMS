@@ -111,6 +111,12 @@ for sx, sy in ((1, 1), (-1, 1), (-1, -1), (1, -1)):
     for r_ in sp.solve(sp.Eq((3*sx*t - 4*sy*t + 5)**2, 25*t**2), t):
         if r_ > 0: rs.add((sx, sy, r_))
 R[(3, 10)] = sum(r_ for _, _, r_ in rs)
+ks3 = []
+for kv in sp.solve(sp.Eq((k - 2)**2 / sp.sqrt(3), 3*sp.sqrt(3)), k):
+    m_t = sp.solve(sp.Eq(2/sp.sqrt(t**2 + 1), 1), t); assert sorted(m_t) == [-sp.sqrt(3), sp.sqrt(3)]
+    P1 = ((kv - 2)/sp.sqrt(3), kv); P2 = (-(kv - 2)/sp.sqrt(3), kv)
+    if sp.simplify(area((0, 2), P1, P2) - 3*sp.sqrt(3)) == 0: ks3.append(kv)
+R[(3, 14)] = sp.prod(ks3)
 # ---- 4단원
 s = [p for p in sp.solve([2*a*b - 14, a**2 + b**2 - 22], [a, b]) if p[0] > 0 and p[1] > 0]; R[(4, 5)] = sp.simplify(s[0][0]**3 + s[0][1]**3)
 av_ = [v_ for v_ in sp.solve(sp.Rational(1, 2)*((3 + a) - (-a))*(sp.Rational(3, 2) + a) - 4, a) if v_ > 0]; R[(4, 8)] = av_[0]
