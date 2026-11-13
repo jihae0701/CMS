@@ -9,6 +9,9 @@
      (조건이 수식으로 끝나면 마지막 수식에 'RIGHT }'를 그대로 둔다: 수식 'X=LEFT { x left| x in A' + 글자 '이고 ' + 수식 'x notin B RIGHT }')
   4. 합의 줄임표: s_{1} + CDOTS +s_{n} → s_{1} + it CDOTS it +s_{n} (목록 '1,~2,~CDOTS,~10'은 그대로)
   5. 수식 바로 뒤의 '이하·이상·미만·초과·또는·그리고' 앞은 한 칸 띄운다: '10 이하의 자연수' (사용자 요청 2026-11-10)
+  6. (명제 단원, 2026-11-13 사용자 7단원 완성본) 명제의 화살표 앞뒤에 빈칸: p rarrow q → p`` rarrow ``q (RARROW도 같음),
+     집합 기호 대문자는 소문자로(SUBSET·NSUBSET·SIM·SMALLINTER·CUP → subset·nsubset·sim·cap·cup).
+     함수 단원의 f:X rarrow Y는 건드리지 않도록 `python eqstyle.py --prop 파일`로만 적용한다.
 
 python eqstyle.py 파일.hwpx [...]   (그 자리에서 고친다)
 gen.py(DESIGN="c2")와 기본서2/compose01.py가 저장할 때 자동으로 부른다.
@@ -91,9 +94,21 @@ def split(sc):
     return [tuple(x) for x in res]
 
 
+PROP = False   # --prop: 6번(명제 화살표·대문자 기호)도 적용
+LOWER = {"SUBSET": "subset", "NSUBSET": "nsubset", "SIM": "sim", "SMALLINTER": "cap", "CUP": "cup"}
+
+
+def prop(sc):
+    s = re.sub(r"[\s`~]*\b(rarrow|RARROW)\b[\s`~]*", lambda m: "`` %s ``" % m.group(1), sc)
+    s = re.sub(r"\b(%s)\b" % "|".join(LOWER), lambda m: LOWER[m.group(1)], s)
+    return s
+
+
 def style_script(sc):
     """수식 하나 -> (바뀐 수식) 또는 [조각들]"""
     s = simple(sc)
+    if PROP:
+        s = prop(s)
     p = split(s)
     return p if p else s
 
@@ -212,5 +227,9 @@ def style_file(path):
 
 
 if __name__ == "__main__":
-    for p in sys.argv[1:]:
+    args = sys.argv[1:]
+    if args and args[0] == "--prop":
+        PROP = True
+        args = args[1:]
+    for p in args:
         print(style_file(p), p)
