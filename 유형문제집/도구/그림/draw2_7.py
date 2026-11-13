@@ -25,7 +25,7 @@ def path(F, pts, closed=False, wd=CW):
     F.svg.append('<path d="%s" fill="none" stroke="#000" stroke-width="%s" stroke-linejoin="round" stroke-linecap="round"/>' % (d, wd))
 
 
-def ell(F, cx, cy, rx, ry, name=None, ang=90, gap=None):
+def ell(F, cx, cy, rx, ry, name=None, ang=90, gap=None, size=21):
     """타원(원) — ang(도) 자리를 끊고 그 자리에 이름을 쓴다"""
     n = 720
     pts = [(cx + rx * math.cos(2 * math.pi * k / n), cy + ry * math.sin(2 * math.pi * k / n)) for k in range(n + 1)]
@@ -49,13 +49,13 @@ def ell(F, cx, cy, rx, ry, name=None, ang=90, gap=None):
         segs[0] = segs[-1] + segs[0]; segs.pop()
     for sg in segs:
         path(F, sg)
-    F.lab((lx, ly), name, "cc", 0, 0)
+    F.lab((lx, ly), name, "cc", 0, 0, size)
 
 
-def urect(F, x0, y0, x1, y1, r=0.35, name="U", lx=None):
+def urect(F, x0, y0, x1, y1, r=0.35, name="U", lx=None, size=21, gap=None):
     """전체집합: 모서리가 둥근 직사각형, 위 변 왼쪽을 끊고 U"""
     lx = x0 + 0.9 if lx is None else lx
-    g = GAPPX / F.sx
+    g = (gap or GAPPX) / F.sx
     pts = [(lx + g, y1), (x1 - r, y1)]
     for k in range(1, 10):
         a = math.pi / 2 - math.pi / 2 * k / 9; pts.append((x1 - r + r * math.cos(a), y1 - r + r * math.sin(a)))
@@ -70,28 +70,32 @@ def urect(F, x0, y0, x1, y1, r=0.35, name="U", lx=None):
         a = math.pi - math.pi / 2 * k / 9; pts.append((x0 + r + r * math.cos(a), y1 - r + r * math.sin(a)))
     pts.append((lx - g, y1))
     path(F, pts, wd=CW)
-    F.lab((lx, y1), name, "cc", 0, 0)
+    F.lab((lx, y1), name, "cc", 0, 0, size)
 
 
 def frame(w=10.0, h=7.0):
     return Frame((-0.3, w + 0.3), (-0.3, h + 0.5), 40, 40, (12, 12, 12, 12))
 
 
+BIG = round(21 * 1.6)   # 372·373번: 사용자 요청(2026-11-13)으로 U, P, Q, R 글씨를 1.6배
+BGAP = round(GAPPX * 1.6)
+
+
 def fig_venn_r():
-    F = frame()
-    urect(F, 0, 0, 10, 7)
-    ell(F, 5, 3.3, 4.1, 2.9, "R", 90)
-    ell(F, 3.2, 3.3, 1.5, 1.5, "P", 100)
-    ell(F, 6.8, 3.3, 1.5, 1.5, "Q", 95)
+    F = Frame((-0.3, 10.3), (-0.3, 7.6), 40, 40, (12, 22, 12, 12))
+    urect(F, 0, 0, 10, 7, lx=1.0, size=BIG, gap=BGAP)
+    ell(F, 5, 3.3, 4.1, 2.9, "R", 90, gap=BGAP, size=BIG)
+    ell(F, 3.2, 3.3, 1.5, 1.5, "P", 100, gap=BGAP, size=BIG)
+    ell(F, 6.8, 3.3, 1.5, 1.5, "Q", 95, gap=BGAP, size=BIG)
     return F.render()
 
 
 def fig_venn_rq():
-    F = frame()
-    urect(F, 0, 0, 10, 7)
-    ell(F, 6.1, 3.5, 2.6, 2.6, "R", 90)
-    ell(F, 6.1, 3.9, 1.45, 1.45, "Q", 90)
-    ell(F, 2.8, 2.6, 1.55, 1.55, "P", 100)
+    F = Frame((-0.3, 10.3), (-0.3, 7.6), 40, 40, (12, 22, 12, 12))
+    urect(F, 0, 0, 10, 7, lx=1.0, size=BIG, gap=BGAP)
+    ell(F, 6.1, 3.4, 2.6, 2.6, "R", 90, gap=BGAP, size=BIG)
+    ell(F, 6.1, 3.4, 1.35, 1.35, "Q", 90, gap=BGAP, size=BIG)
+    ell(F, 2.8, 2.6, 1.55, 1.55, "P", 100, gap=BGAP, size=BIG)
     return F.render()
 
 
