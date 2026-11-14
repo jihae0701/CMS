@@ -394,6 +394,8 @@ PCSS = """
 .cl .logo .sep{display:inline-block;width:1px;height:4.2mm;background:#9a9a9a;margin:0 2.4mm;vertical-align:-0.5mm}
 .cl .logo img{height:4.4mm;vertical-align:-0.6mm}
 .cl .mini .logo img{height:3.8mm}
+.cl .logo img.cms{height:4.2mm;vertical-align:-0.5mm}
+.cl .mini .logo img.cms{height:3.6mm}
 .cl .logo i{font-size:7pt;font-weight:800;font-style:italic;color:#1B2A4A;border-bottom:1.5px solid #1B2A4A;margin-left:2mm;padding-left:2mm;border-left:1px solid #9a9a9a;letter-spacing:.3px;vertical-align:2px}
 .cl .kicker{text-align:center;font-size:7.5pt;letter-spacing:2.6px;color:#555;margin-top:2.2mm}
 .cl h1{text-align:center;color:#B3202E;font-size:25pt;font-weight:800;margin:3.5mm 0 1mm;letter-spacing:-.5px}
@@ -481,6 +483,8 @@ PCSS = """
 
 _LOGO = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "climath_logo.png")
 LOGO_URI = ("data:image/png;base64," + __import__("base64").b64encode(open(_LOGO, "rb").read()).decode()) if os.path.exists(_LOGO) else ""
+_CMS = os.path.join(os.path.dirname(_LOGO), "cms_logo.png")   # 성적표 머리의 CMS 로고
+CMS_URI = ("data:image/png;base64," + __import__("base64").b64encode(open(_CMS, "rb").read()).decode()) if os.path.exists(_CMS) else ""
 _CUR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "curriculum.html")
 CURRIC = open(_CUR, encoding="utf-8").read().replace("{LOGO}", LOGO_URI) if os.path.exists(_CUR) else ""
 _CUR2 = os.path.join(os.path.dirname(_CUR), "curriculum_2p.html")   # 표지 없는 2쪽 안내지
@@ -527,7 +531,8 @@ def parent_pages(s, cfg, exams, stats):
     """CMS CLIMATH 학습유형 보고서와 같은 디자인의 2쪽 보고서"""
     e = html.escape
     show = cfg["show_avg"]
-    brand = '<div class="logo">CMS<span class="sep"></span><img src="%s" alt="CLIMATH"></div>' % LOGO_URI
+    cms = '<img class="cms" src="%s" alt="CMS">' % CMS_URI if CMS_URI else "CMS"
+    brand = '<div class="logo">%s<span class="sep"></span><img src="%s" alt="CLIMATH"></div>' % (cms, LOGO_URI)
     subjects = " · ".join(n for _, n in SUBJ)
     text, tips = opinion(s, cfg, stats)
     strong, weak = strengths_weaknesses(s, cfg)
