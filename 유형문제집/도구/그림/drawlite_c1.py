@@ -3,6 +3,7 @@
 - lite1_05_quad.png: 5단원 o5-18 — y=x²−4x와 y=−2x+3, 사각형 ADBC(연분홍)
 - lite1_05_root.png: 5단원 o5-26 — 위로 볼록, x절편 1, 3인 y=f(x)
 - lite1_06_pq.png: 6단원 o5-47 — y=−x²+4x와 y=x, 점 A, 직선 x=t 위의 P, Q
+- lite2_10_tent.png: 공통수학2 10단원 c2o6-53 — f(x)=2x, 8−2x 꺾은선(꼭짓점 (2, 4))
 - lite1_03_cube.png: 3단원 o3-69 — 모서리 2x+y인 정육면체의 각 면 가운데에 한 변이 x+y인 정사각형 구멍을 뚫은 입체
 """
 import os, sys
@@ -217,7 +218,21 @@ def fig_two_rect():
     return F.render()
 
 
-FIGS = (("lite1_03_cube.png", fig_cube, 10000), ("lite1_05_quad.png", fig_quad, 10000), ("lite1_05_root.png", fig_root, 9000), ("lite1_06_pq.png", fig_pq, 9000), ("lite1_08_fg.png", fig_fg, 9000), ("lite1_11_seg.png", fig_seg, 9000), ("lite1_07_rect.png", fig_rect, 10000), ("lite2_02_rect2.png", fig_two_rect, 15000))
+def fig_tent():
+    """공통수학2 10단원 c2o6-53: X={x|0≤x≤4}에서 f(x)=2x (0≤x<2), 8−2x (2≤x≤4)"""
+    F = Frame((-0.6, 4.9), (-0.6, 4.8), 44, 44, (16, 12, 16, 12))
+    F.axes()
+    F.svg.append('<polyline points="%s" fill="none" stroke="#000" stroke-width="%s" stroke-linejoin="round"/>'
+                 % (" ".join("%.1f,%.1f" % F.P(*q) for q in ((0, 0), (2, 4), (4, 0))), STROKE))
+    dash = 'stroke-dasharray="5,4"'
+    F.seg((2, 4), (2, 0), 1.2, dash); F.seg((2, 4), (0, 4), 1.2, dash)
+    F.pt((0, 0), "O", "rt", -4, 4)
+    F.lab((2, 0), "2", "ct", 0, 6); F.lab((4, 0), "4", "ct", 0, 6); F.lab((0, 4), "4", "rc", -6, 0)
+    F.lab((2.9, 2.6), "y=f(x)", "lc", 8, 0)
+    return F.render()
+
+
+FIGS = (("lite1_03_cube.png", fig_cube, 10000), ("lite1_05_quad.png", fig_quad, 10000), ("lite1_05_root.png", fig_root, 9000), ("lite1_06_pq.png", fig_pq, 9000), ("lite1_08_fg.png", fig_fg, 9000), ("lite1_11_seg.png", fig_seg, 9000), ("lite1_07_rect.png", fig_rect, 10000), ("lite2_02_rect2.png", fig_two_rect, 15000), ("lite2_10_tent.png", fig_tent, 8000))
 
 if __name__ == "__main__":
     for name, fn, wd in FIGS:

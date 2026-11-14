@@ -24,7 +24,7 @@ for _ in range(5):
     av, bv, cv, dv = [random.randint(-9, 9) for _ in range(4)]
     cv, dv = 5 - av, -2 - bv                              # 중점 조건을 만족시키도록
     C1 = Cc((av, bv), (cv, dv), 2, 3); D1 = Cc((av, bv), (cv, dv), 3, 2)
-    assert (C1[0] + D1[0]) / 2 == 2.5 and (C1[1] + D1[1]) / 2 == -1
+    assert abs((C1[0] + D1[0]) / 2 - 2.5) < 1e-9 and abs((C1[1] + D1[1]) / 2 + 1) < 1e-9   # 소수 오차로 가끔 == 이 틀리던 것
     vals.add((av + cv) - (bv + dv))
 R[(1, 8)] = vals.pop()
 Bv, Cv = sp.symbols("B0 B1", real=True), None
