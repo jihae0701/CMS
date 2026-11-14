@@ -632,8 +632,8 @@ def recommended(s, cfg):
 
 def parent_label(name):
     """학부모 성적표 표기: TF1월금·TF2월금 → TF월금, TF1화목(자사) → TF화목(자사) (엑셀·상담 카드는 그대로)"""
-    m = re.fullmatch(r"TF\d(월금/화목|월금|화목|반)(\(.+\))?", str(name or ""))   # 요일 미정이면 TF1반 → TF반
-    return "TF" + m.group(1) + (m.group(2) or "") if m else name
+    m = re.fullmatch(r"TF\d(월금/화목|월금|화목|반)(\(.+\))?", str(name or ""))
+    return "TF" + ("" if m.group(1) == "반" else m.group(1)) + (m.group(2) or "") if m else name   # 요일 미정 'TF1반' → 'TF'
 
 
 def recommended2(s, cfg):
