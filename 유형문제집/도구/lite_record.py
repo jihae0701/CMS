@@ -33,8 +33,8 @@ def main(nn, src, start, name, extra=""):
         no = first + i - 1
         en = re.search(r'<hp:endNote .*?</hp:endNote>', b, re.S).group(0)
         body = b.replace(en, '')
-        m = re.search(r'(\d{4})년 (\d+)월 고(\d) (\d+)번', body)
-        a = re.search(r'\[정답\]\s*([①-⑤])', en) or re.search(r'\[정답\]\s*</hp:t>(.*?)</hp:run>', en, re.S)
+        m = re.search(r'(\d{4})년 (\d+)월 고(\d)(\([가-힣]\))? (\d+)번', body)    # '고2(가)'꼴도
+        a = (re.search(r'(?:\[정답\]|󰂼)\s*([①-⑤])', en) or re.search(r'(?:\[정답\]|󰂼)\s*</hp:t>(.*?)</hp:run>', en, re.S))   # 사용자 완성본은 '󰂼'인 곳도
         oans = txt(a.group(1), 30) if a else '?'
         if m and i not in S.REPLACE:          # 사용자가 바꾸라고 한 모의고사(mock_ok)는 '그대로 둔 모의고사'에서 뺀다
             mock.append('%03d (%s)' % (no, m.group(0)))

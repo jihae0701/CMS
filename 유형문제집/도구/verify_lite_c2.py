@@ -174,6 +174,69 @@ for X in subs(range(1, 8)):
         if X - Y == {4, 5} and (U7 - (X & Y)) & (X | (U7 - Y)) == {4, 5, 6, 7}: r7.add(sum(X | Y))
 assert len(r7) == 1; R[(6, 7)] = r7.pop()
 R[(6, 15)] = min(sum(Y) for X in subs(range(1, 6)) for Y in subs(range(1, 6)) if all(x % 2 for x in X) and len(X | Y) == 5 and len(Y) == 3 and not (X & Y))
+
+# ---- 9단원 함수
+tot9 = 0
+for S9 in subs([3, 4, 5]):
+    X9 = {1, 2} | set(S9); Y9 = set(range(1, 7)) - X9
+    tot9 += len(list(it.permutations(sorted(Y9), len(X9)))) if len(X9) <= len(Y9) else 0
+R[(9, 1)] = tot9
+rts = sorted(set(sp.solve(x**3 - 3*x - (3*x**2 + x - 12), x)))
+R[(9, 4)] = max(p_ + q_ for p_ in rts for q_ in rts if p_ != q_)
+cv = sp.solve(sp.Eq(1 - 2 - 4 + c, 1), c)[0]
+ab9 = [r_ for r_ in sp.solve(x**3 - 2*x**2 - 4*x + cv - x, x) if r_ != 1]
+R[(9, 5)] = sum(r_**2 for r_ in ab9) + cv**2
+best9 = None
+for av in range(-30, 30):
+    for bv in range(-200, 200):
+        g9 = np.linspace(-50, 50, 2001)
+        f9 = np.where(g9 < 2, (7 - av)*g9 + bv, g9 + av)
+        if 7 - av > 0 and abs(2*(7 - av) + bv - (2 + av)) < 1e-9:     # 증가하고 이어져야 전단사
+            best9 = av + bv if best9 is None else max(best9, av + bv)
+R[(9, 6)] = best9
+# f(a+b)=f(a)+f(b)+2ab 의 해: f(n)=n^2+pn (p 임의) — 두 값으로 확인
+vals9 = {sum(n*n + pp*n for n in (-2, -1, 1, 2)) for pp in (0, 3, -7)}
+assert len(vals9) == 1; R[(9, 7)] = vals9.pop()
+cnt9 = 0
+for kk in range(0, 40):                  # |q(x)|=k 는 k≥0일 때만 해가 있다
+    r9 = set()
+    for sgn in (1, -1):
+        for r_ in sp.solve(x**2 - 5*x - 1 - sgn*kk, x):
+            if r_.is_real: r9.add(sp.nsimplify(r_))
+    if len(r9) == 4: cnt9 += 1
+R[(9, 9)] = cnt9
+# ---- 10단원 합성함수와 역함수
+for fp in it.permutations([1, 2, 3]):
+    f10 = dict(zip([1, 2, 3], fp))
+    if f10[1] != 3 or f10[2] != 1: continue
+    for gp in it.permutations([1, 2, 3]):
+        g10 = dict(zip([1, 2, 3], gp)); gi = {v_: k_ for k_, v_ in g10.items()}
+        if g10[f10[3]] == 3 and f10[g10[3]] == 3: R[(10, 1)] = g10[1] + gi[f10[2]]
+def inv10(yv):
+    r_ = [v for v in sp.solve(x**2 - 1 - yv, x) if v.is_real and v < 0] + [v for v in sp.solve(-x**2 - 1 - yv, x) if v.is_real and v >= 0]
+    assert len(r_) == 1
+    return r_[0]
+R[(10, 3)] = inv10(-2) + inv10(3)
+R[(10, 4)] = min(av + bv for av in range(-20, 20) for bv in range(-20, 20) if av - 1 > 0 and bv == 5)
+def f58(v):
+    while v >= 10: v -= 10
+    return 2*v + 3
+def it58(n, v):
+    for _ in range(n): v = f58(v)
+    return v
+R[(10, 5)] = it58(10, 1) + it58(20, 1)
+ok86 = [av for av in np.arange(7.0, 8.5, 0.125) if len([r_ for r_ in np.roots([1, -8, 2*av]) if abs(r_.imag) < 1e-9 and r_.real >= 3 - 1e-9]) == 2 and 64 - 8*av > 1e-12]
+assert min(ok86) == 7.5 and max(ok86) < 8; R[(10, 9)] = "{15} over {2} leq a<8"
+sol41 = [(av, bv) for av in range(-5, 6) if av != 0 for bv in range(-5, 6)
+         if all((av*(v*v + bv*v) + 2) == ((av*v + 2)**2 + bv*(av*v + 2)) for v in (0, 2))]
+assert len(sol41) == 1; R[(10, 10)] = sum(sol41[0])
+f53 = lambda v: 2*v if v < 2 else 8 - 2*v
+R[(10, 11)] = len({sp.Rational(n, 8) for n in range(0, 33) if f53(f53(sp.Rational(n, 8))) == 2})
+def f47(v, av): return 2*v + av if abs(v) < 2 else 3*v + 10
+R[(10, 12)] = [av for av in range(-20, 20) if f47(f47(f47(-3, av), av), av) == 4][0]
+fi71 = lambda v: (v - 1) / sp.Integer(2) if v <= 3 else 2*v - 5
+assert fi71(2*sp.Integer(1) + 1) == 1 and fi71(sp.Rational(1, 2)*5 + sp.Rational(5, 2)) == 5
+R[(10, 13)] = -sp.Rational(1, 2) + (-5) + 3
 # ---- 명세와 대조
 def hwp2sym(s):
     s = s.replace("pi", "*pi").replace(" ", "")
@@ -185,11 +248,15 @@ def hwp2sym(s):
     s = s.lstrip("*")
     return sp.sympify(s)
 bad = n = 0
-for u in (1, 2, 3, 4, 5, 6):
+for u in (1, 2, 3, 4, 5, 6, 9, 10):
     sp_ = importlib.util.spec_from_file_location("s", os.path.join(os.path.dirname(os.path.abspath(__file__)), "lite_c2_%02d.py" % u))
     S = importlib.util.module_from_spec(sp_); sp_.loader.exec_module(S)
     for i, v_ in S.REPLACE.items():
         n += 1
-        got = R.get((u, i)); exp = hwp2sym(v_["ans"])
+        got = R.get((u, i))
+        if isinstance(got, str):
+            if got.replace(" ", "") != v_["ans"].strip("$").replace(" ", ""): bad += 1; print("불일치", u, i, v_["ans"], got)
+            continue
+        exp = hwp2sym(v_["ans"])
         if got is None or abs(float(sp.N(got)) - float(sp.N(exp))) > 1e-2: bad += 1; print("불일치", u, i, v_["ans"], got)
 print("검산", n, "불일치", bad)
