@@ -36,6 +36,9 @@ NUDGE = {}         # 그림 파일 -> {글자 번호: [dx, dy]} (fit_shoot가 �
 CURRENT = None     # 지금 그리는 그림 파일 이름
 AXIS_LABELS = {"x", "y", r"\mathrm{O}"}   # 약속된 자리라 옮기지 않는 글자
 
+DASH = 'stroke-dasharray="5,4"'                      # 점선(보조선·정의역 밖 곡선)
+GRID = 'stroke-dasharray="3,3" stroke-opacity="0.55"'  # 모눈(연한 점선)
+
 # 색칠은 회색 대신 연한 색
 PINK, GREEN, SKY, LAVENDER, YELLOW = "#ffd9e6", "#dcf3d2", "#d6ecfb", "#e8defa", "#fff3bf"
 # 정육면체 세 면: 연한 하늘색 한 색에 명도만 다르게
@@ -64,7 +67,8 @@ def page(svg, labels, w, h):
     nudge = NUDGE.get(CURRENT, {})
     for i, lab in enumerate(labels):
         x, y, tex, size, anc = lab[:5]
-        fixed = len(lab) > 5 and lab[5] == "dim"       # 길이 점선을 끊은 자리의 글자(옮기지 않음)
+        tag = lab[5] if len(lab) > 5 else ""
+        fixed = {"dim": "1", "cut": "2"}.get(tag, "")    # dim: 길이 점선을 끊은 자리, cut: 곡선을 끊은 자리(벤 다이어그램 이름) — 옮기지 않음
         dx, dy = nudge.get(str(i), (0, 0))
         x, y = x + dx, y + dy
         size = size if size > FONT + 4 else FONT
@@ -72,7 +76,7 @@ def page(svg, labels, w, h):
         tx = {"c": "-50%", "l": "0", "r": "-100%"}[anc[0]]
         ty = {"c": "-50%", "t": "0", "b": "-100%"}[anc[1] if len(anc) > 1 else "c"]
         divs.append('<div class="lb" style="left:%.1fpx;top:%.1fpx;font-size:%dpx;transform:translate(%s,%s)" data-tex="%s" data-i="%d"%s></div>'
-                    % (x, y, size, tx, ty, escape(tex, quote=True), i, ' data-fixed="1"' if fixed else ""))
+                    % (x, y, size, tx, ty, escape(tex, quote=True), i, ' data-fixed="%s"' % fixed if fixed else ""))
     return """<!doctype html><html><head><meta charset="utf-8">%s
 <style>body{margin:0;background:#fff}#fig{position:relative;width:%dpx;height:%dpx;background:#fff}
 .lb{position:absolute;white-space:nowrap;line-height:1}</style></head><body>
@@ -117,21 +121,21 @@ class Frame:
     def P(self, x, y):
         return (self.m[0] + (x - self.xr[0]) * self.sx, self.m[1] + (self.yr[1] - y) * self.sy)
 
-    def axes(self):
+    def axes(self, xname="x", yname="y"):
         """x축·y축(보이는 범위 끝까지)과 x, y 글자. y는 y축 화살표 왼쪽(글자 윗끝 = 화살표 끝 높이),
-        x는 x축 아래(글자 오른쪽 끝 = 화살표 끝 바로 왼쪽)"""
-        self.xaxis(self.xr[0], self.xr[1])
+        x는 x축 아래(글자 오른쪽 끝 = 화살표 끝 바로 왼쪽). 가로축이 t이면 axes("t")"""
+        self.xaxis(self.xr[0], self.xr[1], xname)
         (ox, yb), (_, yt) = self.P(0, self.yr[0]), self.P(0, self.yr[1])
         self.svg.append('<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="#000" stroke-width="%s" marker-end="url(#ar)"/>'
                         % (ox, yb, ox, yt, AX))
-        self.labels.append((ox - 10, yt + 3.7, "y", 22, "rc"))
+        self.labels.append((ox - 10, yt + 3.7, yname, 22, "rc"))
 
-    def xaxis(self, x0, x1):
-        """x축만(그래프와 x축의 위치 관계 그림 등)"""
+    def xaxis(self, x0, x1, xname="x"):
+        """x축만(그래프와 x축의 위치 관계 그림, 원본에 y축이 없는 그림 등)"""
         (a, y), (b, _) = self.P(x0, 0), self.P(x1, 0)
         self.svg.append('<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="#000" stroke-width="%s" marker-end="url(#ar)"/>'
                         % (a, y, b, y, AX))
-        self.labels.append((b + 0.3, y + 1.1, "x", 22, "rt"))
+        self.labels.append((b + 0.3, y + 1.1, xname, 22, "rt"))
 
     def curve(self, f, x0, x1, extra=""):
         self.svg.append(curve(f, x0, x1, self.P, extra=extra))
@@ -141,7 +145,23 @@ class Frame:
                         % (self.P(*p) + self.P(*q) + (wd, extra)))
 
     def dashed(self, p, q):
-        self.seg(p, q, 1.5, 'stroke-dasharray="5,4"')
+        self.seg(p, q, 1.5, DASH)
+
+    def polyline(self, pts, extra=""):
+        """꺾은선 그래프(곡선과 같은 굵기 3.2). extra=DASH면 점선"""
+        self.svg.append('<polyline points="%s" fill="none" stroke="#000" stroke-width="%s" stroke-linejoin="round" %s/>'
+                        % (" ".join("%.1f,%.1f" % self.P(*p) for p in pts), STROKE, extra))
+
+    def grid(self, xs, ys, x0=0, y0=0):
+        """모눈: x=xs의 세로선, y=ys의 가로선을 연한 점선으로(굵기 1.2)"""
+        for x in xs:
+            self.seg((x, y0), (x, max(ys)), 1.2, GRID)
+        for y in ys:
+            self.seg((x0, y), (max(xs), y), 1.2, GRID)
+
+    def leader(self, p, q):
+        """글자에서 가리키는 곳까지의 짧은 지시선(굵기 1.2). 글자를 둘 자리가 마땅치 않을 때"""
+        self.seg(p, q, 1.2)
 
     def poly(self, pts, fill):
         """색칠(테두리 없음, 맨 아래 층)"""
@@ -187,7 +207,7 @@ def _measure(html, w, h):
         pg.wait_for_function("document.querySelectorAll('.lb .katex').length === document.querySelectorAll('.lb').length")
         pg.wait_for_timeout(150)
         labs = pg.evaluate("""() => [...document.querySelectorAll('.lb')].map(e => {
-            const r = e.getBoundingClientRect(); return [r.left, r.top, r.right, r.bottom, e.dataset.tex, +e.dataset.i, e.dataset.fixed === '1']})""")
+            const r = e.getBoundingClientRect(); return [r.left, r.top, r.right, r.bottom, e.dataset.tex, +e.dataset.i, e.dataset.fixed || '']})""")
         pg.evaluate("() => document.querySelectorAll('svg').forEach(e => e.style.visibility='hidden')")
         lab_png = pg.locator("#fig").screenshot()
         pg.evaluate("() => { document.querySelectorAll('svg').forEach(e => e.style.visibility='visible');"
@@ -222,7 +242,7 @@ def _gap(I, b, limit=GAP + 4):
 def check_and_nudge(name, html, w, h):
     """글자와 선 사이가 GAP보다 좁은 글자를 가장 가까운 빈자리로 옮긴다(NUDGE). 남은 문제 목록을 돌려준다."""
     I, labs = _measure(html, w, h)
-    bad = [(i, tex, fixed, box) for i, tex, fixed, box in labs if tex not in AXIS_LABELS and _gap(I, box) < GAP]
+    bad = [(i, tex, fixed, box) for i, tex, fixed, box in labs if tex not in AXIS_LABELS and fixed != "2" and _gap(I, box) < GAP]
     boxes = {i: box for i, tex, fixed, box in labs}
     nud = NUDGE.setdefault(name, {})
     cands = sorted(((dx, dy) for dx in range(-REACH, REACH + 1) for dy in range(-REACH, REACH + 1)),
@@ -363,6 +383,84 @@ def dim_arc(F, p, q, label, side, bulge=16, size=FONT, gap=6, cut=True):
     F.svg.append(sub(1 - t, 1))
     F.labels.append((M[0], M[1], label, size, "cc", "dim"))
 
+# ---------------------------------------------------------------- 대응 그림(화살표 그림)
+MAP_ARROW = ('<marker id="am" viewBox="0 0 13 10" refX="12" refY="5" markerWidth="7.8" markerHeight="6" orient="auto">'
+             '<path d="M13,5 L0.5,0.3 L2.5,5 L0.5,9.7 z" fill="#000"/></marker>')
+
+
+def mapping(xs, ys, f, nameX="X", nameY="Y", fname="f", s=46):
+    """집합 X에서 Y로의 대응 그림. xs, ys: 원소(글자) 목록, f: {x원소: y원소}.
+    타원 테두리 2.0, 원소 글자는 타원 가운데, 화살표는 가는 선(1.5)과 작은 화살촉, 위에 X —f→ Y"""
+    n = max(len(xs), len(ys))
+    top = n - 1
+    F = Frame((-0.9, 4.9), (-0.9, top + 1.9), s, s, (12, 12, 12, 12))
+    F.svg.append("<defs>%s</defs>" % MAP_ARROW)
+    for cx, items in ((0, xs), (4, ys)):
+        X, Y = F.P(cx, top / 2)
+        F.svg.append('<ellipse cx="%.1f" cy="%.1f" rx="%.1f" ry="%.1f" fill="none" stroke="#000" stroke-width="2.0"/>'
+                     % (X, Y, 0.75 * F.sx, (top / 2 + 0.75) * F.sy))
+    yx = lambda items, k: top / 2 + (len(items) - 1) / 2 - k        # 원소가 적은 쪽은 가운데로 모은다
+    for k, e in enumerate(xs):
+        F.lab((0, yx(xs, k)), str(e), "cc")
+    for k, e in enumerate(ys):
+        F.lab((4, yx(ys, k)), str(e), "cc")
+    for a_, b_ in f.items():
+        (X0, Y0), (X1, Y1) = F.P(0.3, yx(xs, xs.index(a_))), F.P(3.7, yx(ys, ys.index(b_)))
+        F.svg.append('<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="#000" stroke-width="1.5" marker-end="url(#am)"/>' % (X0, Y0, X1, Y1))
+    yt = top + 1.3
+    F.lab((0, yt), nameX, "cc", 0, 0, 23); F.lab((4, yt), nameY, "cc", 0, 0, 23)
+    (X0, Y0), (X1, Y1) = F.P(0.7, yt), F.P(3.3, yt)
+    F.svg.append('<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="#000" stroke-width="1.5" marker-end="url(#am)"/>' % (X0, Y0, X1, Y1))
+    F.lab((2, yt), fname, "cb", 0, -6)
+    return F.render()
+
+
+# ---------------------------------------------------------------- 벤 다이어그램
+VENN_GAP = 15      # 이름을 넣으려고 끊는 곡선의 반쪽 길이(px)
+
+
+def _path(F, pts, wd=STROKE):
+    d = "M" + " L".join("%.1f,%.1f" % F.P(*p) for p in pts)
+    F.svg.append('<path d="%s" fill="none" stroke="#000" stroke-width="%s" stroke-linejoin="round" stroke-linecap="round"/>' % (d, wd))
+
+
+def venn_set(F, cx, cy, rx, ry, name, ang=90, gap=VENN_GAP, size=21):
+    """집합(원·타원). ang(도) 자리의 곡선을 끊고 그 자리에 이름을 쓴다. 이름은 이탤릭(그대로 A, B)"""
+    n = 720
+    pts = [(cx + rx * math.cos(2 * math.pi * k / n), cy + ry * math.sin(2 * math.pi * k / n)) for k in range(n + 1)]
+    lx, ly = cx + rx * math.cos(math.radians(ang)), cy + ry * math.sin(math.radians(ang))
+    LX, LY = F.P(lx, ly)
+    keep, segs = [], []
+    for p in pts:
+        X, Y = F.P(*p)
+        if math.hypot(X - LX, Y - LY) < gap:
+            if keep:
+                segs.append(keep); keep = []
+        else:
+            keep.append(p)
+    if keep:
+        segs.append(keep)
+    if len(segs) > 1 and segs[0][0] == pts[0] and segs[-1][-1] == pts[-1]:
+        segs[0] = segs[-1] + segs[0]; segs.pop()
+    for sg in segs:
+        _path(F, sg)
+    F.labels.append(F.P(lx, ly) + (name, size, "cc", "cut"))
+
+
+def venn_universe(F, x0, y0, x1, y1, name="U", lx=None, r=0.35, gap=VENN_GAP, size=21):
+    """전체집합: 모서리가 둥근 직사각형, 위 변 왼쪽을 끊고 그 자리에 U"""
+    lx = x0 + 0.9 if lx is None else lx
+    g = gap / F.sx
+    pts = [(lx + g, y1), (x1 - r, y1)]
+    for c0, c1, a0 in (((x1 - r), (y1 - r), 90), ((x1 - r), (y0 + r), 0), ((x0 + r), (y0 + r), -90), ((x0 + r), (y1 - r), 180)):
+        for k in range(10):
+            a = math.radians(a0 - 90 * k / 9)
+            pts.append((c0 + r * math.cos(a), c1 + r * math.sin(a)))
+    pts.append((lx - g, y1))
+    _path(F, pts)
+    F.labels.append(F.P(lx, y1) + (name, size, "cc", "cut"))
+
+
 if __name__ == "__main__":
     # 시험: 두 점 (-2, 0), (3, 0)을 지나는 포물선과 직사각형 길이 표시
     def fig_graph():
@@ -391,3 +489,12 @@ if __name__ == "__main__":
     # 폭을 주지 않으면 긴 변이 LONG_SIDE(10000 HWPUNIT)가 되도록 맞추고, 글자-선 간격을 검사해 붙은 글자를 옮긴다
     print("문서 폭", fit_shoot("example_graph.png", fig_graph))
     print("문서 폭", fit_shoot("example_rect.png", fig_rect))
+
+    def fig_venn():
+        F = Frame((-0.3, 10.3), (-0.3, 7.5), 40, 40, (12, 12, 12, 12))
+        venn_universe(F, 0, 0, 10, 7)
+        venn_set(F, 3.8, 3.4, 2.2, 2.2, "A", 100)
+        venn_set(F, 6.2, 3.4, 2.2, 2.2, "B", 80)
+        return F.render()
+    print("문서 폭", fit_shoot("example_venn.png", fig_venn))
+    print("문서 폭", fit_shoot("example_map.png", lambda: mapping([1, 2, 3, 4], [1, 2, 3, 4], {1: 4, 2: 1, 3: 2, 4: 3}, "X", "X"), 7000))
