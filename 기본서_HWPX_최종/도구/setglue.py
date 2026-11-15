@@ -3,6 +3,7 @@
     python3 setglue.py 파일.hwpx"""
 import sys, re, zipfile, shutil
 R = [(re.compile(r'\b(smallinter|smallunion)(?=[A-Za-z])'), r'\1 '),
+     (re.compile(r'(?<=[0-9)])(right|RIGHT)(?=[^A-Za-z])'), r' \1'),
      (re.compile(r'\b(cap|cup|subset|supset|notin|in|IN|NOTIN|SUBSET|SUPSET|CAP|CUP)(?=[A-Z])'), r'\1 ')]
 path = sys.argv[1]
 z = zipfile.ZipFile(path); items = [(i, z.read(i.filename)) for i in z.infolist()]; z.close()
@@ -10,6 +11,8 @@ tot = 0
 def fix(m):
     global tot
     s = m.group(2)
+    if '\ue04d' in s:   # 글꼴 전용 문자(세로선) → |
+        s = s.replace('\ue04d', '|'); tot += 1
     for r, rep in R:
         s, n = r.subn(rep, s); tot += n
     return m.group(1) + s + m.group(3)
