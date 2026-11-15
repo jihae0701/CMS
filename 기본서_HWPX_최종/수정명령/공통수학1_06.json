@@ -1,0 +1,428 @@
+[
+ {
+  "op": "eq",
+  "n": 4,
+  "part": "sol",
+  "old": "{ {a<1}}",
+  "new": "{ {a< it-1}}"
+ },
+ {
+  "op": "eq",
+  "n": 6,
+  "part": "sol",
+  "old": "{ {17}}",
+  "new": "{ {11}}"
+ },
+ {
+  "op": "eq",
+  "n": 6,
+  "part": "sol",
+  "old": "=17",
+  "new": "= it-4+6+9=11"
+ },
+ {
+  "op": "add_para",
+  "n": 6,
+  "part": "sol",
+  "after": "(3) ⟦alpha ^3 + beta ^3⟧",
+  "text": "(4) ⟦alpha^2 -2 alpha -4=0⟧이므로 ⟦alpha^2 -alpha -1=alpha+3⟧, 같은 방법으로 ⟦beta^2 -beta -1=beta+3⟧이므로"
+ },
+ {
+  "op": "text",
+  "n": 6,
+  "part": "sol",
+  "old": "(4) ",
+  "new": "",
+  "exact": true,
+  "before_eq": "LEFT ( alpha  ^{2} - alpha  -1 RIGHT ) LEFT ( beta  ^{2} - beta  -1 RIGHT )"
+ },
+ {
+  "op": "eq",
+  "n": 32,
+  "part": "sol",
+  "old": "5",
+  "new": "2"
+ },
+ {
+  "op": "eq",
+  "n": 32,
+  "part": "sol",
+  "old": "3 LEFT ( k-1 RIGHT ) x  ^{2} +2x-k  ^{3} +3=0",
+  "new": "3 LEFT ( k-1 RIGHT ) x  ^{2} +2x-k  ^{2} +3=0"
+ },
+ {
+  "op": "del_para",
+  "n": 32,
+  "part": "sol",
+  "anchor": "k+alpha=2+3=5"
+ },
+ {
+  "op": "del_para",
+  "n": 32,
+  "part": "sol",
+  "anchor": "THEREFORE ~x=2⟧ 또는"
+ },
+ {
+  "op": "del_para",
+  "n": 32,
+  "part": "sol",
+  "anchor": "x  ^{2} -5x+6=0"
+ },
+ {
+  "op": "add_para",
+  "n": 57,
+  "part": "sol",
+  "after": "󰂼",
+  "text": "⟦h(x)=f(x)-g(x)= it-x^2 +(a-b-1)x+b-a⟧이고, ⟦alpha,~beta⟧는 방정식 ⟦h(x)=0⟧, 즉 ⟦x^2 -(a-b-1)x+a-b=0⟧의 두 근이다.",
+  "like_n": 53,
+  "like": "이때, 점"
+ },
+ {
+  "op": "add_para",
+  "n": 57,
+  "part": "sol",
+  "after": "의 두 근이다.",
+  "text": "⟦a-b=t⟧라 하면 근과 계수의 관계에 의하여 ⟦alpha+beta=t-1,~alpha beta=t⟧",
+  "like_n": 53,
+  "like": "이때, 점"
+ },
+ {
+  "op": "add_para",
+  "n": 57,
+  "part": "sol",
+  "after": "⟦a-b=t⟧라 하면",
+  "text": "⟦LEFT | alpha - beta RIGHT | = sqrt {17}⟧에서 ⟦(alpha-beta)^2 =(alpha+beta)^2 -4 alpha beta=(t-1)^2 -4t=17⟧⏎⟦t^2 -6t-16=0,~(t+2)(t-8)=0⟧⏎⟦b>a⟧이므로 ⟦t<0⟧ ⟦therefore ~t= it-2⟧",
+  "like_n": 53,
+  "like": "이때, 점"
+ },
+ {
+  "op": "add_para",
+  "n": 57,
+  "part": "sol",
+  "after": "t^2 -6t-16=0",
+  "text": "따라서 ⟦h(x)= it-x^2 -3x+2= it- LEFT ( x+ 3 over 2 RIGHT )^2 + 17 over 4⟧이므로⏎⟦p= it- 3 over 2,~q= 17 over 4⟧",
+  "like_n": 53,
+  "like": "이때, 점"
+ },
+ {
+  "op": "eq",
+  "n": 8,
+  "part": "sol",
+  "old": "alpha   ^{2} +2 alpha = it-m-7",
+  "new": "alpha   ^{2} +2 alpha = it-m+7"
+ },
+ {
+  "op": "text",
+  "n": 12,
+  "part": "q",
+  "old": "이 이차방정식",
+  "new": "인 이차방정식"
+ },
+ {
+  "op": "eq",
+  "n": 12,
+  "part": "sol",
+  "old": "x ^{2} -3x+15=0",
+  "new": "x ^{2} -8x+15=0"
+ },
+ {
+  "op": "text",
+  "n": 15,
+  "part": "sol",
+  "old": "㉡에서 ",
+  "new": "㉢에서 ",
+  "before_eq": "alpha beta= it-1"
+ },
+ {
+  "op": "eq",
+  "n": 17,
+  "part": "sol",
+  "old": "x ^{2} +4x+1= LEFT { x- LEFT ( -2+ sqrt {3} RIGHT ) RIGHT } LEFT { x- LEFT ( 2- sqrt {3} RIGHT ) RIGHT }",
+  "new": "x ^{2} +4x+1= LEFT { x- LEFT ( -2+ sqrt {3} RIGHT ) RIGHT } LEFT { x- LEFT ( -2- sqrt {3} RIGHT ) RIGHT }"
+ },
+ {
+  "op": "eq",
+  "n": 26,
+  "part": "sol",
+  "old": "18-3(a+3)+30b=0`",
+  "new": "18-3(a+3)+3-b=0`"
+ },
+ {
+  "op": "eq",
+  "n": 39,
+  "part": "sol",
+  "old": "( alpha + beta ) sup 3 = (alpha + beta ) sup 3  - 3  alpha beta ( alpha + beta) =2 sup 3  -3 cdot  k over 2  cdot 2 =7",
+  "new": "alpha sup 3 + beta sup 3 = (alpha + beta ) sup 3  - 3  alpha beta ( alpha + beta) =2 sup 3  -3 cdot  k over 2  cdot 2 =7"
+ },
+ {
+  "op": "eq",
+  "n": 43,
+  "part": "sol",
+  "old": "x^2 +3x-1=(x-alpha)(x-beta)",
+  "new": "x^2 +3x+1=(x-alpha)(x-beta)"
+ },
+ {
+  "op": "eq",
+  "n": 55,
+  "part": "sol",
+  "old": "x ^{2} + LEFT ( a+1 RIGHT ) x+ LEFT ( b+11 RIGHT ) =0 {over { p r k 0 0 1 }}",
+  "new": "x ^{2} + LEFT ( a+1 RIGHT ) x+ LEFT ( b+11 RIGHT ) =0"
+ },
+ {
+  "op": "eq",
+  "n": 55,
+  "part": "sol",
+  "old": "D = LEFT ( a-1 RIGHT ) ^{2} -4 LEFT ( b+8 RIGHT ) =0 ",
+  "new": "D_1 = LEFT ( a-1 RIGHT ) ^{2} -4 LEFT ( b+8 RIGHT ) =0"
+ },
+ {
+  "op": "eq",
+  "n": 55,
+  "part": "sol",
+  "old": "D = LEFT ( a+1 RIGHT ) ^{2} -4 LEFT ( b+11 RIGHT ) =0 ",
+  "new": "D_2 = LEFT ( a+1 RIGHT ) ^{2} -4 LEFT ( b+11 RIGHT ) =0"
+ },
+ {
+  "op": "add_para",
+  "n": 55,
+  "part": "sol",
+  "after": "를 연립하면",
+  "text": "⟦therefore ~ab=3 TIMES (-7)= it-21⟧"
+ },
+ {
+  "op": "eq",
+  "n": 35,
+  "part": "sol",
+  "old": "D_1 = a^2 - b^2 >0",
+  "new": "{D_1} over 4 = a^2 - b^2 >0"
+ },
+ {
+  "op": "eq",
+  "n": 35,
+  "part": "sol",
+  "old": "D_2 = b^2 - LEFT (  a^2 +1 RIGHT ) = LEFT ( b^2 - a^2  RIGHT )-1 <0",
+  "new": "{D_2} over 4 = b^2 - LEFT (  a^2 +1 RIGHT ) = LEFT ( b^2 - a^2  RIGHT )-1 <0"
+ },
+ {
+  "op": "add_para",
+  "n": 38,
+  "part": "sol",
+  "after": "근과 계수의 관계에 의해",
+  "text": "이때 판별식을 ⟦D⟧라 하면 ⟦D over 4 =16-4>0⟧이고 ⟦alpha+beta>0,~alpha beta>0⟧이므로 ⟦alpha>0,~beta>0⟧이다."
+ },
+ {
+  "op": "add_para",
+  "n": 7,
+  "part": "sol",
+  "after": "(3) ⟦beta over alpha^2",
+  "text": "(4) ⟦2 alpha^2 -6 alpha+3=0⟧에서 ⟦alpha^2 -3 alpha= it- 3 over 2⟧이고, 같은 방법으로 ⟦beta^2 -3 beta= it- 3 over 2⟧이므로"
+ },
+ {
+  "op": "text",
+  "n": 7,
+  "part": "sol",
+  "old": "(4) ",
+  "new": "",
+  "exact": true,
+  "before_eq": "LEFT ( alpha^2 -3 alpha +4 RIGHT ) LEFT ( beta^2 -3 beta +4 RIGHT )"
+ },
+ {
+  "op": "text",
+  "n": 8,
+  "part": "q",
+  "old": "의 값을 구하시오.",
+  "new": "의 값을 모두 구하시오.",
+  "all": true
+ },
+ {
+  "op": "text",
+  "n": 19,
+  "part": "q",
+  "old": "의 값을 구하시오.",
+  "new": "의 값을 모두 구하시오."
+ },
+ {
+  "op": "text",
+  "n": 1,
+  "part": "sol",
+  "old": " (1) ",
+  "new": " 󰂼 (1) ",
+  "exact": true
+ },
+ {
+  "op": "text",
+  "n": 2,
+  "part": "sol",
+  "old": " (1) ",
+  "new": " 󰂼 (1) ",
+  "exact": true
+ },
+ {
+  "op": "eq",
+  "n": 25,
+  "part": "sol",
+  "old": "ax^2 +bc+c=mx",
+  "new": "ax^2 +bx+c=mx"
+ },
+ {
+  "op": "text",
+  "n": 19,
+  "part": "sol",
+  "old": "일차시의 곱",
+  "new": "일차식의 곱"
+ },
+ {
+  "op": "text",
+  "n": 48,
+  "part": "sol",
+  "old": "그의 공식",
+  "new": "근의 공식"
+ },
+ {
+  "op": "text",
+  "n": 24,
+  "part": "q",
+  "old": "의 그래프와 ",
+  "new": "의 그래프가 ",
+  "after_eq": "y=x^2 +2kx+k^2 -k +2"
+ },
+ {
+  "op": "text",
+  "n": 51,
+  "part": "q",
+  "old": "의 그래프와 ",
+  "new": "의 그래프가 ",
+  "after_eq": "y=x^2 +3x+k-1"
+ },
+ {
+  "op": "eq",
+  "n": 46,
+  "part": "q",
+  "old": "x^2  －2x-2",
+  "new": "x^2 -2x-2"
+ },
+ {
+  "op": "text",
+  "n": 46,
+  "part": "q",
+  "old": "을 복소수",
+  "new": "를 복소수"
+ },
+ {
+  "op": "text",
+  "n": 14,
+  "part": "sol",
+  "old": "를 대입",
+  "new": "을 대입",
+  "after_eq": "x=0"
+ },
+ {
+  "op": "text",
+  "n": 15,
+  "part": "sol",
+  "old": "를 대입",
+  "new": "을 대입",
+  "after_eq": "x=0"
+ },
+ {
+  "op": "text",
+  "n": 43,
+  "part": "sol",
+  "old": "를 대입",
+  "new": "을 대입",
+  "after_eq": "x=0"
+ },
+ {
+  "op": "text",
+  "n": 14,
+  "part": "sol",
+  "old": "㉢를",
+  "new": "㉢을"
+ },
+ {
+  "op": "text",
+  "n": 43,
+  "part": "sol",
+  "old": "㉢를",
+  "new": "㉢을"
+ },
+ {
+  "op": "text",
+  "n": 15,
+  "part": "sol",
+  "old": "㉤를",
+  "new": "㉤을"
+ },
+ {
+  "op": "text",
+  "n": 9,
+  "part": "sol",
+  "old": "배 이므로",
+  "new": "배이므로"
+ },
+ {
+  "op": "text",
+  "n": 21,
+  "part": "sol",
+  "old": "두 근 ",
+  "new": "두 근을 ",
+  "exact": false,
+  "before_eq": "alpha ,``` beta "
+ },
+ {
+  "op": "eq",
+  "n": 53,
+  "part": "sol",
+  "old": "THEREFORE ~x^2 +(a-m)x+48=0",
+  "new": "x^2 +(a-m)x+48=0"
+ },
+ {
+  "op": "text",
+  "n": 53,
+  "part": "sol",
+  "old": "같습니다.",
+  "new": "같다."
+ },
+ {
+  "op": "text",
+  "n": 53,
+  "part": "sol",
+  "old": "입니다.",
+  "new": "이다."
+ },
+ {
+  "op": "text",
+  "n": 50,
+  "part": "sol",
+  "old": "입니다.",
+  "new": "이다."
+ },
+ {
+  "op": "text",
+  "n": 14,
+  "part": "sol",
+  "old": "근과 계수와의 관계",
+  "new": "근과 계수의 관계"
+ },
+ {
+  "op": "text",
+  "n": 15,
+  "part": "sol",
+  "old": "근과 계수와의 관계",
+  "new": "근과 계수의 관계"
+ },
+ {
+  "op": "text",
+  "n": 43,
+  "part": "sol",
+  "old": "근과 계수와의 관계",
+  "new": "근과 계수의 관계"
+ },
+ {
+  "op": "text",
+  "n": 50,
+  "part": "sol",
+  "old": "근과 계수와의 관계",
+  "new": "근과 계수의 관계"
+ }
+]

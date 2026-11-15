@@ -150,7 +150,7 @@ def op_eq(x, spans, old, new, all_=False, first=False):
 TPAT = re.compile(r'<hp:t>((?:[^<]|<hp:lineBreak/>|<hp:tab\b[^>]*/>)*)</hp:t>')
 
 
-def op_text(x, spans, old, new, after_eq=None, exact=False, all_=False):
+def op_text(x, spans, old, new, after_eq=None, exact=False, all_=False, before_eq=None):
     """<hp:t> 하나 안의 글 바꾸기. 줄바꿈은 ⏎로 쓴다. after_eq를 주면 그 스크립트의 수식 바로 뒤 <hp:t>만 본다."""
     enc = lambda s: eqstyle.esc(s).replace('⏎', '<hp:lineBreak/>')
     o, nw = enc(old), enc(new)
@@ -166,6 +166,11 @@ def op_text(x, spans, old, new, after_eq=None, exact=False, all_=False):
                 e0 = pre.rfind('<hp:equation')
                 sm = SC.search(pre[e0:])
                 if not sm or html.unescape(sm.group(2)) != after_eq:
+                    continue
+            if before_eq is not None:
+                rest = x[m.end():m.end() + 4000]
+                sm = SC.search(rest) if rest.startswith('<hp:equation') else None
+                if not sm or html.unescape(sm.group(2)) != before_eq:
                     continue
             cands.append(m)
     tot = sum(m.group(1).count(o) for m in cands)
@@ -310,7 +315,7 @@ def apply(path, ops):
             if op['op'] == 'eq':
                 x = op_eq(x, spans, op['old'], op['new'], op.get('all', False), op.get('first', False))
             elif op['op'] == 'text':
-                x = op_text(x, spans, op['old'], op['new'], op.get('after_eq'), op.get('exact', False), op.get('all', False))
+                x = op_text(x, spans, op['old'], op['new'], op.get('after_eq'), op.get('exact', False), op.get('all', False), op.get('before_eq'))
             elif op['op'] == 'add_para':
                 x = op_add_para(x, spans, op.get('after'), op['text'], (op['like_n'], op['like']) if 'like' in op else None)
             elif op['op'] == 'del_eq':
