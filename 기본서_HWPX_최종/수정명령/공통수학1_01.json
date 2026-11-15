@@ -1,0 +1,256 @@
+[
+{
+"op": "eq",
+"n": 6,
+"part": "sol",
+"old": "9a  ^{3} +b  ^{2} +c  ^{2} -6ab+2bc-6ca",
+"new": "9a  ^{2} +b  ^{2} +c  ^{2} -6ab+2bc-6ca"
+},
+{
+"op": "eq",
+"n": 6,
+"part": "sol",
+"old": "=x^3`-3cdot x^2`cdot1+3cdot x cdot1^2`-1^2",
+"new": "=x^3`-3cdot x^2`cdot1+3cdot x cdot1^2`-1^3"
+},
+{
+"op": "eq",
+"n": 8,
+"part": "sol",
+"old": "(x-1) (x^9 +x^8 +x^7 + cdots+2 +1)",
+"new": "(x-1)(x^{9} +x^{8} +x^{7} + it CDOTS it +x+1)"
+},
+{
+"op": "eq",
+"n": 10,
+"part": "sol",
+"old": "=(a-b)+4ab",
+"new": "=(a-b)^{2} +4ab"
+},
+{
+"op": "text",
+"n": 14,
+"part": "q",
+"old": "세 실수",
+"new": "세 수"
+},
+{
+"op": "eq",
+"n": 15,
+"part": "sol",
+"old": "= 1over2 left{ 2+root3 )^2 +(2-root3 )^2 + (-4)^2 right } = 15",
+"new": "= 1 over 2 left{ (2+root3 )^2 +(2-root3 )^2 + (-4)^2 right } = 15"
+},
+{
+"op": "eq",
+"n": 15,
+"part": "sol",
+"old": "=3(7-1)+6 =18-6 = 24",
+"new": "=3(7-1)+6 =18+6 = 24"
+},
+{
+"op": "eq",
+"n": 16,
+"part": "sol",
+"old": "a^2 + b^2 +c^2 +a c +bc +ca ",
+"new": "a^2 + b^2 +c^2 +ab +bc +ca"
+},
+{
+"op": "eq",
+"n": 16,
+"part": "sol",
+"old": "= 1 over 2 left{ (a+b)^2 +(b+c)^2 +(c+a)^2 right",
+"new": "= 1 over 2 left{ (a+b)^2 +(b+c)^2 +(c+a)^2 right}"
+},
+{
+"op": "eq",
+"n": 16,
+"part": "sol",
+"old": "= 1 over 2 left{ (2-sqrt3 )^2 +(2+sqrt3 )^2 + 3^2  right",
+"new": "= 1 over 2 left{ (2-sqrt3 )^2 +(2+sqrt3 )^2 + 3^2 right}"
+},
+{
+"op": "eq",
+"n": 20,
+"part": "sol",
+"old": "= it-x ^{3} -x ^{2} +3x-2-4x ^{3} +6x ^{2} +2x-10-x ^{3} +2x-1",
+"new": "= it-x ^{3} -x ^{2} +3x-2-4x ^{3} +6x ^{2} +2x-10-x ^{3} +2x+1"
+},
+{
+"op": "add_para",
+"n": 22,
+"part": "sol",
+"after": "5x^2 +3y^2",
+"like_n": 21,
+"like": "㉢을 ㉠에 대입하면",
+"text": "⟦A+B=3x^{2} -2xy-y^{2}⟧, ⟦A-B= it-x^{2} +4xy+5y^{2}⟧을 변끼리 더하면"
+},
+{
+"op": "add_para",
+"n": 22,
+"part": "sol",
+"after": "변끼리 더하면",
+"like_n": 21,
+"like": "㉢을 ㉠에 대입하면",
+"text": "⟦2A=2x^{2} +2xy+4y^{2}⟧  ⟦THEREFORE ~A=x^{2} +xy+2y^{2}⟧"
+},
+{
+"op": "add_para",
+"n": 22,
+"part": "sol",
+"after": "THEREFORE ~A=x^{2} +xy+2y^{2}",
+"like_n": 21,
+"like": "㉢을 ㉠에 대입하면",
+"text": "⟦B= LEFT ( A+B RIGHT ) -A⟧"
+},
+{
+"op": "add_para",
+"n": 22,
+"part": "sol",
+"after": "B= LEFT ( A+B RIGHT ) -A",
+"like_n": 21,
+"like": "㉢을 ㉠에 대입하면",
+"text": "⟦=3x^{2} -2xy-y^{2} - LEFT ( x^{2} +xy+2y^{2} RIGHT )⟧"
+},
+{
+"op": "add_para",
+"n": 22,
+"part": "sol",
+"after": "=3x^{2} -2xy-y^{2} - LEFT",
+"like_n": 21,
+"like": "㉢을 ㉠에 대입하면",
+"text": "⟦=2x^{2} -3xy-3y^{2}⟧"
+},
+{
+"op": "add_para",
+"n": 22,
+"part": "sol",
+"after": "=2x^{2} -3xy-3y^{2}",
+"like_n": 21,
+"like": "㉢을 ㉠에 대입하면",
+"text": "따라서"
+},
+{
+"op": "add_para",
+"n": 22,
+"part": "sol",
+"after": "따라서",
+"like_n": 21,
+"like": "㉢을 ㉠에 대입하면",
+"text": "⟦3A+B=3 LEFT ( x^{2} +xy+2y^{2} RIGHT ) + LEFT ( 2x^{2} -3xy-3y^{2} RIGHT )⟧"
+},
+{
+"op": "add_para",
+"n": 22,
+"part": "sol",
+"after": "3A+B=3 LEFT",
+"like_n": 21,
+"like": "㉢을 ㉠에 대입하면",
+"text": "⟦=5x^{2} +3y^{2}⟧"
+},
+{
+"op": "text",
+"n": 25,
+"part": "q",
+"old": "개수의 합",
+"new": "계수의 합"
+},
+{
+"op": "eq",
+"n": 40,
+"part": "sol",
+"old": "= {2 ^{2} -3cdot LEFT ( -2 RIGHT ) cdot2} over {-2}",
+"new": "= {2 ^{3} -3cdot LEFT ( -2 RIGHT ) cdot2} over {-2}"
+},
+{
+"op": "eq",
+"n": 43,
+"part": "sol",
+"old": "= LEFT ( 4 ^{2} -3cdot4 RIGHT ) + LEFT ( 4 ^{2} -2 RIGHT ) =66",
+"new": "= LEFT ( 4 ^{3} -3cdot4 RIGHT ) + LEFT ( 4 ^{2} -2 RIGHT ) =66"
+},
+{
+"op": "eq",
+"n": 46,
+"part": "sol",
+"old": "=a ^{2} +b ^{2} +c ^{2} +2ab+2ba+2ca",
+"new": "=a ^{2} +b ^{2} +c ^{2} +2ab+2bc+2ca"
+},
+{
+"op": "text",
+"n": 48,
+"part": "sol",
+"old": "답.",
+"new": "󰂼"
+},
+{
+"op": "eq",
+"n": 52,
+"part": "sol",
+"old": "abc=a^3",
+"new": "{sqrt {3}} over {4} a^{2} = {sqrt {3}} over {4} TIMES {1} over {3} = {sqrt {3}} over {12}"
+},
+{
+"op": "text",
+"n": 52,
+"part": "sol",
+"old": ", ",
+"new": "이고, 정삼각형의 넓이는 "
+},
+{
+"op": "eq",
+"n": 58,
+"part": "q",
+"old": "\\ABCD-EFGH \r\n",
+"new": "rm ABCD-EFGH"
+},
+{
+"op": "eq",
+"n": 58,
+"part": "sol",
+"old": "{rmbarAF}^2 = a^2 +c^2",
+"new": "{rm bar AF}^2 = b^2 +c^2"
+},
+{
+"op": "eq",
+"n": 58,
+"part": "sol",
+"old": "{rmbarCF}^2 = b^2 +c^2 ",
+"new": "{rm bar CF}^2 = a^2 +c^2"
+},
+{
+"op": "eq",
+"n": 58,
+"part": "sol",
+"old": "pile{ {rmbarAC}^2 =a^2 +b^2}",
+"new": "{rm bar AC}^2 =a^2 +b^2"
+},
+{
+"op": "text",
+"n": 59,
+"part": "sol",
+"old": "또, 사각형 ",
+"new": "또, 직사각형 "
+},
+{
+"op": "eq",
+"n": 59,
+"part": "sol",
+"old": "  rm ROPQ",
+"new": "rm OPQR"
+},
+{
+"op": "eq",
+"n": 61,
+"part": "sol",
+"old": "=2 left{ (x+y+z)^{2}-2(x y+y z+z x) right.",
+"new": "=2 left{ (x+y+z)^{2}-2(x y+y z+z x) right}"
+},
+{
+"op": "text",
+"n": 11,
+"part": "q",
+"old": "다음 식의 값을 구하시오.",
+"new": "다음 식의 값을 모두 구하시오."
+}
+]
