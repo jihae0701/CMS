@@ -1,0 +1,404 @@
+[
+ {
+  "op": "eq",
+  "n": 38,
+  "part": "q",
+  "old": "B= LEFT { 3,````it`b  ^{2} ,````b  ^{2} -1 RIGHT }",
+  "new": "B= LEFT { 1,````it`b  ^{2} ,````b  ^{2} -1 RIGHT }"
+ },
+ {
+  "op": "text_eq",
+  "n": 38,
+  "part": "sol",
+  "old": " 󰂼 ③",
+  "pre": " 󰂼 ",
+  "eq": "5"
+ },
+ {
+  "op": "eqsub",
+  "n": 29,
+  "part": "q",
+  "old": "IN  B`",
+  "new": "IN  A`"
+ },
+ {
+  "op": "text",
+  "n": 29,
+  "part": "sol",
+  "old": "에서 ",
+  "new": "에서 #P# ",
+  "after_eq": "= LEFT { 14,~17,~21 RIGHT }"
+ },
+ {
+  "op": "text_eq",
+  "n": 29,
+  "part": "sol",
+  "old": "#P# ",
+  "pre": "",
+  "eq": "a<b<c",
+  "post": "라 하면 #Q#이므로 ",
+  "sub": true
+ },
+ {
+  "op": "text_eq",
+  "n": 29,
+  "part": "sol",
+  "old": "#Q#",
+  "pre": "",
+  "eq": "a+b<a+c<b+c",
+  "post": "",
+  "sub": true
+ },
+ {
+  "op": "eq",
+  "n": 43,
+  "part": "q",
+  "old": "A= left{2x left | x  le x le 9,~x`",
+  "new": "A= left{2x left | 1 le x le 9,~x`"
+ },
+ {
+  "op": "eq",
+  "n": 43,
+  "part": "sol",
+  "old": "2^9-4 =2^5 =32",
+  "new": "2^{9-4} =2^5 =32"
+ },
+ {
+  "op": "text",
+  "n": 43,
+  "part": "sol",
+  "old": "의 원소를 갖는",
+  "new": "의 원소를 모두 원소로 갖는"
+ },
+ {
+  "op": "eq",
+  "n": 23,
+  "part": "sol",
+  "old": "LEFT { `1,~2` RIGHT }  IN  rm A~ LEFT { `1,~2` RIGHT }  subset rm A`",
+  "new": "LEFT { `1,~2` RIGHT }  IN  rm A,~ LEFT { `1,~2` RIGHT }  subset rm A`"
+ },
+ {
+  "op": "text_eq",
+  "n": 23,
+  "part": "sol",
+  "old": "이다. ",
+  "pre": "이고, ",
+  "eq": "LEFT { 2,~3 RIGHT } notin rm A",
+  "post": "이다.",
+  "sub": true
+ },
+ {
+  "op": "text",
+  "n": 23,
+  "part": "sol",
+  "old": "옳지 않는",
+  "new": "옳지 않은"
+ },
+ {
+  "op": "eqsub",
+  "n": 23,
+  "part": "q",
+  "old": "2right}",
+  "new": "2 right}"
+ },
+ {
+  "op": "eqsub",
+  "n": 32,
+  "part": "sol",
+  "old": "0right}",
+  "new": "0 right}"
+ },
+ {
+  "op": "eq",
+  "n": 34,
+  "part": "sol",
+  "old": "a neq 4`",
+  "new": "5 IN B`"
+ },
+ {
+  "op": "text",
+  "n": 34,
+  "part": "sol",
+  "old": "이어야 한다.",
+  "new": "이어야 한다. (#R#)",
+  "after_eq": "a+1=3-a`"
+ },
+ {
+  "op": "text_eq",
+  "n": 34,
+  "part": "sol",
+  "old": "#R#",
+  "pre": "",
+  "eq": "a+1=5",
+  "post": "이면 #S#이므로 제외",
+  "sub": true
+ },
+ {
+  "op": "text_eq",
+  "n": 34,
+  "part": "sol",
+  "old": "#S#",
+  "pre": "",
+  "eq": "a=4",
+  "post": "",
+  "sub": true
+ },
+ {
+  "op": "text",
+  "n": 20,
+  "part": "sol",
+  "old": "의 원소의 개수에 따라",
+  "new": "이다. 원소의 개수에 따라",
+  "after_eq": "1,~2,~4,~8,~16"
+ },
+ {
+  "op": "append",
+  "n": 20,
+  "part": "sol",
+  "after_eq": "rm { A= LEFT { 1,~16 RIGHT } }",
+  "text": ", "
+ },
+ {
+  "op": "append",
+  "n": 20,
+  "part": "sol",
+  "after_eq": "rm { A= LEFT { 1,~4,~16 RIGHT } }",
+  "text": ", "
+ },
+ {
+  "op": "text",
+  "n": 20,
+  "part": "sol",
+  "old": "따라서 집합",
+  "new": "⏎따라서 집합",
+  "after_eq": "rm { A= LEFT { 1,`2,~4,`8,~16 RIGHT } }"
+ },
+ {
+  "op": "eq",
+  "n": 20,
+  "part": "sol",
+  "old": "rm { S` }",
+  "new": "rm { A }"
+ },
+ {
+  "op": "text",
+  "n": 20,
+  "part": "sol",
+  "old": "개다.",
+  "new": "이다.",
+  "all": true
+ },
+ {
+  "op": "eq",
+  "n": 20,
+  "part": "sol",
+  "old": "2 CIRC 2 CIRC 2=2  ^{3} =8`",
+  "new": "2 TIMES 2 TIMES 2=2  ^{3} =8`"
+ },
+ {
+  "op": "text",
+  "n": 20,
+  "part": "sol",
+  "old": " 이 중에도 ",
+  "new": "이고, 이 중에는 "
+ },
+ {
+  "op": "text",
+  "n": 20,
+  "part": "sol",
+  "old": "이 집합",
+  "new": "가 집합",
+  "after_eq": "1,~2,~4"
+ },
+ {
+  "op": "eq",
+  "n": 28,
+  "part": "sol",
+  "old": "X= left{2^2 ,~2^3 ,~2^4 ,~cdots,~2^8 right}`",
+  "new": "C= left{2^2 ,~2^3 ,~2^4 ,~cdots,~2^8 right}`"
+ },
+ {
+  "op": "text",
+  "n": 24,
+  "part": "sol",
+  "old": "을 원소로",
+  "new": "를 원소로"
+ },
+ {
+  "op": "text",
+  "n": 24,
+  "part": "sol",
+  "old": " 또,집합",
+  "new": " 또, 집합 "
+ },
+ {
+  "op": "text",
+  "n": 24,
+  "part": "sol",
+  "old": "⑤번",
+  "new": "⑤ ",
+  "exact": true
+ },
+ {
+  "op": "eqsub",
+  "n": 24,
+  "part": "sol",
+  "old": "left{1right} subsetA",
+  "new": "left{1 right} subset A"
+ },
+ {
+  "op": "text",
+  "n": 7,
+  "part": "q",
+  "old": "서 있는 대로",
+  "new": "에서 있는 대로"
+ },
+ {
+  "op": "eq",
+  "n": 27,
+  "part": "q",
+  "old": "it right",
+  "new": "it right }"
+ },
+ {
+  "op": "append",
+  "n": 22,
+  "part": "sol",
+  "after_eq": "left{2,~3 right} subset A",
+  "text": " (참)"
+ },
+ {
+  "op": "eq",
+  "n": 30,
+  "part": "sol",
+  "old": "C= LEFT {  (-1,~-2),`(-1,~0),~(-1,~2),~(0,~-2),~(0,~0),~(0,~2)",
+  "new": "C= LEFT {  (-1,~-2),`(-1,~0),~(-1,~2),~(0,~-2),~(0,~0),~(0,~2),"
+ },
+ {
+  "op": "text",
+  "n": 6,
+  "part": "q",
+  "old": "구하시오..",
+  "new": "구하시오.",
+  "all": true
+ },
+ {
+  "op": "text",
+  "n": 8,
+  "part": "q",
+  "old": "구하시오..",
+  "new": "구하시오.",
+  "all": true
+ },
+ {
+  "op": "text",
+  "n": 9,
+  "part": "q",
+  "old": "구하시오..",
+  "new": "구하시오.",
+  "all": true
+ },
+ {
+  "op": "text",
+  "n": 10,
+  "part": "q",
+  "old": "구하시오..",
+  "new": "구하시오.",
+  "all": true
+ },
+ {
+  "op": "text",
+  "n": 13,
+  "part": "q",
+  "old": "구하시오..",
+  "new": "구하시오.",
+  "all": true
+ },
+ {
+  "op": "text",
+  "n": 14,
+  "part": "q",
+  "old": "구하시오..",
+  "new": "구하시오.",
+  "all": true
+ },
+ {
+  "op": "text",
+  "n": 15,
+  "part": "q",
+  "old": "구하시오..",
+  "new": "구하시오.",
+  "all": true
+ },
+ {
+  "op": "text",
+  "n": 16,
+  "part": "q",
+  "old": "구하시오..",
+  "new": "구하시오.",
+  "all": true
+ },
+ {
+  "op": "text",
+  "n": 17,
+  "part": "q",
+  "old": "구하시오..",
+  "new": "구하시오.",
+  "all": true
+ },
+ {
+  "op": "text",
+  "n": 18,
+  "part": "q",
+  "old": "구하시오..",
+  "new": "구하시오.",
+  "all": true
+ },
+ {
+  "op": "text",
+  "n": 19,
+  "part": "q",
+  "old": "구하시오..",
+  "new": "구하시오.",
+  "all": true
+ },
+ {
+  "op": "text",
+  "n": 29,
+  "part": "q",
+  "old": "구하시오..",
+  "new": "구하시오.",
+  "all": true
+ },
+ {
+  "op": "text",
+  "n": 31,
+  "part": "q",
+  "old": "구하시오..",
+  "new": "구하시오.",
+  "all": true
+ },
+ {
+  "op": "text",
+  "n": 32,
+  "part": "q",
+  "old": "구하시오..",
+  "new": "구하시오.",
+  "all": true
+ },
+ {
+  "op": "text",
+  "n": 44,
+  "part": "q",
+  "old": "구하시오..",
+  "new": "구하시오.",
+  "all": true
+ },
+ {
+  "op": "text",
+  "n": 20,
+  "part": "sol",
+  "old": "⏎따라서 집합",
+  "new": "⏎따라서 집합 "
+ }
+]

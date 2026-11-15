@@ -288,13 +288,12 @@ def op_text_eq(x, spans, old, pre, eq, post, sub=False):
     sub=True면 old가 든 <hp:t>에서 old 자리만: [앞 글+pre][수식][post+뒤 글]"""
     if sub:
         cands = [m for a, b in spans for m in TPAT.finditer(x, a, b) if eqstyle.esc(old) in m.group(1)]
+        raw_pre = raw_post = None
         if len(cands) != 1 or cands[0].group(1).count(eqstyle.esc(old)) != 1:
             raise ValueError('글 조각 "%s": %d곳' % (old, len(cands)))
         m = cands[0]
         before, after = m.group(1).split(eqstyle.esc(old))
-        pre = html.unescape(before) + pre
-        post = post + html.unescape(after)
-        pre, post = pre, post
+        raw_pre, raw_post = before + eqstyle.esc(pre), eqstyle.esc(post) + after   # 줄바꿈·탭 요소는 그대로 둔다
     else:
         cands = [m for a, b in spans for m in TPAT.finditer(x, a, b) if html.unescape(m.group(1)) == old]
         if len(cands) != 1:
@@ -305,7 +304,10 @@ def op_text_eq(x, spans, old, pre, eq, post, sub=False):
     sm = SC.search(el)
     el = el[:sm.start(2)] + eqstyle.esc(eq) + el[sm.end(2):]
     el = eqauto.resize(el, eq, eqstyle.sizes([eq]))
-    rep = ('<hp:t>%s</hp:t>' % eqstyle.esc(pre) if pre else '') + el + ('<hp:t>%s</hp:t>' % eqstyle.esc(post) if post else '<hp:t/>')
+    if sub:
+        rep = ('<hp:t>%s</hp:t>' % raw_pre if raw_pre else '') + el + ('<hp:t>%s</hp:t>' % raw_post if raw_post else '<hp:t/>')
+    else:
+        rep = ('<hp:t>%s</hp:t>' % eqstyle.esc(pre) if pre else '') + el + ('<hp:t>%s</hp:t>' % eqstyle.esc(post) if post else '<hp:t/>')
     return x[:m.start()] + rep + x[m.end():]
 
 
@@ -414,6 +416,21 @@ def apply(path, ops):
                 if len(pos) != 1:
                     raise ValueError('raw "%s": %d곳' % (op['old'], len(pos)))
                 x = x[:pos[0]] + nw + x[pos[0] + len(o):]
+            elif op['op'] == 'append':   # 수식 바로 뒤에 글 넣기 (spaces_ok)
+                cands = [m for a_, b_ in spans for m in EQ.finditer(x, a_, b_)
+                         if SC.search(m.group(0)) and html.unescape(SC.search(m.group(0)).group(2)) == op['after_eq']]
+                if op.get('nth'):
+                    cands = cands[op['nth'] - 1:op['nth']]
+                if len(cands) != 1:
+                    raise ValueError('append 수식 "%s": %d곳' % (op['after_eq'], len(cands)))
+                e = cands[0].end()
+                if x.startswith('<hp:t>', e):
+                    x = x[:e + 6] + eqstyle.esc(op['text']) + x[e + 6:]
+                elif x.startswith('<hp:t/>', e):
+                    x = x[:e] + '<hp:t>%s</hp:t>' % eqstyle.esc(op['text']) + x[e + 7:]
+                else:
+                    x = x[:e] + '<hp:t>%s</hp:t>' % eqstyle.esc(op['text']) + x[e:]
+                _PCACHE.clear()
             elif op['op'] == 'text_eq':
                 x = op_text_eq(x, spans, op['old'], op.get('pre', ''), op['eq'], op.get('post', ''), op.get('sub', False))
             else:

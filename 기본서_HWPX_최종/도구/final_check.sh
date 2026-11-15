@@ -12,3 +12,5 @@ echo "hwpxlib: 결과 $r (원본 $o)"
 python3 -I -c "
 import zipfile;from xml.dom import minidom
 z=zipfile.ZipFile('u/$u.hwpx');[minidom.parseString(z.read(n)) for n in z.namelist() if n.endswith(('.xml','.hpf'))];print('xml ok')"
+python3 -I -c "
+import zipfile,sys;x=zipfile.ZipFile('u/$u.hwpx').read('Contents/section0.xml').decode();n=x.count('&lt;hp:');print('글로 깨진 요소', n)"
