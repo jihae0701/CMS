@@ -15,6 +15,7 @@ EQPAT = re.compile(r"<hp:equation\b[^>]*>.*?</hp:equation>", re.S)
 SCPAT = re.compile(r"(<hp:script\b[^>]*>)(.*?)(</hp:script>)", re.S)
 GLUE = r"(overline|alpha|beta|gamma|delta|theta|omega|pi|pmatrix|sqrt|times|TIMES|leq|geq|circ|rarrow)"
 SETMODE = False
+FACT = False
 MULTI = re.compile(r"\b(cases|pile|lpile|rpile|matrix|pmatrix|eqalign)\b|#")
 
 
@@ -77,6 +78,12 @@ def rules(sc):
     if not s.strip():
         return s
     s = wrap_numerator(s)
+    # left( … {right) 처럼 괄호 짝 앞뒤에 붙은 짝 없는 '{' 지우기 (여는 괄호가 더 많을 때만)
+    if s.count('{') > s.count('}'):
+        s = re.sub(r'\{\s*(?=(right|RIGHT)\b)', ' ', s)
+        s = re.sub(r'\)\s*\{(?=\s*(left|LEFT)\b)', ') ', s)
+        if s.count('{') > s.count('}'):
+            s = re.sub(r'\b((?:left|LEFT)\s*[(\[])\s*\{', r'\1 ', s)
     # (선분의 bar는 그대로 둔다 — 사용자 결정, 2단원 의논)
     # rm 뒤 빈칸
     s = re.sub(r'\brm(?=[A-Z])', 'rm ', s)
@@ -96,7 +103,9 @@ def rules(sc):
     # alpha beta 처럼 명령끼리 붙은 것
     s = re.sub(r'\b(alpha|beta|gamma|delta|theta|omega)(alpha|beta|gamma|delta|theta|omega)\b', r'\1 \2', s)
     # 계승 뒤 등호
-    s = re.sub(r'([0-9A-Za-z)])\s*!\s*=(?=\s*[0-9(])', lambda m: m.group(1) + '! =', s) if re.search(r'[0-9]!=', s) else s
+    # (한글에서 '!='는 ≠로 보이며 거의 모든 단원에서 ≠ 뜻으로 썼다. 계승 뒤 등호는 경우의 수 단원에서만: --fact)
+    if FACT:
+        s = re.sub(r'([0-9A-Za-z)])\s*!\s*=(?=\s*[1-9(])', lambda m: m.group(1) + '! =', s) if re.search(r'[0-9]!=', s) else s
     # 대문자 집합 기호 → 소문자
     for a, b in (('NSUBSET', 'nsubset'), ('SUBSET', 'subset'), ('SMALLINTER', 'cap'), ('SMALLUNION', 'cup'), ('CUP', 'cup'), ('SIM', 'sim')):
         s = re.sub(r'\b%s(?![a-z])' % a, b + ' ', s)
@@ -163,11 +172,12 @@ def apply_rules_xml(xml, log):
 
 def main():
     args = sys.argv[1:]
-    global SETMODE
+    global SETMODE, FACT
     prop = False
     while args[0].startswith('--'):
         if args[0] == '--prop': prop = True
         if args[0] == '--set': SETMODE = True
+        if args[0] == '--fact': FACT = True
         args = args[1:]
     path, logp = args
     eqstyle.PROP = prop

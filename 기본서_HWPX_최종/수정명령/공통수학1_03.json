@@ -1,0 +1,194 @@
+[
+ {
+  "op": "eq",
+  "n": 32,
+  "part": "q",
+  "old": " (x^2 +2)Q(x-2)",
+  "new": " (x^2 +a)Q(x-2)"
+ },
+ {
+  "op": "text",
+  "n": 33,
+  "part": "q",
+  "old": "를 인수로 가질 때",
+  "new": "로 나누어떨어질 때",
+  "after_eq": "x-2"
+ },
+ {
+  "op": "eq",
+  "n": 33,
+  "part": "q",
+  "old": "x-2",
+  "new": "x+1"
+ },
+ {
+  "op": "eq",
+  "n": 33,
+  "part": "q",
+  "old": "f(x)= 2x sup 3 + ax  sup 2  - 3x +3",
+  "new": "f(x)=x sup 3 -2x sup 2 -ax+9"
+ },
+ {
+  "op": "eq",
+  "n": 33,
+  "part": "sol",
+  "old": "f(x)  x sup 3  - 2  x sup 2   - ax +9",
+  "new": "f(x)=x sup 3 -2x sup 2 -ax+9"
+ },
+ {
+  "op": "eq",
+  "n": 41,
+  "part": "sol",
+  "old": "x^{3}-2 x+1-P(x)",
+  "new": "x^{3}-10 x+13-P(x)",
+  "all": true
+ },
+ {
+  "op": "eq",
+  "n": 41,
+  "part": "sol",
+  "old": "x ^{3} -``````3x ^{2} ```````````````````````````````````3x",
+  "new": "x ^{3} -``````3x ^{2} ```````````````````````````````````+3x"
+ },
+ {
+  "op": "eq",
+  "n": 31,
+  "part": "sol",
+  "old": "f(-1)=(-1-1)Q(-1)+2= it-2  cdot 3  = it-4",
+  "new": "f(-1)=(-1-1)Q(-1)+2= it-2 cdot 3+2= it-4"
+ },
+ {
+  "op": "text",
+  "n": 6,
+  "part": "sol",
+  "old": ", ",
+  "new": "라 하고, 나머지를 ",
+  "after_eq": "Q _{2} LEFT ( x RIGHT )"
+ },
+ {
+  "op": "eq",
+  "n": 6,
+  "part": "sol",
+  "old": "f LEFT ( x RIGHT ) = LEFT ( x ^{2} +1 RIGHT ) LEFT ( x-1 RIGHT ) Q _{3} LEFT ( x RIGHT ) +a LEFT ( x ^{2} +1 RIGHT ) +x+1",
+  "new": "f LEFT ( x RIGHT ) = LEFT ( x ^{2} +1 RIGHT ) LEFT ( x-1 RIGHT ) Q _{2} LEFT ( x RIGHT ) +a LEFT ( x ^{2} +1 RIGHT ) +x+1"
+ },
+ {
+  "op": "eq",
+  "n": 6,
+  "part": "sol",
+  "old": "THEREFORE~ R LEFT ( 3 RIGHT ) = {1} over {2} 3 ^{2} +3+ {3} over {2} =9",
+  "new": "THEREFORE~ R LEFT ( 3 RIGHT ) = {1} over {2} TIMES 3 ^{2} +3+ {3} over {2} =9"
+ },
+ {
+  "op": "eq",
+  "n": 4,
+  "part": "sol",
+  "old": "Q(s)",
+  "new": "Q(x)"
+ },
+ {
+  "op": "add_para",
+  "n": 10,
+  "part": "sol",
+  "after": "[다른 풀이]",
+  "text": "⟦f(x)⟧는 최고차항의 계수가 ⟦1⟧인 삼차식이고 ⟦x+1,~x-2⟧를 인수로 가지므로 ⟦f(x)=(x+1)(x-2)(x+c)⟧로 놓으면 상수항이 ⟦-2c= it-4⟧이므로 ⟦c=2⟧",
+  "like_n": 10,
+  "like": "이때 인수정리에 의하여"
+ },
+ {
+  "op": "text",
+  "n": 13,
+  "part": "q",
+  "old": "를 만족시",
+  "new": "이고 ",
+  "after_eq": "f(2)=f(3)=f(4)"
+ },
+ {
+  "op": "text",
+  "n": 13,
+  "part": "q",
+  "old": "킬 때, ",
+  "new": ""
+ },
+ {
+  "op": "text",
+  "n": 13,
+  "part": "q",
+  "old": "는 ",
+  "new": "가 ",
+  "after_eq": "f(x)"
+ },
+ {
+  "op": "text",
+  "n": 13,
+  "part": "q",
+  "old": "로 나누어떨어진다. 이때, ",
+  "new": "로 나누어떨어질 때, ",
+  "after_eq": "x-1"
+ },
+ {
+  "op": "text",
+  "n": 23,
+  "part": "q",
+  "old": "으로",
+  "new": "로",
+  "after_eq": "x+2"
+ },
+ {
+  "op": "text",
+  "n": 23,
+  "part": "sol",
+  "old": "으로",
+  "new": "로",
+  "after_eq": "x+2"
+ },
+ {
+  "op": "text",
+  "n": 24,
+  "part": "sol",
+  "old": "양볁에",
+  "new": "양변에"
+ },
+ {
+  "op": "text",
+  "n": 40,
+  "part": "sol",
+  "old": "조간",
+  "new": "조건"
+ },
+ {
+  "op": "text",
+  "n": 18,
+  "part": "q",
+  "old": "]안의",
+  "new": "] 안의"
+ },
+ {
+  "op": "text",
+  "n": 4,
+  "part": "sol",
+  "old": "입니다.",
+  "new": "이다."
+ },
+ {
+  "op": "text",
+  "n": 6,
+  "part": "sol",
+  "old": "이어야 합니다.",
+  "new": "이어야 한다."
+ },
+ {
+  "op": "text",
+  "n": 24,
+  "part": "sol",
+  "old": "입니다.",
+  "new": "이다."
+ },
+ {
+  "op": "eq",
+  "n": 32,
+  "part": "sol",
+  "old": " Q(0)= it-7!=0",
+  "new": " Q(0)= it-7 neq 0"
+ }
+]

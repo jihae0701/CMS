@@ -4,6 +4,7 @@
 - 용지 여백: 기준 문서와 같게
 - 바탕쪽: 기준 문서의 바탕쪽을 그대로 쓰고 단원 번호·제목, 과목(공통수학1/2)만 바꿈 (기준 문서에는 쪽 번호가 없음)
 - 맨 앞에 가로줄 노트 표 12개(6쪽): 기준 문서의 표를 그대로 복사(표가 쓰는 테두리·글꼴·글자·문단 모양은 같은 것이 있으면 쓰고 없으면 덧붙임)
+- 끝의 정답 모음(정답 줄을 모아 놓은 부분)은 지운다(기준 문서에는 없음)
 - 쪽 번호 새로 시작: STEP 2 첫 제목 문단과 문서 끝 문단에도 넣음(기준 문서와 같은 자리). 값은 structfix.py가 1로 맞춘다.
 """
 import sys, re, copy, zipfile, random
@@ -210,6 +211,21 @@ def build(base, target, out):
     tx = tx[:a] + p0 + first + tx[b:]
     tables = [1] * len(re.findall(r'<hp:tbl\b[^>]*rowCnt="28" colCnt="1"', p0 + run))
     log['note_tables'] = len(tables)
+    # 2b) 끝의 정답 모음(제목 상자 뒤 "번호 󰂼 정답" 줄들) 지우기 — 기준 문서에는 없음. 빈 문단 하나로 바꾼다
+    paras = top_paras(tx)
+    ans = [i for i, (a, b) in enumerate(paras) if 'numType="ENDNOTE"' in tx[a:b] and '\U000f00bc' in tx[a:b] and '<hp:endNote' not in tx[a:b]]
+    log['answer_list_removed'] = 0
+    if ans:
+        i0 = ans[0]
+        assert ans == list(range(i0, len(paras))), ('정답 모음 뒤에 다른 문단이 있음', ans[:3], len(paras))
+        pa = tx[paras[i0 - 1][0]:paras[i0 - 1][1]]   # 바로 앞 = 제목 상자 문단
+        head = re.match(r'<hp:p\b[^>]*>', pa).group(0)
+        head = re.sub(r'pageBreak="1"', 'pageBreak="0"', head)
+        cp = re.findall(r'<hp:run charPrIDRef="(\d+)">', pa)[-1]
+        ls = re.search(r'<hp:lineseg\b[^>]*/>', tx[paras[i0][0]:paras[i0][1]]).group(0)
+        empty = head + '<hp:run charPrIDRef="%s"><hp:t/></hp:run><hp:linesegarray>%s</hp:linesegarray></hp:p>' % (cp, re.sub(r'textpos="\d+"', 'textpos="0"', ls))
+        tx = tx[:paras[i0][0]] + empty + tx[paras[-1][1]:]
+        log['answer_list_removed'] = len(ans)
     # 3) 쪽 번호 새로 시작: STEP 2 첫 제목 문단, 문서 끝 문단 (없을 때만)
     NEW = '<hp:ctrl><hp:newNum num="1" numType="PAGE"/></hp:ctrl>'
     paras = top_paras(tx)
