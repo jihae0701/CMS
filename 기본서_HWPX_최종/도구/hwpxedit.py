@@ -431,6 +431,18 @@ def apply(path, ops):
                 else:
                     x = x[:e] + '<hp:t>%s</hp:t>' % eqstyle.esc(op['text']) + x[e:]
                 _PCACHE.clear()
+            elif op['op'] == 'prepend':   # 수식 바로 앞에 글 넣기
+                cands = [m for a_, b_ in spans for m in EQ.finditer(x, a_, b_)
+                         if SC.search(m.group(0)) and html.unescape(SC.search(m.group(0)).group(2)) == op['before_eq']]
+                if len(cands) != 1:
+                    raise ValueError('prepend 수식 "%s": %d곳' % (op['before_eq'], len(cands)))
+                st = cands[0].start()
+                if x[:st].endswith('</hp:t>'):
+                    k = x.rfind('</hp:t>', 0, st)
+                    x = x[:k] + eqstyle.esc(op['text']) + x[k:]
+                else:
+                    x = x[:st] + '<hp:t>%s</hp:t>' % eqstyle.esc(op['text']) + x[st:]
+                _PCACHE.clear()
             elif op['op'] == 'text_eq':
                 x = op_text_eq(x, spans, op['old'], op.get('pre', ''), op['eq'], op.get('post', ''), op.get('sub', False))
             else:
