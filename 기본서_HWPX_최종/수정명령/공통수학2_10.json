@@ -1,0 +1,145 @@
+[
+ {
+  "op": "eq",
+  "n": 16,
+  "part": "q",
+  "old": "f  ^{-1} =f",
+  "new": "f  ^{1} =f"
+ },
+ {
+  "op": "eq",
+  "n": 16,
+  "part": "sol",
+  "old": "f`  ^{2} ",
+  "new": "f`  ^{2} LEFT ( x RIGHT ) "
+ },
+ {
+  "op": "eq",
+  "n": 3,
+  "part": "sol",
+  "old": "= {2x} over {x} =x",
+  "new": "= {2x} over {2} =x"
+ },
+ {
+  "op": "eq",
+  "n": 14,
+  "part": "sol",
+  "old": "y= LEFT ( 3x+a RIGHT ) = it -x+5",
+  "new": "y LEFT ( 3x+a RIGHT ) = it -x+5"
+ },
+ {
+  "op": "eq",
+  "n": 19,
+  "part": "sol",
+  "old": "A cap B= EMPTYSET ",
+  "new": "A cap B neq EMPTYSET "
+ },
+ {
+  "op": "eq",
+  "n": 31,
+  "part": "sol",
+  "old": "y= {-3x+1} over {x+1} `",
+  "new": "y= it- {3x+1} over {x+1} `"
+ },
+ {
+  "op": "eq",
+  "n": 42,
+  "part": "sol",
+  "old": "a>0`",
+  "new": "a GEQ 0`"
+ },
+ {
+  "op": "eqsub",
+  "n": 42,
+  "part": "q",
+  "old": "leftvert",
+  "new": "left|"
+ },
+ {
+  "op": "eq",
+  "n": 18,
+  "part": "sol",
+  "old": "y=ma-m+1",
+  "new": "y=mx-m+1",
+  "all": true
+ },
+ {
+  "op": "eq",
+  "n": 18,
+  "part": "sol",
+  "old": "{x+1} over {x-1} =ma-m+1",
+  "new": "{x+1} over {x-1} =mx-m+1"
+ },
+ {
+  "op": "eq",
+  "n": 18,
+  "part": "sol",
+  "old": "LEFT ( ma-m+1 RIGHT ) LEFT ( x-1 RIGHT ) =x+1",
+  "new": "LEFT ( mx-m+1 RIGHT ) LEFT ( x-1 RIGHT ) =x+1"
+ },
+ {
+  "op": "eq",
+  "n": 33,
+  "part": "sol",
+  "old": "m= it-3",
+  "new": "n= it-3"
+ },
+ {
+  "op": "text",
+  "n": 36,
+  "part": "sol",
+  "old": "일 대 최댓값",
+  "new": "일 때 최댓값"
+ },
+ {
+  "op": "text",
+  "n": 36,
+  "part": "sol",
+  "old": ". 즉 ",
+  "new": ", 즉 ",
+  "after_eq": "4-2a=0"
+ },
+ {
+  "op": "text",
+  "n": 44,
+  "part": "sol",
+  "old": "의 대한 식",
+  "new": "에 대한 식"
+ },
+ {
+  "op": "text",
+  "n": 2,
+  "part": "q",
+  "old": "간단히 하시오",
+  "new": "간단히 하시오."
+ },
+ {
+  "op": "raw",
+  "n": 1,
+  "old": ", 치역은 ",
+  "new": ", 치역 ",
+  "after": "점근선의 방정식 "
+ },
+ {
+  "op": "eq",
+  "n": 5,
+  "part": "sol",
+  "old": "\\",
+  "new": "\"}\"",
+  "all": true
+ },
+ {
+  "op": "append",
+  "n": 13,
+  "part": "sol",
+  "after_eq": "y GEQ  {5} over {2} RIGHT }",
+  "text": "이다."
+ },
+ {
+  "op": "text",
+  "n": 26,
+  "part": "sol",
+  "old": "(ⅰ) 위의 그림에서",
+  "new": "(ⅰ) 오른쪽 그림에서"
+ }
+]
