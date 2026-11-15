@@ -127,7 +127,7 @@ def find_unique(x, spans, pat, what):
     return hits[0]
 
 
-def op_eq(x, spans, old, new, all_=False, first=False, last=False):
+def op_eq(x, spans, old, new, all_=False, first=False, last=False, nth=None):
     cands = []
     for a, b in spans:
         for m in EQ.finditer(x, a, b):
@@ -138,6 +138,8 @@ def op_eq(x, spans, old, new, all_=False, first=False, last=False):
         cands = cands[:1]
     if last and cands:
         cands = cands[-1:]
+    if nth and len(cands) >= nth:
+        cands = cands[nth - 1:nth]
     if not cands or (len(cands) != 1 and not all_):
         raise ValueError('수식 "%s": %d곳' % (old, len(cands)))
     EQS = eqstyle.sizes([new])
@@ -236,9 +238,47 @@ def op_del_eq(x, spans, old):
     return x[:s0] + p + x[e0:]
 
 
-def op_del_para(x, spans, anchor):
-    """기준 글이 든 문단 하나 지우기"""
-    ps = [(s, e) for s, e in paras_in(x, spans) if anchor in render(x[s:e])]
+def op_eqsub(x, spans, old, new):
+    """수식 스크립트 속 일부 글(old)을 new로 — old가 든 수식이 하나여야 함"""
+    cands = []
+    for a, b in spans:
+        for m in EQ.finditer(x, a, b):
+            sm = SC.search(m.group(0))
+            if sm and old in html.unescape(sm.group(2)):
+                cands.append((m, sm))
+    if len(cands) != 1:
+        raise ValueError('수식 속 "%s": %d곳' % (old, len(cands)))
+    m, sm = cands[0]
+    return op_eq(x, [(m.start(), m.end())], html.unescape(sm.group(2)), html.unescape(sm.group(2)).replace(old, new, 1))
+
+
+def op_clear_sol(x, spans):
+    """해설(미주)에서 첫 문단(정답 줄)만 남기고 지운다"""
+    ps = paras_in(x, spans)
+    if len(ps) > 1:
+        x = x[:ps[1][0]] + x[ps[-1][1]:]
+    _PCACHE.clear()
+    return x
+
+
+def op_text_eq(x, spans, old, pre, eq, post):
+    """<hp:t> 글 전체가 old인 조각을 [pre 글][수식 eq][post 글]로 바꾼다"""
+    cands = [m for a, b in spans for m in TPAT.finditer(x, a, b) if html.unescape(m.group(1)) == old]
+    if len(cands) != 1:
+        raise ValueError('글 조각 "%s": %d곳' % (old, len(cands)))
+    m = cands[0]
+    tmpl = (EQ.search(x, spans[0][0]) or EQ.search(x)).group(0)
+    el = re.sub(r'(<hp:equation\b[^>]*\bid=")\d+(")', lambda q: q.group(1) + str(random.randint(1000000000, 2100000000)) + q.group(2), tmpl, count=1)
+    sm = SC.search(el)
+    el = el[:sm.start(2)] + eqstyle.esc(eq) + el[sm.end(2):]
+    el = eqauto.resize(el, eq, eqstyle.sizes([eq]))
+    rep = ('<hp:t>%s</hp:t>' % eqstyle.esc(pre) if pre else '') + el + ('<hp:t>%s</hp:t>' % eqstyle.esc(post) if post else '<hp:t/>')
+    return x[:m.start()] + rep + x[m.end():]
+
+
+def op_del_para(x, spans, anchor, exact=False):
+    """기준 글이 든 문단 하나 지우기 (exact면 문단 글 전체가 같을 때)"""
+    ps = [(s, e) for s, e in paras_in(x, spans) if (render(x[s:e]).strip() == anchor if exact else anchor in render(x[s:e]))]
     if len(ps) != 1:
         raise ValueError('지울 문단 "%s": %d개' % (anchor, len(ps)))
     s, e = ps[0]
@@ -315,7 +355,7 @@ def apply(path, ops):
         try:
             spans = region(x, op['n'], op.get('part', 'q'))
             if op['op'] == 'eq':
-                x = op_eq(x, spans, op['old'], op['new'], op.get('all', False), op.get('first', False), op.get('last', False))
+                x = op_eq(x, spans, op['old'], op['new'], op.get('all', False), op.get('first', False), op.get('last', False), op.get('nth'))
             elif op['op'] == 'text':
                 x = op_text(x, spans, op['old'], op['new'], op.get('after_eq'), op.get('exact', False), op.get('all', False), op.get('before_eq'))
             elif op['op'] == 'add_para':
@@ -323,7 +363,13 @@ def apply(path, ops):
             elif op['op'] == 'del_eq':
                 x = op_del_eq(x, spans, op['old'])
             elif op['op'] == 'del_para':
-                x = op_del_para(x, spans, op['anchor'])
+                x = op_del_para(x, spans, op['anchor'], op.get('exact', False))
+            elif op['op'] == 'eqsub':
+                x = op_eqsub(x, spans, op['old'], op['new'])
+            elif op['op'] == 'clear_sol':
+                x = op_clear_sol(x, spans)
+            elif op['op'] == 'text_eq':
+                x = op_text_eq(x, spans, op['old'], op.get('pre', ''), op['eq'], op.get('post', ''))
             else:
                 raise ValueError('op?')
         except Exception as e:

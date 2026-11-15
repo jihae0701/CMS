@@ -1,0 +1,634 @@
+[
+ {
+  "op": "eq",
+  "n": 1,
+  "part": "sol",
+  "old": "x`=`-1",
+  "new": "x=1",
+  "nth": 5
+ },
+ {
+  "op": "eq",
+  "n": 1,
+  "part": "sol",
+  "old": "x`=`-1",
+  "new": "x=1",
+  "nth": 2
+ },
+ {
+  "op": "eq",
+  "n": 2,
+  "part": "sol",
+  "old": "f(1)=1-7+6",
+  "new": "f(1)=1-7+6=0"
+ },
+ {
+  "op": "eq",
+  "n": 2,
+  "part": "sol",
+  "old": "x(x-1)(x-2)(x-3)-24=0",
+  "new": "{x(x-3)}{(x-1)(x-2)}-24=0",
+  "nth": 2
+ },
+ {
+  "op": "eq",
+  "n": 12,
+  "part": "q",
+  "old": "a+b+1=0",
+  "new": "a+b+1"
+ },
+ {
+  "op": "add_para",
+  "n": 12,
+  "part": "q",
+  "after": "의 값을 구하시오.",
+  "text": "(단, ⟦a,~b⟧는 실수이다.)"
+ },
+ {
+  "op": "eq",
+  "n": 14,
+  "part": "q",
+  "old": "1-omega over omega^2 + {1+omega^2} overomega",
+  "new": "{1-omega} over {omega^2} + {1+omega^2} over omega"
+ },
+ {
+  "op": "eq",
+  "n": 14,
+  "part": "sol",
+  "old": "1-omega over omega^2 + {1+omega^2} overomega",
+  "new": "{1-omega} over {omega^2} + {1+omega^2} over omega"
+ },
+ {
+  "op": "eq",
+  "n": 14,
+  "part": "q",
+  "old": "omega + {1} over {omega } + omega  ^{2} + {1} over {omega  ^{2}} + omega  ^{3} + {1} over {omega  ^{3}} =it-2",
+  "new": "omega + {1} over {omega } + omega  ^{2} + {1} over {omega  ^{2}} + omega  ^{3} + {1} over {omega  ^{3}}"
+ },
+ {
+  "op": "del_para",
+  "n": 15,
+  "part": "sol",
+  "anchor": "x=+- sqrt 3"
+ },
+ {
+  "op": "del_para",
+  "n": 15,
+  "part": "sol",
+  "anchor": "X=3⟧ 또는"
+ },
+ {
+  "op": "del_para",
+  "n": 15,
+  "part": "sol",
+  "anchor": "X^{2}+6X-27=0"
+ },
+ {
+  "op": "del_para",
+  "n": 15,
+  "part": "sol",
+  "anchor": "⑺ "
+ },
+ {
+  "op": "add_para",
+  "n": 15,
+  "part": "sol",
+  "text": "⑵ 좌변을 인수분해하면 ⟦(2x-1)(4x^2 +2x+1)=0⟧⏎따라서 ⟦x= 1 over 2⟧ 또는 ⟦x= {-1 +- sqrt 3 i} over 4⟧",
+  "after": "　　⟦x= it-2",
+  "like_n": 21,
+  "like": "이 한 개의 실근을 가지려면"
+ },
+ {
+  "op": "add_para",
+  "n": 15,
+  "part": "sol",
+  "text": "⑶ ⟦P(x)=x^3 -5x-2⟧로 놓으면 ⟦P(-2)=0⟧이므로 조립제법을 이용하여 인수분해하면⏎⟦(x+2)(x^2 -2x-1)=0⟧⏎따라서 ⟦x= it-2⟧ 또는 ⟦x=1 +- sqrt 2⟧",
+  "after": "⑵ 좌변을 인수분해하면 ⟦(2x-1)(4x^2 +2x+1)=0⟧",
+  "like_n": 21,
+  "like": "이 한 개의 실근을 가지려면"
+ },
+ {
+  "op": "add_para",
+  "n": 15,
+  "part": "sol",
+  "text": "⑷ ⟦P(x)=3x^3 +11x^2 -19x+5⟧로 놓으면 ⟦P(1)=0⟧이므로 조립제법을 이용하여 인수분해하면⏎⟦(x-1)(3x^2 +14x-5)=0⟧, ⟦(x-1)(3x-1)(x+5)=0⟧⏎따라서 ⟦x= it-5⟧ 또는 ⟦x= 1 over 3⟧ 또는 ⟦x=1⟧",
+  "after": "⑶ ⟦P(x)=x^3 -5x-2⟧",
+  "like_n": 21,
+  "like": "이 한 개의 실근을 가지려면"
+ },
+ {
+  "op": "add_para",
+  "n": 15,
+  "part": "sol",
+  "text": "⑸ ⟦P(x)=x^4 +x^3 +2x-4⟧로 놓으면 ⟦P(1)=0,~P(-2)=0⟧이므로 조립제법을 이용하여 인수분해하면⏎⟦(x-1)(x+2)(x^2 +2)=0⟧⏎따라서 ⟦x= it-2⟧ 또는 ⟦x=1⟧ 또는 ⟦x= +- sqrt 2 i⟧",
+  "after": "⑷ ⟦P(x)=3x^3 +11x^2 -19x+5⟧",
+  "like_n": 21,
+  "like": "이 한 개의 실근을 가지려면"
+ },
+ {
+  "op": "clear_sol",
+  "n": 16,
+  "part": "sol"
+ },
+ {
+  "op": "add_para",
+  "n": 16,
+  "part": "sol",
+  "text": "(1) ⟦x^2 =X⟧로 놓으면 ⟦X^2 +6X-27=0⟧, ⟦(X-3)(X+9)=0⟧⏎⟦X=3⟧ 또는 ⟦X= it-9⟧, 즉 ⟦x^2 =3⟧ 또는 ⟦x^2 = it-9⟧⏎따라서 ⟦x= +- sqrt 3⟧ 또는 ⟦x= +- 3i⟧",
+  "like_n": 21,
+  "like": "이 한 개의 실근을 가지려면"
+ },
+ {
+  "op": "add_para",
+  "n": 16,
+  "part": "sol",
+  "text": "(2) ⟦x^2 =X⟧로 놓으면 ⟦2X^2 +5X-3=0⟧, ⟦(2X-1)(X+3)=0⟧⏎⟦x^2 = 1 over 2⟧ 또는 ⟦x^2 = it-3⟧⏎따라서 ⟦x= +- {sqrt 2} over 2⟧ 또는 ⟦x= +- sqrt 3 i⟧",
+  "like_n": 21,
+  "like": "이 한 개의 실근을 가지려면"
+ },
+ {
+  "op": "add_para",
+  "n": 16,
+  "part": "sol",
+  "text": "(3) ⟦x^2 +1=X⟧로 놓으면 ⟦X^2 -4X+3=0⟧, ⟦(X-1)(X-3)=0⟧⏎⟦x^2 +1=1⟧ 또는 ⟦x^2 +1=3⟧, 즉 ⟦x^2 =0⟧ 또는 ⟦x^2 =2⟧⏎따라서 ⟦x=0⟧(중근) 또는 ⟦x= +- sqrt 2⟧",
+  "like_n": 21,
+  "like": "이 한 개의 실근을 가지려면"
+ },
+ {
+  "op": "add_para",
+  "n": 16,
+  "part": "sol",
+  "text": "(4) ⟦x(x+3) TIMES (x+1)(x+2)=24⟧에서 ⟦(x^2 +3x)(x^2 +3x+2)=24⟧⏎⟦x^2 +3x=X⟧로 놓으면 ⟦X^2 +2X-24=0⟧, ⟦(X-4)(X+6)=0⟧⏎⟦x^2 +3x-4=0⟧ 또는 ⟦x^2 +3x+6=0⟧⏎따라서 ⟦x= it-4⟧ 또는 ⟦x=1⟧ 또는 ⟦x= {-3 +- sqrt 15 i} over 2⟧",
+  "like_n": 21,
+  "like": "이 한 개의 실근을 가지려면"
+ },
+ {
+  "op": "eq",
+  "n": 18,
+  "part": "sol",
+  "old": "a=3",
+  "new": "a= it-3"
+ },
+ {
+  "op": "add_para",
+  "n": 18,
+  "part": "sol",
+  "text": "⟦x= it-1⟧을 대입하면 ⟦-1-1-a-1=0⟧ ⟦therefore ~a= it-3⟧",
+  "like_n": 21,
+  "like": "이 한 개의 실근을 가지려면"
+ },
+ {
+  "op": "add_para",
+  "n": 18,
+  "part": "sol",
+  "text": "이때 주어진 방정식은 ⟦x^3 -x^2 -3x-1=0⟧이고, 조립제법을 이용하여 인수분해하면 ⟦(x+1)(x^2 -2x-1)=0⟧⏎따라서 나머지 두 근은 ⟦x^2 -2x-1=0⟧에서 ⟦x=1 +- sqrt 2⟧",
+  "like_n": 21,
+  "like": "이 한 개의 실근을 가지려면"
+ },
+ {
+  "op": "add_para",
+  "n": 19,
+  "part": "sol",
+  "text": "⟦x=1,~x= it-2⟧를 각각 대입하면⏎⟦1+a+b-2=0⟧에서 ⟦a+b=1⟧⏎⟦-8+4a-2b-2=0⟧에서 ⟦2a-b=5⟧⏎두 식을 연립하여 풀면 ⟦a=2,~b= it-1⟧",
+  "like_n": 21,
+  "like": "이 한 개의 실근을 가지려면"
+ },
+ {
+  "op": "add_para",
+  "n": 19,
+  "part": "sol",
+  "text": "이때 주어진 방정식은 ⟦x^3 +2x^2 -x-2=0⟧, 즉 ⟦(x-1)(x+2)(x+1)=0⟧이므로 나머지 한 근은 ⟦-1⟧이다.",
+  "like_n": 21,
+  "like": "이 한 개의 실근을 가지려면"
+ },
+ {
+  "op": "text_eq",
+  "n": 27,
+  "part": "sol",
+  "old": " 󰂼 ④",
+  "pre": " 󰂼 ",
+  "eq": "9 over 4"
+ },
+ {
+  "op": "del_para",
+  "n": 27,
+  "part": "sol",
+  "anchor": "근과 계수와의 관계에 의하여",
+  "exact": true
+ },
+ {
+  "op": "add_para",
+  "n": 27,
+  "part": "sol",
+  "after": "4a ^{2} -9a-9=0",
+  "text": "⟦4a^2 -9a-9=0⟧에서 ⟦(a-3)(4a+3)=0⟧이므로 ⟦a=3⟧ 또는 ⟦a= it- 3 over 4⟧이고, 두 값 모두 ⟦n= {2a+4} over 10 >0⟧, ⟦m=9n>n⟧을 만족시킨다."
+ },
+ {
+  "op": "eq",
+  "n": 28,
+  "part": "q",
+  "old": "LEFT ( 1-alpha  RIGHT ) LEFT ( 1-beta  RIGHT ) LEFT ( 1-gamma  RIGHT )",
+  "new": "LEFT ( alpha+1 RIGHT ) LEFT ( beta+1 RIGHT ) LEFT ( gamma+1 RIGHT )"
+ },
+ {
+  "op": "add_para",
+  "n": 28,
+  "part": "q",
+  "after": "⑷ ",
+  "text": "⑸ ⟦LEFT ( alpha+beta RIGHT ) LEFT ( beta+gamma RIGHT ) LEFT ( gamma+alpha RIGHT )⟧"
+ },
+ {
+  "op": "text",
+  "n": 28,
+  "part": "sol",
+  "old": "⑴에서 ",
+  "new": "⑵에서 "
+ },
+ {
+  "op": "eq",
+  "n": 28,
+  "part": "sol",
+  "old": "alpha + beta =1-alpha",
+  "new": "alpha + beta =1-gamma"
+ },
+ {
+  "op": "eq",
+  "n": 21,
+  "part": "sol",
+  "old": "{D} over {4} =(-1)  ^{2} -4 CDOT 1 CDOT 2k<0",
+  "new": "D=(-1)  ^{2} -4 CDOT 1 CDOT 2k<0"
+ },
+ {
+  "op": "text",
+  "n": 22,
+  "part": "sol",
+  "old": "세 근이 모두 음수이므로 근과 계수의 관계에서 세근의 곱은 음수 ",
+  "new": "또, 나머지 두 근이 모두 음수이려면 근과 계수의 관계에서 두 근의 합은 음수, 두 근의 곱은 양수이어야 하므로"
+ },
+ {
+  "op": "eq",
+  "n": 22,
+  "part": "sol",
+  "old": "therefore  - k over 3 <0",
+  "new": "- 4 over 3 <0,~ k over 3 >0"
+ },
+ {
+  "op": "eqsub",
+  "n": 29,
+  "part": "sol",
+  "old": "a LEFT ( a- beta",
+  "new": "alpha LEFT ( alpha - beta"
+ },
+ {
+  "op": "eqsub",
+  "n": 29,
+  "part": "sol",
+  "old": "+a+ beta + gamma",
+  "new": "+alpha + beta + gamma"
+ },
+ {
+  "op": "eq",
+  "n": 32,
+  "part": "sol",
+  "old": "x ^{3} +3x ^{2} -2x+1=0",
+  "new": "x ^{3} +3x ^{2} -2x-1=0"
+ },
+ {
+  "op": "del_para",
+  "n": 32,
+  "part": "sol",
+  "anchor": "의 양변을 ⟦x^3 ⟧으로 나누면"
+ },
+ {
+  "op": "eq",
+  "n": 32,
+  "part": "sol",
+  "old": "x^3 +x -3=0",
+  "new": "x  ^{3} +3x  ^{2} -2x-1=0"
+ },
+ {
+  "op": "eq",
+  "n": 32,
+  "part": "sol",
+  "old": "a(-x ^{3} -2x ^{2} +3x+1)=0",
+  "new": "k(-x ^{3} -2x ^{2} +3x+1)=0"
+ },
+ {
+  "op": "eq",
+  "n": 32,
+  "part": "sol",
+  "old": "a neq 0",
+  "new": "k neq 0"
+ },
+ {
+  "op": "eq",
+  "n": 32,
+  "part": "sol",
+  "old": "a=it-2",
+  "new": "k=it-2"
+ },
+ {
+  "op": "eq",
+  "n": 34,
+  "part": "sol",
+  "old": "f(1)=1-3+9+13=30",
+  "new": "f(1)=1-3+9+13=20"
+ },
+ {
+  "op": "eq",
+  "n": 34,
+  "part": "sol",
+  "old": "2+3i`",
+  "new": "2-3i`",
+  "nth": 2
+ },
+ {
+  "op": "eq",
+  "n": 36,
+  "part": "sol",
+  "old": "= {1+ omega +1+ bar  omega} over {(1+ omega) (1+ {bar{omega} ) }}",
+  "new": "= {1+ omega +1+ bar omega} over {(1+ omega)(1+ bar{omega})}"
+ },
+ {
+  "op": "eq",
+  "n": 40,
+  "part": "sol",
+  "old": "= {alpha } over 8{ (  4+2 alpha + alpha^2 )+       alpha^4 over32 ( 2+alpha ) RIGHT .}",
+  "new": "= {alpha } over 8 (4+2 alpha + alpha^2 )+ {alpha^4} over 32 (2+alpha )"
+ },
+ {
+  "op": "eq",
+  "n": 40,
+  "part": "sol",
+  "old": "LEFT. = {alpha } over {8}cdot0 + { 8 alpha  } over {32} cdot left(- alpha ^2 over2 right)",
+  "new": "= {alpha } over {8} cdot 0 + {8 alpha} over {32} cdot left(- alpha ^2 over2 right)"
+ },
+ {
+  "op": "eqsub",
+  "n": 40,
+  "part": "sol",
+  "old": "+ {alpha  ^{3}} over {8} LEFT {",
+  "new": "+ {alpha  ^{4}} over {16} LEFT {"
+ },
+ {
+  "op": "eq",
+  "n": 40,
+  "part": "sol",
+  "old": "alpha^2 +2 alpha+4=0",
+  "new": "alpha^2 +2 alpha+4=0~~ cdotscdots ㉠"
+ },
+ {
+  "op": "text",
+  "n": 40,
+  "part": "sol",
+  "old": "ㄱ에서 ",
+  "new": "㉠에서 "
+ },
+ {
+  "op": "add_para",
+  "n": 36,
+  "part": "sol",
+  "after": "󰂼",
+  "text": "⑴ ⟦omega^6 =(omega^3 )^2 =1⟧",
+  "like_n": 36,
+  "like": "⑵ ⟦omega ^4"
+ },
+ {
+  "op": "add_para",
+  "n": 36,
+  "part": "sol",
+  "after": "⑵ ⟦omega ^4",
+  "text": "⑶ ⟦omega^100 +omega^101 +omega^102 +omega^103 +omega^104⟧⏎⟦=omega^99 (omega+omega^2 +omega^3 +omega^4 +omega^5 )⟧⏎⟦=(omega+omega^2 +1)+(omega+omega^2 )= it-1⟧"
+ },
+ {
+  "op": "add_para",
+  "n": 36,
+  "part": "sol",
+  "after": "⑶ ⟦omega^100",
+  "text": "⑷ ⟦1+omega+omega^2 + it cdots it +omega^11 =(1+omega+omega^2 )(1+omega^3 +omega^6 +omega^9 )=0⟧"
+ },
+ {
+  "op": "add_para",
+  "n": 36,
+  "part": "sol",
+  "after": "⑷ ⟦1+omega",
+  "text": "⑸ ⟦omega+omega^3 +omega^5 =omega+1+omega^2 =0⟧이므로⏎⟦omega+omega^3 + it cdots it +omega^17 =(1+omega^6 +omega^12 )(omega+omega^3 +omega^5 )=0⟧"
+ },
+ {
+  "op": "add_para",
+  "n": 36,
+  "part": "sol",
+  "after": "⑹ ⟦omega",
+  "text": "⑺ ⟦omega^10 =(omega^3 )^3 omega=omega⟧이고 ⟦1 over omega =omega^2⟧이므로⏎⟦omega^10 + 1 over omega^10 =omega+omega^2 = it-1⟧"
+ },
+ {
+  "op": "text",
+  "n": 10,
+  "part": "q",
+  "old": "다음 중 ",
+  "new": ""
+ },
+ {
+  "op": "text",
+  "n": 5,
+  "part": "sol",
+  "old": "라 하며ᅟᅢᆫ ",
+  "new": "라 하면 "
+ },
+ {
+  "op": "text",
+  "n": 5,
+  "part": "sol",
+  "old": "근과 계수의관계",
+  "new": "근과 계수의 관계"
+ },
+ {
+  "op": "text",
+  "n": 5,
+  "part": "sol",
+  "old": "곱이음수",
+  "new": "곱이 음수"
+ },
+ {
+  "op": "text",
+  "n": 17,
+  "part": "q",
+  "old": "방정식를",
+  "new": "방정식을"
+ },
+ {
+  "op": "text",
+  "n": 23,
+  "part": "q",
+  "old": "네 실근 갖도록",
+  "new": "네 실근을 갖도록"
+ },
+ {
+  "op": "text",
+  "n": 30,
+  "part": "sol",
+  "old": "삼차방정식 근과",
+  "new": "삼차방정식의 근과"
+ },
+ {
+  "op": "text",
+  "n": 30,
+  "part": "sol",
+  "old": "이 때",
+  "new": "이때"
+ },
+ {
+  "op": "text",
+  "n": 31,
+  "part": "sol",
+  "old": "을 세 근으로 하는 삼차방정식을 구하면",
+  "new": "를 세 근으로 하는 삼차방정식을 구하면"
+ },
+ {
+  "op": "text",
+  "n": 31,
+  "part": "sol",
+  "old": "를 대입하면",
+  "new": "을 대입하면",
+  "after_eq": "a=it-1"
+ },
+ {
+  "op": "text",
+  "n": 33,
+  "part": "sol",
+  "old": "을 세 근으로",
+  "new": "를 세 근으로",
+  "after_eq": "gamma -2"
+ },
+ {
+  "op": "text",
+  "n": 33,
+  "part": "sol",
+  "old": "를 대입하면",
+  "new": "을 대입하면",
+  "after_eq": "k=1"
+ },
+ {
+  "op": "text",
+  "n": 40,
+  "part": "q",
+  "old": "고차방정식식의 활용",
+  "new": "고차방정식의 활용"
+ },
+ {
+  "op": "eq",
+  "n": 41,
+  "part": "q",
+  "old": "rm { 30}",
+  "new": "30`rm cm"
+ },
+ {
+  "op": "eq",
+  "n": 41,
+  "part": "q",
+  "old": "rm { 20}",
+  "new": "20`rm cm"
+ },
+ {
+  "op": "eq",
+  "n": 41,
+  "part": "q",
+  "old": "1000  ",
+  "new": "1000`rm cm^3"
+ },
+ {
+  "op": "text",
+  "n": 41,
+  "part": "q",
+  "old": "의 값을 구하시오.",
+  "new": "의 값을 모두 구하시오."
+ },
+ {
+  "op": "text",
+  "n": 25,
+  "part": "sol",
+  "old": " [정답] ",
+  "new": " 󰂼 ",
+  "exact": true
+ },
+ {
+  "op": "text",
+  "n": 7,
+  "part": "sol",
+  "old": "근과 계수와의 관계",
+  "new": "근과 계수의 관계",
+  "all": true
+ },
+ {
+  "op": "text",
+  "n": 11,
+  "part": "sol",
+  "old": "근과 계수와의 관계",
+  "new": "근과 계수의 관계",
+  "all": true
+ },
+ {
+  "op": "text",
+  "n": 14,
+  "part": "sol",
+  "old": "근과 계수와의 관계",
+  "new": "근과 계수의 관계",
+  "all": true
+ },
+ {
+  "op": "text",
+  "n": 27,
+  "part": "sol",
+  "old": "근과 계수와의 관계",
+  "new": "근과 계수의 관계",
+  "all": true
+ },
+ {
+  "op": "text",
+  "n": 28,
+  "part": "sol",
+  "old": "근과 계수와의 관계",
+  "new": "근과 계수의 관계",
+  "all": true
+ },
+ {
+  "op": "text",
+  "n": 31,
+  "part": "sol",
+  "old": "근과 계수와의 관계",
+  "new": "근과 계수의 관계",
+  "all": true
+ },
+ {
+  "op": "text",
+  "n": 32,
+  "part": "sol",
+  "old": "근과 계수와의 관계",
+  "new": "근과 계수의 관계",
+  "all": true
+ },
+ {
+  "op": "text",
+  "n": 33,
+  "part": "sol",
+  "old": "근과 계수와의 관계",
+  "new": "근과 계수의 관계",
+  "all": true
+ },
+ {
+  "op": "text",
+  "n": 38,
+  "part": "sol",
+  "old": "근과 계수와의 관계",
+  "new": "근과 계수의 관계",
+  "all": true
+ },
+ {
+  "op": "text",
+  "n": 40,
+  "part": "sol",
+  "old": "근과 계수와의 관계",
+  "new": "근과 계수의 관계",
+  "all": true
+ }
+]
