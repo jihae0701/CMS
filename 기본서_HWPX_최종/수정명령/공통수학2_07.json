@@ -1,0 +1,357 @@
+[
+ {
+  "op": "eq",
+  "n": 9,
+  "part": "sol",
+  "old": "2a+5b ge 2 sqrt {2a cdot 5b } =2 sqrt10ab ",
+  "new": "2a+5b ge 2 sqrt {2a cdot 5b } =2 sqrt {10ab} "
+ },
+ {
+  "op": "eq",
+  "n": 9,
+  "part": "sol",
+  "old": "12 ge  2 sqrt 3ab",
+  "new": "12 ge 2 sqrt {3ab}"
+ },
+ {
+  "op": "eq",
+  "n": 9,
+  "part": "sol",
+  "old": "sqrt 3ab le 6 ",
+  "new": "sqrt {3ab} le 6 "
+ },
+ {
+  "op": "eq",
+  "n": 26,
+  "part": "sol",
+  "old": "3a+4b ge 2 root {3a cdot 4b } = 2 root12ab",
+  "new": "3a+4b ge 2 root {3a cdot 4b } = 2 root {12ab}"
+ },
+ {
+  "op": "eq",
+  "n": 26,
+  "part": "sol",
+  "old": "3a+4b ge 2 root 12cdot3 = 12",
+  "new": "3a+4b ge 2 root {12 cdot 3} = 12"
+ },
+ {
+  "op": "eq",
+  "n": 30,
+  "part": "sol",
+  "old": "( sqrt 3a + sqrt 2b ` )^2",
+  "new": "( sqrt {3a} + sqrt {2b} )^2"
+ },
+ {
+  "op": "eq",
+  "n": 30,
+  "part": "sol",
+  "old": "3a +2 b ge 2 sqrt{ 3a cdot 2b } = 2 sqrt 6ab",
+  "new": "3a +2 b ge 2 sqrt{ 3a cdot 2b } = 2 sqrt {6ab}"
+ },
+ {
+  "op": "eq",
+  "n": 30,
+  "part": "sol",
+  "old": "24 ge 2 sqrt 6ab",
+  "new": "24 ge 2 sqrt {6ab}"
+ },
+ {
+  "op": "eq",
+  "n": 30,
+  "part": "sol",
+  "old": "( sqrt 3a +  sqrt2b )^2 ",
+  "new": "( sqrt {3a} + sqrt {2b} )^2 "
+ },
+ {
+  "op": "eq",
+  "n": 30,
+  "part": "sol",
+  "old": "0 le sqrt3a + sqrt2b le 4 sqrt3",
+  "new": "0 le sqrt {3a} + sqrt {2b} le 4 sqrt3"
+ },
+ {
+  "op": "eq",
+  "n": 30,
+  "part": "sol",
+  "old": "sqrt3a +  sqrt2b",
+  "new": "sqrt {3a} + sqrt {2b}"
+ },
+ {
+  "op": "eq",
+  "n": 30,
+  "part": "sol",
+  "old": "=24 + 2 sqrt 6ab",
+  "new": "=24 + 2 sqrt {6ab}",
+  "all": true
+ },
+ {
+  "op": "eq",
+  "n": 30,
+  "part": "q",
+  "old": "sqrt3a + sqrt 2b",
+  "new": "sqrt {3a} + sqrt {2b}"
+ },
+ {
+  "op": "eq",
+  "n": 24,
+  "part": "sol",
+  "old": "rootab >0",
+  "new": "root {ab} >0",
+  "all": true
+ },
+ {
+  "op": "text",
+  "n": 17,
+  "part": "sol",
+  "old": " 󰂼 ③",
+  "new": " 󰂼 ②"
+ },
+ {
+  "op": "text",
+  "n": 14,
+  "part": "sol",
+  "old": " 󰂼 ",
+  "new": " 󰂼 (1) 최댓값 #A#, 최솟값 #B# (2) ",
+  "exact": true
+ },
+ {
+  "op": "text_eq",
+  "n": 14,
+  "part": "sol",
+  "old": "#A#",
+  "pre": "",
+  "eq": "10",
+  "post": "",
+  "sub": true
+ },
+ {
+  "op": "text_eq",
+  "n": 14,
+  "part": "sol",
+  "old": "#B#",
+  "pre": "",
+  "eq": "-10",
+  "post": "",
+  "sub": true
+ },
+ {
+  "op": "eq",
+  "n": 21,
+  "part": "q",
+  "old": "  THEREFORE ~ LEFT | a RIGHT | - LEFT | b RIGHT |  LEQ  LEFT | a+b RIGHT |",
+  "new": "  THEREFORE ~ LEFT | a RIGHT | - LEFT | b RIGHT |  LEQ  LEFT | a-b RIGHT |"
+ },
+ {
+  "op": "eq",
+  "n": 21,
+  "part": "sol",
+  "old": "  THEREFORE ~ LEFT | a RIGHT | - LEFT | b RIGHT |  LEQ  LEFT | a+b RIGHT |",
+  "new": "  THEREFORE ~ LEFT | a RIGHT | - LEFT | b RIGHT |  LEQ  LEFT | a-b RIGHT |"
+ },
+ {
+  "op": "text",
+  "n": 21,
+  "part": "q",
+  "old": "이므로",
+  "new": "임을 보이면 되고, 두 변이 모두 0 이상이므로",
+  "after_eq": "LEFT | a-b RIGHT | + LEFT | b RIGHT |"
+ },
+ {
+  "op": "append",
+  "n": 22,
+  "part": "sol",
+  "after_eq": ">",
+  "nth": 3,
+  "text": ", #G#, #H#"
+ },
+ {
+  "op": "text_eq",
+  "n": 22,
+  "part": "sol",
+  "old": "#G#",
+  "pre": "",
+  "eq": ">",
+  "post": "",
+  "sub": true
+ },
+ {
+  "op": "text_eq",
+  "n": 22,
+  "part": "sol",
+  "old": "#H#",
+  "pre": "",
+  "eq": ">",
+  "post": "",
+  "sub": true
+ },
+ {
+  "op": "text",
+  "n": 20,
+  "part": "sol",
+  "old": ",",
+  "new": "",
+  "exact": true
+ },
+ {
+  "op": "text",
+  "n": 20,
+  "part": "q",
+  "old": "부등식 ",
+  "new": "다음은 #V#가 실수일 때, 부등식 "
+ },
+ {
+  "op": "text_eq",
+  "n": 20,
+  "part": "q",
+  "old": "#V#",
+  "pre": "",
+  "eq": "a,~b",
+  "post": "",
+  "sub": true
+ },
+ {
+  "op": "text",
+  "n": 21,
+  "part": "q",
+  "old": "부등식 ",
+  "new": "다음은 #V#가 실수일 때, 부등식 "
+ },
+ {
+  "op": "text_eq",
+  "n": 21,
+  "part": "q",
+  "old": "#V#",
+  "pre": "",
+  "eq": "a,~b",
+  "post": "",
+  "sub": true
+ },
+ {
+  "op": "eq",
+  "n": 2,
+  "part": "sol",
+  "old": "therefore`n^{2}=(2k)^{2}=4k^{2}=2(2k)^{2}",
+  "new": "therefore`n^{2}=(2k)^{2}=4k^{2}=2(2k^{2})"
+ },
+ {
+  "op": "text",
+  "n": 2,
+  "part": "sol",
+  "old": "인 실수, ",
+  "new": "인 실수 "
+ },
+ {
+  "op": "eq",
+  "n": 9,
+  "part": "sol",
+  "old": "3+b ge 2 sqrt {3a cdotb} =2 sqrt {3 a b }",
+  "new": "3a+b ge 2 sqrt {3a cdot b} =2 sqrt {3ab}"
+ },
+ {
+  "op": "text",
+  "n": 9,
+  "part": "sol",
+  "old": "이다,",
+  "new": "이다."
+ },
+ {
+  "op": "eq",
+  "n": 13,
+  "part": "sol",
+  "old": "a,`b,`c,`x,`y",
+  "new": "a,`b,`x,`y"
+ },
+ {
+  "op": "eq",
+  "n": 13,
+  "part": "sol",
+  "old": "THEREFORE``-14`le`a+3b+2c`le`14",
+  "new": "THEREFORE``-14`le`x+3y+2z`le`14"
+ },
+ {
+  "op": "eq",
+  "n": 13,
+  "part": "sol",
+  "old": "a+3b+2c",
+  "new": "x+3y+2z"
+ },
+ {
+  "op": "del_para",
+  "n": 13,
+  "part": "sol",
+  "anchor": "{a} over {1} = {b} over {2}"
+ },
+ {
+  "op": "text",
+  "n": 13,
+  "part": "sol",
+  "old": "으로 놓고",
+  "new": "로 놓고",
+  "after_eq": "a=1,`b=3,`c=2"
+ },
+ {
+  "op": "text",
+  "n": 14,
+  "part": "sol",
+  "old": "으로 놓고",
+  "new": "로 놓고",
+  "after_eq": "a=3,``b=4,``c=5"
+ },
+ {
+  "op": "eq",
+  "n": 19,
+  "part": "sol",
+  "old": " + {3} over {4} b ^{2}",
+  "new": " + {3} over {4} b ^{2} ge 0",
+  "nth": 2
+ },
+ {
+  "op": "eq",
+  "n": 36,
+  "part": "sol",
+  "old": "a^2 +b^2 = 14 ",
+  "new": "a^2 +b^2 = 4 "
+ },
+ {
+  "op": "eq",
+  "n": 3,
+  "part": "sol",
+  "old": "(1+root {3}+(-1)=root3",
+  "new": "(1+root {3})+(-1)=root3"
+ },
+ {
+  "op": "text",
+  "n": 5,
+  "part": "q",
+  "old": "증명하시오",
+  "new": "증명하시오."
+ },
+ {
+  "op": "text",
+  "n": 15,
+  "part": "sol",
+  "old": "는 자연수)이라 하면",
+  "new": "는 자연수)라 하면"
+ },
+ {
+  "op": "text",
+  "n": 12,
+  "part": "sol",
+  "old": "(단 등호는",
+  "new": "(단, 등호는"
+ },
+ {
+  "op": "text",
+  "n": 11,
+  "part": "sol",
+  "old": "기하평균 관계에",
+  "new": "기하평균의 관계에"
+ },
+ {
+  "op": "eq",
+  "n": 8,
+  "part": "sol",
+  "old": "LEFT ( 좌변 RIGHT ) >0`,` LEFT ( 우변 RIGHT ) <0`",
+  "new": "LEFT | a-b RIGHT | >0`,` LEFT | a RIGHT | - LEFT | b RIGHT | <0`"
+ }
+]
