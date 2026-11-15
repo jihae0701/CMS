@@ -106,6 +106,10 @@ def rules(sc):
     # (한글에서 '!='는 ≠로 보이며 거의 모든 단원에서 ≠ 뜻으로 썼다. 계승 뒤 등호는 경우의 수 단원에서만: --fact)
     if FACT:
         s = re.sub(r'([0-9A-Za-z)])\s*!\s*=(?=\s*[1-9(])', lambda m: m.group(1) + '! =', s) if re.search(r'[0-9]!=', s) else s
+    # 명령 뒤에 글자가 붙은 것 (leqx → leq x, lea → le a, overa → over a). left, geq, overline 같은 명령은 그대로
+    s = re.sub(r'\b(leq|geq|LEQ|GEQ|neq)(?=[A-Za-z])', r'\1 ', s)
+    s = re.sub(r'\b(le|ge)(?![qf])(?=[A-Za-z])', r'\1 ', s)
+    s = re.sub(r'\bover(?!line|set|brace)(?=[A-Za-z])', 'over ', s)
     # 명령 뒤에 left/right가 붙은 것 (emptysetright → emptyset right)
     s = re.sub(r'\b(emptyset|infty|alpha|beta|gamma|theta|pi|cdots|CDOTS)(right|left|RIGHT|LEFT)\b', r'\1 \2', s)
     # '!='(한글에서 ≠로 보임): ≠ 뜻이면 neq로 (보이는 모양 같음, 계승과 헷갈리지 않게)

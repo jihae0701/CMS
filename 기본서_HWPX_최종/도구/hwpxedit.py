@@ -252,6 +252,25 @@ def op_eqsub(x, spans, old, new):
     return op_eq(x, [(m.start(), m.end())], html.unescape(sm.group(2)), html.unescape(sm.group(2)).replace(old, new, 1))
 
 
+def op_cut(x, spans, start, end):
+    """범위 안에서 글 start(포함)부터 글 end(빼고)까지의 XML을 잘라 낸다 (수식이 섞인 반복 구절 지우기)"""
+    import refcheck, make_unit
+    st, en = eqstyle.esc(start), eqstyle.esc(end)
+    hits = [(i, x.find(en, i)) for a, b in spans for i in [x.find(st, a, b)] if i >= 0]
+    if len(hits) != 1 or hits[0][1] < 0:
+        raise ValueError('잘라 낼 곳 "%s": %d곳' % (start, len(hits)))
+    i, j = hits[0]
+    s0, e0 = inner_para(x, i)
+    p = x[s0:e0]
+    before = refcheck.para_len(p + '')
+    p2 = x[s0:i] + x[j:e0]
+    # 잘린 조각이 <hp:t>…</hp:t> 경계를 깨지 않도록: start는 <hp:t> 글 맨 앞, end도 <hp:t> 글 맨 앞이어야 한다
+    after = refcheck.para_len(p2)
+    p2 = trim_lineseg(make_unit.shift_own_lineseg(p2, after - before, after=refcheck.para_len(x[s0:i] + '</hp:p>')))
+    _PCACHE.clear()
+    return x[:s0] + p2 + x[e0:]
+
+
 def op_clear_sol(x, spans):
     """해설(미주)에서 첫 문단(정답 줄)만 남기고 지운다"""
     ps = paras_in(x, spans)
@@ -377,6 +396,8 @@ def apply(path, ops):
                 x = op_del_para(x, spans, op['anchor'], op.get('exact', False))
             elif op['op'] == 'eqsub':
                 x = op_eqsub(x, spans, op['old'], op['new'])
+            elif op['op'] == 'cut':
+                x = op_cut(x, spans, op['start'], op['end'])
             elif op['op'] == 'clear_sol':
                 x = op_clear_sol(x, spans)
             elif op['op'] == 'text_eq':

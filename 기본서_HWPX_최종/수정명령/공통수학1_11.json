@@ -1,0 +1,586 @@
+[
+ {
+  "op": "eq",
+  "n": 17,
+  "part": "sol",
+  "old": " -2 < a le it -1",
+  "new": " a le it -1",
+  "all": true
+ },
+ {
+  "op": "eq",
+  "n": 17,
+  "part": "sol",
+  "old": "a+ 2 > 0 ",
+  "new": "3-a > 0"
+ },
+ {
+  "op": "eq",
+  "n": 17,
+  "part": "sol",
+  "old": " a > it -2",
+  "new": " a < 3"
+ },
+ {
+  "op": "eq",
+  "n": 17,
+  "part": "sol",
+  "old": " 2 le a < 3",
+  "new": " 2 < a < 3",
+  "all": true
+ },
+ {
+  "op": "eq",
+  "n": 17,
+  "part": "sol",
+  "old": "D ge0",
+  "new": "D>0"
+ },
+ {
+  "op": "eq",
+  "n": 17,
+  "part": "sol",
+  "old": "a ^2 - 4 ( 3- a)  ge 0",
+  "new": "a ^2 - 4 ( 3- a) > 0"
+ },
+ {
+  "op": "eq",
+  "n": 17,
+  "part": "sol",
+  "old": "a ^2 + 4a -12 ge 0",
+  "new": "a ^2 + 4a -12 > 0"
+ },
+ {
+  "op": "eq",
+  "n": 17,
+  "part": "sol",
+  "old": "( a+ 6 ) ( a -2 ) ge 0",
+  "new": "( a+ 6 ) ( a -2 ) > 0"
+ },
+ {
+  "op": "eq",
+  "n": 17,
+  "part": "sol",
+  "old": "a le it -6",
+  "new": "a < it -6"
+ },
+ {
+  "op": "eq",
+  "n": 17,
+  "part": "sol",
+  "old": "a ge 2",
+  "new": "a > 2"
+ },
+ {
+  "op": "eq",
+  "n": 17,
+  "part": "sol",
+  "old": " -3 < it -a < 0",
+  "new": " -3 < it - a over 2 < 0"
+ },
+ {
+  "op": "eq",
+  "n": 17,
+  "part": "sol",
+  "old": "0 < a < 3",
+  "new": "0 < a < 6"
+ },
+ {
+  "op": "eq",
+  "n": 17,
+  "part": "sol",
+  "old": "x^2 = ax + 3 -a =0",
+  "new": "x^2 +ax + 3 -a =0"
+ },
+ {
+  "op": "text",
+  "n": 17,
+  "part": "sol",
+  "old": "사이에 있을 때, ",
+  "new": " 사이에 있을 때, ",
+  "after_eq": "0"
+ },
+ {
+  "op": "text",
+  "n": 18,
+  "part": "sol",
+  "old": "사이에 있을 때, ",
+  "new": " 사이에 있을 때, ",
+  "after_eq": "0"
+ },
+ {
+  "op": "eq",
+  "n": 18,
+  "part": "sol",
+  "old": "x ^{2} -ax+3-a=0",
+  "new": "x ^{2} +ax+3-a=0"
+ },
+ {
+  "op": "text",
+  "n": 48,
+  "part": "sol",
+  "old": "사이에 있어야",
+  "new": " 사이에 있어야",
+  "after_eq": "4"
+ },
+ {
+  "op": "text",
+  "n": 18,
+  "part": "q",
+  "old": " 사이에 존재",
+  "new": " 사이에 존재한다.",
+  "exact": true
+ },
+ {
+  "op": "text",
+  "n": 18,
+  "part": "q",
+  "old": "이 존재",
+  "new": "이 존재한다.",
+  "exact": true
+ },
+ {
+  "op": "eq",
+  "n": 27,
+  "part": "sol",
+  "old": " 0<a LEQ 1",
+  "new": " 0 LEQ a<1"
+ },
+ {
+  "op": "eq",
+  "n": 27,
+  "part": "sol",
+  "old": "x le 5",
+  "new": "x le 3"
+ },
+ {
+  "op": "eq",
+  "n": 27,
+  "part": "sol",
+  "old": " a+1 <5",
+  "new": " a+1 <3"
+ },
+ {
+  "op": "eq",
+  "n": 27,
+  "part": "sol",
+  "old": "a+1 <x le 5",
+  "new": "a+1 <x le 3"
+ },
+ {
+  "op": "eq",
+  "n": 27,
+  "part": "sol",
+  "old": "1<a+1 LEQ 2",
+  "new": "1 LEQ a+1<2"
+ },
+ {
+  "op": "eq",
+  "n": 27,
+  "part": "sol",
+  "old": "therefore~0<a LEQ 1",
+  "new": "therefore~0 LEQ a<1"
+ },
+ {
+  "op": "text",
+  "n": 27,
+  "part": "sol",
+  "old": "두 개 뿐이어야 하므로 이래 그림과 같이 ",
+  "new": "두 개뿐이어야 하므로 "
+ },
+ {
+  "op": "text_eq",
+  "n": 38,
+  "part": "sol",
+  "old": " ④",
+  "pre": " ",
+  "eq": "5"
+ },
+ {
+  "op": "text_eq",
+  "n": 39,
+  "part": "sol",
+  "old": " 󰂼 ",
+  "pre": " 󰂼 ",
+  "eq": "-4 le a < it-3",
+  "post": " 또는 ##"
+ },
+ {
+  "op": "text_eq",
+  "n": 39,
+  "part": "sol",
+  "old": " 또는 ##",
+  "pre": " 또는 ",
+  "eq": "4 < a le 5"
+ },
+ {
+  "op": "eq",
+  "n": 42,
+  "part": "sol",
+  "old": "{ 2 le x  < 4}",
+  "new": "{ 2 le k < 4}"
+ },
+ {
+  "op": "eqsub",
+  "n": 11,
+  "part": "q",
+  "old": "x^2 +2x > it -4 `",
+  "new": "x^2 +2x > it -4x `"
+ },
+ {
+  "op": "eqsub",
+  "n": 25,
+  "part": "q",
+  "old": "0.5x-02",
+  "new": "0.5x-0.2"
+ },
+ {
+  "op": "eq",
+  "n": 25,
+  "part": "sol",
+  "old": "2x+ 5 > 4(x+1) `",
+  "new": "2x+ 5 < 4(x+1) `"
+ },
+ {
+  "op": "text",
+  "n": 19,
+  "part": "q",
+  "old": "의 최댓값을 구하시오.",
+  "new": "의 값을 구하시오."
+ },
+ {
+  "op": "add_para",
+  "n": 19,
+  "part": "q",
+  "after": "의 값을 구하시오.",
+  "text": "(단, ⟦a⟧는 실수이다.)"
+ },
+ {
+  "op": "eq",
+  "n": 19,
+  "part": "sol",
+  "old": "D= (6-a)^2 - 4(2-b) le 0",
+  "new": "D= (6-3)^2 - 4(2-b)=4b+1 le 0"
+ },
+ {
+  "op": "text",
+  "n": 52,
+  "part": "q",
+  "old": "의 최댓값을 구하시오.",
+  "new": "의 값을 구하시오."
+ },
+ {
+  "op": "eq",
+  "n": 1,
+  "part": "sol",
+  "old": "3x+2<0`",
+  "new": "3k+2<0`"
+ },
+ {
+  "op": "eq",
+  "n": 9,
+  "part": "sol",
+  "old": "2x^2 <6-ㅌ`",
+  "new": "2x^2 <6-x`"
+ },
+ {
+  "op": "cut",
+  "n": 13,
+  "part": "sol",
+  "start": "개가 존재하도록 ㉠, ㉡의 해의 공통부분에 속하는 정수 ",
+  "end": "개가 존재하도록 ㉠, ㉡의 해를"
+ },
+ {
+  "op": "eq",
+  "n": 22,
+  "part": "sol",
+  "old": "x= {x-1} over {4}",
+  "new": "x= {m-1} over {4}"
+ },
+ {
+  "op": "eq",
+  "n": 22,
+  "part": "sol",
+  "old": "(m-12)  ^{2} =12  ^{2}",
+  "new": "(m-11)  ^{2} =12  ^{2}"
+ },
+ {
+  "op": "del_eq",
+  "n": 28,
+  "part": "sol",
+  "old": "-4"
+ },
+ {
+  "op": "text",
+  "n": 28,
+  "part": "sol",
+  "old": ", ",
+  "new": "",
+  "exact": true,
+  "before_eq": "-3"
+ },
+ {
+  "op": "text",
+  "n": 28,
+  "part": "sol",
+  "old": "가 되야",
+  "new": "가 되어야"
+ },
+ {
+  "op": "add_para",
+  "n": 40,
+  "part": "sol",
+  "after": "⟦a>2⟧이므로",
+  "text": "또, ⟦2<a<3⟧일 때 ⟦-3< it-a< it-2⟧이므로 ⟦-3<x< it-a⟧인 부분에는 정수가 없고, ⟦a ge 3⟧이면 이 부분은 없다."
+ },
+ {
+  "op": "eq",
+  "n": 41,
+  "part": "sol",
+  "old": " -5`,~4`,~5",
+  "new": " -5`,~ it-4`,~5"
+ },
+ {
+  "op": "text",
+  "n": 44,
+  "part": "sol",
+  "old": "⏎이므로 성립한다.⏎",
+  "new": "⏎이므로 성립한다.⏎(ⅲ) "
+ },
+ {
+  "op": "text",
+  "n": 45,
+  "part": "sol",
+  "old": "양수인 근보다 크므로",
+  "new": "양수인 근보다 작으므로"
+ },
+ {
+  "op": "eq",
+  "n": 51,
+  "part": "sol",
+  "old": "x=2",
+  "new": "x= it-2"
+ },
+ {
+  "op": "eq",
+  "n": 51,
+  "part": "sol",
+  "old": "(2,~4)",
+  "new": "(-2,~4)"
+ },
+ {
+  "op": "text",
+  "n": 51,
+  "part": "sol",
+  "old": "성립하라면",
+  "new": "성립하려면",
+  "all": true
+ },
+ {
+  "op": "text",
+  "n": 51,
+  "part": "sol",
+  "old": "이 이차함수",
+  "new": "가 이차함수",
+  "after_eq": "y=x+a"
+ },
+ {
+  "op": "text",
+  "n": 51,
+  "part": "sol",
+  "old": "이 이차함수",
+  "new": "가 이차함수",
+  "after_eq": "y=2x+b"
+ },
+ {
+  "op": "eq",
+  "n": 53,
+  "part": "sol",
+  "old": "2x+4>3x",
+  "new": "2x+4 GEQ 3x"
+ },
+ {
+  "op": "eq",
+  "n": 53,
+  "part": "sol",
+  "old": "0<x<4",
+  "new": "0<x LEQ 4"
+ },
+ {
+  "op": "eq",
+  "n": 54,
+  "part": "sol",
+  "old": "6. 5<{7- sqrt {51}} over {2} <7< {7+ sqrt {51}} over {2} < 7.5",
+  "new": "6.5<{7+ sqrt {47}} over {2} <7< {7+ sqrt {51}} over {2} < 7.5"
+ },
+ {
+  "op": "text",
+  "n": 6,
+  "part": "q",
+  "old": "한판을 ",
+  "new": "한 판이 "
+ },
+ {
+  "op": "text",
+  "n": 30,
+  "part": "q",
+  "old": "모든 수 들의 합",
+  "new": "모든 수들의 합"
+ },
+ {
+  "op": "text",
+  "n": 30,
+  "part": "sol",
+  "old": "여름방학을 ",
+  "new": "방학을 "
+ },
+ {
+  "op": "text",
+  "n": 20,
+  "part": "sol",
+  "old": "는 점",
+  "new": "은 점",
+  "after_eq": "y=mx+n"
+ },
+ {
+  "op": "text",
+  "n": 50,
+  "part": "sol",
+  "old": "는 점",
+  "new": "은 점",
+  "after_eq": "y=mx+n"
+ },
+ {
+  "op": "text",
+  "n": 50,
+  "part": "sol",
+  "old": "를 지나고",
+  "new": "을 지나고",
+  "after_eq": "(it-1,~3)"
+ },
+ {
+  "op": "text",
+  "n": 50,
+  "part": "sol",
+  "old": "를 지나므로",
+  "new": "을 지나므로",
+  "after_eq": "(it-1,~3)"
+ },
+ {
+  "op": "text",
+  "n": 3,
+  "part": "q",
+  "old": ".",
+  "new": "",
+  "exact": true
+ },
+ {
+  "op": "text",
+  "n": 6,
+  "part": "sol",
+  "old": "㉠를 풀면",
+  "new": "㉠을 풀면"
+ },
+ {
+  "op": "text",
+  "n": 6,
+  "part": "sol",
+  "old": "㉡를 풀면",
+  "new": "㉡을 풀면"
+ },
+ {
+  "op": "text",
+  "n": 26,
+  "part": "sol",
+  "old": "㉠를 풀면",
+  "new": "㉠을 풀면"
+ },
+ {
+  "op": "text",
+  "n": 26,
+  "part": "sol",
+  "old": "㉡를 풀면",
+  "new": "㉡을 풀면"
+ },
+ {
+  "op": "text",
+  "n": 27,
+  "part": "sol",
+  "old": "㉠를 풀면",
+  "new": "㉠을 풀면"
+ },
+ {
+  "op": "text",
+  "n": 27,
+  "part": "sol",
+  "old": "㉡를 풀면",
+  "new": "㉡을 풀면"
+ },
+ {
+  "op": "text",
+  "n": 28,
+  "part": "sol",
+  "old": "㉠를 풀면",
+  "new": "㉠을 풀면"
+ },
+ {
+  "op": "text",
+  "n": 28,
+  "part": "sol",
+  "old": "㉡를 풀면",
+  "new": "㉡을 풀면"
+ },
+ {
+  "op": "text",
+  "n": 6,
+  "part": "sol",
+  "old": "㉢를 만족하는",
+  "new": "㉢을 만족하는"
+ },
+ {
+  "op": "text",
+  "n": 29,
+  "part": "sol",
+  "old": "㉠, ㉡를",
+  "new": "㉠, ㉡을",
+  "all": true
+ },
+ {
+  "op": "text",
+  "n": 30,
+  "part": "sol",
+  "old": "㉠, ㉡를",
+  "new": "㉠, ㉡을",
+  "all": true
+ },
+ {
+  "op": "text",
+  "n": 32,
+  "part": "sol",
+  "old": "㉠, ㉡를",
+  "new": "㉠, ㉡을",
+  "all": true
+ },
+ {
+  "op": "text",
+  "n": 54,
+  "part": "sol",
+  "old": "㉠, ㉡를",
+  "new": "㉠, ㉡을",
+  "all": true
+ },
+ {
+  "op": "text",
+  "n": 32,
+  "part": "sol",
+  "old": "㉢, ㉣를",
+  "new": "㉢, ㉣을"
+ },
+ {
+  "op": "text",
+  "n": 32,
+  "part": "sol",
+  "old": "㉤, ㉥를",
+  "new": "㉤, ㉥을"
+ }
+]
