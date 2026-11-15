@@ -1,0 +1,148 @@
+[
+ {
+  "op": "eq",
+  "n": 2,
+  "part": "q",
+  "old": "{}_{r} rm C _{ IT r+1} = _{r} rm C _{IT 2r}",
+  "new": "{}_{7} rm C _{ IT r+1} = _{7} rm C _{IT 2r}"
+ },
+ {
+  "op": "del_para",
+  "n": 2,
+  "part": "sol",
+  "anchor": "2r=16⟧"
+ },
+ {
+  "op": "add_para",
+  "n": 2,
+  "part": "sol",
+  "after": "6-r=2r",
+  "text": "(ⅰ), (ⅱ)에서 ⟦r=1⟧ 또는 ⟦r=2⟧"
+ },
+ {
+  "op": "eq",
+  "n": 11,
+  "part": "sol",
+  "old": "{} _{3} {rm C}  _{1}  TIMES   _{3} {rm C}  _{2} =3 TIMES  {5 TIMES 4} over {2 TIMES 1} =30",
+  "new": "{} _{3} {rm C}  _{1}  TIMES   _{5} {rm C}  _{2} =3 TIMES  {5 TIMES 4} over {2 TIMES 1} =30"
+ },
+ {
+  "op": "text",
+  "n": 14,
+  "part": "sol",
+  "old": "(ⅰ), (ⅱ)에서 구하는",
+  "new": "따라서 구하는"
+ },
+ {
+  "op": "text",
+  "n": 15,
+  "part": "q",
+  "old": "다음을 경우의 수를",
+  "new": "다음 경우의 수를"
+ },
+ {
+  "op": "text",
+  "n": 21,
+  "part": "q",
+  "old": "의 값을 구하시오.",
+  "new": "의 값을 모두 구하시오."
+ },
+ {
+  "op": "eq",
+  "n": 21,
+  "part": "sol",
+  "old": "r-2 != 2r-2`",
+  "new": "r+2 neq 2r-2`"
+ },
+ {
+  "op": "eq",
+  "n": 23,
+  "part": "sol",
+  "old": "rm  _{10} {rm C}  _{5} = {10times9times8times7times6} over {5times4times3times2times1} =256",
+  "new": "{} _{10} {rm C}  _{5} = {10 times 9 times 8 times 7 times 6} over {5 times 4 times 3 times 2 times 1} =252"
+ },
+ {
+  "op": "eq",
+  "n": 23,
+  "part": "sol",
+  "old": "256-56=196",
+  "new": "252-56=196"
+ },
+ {
+  "op": "text",
+  "n": 27,
+  "part": "q",
+  "old": "들어있는",
+  "new": "들어 있는"
+ },
+ {
+  "op": "text",
+  "n": 30,
+  "part": "q",
+  "old": "봅아서",
+  "new": "뽑아서"
+ },
+ {
+  "op": "eq",
+  "n": 31,
+  "part": "sol",
+  "old": "40times5times12=2880",
+  "new": "40 times 6 times 12=2880"
+ },
+ {
+  "op": "text",
+  "n": 32,
+  "part": "sol",
+  "old": "총회원수는",
+  "new": "총회원 수는"
+ },
+ {
+  "op": "text_eq",
+  "n": 36,
+  "part": "sol",
+  "old": "이때 일직선 위에 있는 점으로는",
+  "pre": "이때 ",
+  "eq": "4",
+  "post": "개의 점이 일직선 위에 있는 직선은 #3#개이고, 일직선 위에 있는 점으로는",
+  "sub": true
+ },
+ {
+  "op": "text_eq",
+  "n": 36,
+  "part": "sol",
+  "old": "#3#",
+  "pre": "",
+  "eq": "3",
+  "post": "",
+  "sub": true
+ },
+ {
+  "op": "text",
+  "n": 37,
+  "part": "sol",
+  "old": "생각해 봅시다.",
+  "new": "생각해 보자."
+ },
+ {
+  "op": "eq",
+  "n": 41,
+  "part": "sol",
+  "old": "`_6 rm C_2 times `_4 rm C_1 =1 5 times 4`",
+  "new": "{}_6 rm C_2 times {}_4 rm C_1 =15 times 4`"
+ },
+ {
+  "op": "text",
+  "n": 44,
+  "part": "sol",
+  "old": "명을 ",
+  "new": "개의 팀을 ",
+  "after_eq": "8"
+ },
+ {
+  "op": "eq",
+  "n": 44,
+  "part": "sol",
+  "old": "( _{4} rm C _{2}  TIMES  _{2} C _{2}  TIMES  {1} over {2`!} ) TIMES ( _{4} C _{2}  TIMES  _{2} C _{2}  TIMES  {1} over {2`!} )=9",
+  "new": "( {}_{4} rm C _{2}  TIMES  {}_{2} rm C _{2}  TIMES  {1} over {2`!} ) TIMES ( {}_{4} rm C _{2}  TIMES  {}_{2} rm C _{2}  TIMES  {1} over {2`!} )=9"
+ }
+]
