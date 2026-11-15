@@ -1,0 +1,289 @@
+[
+ {
+  "op": "eq",
+  "n": 8,
+  "part": "sol",
+  "old": "1over2",
+  "new": "x= {1} over {2}"
+ },
+ {
+  "op": "eq",
+  "n": 8,
+  "part": "sol",
+  "old": "x=2",
+  "new": "x=2,~y= it-2",
+  "first": true
+ },
+ {
+  "op": "text",
+  "n": 8,
+  "part": "sol",
+  "old": ", ",
+  "new": " (4) 거짓 [반례] ",
+  "after_eq": "x=2,~y= it-2",
+  "exact": true
+ },
+ {
+  "op": "eq",
+  "n": 8,
+  "part": "sol",
+  "old": "y=3",
+  "new": "x=2,~y=3"
+ },
+ {
+  "op": "text_eq",
+  "n": 8,
+  "part": "q",
+  "old": "는 모두 짝수이다.",
+  "pre": "는 모두 짝수이다. (단, ",
+  "eq": "x,~y",
+  "post": "는 자연수이다.)",
+  "sub": true
+ },
+ {
+  "op": "eq",
+  "n": 23,
+  "part": "sol",
+  "old": "2+3 neq 6`",
+  "new": "2+4 neq 6`"
+ },
+ {
+  "op": "eq",
+  "n": 24,
+  "part": "sol",
+  "old": "x`<`2`",
+  "new": "x`<`it-2`"
+ },
+ {
+  "op": "text",
+  "n": 38,
+  "part": "sol",
+  "old": " 󰂼 ③",
+  "new": " 󰂼 ㄱ, ㄷ"
+ },
+ {
+  "op": "eq",
+  "n": 38,
+  "part": "sol",
+  "old": "Q  subset P`",
+  "new": "P subset Q`",
+  "nth": 1
+ },
+ {
+  "op": "eq",
+  "n": 9,
+  "part": "sol",
+  "old": "P`capQ`=U`",
+  "new": "P cap Q=P"
+ },
+ {
+  "op": "text",
+  "n": 9,
+  "part": "sol",
+  "old": " (거짓)⏎② ",
+  "new": "이므로 거짓이다.⏎② "
+ },
+ {
+  "op": "eq",
+  "n": 9,
+  "part": "sol",
+  "old": "P`cupQ`=Q`",
+  "new": "P cup Q=Q"
+ },
+ {
+  "op": "text",
+  "n": 9,
+  "part": "sol",
+  "old": " (거짓)⏎③ ",
+  "new": "이므로 거짓이다.⏎③ "
+ },
+ {
+  "op": "eq",
+  "n": 9,
+  "part": "sol",
+  "old": "P`cupQ^{∁} ne U`",
+  "new": "P cup Q^{∁} =U-(Q-P)"
+ },
+ {
+  "op": "text",
+  "n": 9,
+  "part": "sol",
+  "old": " (거짓)⏎⑤ ",
+  "new": "이므로 거짓이다.⏎⑤ "
+ },
+ {
+  "op": "eq",
+  "n": 9,
+  "part": "sol",
+  "old": "Q^{∁} -P^{∁} =emptyset",
+  "new": "Q^{∁} subset P^{∁}"
+ },
+ {
+  "op": "text",
+  "n": 9,
+  "part": "sol",
+  "old": " (거짓)⏎따라서",
+  "new": "이므로 #E#이 되어 거짓이다.⏎따라서"
+ },
+ {
+  "op": "text_eq",
+  "n": 9,
+  "part": "sol",
+  "old": "#E#",
+  "pre": "",
+  "eq": "Q^{∁} -P^{∁} =emptyset",
+  "post": "",
+  "sub": true
+ },
+ {
+  "op": "text",
+  "n": 10,
+  "part": "sol",
+  "old": "나타내면⏎① ",
+  "new": "나타내면 그림과 같다.⏎① "
+ },
+ {
+  "op": "eq",
+  "n": 10,
+  "part": "sol",
+  "old": "P`cupQ`neU`",
+  "new": "P cup Q"
+ },
+ {
+  "op": "text",
+  "n": 10,
+  "part": "sol",
+  "old": " (거짓)⏎② ",
+  "new": "가 항상 #U#인 것은 아니므로 거짓이다.⏎② "
+ },
+ {
+  "op": "text_eq",
+  "n": 10,
+  "part": "sol",
+  "old": "#U#",
+  "pre": "",
+  "eq": "U",
+  "post": "",
+  "sub": true
+ },
+ {
+  "op": "eq",
+  "n": 10,
+  "part": "sol",
+  "old": "Q`-P`=Q`",
+  "new": "Q-P=Q"
+ },
+ {
+  "op": "text",
+  "n": 10,
+  "part": "sol",
+  "old": " (거짓)⏎④ ",
+  "new": "이므로 거짓이다.⏎④ "
+ },
+ {
+  "op": "text",
+  "n": 10,
+  "part": "sol",
+  "old": " (거짓)⏎⑤ ",
+  "new": "이므로 거짓이다.⏎⑤ "
+ },
+ {
+  "op": "text",
+  "n": 10,
+  "part": "sol",
+  "old": " (거짓)⏎따라서",
+  "new": "이므로 거짓이다.⏎따라서"
+ },
+ {
+  "op": "eq",
+  "n": 4,
+  "part": "q",
+  "old": "U= LEFT { -2,~-1.~0,~1,~2,~3 RIGHT }",
+  "new": "U= LEFT { -2,~-1,~0,~1,~2,~3 RIGHT }"
+ },
+ {
+  "op": "eq",
+  "n": 27,
+  "part": "q",
+  "old": "U= LEFT { -2,~-1.~0,~1,~2,~3 RIGHT }",
+  "new": "U= LEFT { -2,~-1,~0,~1,~2,~3 RIGHT }"
+ },
+ {
+  "op": "eq",
+  "n": 4,
+  "part": "sol",
+  "old": "P`capQ^{∁} = LEFT { -1,~0,~1,~2 RIGHT }cap LEFT { 0,~3 RIGHT }= LEFT { -1,~1,~2 RIGHT }",
+  "new": "P cap Q^{∁} = LEFT { -1,~0,~1,~2 RIGHT } cap LEFT { -2,~-1,~1,~2 RIGHT } = LEFT { -1,~1,~2 RIGHT }"
+ },
+ {
+  "op": "eq",
+  "n": 27,
+  "part": "sol",
+  "old": "P`capQ^{∁} = LEFT { -1,~0,~1,~2 RIGHT }cap LEFT { 0,~3 RIGHT }= LEFT { -1,~1,~2 RIGHT }",
+  "new": "P cap Q^{∁} = LEFT { -1,~0,~1,~2 RIGHT } cap LEFT { -2,~-1,~1,~2 RIGHT } = LEFT { -1,~1,~2 RIGHT }"
+ },
+ {
+  "op": "eq",
+  "n": 6,
+  "part": "sol",
+  "old": "P`=emptyset",
+  "new": "Q`=emptyset"
+ },
+ {
+  "op": "eq",
+  "n": 21,
+  "part": "sol",
+  "old": "Q`= LEFT { x left| 1 le x le3 RIGHT }",
+  "new": "Q`= LEFT { x left| 1 le x <3 RIGHT }"
+ },
+ {
+  "op": "eq",
+  "n": 13,
+  "part": "sol",
+  "old": "p`:`a<x<3.~q`:`x ge it-4`",
+  "new": "p`:`a<x<3,~q`:`x ge it-4`"
+ },
+ {
+  "op": "eq",
+  "n": 13,
+  "part": "sol",
+  "old": "P{=left{x``|``a<x<3 right}`}",
+  "new": "P=left{x``|``a<x<3 right}`"
+ },
+ {
+  "op": "text",
+  "n": 13,
+  "part": "sol",
+  "old": "개다.",
+  "new": "개이다."
+ },
+ {
+  "op": "eq",
+  "n": 26,
+  "part": "q",
+  "old": "U`=` LEFT { x```x`",
+  "new": "U`=` LEFT { x``|``x`"
+ },
+ {
+  "op": "text",
+  "n": 20,
+  "part": "q",
+  "old": "⏎에 대하여 ",
+  "new": "⏎일 때, "
+ },
+ {
+  "op": "text",
+  "n": 5,
+  "part": "sol",
+  "old": "의 어떤 ",
+  "new": "의 원소 "
+ },
+ {
+  "op": "text",
+  "n": 5,
+  "part": "sol",
+  "old": "에 대하여 ",
+  "new": " 중 ",
+  "after_eq": "x"
+ }
+]
