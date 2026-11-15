@@ -127,7 +127,7 @@ def find_unique(x, spans, pat, what):
     return hits[0]
 
 
-def op_eq(x, spans, old, new, all_=False, first=False):
+def op_eq(x, spans, old, new, all_=False, first=False, last=False):
     cands = []
     for a, b in spans:
         for m in EQ.finditer(x, a, b):
@@ -136,6 +136,8 @@ def op_eq(x, spans, old, new, all_=False, first=False):
                 cands.append((m, sm))
     if first and cands:
         cands = cands[:1]
+    if last and cands:
+        cands = cands[-1:]
     if not cands or (len(cands) != 1 and not all_):
         raise ValueError('수식 "%s": %d곳' % (old, len(cands)))
     EQS = eqstyle.sizes([new])
@@ -313,7 +315,7 @@ def apply(path, ops):
         try:
             spans = region(x, op['n'], op.get('part', 'q'))
             if op['op'] == 'eq':
-                x = op_eq(x, spans, op['old'], op['new'], op.get('all', False), op.get('first', False))
+                x = op_eq(x, spans, op['old'], op['new'], op.get('all', False), op.get('first', False), op.get('last', False))
             elif op['op'] == 'text':
                 x = op_text(x, spans, op['old'], op['new'], op.get('after_eq'), op.get('exact', False), op.get('all', False), op.get('before_eq'))
             elif op['op'] == 'add_para':
