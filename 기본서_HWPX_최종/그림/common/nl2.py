@@ -30,7 +30,7 @@ def numline2(x0, x1, ranges, pts, ticks=(), shade=(), name='x', unit=40, hstep=N
             F.seg((b, 0), (b, h), 2.4)
         # 가운데를 끊고 ㉠ 글자
         mid = (L + R) / 2 if (a is not None and b is not None) else ((R - 1.6) if a is not None else (L + 1.6))
-        g = 0.32
+        g = 0.32 if lab else 0.0
         if a is None:
             F.svg.append('<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="#000" stroke-width="2.4" marker-end="url(#ar)"/>' % (F.P(mid - g, h) + F.P(L, h)))
         else:
@@ -39,7 +39,8 @@ def numline2(x0, x1, ranges, pts, ticks=(), shade=(), name='x', unit=40, hstep=N
             F.svg.append('<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="#000" stroke-width="2.4" marker-end="url(#ar)"/>' % (F.P(mid + g, h) + F.P(R, h)))
         else:
             F.seg((mid + g, h), (R, h), 2.4)
-        F.labels.append(F.P(mid, h) + (r'\text{%s}' % lab, 22, 'cc', 'dim'))
+        if lab:
+            F.labels.append(F.P(mid, h) + (r'\text{%s}' % lab, 22, 'cc', 'dim'))
     for x, lab, filled in pts:
         X, Y = F.P(x, 0)
         if filled:

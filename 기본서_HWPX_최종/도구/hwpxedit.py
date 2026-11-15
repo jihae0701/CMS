@@ -403,6 +403,17 @@ def apply(path, ops):
                 x = op_cut(x, spans, op['start'], op['end'])
             elif op['op'] == 'clear_sol':
                 x = op_clear_sol(x, spans)
+            elif op['op'] == 'raw':   # 문서 전체에서 <hp:t> 글 하나 바꾸기(제목 글상자 등). nth: 몇 번째(1부터)
+                o, nw = '<hp:t>%s</hp:t>' % eqstyle.esc(op['old']), '<hp:t>%s</hp:t>' % eqstyle.esc(op['new'])
+                pos = [m.start() for m in re.finditer(re.escape(o), x)]
+                if 'after' in op:   # 이 글 뒤에 처음 나오는 것
+                    k = x.find(eqstyle.esc(op['after']))
+                    pos = [q for q in pos if q > k][:1] if k >= 0 else []
+                elif op.get('nth'):
+                    pos = pos[op['nth'] - 1:op['nth']]
+                if len(pos) != 1:
+                    raise ValueError('raw "%s": %d곳' % (op['old'], len(pos)))
+                x = x[:pos[0]] + nw + x[pos[0] + len(o):]
             elif op['op'] == 'text_eq':
                 x = op_text_eq(x, spans, op['old'], op.get('pre', ''), op['eq'], op.get('post', ''), op.get('sub', False))
             else:
