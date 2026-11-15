@@ -4,6 +4,7 @@
 - imageN: 문서 안 그림 이름(Contents/content.hpf의 opf:item id, 그림 개체의 binaryItemIDRef)
 - @폭: 문서에 넣을 폭(HWPUNIT). 빼면 지금 폭을 그대로 두고 높이만 PNG 비율로 맞춘다.
   mathfig.fit_shoot가 돌려준 폭을 그대로 쓰면 1픽셀=6.4 HWPUNIT 약속이 지켜진다.
+- 원래 그림의 이동 값(offset·transMatrix)은 0으로 되돌린다(남기면 그림이 밖으로 밀려 사라짐).
 - 원래 BMP 등은 지우고 BinData/imageN.png로 넣으며, 크기 정보(orgSz·curSz·imgRect·imgClip·imgDim·sz)를 모두 새로 맞춘다.
 """
 import zipfile,re,sys,os
@@ -27,6 +28,9 @@ for k,(fn,w) in rep.items():
         p=re.sub(r'<hp:curSz [^>]*/>','<hp:curSz width="%d" height="%d"/>'%(W,H),p)
         p=re.sub(r'centerX="\d+" centerY="\d+"','centerX="%d" centerY="%d"'%(W//2,H//2),p)
         p=re.sub(r'<hc:scaMatrix [^>]*/>','<hc:scaMatrix e1="1" e2="0" e3="0" e4="0" e5="1" e6="0"/>',p)
+        # 원래 그림의 자르기·이동 값(offset, transMatrix 이동)을 남기면 그림이 밖으로 밀려 안 보인다 → 0으로
+        p=re.sub(r'<hp:offset [^>]*/>','<hp:offset x="0" y="0"/>',p,count=1)
+        p=re.sub(r'<hc:transMatrix [^>]*/>','<hc:transMatrix e1="1" e2="0" e3="0" e4="0" e5="1" e6="0"/>',p)
         p=re.sub(r'<hp:imgRect>.*?</hp:imgRect>','<hp:imgRect><hc:pt0 x="0" y="0"/><hc:pt1 x="%d" y="0"/><hc:pt2 x="%d" y="%d"/><hc:pt3 x="0" y="%d"/></hp:imgRect>'%(W,W,H,H),p,flags=re.S)
         p=re.sub(r'<hp:imgClip [^>]*/>','<hp:imgClip left="0" right="%d" top="0" bottom="%d"/>'%(W,H),p)
         p=re.sub(r'<hp:imgDim [^>]*/>','<hp:imgDim dimwidth="%d" dimheight="%d"/>'%(W,H),p)
@@ -42,7 +46,7 @@ for info,data in items:
     elif info.filename=='Contents/section0.xml': data=sec.encode()
     outs.append((info,data))
 for k,(fn,w) in rep.items():
-    zi=zipfile.ZipInfo('BinData/%s.png'%k,date_time=(2026,11,13,0,0,0)); zi.compress_type=zipfile.ZIP_DEFLATED
+    zi=zipfile.ZipInfo('BinData/%s.png'%k,date_time=(2026,11,13,0,0,0)); zi.compress_type=zipfile.ZIP_STORED  # 한글은 그림을 압축하지 않고 넣는다
     outs.append((zi,open(fn,'rb').read()))
 with zipfile.ZipFile(out,'w') as zo:
     for info,data in outs: zo.writestr(info,data,compress_type=info.compress_type)

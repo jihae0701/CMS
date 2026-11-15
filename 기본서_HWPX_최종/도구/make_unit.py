@@ -117,23 +117,24 @@ def top_paras(x):
     return out
 
 
+SECRUN = r'<hp:run charPrIDRef="\d+"><hp:secPr\b.*?</hp:secPr><hp:ctrl><hp:colPr[^>]*/></hp:ctrl></hp:run>'
+LSA = r'<hp:linesegarray>.*?</hp:linesegarray>'
+
+
 def note_tables(bx):
-    """기준 문서 맨 앞의 노트 표 문단 12개 (첫 문단은 구역 설정을 빼고 표 run만)"""
+    """기준 문서 맨 앞 노트 표: (첫 문단 틀 — 구역 설정 자리 {SEC}, 표 1개),
+    (둘째 문단의 표 11개 run, 둘째 문단 linesegarray). 둘째 문단에는 STEP 1 제목 상자가 함께 있다."""
     paras = top_paras(bx)
-    res = []
-    for a, b in paras:
-        p = bx[a:b]
-        if re.search(r'<hp:tbl\b[^>]*rowCnt="28" colCnt="1"', p):
-            res.append(p)
-        elif res:
-            break
-    assert len(res) == 12, len(res)
-    first = res[0]
-    # 첫 문단: secPr·colPr이 든 run을 빼고 남김 (자리 표시 {SEC}로)
-    first = re.sub(r'<hp:run charPrIDRef="\d+"><hp:secPr\b.*?</hp:secPr><hp:ctrl><hp:colPr[^>]*/></hp:ctrl></hp:run>', '{SEC}', first, count=1, flags=re.S)
-    assert '{SEC}' in first
-    res[0] = first
-    return res
+    p0 = bx[paras[0][0]:paras[0][1]]
+    p1 = bx[paras[1][0]:paras[1][1]]
+    assert len(re.findall(r'<hp:tbl\b[^>]*rowCnt="28" colCnt="1"', p0)) == 1
+    p0 = re.sub(SECRUN, '{SEC}', p0, count=1, flags=re.S)
+    assert '{SEC}' in p0
+    m = re.match(r'<hp:p\b[^>]*>(<hp:run charPrIDRef="\d+">(?:<hp:tbl\b.*?</hp:tbl>)+</hp:run>)', p1, re.S)
+    run = m.group(1)
+    assert len(re.findall(r'<hp:tbl\b[^>]*rowCnt="28" colCnt="1"', run)) == 11
+    assert '<hp:container' in p1[m.end():]
+    return p0, run, re.search(LSA, p1, re.S).group(0)
 
 
 def build(base, target, out):
@@ -148,14 +149,21 @@ def build(base, target, out):
     bm = re.search(r'<hp:margin [^>]*/>', bx).group(0)
     tx, n = re.subn(r'<hp:margin [^>]*/>', bm, tx, count=1); log['margin'] = n
     # 2) 노트 표: 대상 첫 문단의 secPr·colPr run을 떼어 노트 표 첫 문단으로 옮김
-    m = re.search(r'<hp:run charPrIDRef="(\d+)"><hp:secPr\b.*?</hp:secPr><hp:ctrl><hp:colPr[^>]*/></hp:ctrl></hp:run>', tx, flags=re.S)
+    m = re.search(SECRUN, tx, flags=re.S)
     assert m, '대상 첫 문단의 구역 설정을 찾지 못함'
     secrun = m.group(0)
     tx = tx[:m.start()] + tx[m.end():]
-    first_p = top_paras(tx)[0][0]
-    tables = [remap_refs(p, hi) for p in note_tables(bx)]
-    tables[0] = tables[0].replace('{SEC}', secrun)
-    tx = tx[:first_p] + ''.join(tables) + tx[first_p:]
+    a, b = top_paras(tx)[0]
+    first = tx[a:b]
+    assert '<hp:container' in first, '대상 첫 문단에 STEP 1 제목 상자가 없음'
+    p0, run, lsa1 = note_tables(bx)
+    p0 = remap_refs(p0, hi).replace('{SEC}', secrun)
+    run = remap_refs(run, hi)
+    head = re.match(r'<hp:p\b[^>]*>', first).group(0)
+    first = head + run + first[len(head):]
+    first = re.sub(LSA, lambda _: lsa1, first, count=1, flags=re.S)
+    tx = tx[:a] + p0 + first + tx[b:]
+    tables = [1] * len(re.findall(r'<hp:tbl\b[^>]*rowCnt="28" colCnt="1"', p0 + run))
     log['note_tables'] = len(tables)
     # 3) 쪽 번호 새로 시작: STEP 2 첫 제목 문단, 문서 끝 문단 (없을 때만)
     NEW = '<hp:ctrl><hp:newNum num="1" numType="PAGE"/></hp:ctrl>'
@@ -223,8 +231,8 @@ def build(base, target, out):
                 data = etree.tostring(th, xml_declaration=True, encoding='UTF-8', standalone=True)
             elif info.filename in mps:
                 data = mps[info.filename]
-            zo.writestr(info, data, compress_type=(zipfile.ZIP_STORED if info.filename == 'mimetype' else zipfile.ZIP_DEFLATED))
-    log['header_imports'] = {k: v for k, v in hi.maps.items() if v}
+            zo.writestr(info, data, compress_type=info.compress_type)
+    log['header_imports'] = {k: {str(a): b for a, b in v.items()} for k, v in hi.maps.items() if v}
     return log
 
 

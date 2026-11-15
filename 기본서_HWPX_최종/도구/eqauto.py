@@ -161,7 +161,7 @@ def main():
     tmp = path + '.tmp'
     with zipfile.ZipFile(tmp, 'w') as zo:
         for info, data in out:
-            zo.writestr(info, data, compress_type=(zipfile.ZIP_STORED if info.filename == 'mimetype' else zipfile.ZIP_DEFLATED))
+            zo.writestr(info, data, compress_type=info.compress_type)
     shutil.move(tmp, path)
     # 3) eqstyle: 조건 속 한글 나누기, 수식 뒤 빈칸 등 (그 자리에서)
     st = eqstyle.style_file(path)

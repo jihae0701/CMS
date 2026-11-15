@@ -39,7 +39,7 @@ for info, data in items:
 tmp = path + '.tmp'
 with zipfile.ZipFile(tmp, 'w') as zo:
     for info, data in out:
-        zo.writestr(info, data, compress_type=(zipfile.ZIP_STORED if info.filename == 'mimetype' else zipfile.ZIP_DEFLATED))
+        zo.writestr(info, data, compress_type=info.compress_type)
 shutil.move(tmp, path)
 json.dump(log, open(logp, 'w'), ensure_ascii=False, indent=0)
 print(os.path.basename(path), 'step', log['step'], 'newnum', log['newnum'], 'bold', len(log['bold']))

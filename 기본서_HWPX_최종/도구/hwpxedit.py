@@ -181,16 +181,22 @@ def op_add_para(x, spans, after, text, like=None):
     eqs = [parts[i] for i in range(1, len(parts), 2)]
     EQS = eqstyle.sizes(eqs) if eqs else {}
     inner = []
+    zmax = max(int(z) for z in re.findall(r'\bzOrder="(\d+)"', x))
     for i, piece in enumerate(parts):
         if i % 2 == 0:
             if piece:
                 inner.append('<hp:t>%s</hp:t>' % eqstyle.esc(piece))
         else:
             el = re.sub(r'(<hp:equation\b[^>]*\bid=")\d+(")', lambda q: q.group(1) + str(random.randint(1000000000, 2100000000)) + q.group(2), tmpl, count=1)
+            zmax += 1
+            el = re.sub(r'(<hp:equation\b[^>]*\bzOrder=")\d+(")', lambda q: q.group(1) + str(zmax) + q.group(2), el, count=1)
             sm = SC.search(el)
             el = el[:sm.start(2)] + eqstyle.esc(piece) + el[sm.end(2):]
             inner.append(eqauto.resize(el, piece, EQS))
-    newp = head + '<hp:run charPrIDRef="%s">%s</hp:run></hp:p>' % (cp, ''.join(inner) or '<hp:t/>')
+    # 줄 배치 정보: 한글 문서의 모든 문단에 있어야 한다(없으면 '손상' 경고). 기준 문단의 첫 줄을 본떠 넣으면 한글이 다시 계산한다.
+    ls = re.search(r'<hp:lineseg\b[^>]*/>', p).group(0)
+    ls = re.sub(r'\btextpos="\d+"', 'textpos="0"', ls)
+    newp = head + '<hp:run charPrIDRef="%s">%s</hp:run><hp:linesegarray>%s</hp:linesegarray></hp:p>' % (cp, ''.join(inner) or '<hp:t/>', ls)
     s, e = ps[0]
     return x[:e] + newp + x[e:]
 
@@ -206,7 +212,7 @@ def save(path, x):
         for info, data in items:
             if info.filename == 'Contents/section0.xml':
                 data = x.encode('utf-8')
-            zo.writestr(info, data, compress_type=(zipfile.ZIP_STORED if info.filename == 'mimetype' else zipfile.ZIP_DEFLATED))
+            zo.writestr(info, data, compress_type=info.compress_type)
     shutil.move(tmp, path)
 
 
