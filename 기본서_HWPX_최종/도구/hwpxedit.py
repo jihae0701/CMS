@@ -169,7 +169,18 @@ def op_text(x, spans, old, new, after_eq=None):
     if tot != 1:
         raise ValueError('글 "%s": %d곳' % (old, tot))
     m = cands[0]
-    return x[:m.start()] + '<hp:t>' + m.group(1).replace(o, nw) + '</hp:t>' + x[m.end():]
+    x2 = x[:m.start()] + '<hp:t>' + m.group(1).replace(o, nw) + '</hp:t>' + x[m.end():]
+    # 글자 수가 바뀌면 그 문단 자기 줄 배치 정보의 뒤쪽 줄 위치를 맞춘다
+    delta = len(new.replace('⏎', 'X')) - len(old.replace('⏎', 'X'))
+    if delta:
+        import refcheck, make_unit
+        s0, e0 = inner_para(x2, m.start())
+        p = x2[s0:e0]
+        off = refcheck.para_len(x2[s0:m.start()] + '</hp:p>') + len(m.group(1)[:m.group(1).find(o)].replace('<hp:lineBreak/>', 'X'))
+        _PCACHE.clear()
+        x2 = x2[:s0] + make_unit.shift_own_lineseg(p, delta, after=off) + x2[e0:]
+        _PCACHE.clear()
+    return x2
 
 
 def op_add_para(x, spans, after, text, like=None):

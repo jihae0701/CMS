@@ -2,11 +2,12 @@
 """기준 문서(1. 다항식의 연산, 사용자가 한글로 만든 HWPX)의 틀을 다른 단원 HWPX에 입힌다.
     python3 make_unit.py 기준.hwpx 단원.hwpx 출력.hwpx
 - 용지 여백: 기준 문서와 같게
-- 바탕쪽: 개체 위치·글 영역 높이를 기준 문서와 같게, 쪽 번호(자동 번호) 지움
+- 바탕쪽: 기준 문서의 바탕쪽을 그대로 쓰고 단원 번호·제목, 과목(공통수학1/2)만 바꿈 (기준 문서에는 쪽 번호가 없음)
 - 맨 앞에 가로줄 노트 표 12개(6쪽): 기준 문서의 표를 그대로 복사(표가 쓰는 테두리·글꼴·글자·문단 모양은 같은 것이 있으면 쓰고 없으면 덧붙임)
 - 쪽 번호 새로 시작: STEP 2 첫 제목 문단과 문서 끝 문단에도 넣음(기준 문서와 같은 자리). 값은 structfix.py가 1로 맞춘다.
 """
 import sys, re, copy, zipfile, random
+from xml.sax.saxutils import escape as eqesc
 from lxml import etree
 
 NS = {'hh': 'http://www.hancom.co.kr/hwpml/2011/head', 'hp': 'http://www.hancom.co.kr/hwpml/2011/paragraph',
@@ -25,6 +26,7 @@ class HeaderImport:
     def __init__(self, bh, th):
         self.B, self.T = bh, th
         self.maps = {'borderFill': {}, 'charPr': {}, 'paraPr': {}, 'tabPr': {}, 'font': {}}
+        self.added = []  # (목록 이름, 언어, 새 요소) — header.xml 글에 그대로 끼워 넣는다
 
     def lst(self, root, name):
         return root.find('.//hh:%s' % name, NS)
@@ -45,6 +47,7 @@ class HeaderImport:
         new.set('id', nid)
         tl.append(new)
         tl.set('itemCnt', str(len(tl.findall('hh:%s' % kind, NS))))
+        self.added.append((listname, None, new))
         self.maps[kind][bid] = nid
         return nid
 
@@ -63,6 +66,7 @@ class HeaderImport:
         new = copy.deepcopy(bf)
         nid = str(len(tff.findall('hh:font', NS)))
         new.set('id', nid); tff.append(new); tff.set('fontCnt', str(len(tff.findall('hh:font', NS))))
+        self.added.append(('fontface', lang, new))
         self.maps['font'][key] = nid
         return nid
 
@@ -89,6 +93,41 @@ class HeaderImport:
             h = e.find('hh:heading', NS)
             assert h is None or h.get('type') == 'NONE', 'paraPr에 번호 문단(heading)이 있음'
         return self._import('paraPr', 'paraProperties', pid, fix)
+
+
+def write_header(text, added):
+    """header.xml을 다시 쓰지 않고 원래 글에 새 항목만 끼워 넣고 개수를 고친다(한글이 쓴 형식 그대로 유지)"""
+    ITEM = {'borderFills': 'borderFill', 'charProperties': 'charPr', 'paraProperties': 'paraPr', 'tabProperties': 'tabPr'}
+    for listname, lang, el in added:
+        frag = etree.tostring(el, encoding='unicode')
+        frag = re.sub(r'\s+xmlns:\w+="[^"]*"', '', frag)
+        if listname == 'fontface':
+            m = re.search(r'<hh:fontface lang="%s" fontCnt="\d+">' % lang, text)
+            end = text.index('</hh:fontface>', m.end())
+        else:
+            end = text.index('</hh:%s>' % listname)
+        text = text[:end] + frag + text[end:]
+    for listname, item in ITEM.items():
+        m = re.search(r'(<hh:%s itemCnt=")\d+(">)(.*?)</hh:%s>' % (listname, listname), text, re.S)
+        if m:
+            n = len(re.findall(r'<hh:%s id=' % item, m.group(3)))
+            text = text[:m.start()] + m.group(1) + str(n) + m.group(2) + text[m.end(2):]
+    for m in list(re.finditer(r'(<hh:fontface lang="\w+" fontCnt=")\d+(">)(.*?)</hh:fontface>', text, re.S)):
+        pass
+    out, last = [], 0
+    for m in re.finditer(r'(<hh:fontface lang="\w+" fontCnt=")\d+(">)(.*?)(</hh:fontface>)', text, re.S):
+        out.append(text[last:m.start()]); out.append(m.group(1) + str(len(re.findall(r'<hh:font id=', m.group(3)))) + m.group(2) + m.group(3) + m.group(4)); last = m.end()
+    out.append(text[last:])
+    return ''.join(out)
+
+
+def shift_own_lineseg(p, delta, after=0):
+    """문단 p 자기 줄 배치 정보(맨 끝 linesegarray)에서 글자 위치 > after 인 줄을 delta만큼 민다"""
+    k = p.rfind('<hp:linesegarray>')
+    if k < 0 or p.find('</hp:run>', k) >= 0:
+        return p
+    tail = re.sub(r'textpos="(\d+)"', lambda m: 'textpos="%d"' % (int(m.group(1)) + delta if int(m.group(1)) > after else int(m.group(1))), p[k:])
+    return p[:k] + tail
 
 
 def remap_refs(s, hi):
@@ -134,7 +173,10 @@ def note_tables(bx):
     run = m.group(1)
     assert len(re.findall(r'<hp:tbl\b[^>]*rowCnt="28" colCnt="1"', run)) == 11
     assert '<hp:container' in p1[m.end():]
-    return p0, run, re.search(LSA, p1, re.S).group(0)
+    k = p1.rfind('<hp:linesegarray>')
+    own = p1[k:p1.index('</hp:linesegarray>', k) + len('</hp:linesegarray>')]
+    assert own.count('<hp:lineseg ') == 12, own.count('<hp:lineseg ')
+    return p0, run, own
 
 
 def build(base, target, out):
@@ -161,7 +203,10 @@ def build(base, target, out):
     run = remap_refs(run, hi)
     head = re.match(r'<hp:p\b[^>]*>', first).group(0)
     first = head + run + first[len(head):]
-    first = re.sub(LSA, lambda _: lsa1, first, count=1, flags=re.S)
+    k = first.rfind('<hp:linesegarray>')
+    k2 = first.index('</hp:linesegarray>', k) + len('</hp:linesegarray>')
+    assert first.find('</hp:run>', k) < 0
+    first = first[:k] + lsa1 + first[k2:]   # 문단 자기 줄 배치 정보(표 11개 + 제목 상자 = 줄 12개)
     tx = tx[:a] + p0 + first + tx[b:]
     tables = [1] * len(re.findall(r'<hp:tbl\b[^>]*rowCnt="28" colCnt="1"', p0 + run))
     log['note_tables'] = len(tables)
@@ -180,47 +225,36 @@ def build(base, target, out):
         p = tx[a:b]
         if 'numType="PAGE"' in p:
             continue
-        r = re.search(r'<hp:run charPrIDRef="\d+">', p)
+        r = re.match(r'<hp:p\b[^>]*><hp:run charPrIDRef="\d+">', p)
         if r:
             p = p[:r.end()] + NEW + p[r.end():]
         else:
             p = re.sub(r'(<hp:p\b[^>]*>)', r'\1<hp:run charPrIDRef="0">' + NEW + '</hp:run>', p, count=1)
+        p = shift_own_lineseg(p, 8, after=0)  # 맨 앞에 8글자(컨트롤)가 늘어남
         tx = tx[:a] + p + tx[b:]
         added += 1
     log['newnum_added'] = added
-    # 4) 바탕쪽
+    # 4) 바탕쪽: 기준 문서의 바탕쪽을 통째로 쓰고, 단원 번호·제목과 과목(공통수학1/2)만 바꾼다
+    t0 = re.findall(r'<hp:t>([^<]*)</hp:t>', tz.read('Contents/masterpage0.xml').decode('utf-8'))
+    i0 = t0.index('HF') + 1 if 'HF' in t0 else 0
+    i1 = next(i for i in range(i0, len(t0)) if t0[i].startswith('공통수학'))
+    title = ''.join(t0[i0:i1]).strip()
+    num, _, name = title.partition(' ')
+    subj = '2' if any('공통수학2' in t for t in t0) or (t0[i1:i1 + 3] == ['공통수학', ' ', '2']) else '1'
+    log['title'] = [num, name, '공통수학' + subj]
     mps = {}
-    for name in [n for n in tz.namelist() if re.match(r'Contents/masterpage\d+\.xml', n)]:
-        tr = etree.fromstring(tz.read(name))
-        br = etree.fromstring(bz.read(name))
-        def objs(r):
-            sl = r.find(HP + 'subList'); res = []
-            for p in sl.findall(HP + 'p'):
-                for run in p.findall(HP + 'run'):
-                    for o in run:
-                        if etree.QName(o).localname in ('tbl', 'line', 'rect', 'container', 'pic', 'ellipse', 'polygon', 'curve', 'arc'):
-                            res.append(o)
-            return sl, res
-        bsl, bo = objs(br); tsl, to = objs(tr)
-        bpos = {}
-        for o in bo:
-            sz = o.find(HP + 'sz'); bpos[(etree.QName(o).localname, sz.get('width'), sz.get('height'))] = o.find(HP + 'pos')
-        moved = 0
-        for o in to:
-            sz = o.find(HP + 'sz'); key = (etree.QName(o).localname, sz.get('width'), sz.get('height'))
-            if key in bpos:
-                pos = o.find(HP + 'pos')
-                for att in ('vertOffset', 'horzOffset', 'vertRelTo', 'horzRelTo', 'vertAlign', 'horzAlign'):
-                    pos.set(att, bpos[key].get(att))
-                moved += 1
-        for att in ('textWidth', 'textHeight'):
-            tsl.set(att, bsl.get(att))
-        removed = 0
-        for c in list(tr.iter(HP + 'ctrl')):
-            if c.find(HP + 'autoNum') is not None and c.find(HP + 'autoNum').get('numType') == 'PAGE':
-                c.getparent().remove(c); removed += 1
-        mps[name] = etree.tostring(tr, xml_declaration=True, encoding='UTF-8', standalone=True)
-        log[name] = {'moved': moved, 'objs': len(to), 'pagenum_removed': removed}
+    for mname in [n for n in bz.namelist() if re.match(r'Contents/masterpage\d+\.xml', n)]:
+        m = bz.read(mname).decode('utf-8')
+        m = remap_refs(m, hi)
+        n1 = m.count('<hp:t>1.</hp:t>'); n2 = m.count('<hp:t>다항식의 연산</hp:t>')
+        assert n1 == 1 and n2 == 1, (mname, n1, n2)
+        m = m.replace('<hp:t>1.</hp:t>', '<hp:t>%s</hp:t>' % eqesc(num)).replace('<hp:t>다항식의 연산</hp:t>', '<hp:t>%s</hp:t>' % eqesc(name))
+        if subj == '2':
+            m = m.replace('<hp:t>공통수학1</hp:t>', '<hp:t>공통수학2</hp:t>')
+            m = re.sub(r'(<hp:t>공통수학</hp:t></hp:run><hp:run charPrIDRef="\d+"><hp:t> </hp:t></hp:run><hp:run charPrIDRef="\d+"><hp:t>)1(</hp:t>)', r'\g<1>2\2', m)
+        assert '<hp:autoNum' not in m
+        mps[mname] = m.encode('utf-8')
+        log[mname] = re.findall(r'<hp:t>([^<]*)</hp:t>', m)
     # 쓰기
     items = [(i, tz.read(i.filename)) for i in tz.infolist()]
     with zipfile.ZipFile(out, 'w') as zo:
@@ -228,7 +262,7 @@ def build(base, target, out):
             if info.filename == 'Contents/section0.xml':
                 data = tx.encode('utf-8')
             elif info.filename == 'Contents/header.xml':
-                data = etree.tostring(th, xml_declaration=True, encoding='UTF-8', standalone=True)
+                data = write_header(tz.read('Contents/header.xml').decode('utf-8'), hi.added).encode('utf-8')
             elif info.filename in mps:
                 data = mps[info.filename]
             zo.writestr(info, data, compress_type=info.compress_type)
