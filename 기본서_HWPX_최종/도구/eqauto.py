@@ -49,10 +49,35 @@ def balance(sc):
     return s
 
 
+def wrap_numerator(s):
+    """여는 괄호 없이 '} over {'로 끝나는 분자: 'x^3+7 } over {x-1' → '{x^3+7} over {x-1}' (그냥 '}'를 지우면 분자가 마지막 항만 남는다)"""
+    depth, i, n = 0, 0, len(s)
+    while i < n:
+        m = re.match(r'(LEFT|RIGHT|left|right)\s*(\{|\}|\||\(|\)|\[|\]|\.)', s[i:])
+        if m and (i == 0 or not s[i - 1].isalpha()):
+            i += m.end(); continue
+        c = s[i]
+        if c == '"':
+            j = s.find('"', i + 1); i = n if j < 0 else j + 1; continue
+        if c == '{':
+            depth += 1
+        elif c == '}':
+            if depth == 0:
+                if re.match(r'\s*over\s*\{', s[i + 1:]):
+                    lead = len(s) - len(s.lstrip())
+                    return s[:lead] + '{' + s[lead:i].strip() + '}' + s[i + 1:]
+                return s
+            depth -= 1
+        i += 1
+    return s
+
+
 def rules(sc):
     s = sc
     if not s.strip():
         return s
+    s = wrap_numerator(s)
+    # (선분의 bar는 그대로 둔다 — 사용자 결정, 2단원 의논)
     # rm 뒤 빈칸
     s = re.sub(r'\brm(?=[A-Z])', 'rm ', s)
     # 분수 over 앞뒤 빈칸

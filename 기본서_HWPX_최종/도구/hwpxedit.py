@@ -4,7 +4,8 @@
 'sol' 범위 = 미주 n의 내용.
 명령(JSON 목록):
   {"op":"eq","n":6,"part":"sol","old":"수식 스크립트(그대로)","new":"새 스크립트"}   — 그 범위에서 정확히 하나여야 함
-  {"op":"text","n":25,"part":"q","old":"개수의 합","new":"계수의 합"}                 — <hp:t> 하나 안에서, 범위에서 정확히 하나
+  {"op":"text","n":25,"part":"q","old":"개수의 합","new":"계수의 합"}                 — <hp:t> 하나 안에서, 범위에서 정확히 하나 (줄바꿈은 ⏎)
+     "after_eq":"x=2" 를 더하면 그 수식 바로 뒤의 글에서만 찾는다(조사 고치기). eq에 "all":true면 같은 수식을 모두 바꾼다.
   {"op":"add_para","n":22,"part":"sol","after":"<기준 문단에 있는 글 또는 ⟦수식⟧>","text":"글과 ⟦수식⟧ 섞어서"}
      기준 문단 바로 뒤에 같은 문단·글자 모양으로 새 문단을 넣는다.
 python3 hwpxedit.py list 파일.hwpx n [n...]      문항의 q/sol 문단을 보여 줌
@@ -125,36 +126,50 @@ def find_unique(x, spans, pat, what):
     return hits[0]
 
 
-def op_eq(x, spans, old, new):
+def op_eq(x, spans, old, new, all_=False):
     cands = []
     for a, b in spans:
         for m in EQ.finditer(x, a, b):
             sm = SC.search(m.group(0))
             if html.unescape(sm.group(2)) == old:
                 cands.append((m, sm))
-    if len(cands) != 1:
+    if not cands or (len(cands) != 1 and not all_):
         raise ValueError('수식 "%s": %d곳' % (old, len(cands)))
-    m, sm = cands[0]
     EQS = eqstyle.sizes([new])
-    el = m.group(0)
-    el = el[:sm.start(2)] + eqstyle.esc(new) + el[sm.end(2):]
-    el = eqauto.resize(el, new, EQS)
-    return x[:m.start()] + el + x[m.end():]
+    for m, sm in sorted(cands, key=lambda c: -c[0].start()):
+        el = m.group(0)
+        el = el[:sm.start(2)] + eqstyle.esc(new) + el[sm.end(2):]
+        el = eqauto.resize(el, new, EQS)
+        x = x[:m.start()] + el + x[m.end():]
+    return x
 
 
-def op_text(x, spans, old, new):
-    pat = re.compile(r'<hp:t>([^<]*)</hp:t>')
+TPAT = re.compile(r'<hp:t>((?:[^<]|<hp:lineBreak/>)*)</hp:t>')
+
+
+def op_text(x, spans, old, new, after_eq=None):
+    """<hp:t> 하나 안의 글 바꾸기. 줄바꿈은 ⏎로 쓴다. after_eq를 주면 그 스크립트의 수식 바로 뒤 <hp:t>만 본다."""
+    enc = lambda s: eqstyle.esc(s).replace('⏎', '<hp:lineBreak/>')
+    o, nw = enc(old), enc(new)
     cands = []
     for a, b in spans:
-        for m in pat.finditer(x, a, b):
-            if eqstyle.esc(old) in m.group(1):
-                cands.append(m)
-    tot = sum(m.group(1).count(eqstyle.esc(old)) for m in cands)
+        for m in TPAT.finditer(x, a, b):
+            if o not in m.group(1):
+                continue
+            if after_eq is not None:
+                pre = x[:m.start()]
+                if not pre.endswith('</hp:equation>'):
+                    continue
+                e0 = pre.rfind('<hp:equation')
+                sm = SC.search(pre[e0:])
+                if not sm or html.unescape(sm.group(2)) != after_eq:
+                    continue
+            cands.append(m)
+    tot = sum(m.group(1).count(o) for m in cands)
     if tot != 1:
         raise ValueError('글 "%s": %d곳' % (old, tot))
     m = cands[0]
-    t = m.group(1).replace(eqstyle.esc(old), eqstyle.esc(new))
-    return x[:m.start()] + '<hp:t>' + t + '</hp:t>' + x[m.end():]
+    return x[:m.start()] + '<hp:t>' + m.group(1).replace(o, nw) + '</hp:t>' + x[m.end():]
 
 
 def op_add_para(x, spans, after, text, like=None):
@@ -185,7 +200,7 @@ def op_add_para(x, spans, after, text, like=None):
     for i, piece in enumerate(parts):
         if i % 2 == 0:
             if piece:
-                inner.append('<hp:t>%s</hp:t>' % eqstyle.esc(piece))
+                inner.append('<hp:t>%s</hp:t>' % eqstyle.esc(piece).replace('⏎', '<hp:lineBreak/>'))
         else:
             el = re.sub(r'(<hp:equation\b[^>]*\bid=")\d+(")', lambda q: q.group(1) + str(random.randint(1000000000, 2100000000)) + q.group(2), tmpl, count=1)
             zmax += 1
@@ -223,9 +238,9 @@ def apply(path, ops):
         try:
             spans = region(x, op['n'], op.get('part', 'q'))
             if op['op'] == 'eq':
-                x = op_eq(x, spans, op['old'], op['new'])
+                x = op_eq(x, spans, op['old'], op['new'], op.get('all', False))
             elif op['op'] == 'text':
-                x = op_text(x, spans, op['old'], op['new'])
+                x = op_text(x, spans, op['old'], op['new'], op.get('after_eq'))
             elif op['op'] == 'add_para':
                 x = op_add_para(x, spans, op['after'], op['text'], (op['like_n'], op['like']) if 'like' in op else None)
             else:
