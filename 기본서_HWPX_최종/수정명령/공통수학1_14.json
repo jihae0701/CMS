@@ -1,0 +1,17 @@
+[
+ {"op": "eq", "n": 1, "part": "q", "old": "a _{ij} = {cases{i+2j&~ LEFT ( i<j RIGHT )#i ^{2}&~ LEFT ( i=j RIGHT )#-a _{ji}&~ LEFT ( j<i RIGHT )}}", "new": "a _{ij} = {cases{i+2j&~ LEFT ( i>j RIGHT )#i ^{2}&~ LEFT ( i=j RIGHT )#-a _{ji}&~ LEFT ( i<j RIGHT )}}"},
+ {"op": "eq", "n": 3, "part": "q", "old": "A =pmatrix{ a &~ x- 3y # 3x + 3y &~ b }, ~B = pmatrix{x+y &~ 6 # 7 &~ x-y}", "new": "A =pmatrix{ a &~ x- 3y # 3x + 2y &~ b }, ~B = pmatrix{x+y &~ 6 # 7 &~ x-y}"},
+ {"op": "eqsub", "n": 4, "part": "sol", "old": "2alphabeta", "new": "2 alpha beta"},
+ {"op": "text", "n": 4, "part": "q", "old": "덧셈. 뺄셈", "new": "덧셈, 뺄셈"},
+ {"op": "text_eq", "n": 7, "part": "sol", "old": " ①", "pre": " ", "eq": "-4", "post": ""},
+ {"op": "text", "n": 9, "part": "sol", "old": "[다른풀이]", "new": "[다른 풀이]"},
+ {"op": "text", "n": 10, "part": "sol", "old": "[정답] ", "new": ""},
+ {"op": "text_eq", "n": 11, "part": "sol", "old": "③", "pre": "", "eq": "{3} over {2}", "post": ""},
+ {"op": "eq", "n": 17, "part": "sol", "old": "4", "new": "1"},
+ {"op": "eq", "n": 21, "part": "sol", "old": "-3+0=it-3\r\n", "new": "-3+0=it-3"},
+ {"op": "add_para", "n": 21, "part": "sol", "after": "󰂼", "text": "(1) ⟦(3,~2)⟧ 성분은 제⟦3⟧행과 제⟦2⟧열이 만나는 자리의 성분이므로 ⟦1⟧이다.", "like_n": 21, "like": "(2) ⟦-3+0"},
+ {"op": "eq", "n": 24, "part": "q", "old": " A _ij = LEFT ( -1 RIGHT )^i + 3j + 5 ", "new": " a _ij = LEFT ( -1 RIGHT )^i + 3j + 5 "},
+ {"op": "text", "n": 24, "part": "q", "old": "행렬의 서로 같을", "new": "두 행렬이 서로 같을"},
+ {"op": "eq", "n": 50, "part": "sol", "old": "8^11", "new": "8^11 =2^33"},
+ {"op": "text", "n": 50, "part": "sol", "old": "[다른풀이]", "new": "[다른 풀이]"}
+]
