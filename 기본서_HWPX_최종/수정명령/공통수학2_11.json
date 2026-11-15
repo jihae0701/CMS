@@ -1,0 +1,181 @@
+[
+ {
+  "op": "eq",
+  "n": 1,
+  "part": "sol",
+  "old": "root x+1",
+  "new": "root x+1 - root x"
+ },
+ {
+  "op": "eq",
+  "n": 1,
+  "part": "q",
+  "old": "{ 1} over { x+ rootx^2 +1} + { 1} over { x- rootx^2 +1}",
+  "new": "{ 1} over { x+ root {x^2 +1}} + { 1} over { x- root {x^2 +1}}"
+ },
+ {
+  "op": "eq",
+  "n": 18,
+  "part": "q",
+  "old": "{ 1} over {rootx+1 +rootx } + {  1} over {rootx+1 +rootx }",
+  "new": "{ 1} over {rootx+1 +rootx } + {  1} over {rootx+1 -rootx }"
+ },
+ {
+  "op": "eqsub",
+  "n": 2,
+  "part": "sol",
+  "old": "{ x ( root x+1 - root x ) - x",
+  "new": "{ x ( root x+1 + root x ) - x"
+ },
+ {
+  "op": "eq",
+  "n": 2,
+  "part": "sol",
+  "old": "x over { rootx +1 - root x } - x over { root x +1 + root x }",
+  "new": "x over { root x+1 - root x } - x over { root x+1 + root x }"
+ },
+ {
+  "op": "eq",
+  "n": 5,
+  "part": "sol",
+  "old": "y - n = root { (x-m)+2 }`",
+  "new": "y - n = it- root { (x-m)+2 }`"
+ },
+ {
+  "op": "text",
+  "n": 9,
+  "part": "sol",
+  "old": "의 그래프는 ",
+  "new": "의 그래프는 #F#의 그래프를 ",
+  "exact": true,
+  "after_eq": "y= it- sqrt {-x+5} +3"
+ },
+ {
+  "op": "text_eq",
+  "n": 9,
+  "part": "sol",
+  "old": "#F#",
+  "pre": "",
+  "eq": "y= it- sqrt {-x}",
+  "post": "",
+  "sub": true
+ },
+ {
+  "op": "eq",
+  "n": 9,
+  "part": "sol",
+  "old": "sqrt {2 TIMES } 4-1=2 sqrt {2} -1",
+  "new": "sqrt {2 TIMES 4} -1=2 sqrt {2} -1"
+ },
+ {
+  "op": "eq",
+  "n": 10,
+  "part": "sol",
+  "old": "sqrt {4a TIMES (-6)} +b=5",
+  "new": "sqrt {4-a TIMES (-6)} +b=5"
+ },
+ {
+  "op": "eq",
+  "n": 13,
+  "part": "sol",
+  "old": "y= it-rootx-1 +2",
+  "new": "y= it-root-x-1 +2"
+ },
+ {
+  "op": "eq",
+  "n": 13,
+  "part": "sol",
+  "old": "thereforex = 1over3 y^2 -2",
+  "new": "therefore~x = 1over3 y^2 -2"
+ },
+ {
+  "op": "eq",
+  "n": 24,
+  "part": "sol",
+  "old": "y= sqrt { -2(-x)+2}-3= sqrt { -2x+2}-3",
+  "new": "y= sqrt { -2(-x)+2}-3= sqrt { 2x+2}-3"
+ },
+ {
+  "op": "eq",
+  "n": 25,
+  "part": "sol",
+  "old": "y= it- sqrt { 3x+a}+2 = it- sqrt { -3 LEFT ( x- a over 3 RIGHT ) }+2`",
+  "new": "y= it- sqrt { -3x+a}+2 = it- sqrt { -3 LEFT ( x- a over 3 RIGHT ) }+2`"
+ },
+ {
+  "op": "eq",
+  "n": 29,
+  "part": "sol",
+  "old": "y-9= sqrt {3x} -6",
+  "new": "y-9= sqrt {3x-6}"
+ },
+ {
+  "op": "eq",
+  "n": 4,
+  "part": "sol",
+  "old": "y= sqrt {x+1}  GEQ 0",
+  "new": "sqrt {x+1}  GEQ 0"
+ },
+ {
+  "op": "text",
+  "n": 4,
+  "part": "sol",
+  "old": "이, 치역은",
+  "new": "이고, 치역은"
+ },
+ {
+  "op": "raw",
+  "n": 1,
+  "old": "유리함수의 정의역. 치역",
+  "new": "무리함수의 정의역, 치역"
+ },
+ {
+  "op": "text",
+  "n": 23,
+  "part": "q",
+  "old": "골고르시오",
+  "new": "고르시오"
+ },
+ {
+  "op": "text",
+  "n": 8,
+  "part": "sol",
+  "old": "그래프를 다음과",
+  "new": "그래프는 다음과"
+ },
+ {
+  "op": "text",
+  "n": 35,
+  "part": "q",
+  "old": "구하시오.  단, ",
+  "new": "구하시오. (단, "
+ },
+ {
+  "op": "text",
+  "n": 26,
+  "part": "q",
+  "old": "의 그래프의 최댓값이 ",
+  "new": "의 최댓값이 "
+ },
+ {
+  "op": "eq",
+  "n": 17,
+  "part": "q",
+  "old": "{ root2-x} over rootx+1",
+  "new": "{ root2-x} over {rootx+1}"
+ },
+ {
+  "op": "eq",
+  "n": 20,
+  "part": "q",
+  "old": "left{x`|`x ge a right",
+  "new": "left{x`|`x ge a right}"
+ },
+ {
+  "op": "eq",
+  "n": 20,
+  "part": "q",
+  "old": "left{y`|`y ge b right",
+  "new": "left{y`|`y ge b right}"
+ }
+]
