@@ -261,12 +261,23 @@ def op_clear_sol(x, spans):
     return x
 
 
-def op_text_eq(x, spans, old, pre, eq, post):
-    """<hp:t> 글 전체가 old인 조각을 [pre 글][수식 eq][post 글]로 바꾼다"""
-    cands = [m for a, b in spans for m in TPAT.finditer(x, a, b) if html.unescape(m.group(1)) == old]
-    if len(cands) != 1:
-        raise ValueError('글 조각 "%s": %d곳' % (old, len(cands)))
-    m = cands[0]
+def op_text_eq(x, spans, old, pre, eq, post, sub=False):
+    """<hp:t> 글 전체가 old인 조각을 [pre 글][수식 eq][post 글]로 바꾼다.
+    sub=True면 old가 든 <hp:t>에서 old 자리만: [앞 글+pre][수식][post+뒤 글]"""
+    if sub:
+        cands = [m for a, b in spans for m in TPAT.finditer(x, a, b) if eqstyle.esc(old) in m.group(1)]
+        if len(cands) != 1 or cands[0].group(1).count(eqstyle.esc(old)) != 1:
+            raise ValueError('글 조각 "%s": %d곳' % (old, len(cands)))
+        m = cands[0]
+        before, after = m.group(1).split(eqstyle.esc(old))
+        pre = html.unescape(before) + pre
+        post = post + html.unescape(after)
+        pre, post = pre, post
+    else:
+        cands = [m for a, b in spans for m in TPAT.finditer(x, a, b) if html.unescape(m.group(1)) == old]
+        if len(cands) != 1:
+            raise ValueError('글 조각 "%s": %d곳' % (old, len(cands)))
+        m = cands[0]
     tmpl = (EQ.search(x, spans[0][0]) or EQ.search(x)).group(0)
     el = re.sub(r'(<hp:equation\b[^>]*\bid=")\d+(")', lambda q: q.group(1) + str(random.randint(1000000000, 2100000000)) + q.group(2), tmpl, count=1)
     sm = SC.search(el)
@@ -369,7 +380,7 @@ def apply(path, ops):
             elif op['op'] == 'clear_sol':
                 x = op_clear_sol(x, spans)
             elif op['op'] == 'text_eq':
-                x = op_text_eq(x, spans, op['old'], op.get('pre', ''), op['eq'], op.get('post', ''))
+                x = op_text_eq(x, spans, op['old'], op.get('pre', ''), op['eq'], op.get('post', ''), op.get('sub', False))
             else:
                 raise ValueError('op?')
         except Exception as e:
