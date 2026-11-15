@@ -13,7 +13,7 @@ import eqstyle, eqfix
 
 EQPAT = re.compile(r"<hp:equation\b[^>]*>.*?</hp:equation>", re.S)
 SCPAT = re.compile(r"(<hp:script\b[^>]*>)(.*?)(</hp:script>)", re.S)
-GLUE = r"(overline|alpha|beta|gamma|delta|theta|omega|pi|pmatrix|sqrt|times|TIMES|leq|geq|circ|rarrow)"
+GLUE = r"(overline|alpha|beta|gamma|delta|theta|omega|pi|pmatrix|sqrt|times|TIMES|leq|geq|circ|rarrow|left|LEFT|bar)"
 SETMODE = False
 FACT = False
 MULTI = re.compile(r"\b(cases|pile|lpile|rpile|matrix|pmatrix|eqalign)\b|#")
@@ -95,7 +95,7 @@ def rules(sc):
     # 붙여 쓴 명령: 수·문자 바로 뒤 (rm/it 뒤나 낱말 안이 아닐 때)
     def glue(m):
         pre = s_[:m.start()]
-        if re.search(r'\b(rm|it|bold|LEFT|RIGHT|left|right)\s*$', pre):
+        if not m.group(1).isdigit() and re.search(r'\b(rm|it|bold|LEFT|RIGHT|left|right)\s*$', pre):
             return m.group(0)
         return m.group(1) + ' ' + m.group(2)
     s_ = s
@@ -106,6 +106,13 @@ def rules(sc):
     # (한글에서 '!='는 ≠로 보이며 거의 모든 단원에서 ≠ 뜻으로 썼다. 계승 뒤 등호는 경우의 수 단원에서만: --fact)
     if FACT:
         s = re.sub(r'([0-9A-Za-z)])\s*!\s*=(?=\s*[1-9(])', lambda m: m.group(1) + '! =', s) if re.search(r'[0-9]!=', s) else s
+    # 명령 뒤에 left/right가 붙은 것 (emptysetright → emptyset right)
+    s = re.sub(r'\b(emptyset|infty|alpha|beta|gamma|theta|pi|cdots|CDOTS)(right|left|RIGHT|LEFT)\b', r'\1 \2', s)
+    # '!='(한글에서 ≠로 보임): ≠ 뜻이면 neq로 (보이는 모양 같음, 계승과 헷갈리지 않게)
+    if FACT:
+        s = re.sub(r'([A-Za-z])\s*!\s*=', r'\1 neq ', s)
+    else:
+        s = re.sub(r'\s*!\s*=\s*', ' neq ', s)
     # 대문자 집합 기호 → 소문자
     for a, b in (('NSUBSET', 'nsubset'), ('SUBSET', 'subset'), ('SMALLINTER', 'cap'), ('SMALLUNION', 'cup'), ('CUP', 'cup'), ('SIM', 'sim')):
         s = re.sub(r'\b%s(?![a-z])' % a, b + ' ', s)
@@ -130,7 +137,7 @@ def rules(sc):
         parts = [p if p.startswith('"') else re.sub(r',\s*(?=[0-9A-Za-z(\-])', ',~', p) for p in parts]
         s = ''.join(parts)
     # 관계 기호 바로 뒤 음수는 it-
-    s = re.sub(r'(=|<|>|\bleq\b|\bgeq\b|\bLEQ\b|\bGEQ\b)(\s*)-(?=\s*[0-9A-Za-z(\\{])', lambda m: m.group(1) + ' it-', s)
+    s = re.sub(r'(=|<|>|\bleq\b|\bgeq\b|\bLEQ\b|\bGEQ\b|\bneq\b|\ble\b|\bge\b)(\s*)-(?=\s*[0-9A-Za-z(\\{])', lambda m: m.group(1) + ' it-', s)
     s = re.sub(r'\bit\s+it-', 'it-', s)
     s = balance(s)
     return s

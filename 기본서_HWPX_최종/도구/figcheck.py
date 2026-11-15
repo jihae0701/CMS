@@ -26,13 +26,20 @@ def signed(v):
 def pics(z):
     x = z.read('Contents/section0.xml').decode('utf-8')
     ens = endnotes(x)
+    from make_unit import top_paras
+    tp = top_paras(x)
     out = []
     for m in PIC.finditer(x):
         p = m.group(0)
         pos = m.start()
         k = sum(1 for s, e in ens if s <= pos)
         inside = any(s <= pos < e for s, e in ens)
-        out.append({'pos': pos, 'n': k, 'part': 'sol' if inside else 'q', 'xml': p,
+        part = 'sol' if inside else 'q'
+        if not inside and ens and pos > ens[-1][1]:
+            a, b = next((a, b) for a, b in tp if a <= pos < b)
+            if re.search(r'<hp:autoNum num="\d+" numType="ENDNOTE"', x[a:b]) and '<hp:endNote' not in x[a:b]:
+                part = 'ans'   # 끝의 정답 모음 안 그림(정답 모음은 기준 문서처럼 지운다)
+        out.append({'pos': pos, 'n': k, 'part': part, 'xml': p,
                     'img': (re.search(r'binaryItemIDRef="([^"]+)"', p) or [None, None])[1]})
     return x, out
 
@@ -44,7 +51,7 @@ def check(orig, res, sheet=None):
     xr, pr = pics(zr)
     # 1) 개수
     from collections import Counter
-    co = Counter((p['n'], p['part']) for p in po)
+    co = Counter((p['n'], p['part']) for p in po if p['part'] != 'ans')
     cr = Counter((p['n'], p['part']) for p in pr)
     for key in sorted(set(co) | set(cr)):
         if co[key] != cr[key]:
@@ -76,9 +83,10 @@ def check(orig, res, sheet=None):
         off = re.search(r'<hp:offset x="(\d+)" y="(\d+)"', xml)
         tm = re.search(r'<hc:transMatrix e1="[^"]*" e2="[^"]*" e3="([^"]*)" e4="[^"]*" e5="[^"]*" e6="([^"]*)"', xml)
         sca = re.search(r'<hc:scaMatrix e1="([^"]*)" e2="[^"]*" e3="([^"]*)" e4="[^"]*" e5="([^"]*)" e6="([^"]*)"', xml)
-        ident = sca and float(sca.group(1)) == 1 and float(sca.group(3)) == 1 and float(sca.group(2)) == 0 and float(sca.group(4)) == 0
+        scas = re.findall(r'<hc:scaMatrix e1="([^"]*)" e2="[^"]*" e3="([^"]*)" e4="[^"]*" e5="([^"]*)" e6="([^"]*)"', xml)
+        ident = scas and all(float(a) == 1 and float(c) == 1 and float(b) == 0 and float(d) == 0 for a, b, c, d in scas)
         grouped = re.search(r'groupLevel="(\d+)"', xml).group(1) != '0'
-        if ident and not grouped:
+        if changed and ident and not grouped:
             if off and (signed(off.group(1)) or signed(off.group(2))):
                 errs.append('%d번 %s: %s 이동 값 offset=(%d,%d) 남음 → 그림이 밀려 안 보임' % (p['n'], p['part'], k, signed(off.group(1)), signed(off.group(2))))
             if tm and (float(tm.group(1)) or float(tm.group(2))):
@@ -86,13 +94,13 @@ def check(orig, res, sheet=None):
         sz = re.search(r'<hp:sz width="(\d+)"[^>]*height="(\d+)"', xml)
         cs = re.search(r'<hp:curSz width="(\d+)" height="(\d+)"', xml)
         tac = 'treatAsChar="1"' in xml
-        if sz and (int(sz.group(1)) <= 0 or int(sz.group(2)) <= 0) and not grouped:
+        if changed and sz and (int(sz.group(1)) <= 0 or int(sz.group(2)) <= 0) and not grouped:
             errs.append('%d번 %s: %s 크기 0' % (p['n'], p['part'], k))
-        if tac and not grouped and sz and cs and sz.groups() != cs.groups():
+        if changed and tac and not grouped and sz and cs and sz.groups() != cs.groups():
             errs.append('%d번 %s: %s sz %s ≠ curSz %s' % (p['n'], p['part'], k, sz.groups(), cs.groups()))
         clip = re.search(r'<hp:imgClip left="(\d+)" right="(\d+)" top="(\d+)" bottom="(\d+)"', xml)
         dim = re.search(r'<hp:imgDim dimwidth="(\d+)" dimheight="(\d+)"', xml)
-        if clip and dim and (int(clip.group(2)) > int(dim.group(1)) or int(clip.group(4)) > int(dim.group(2))):
+        if changed and clip and dim and (int(clip.group(2)) > int(dim.group(1)) or int(clip.group(4)) > int(dim.group(2))):
             errs.append('%d번 %s: %s imgClip이 imgDim 밖' % (p['n'], p['part'], k))
         notes.append('%d번 %-3s %-7s %s %s %s' % (p['n'], p['part'], k, '바꿈' if changed else '    ', 'x'.join(sz.groups()) if sz else '?', '묶음' if grouped else ''))
     # 3) 문단 줄 배치 정보

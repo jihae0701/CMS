@@ -213,7 +213,17 @@ def build(base, target, out):
     log['note_tables'] = len(tables)
     # 2b) 끝의 정답 모음(제목 상자 뒤 "번호 󰂼 정답" 줄들) 지우기 — 기준 문서에는 없음. 빈 문단 하나로 바꾼다
     paras = top_paras(tx)
-    ans = [i for i, (a, b) in enumerate(paras) if 'numType="ENDNOTE"' in tx[a:b] and '\U000f00bc' in tx[a:b] and '<hp:endNote' not in tx[a:b]]
+    ans = [i for i, (a, b) in enumerate(paras) if re.search(r'<hp:autoNum num="\d+" numType="ENDNOTE"', tx[a:b]) and '<hp:endNote' not in tx[a:b]]
+    # 정답 모음 = 맨 끝까지 이어지는 '미주 번호가 붙은 문단' 묶음 (정답 기호가 󰂼, [정답], 없음 어느 것이든)
+    while ans and ans[-1] == len(paras) - 1 and len(ans) >= 2 and ans[-2] == ans[-1] - 1:
+        break
+    tail = []
+    for i in reversed(range(len(paras))):
+        if i in ans:
+            tail.append(i)
+        else:
+            break
+    ans = sorted(tail)
     log['answer_list_removed'] = 0
     if ans:
         i0 = ans[0]

@@ -8,6 +8,7 @@
      "after_eq":"x=2" 를 더하면 그 수식 바로 뒤의 글에서만 찾는다(조사 고치기). eq·text에 "all":true면 모두 바꾼다. text에 "exact":true면 <hp:t> 글 전체가 old와 같을 때만.
   {"op":"add_para","n":22,"part":"sol","after":"<기준 문단에 있는 글 또는 ⟦수식⟧>","text":"글과 ⟦수식⟧ 섞어서"}
      기준 문단 바로 뒤에 같은 문단·글자 모양으로 새 문단을 넣는다.
+  {"op":"del_eq","n":8,"part":"sol","old":"스크립트"}  {"op":"del_para","n":51,"part":"sol","anchor":"글"}  add_para에서 "after"를 빼면 범위 맨 끝에 넣는다.
 python3 hwpxedit.py list 파일.hwpx n [n...]      문항의 q/sol 문단을 보여 줌
 python3 hwpxedit.py apply 파일.hwpx 명령.json    그 자리에서 고침
 """
@@ -126,13 +127,15 @@ def find_unique(x, spans, pat, what):
     return hits[0]
 
 
-def op_eq(x, spans, old, new, all_=False):
+def op_eq(x, spans, old, new, all_=False, first=False):
     cands = []
     for a, b in spans:
         for m in EQ.finditer(x, a, b):
             sm = SC.search(m.group(0))
             if html.unescape(sm.group(2)) == old:
                 cands.append((m, sm))
+    if first and cands:
+        cands = cands[:1]
     if not cands or (len(cands) != 1 and not all_):
         raise ValueError('수식 "%s": %d곳' % (old, len(cands)))
     EQS = eqstyle.sizes([new])
@@ -183,13 +186,64 @@ def op_text(x, spans, old, new, after_eq=None, exact=False, all_=False):
         pre_t = m.group(1)[:m.group(1).find(o)]
         off = refcheck.para_len(x2[s0:m.start()] + '</hp:p>') + len(re.sub(r'<hp:tab\b[^>]*/>', 'X' * 8, pre_t.replace('<hp:lineBreak/>', 'X')))
         _PCACHE.clear()
-        x2 = x2[:s0] + make_unit.shift_own_lineseg(p, delta, after=off) + x2[e0:]
+        p2 = make_unit.shift_own_lineseg(p, delta, after=off)
+        if delta < 0:
+            p2 = trim_lineseg(p2)
+        x2 = x2[:s0] + p2 + x2[e0:]
         _PCACHE.clear()
     return x2
 
 
+def trim_lineseg(p):
+    """문단 자기 줄 배치 정보에서 글자 수를 넘는 줄 기록을 지운다(첫 줄은 남김) — 글을 줄였을 때"""
+    import refcheck
+    k = p.rfind('<hp:linesegarray>')
+    if k < 0 or p.find('</hp:run>', k) >= 0:
+        return p
+    L = refcheck.para_len(p[:k] + '</hp:p>')
+    segs = re.findall(r'<hp:lineseg\b[^>]*/>', p[k:])
+    keep = [sg for i, sg in enumerate(segs) if i == 0 or int(re.search(r'textpos="(\d+)"', sg).group(1)) < L]
+    if len(keep) == len(segs):
+        return p
+    e = p.index('</hp:linesegarray>', k)
+    return p[:k] + '<hp:linesegarray>' + ''.join(keep) + p[e:]
+
+
+def op_del_eq(x, spans, old):
+    """수식 하나 지우기 (그 문단 줄 배치 위치도 8글자 당김)"""
+    cands = []
+    for a, b in spans:
+        for m in EQ.finditer(x, a, b):
+            sm = SC.search(m.group(0))
+            if sm and html.unescape(sm.group(2)) == old:
+                cands.append(m)
+    if len(cands) != 1:
+        raise ValueError('지울 수식 "%s": %d곳' % (old, len(cands)))
+    m = cands[0]
+    import refcheck, make_unit
+    s0, e0 = inner_para(x, m.start())
+    off = refcheck.para_len(x[s0:m.start()] + '</hp:p>')
+    p = x[s0:m.start()] + x[m.end():e0]
+    p = trim_lineseg(make_unit.shift_own_lineseg(p, -8, after=off))
+    _PCACHE.clear()
+    return x[:s0] + p + x[e0:]
+
+
+def op_del_para(x, spans, anchor):
+    """기준 글이 든 문단 하나 지우기"""
+    ps = [(s, e) for s, e in paras_in(x, spans) if anchor in render(x[s:e])]
+    if len(ps) != 1:
+        raise ValueError('지울 문단 "%s": %d개' % (anchor, len(ps)))
+    s, e = ps[0]
+    _PCACHE.clear()
+    return x[:s] + x[e:]
+
+
 def op_add_para(x, spans, after, text, like=None):
-    ps = [(s, e) for s, e in paras_in(x, spans) if after in render(x[s:e])]
+    if after is None:   # 범위의 맨 끝 문단 뒤
+        ps = paras_in(x, spans)[-1:]
+    else:
+        ps = [(s, e) for s, e in paras_in(x, spans) if after in render(x[s:e])]
     if len(ps) != 1:
         raise ValueError('기준 문단 "%s": %d개' % (after, len(ps)))
     s, e = ps[0]
@@ -254,11 +308,15 @@ def apply(path, ops):
         try:
             spans = region(x, op['n'], op.get('part', 'q'))
             if op['op'] == 'eq':
-                x = op_eq(x, spans, op['old'], op['new'], op.get('all', False))
+                x = op_eq(x, spans, op['old'], op['new'], op.get('all', False), op.get('first', False))
             elif op['op'] == 'text':
                 x = op_text(x, spans, op['old'], op['new'], op.get('after_eq'), op.get('exact', False), op.get('all', False))
             elif op['op'] == 'add_para':
-                x = op_add_para(x, spans, op['after'], op['text'], (op['like_n'], op['like']) if 'like' in op else None)
+                x = op_add_para(x, spans, op.get('after'), op['text'], (op['like_n'], op['like']) if 'like' in op else None)
+            elif op['op'] == 'del_eq':
+                x = op_del_eq(x, spans, op['old'])
+            elif op['op'] == 'del_para':
+                x = op_del_para(x, spans, op['anchor'])
             else:
                 raise ValueError('op?')
         except Exception as e:

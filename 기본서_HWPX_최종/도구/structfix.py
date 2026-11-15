@@ -23,7 +23,10 @@ for info, data in items:
         for m in eqauto.EQPAT.finditer(x):
             if not any(a < m.start() < b for a, b in ends):
                 continue
-            sm = eqauto.SCPAT.search(m.group(0)); sc = html.unescape(sm.group(2))
+            sm = eqauto.SCPAT.search(m.group(0))
+            if not sm:
+                continue
+            sc = html.unescape(sm.group(2))
             if re.search('bold', sc, re.I):
                 new = re.sub(r'\s*bold\s*', ' ', sc, flags=re.I).strip()
                 plan.append((m, sm, sc, new))
