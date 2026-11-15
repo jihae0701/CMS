@@ -110,7 +110,7 @@ def paras_in(x, spans):
 
 def render(p):
     p = re.sub(r'<hp:endNote\b.*?</hp:endNote>', '{미주}', p, flags=re.S)
-    p = EQ.sub(lambda m: '⟦' + html.unescape(SC.search(m.group(0)).group(2)) + '⟧', p)
+    p = EQ.sub(lambda m: '⟦' + (html.unescape(SC.search(m.group(0)).group(2)) if SC.search(m.group(0)) else '') + '⟧', p)
     p = re.sub(r'<hp:lineBreak/>', '⏎', p)
     p = re.sub(r'<hp:t>([^<]*)</hp:t>', lambda m: html.unescape(m.group(1)), p)
     p = re.sub(r'<hp:(tbl|pic|rect|container|ellipse|line)\b', lambda m: '{%s}' % m.group(1), p)

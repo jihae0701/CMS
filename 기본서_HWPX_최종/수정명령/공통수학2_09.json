@@ -1,0 +1,284 @@
+[
+ {
+  "op": "eq",
+  "n": 26,
+  "part": "q",
+  "old": "f(x)= {cases{2x+2~~(x GEQ 1)#```````````2``````````````(x<1)}}",
+  "new": "f(x)= {cases{-2x+4~~(x GEQ 1)#```````````2``````````````(x<1)}}"
+ },
+ {
+  "op": "eq",
+  "n": 26,
+  "part": "q",
+  "old": "(g CIRC f)(3)+(g CIRC f)(0)",
+  "new": "(f CIRC g)(3)+(g CIRC f)(0)"
+ },
+ {
+  "op": "eq",
+  "n": 31,
+  "part": "q",
+  "old": "(h circ ( g circ h))(x) = bx-1",
+  "new": "(h circ ( g circ f))(x) = bx-1"
+ },
+ {
+  "op": "eq",
+  "n": 31,
+  "part": "q",
+  "old": "\tb\r\n",
+  "new": "b"
+ },
+ {
+  "op": "eq",
+  "n": 47,
+  "part": "q",
+  "old": "y = a (x) +b`",
+  "new": "y = a g(x) +b`"
+ },
+ {
+  "op": "eq",
+  "n": 15,
+  "part": "q",
+  "old": "a, ~ b `",
+  "new": "m, ~ n `"
+ },
+ {
+  "op": "text",
+  "n": 15,
+  "part": "q",
+  "old": "는 상수이다.)",
+  "new": "은 상수이다.)",
+  "after_eq": "m, ~ n `"
+ },
+ {
+  "op": "eq",
+  "n": 15,
+  "part": "sol",
+  "old": "x = t+1 over 2 ",
+  "new": "x = {t+1} over 2 "
+ },
+ {
+  "op": "eq",
+  "n": 15,
+  "part": "sol",
+  "old": "therefore ~ f(t) = 6 cdot t+1 over 2 +5 = 3t + 8 ",
+  "new": "therefore ~ f(t) = 6 cdot {t+1} over 2 +5 = 3t + 8 "
+ },
+ {
+  "op": "eq",
+  "n": 15,
+  "part": "sol",
+  "old": "y = 1 over 3 x - 8 ",
+  "new": "y = 1 over 3 x - 8 over 3 "
+ },
+ {
+  "op": "eq",
+  "n": 25,
+  "part": "sol",
+  "old": "(f circ g) (-1) = f(g(-1)) = f(-2)＝４",
+  "new": "(f circ g) (-1) = f(g(-1)) = f(-1)=1"
+ },
+ {
+  "op": "text",
+  "n": 9,
+  "part": "sol",
+  "old": "높으면",
+  "new": "놓으면"
+ },
+ {
+  "op": "eq",
+  "n": 9,
+  "part": "sol",
+  "old": "x = t-4 ",
+  "new": "x = t+4 "
+ },
+ {
+  "op": "eq",
+  "n": 7,
+  "part": "sol",
+  "old": "15x+3x+1 = 15x + 5 + b `",
+  "new": "15x+3b+1 = 15x + 5 + b `"
+ },
+ {
+  "op": "eq",
+  "n": 40,
+  "part": "sol",
+  "old": "therefore~ f(x) = it-2x =9",
+  "new": "therefore~ f(x) = it-2x -9"
+ },
+ {
+  "op": "eq",
+  "n": 12,
+  "part": "sol",
+  "old": "(f circ f )(x) = 2 f(x) = 2 cdot 2 x + 4 x ",
+  "new": "(f circ f )(x) = 2 f(x) = 2 cdot 2 x = 4 x "
+ },
+ {
+  "op": "eq",
+  "n": 12,
+  "part": "sol",
+  "old": "0 lef(x) le 1 over 2 `",
+  "new": "0 le f(x) le 1 over 2 `"
+ },
+ {
+  "op": "eq",
+  "n": 46,
+  "part": "sol",
+  "old": "( h circ f )(x)= h(f(x)) = h left ( 1 over 3 +1 right ) `",
+  "new": "( h circ f )(x)= h(f(x)) = h left ( 1 over 3 x +1 right ) `"
+ },
+ {
+  "op": "eq",
+  "n": 3,
+  "part": "sol",
+  "old": "(h circ ( g circ f )) = h (( g circ f )(x)) ",
+  "new": "(h circ ( g circ f ))(x) = h (( g circ f )(x)) "
+ },
+ {
+  "op": "eq",
+  "n": 5,
+  "part": "q",
+  "old": "( h circ ( g circ f ) (x) = 6x-1``",
+  "new": "( h circ ( g circ f )) (x) = 6x-1``"
+ },
+ {
+  "op": "text",
+  "n": 30,
+  "part": "q",
+  "old": "일 때,⏎",
+  "new": "이고,⏎",
+  "after_eq": "h(x) =x+1"
+ },
+ {
+  "op": "text",
+  "n": 30,
+  "part": "q",
+  "old": "를 만족할 때, ",
+  "new": "를 만족시킬 때, "
+ },
+ {
+  "op": "eq",
+  "n": 30,
+  "part": "sol",
+  "old": "(f`CIRC`(g`CIRC`h))(x)=((f`CIRC`g)`CIRC`h(x)",
+  "new": "(f CIRC (g CIRC h))(x)=((f CIRC g) CIRC h)(x)"
+ },
+ {
+  "op": "text",
+  "n": 30,
+  "part": "sol",
+  "old": "에서 ",
+  "new": "",
+  "exact": true
+ },
+ {
+  "op": "eq",
+  "n": 30,
+  "part": "sol",
+  "old": "(f` CIRC `(g` CIRC `h))(x)=((f` CIRC `g)` CIRC `h(x)",
+  "new": "=(f CIRC g)(h(x))"
+ },
+ {
+  "op": "eq",
+  "n": 41,
+  "part": "sol",
+  "old": "x=  t-2 over 3",
+  "new": "x= {t-2} over 3"
+ },
+ {
+  "op": "eq",
+  "n": 41,
+  "part": "sol",
+  "old": "f(t) =  t-2 over 3  -1 = t over3 - 5 over 3",
+  "new": "f(t) = {t-2} over 3 -1 = t over 3 - 5 over 3"
+ },
+ {
+  "op": "text",
+  "n": 36,
+  "part": "q",
+  "old": "을 만족하는",
+  "new": "를 만족하는",
+  "after_eq": "(h`CIRC`g`CIRC`f)(x)=g(x)"
+ },
+ {
+  "op": "text",
+  "n": 38,
+  "part": "q",
+  "old": "이 오른쪽 그림과",
+  "new": "가 오른쪽 그림과"
+ },
+ {
+  "op": "add_para",
+  "n": 38,
+  "part": "sol",
+  "text": "(1) 주어진 그림에서 ⟦f(1)=5⟧",
+  "like_n": 41,
+  "like": "이때, "
+ },
+ {
+  "op": "add_para",
+  "n": 38,
+  "part": "sol",
+  "after": "(1) 주어진 그림에서",
+  "text": "(2) ⟦f^-1 (5)=k⟧라 하면 ⟦f(k)=5⟧이고, 그림에서 ⟦f(1)=5⟧이므로 ⟦f^-1 (5)=1⟧",
+  "like_n": 41,
+  "like": "이때, "
+ },
+ {
+  "op": "add_para",
+  "n": 38,
+  "part": "sol",
+  "after": "(2) ⟦f^-1 (5)=k",
+  "text": "(3) ⟦f^-1 (2)=k⟧라 하면 ⟦f(k)=2⟧이고, 그림에서 ⟦f(3)=2⟧이므로 ⟦f^-1 (2)=3⟧",
+  "like_n": 41,
+  "like": "이때, "
+ },
+ {
+  "op": "text",
+  "n": 25,
+  "part": "q",
+  "old": "함수 ",
+  "new": "두 함수 "
+ },
+ {
+  "op": "text",
+  "n": 28,
+  "part": "q",
+  "old": "함수 ",
+  "new": "두 함수 "
+ },
+ {
+  "op": "text",
+  "n": 34,
+  "part": "q",
+  "old": "함수 ",
+  "new": "두 함수 ",
+  "exact": true
+ },
+ {
+  "op": "eq",
+  "n": 34,
+  "part": "sol",
+  "old": "THEREFORE ~h(-5)= it-2 BULLET (-5)-3=7",
+  "new": "THEREFORE ~h(-5)= it-2 cdot (-5)-3=7"
+ },
+ {
+  "op": "eq",
+  "n": 37,
+  "part": "sol",
+  "old": "THEREFORE~` h(-1)=f(-2)= {1} over {2}  BULLET (-2)= it-1",
+  "new": "THEREFORE~` h(-1)=f(-2)= {1} over {2} cdot (-2)= it-1"
+ },
+ {
+  "op": "text",
+  "n": 37,
+  "part": "sol",
+  "old": "이 때, ",
+  "new": "이때, "
+ },
+ {
+  "op": "del_eq",
+  "n": 28,
+  "part": "sol",
+  "old": ""
+ }
+]
