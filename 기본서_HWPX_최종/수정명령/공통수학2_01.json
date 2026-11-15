@@ -1,0 +1,400 @@
+[
+ {
+  "op": "eq",
+  "n": 22,
+  "part": "sol",
+  "old": "3x+y-8=0",
+  "new": "x+2y+3=0"
+ },
+ {
+  "op": "text_eq",
+  "n": 24,
+  "part": "sol",
+  "old": " 󰂼 ①",
+  "pre": " 󰂼 ",
+  "eq": "-{1} over {2}"
+ },
+ {
+  "op": "text_eq",
+  "n": 27,
+  "part": "sol",
+  "old": " 󰂼 ③",
+  "pre": " 󰂼 ",
+  "eq": "-{3} over {2}"
+ },
+ {
+  "op": "text",
+  "n": 31,
+  "part": "q",
+  "old": "의 값은? (단, ",
+  "new": "의 값을 구하시오. (단, "
+ },
+ {
+  "op": "text",
+  "n": 31,
+  "part": "q",
+  "old": ")",
+  "new": ".)",
+  "exact": true
+ },
+ {
+  "op": "text_eq",
+  "n": 31,
+  "part": "sol",
+  "old": " 󰂼 ⑤",
+  "pre": " 󰂼 ",
+  "eq": "8"
+ },
+ {
+  "op": "eq",
+  "n": 4,
+  "part": "sol",
+  "old": "=a ^{2} -16a+b ^{2} +6b+73",
+  "new": "=a ^{2} -16a+b ^{2} -6b+73"
+ },
+ {
+  "op": "eq",
+  "n": 18,
+  "part": "sol",
+  "old": "y= it-3x-5",
+  "new": "y= it-3x+2",
+  "nth": 2
+ },
+ {
+  "op": "eq",
+  "n": 29,
+  "part": "sol",
+  "old": "{rm bar AP}^2 + {rm bar BP}^2 `",
+  "new": "{rm bar AP}^2 = {rm bar BP}^2 `"
+ },
+ {
+  "op": "eq",
+  "n": 34,
+  "part": "sol",
+  "old": "rm BC",
+  "new": "rm BD"
+ },
+ {
+  "op": "eq",
+  "n": 36,
+  "part": "sol",
+  "old": "rm A LEFT ( 4,~-2 RIGHT ) ,~ rm B LEFT ( -1,~5 RIGHT ) ,~P LEFT ( it a,~a+3 RIGHT )",
+  "new": "rm A LEFT ( 4,~-2 RIGHT ) ,~ rm B LEFT ( 1,~-5 RIGHT ) ,~P LEFT ( it a,~a+3 RIGHT )"
+ },
+ {
+  "op": "eq",
+  "n": 48,
+  "part": "sol",
+  "old": "rm A LEFT ( it 5,~4 RIGHT ) ,~ rm B LEFT ( it 7,~-2 RIGHT ) ,~ rm C LEFT ( it c,~ it d RIGHT )",
+  "new": "rm A LEFT ( 5,~4 RIGHT ) ,~ rm B LEFT ( -7,~2 RIGHT ) ,~ rm C LEFT ( it c,~ it d RIGHT )"
+ },
+ {
+  "op": "add_para",
+  "n": 57,
+  "part": "sol",
+  "after": "교점 : ",
+  "text": "따라서 두 점 ⟦LEFT ( -2,~-5 RIGHT ),~ LEFT ( 2,~2 RIGHT )`⟧를 지나는 직선의 방정식은",
+  "like_n": 58,
+  "like": "따라서 두 점"
+ },
+ {
+  "op": "add_para",
+  "n": 57,
+  "part": "sol",
+  "after": "따라서 두 점",
+  "text": "⟦y-2= {7} over {4} (x-2)⟧⇥⇥⟦therefore~ 7x-4y-6=0⟧",
+  "like_n": 58,
+  "like": "4over3"
+ },
+ {
+  "op": "text_eq",
+  "n": 7,
+  "part": "sol",
+  "old": "이고,",
+  "pre": "각의 이등분선의 성질에 의하여 ",
+  "eq": "rm bar{AB} `:` bar{AC} = bar{BD} `:` bar{DC}",
+  "post": "이고,"
+ },
+ {
+  "op": "text",
+  "n": 43,
+  "part": "sol",
+  "old": "오른쪽 그림의 ",
+  "new": ""
+ },
+ {
+  "op": "eq",
+  "n": 38,
+  "part": "sol",
+  "old": "LEFT ( x^2  +  y^2    RIGHT )+ left{  (x-3) sup 2  +  y sup 2 right} + left{  x sup 2 +  (y-6) sup  2 right}",
+  "new": "= LEFT ( x^2 + y^2 RIGHT ) + left{ (x-3)^2 + y^2 right} + left{ x^2 + (y-6)^2 right}"
+ },
+ {
+  "op": "text",
+  "n": 49,
+  "part": "sol",
+  "old": "…… ㉡",
+  "new": "",
+  "after_eq": "{ 2y_3 +y_2} over { 2+1}= it-2"
+ },
+ {
+  "op": "text",
+  "n": 49,
+  "part": "sol",
+  "old": " ⏎선분 ",
+  "new": "⇥⇥…… ㉡⏎선분 ",
+  "after_eq": "2y_3 +y_2 = it-6"
+ },
+ {
+  "op": "text",
+  "n": 49,
+  "part": "sol",
+  "old": "…… ㉢",
+  "new": "",
+  "after_eq": "{ 2y_1 +y_3} over { 2+1}=6"
+ },
+ {
+  "op": "text",
+  "n": 49,
+  "part": "sol",
+  "old": "⏎㉠",
+  "new": "…… ㉢⏎㉠",
+  "after_eq": "2y_1 +y_3 = 18"
+ },
+ {
+  "op": "eq",
+  "n": 9,
+  "part": "sol",
+  "old": "sqrt {(3-a) ^{2} +(1-2) ^{2}} = sqrt {(3-2) ^{2} + right{1- LEFT ( -3 RIGHT )right} ^{2}}",
+  "new": "sqrt {(3-a) ^{2} +(1-2) ^{2}} = sqrt {(3-2) ^{2} + LEFT { 1- LEFT ( -3 RIGHT ) RIGHT } ^{2}}"
+ },
+ {
+  "op": "eq",
+  "n": 64,
+  "part": "sol",
+  "old": "rmbarOAcdoth= sqrt { 5}cdot { 1} over { sqrt { 5} }=1",
+  "new": "rm bar{OA} it cdot h= sqrt {5} cdot {1} over {sqrt {5}} =1"
+ },
+ {
+  "op": "text",
+  "n": 5,
+  "part": "q",
+  "old": "내분하는 점을 ",
+  "new": "내분하는 점 "
+ },
+ {
+  "op": "text",
+  "n": 5,
+  "part": "q",
+  "old": "를 구하시오.",
+  "new": "의 좌표를 구하시오."
+ },
+ {
+  "op": "text",
+  "n": 40,
+  "part": "q",
+  "old": "의 값의 값을",
+  "new": "의 값을"
+ },
+ {
+  "op": "text",
+  "n": 41,
+  "part": "q",
+  "old": ".",
+  "new": "",
+  "exact": true
+ },
+ {
+  "op": "text",
+  "n": 41,
+  "part": "q",
+  "old": "의 값을 구하시오",
+  "new": "의 값을 구하시오."
+ },
+ {
+  "op": "text",
+  "n": 41,
+  "part": "sol",
+  "old": "으로 내분하는",
+  "new": "로 내분하는"
+ },
+ {
+  "op": "text",
+  "n": 39,
+  "part": "q",
+  "old": "내분하는 점의 좌표를 ",
+  "new": "내분하는 점을 "
+ },
+ {
+  "op": "text",
+  "n": 39,
+  "part": "q",
+  "old": "의 중점의 좌표를 점 ",
+  "new": "의 중점을 "
+ },
+ {
+  "op": "text",
+  "n": 26,
+  "part": "sol",
+  "old": "밑볕",
+  "new": "밑변"
+ },
+ {
+  "op": "text",
+  "n": 26,
+  "part": "sol",
+  "old": "같고, 점",
+  "new": "같고, 점 "
+ },
+ {
+  "op": "text",
+  "n": 14,
+  "part": "sol",
+  "old": "각의 크기는 ",
+  "new": "각의 크기가 "
+ },
+ {
+  "op": "text",
+  "n": 19,
+  "part": "sol",
+  "old": "이루어 지지",
+  "new": "이루어지지"
+ },
+ {
+  "op": "text",
+  "n": 19,
+  "part": "sol",
+  "old": "가지가  있습니다",
+  "new": "가지가 있습니다"
+ },
+ {
+  "op": "text",
+  "n": 44,
+  "part": "sol",
+  "old": "을 ",
+  "new": "를 ",
+  "after_eq": "rm AC",
+  "all": true
+ },
+ {
+  "op": "text",
+  "n": 61,
+  "part": "sol",
+  "old": "이 때, ",
+  "new": "이때 "
+ },
+ {
+  "op": "text",
+  "n": 61,
+  "part": "sol",
+  "old": "위의 한 점",
+  "new": " 위의 한 점"
+ },
+ {
+  "op": "text",
+  "n": 61,
+  "part": "q",
+  "old": "구하시오.(단, ",
+  "new": "구하시오. (단, "
+ },
+ {
+  "op": "text",
+  "n": 54,
+  "part": "q",
+  "old": "위치 관게",
+  "new": "위치 관계"
+ },
+ {
+  "op": "text",
+  "n": 3,
+  "part": "sol",
+  "old": "위의 점이므로",
+  "new": " 위의 점이므로",
+  "after_eq": "y= it-x+2"
+ },
+ {
+  "op": "text",
+  "n": 12,
+  "part": "sol",
+  "old": "의 중점",
+  "new": "의 중점 ",
+  "exact": true,
+  "all": true
+ },
+ {
+  "op": "text",
+  "n": 13,
+  "part": "sol",
+  "old": "(1) 두 점",
+  "new": "(1) 두 점 "
+ },
+ {
+  "op": "text",
+  "n": 13,
+  "part": "sol",
+  "old": "즉 점",
+  "new": "즉 점 "
+ },
+ {
+  "op": "text",
+  "n": 24,
+  "part": "q",
+  "old": "사이의 거리가",
+  "new": " 사이의 거리가"
+ },
+ {
+  "op": "text",
+  "n": 59,
+  "part": "q",
+  "old": "사이의 거리가",
+  "new": " 사이의 거리가"
+ },
+ {
+  "op": "text",
+  "n": 62,
+  "part": "sol",
+  "old": "직선 ㉠사이의",
+  "new": "직선 ㉠ 사이의"
+ },
+ {
+  "op": "text",
+  "n": 63,
+  "part": "sol",
+  "old": "사이의 거리이므로",
+  "new": " 사이의 거리이므로"
+ },
+ {
+  "op": "text",
+  "n": 64,
+  "part": "sol",
+  "old": "사이의 거리",
+  "new": " 사이의 거리"
+ },
+ {
+  "op": "text",
+  "n": 58,
+  "part": "sol",
+  "old": "[다른풀이]",
+  "new": "[다른 풀이]"
+ },
+ {
+  "op": "del_eq",
+  "n": 43,
+  "part": "sol",
+  "old": ""
+ },
+ {
+  "op": "text",
+  "n": 59,
+  "part": "q",
+  "old": "의 값을 구하시오.",
+  "new": "의 값을 모두 구하시오."
+ },
+ {
+  "op": "text",
+  "n": 60,
+  "part": "q",
+  "old": "방정식을 구하시오.",
+  "new": "방정식을 모두 구하시오."
+ }
+]

@@ -41,6 +41,43 @@ def fix(x):
     return x, n
 
 
+def trim_overflow(x):
+    """줄 기록의 글자 위치가 문단 글자 수를 넘는 문단: 넘는 줄 기록을 지운다"""
+    import refcheck, hwpxedit
+    bad = refcheck.lineseg_overflow(x)
+    for s in sorted(bad, reverse=True):
+        depth, e = 0, None
+        for t in re.finditer(r'<(/?)hp:p\b[^>]*?(/?)>', x[s:]):
+            if t.group(2) == '/':
+                continue
+            depth += 1 if t.group(1) == '' else -1
+            if depth == 0:
+                e = s + t.end(); break
+        x = x[:s] + hwpxedit.trim_lineseg(x[s:e]) + x[e:]
+    return x, len(bad)
+
+
+def dedupe_ids(x):
+    """개체 id가 겹치면 뒤의 것을 새 번호로"""
+    import random
+    seen, n = set(re.findall(r'<hp:(?:tbl|pic|equation|rect|container|line|ellipse|polygon|arc|curve)\b[^>]*?\bid="(\d+)"', x)), 0
+    cnt = {}
+    def rep(m):
+        nonlocal n
+        v = m.group(2)
+        cnt[v] = cnt.get(v, 0) + 1
+        if v == '0' or cnt[v] == 1:
+            return m.group(0)
+        while True:
+            w = str(random.randint(1000000000, 2100000000))
+            if w not in seen:
+                break
+        seen.add(w); n += 1
+        return m.group(1) + w + '"'
+    x = re.sub(r'(<hp:(?:tbl|pic|equation|rect|container|line|ellipse|polygon|arc|curve)\b[^>]*?\bid=")(\d+)"', rep, x)
+    return x, n
+
+
 if __name__ == '__main__':
     path = sys.argv[1]
     z = zipfile.ZipFile(path)
@@ -51,7 +88,11 @@ if __name__ == '__main__':
         for info, data in items:
             if re.match(r'Contents/(section\d+|masterpage\d+)\.xml', info.filename):
                 t, n = fix(data.decode('utf-8'))
+                t, n2 = trim_overflow(t)
+                t, n3 = dedupe_ids(t)
                 tot += n
+                if n2 or n3:
+                    print(info.filename, '넘는 줄 기록 정리 문단', n2, '겹친 개체 id 바꿈', n3)
                 data = t.encode('utf-8')
             zo.writestr(info, data, compress_type=info.compress_type)
     shutil.move(path + '.tmp', path)

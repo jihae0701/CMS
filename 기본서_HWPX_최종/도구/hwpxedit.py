@@ -158,6 +158,9 @@ def op_text(x, spans, old, new, after_eq=None, exact=False, all_=False, before_e
     """<hp:t> 하나 안의 글 바꾸기. 줄바꿈은 ⏎로 쓴다. after_eq를 주면 그 스크립트의 수식 바로 뒤 <hp:t>만 본다."""
     enc = lambda s: eqstyle.esc(s).replace('⏎', '<hp:lineBreak/>')
     o, nw = enc(old), enc(new)
+    if '⇥' in new:   # 새 글의 탭: 문서에 있는 탭 요소를 본떠 넣는다(넓이는 한글이 다시 잰다)
+        tab = re.search(r'<hp:tab\b[^>]*/>', x).group(0)
+        nw = nw.replace('⇥', tab)
     cands = []
     for a, b in spans:
         for m in TPAT.finditer(x, a, b):
@@ -187,7 +190,7 @@ def op_text(x, spans, old, new, after_eq=None, exact=False, all_=False, before_e
     m = cands[0]
     x2 = x[:m.start()] + '<hp:t>' + m.group(1).replace(o, nw) + '</hp:t>' + x[m.end():]
     # 글자 수가 바뀌면 그 문단 자기 줄 배치 정보의 뒤쪽 줄 위치를 맞춘다
-    delta = len(new.replace('⏎', 'X')) - len(old.replace('⏎', 'X'))
+    delta = len(new.replace('⏎', 'X').replace('⇥', 'X' * 8)) - len(old.replace('⏎', 'X'))
     if delta:
         import refcheck, make_unit
         s0, e0 = inner_para(x2, m.start())
@@ -224,7 +227,7 @@ def op_del_eq(x, spans, old):
     for a, b in spans:
         for m in EQ.finditer(x, a, b):
             sm = SC.search(m.group(0))
-            if sm and html.unescape(sm.group(2)) == old:
+            if (sm and html.unescape(sm.group(2)).strip() == old) if old or sm else old == '':
                 cands.append(m)
     if len(cands) != 1:
         raise ValueError('지울 수식 "%s": %d곳' % (old, len(cands)))
