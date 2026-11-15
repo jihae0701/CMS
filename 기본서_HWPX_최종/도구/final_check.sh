@@ -5,7 +5,10 @@ cd $S/eqw
 python3 figcheck.py $S/in2/$u.hwpx u/$u.hwpx $S/figs_$u.png | tail -1
 python3 refcheck.py u/$u.hwpx | tail -2
 python3 tools/eqcheck.py --all u/$u.hwpx | tail -4
-cp u/$u.hwpx $S/chk_$u.hwpx; (cd $S/h2x && java -cp .:hwp2hwpx/target/lib/hwpxlib-1.0.9.jar ReadX $S/chk_$u.hwpx 2>&1 | grep -v JAVA_TOOL | awk '{print $1}')
+cp u/$u.hwpx $S/chk_$u.hwpx; cp $S/in2/$u.hwpx $S/chk_o_$u.hwpx
+r=$(cd $S/h2x && java -cp .:hwp2hwpx/target/lib/hwpxlib-1.0.9.jar ReadX $S/chk_$u.hwpx 2>&1 | grep -v JAVA_TOOL | awk '{print $1}')
+o=$(cd $S/h2x && java -cp .:hwp2hwpx/target/lib/hwpxlib-1.0.9.jar ReadX $S/chk_o_$u.hwpx 2>&1 | grep -v JAVA_TOOL | awk '{print $1}')
+echo "hwpxlib: 결과 $r (원본 $o)"
 python3 -I -c "
 import zipfile;from xml.dom import minidom
 z=zipfile.ZipFile('u/$u.hwpx');[minidom.parseString(z.read(n)) for n in z.namelist() if n.endswith(('.xml','.hpf'))];print('xml ok')"
