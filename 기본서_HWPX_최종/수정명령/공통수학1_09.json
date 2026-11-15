@@ -1,0 +1,319 @@
+[
+ {
+  "op": "eq",
+  "n": 18,
+  "part": "sol",
+  "old": "{cases{x=1_{it}#y= it-2}}",
+  "new": "{cases{x=1_{it}#y=2}}",
+  "all": true
+ },
+ {
+  "op": "eq",
+  "n": 18,
+  "part": "sol",
+  "old": "{cases{x= it-1 _{it}#y= 2  }}",
+  "new": "{cases{x= it-1 _{it}#y= it-2}}",
+  "all": true
+ },
+ {
+  "op": "eq",
+  "n": 18,
+  "part": "sol",
+  "old": "10x^2  =30",
+  "new": "10x^2 =20"
+ },
+ {
+  "op": "eq",
+  "n": 18,
+  "part": "sol",
+  "old": "x^2 = 3",
+  "new": "x^2 =2",
+  "last": true
+ },
+ {
+  "op": "eq",
+  "n": 18,
+  "part": "sol",
+  "old": "x=it+- root3",
+  "new": "x=it+- root2"
+ },
+ {
+  "op": "eq",
+  "n": 18,
+  "part": "sol",
+  "old": "x=root3",
+  "new": "x=root2",
+  "last": true
+ },
+ {
+  "op": "eq",
+  "n": 18,
+  "part": "sol",
+  "old": "y=3root3",
+  "new": "y=3root2"
+ },
+ {
+  "op": "eq",
+  "n": 18,
+  "part": "sol",
+  "old": "x=it-root3",
+  "new": "x=it-root2"
+ },
+ {
+  "op": "eq",
+  "n": 18,
+  "part": "sol",
+  "old": "y=it-3 root3",
+  "new": "y=it-3 root2"
+ },
+ {
+  "op": "eq",
+  "n": 17,
+  "part": "sol",
+  "old": "y=1",
+  "new": "y= it-1",
+  "first": true
+ },
+ {
+  "op": "eq",
+  "n": 17,
+  "part": "sol",
+  "old": "y=2",
+  "new": "y= it-2",
+  "last": true
+ },
+ {
+  "op": "eq",
+  "n": 17,
+  "part": "sol",
+  "old": "2x^2 - 6x ^2 + 9 = 5",
+  "new": "2x^2 - 6x + 9 = 5"
+ },
+ {
+  "op": "eq",
+  "n": 3,
+  "part": "sol",
+  "old": "2x^2 +xy +3y^2 =24 ",
+  "new": "2y^2 +y^2 +3y^2 =24",
+  "nth": 2
+ },
+ {
+  "op": "text",
+  "n": 20,
+  "part": "sol",
+  "old": "㉡, ㉢을 연립하여 풀면 ",
+  "new": "㉠, ㉢을 연립하여 풀면 "
+ },
+ {
+  "op": "eq",
+  "n": 28,
+  "part": "sol",
+  "old": "2x  ^{2} +4 LEFT ( y-1 RIGHT ) +5y  ^{2} +2y+5=0",
+  "new": "2x  ^{2} +4 LEFT ( y-1 RIGHT ) x+5y  ^{2} +2y+5=0"
+ },
+ {
+  "op": "del_para",
+  "n": 33,
+  "part": "sol",
+  "anchor": "이므로 이를 만족하는 순서쌍은"
+ },
+ {
+  "op": "del_para",
+  "n": 33,
+  "part": "sol",
+  "anchor": "위 등식을 만족하는"
+ },
+ {
+  "op": "del_para",
+  "n": 33,
+  "part": "sol",
+  "anchor": "2~ TIMES ~3~ TIMES ~5"
+ },
+ {
+  "op": "del_para",
+  "n": 33,
+  "part": "sol",
+  "anchor": "1~ TIMES ~2~ TIMES ~15"
+ },
+ {
+  "op": "del_eq",
+  "n": 33,
+  "part": "sol",
+  "old": "alpha <beta <gamma"
+ },
+ {
+  "op": "text",
+  "n": 33,
+  "part": "sol",
+  "old": "인데 ",
+  "new": "이고, "
+ },
+ {
+  "op": "text",
+  "n": 33,
+  "part": "sol",
+  "old": "라 하면 ",
+  "new": ""
+ },
+ {
+  "op": "add_para",
+  "n": 33,
+  "part": "sol",
+  "after": "이고, ",
+  "text": "근과 계수의 관계에 의하여 ⟦alpha+beta+gamma=7⟧이므로 ⟦(alpha+1)+(beta+1)+(gamma+1)=10⟧이다."
+ },
+ {
+  "op": "add_para",
+  "n": 33,
+  "part": "sol",
+  "after": "⟦alpha+beta+gamma=7⟧이므로",
+  "text": "즉, ⟦alpha+1,~beta+1,~gamma+1⟧은 곱이 ⟦30⟧, 합이 ⟦10⟧인 서로 다른 세 정수이고, 이를 만족하는 것은 ⟦2,~3,~5⟧뿐이므로 ⟦alpha < beta < gamma⟧라 하면 ⟦(alpha,~beta,~gamma)=(1,~2,~4)⟧이다."
+ },
+ {
+  "op": "text",
+  "n": 33,
+  "part": "sol",
+  "old": "를 대입하면",
+  "new": "을 대입하면",
+  "after_eq": "x= it-1"
+ },
+ {
+  "op": "text",
+  "n": 14,
+  "part": "sol",
+  "old": "는 홀수이므로",
+  "new": "은 홀수이므로"
+ },
+ {
+  "op": "add_para",
+  "n": 14,
+  "part": "sol",
+  "after": "⟦times⟧",
+  "text": "(⟦x⟧는 자연수이므로 ⟦2x-3 ge it-1⟧이고, ⟦2x-3= it-1⟧이면 ⟦y-2= it-10⟧, 즉 ⟦y= it-8⟧이 되어 자연수가 아니다.)",
+  "like_n": 14,
+  "like": "이때 자연수"
+ },
+ {
+  "op": "text",
+  "n": 8,
+  "part": "sol",
+  "old": "오직 한쌍의",
+  "new": "오직 한 쌍의"
+ },
+ {
+  "op": "text",
+  "n": 8,
+  "part": "sol",
+  "old": "㉢를 ㉡에",
+  "new": "㉢을 ㉡에"
+ },
+ {
+  "op": "text",
+  "n": 8,
+  "part": "sol",
+  "old": "㉣도 하나의 실근을 가진다.",
+  "new": "㉣이 중근을 가진다."
+ },
+ {
+  "op": "text",
+  "n": 8,
+  "part": "q",
+  "old": "해가 오직 한 쌍이 존재하도록",
+  "new": "해가 오직 한 쌍 존재하도록"
+ },
+ {
+  "op": "text",
+  "n": 8,
+  "part": "q",
+  "old": "공통근의 갖는",
+  "new": "공통근을 갖는"
+ },
+ {
+  "op": "text",
+  "n": 1,
+  "part": "q",
+  "old": "식을 푸시오.",
+  "new": "을 푸시오."
+ },
+ {
+  "op": "eq",
+  "n": 6,
+  "part": "sol",
+  "old": "x+y=2,~xy=`-3e",
+  "new": "x+y=2,~xy=`-3"
+ },
+ {
+  "op": "text",
+  "n": 9,
+  "part": "sol",
+  "old": "하고 하면",
+  "new": "라 하면"
+ },
+ {
+  "op": "text",
+  "n": 9,
+  "part": "sol",
+  "old": "존재합니다.",
+  "new": "존재한다."
+ },
+ {
+  "op": "text",
+  "n": 9,
+  "part": "sol",
+  "old": "입니다.",
+  "new": "이다."
+ },
+ {
+  "op": "text",
+  "n": 11,
+  "part": "sol",
+  "old": "실수입니다.",
+  "new": "실수이다.",
+  "all": true
+ },
+ {
+  "op": "text",
+  "n": 12,
+  "part": "sol",
+  "old": "실수입니다.",
+  "new": "실수이다.",
+  "all": true
+ },
+ {
+  "op": "text",
+  "n": 12,
+  "part": "sol",
+  "old": "실수 이므로",
+  "new": "실수이므로"
+ },
+ {
+  "op": "text",
+  "n": 19,
+  "part": "sol",
+  "old": "㉠, ㉡를 연립하여",
+  "new": "㉠, ㉡을 연립하여"
+ },
+ {
+  "op": "text",
+  "n": 26,
+  "part": "sol",
+  "old": "를 공통근으로",
+  "new": "을 공통근으로",
+  "after_eq": "x=1"
+ },
+ {
+  "op": "text",
+  "n": 26,
+  "part": "sol",
+  "old": "(ⅰ)~(ⅲ)를",
+  "new": "(ⅰ)~(ⅲ)을"
+ },
+ {
+  "op": "text",
+  "n": 33,
+  "part": "sol",
+  "old": "근과 계수와의 관계",
+  "new": "근과 계수의 관계",
+  "all": true
+ }
+]

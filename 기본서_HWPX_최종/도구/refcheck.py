@@ -55,7 +55,7 @@ def lineseg_overflow(x):
             if k < 0 or seg.find('</hp:run>', k) >= 0:
                 continue
             tps = [int(v) for v in re.findall(r'textpos="(\d+)"', seg[k:])]
-            if tps and max(tps) > 0 and max(tps) >= para_len(seg[:k]):
+            if tps and max(tps) > 0 and max(tps) > para_len(seg[:k]):
                 bad.append(s)
     return bad
 
