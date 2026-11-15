@@ -5,7 +5,7 @@
 명령(JSON 목록):
   {"op":"eq","n":6,"part":"sol","old":"수식 스크립트(그대로)","new":"새 스크립트"}   — 그 범위에서 정확히 하나여야 함
   {"op":"text","n":25,"part":"q","old":"개수의 합","new":"계수의 합"}                 — <hp:t> 하나 안에서, 범위에서 정확히 하나 (줄바꿈은 ⏎)
-     "after_eq":"x=2" 를 더하면 그 수식 바로 뒤의 글에서만 찾는다(조사 고치기). eq에 "all":true면 같은 수식을 모두 바꾼다.
+     "after_eq":"x=2" 를 더하면 그 수식 바로 뒤의 글에서만 찾는다(조사 고치기). eq·text에 "all":true면 모두 바꾼다. text에 "exact":true면 <hp:t> 글 전체가 old와 같을 때만.
   {"op":"add_para","n":22,"part":"sol","after":"<기준 문단에 있는 글 또는 ⟦수식⟧>","text":"글과 ⟦수식⟧ 섞어서"}
      기준 문단 바로 뒤에 같은 문단·글자 모양으로 새 문단을 넣는다.
 python3 hwpxedit.py list 파일.hwpx n [n...]      문항의 q/sol 문단을 보여 줌
@@ -144,17 +144,17 @@ def op_eq(x, spans, old, new, all_=False):
     return x
 
 
-TPAT = re.compile(r'<hp:t>((?:[^<]|<hp:lineBreak/>)*)</hp:t>')
+TPAT = re.compile(r'<hp:t>((?:[^<]|<hp:lineBreak/>|<hp:tab\b[^>]*/>)*)</hp:t>')
 
 
-def op_text(x, spans, old, new, after_eq=None):
+def op_text(x, spans, old, new, after_eq=None, exact=False, all_=False):
     """<hp:t> 하나 안의 글 바꾸기. 줄바꿈은 ⏎로 쓴다. after_eq를 주면 그 스크립트의 수식 바로 뒤 <hp:t>만 본다."""
     enc = lambda s: eqstyle.esc(s).replace('⏎', '<hp:lineBreak/>')
     o, nw = enc(old), enc(new)
     cands = []
     for a, b in spans:
         for m in TPAT.finditer(x, a, b):
-            if o not in m.group(1):
+            if o not in m.group(1) or (exact and m.group(1) != o):
                 continue
             if after_eq is not None:
                 pre = x[:m.start()]
@@ -166,6 +166,10 @@ def op_text(x, spans, old, new, after_eq=None):
                     continue
             cands.append(m)
     tot = sum(m.group(1).count(o) for m in cands)
+    if all_ and tot >= 1:
+        for m in sorted(cands, key=lambda c: -c.start()):
+            x = op_text(x, [(m.start(), m.end())], old, new)
+        return x
     if tot != 1:
         raise ValueError('글 "%s": %d곳' % (old, tot))
     m = cands[0]
@@ -176,7 +180,8 @@ def op_text(x, spans, old, new, after_eq=None):
         import refcheck, make_unit
         s0, e0 = inner_para(x2, m.start())
         p = x2[s0:e0]
-        off = refcheck.para_len(x2[s0:m.start()] + '</hp:p>') + len(m.group(1)[:m.group(1).find(o)].replace('<hp:lineBreak/>', 'X'))
+        pre_t = m.group(1)[:m.group(1).find(o)]
+        off = refcheck.para_len(x2[s0:m.start()] + '</hp:p>') + len(re.sub(r'<hp:tab\b[^>]*/>', 'X' * 8, pre_t.replace('<hp:lineBreak/>', 'X')))
         _PCACHE.clear()
         x2 = x2[:s0] + make_unit.shift_own_lineseg(p, delta, after=off) + x2[e0:]
         _PCACHE.clear()
@@ -251,7 +256,7 @@ def apply(path, ops):
             if op['op'] == 'eq':
                 x = op_eq(x, spans, op['old'], op['new'], op.get('all', False))
             elif op['op'] == 'text':
-                x = op_text(x, spans, op['old'], op['new'], op.get('after_eq'))
+                x = op_text(x, spans, op['old'], op['new'], op.get('after_eq'), op.get('exact', False), op.get('all', False))
             elif op['op'] == 'add_para':
                 x = op_add_para(x, spans, op['after'], op['text'], (op['like_n'], op['like']) if 'like' in op else None)
             else:

@@ -1,0 +1,461 @@
+[
+ {
+  "op": "eq",
+  "n": 16,
+  "part": "q",
+  "old": "x ^{3} +(ab+1)x+n",
+  "new": "x ^{3} +(ab-1)x-n"
+ },
+ {
+  "op": "eq",
+  "n": 34,
+  "part": "q",
+  "old": "x^4 -x^2 +x^2 -3x+2",
+  "new": "x^4 -x^3 +x^2 -3x+2"
+ },
+ {
+  "op": "eq",
+  "n": 34,
+  "part": "sol",
+  "old": "(x-1)(x-1)(x^2 +x +2)",
+  "new": "(x-1)^2 (x^2 +x+2)"
+ },
+ {
+  "op": "eq",
+  "n": 34,
+  "part": "sol",
+  "old": "=(x-1)(x-1)(x^2 +x +2)",
+  "new": "=(x-1)^2 (x^2 +x+2)"
+ },
+ {
+  "op": "text",
+  "n": 44,
+  "part": "q",
+  "old": "두 이차방정식 ",
+  "new": "두 이차다항식 "
+ },
+ {
+  "op": "eq",
+  "n": 21,
+  "part": "sol",
+  "old": "=(2x+4y)left{(2x)^2 +2x times4y +(4y)^2 right}",
+  "new": "=(2x+4y)left{(2x)^2 -2x times4y +(4y)^2 right}"
+ },
+ {
+  "op": "eq",
+  "n": 21,
+  "part": "sol",
+  "old": "=(3x-2y)left{(3x)^2 +3x times2y +(2y)^2 right",
+  "new": "=(3x-2y)left{(3x)^2 +3x times2y +(2y)^2 right}"
+ },
+ {
+  "op": "eq",
+  "n": 25,
+  "part": "sol",
+  "old": "=X LEFT ( X+2 RIGHT ) +36",
+  "new": "=X LEFT ( X+12 RIGHT ) +36"
+ },
+ {
+  "op": "eq",
+  "n": 44,
+  "part": "sol",
+  "old": "P(3)+Q(2)=it4+3=it-1",
+  "new": "P(3)+Q(2)= it-4+3= it-1"
+ },
+ {
+  "op": "eq",
+  "n": 37,
+  "part": "sol",
+  "old": "n^2 +4=1 ^{ 4}+4=5",
+  "new": "n^4 +4=1 ^{ 4}+4=5"
+ },
+ {
+  "op": "eq",
+  "n": 20,
+  "part": "sol",
+  "old": "x^3 - 6x^2 y +12xy -8y^3 ",
+  "new": "x^3 - 6x^2 y +12xy^2 -8y^3 "
+ },
+ {
+  "op": "eq",
+  "n": 1,
+  "part": "sol",
+  "old": "x^3 +8 =x^3 + 2^2 = LEFT ( x+2  RIGHT ) LEFT ( x^2 -x cdot2 +2^2 RIGHT ) = LEFT ( x+2  RIGHT ) LEFT ( x^2 -2x+4 RIGHT )",
+  "new": "x^3 +8 =x^3 + 2^3 = LEFT ( x+2  RIGHT ) LEFT ( x^2 -x cdot2 +2^2 RIGHT ) = LEFT ( x+2  RIGHT ) LEFT ( x^2 -2x+4 RIGHT )"
+ },
+ {
+  "op": "add_para",
+  "n": 42,
+  "part": "sol",
+  "after": "⟦b=3⟧",
+  "text": "또, ⟦b= it-1⟧일 때 ⟦n=30⟧, ⟦b= it-2⟧일 때 ⟦n=96⟧이고, ⟦b=0⟧이면 ⟦n=0⟧, ⟦b ge 4⟧ 또는 ⟦b le it-3⟧이면 ⟦n>150⟧이다.",
+  "like_n": 42,
+  "like": "를 인수로 가지므로"
+ },
+ {
+  "op": "add_para",
+  "n": 42,
+  "part": "sol",
+  "after": "⟦n=96⟧",
+  "text": "따라서 ⟦n⟧의 최댓값은 ⟦126⟧, 최솟값은 ⟦6⟧이므로 그 합은 ⟦132⟧이다.",
+  "like_n": 42,
+  "like": "를 인수로 가지므로"
+ },
+ {
+  "op": "add_para",
+  "n": 15,
+  "part": "sol",
+  "after": "a= 2",
+  "text": "(⟦a le it-1⟧일 때 나오는 ⟦n=a(a-1)⟧의 값은 ⟦a=2,~3,~cdots,~8⟧일 때의 값과 같아 같은 다항식이 되므로 따로 세지 않는다.)",
+  "like_n": 15,
+  "like": "를 인수로 가지므로"
+ },
+ {
+  "op": "add_para",
+  "n": 16,
+  "part": "sol",
+  "after": "a= 2",
+  "text": "(⟦a le it-1⟧일 때 나오는 ⟦n=a(a-1)⟧의 값은 ⟦a=2,~3,~cdots,~9⟧일 때의 값과 같아 같은 다항식이 되므로 따로 세지 않는다.)",
+  "like_n": 16,
+  "like": "를 인수로 가지므로"
+ },
+ {
+  "op": "add_para",
+  "n": 41,
+  "part": "sol",
+  "after": "(x+8)(x-11)",
+  "text": "(⟦a le it-4⟧일 때는 두 일차식의 순서만 바뀐 같은 인수분해이므로 따로 세지 않는다.)",
+  "like_n": 41,
+  "like": "부터 차례로 대입해보면"
+ },
+ {
+  "op": "text",
+  "n": 28,
+  "part": "sol",
+  "old": "(2) ",
+  "new": "",
+  "exact": true
+ },
+ {
+  "op": "eq",
+  "n": 28,
+  "part": "sol",
+  "old": "(x^2 ＋x  ＋ 6) (x^2 - x + 6 )",
+  "new": "(x^2 +x+6)(x^2 -x+6)"
+ },
+ {
+  "op": "eq",
+  "n": 28,
+  "part": "sol",
+  "old": "=(x^2 ＋x  ＋ 6) (x^2 - x + 6 )",
+  "new": "=(x^2 +x+6)(x^2 -x+6)"
+ },
+ {
+  "op": "text",
+  "n": 30,
+  "part": "sol",
+  "old": "󰂼 (1) ",
+  "new": "󰂼 "
+ },
+ {
+  "op": "text",
+  "n": 11,
+  "part": "sol",
+  "old": " (1) ",
+  "new": " 󰂼 (1) ",
+  "exact": true
+ },
+ {
+  "op": "text",
+  "n": 12,
+  "part": "sol",
+  "old": " (1) ",
+  "new": " 󰂼 (1) ",
+  "exact": true
+ },
+ {
+  "op": "add_para",
+  "n": 11,
+  "part": "sol",
+  "after": "⟦461⟧",
+  "text": "(1) ⟦x+y=6,~xy=7⟧이므로⏎⟦x^3 +xy^2 +x^2 y+y^3 =x^2 (x+y)+y^2 (x+y)⟧⏎⟦=(x+y)(x^2 +y^2 )⟧⏎⟦=(x+y) LEFT { (x+y)^2 -2xy RIGHT }⟧⏎⟦=6 TIMES (36-14)=132⟧",
+  "like_n": 30,
+  "like": "에 대하여 내림차순으로 정리한 후"
+ },
+ {
+  "op": "add_para",
+  "n": 11,
+  "part": "sol",
+  "after": "(1) ⟦x+y=6,~xy=7⟧",
+  "text": "(2) ⟦20 TIMES 23=460⟧, ⟦21 TIMES 22=462⟧이므로 ⟦460=t⟧로 놓으면⏎⟦20 TIMES 21 TIMES 22 TIMES 23+1=t(t+2)+1=(t+1)^2⟧⏎⟦THEREFORE ~ sqrt {20 TIMES 21 TIMES 22 TIMES 23+1} =t+1=461⟧",
+  "like_n": 30,
+  "like": "에 대하여 내림차순으로 정리한 후"
+ },
+ {
+  "op": "add_para",
+  "n": 12,
+  "part": "sol",
+  "after": "⟦131⟧",
+  "text": "(1) ⟦a+b=4,~ab=2⟧이므로⏎⟦a^4 +b^4 +a^3 b+ab^3 =a^3 (a+b)+b^3 (a+b)⟧⏎⟦=(a+b)(a^3 +b^3 )⟧⏎⟦=(a+b) LEFT { (a+b)^3 -3ab(a+b) RIGHT }⟧⏎⟦=4 TIMES (64-24)=160⟧",
+  "like_n": 30,
+  "like": "에 대하여 내림차순으로 정리한 후"
+ },
+ {
+  "op": "add_para",
+  "n": 12,
+  "part": "sol",
+  "after": "(1) ⟦a+b=4,~ab=2⟧",
+  "text": "(2) ⟦10 TIMES 13=130⟧, ⟦11 TIMES 12=132⟧이므로 ⟦130=t⟧로 놓으면⏎⟦10 TIMES 11 TIMES 12 TIMES 13+1=t(t+2)+1=(t+1)^2⟧⏎⟦THEREFORE ~ sqrt {10 TIMES 11 TIMES 12 TIMES 13+1} =t+1=131⟧",
+  "like_n": 30,
+  "like": "에 대하여 내림차순으로 정리한 후"
+ },
+ {
+  "op": "add_para",
+  "n": 19,
+  "part": "sol",
+  "after": "⟦ (x+y+1)^2⟧",
+  "text": "(1) ⟦a^2 +b^2 +c^2 -2ab-2bc+2ca⟧⏎⟦=a^2 +(-b)^2 +c^2 +2 TIMES a TIMES (-b)+2 TIMES (-b) TIMES c+2 TIMES c TIMES a⟧⏎⟦=(a-b+c)^2⟧",
+  "like_n": 30,
+  "like": "에 대하여 내림차순으로 정리한 후"
+ },
+ {
+  "op": "add_para",
+  "n": 19,
+  "part": "sol",
+  "after": "(1) ⟦a^2 +b^2 +c^2 -2ab-2bc+2ca⟧",
+  "text": "(2) ⟦a^2 +4b^2 +9c^2 +4ab+12bc+6ca⟧⏎⟦=a^2 +(2b)^2 +(3c)^2 +2 TIMES a TIMES 2b+2 TIMES 2b TIMES 3c+2 TIMES 3c TIMES a⟧⏎⟦=(a+2b+3c)^2⟧",
+  "like_n": 30,
+  "like": "에 대하여 내림차순으로 정리한 후"
+ },
+ {
+  "op": "add_para",
+  "n": 19,
+  "part": "sol",
+  "after": "(2) ⟦a^2 +4b^2 +9c^2 +4ab+12bc+6ca⟧",
+  "text": "(3) ⟦4a^2 +b^2 +9c^2 -4ab-6bc+12ca⟧⏎⟦=(2a)^2 +(-b)^2 +(3c)^2 +2 TIMES 2a TIMES (-b)+2 TIMES (-b) TIMES 3c+2 TIMES 3c TIMES 2a⟧⏎⟦=(2a-b+3c)^2⟧",
+  "like_n": 30,
+  "like": "에 대하여 내림차순으로 정리한 후"
+ },
+ {
+  "op": "add_para",
+  "n": 19,
+  "part": "sol",
+  "after": "(3) ⟦4a^2 +b^2 +9c^2 -4ab-6bc+12ca⟧",
+  "text": "(4) ⟦a^2 +b^2 +1+2ab-2b-2a⟧⏎⟦=a^2 +b^2 +(-1)^2 +2 TIMES a TIMES b+2 TIMES b TIMES (-1)+2 TIMES (-1) TIMES a⟧⏎⟦=(a+b-1)^2⟧",
+  "like_n": 30,
+  "like": "에 대하여 내림차순으로 정리한 후"
+ },
+ {
+  "op": "add_para",
+  "n": 19,
+  "part": "sol",
+  "after": "(4) ⟦a^2 +b^2 +1+2ab-2b-2a⟧",
+  "text": "(5) ⟦x^2 +y^2 +1+2x+2y+2xy⟧⏎⟦=x^2 +y^2 +1^2 +2 TIMES x TIMES y+2 TIMES y TIMES 1+2 TIMES 1 TIMES x⟧⏎⟦=(x+y+1)^2⟧",
+  "like_n": 30,
+  "like": "에 대하여 내림차순으로 정리한 후"
+ },
+ {
+  "op": "add_para",
+  "n": 22,
+  "part": "sol",
+  "after": "47 TIMES 49+4",
+  "text": "⟦47=x⟧로 놓으면⏎⟦47^3 -8=x^3 -2^3 =(x-2)(x^2 +2x+4)⟧⏎⟦47 TIMES 49+4=x(x+2)+4=x^2 +2x+4⟧⏎이므로 ⟦{47^3 -8} over {47 TIMES 49+4} = {(x-2)(x^2 +2x+4)} over {x^2 +2x+4} =x-2=45⟧",
+  "like_n": 30,
+  "like": "에 대하여 내림차순으로 정리한 후"
+ },
+ {
+  "op": "add_para",
+  "n": 23,
+  "part": "sol",
+  "after": "(1) ⟦2x-y=t⟧",
+  "text": "(2) ⟦x^2 -x=t⟧로 놓으면⏎⟦(x^2 -x)^2 -3(x^2 -x)+2⟧⏎⟦=t^2 -3t+2=(t-1)(t-2)⟧⏎⟦=(x^2 -x-1)(x^2 -x-2)⟧⏎⟦=(x+1)(x-2)(x^2 -x-1)⟧"
+ },
+ {
+  "op": "add_para",
+  "n": 23,
+  "part": "sol",
+  "after": "(2) ⟦x^2 -x=t⟧",
+  "text": "(3) ⟦x^2 +3x=t⟧로 놓으면⏎⟦(x^2 +3x)^2 -2(x^2 +3x)-8⟧⏎⟦=t^2 -2t-8=(t+2)(t-4)⟧⏎⟦=(x^2 +3x+2)(x^2 +3x-4)⟧⏎⟦=(x+1)(x+2)(x+4)(x-1)⟧"
+ },
+ {
+  "op": "add_para",
+  "n": 23,
+  "part": "sol",
+  "after": "(3) ⟦x^2 +3x=t⟧",
+  "text": "(4) ⟦x^2 +2x=t⟧로 놓으면⏎⟦(x^2 +2x-1)(x^2 +2x-2)-2⟧⏎⟦=(t-1)(t-2)-2=t^2 -3t=t(t-3)⟧⏎⟦=(x^2 +2x)(x^2 +2x-3)⟧⏎⟦=x(x+2)(x+3)(x-1)⟧"
+ },
+ {
+  "op": "add_para",
+  "n": 27,
+  "part": "sol",
+  "after": "⟦= (x+2)(x-2)(x^2 + 2)⟧",
+  "text": "(2) ⟦x^2 =X⟧로 놓으면⏎⟦x^4 +4x^2 -32=X^2 +4X-32⟧⏎⟦=(X+8)(X-4)⟧⏎⟦=(x^2 +8)(x^2 -4)⟧⏎⟦=(x+2)(x-2)(x^2 +8)⟧",
+  "like_n": 27,
+  "like": "(1) ⟦x^2 = X"
+ },
+ {
+  "op": "add_para",
+  "n": 27,
+  "part": "sol",
+  "after": "(2) ⟦x^2 =X⟧",
+  "text": "(3) ⟦x^2 =X⟧로 놓으면⏎⟦x^4 -6x^2 +5=X^2 -6X+5⟧⏎⟦=(X-1)(X-5)⟧⏎⟦=(x^2 -1)(x^2 -5)⟧⏎⟦=(x+1)(x-1)(x^2 -5)⟧",
+  "like_n": 27,
+  "like": "(1) ⟦x^2 = X"
+ },
+ {
+  "op": "add_para",
+  "n": 27,
+  "part": "sol",
+  "after": "(3) ⟦x^2 =X⟧",
+  "text": "(4) ⟦x^2 =X⟧로 놓으면⏎⟦x^4 -2x^2 -24=X^2 -2X-24⟧⏎⟦=(X+4)(X-6)⟧⏎⟦=(x^2 +4)(x^2 -6)⟧",
+  "like_n": 27,
+  "like": "(1) ⟦x^2 = X"
+ },
+ {
+  "op": "add_para",
+  "n": 28,
+  "part": "sol",
+  "after": "(x^2 + 6+x)",
+  "text": "(2) ⟦x^4 +3x^2 +4=(x^4 +4x^2 +4)-x^2⟧⏎⟦=(x^2 +2)^2 -x^2⟧⏎⟦=(x^2 +x+2)(x^2 -x+2)⟧"
+ },
+ {
+  "op": "add_para",
+  "n": 28,
+  "part": "sol",
+  "after": "(2) ⟦x^4 +3x^2 +4=(x^4 +4x^2 +4)-x^2⟧",
+  "text": "(3) ⟦x^4 +x^2 y^2 +25y^4 =(x^4 +10x^2 y^2 +25y^4 )-9x^2 y^2⟧⏎⟦=(x^2 +5y^2 )^2 -(3xy)^2⟧⏎⟦=(x^2 +3xy+5y^2 )(x^2 -3xy+5y^2 )⟧"
+ },
+ {
+  "op": "add_para",
+  "n": 34,
+  "part": "sol",
+  "after": "󰂼",
+  "text": "(1) ⟦f(x)=x^3 -4x^2 +8x-5⟧라 하면 ⟦f(1)=1-4+8-5=0⟧이므로 조립제법을 이용하여 인수분해하면⏎⟦x^3 -4x^2 +8x-5=(x-1)(x^2 -3x+5)⟧",
+  "like_n": 30,
+  "like": "에 대하여 내림차순으로 정리한 후"
+ },
+ {
+  "op": "add_para",
+  "n": 34,
+  "part": "sol",
+  "after": "(1) ⟦f(x)=x^3 -4x^2 +8x-5⟧",
+  "text": "(2) ⟦f(x)=x^3 -5x^2 -2x+24⟧라 하면 ⟦f(-2)= it-8-20+4+24=0⟧이므로 조립제법을 이용하여 인수분해하면⏎⟦x^3 -5x^2 -2x+24=(x+2)(x^2 -7x+12)⟧⏎⟦=(x+2)(x-3)(x-4)⟧",
+  "like_n": 30,
+  "like": "에 대하여 내림차순으로 정리한 후"
+ },
+ {
+  "op": "add_para",
+  "n": 34,
+  "part": "sol",
+  "after": "x^4 -x^3 +x^2 -3x +2",
+  "text": "(4) ⟦f(x)=x^4 +2x^3 -8x^2 -3x+6⟧이라 하면 ⟦f(-1)=0⟧, ⟦f(2)=0⟧이므로 조립제법을 이용하여 인수분해하면⏎⟦x^4 +2x^3 -8x^2 -3x+6=(x+1)(x-2)(x^2 +3x-3)⟧",
+  "like_n": 30,
+  "like": "에 대하여 내림차순으로 정리한 후"
+ },
+ {
+  "op": "text",
+  "n": 28,
+  "part": "q",
+  "old": "여려 개인",
+  "new": "여러 개인"
+ },
+ {
+  "op": "text",
+  "n": 9,
+  "part": "sol",
+  "old": "를 인수로",
+  "new": "을 인수로",
+  "after_eq": "x+1,~x-1"
+ },
+ {
+  "op": "text",
+  "n": 9,
+  "part": "sol",
+  "old": "㉡를",
+  "new": "㉡을"
+ },
+ {
+  "op": "text",
+  "n": 15,
+  "part": "sol",
+  "old": "를 인수로",
+  "new": "을 인수로",
+  "after_eq": "x-1"
+ },
+ {
+  "op": "text",
+  "n": 16,
+  "part": "sol",
+  "old": "를 인수로",
+  "new": "을 인수로",
+  "after_eq": "x+1"
+ },
+ {
+  "op": "text",
+  "n": 10,
+  "part": "sol",
+  "old": "를 대입",
+  "new": "을 대입",
+  "after_eq": "x=1"
+ },
+ {
+  "op": "text",
+  "n": 10,
+  "part": "sol",
+  "old": "㉢를",
+  "new": "㉢을"
+ },
+ {
+  "op": "text",
+  "n": 33,
+  "part": "sol",
+  "old": "를 소인수분해",
+  "new": "을 소인수분해",
+  "after_eq": "616"
+ },
+ {
+  "op": "text",
+  "n": 37,
+  "part": "sol",
+  "old": "는 ",
+  "new": "은 ",
+  "after_eq": " n= it-1"
+ },
+ {
+  "op": "text",
+  "n": 38,
+  "part": "q",
+  "old": "가 ",
+  "new": "이 ",
+  "after_eq": "n ^{4} +2n ^{2} -3"
+ },
+ {
+  "op": "text",
+  "n": 4,
+  "part": "sol",
+  "old": "(주어진식)",
+  "new": "(주어진 식)",
+  "all": true
+ },
+ {
+  "op": "text",
+  "n": 14,
+  "part": "sol",
+  "old": "이어야 합니다.",
+  "new": "이어야 한다."
+ },
+ {
+  "op": "text",
+  "n": 14,
+  "part": "sol",
+  "old": "이등변삼각형입니다.",
+  "new": "이등변삼각형이다."
+ },
+ {
+  "op": "text",
+  "n": 14,
+  "part": "sol",
+  "old": "직각삼각형입니다.",
+  "new": "직각삼각형이다."
+ }
+]
