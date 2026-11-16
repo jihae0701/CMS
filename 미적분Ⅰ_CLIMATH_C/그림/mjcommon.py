@@ -62,7 +62,7 @@ def O(F, anc='rt', dx=-6, dy=4):
 
 
 
-def run(JOBS, OUT, names, wide=()):
+def run(JOBS, OUT, names, wide=(), natural=()):
     """wide: 두 칸 그림 이름들(문서 폭 18000)"""
     import json, os
     wf = os.path.join(OUT, 'widths.json')
@@ -73,7 +73,12 @@ def run(JOBS, OUT, names, wide=()):
     for k in names or list(JOBS):
         N.pop(k + '.png', None); mathfig.NUDGE.pop(k + '.png', None)
         json.dump(N, open(nf, 'w'), ensure_ascii=False, indent=1)
-        W[k] = fit_shoot('%s.png' % k, JOBS[k], 18000 if k in wide else None, out_dir=OUT)
+        if k in natural:      # 표 등: 그린 크기 그대로(1 CSS px = 3 PNG px), 글자 옮기지 않음
+            mathfig.ZOOM = 1.0
+            w0 = JOBS[k]()[1]
+            W[k] = fit_shoot('%s.png' % k, JOBS[k], int(round(w0 * 3 * mathfig.K_HWP / 100.0) * 100), out_dir=OUT, fix=False)
+        else:
+            W[k] = fit_shoot('%s.png' % k, JOBS[k], 18000 if k in wide else None, out_dir=OUT)
         print(k, W[k])
     json.dump(W, open(wf, 'w'), indent=0)
 
@@ -88,3 +93,27 @@ def herm(pts):
                         + (-2 * t ** 3 + 3 * t ** 2) * y1 + (t ** 3 - t ** 2) * h * m1)
         return pts[0][1]
     return f
+
+
+UP, DN = '\\nearrow', '\\searrow'
+
+
+def table(rows, widths, rh=42):
+    """증감표 그림: rows=[[머리 칸, 칸 글자…], …], widths=칸 폭(px). 머리 칸은 연한 하늘색"""
+    from mathfig import SKY
+    W = sum(widths); H = rh * len(rows)
+    F = Frame((0, W), (0, H), 1, 1, (6, 6, 6, 6))
+    F.poly([(0, 0), (widths[0], 0), (widths[0], H), (0, H)], SKY)
+    xs = [0]
+    for w in widths:
+        xs.append(xs[-1] + w)
+    for i in range(1, len(rows)):
+        F.seg((0, H - i * rh), (W, H - i * rh), 1.0)
+    for x in xs[1:-1]:
+        F.seg((x, 0), (x, H), 1.0)
+    F.seg((0, H), (W, H), 2.4); F.seg((0, 0), (W, 0), 2.4)
+    for r, row in enumerate(rows):
+        for c, t in enumerate(row):
+            if t:
+                F.lab(((xs[c] + xs[c + 1]) / 2, H - (r + 0.5) * rh), t, 'cc')
+    return F.render()
