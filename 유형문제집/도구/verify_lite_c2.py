@@ -242,10 +242,8 @@ R[(10, 13)] = -sp.Rational(1, 2) + (-5) + 3
 tt = [r_ for r_ in sp.solve(1 + 2*t - t**2, t)]
 v11 = {sp.nsimplify(sp.simplify(r_**3 - 1/r_**3)) for r_ in tt}
 assert len(v11) == 1; R[(11, 2)] = v11.pop()
-kk_ = sp.Rational(7, 3)
-xv, yv, zv = kk_, 2*kk_ + 3, sp.Rational(3, 2)*kk_
-assert xv / (yv - 3) == sp.Rational(1, 2) and (yv - 3) / (2*zv) == sp.Rational(2, 3)
-R[(11, 3)] = (yv + 2*zv - 3) / (3 - xv - yv)
+lhs8 = 1/(x*(x+1)) + 2/((x+1)*(x+3)) + 3/((x+3)*(x+6))
+R[(11, 3)] = sp.simplify(lhs8 * x*(x+6))
 sol33 = [(av, bv, cv) for av in range(-10, 11) for bv in range(-20, 21) for cv in range(-10, 11)
          if -cv == -3 and av == 2 and (av*1 + bv) == -2*(1 + cv) and av*cv - bv != 0]
 assert len(sol33) == 1; R[(11, 6)] = sum(sol33[0])
