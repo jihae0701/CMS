@@ -1,0 +1,9 @@
+[
+ {"op":"eq","n":29,"part":"q","old":"xy-x-2y-2=0","new":"xy-x-3y-3=0"},
+ {"op":"eq","n":29,"part":"sol","old":"xy-x-2y-2=0","new":"xy-x-3y-3=0"},
+ {"op":"eq","n":29,"part":"sol","old":"x LEFT ( y-1 RIGHT ) -2 LEFT ( y-1 RIGHT ) -4=0","new":"x LEFT ( y-1 RIGHT ) -3 LEFT ( y-1 RIGHT ) -6=0"},
+ {"op":"eq","n":29,"part":"sol","old":"(x-2)(y-1)=4","new":"(x-3)(y-1)=6"},
+ {"op":"eq","n":29,"part":"sol","old":"3","new":"4","all":true},
+ {"op":"text","n":29,"part":"sol","old":"개다.","new":"개이다."},
+ {"op":"text","n":13,"part":"sol","old":"개다.","new":"개이다."}
+]
