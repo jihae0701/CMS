@@ -237,6 +237,39 @@ R[(10, 12)] = [av for av in range(-20, 20) if f47(f47(f47(-3, av), av), av) == 4
 fi71 = lambda v: (v - 1) / sp.Integer(2) if v <= 3 else 2*v - 5
 assert fi71(2*sp.Integer(1) + 1) == 1 and fi71(sp.Rational(1, 2)*5 + sp.Rational(5, 2)) == 5
 R[(10, 13)] = -sp.Rational(1, 2) + (-5) + 3
+
+# ---- 11단원 유리식과 유리함수
+tt = [r_ for r_ in sp.solve(1 + 2*t - t**2, t)]
+v11 = {sp.nsimplify(sp.simplify(r_**3 - 1/r_**3)) for r_ in tt}
+assert len(v11) == 1; R[(11, 2)] = v11.pop()
+kk_ = sp.Rational(7, 3)
+xv, yv, zv = kk_, 2*kk_ + 3, sp.Rational(3, 2)*kk_
+assert xv / (yv - 3) == sp.Rational(1, 2) and (yv - 3) / (2*zv) == sp.Rational(2, 3)
+R[(11, 3)] = (yv + 2*zv - 3) / (3 - xv - yv)
+sol33 = [(av, bv, cv) for av in range(-10, 11) for bv in range(-20, 21) for cv in range(-10, 11)
+         if -cv == -3 and av == 2 and (av*1 + bv) == -2*(1 + cv) and av*cv - bv != 0]
+assert len(sol33) == 1; R[(11, 6)] = sum(sol33[0])
+a32 = sp.solve(sp.Eq(a, 1 + 3*a), a)[0]; b32 = sp.solve(sp.Eq(a32, -1 + b), b)[0]
+# 대칭 확인: 점 (1, a)에 대하여 대칭이고 기울기 ±1인 직선이 그 점을 지남
+R[(11, 7)] = a32 * b32
+f39 = lambda v: sp.Rational(2*v - 7, 1) / (v - 5)
+vals39 = [f39(sp.Rational(n, 100)) for n in range(0, 201)]
+R[(11, 8)] = max(vals39) - min(vals39)
+R[(11, 10)] = len([kv for kv in range(-50, 50) if (kv - 8)**2 - 12*(7 - 2*kv) < 0])
+def f46(v): return (v - 3) / (v + 1)
+v46 = sp.Integer(2)
+for _ in range(10): v46 = f46(v46)
+R[(11, 11)] = v46
+f52 = lambda v: (3*v - 4) / (v - 1)
+def ok52(av, bv):
+    try:
+        return all(abs(f52(f52(v) - av) + bv - v) < 1e-9 for v in (2.0, 3.5, -1.0, 7.0))   # g(f(x)) = f(f(x)-a)+b = x
+    except ZeroDivisionError:
+        return False
+best52 = [(av, bv) for av in range(-6, 7) for bv in range(-6, 7) if ok52(av, bv)]
+assert len(best52) == 1; R[(11, 12)] = sum(best52[0])
+g55 = lambda v: (v - 1) / (2*v + 1)
+R[(11, 13)] = [sp.Rational(n, 4) for n in range(-80, 81) if 2*sp.Rational(n, 4) + 1 != 0 and g55(sp.Rational(n, 4)) == sp.Rational(1, 3)][0]
 # ---- 명세와 대조
 def hwp2sym(s):
     s = s.replace("pi", "*pi").replace(" ", "")
@@ -248,7 +281,7 @@ def hwp2sym(s):
     s = s.lstrip("*")
     return sp.sympify(s)
 bad = n = 0
-for u in (1, 2, 3, 4, 5, 6, 9, 10):
+for u in (1, 2, 3, 4, 5, 6, 9, 10, 11):
     sp_ = importlib.util.spec_from_file_location("s", os.path.join(os.path.dirname(os.path.abspath(__file__)), "lite_c2_%02d.py" % u))
     S = importlib.util.module_from_spec(sp_); sp_.loader.exec_module(S)
     for i, v_ in S.REPLACE.items():
