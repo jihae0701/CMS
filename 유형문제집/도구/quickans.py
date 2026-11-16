@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """빠른 정답 파일 만들기 (2026-11-16 사용자 '기본서와 유형서 올린거 빠른 정답 파일을 만드는데, 각각 맞는 문서form에다가 만들어,
 공통수학1, 2 기본서 유형서 총 4개의 파일로').
-python quickans.py <책: c1b|c1y|c2b|c2y> <출력.hwpx>
+python quickans.py <책: c1b|c1y|c2b|c2y|c1l|c2l> <출력.hwpx>   (c1l·c2l: CMS 스토리 라이트, 틀은 라이트 1단원 파일)
 - 정답은 단원 파일(완성본)의 미주 첫 줄('󰂼' 또는 '[정답]' 뒤)을 그대로 옮긴다. 수식은 수식 개체를 그대로 복사한다.
 - 문항 번호는 미주 번호(미주 번호 매기기 시작값 + 차례)다.
 - 틀(문서 form)은 그 책의 1단원 파일: 쪽 크기·여백·2단·바탕쪽(머리말 띠·쪽 번호)·글꼴·글자/문단 모양을 그대로 쓰고,
@@ -16,7 +16,10 @@ BOOKS = {
     "c1y": ("공통수학1 유형서", os.path.join(ROOT, "공통수학1"), r"^(\d\d)_(.+)\.hwpx$"),
     "c2b": ("공통수학2 기본서", os.path.join(ROOT, "공통수학2", "기본서"), r"^(\d+)\. (.+)\.hwpx$"),
     "c2y": ("공통수학2 유형서", os.path.join(ROOT, "공통수학2", "유형서"), r"^(\d\d)_(.+)\.hwpx$"),
+    "c1l": ("공통수학1 유형서 라이트", os.path.join(ROOT, "스토리라이트", "공통수학1"), r"^(\d\d)_(.+)\.hwpx$"),
+    "c2l": ("공통수학2 유형서 라이트", os.path.join(ROOT, "스토리라이트", "공통수학2"), r"^(\d\d)_(.+)\.hwpx$"),
 }
+FALLBACK = {"c1l": "c1y", "c2l": "c2y"}   # 라이트를 아직 만들지 않은 단원(공통수학2 7·8단원)은 유형서와 같으므로 유형서 파일에서 읽는다
 book, out = sys.argv[1:3]
 TITLE, DIR, PAT = BOOKS[book]
 units = []
@@ -24,6 +27,14 @@ for f in sorted(os.listdir(DIR)):
     m = re.match(PAT, f)
     if m and "교체후보" not in f and "추가" not in f and not re.search(r"_\d+(_\d+)?번", f):
         units.append((int(m.group(1)), m.group(2).replace("_", " "), os.path.join(DIR, f)))
+if book in FALLBACK:
+    have = {u[0] for u in units}
+    _, D2, P2 = BOOKS[FALLBACK[book]]
+    for f in sorted(os.listdir(D2)):
+        m = re.match(P2, f)
+        if m and int(m.group(1)) not in have and "추가" not in f and "교체후보" not in f and not re.search(r"_\d+(_\d+)?번", f):
+            units.append((int(m.group(1)), m.group(2).replace("_", " "), os.path.join(D2, f)))
+            print("라이트 없음 → 유형서에서:", f)
 units.sort()
 assert [u[0] for u in units] == list(range(1, 13)), [u[0] for u in units]
 NAME_FIX = {"이차함수의 최대 최소": "이차함수의 최대, 최소"}
