@@ -1,0 +1,138 @@
+# 한글 수식 스크립트 -> LaTeX (미리보기·크기 측정용 근사 변환)
+import re
+
+WORDS = {
+    "le": r"\le ", "ge": r"\ge ", "leq": r"\le ", "geq": r"\ge ", "LEQ": r"\le ", "GEQ": r"\ge ", "ne": r"\ne ", "TIMES": r"\times ", "times": r"\times ",
+    "CDOTS": r"\cdots ", "cdots": r"\cdots ", "PLUSMINUS": r"\pm ", "notin": r"\notin ", "nin": r"\notin ",
+    "in": r"\in ", "subset": r"\subset ", "nsubset": r"\not\subset ", "cap": r"\cap ", "cup": r"\cup ",
+    "circ": r"\circ ", "rarrow": r"\rightarrow ", "alpha": r"\alpha ", "beta": r"\beta ", "prime": "'", "dprime": "''",
+    "sim": r"\sim ", "LEFT": "left", "RIGHT": "right", "DEG": r"^\circ ",
+    "therefore": r"\therefore ", "THEREFORE": r"\therefore ",
+    "angle": r"\angle ", "gamma": r"\gamma ", "PI": r"\Pi ", "pi": r"\pi ", "delta": r"\delta ", "omega": r"\omega ", "theta": r"\theta ",
+    "triangle": r"\triangle ", "bot": r"\perp ",
+    "vert": r"\vert ", "emptyset": r"\varnothing ", "EMPTYSET": r"\varnothing ",
+    "LRARROW": r"\Leftrightarrow ", "lrarrow": r"\leftrightarrow ", "RARROW": r"\Rightarrow ",
+}
+
+def _group(s, i):
+    """s[i] == '{' 일 때 짝 괄호까지의 내용과 끝 위치"""
+    depth = 0
+    for j in range(i, len(s)):
+        if s[j] == "{":
+            depth += 1
+        elif s[j] == "}":
+            depth -= 1
+            if depth == 0:
+                return s[i + 1:j], j + 1
+    return s[i + 1:], len(s)
+
+def _atom_before(s, end):
+    """end 직전의 그룹 또는 토큰"""
+    k = end
+    while k > 0 and s[k - 1] == " ":
+        k -= 1
+    if k > 0 and s[k - 1] == "}":
+        depth = 0
+        for j in range(k - 1, -1, -1):
+            if s[j] == "}":
+                depth += 1
+            elif s[j] == "{":
+                depth -= 1
+                if depth == 0:
+                    return j, s[j + 1:k - 1]
+    m = re.search(r"[A-Za-z0-9\.]+$", s[:k])
+    if m:
+        return m.start(), m.group(0)
+    return k, ""
+
+def _atom_after(s, start):
+    k = start
+    while k < len(s) and s[k] == " ":
+        k += 1
+    if k < len(s) and s[k] == "{":
+        g, e = _group(s, k)
+        return g, e
+    m = re.match(r"[A-Za-z0-9\.]+", s[k:])
+    if m:
+        return m.group(0), k + m.end()
+    return "", k
+
+def _balance(s):
+    """짝이 없는 \\left·\\right는 괄호 글자로 바꾼다(조건제시법을 수식과 글로 나눈 조각: 'U=LEFT { x left| x ', 'x notin B RIGHT }')."""
+    toks = list(re.finditer(r"\\(left|right)(\\\{|\\\}|[\(\)\[\]\|\.])", s))
+    stack, bare = [], set()
+    for i, m in enumerate(toks):
+        if m.group(1) == "left":
+            stack.append(i)
+        elif stack:
+            stack.pop()
+        else:
+            bare.add(i)
+    bare |= set(stack)
+    for i in sorted(bare, reverse=True):
+        m = toks[i]
+        d = m.group(2)
+        d = r"\mid " if d == "|" else ("" if d == "." else d)
+        s = s[:m.start()] + d + s[m.end():]
+    return s
+
+
+def convert(script):
+    s = script
+    s = s.replace("`", " ").replace("~", r"\ ").replace("∥", r"\parallel ")
+    # 한글 -> \text{}
+    s = re.sub(r"([가-힣]+(?:\s*[가-힣]+)*)", lambda m: r"\text{" + m.group(1) + "}", s)
+    # cases / rpile(행렬)
+    def env(name, body):
+        rows = [r.strip() for r in body.split("#")]
+        if name == "cases":
+            rows = [r.replace("&&", "&").replace("& &", "&") for r in rows]
+            return r"\begin{cases}" + r"\\".join(rows) + r"\end{cases}"
+        rows = [re.sub(r"&&?", "&", r) for r in rows]
+        if name == "pmatrix":
+            return r"\begin{pmatrix}" + r"\\".join(rows) + r"\end{pmatrix}"
+        return r"\begin{matrix}" + r"\\".join(rows) + r"\end{matrix}"
+    for name in ("cases", "rpile", "lpile", "pile", "matrix", "pmatrix"):   # pile{it#it}: 사용자가 큰 중괄호 높이를 맞추는 빈 줄
+        while True:
+            m = re.search(r"\b%s\s*\{" % name, s)
+            if not m:
+                break
+            g, e = _group(s, m.end() - 1)
+            s = s[:m.start()] + "{" + env(name if name in ("cases", "pmatrix") else "matrix", g) + "}" + s[e:]
+    s = s.replace("!=", " ne ")          # 한글 수식의 != 는 ≠ (계승 뒤의 등호는 "5! =120"처럼 띄어 쓴다)
+    s = re.sub(r"\bprime\s+prime\b", "dprime", s)   # B″: KaTeX는 ' '를 이중 위 첨자로 본다
+    # 단어 치환
+    s = re.sub(r"\b(" + "|".join(sorted(WORDS, key=len, reverse=True)) + r")\b", lambda m: WORDS[m.group(1)], s)
+    # left/right 괄호
+    s = re.sub(r"\bleft\s*\{", r"\\left\\{", s)
+    s = re.sub(r"\bright\s*\}", r"\\right\\}", s)
+    s = re.sub(r"\bleft\s*([\(\[\|\.])", r"\\left\1", s)
+    s = re.sub(r"\bright\s*([\)\]\|\.])", r"\\right\1", s)
+    s = re.sub(r"(?<!\\)\bright\b", lambda m: "\\}", s)     # 조건제시법을 수식·글로 나눈 닫는 수식 'it right'(사용자 5·6단원 완성본)
+    s = _balance(s)
+    # rm / it
+    s = re.sub(r"\brm\s*\{([^{}]*)\}", r"\\mathrm{\1}", s)
+    s = re.sub(r"\brm\s+([A-Za-z]+)", r"\\mathrm{\1}", s)
+    s = re.sub(r"\bit\b", "", s)
+    s = re.sub(r"\bbar\s*\{", r"\\overline{", s)
+    s = re.sub(r"\bBOX\s*\{", r"\\boxed{", s)     # 빈칸 추론의 빈칸
+    s = re.sub(r"(?<!\\)\boverline\s*\{", r"\\overline{", s)
+    s = s.replace("+-", r"\pm ").replace("-+", r"\mp ")
+    s = re.sub(r"\broot\s*\{([^{}]*)\}\s*of\s*\{", r"\\sqrt[\1]{", s)   # 한글 수식 n제곱근: root {3} of {abc}
+    s = re.sub(r"\bsqrt\s*\{", r"\\sqrt{", s)
+    s = re.sub(r"\bsqrt\s+([A-Za-z0-9]+)", r"\\sqrt{\1}", s)
+    # over
+    while True:
+        m = re.search(r"\s+over\s+", s)
+        if not m:
+            break
+        st, num = _atom_before(s, m.start())
+        den, e = _atom_after(s, m.end())
+        s = s[:st] + r"\frac{" + num + "}{" + den + "}" + s[e:]
+    return s
+
+if __name__ == "__main__":
+    for t in ["{1} over {3}x-1", "A`= left( rpile{ 1 && 3 # k && 5 } right)", "cases{ x^{2}-2x-8 ge 0 # x^{2}-36 < 0}",
+              "{rm{A}} left(1,`4 right)", "{}_{6} rm C _{3} =20", "left{x left| x 는~ 12 의~약수 right. right}",
+              "-{2a} over {15} =2", "{ bar{rm{AB}}} = sqrt{16^{2}+4^{2}}"]:
+        print(t, " => ", convert(t))
