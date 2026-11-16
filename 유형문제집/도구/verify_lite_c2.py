@@ -277,6 +277,11 @@ def cnt85(kv):
     return int(np.sum(sg[1:]*sg[:-1] < 0) + np.sum(np.abs(d) < 1e-12))
 assert cnt85(0.05) == 2 and cnt85(0.8) == 2 and cnt85(0.81) == 1 and cnt85(0.0) == 1 and cnt85(-0.3) == 1
 R[(12, 1)] = sp.Rational(4, 5) - 0
+def min_ab(kv):
+    ts = np.linspace(0, 20, 200001)
+    return float(np.min(ts**2 + 1 + kv*ts + 3))
+ks6 = [kv / 100 for kv in range(-1000, 0) if abs(min_ab(kv / 100) - 3) < 1e-6]
+assert len(ks6) == 1; R[(12, 6)] = ks6[0]
 # ---- 명세와 대조
 def hwp2sym(s):
     s = s.replace("pi", "*pi").replace(" ", "")
