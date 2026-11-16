@@ -18,7 +18,8 @@ def norm_sub(sub):
     m = ARROW.search(sub)
     if not m:
         return None
-    left = re.sub(r'[`\s]+', '', sub[:m.start()])
+    left = re.sub(r'\s+', ' ', re.sub(r'`', ' ', sub[:m.start()])).strip()   # 'DELTA x'처럼 명령 뒤 빈칸은 남긴다
+    left = re.sub(r'\s*([+\-])\s*', r'\1', left)
     right = re.sub(r'[`\s]+', '', sub[m.end():])
     right = re.sub(r'INF', 'inf', right)
     if not left or not right:

@@ -11,7 +11,8 @@ R = [(re.compile(r'(?<![A-Za-z])(times|TIMES|therefore|THEREFORE|leq|geq|LEQ|GEQ
      (re.compile(r'(?<![A-Za-z])(le|ge)(?=[0-9])'), r'\1 '),
      (re.compile(r'(?<=[0-9])(leq|geq|LEQ|GEQ|cdot|CDOT|times|TIMES|alpha|beta|lim)(?![A-Za-z])'), r' \1'),   # 3times → 3 times
      (re.compile(r'\^\{(\d+)`\}'), r'^{\1}'),                                                      # x^{3`} → x^{3}
-     (re.compile(r'ㆍ'), ' cdot ')]
+     (re.compile(r'ㆍ|⋅'), ' cdot '),
+     (re.compile(r'(?<![A-Za-z])(DELTA|Delta|delta)(?=[A-Za-z0-9])'), r'\1 ')]   # DELTAx → DELTA x
 ARR = re.compile(r'\s*`*\s*(->|rarrow|RARROW|→)\s*`*\s*(it\s*)?')
 def arrows(sc):
     """lim 아래첨자 밖의 화살표(x→a일 때)를 'x``->``a'로, 끝의 INF → inf (bold 제목은 그대로)"""
