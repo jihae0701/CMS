@@ -268,6 +268,15 @@ best52 = [(av, bv) for av in range(-6, 7) for bv in range(-6, 7) if ok52(av, bv)
 assert len(best52) == 1; R[(11, 12)] = sum(best52[0])
 g55 = lambda v: (v - 1) / (2*v + 1)
 R[(11, 13)] = [sp.Rational(n, 4) for n in range(-80, 81) if 2*sp.Rational(n, 4) + 1 != 0 and g55(sp.Rational(n, 4)) == sp.Rational(1, 3)][0]
+
+# ---- 12단원 무리식과 무리함수
+def cnt85(kv):
+    xs = np.linspace(-20000, 1.5, 4000001)
+    d = -np.sqrt(3 - 2*xs) + 4 - (kv*(xs + 1) + 2)
+    sg = np.sign(d)
+    return int(np.sum(sg[1:]*sg[:-1] < 0) + np.sum(np.abs(d) < 1e-12))
+assert cnt85(0.05) == 2 and cnt85(0.8) == 2 and cnt85(0.81) == 1 and cnt85(0.0) == 1 and cnt85(-0.3) == 1
+R[(12, 1)] = sp.Rational(4, 5) - 0
 # ---- 명세와 대조
 def hwp2sym(s):
     s = s.replace("pi", "*pi").replace(" ", "")
@@ -279,7 +288,7 @@ def hwp2sym(s):
     s = s.lstrip("*")
     return sp.sympify(s)
 bad = n = 0
-for u in (1, 2, 3, 4, 5, 6, 9, 10, 11):
+for u in (1, 2, 3, 4, 5, 6, 9, 10, 11, 12):
     sp_ = importlib.util.spec_from_file_location("s", os.path.join(os.path.dirname(os.path.abspath(__file__)), "lite_c2_%02d.py" % u))
     S = importlib.util.module_from_spec(sp_); sp_.loader.exec_module(S)
     for i, v_ in S.REPLACE.items():
