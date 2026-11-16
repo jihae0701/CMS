@@ -30,6 +30,7 @@ description: 한글(HWP/HWPX) 수학 문제집의 수식을 쓰거나 검토할 
 | 기호 | `therefore`(∴), `PLUSMINUS`(±), `emptyset`, `in`, `notin`, `circ`(합성), `pi`, `alpha`, `beta` | `t=-2 PLUSMINUS 2 sqrt {2}` |
 | 제곱근 | `sqrt {…}` | `sqrt {x^{2} +1}` |
 | 거듭제곱·첨자 | `^{…}`, `_{…}` (중괄호) | `x^{2}`, `a_{n}`, `f^{-1} (x)` |
+| 극한(lim) | 아래첨자의 화살표 앞뒤에 `` ` ``를 하나씩(미적분 시리즈 약속) | `lim _{x `-> `inf} f(x)`, `lim _{x `-> `2} {x^{2} -4} over {x-2}`, `lim _{x `-> `-inf}` |
 | 행렬 | `pmatrix{a&~b#c&~d}` — 문자 바로 뒤면 빈칸(`A pmatrix…`) | `A= pmatrix{1&~2#3&~4}` |
 | 기울임 | 상수·변수를 기울여야 할 때 `it` | `x_{1}`, `A( it a,~b)` |
 
