@@ -1,0 +1,611 @@
+[
+{
+"op": "text",
+"n": 2,
+"part": "q",
+"old": "값은?",
+"new": "값을 구하시오."
+},
+{
+"op": "del_para",
+"n": 2,
+"part": "q",
+"anchor": "①"
+},
+{
+"op": "del_para",
+"n": 2,
+"part": "q",
+"anchor": "④",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 2,
+"part": "sol",
+"old": " [정답] ③",
+"pre": " [정답] ",
+"eq": "3",
+"post": ""
+},
+{
+"op": "text",
+"n": 8,
+"part": "q",
+"old": "값은?",
+"new": "값을 구하시오."
+},
+{
+"op": "del_para",
+"n": 8,
+"part": "q",
+"anchor": "①"
+},
+{
+"op": "del_para",
+"n": 8,
+"part": "q",
+"anchor": "④",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 8,
+"part": "sol",
+"old": " [정답] ④",
+"pre": " [정답] ",
+"eq": "48",
+"post": ""
+},
+{
+"op": "text",
+"n": 9,
+"part": "q",
+"old": "값은?",
+"new": "값을 구하시오."
+},
+{
+"op": "del_para",
+"n": 9,
+"part": "q",
+"anchor": "①"
+},
+{
+"op": "del_para",
+"n": 9,
+"part": "q",
+"anchor": "④",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 9,
+"part": "sol",
+"old": " [정답] ②",
+"pre": " [정답] ",
+"eq": "2",
+"post": ""
+},
+{
+"op": "text",
+"n": 10,
+"part": "q",
+"old": "값은?",
+"new": "값을 구하시오."
+},
+{
+"op": "del_para",
+"n": 10,
+"part": "q",
+"anchor": "①"
+},
+{
+"op": "del_para",
+"n": 10,
+"part": "q",
+"anchor": "④",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 10,
+"part": "sol",
+"old": " [정답] ①",
+"pre": " [정답] ",
+"eq": "-4",
+"post": ""
+},
+{
+"op": "text",
+"n": 12,
+"part": "q",
+"old": "값은?",
+"new": "값을 구하시오."
+},
+{
+"op": "del_para",
+"n": 12,
+"part": "q",
+"anchor": "①"
+},
+{
+"op": "del_para",
+"n": 12,
+"part": "q",
+"anchor": "④",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 12,
+"part": "sol",
+"old": " [정답] ③",
+"pre": " [정답] ",
+"eq": "{2} over {3}",
+"post": ""
+},
+{
+"op": "text",
+"n": 17,
+"part": "q",
+"old": "값은?",
+"new": "값을 구하시오."
+},
+{
+"op": "del_para",
+"n": 17,
+"part": "q",
+"anchor": "①"
+},
+{
+"op": "del_para",
+"n": 17,
+"part": "q",
+"anchor": "④",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 17,
+"part": "sol",
+"old": " [정답] ①",
+"pre": " [정답] ",
+"eq": "-6",
+"post": ""
+},
+{
+"op": "text",
+"n": 27,
+"part": "q",
+"old": "적어도 몇 개의 실근을 갖는가?",
+"new": "적어도 몇 개의 실근을 갖는지 구하시오."
+},
+{
+"op": "del_para",
+"n": 27,
+"part": "q",
+"anchor": "①"
+},
+{
+"op": "del_para",
+"n": 27,
+"part": "q",
+"anchor": "④",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 27,
+"part": "sol",
+"old": " [정답] ③",
+"pre": " [정답] ",
+"eq": "3",
+"post": ""
+},
+{
+"op": "text",
+"n": 34,
+"part": "q",
+"old": "개수는?",
+"new": "개수를 구하시오."
+},
+{
+"op": "del_para",
+"n": 34,
+"part": "q",
+"anchor": "①"
+},
+{
+"op": "del_para",
+"n": 34,
+"part": "q",
+"anchor": "④",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 34,
+"part": "sol",
+"old": "[정답] ③",
+"pre": " [정답] ",
+"eq": "3",
+"post": ""
+},
+{
+"op": "text",
+"n": 35,
+"part": "q",
+"old": "값은?",
+"new": "값을 구하시오."
+},
+{
+"op": "del_para",
+"n": 35,
+"part": "q",
+"anchor": "①"
+},
+{
+"op": "del_para",
+"n": 35,
+"part": "q",
+"anchor": "④",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 35,
+"part": "sol",
+"old": " [정답] ③",
+"pre": " [정답] ",
+"eq": "8",
+"post": ""
+},
+{
+"op": "text",
+"n": 36,
+"part": "q",
+"old": "값은?",
+"new": "값을 구하시오."
+},
+{
+"op": "del_para",
+"n": 36,
+"part": "q",
+"anchor": "①"
+},
+{
+"op": "del_para",
+"n": 36,
+"part": "q",
+"anchor": "④",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 36,
+"part": "sol",
+"old": " [정답] ②",
+"pre": " [정답] ",
+"eq": "0",
+"post": ""
+},
+{
+"op": "text",
+"n": 41,
+"part": "q",
+"old": "값은?",
+"new": "값을 구하시오."
+},
+{
+"op": "del_para",
+"n": 41,
+"part": "q",
+"anchor": "①"
+},
+{
+"op": "del_para",
+"n": 41,
+"part": "q",
+"anchor": "④",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 41,
+"part": "sol",
+"old": " [정답] ③",
+"pre": " [정답] ",
+"eq": "5",
+"post": ""
+},
+{
+"op": "text",
+"n": 43,
+"part": "q",
+"old": "값은?",
+"new": "값을 구하시오."
+},
+{
+"op": "del_para",
+"n": 43,
+"part": "q",
+"anchor": "①"
+},
+{
+"op": "del_para",
+"n": 43,
+"part": "q",
+"anchor": "④",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 43,
+"part": "sol",
+"old": " [정답] ④",
+"pre": " [정답] ",
+"eq": "-6",
+"post": ""
+},
+{
+"op": "eq",
+"n": 1,
+"part": "sol",
+"old": "lim _{x `->` 0-} {`f LEFT ( x RIGHT )} = lim _{x `->` 0+} {`x} =0",
+"new": "lim _{x `->` 0-} {`f LEFT ( x RIGHT )} = lim _{x `->` 0-} {`x} =0"
+},
+{
+"op": "del_eq",
+"n": 3,
+"part": "sol",
+"old": "lim _{x `->` 0+}"
+},
+{
+"op": "text",
+"n": 3,
+"part": "sol",
+"old": "g",
+"new": "",
+"exact": true
+},
+{
+"op": "eq",
+"n": 6,
+"part": "sol",
+"old": "lim _{x `->` 1} {` {x ^{2} +ax-6} over {x-2} =b}",
+"new": "lim _{x `->` 2} {` {x ^{2} +ax-6} over {x-2} =b}"
+},
+{
+"op": "eq",
+"n": 6,
+"part": "sol",
+"old": "= lim _{x `->` 1} {` LEFT ( x+3 RIGHT )} =5",
+"new": "= lim _{x `->` 2} {` LEFT ( x+3 RIGHT )} =5"
+},
+{
+"op": "eq",
+"n": 7,
+"part": "sol",
+"old": "= lim _{x `->` 2} {` {x ^{2} -x+2} over {LEFT ( x-2 RIGHT ) LEFT ( sqrt {x ^{2} -x+2} +2 RIGHT )}}",
+"new": "= lim _{x `->` 2} {` {x ^{2} -x-2} over {LEFT ( x-2 RIGHT ) LEFT ( sqrt {x ^{2} -x+2} +2 RIGHT )}}"
+},
+{
+"op": "text",
+"n": 15,
+"part": "sol",
+"old": "에서 불연속이다",
+"new": "에서 불연속이다.",
+"exact": true
+},
+{
+"op": "eq",
+"n": 17,
+"part": "sol",
+"old": "{-3+-{root5}} over {2}",
+"new": "{-3 PLUSMINUS sqrt {5}} over {2}"
+},
+{
+"op": "eq",
+"n": 21,
+"part": "sol",
+"old": "f LEFT ( x RIGHT ) =x ^{2} +2x-5",
+"new": "f LEFT ( x RIGHT ) =x ^{3} +2x-5"
+},
+{
+"op": "text",
+"n": 26,
+"part": "q",
+"old": "만족할 때",
+"new": "만족시킬 때"
+},
+{
+"op": "text",
+"n": 26,
+"part": "q",
+"old": "닫힌 구간",
+"new": "닫힌구간"
+},
+{
+"op": "eq",
+"n": 33,
+"part": "sol",
+"old": "lim _{x `->` 0} {`f LEFT ( g LEFT ( x RIGHT ) RIGHT ) =f LEFT ( g LEFT ( a RIGHT ) RIGHT ) =0}",
+"new": "lim _{x `->` 0} {`f LEFT ( g LEFT ( x RIGHT ) RIGHT ) =f LEFT ( g LEFT ( 0 RIGHT ) RIGHT ) =0}"
+},
+{
+"op": "eq",
+"n": 40,
+"part": "sol",
+"old": "lim _{n `->` inf} x^n =lim _{x `->` inf} x^n+1 =0",
+"new": "lim _{n `->` inf} x^n =lim _{n `->` inf} x^n+1 =0"
+},
+{
+"op": "eq",
+"n": 40,
+"part": "sol",
+"old": "THEREFORE ~f(x)= lim _{n `->` inf} {x+ {5x} over {x ^{n}} + {a} over {x ^{n}}} over {1+ {1} over {x}} =x",
+"new": "THEREFORE ~f(x)= lim _{n `->` inf} {x+ {5x} over {x ^{n}} + {a} over {x ^{n}}} over {1+ {1} over {x ^{n}}} =x"
+},
+{
+"op": "text",
+"n": 42,
+"part": "q",
+"old": "연속이⏎다.",
+"new": "연속이다."
+},
+{
+"op": "eq",
+"n": 44,
+"part": "sol",
+"old": "y=(x-1)\r\n",
+"new": "y=(x-1)f(x)"
+},
+{
+"op": "text",
+"n": 44,
+"part": "sol",
+"old": "연속이어야한다.",
+"new": "연속인지만 조사하면 된다."
+},
+{
+"op": "eq",
+"n": 48,
+"part": "sol",
+"old": " lim _{x `->` -inf} = it-inf",
+"new": "lim _{x `->` -inf} f(x)= it-inf"
+},
+{
+"op": "add_para",
+"n": 16,
+"part": "sol",
+"text": "⟦g(x)=x ^{2} -3x+2=(x-1)(x-2)⟧이므로",
+"like_n": 15,
+"like": "따라서 실수 전체의 집합에서"
+},
+{
+"op": "add_para",
+"n": 16,
+"part": "sol",
+"text": "① ⟦2f(x)+g(x)=x ^{2} -x+4⟧는 다항함수이므로 구간 ⟦(-inf,~inf)⟧에서 연속이다.",
+"like_n": 15,
+"like": "따라서 실수 전체의 집합에서"
+},
+{
+"op": "add_para",
+"n": 16,
+"part": "sol",
+"text": "② ⟦f(x)g(x)⟧는 다항함수이므로 구간 ⟦(-inf,~inf)⟧에서 연속이다.",
+"like_n": 15,
+"like": "따라서 실수 전체의 집합에서"
+},
+{
+"op": "add_para",
+"n": 16,
+"part": "sol",
+"text": "③ ⟦{f(x)} over {g(x)}⟧는 ⟦g(x)=0⟧, 즉 ⟦x=1⟧, ⟦x=2⟧에서 정의되지 않으므로 구간 ⟦(-inf,~1)⟧, ⟦(1,~2)⟧, ⟦(2,~inf)⟧에서 연속이다.",
+"like_n": 15,
+"like": "따라서 실수 전체의 집합에서"
+},
+{
+"op": "add_para",
+"n": 16,
+"part": "sol",
+"text": "④ ⟦(f CIRC g)(x)=g(x)+1=x ^{2} -3x+3= LEFT ( x- {3} over {2} RIGHT ) ^{2} + {3} over {4} >0⟧이므로 ⟦{1} over {(f CIRC g)(x)}⟧는 구간 ⟦(-inf,~inf)⟧에서 연속이다.",
+"like_n": 15,
+"like": "따라서 실수 전체의 집합에서"
+},
+{
+"op": "add_para",
+"n": 16,
+"part": "sol",
+"text": "⑤ ⟦(g CIRC f)(x)=(x+1) ^{2} -3(x+1)+2=x(x-1)⟧이므로 ⟦{1} over {(g CIRC f)(x)}⟧는 ⟦x=0⟧, ⟦x=1⟧에서 정의되지 않는다. 즉, 연속인 구간은 ⟦(-inf,~0)⟧, ⟦(0,~1)⟧, ⟦(1,~inf)⟧이다.",
+"like_n": 15,
+"like": "따라서 실수 전체의 집합에서"
+},
+{
+"op": "add_para",
+"n": 16,
+"part": "sol",
+"text": "따라서 잘못 나타낸 것은 ⑤이다.",
+"like_n": 15,
+"like": "따라서 실수 전체의 집합에서"
+},
+{
+"op": "add_para",
+"n": 34,
+"part": "sol",
+"text": "⟦x<1⟧일 때 ⟦f(x)=(x-1) ^{2} -2> it-2⟧, ⟦x GEQ 1⟧일 때 ⟦f(x)= it-(x-1) ^{2} +2 LEQ 2⟧이고, ⟦f(x)⟧는 ⟦x=1⟧에서만 불연속이다.",
+"like_n": 15,
+"like": "따라서 실수 전체의 집합에서"
+},
+{
+"op": "add_para",
+"n": 34,
+"part": "sol",
+"text": "따라서 ⟦(f CIRC f)(x)⟧는 ⟦x=1⟧ 또는 ⟦f(x)=1⟧인 ⟦x⟧에서 불연속일 수 있다.",
+"like_n": 15,
+"like": "따라서 실수 전체의 집합에서"
+},
+{
+"op": "add_para",
+"n": 34,
+"part": "sol",
+"text": "(ⅰ) ⟦x``->``1-⟧일 때 ⟦f(x)``->``-2+⟧이므로 ⟦lim _{x `->` 1-} f(f(x))=f(-2)=7⟧⏎⟦x``->``1+⟧일 때 ⟦f(x)``->``2-⟧이므로 ⟦lim _{x `->` 1+} f(f(x))=f(2)=1⟧⏎즉, ⟦x=1⟧에서 불연속이다.",
+"like_n": 15,
+"like": "따라서 실수 전체의 집합에서"
+},
+{
+"op": "add_para",
+"n": 34,
+"part": "sol",
+"text": "(ⅱ) ⟦f(x)=1⟧인 ⟦x⟧는 ⟦x ^{2} -2x-1=1~(x<1)⟧에서 ⟦x=1- sqrt {3}⟧, ⟦-x ^{2} +2x+1=1~(x GEQ 1)⟧에서 ⟦x=2⟧이다.⏎이 두 점의 좌우에서 ⟦f(x)⟧의 값은 ⟦1⟧보다 큰 값에서 작은 값으로 바뀌므로 ⟦f(f(x))⟧의 좌극한과 우극한은 각각 ⟦lim _{t `->` 1+} f(t)=2⟧, ⟦lim _{t `->` 1-} f(t)= it-2⟧가 되어 서로 다르다. 즉, ⟦x=1- sqrt {3}⟧, ⟦x=2⟧에서 불연속이다.",
+"like_n": 15,
+"like": "따라서 실수 전체의 집합에서"
+},
+{
+"op": "add_para",
+"n": 34,
+"part": "sol",
+"text": "따라서 ⟦(f CIRC f)(x)⟧가 불연속인 ⟦x⟧는 ⟦1- sqrt {3}⟧, ⟦1⟧, ⟦2⟧의 ⟦3⟧개이다.",
+"like_n": 15,
+"like": "따라서 실수 전체의 집합에서"
+},
+{
+"op": "del_para",
+"n": 43,
+"part": "sol",
+"anchor": "b=it-4"
+},
+{
+"op": "add_para",
+"n": 43,
+"part": "sol",
+"text": "⟦a != b⟧이므로 ⟦f(x)⟧는 ⟦x=0⟧에서만 불연속이고, ⟦f(x-2)⟧는 ⟦x=2⟧에서만 불연속이다. 따라서 ⟦f(x)f(x-2)⟧가 ⟦x=0⟧, ⟦x=2⟧에서 연속이면 된다.",
+"like_n": 15,
+"like": "따라서 실수 전체의 집합에서"
+},
+{
+"op": "add_para",
+"n": 43,
+"part": "sol",
+"text": "(ⅰ) ⟦x``->``0⟧일 때 ⟦f(x-2)``->``f(-2)=4+b⟧이므로⏎⟦lim _{x `->` 0+} f(x)f(x-2)=a(4+b)⟧, ⟦lim _{x `->` 0-} f(x)f(x-2)=b(4+b)⟧, ⟦f(0)f(-2)=a(4+b)⟧⏎⟦(a-b)(4+b)=0⟧이고 ⟦a != b⟧이므로 ⟦b= it-4⟧",
+"like_n": 15,
+"like": "따라서 실수 전체의 집합에서"
+},
+{
+"op": "add_para",
+"n": 43,
+"part": "sol",
+"text": "(ⅱ) ⟦x``->``2⟧일 때 ⟦f(x)``->``f(2)=2+a⟧이므로⏎⟦lim _{x `->` 2+} f(x)f(x-2)=(2+a)a⟧, ⟦lim _{x `->` 2-} f(x)f(x-2)=(2+a)b⟧, ⟦f(2)f(0)=(2+a)a⟧⏎⟦(2+a)(a-b)=0⟧이고 ⟦a != b⟧이므로 ⟦a= it-2⟧",
+"like_n": 15,
+"like": "따라서 실수 전체의 집합에서"
+},
+{
+"op": "add_para",
+"n": 43,
+"part": "sol",
+"text": "따라서 ⟦a+b=(-2)+(-4)= it-6⟧",
+"like_n": 15,
+"like": "따라서 실수 전체의 집합에서"
+}
+]

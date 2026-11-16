@@ -51,8 +51,9 @@ class Ed:
         if new_ending is None:
             new_ending = ending.replace('값은?', '값을 구하시오.') if '값은?' in ending else ending.replace('은?', '을 구하시오.')
         self.T(n, 'q', ending, new_ending)
-        self.ops.append({'op': 'del_para', 'n': n, 'part': 'q', 'anchor': '①'})
-        self.ops.append({'op': 'del_para', 'n': n, 'part': 'q', 'anchor': '④', 'optional': True})
+        self.ops.append({'op': 'del_para', 'n': n, 'part': 'q', 'anchor': '^①'})
+        for c in '②③④⑤':
+            self.ops.append({'op': 'del_para', 'n': n, 'part': 'q', 'anchor': '^' + c, 'optional': True})
         self.ops.append({'op': 'text_eq', 'n': n, 'part': 'sol', 'old': sol_old or (' [정답] ' + mark), 'pre': ' [정답] ', 'eq': value, 'post': ''})
 
     def run(self, save_json=None):

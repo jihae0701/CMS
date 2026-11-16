@@ -1,0 +1,9 @@
+[
+{
+"op": "eq",
+"n": 48,
+"part": "sol",
+"old": "lim _{x `->` 1} {{f(x)} over {x ^{3} -1}} & = lim _{x `->` 1} {{f(x)-f(1)} over {x ^{3} -1}} ( BECAUSE ~ㄱ)#\r\n& = lim _{x `->` 1} {LEFT { ` {f(x)-f(1)} over {x-1}  TIMES  {1} over {x ^{2} +x+1} RIGHT }}#\r\n& =f` prime (1) TIMES  {1} over {3} =0",
+"new": "lim _{x `->` 1} {{f(x)} over {x ^{3} -1}} & = lim _{x `->` 1} {{f(x)-f(1)} over {x ^{3} -1}} ( BECAUSE ~ㄱ)#\r\n& = lim _{x `->` 1} {LEFT { ` {f(x)-f(1)} over {x-1}  TIMES  {1} over {x ^{2} +x+1} RIGHT }}#\r\n& =f` prime (1) TIMES  {1} over {3} =0#\r\n& THEREFORE ~f` prime (1)=0 ~(거짓)"
+}
+]
