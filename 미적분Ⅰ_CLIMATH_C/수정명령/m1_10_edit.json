@@ -1,0 +1,1368 @@
+[
+{
+"op": "text",
+"n": 4,
+"part": "q",
+"old": "넓이는?",
+"new": "넓이를 구하시오."
+},
+{
+"op": "del_para",
+"n": 4,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 4,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 4,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 4,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 4,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 4,
+"part": "sol",
+"old": " [정답] ②",
+"pre": " [정답] ",
+"eq": "22",
+"post": ""
+},
+{
+"op": "text",
+"n": 5,
+"part": "q",
+"old": "값은?",
+"new": "값을 구하시오."
+},
+{
+"op": "del_para",
+"n": 5,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 5,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 5,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 5,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 5,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 5,
+"part": "sol",
+"old": " [정답] ④",
+"pre": " [정답] ",
+"eq": "137",
+"post": ""
+},
+{
+"op": "text",
+"n": 13,
+"part": "q",
+"old": "값은?",
+"new": "값을 구하시오."
+},
+{
+"op": "del_para",
+"n": 13,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 13,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 13,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 13,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 13,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 13,
+"part": "sol",
+"old": " [정답] ③",
+"pre": " [정답] ",
+"eq": "{16} over {3}",
+"post": ""
+},
+{
+"op": "text",
+"n": 15,
+"part": "q",
+"old": "넓이는?",
+"new": "넓이를 구하시오."
+},
+{
+"op": "del_para",
+"n": 15,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 15,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 15,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 15,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 15,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 15,
+"part": "sol",
+"old": " [정답] ①",
+"pre": " [정답] ",
+"eq": "{1} over {6}",
+"post": ""
+},
+{
+"op": "text",
+"n": 17,
+"part": "q",
+"old": "값은?",
+"new": "값을 구하시오."
+},
+{
+"op": "del_para",
+"n": 17,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 17,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 17,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 17,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 17,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 17,
+"part": "sol",
+"old": " [정답] ⑤",
+"pre": " [정답] ",
+"eq": "28",
+"post": ""
+},
+{
+"op": "text",
+"n": 20,
+"part": "q",
+"old": "변화량은?",
+"new": "변화량을 구하시오."
+},
+{
+"op": "del_para",
+"n": 20,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 20,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 20,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 20,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 20,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 20,
+"part": "sol",
+"old": " [정답] ④",
+"pre": " [정답] ",
+"eq": "1",
+"post": ""
+},
+{
+"op": "text",
+"n": 21,
+"part": "q",
+"old": "최고 높이는?",
+"new": "최고 높이를 구하시오."
+},
+{
+"op": "del_para",
+"n": 21,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 21,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 21,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 21,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 21,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 21,
+"part": "sol",
+"old": " [정답] ③",
+"pre": " [정답] ",
+"eq": "45``rmm",
+"post": ""
+},
+{
+"op": "text",
+"n": 24,
+"part": "q",
+"old": "값은?",
+"new": "값을 구하시오."
+},
+{
+"op": "del_para",
+"n": 24,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 24,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 24,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 24,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 24,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 24,
+"part": "sol",
+"old": " [정답] ③",
+"pre": " [정답] ",
+"eq": "16",
+"post": ""
+},
+{
+"op": "text",
+"n": 25,
+"part": "q",
+"old": "넓이는?",
+"new": "넓이를 구하시오."
+},
+{
+"op": "del_para",
+"n": 25,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 25,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 25,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 25,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 25,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 25,
+"part": "sol",
+"old": " [정답] ④",
+"pre": " [정답] ",
+"eq": "{37} over {12}",
+"post": ""
+},
+{
+"op": "text",
+"n": 27,
+"part": "q",
+"old": "최솟값은?",
+"new": "최솟값을 구하시오."
+},
+{
+"op": "del_para",
+"n": 27,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 27,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 27,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 27,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 27,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 27,
+"part": "sol",
+"old": " [정답] ④",
+"pre": " [정답] ",
+"eq": "{4} over {3}",
+"post": ""
+},
+{
+"op": "text",
+"n": 28,
+"part": "q",
+"old": "넓이는?",
+"new": "넓이를 구하시오."
+},
+{
+"op": "del_para",
+"n": 28,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 28,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 28,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 28,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 28,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 28,
+"part": "sol",
+"old": " [정답] ④",
+"pre": " [정답] ",
+"eq": "{7} over {3}",
+"post": ""
+},
+{
+"op": "text",
+"n": 29,
+"part": "q",
+"old": "넓이는?",
+"new": "넓이를 구하시오."
+},
+{
+"op": "del_para",
+"n": 29,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 29,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 29,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 29,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 29,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 29,
+"part": "sol",
+"old": " [정답] ②",
+"pre": " [정답] ",
+"eq": "{8} over {3}",
+"post": ""
+},
+{
+"op": "text",
+"n": 30,
+"part": "q",
+"old": "넓이는?",
+"new": "넓이를 구하시오."
+},
+{
+"op": "del_para",
+"n": 30,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 30,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 30,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 30,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 30,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 30,
+"part": "sol",
+"old": " [정답] ①",
+"pre": " [정답] ",
+"eq": "{27} over {4}",
+"post": ""
+},
+{
+"op": "text",
+"n": 32,
+"part": "q",
+"old": "값은?",
+"new": "값을 구하시오."
+},
+{
+"op": "del_para",
+"n": 32,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 32,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 32,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 32,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 32,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 32,
+"part": "sol",
+"old": " [정답] ③",
+"pre": " [정답] ",
+"eq": "{51} over {4}",
+"post": ""
+},
+{
+"op": "text",
+"n": 33,
+"part": "q",
+"old": "값은?",
+"new": "값을 구하시오."
+},
+{
+"op": "del_para",
+"n": 33,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 33,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 33,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 33,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 33,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 33,
+"part": "sol",
+"old": " [정답] ②",
+"pre": " [정답] ",
+"eq": "23",
+"post": ""
+},
+{
+"op": "text",
+"n": 34,
+"part": "q",
+"old": "넓이는?",
+"new": "넓이를 구하시오."
+},
+{
+"op": "del_para",
+"n": 34,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 34,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 34,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 34,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 34,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 34,
+"part": "sol",
+"old": " [정답] ④",
+"pre": " [정답] ",
+"eq": "{8} over {3}",
+"post": ""
+},
+{
+"op": "text",
+"n": 35,
+"part": "q",
+"old": "넓이는?",
+"new": "넓이를 구하시오."
+},
+{
+"op": "del_para",
+"n": 35,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 35,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 35,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 35,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 35,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 35,
+"part": "sol",
+"old": " [정답] ③",
+"pre": " [정답] ",
+"eq": "{1} over {6}",
+"post": ""
+},
+{
+"op": "text",
+"n": 37,
+"part": "q",
+"old": "거리는?",
+"new": "거리를 구하시오."
+},
+{
+"op": "del_para",
+"n": 37,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 37,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 37,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 37,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 37,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 37,
+"part": "sol",
+"old": " [정답] ⑤",
+"pre": " [정답] ",
+"eq": "{11} over {2}",
+"post": ""
+},
+{
+"op": "text",
+"n": 39,
+"part": "q",
+"old": "값은?",
+"new": "값을 구하시오."
+},
+{
+"op": "del_para",
+"n": 39,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 39,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 39,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 39,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 39,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 39,
+"part": "sol",
+"old": " [정답] ③",
+"pre": " [정답] ",
+"eq": "13",
+"post": ""
+},
+{
+"op": "text",
+"n": 40,
+"part": "q",
+"old": "넓이는?",
+"new": "넓이를 구하시오."
+},
+{
+"op": "del_para",
+"n": 40,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 40,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 40,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 40,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 40,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 40,
+"part": "sol",
+"old": " [정답] ④",
+"pre": " [정답] ",
+"eq": "{3} over {2}",
+"post": ""
+},
+{
+"op": "text",
+"n": 45,
+"part": "q",
+"old": "높이는?",
+"new": "높이를 구하시오."
+},
+{
+"op": "del_para",
+"n": 45,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 45,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 45,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 45,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 45,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 45,
+"part": "sol",
+"old": " [정답] ③",
+"pre": " [정답] ",
+"eq": "675``rmm",
+"post": ""
+},
+{
+"op": "add_para",
+"n": 33,
+"part": "sol",
+"text": "함수 ⟦y=f(x)⟧의 그래프와 그 역함수 ⟦y=g(x)⟧의 그래프는 직선 ⟦y=x⟧에 대하여 대칭이다.",
+"like_n": 31,
+"like": "따라서 구하는 넓이를"
+},
+{
+"op": "add_para",
+"n": 33,
+"part": "sol",
+"text": "⟦f(1)=1⟧, ⟦f(2)=2⟧이므로 ⟦g(1)=1⟧, ⟦g(2)=2⟧",
+"like_n": 31,
+"like": "따라서 구하는 넓이를"
+},
+{
+"op": "add_para",
+"n": 33,
+"part": "sol",
+"text": "따라서 구하는 넓이는",
+"like_n": 31,
+"like": "따라서 구하는 넓이를"
+},
+{
+"op": "add_para",
+"n": 33,
+"part": "sol",
+"text": "⟦int _{1} ^{2} g(x)dx=2 TIMES 2-1 TIMES 1- int _{1} ^{2} f(x)dx⟧",
+"like_n": 31,
+"like": "따라서 구하는 넓이를"
+},
+{
+"op": "add_para",
+"n": 33,
+"part": "sol",
+"text": "⟦=3- int _{1} ^{2} LEFT ( {1} over {3} x ^{2} + {2} over {3} RIGHT ) dx⟧",
+"like_n": 31,
+"like": "따라서 구하는 넓이를"
+},
+{
+"op": "add_para",
+"n": 33,
+"part": "sol",
+"text": "⟦=3- LEFT [ {1} over {9} x ^{3} + {2} over {3} x RIGHT ] _{1} ^{2} =3- {13} over {9} = {14} over {9}⟧",
+"like_n": 31,
+"like": "따라서 구하는 넓이를"
+},
+{
+"op": "add_para",
+"n": 33,
+"part": "sol",
+"text": "따라서 ⟦p=9⟧, ⟦q=14⟧이므로 ⟦p+q=23⟧",
+"like_n": 31,
+"like": "따라서 구하는 넓이를"
+},
+{
+"op": "eq",
+"n": 11,
+"part": "sol",
+"old": "{ - {3} over {8}}",
+"new": "{ - {8} over {3}}"
+},
+{
+"op": "text",
+"n": 1,
+"part": "q",
+"old": "구하시오",
+"new": "구하시오."
+},
+{
+"op": "eq",
+"n": 1,
+"part": "sol",
+"old": "S= it- int _{ -1} ^{2 } {left( x^2 -x -2 right) dx = it- left[ {1} over {3} x^2 - {1} over {2} x^2 -2x right] _-1 ^2  }",
+"new": "S= it- int _{ -1} ^{2 } {left( x^2 -x -2 right) dx = it- left[ {1} over {3} x^3 - {1} over {2} x^2 -2x right] _-1 ^2  }"
+},
+{
+"op": "eq",
+"n": 3,
+"part": "sol",
+"old": "y= it- x^3 +ax",
+"new": "y= it- x^2 +ax"
+},
+{
+"op": "eq",
+"n": 5,
+"part": "sol",
+"old": "=int _{ 0} ^{ 1} {(x^3 - x^2 )dx  }+ int _{ 1} ^{ 3} { (x^3 - x^2 )dx}",
+"new": "= it- int _{ 0} ^{ 1} {(x^3 - x^2 )dx  }+ int _{ 1} ^{ 3} { (x^3 - x^2 )dx}"
+},
+{
+"op": "eq",
+"n": 6,
+"part": "sol",
+"old": "= left[ - {1} over {3} x^3 = {1} over {2} x^2 +2x right ] _-1 ^2 = {9} over {2}",
+"new": "= left[ - {1} over {3} x^3 + {1} over {2} x^2 +2x right ] _-1 ^2 = {9} over {2}"
+},
+{
+"op": "eq",
+"n": 12,
+"part": "q",
+"old": "y=x  ^{3} -ax  ^{2} ,",
+"new": "y=x  ^{3} -ax  ^{2}"
+},
+{
+"op": "eq",
+"n": 12,
+"part": "q",
+"old": "a<a<1",
+"new": "0<a<1"
+},
+{
+"op": "eq",
+"n": 12,
+"part": "sol",
+"old": "a=1",
+"new": "x=1"
+},
+{
+"op": "eq",
+"n": 14,
+"part": "sol",
+"old": "2` LEFT [  int _{0} ^{1} {(x  ^{3} -3x  ^{2} +3x-x)dx+  int _{1} ^{2} {x-(x  ^{3} -3x  ^{2} +3x)dx}} RIGHT ]",
+"new": "2` LEFT [  int _{0} ^{1} {(x  ^{3} -3x  ^{2} +3x-x)dx+  int _{1} ^{2} { LEFT { x-(x  ^{3} -3x  ^{2} +3x) RIGHT } dx}} RIGHT ]"
+},
+{
+"op": "eq",
+"n": 17,
+"part": "q",
+"old": " int _{0} ^{2} {f(x)dx} +  int _{0} ^{14} {`g(x)dx}",
+"new": " int _{0} ^{2} {f(x)dx} +  int _{2} ^{14} {`g(x)dx}"
+},
+{
+"op": "eq",
+"n": 17,
+"part": "sol",
+"old": "B=  int _{0} ^{14} {g(x)dx}",
+"new": "B=  int _{2} ^{14} {g(x)dx}"
+},
+{
+"op": "text",
+"n": 18,
+"part": "q",
+"old": "떄",
+"new": "때"
+},
+{
+"op": "text",
+"n": 18,
+"part": "sol",
+"old": "운동방향",
+"new": "운동 방향"
+},
+{
+"op": "text",
+"n": 18,
+"part": "sol",
+"old": "진행방향",
+"new": "진행 방향"
+},
+{
+"op": "text",
+"n": 19,
+"part": "q",
+"old": "(3) ",
+"new": "⑶ "
+},
+{
+"op": "text",
+"n": 19,
+"part": "sol",
+"old": "(3) ",
+"new": "⑶ ",
+"all": true
+},
+{
+"op": "text",
+"n": 36,
+"part": "q",
+"old": "(3) ",
+"new": "⑶ "
+},
+{
+"op": "text",
+"n": 36,
+"part": "sol",
+"old": "(3) ",
+"new": "⑶ ",
+"all": true
+},
+{
+"op": "text",
+"n": 36,
+"part": "sol",
+"old": "운동방향",
+"new": "운동 방향"
+},
+{
+"op": "text",
+"n": 20,
+"part": "q",
+"old": "에 서의",
+"new": "에서의"
+},
+{
+"op": "eq",
+"n": 23,
+"part": "sol",
+"old": "S= it- int_-2 ^2 { left(y^2 -4 right) dt + int_2 ^3 { left( y^2 -4 right) dy}}",
+"new": "S= it- int_-2 ^2 { left(y^2 -4 right) dy + int_2 ^3 { left( y^2 -4 right) dy}}"
+},
+{
+"op": "eq",
+"n": 25,
+"part": "sol",
+"old": "y= it-2x  ^{2}",
+"new": "y= it-x  ^{2}"
+},
+{
+"op": "eq",
+"n": 26,
+"part": "q",
+"old": "`=`q  over  p",
+"new": "{q} over {p}"
+},
+{
+"op": "eq",
+"n": 29,
+"part": "sol",
+"old": "- LEFT [ pile{`#`} {1} over {3} x  ^{3} -x  ^{2} RIGHT ]  _{2} ^{3}",
+"new": "+ LEFT [ pile{`#`} {1} over {3} x  ^{3} -x  ^{2} RIGHT ]  _{2} ^{3}"
+},
+{
+"op": "text",
+"n": 31,
+"part": "q",
+"old": "위의 점",
+"new": " 위의 점"
+},
+{
+"op": "text",
+"n": 34,
+"part": "sol",
+"old": "어두운 부분",
+"new": "색칠한 부분"
+},
+{
+"op": "eq",
+"n": 39,
+"part": "q",
+"old": "q over p",
+"new": "{q} over {p}"
+},
+{
+"op": "eq",
+"n": 39,
+"part": "sol",
+"old": "f(x)= {cases{eqalign{-x  ^{2} +2x#\r\n}&eqalign{(x LEQ 1)#\r\n}#````-x+2&LEFT ( x GEQ 1 RIGHT )}}",
+"new": "f(x)= {cases{``-x  ^{2} +2x&~(x LEQ 1)#``-x+2&~(x GEQ 1)}}"
+},
+{
+"op": "eq",
+"n": 40,
+"part": "sol",
+"old": "f(x)= int _ ^ (x ^{2} -1)dx= {1} over {3} x ^{3} -x+C",
+"new": "f(x)= int (x ^{2} -1)dx= {1} over {3} x ^{3} -x+C"
+},
+{
+"op": "text",
+"n": 42,
+"part": "q",
+"old": "이등분 될",
+"new": "이등분될"
+},
+{
+"op": "text",
+"n": 44,
+"part": "q",
+"old": "넓이를 구하",
+"new": "넓이를 구하시오."
+},
+{
+"op": "del_para",
+"n": 44,
+"part": "q",
+"anchor": "^시오."
+},
+{
+"op": "eq",
+"n": 45,
+"part": "sol",
+"old": "= 0+ int_0^30 tdt+ int_35^40 (90-2t)dt",
+"new": "= 0+ int_0^30 tdt+ int_30^45 (90-2t)dt"
+},
+{
+"op": "eq",
+"n": 6,
+"part": "sol",
+"old": "(x+1)\r\n(x-2)=0",
+"new": "(x+1) (x-2)=0"
+},
+{
+"op": "eq",
+"n": 26,
+"part": "q",
+"old": " p+q`\r\n",
+"new": "p+q`"
+},
+{
+"op": "eq",
+"n": 44,
+"part": "q",
+"old": "y=f LEFT ( x\t RIGHT )",
+"new": "y=f LEFT ( x RIGHT )"
+}
+]
