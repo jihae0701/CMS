@@ -48,6 +48,17 @@ def _inv(self, X, Y):
 Frame.inv = _inv
 
 
+def axes2(F, ox, x0, x1, y0, y1):
+    """F.axes()와 같은 모양의 축을 원점 (ox, 0)에 그린다(그래프 두 개를 나란히 그릴 때). x, y 글자 자리도 axes()와 같게"""
+    from mathfig import AX
+    (a, y), (b, _) = F.P(x0, 0), F.P(x1, 0)
+    F.svg.append('<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="#000" stroke-width="%s" marker-end="url(#ar)"/>' % (a, y, b, y, AX))
+    F.labels.append((b + 0.3, y + 1.1, 'x', 22, 'rt'))
+    (X, yb), (_, yt) = F.P(ox, y0), F.P(ox, y1)
+    F.svg.append('<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="#000" stroke-width="%s" marker-end="url(#ar)"/>' % (X, yb, X, yt, AX))
+    F.labels.append((X - 10, yt + 3.7, 'y', 22, 'rc'))
+
+
 def O(F, anc='rt', dx=-6, dy=4):
     F.pt((0, 0), 'O', anc, dx, dy)
 
@@ -153,9 +164,7 @@ def g4():
 def g5():
     F = Frame((-2.8, 9.4), (-2.0, 2.9), 60, 60, (16, 16, 16, 16))
     # y=f(x)
-    F.svg.append('<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="#000" stroke-width="2" marker-end="url(#ar)"/>' % (F.P(-2.7, 0) + F.P(2.7, 0)))
-    F.svg.append('<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="#000" stroke-width="2" marker-end="url(#ar)"/>' % (F.P(0, -1.9) + F.P(0, 2.8)))
-    F.lab((2.7, 0), 'x', 'rt', 0, 6); F.lab((0, 2.8), 'y', 'rt', -6, 2); O(F, 'rb', -6, -4)
+    axes2(F, 0, -2.7, 2.7, -1.9, 2.8); O(F, 'rb', -6, -4)
     F.seg((-2.5, 1.5), (-1, 0), 3.2); F.seg((-1, -1), (0, 0), 3.2); F.seg((0, 0), (1, -1), 3.2); F.seg((1, 0), (2.5, 1.5), 3.2)
     F.dashed((-2, 0), (-2, 1)); F.dashed((-2, 1), (2, 1)); F.dashed((2, 1), (2, 0))
     F.dashed((-1, 0), (-1, -1)); F.dashed((-1, -1), (1, -1)); F.dashed((1, -1), (1, 0))
@@ -166,9 +175,7 @@ def g5():
     F.lab((1.3, 1.9), 'y=f(x)', 'lc', 0, 0)
     # y=g(x)  (원점을 (5.6, 0)으로 옮겨 그림)
     ox = 5.6
-    F.svg.append('<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="#000" stroke-width="2" marker-end="url(#ar)"/>' % (F.P(ox - 2.2, 0) + F.P(ox + 2.5, 0)))
-    F.svg.append('<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="#000" stroke-width="2" marker-end="url(#ar)"/>' % (F.P(ox, -1.9) + F.P(ox, 2.8)))
-    F.lab((ox + 2.5, 0), 'x', 'rt', 0, 6); F.lab((ox, 2.8), 'y', 'rt', -6, 2); F.pt((ox, 0), 'O', 'rt', -6, 4)
+    axes2(F, ox, ox - 2.2, ox + 2.5, -1.9, 2.8); F.pt((ox, 0), 'O', 'rt', -6, 4)
     F.seg((ox - 2.1, 1), (ox + 1, 1), 3.2); F.seg((ox + 1, -1), (ox + 2.0, -2.0), 3.2)
     F.dashed((ox + 1, 1), (ox + 1, -1)); F.dashed((ox + 1, -1), (ox, -1))
     fdot(F, (ox + 1, 1)); odot(F, (ox + 1, -1))
@@ -261,18 +268,14 @@ def g9b():   # y=[2x+1]
 # ── 30번 문제(두 그래프) ──────────────────
 def g30():
     F = Frame((-1.0, 15.2), (-1.4, 6.4), 42, 42, (16, 16, 16, 16))
-    F.svg.append('<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="#000" stroke-width="2" marker-end="url(#ar)"/>' % (F.P(-0.9, 0) + F.P(5.0, 0)))
-    F.svg.append('<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="#000" stroke-width="2" marker-end="url(#ar)"/>' % (F.P(0, -1.3) + F.P(0, 6.3)))
-    F.lab((5.0, 0), 'x', 'rt', 0, 6); F.lab((0, 6.3), 'y', 'rt', -6, 2); O(F, 'rt', -6, 4)
+    axes2(F, 0, -0.9, 5.0, -1.3, 6.3); O(F, 'rt', -6, 4)
     F.seg((-0.85, 0), (0, 0), 3.2); F.seg((0, 3), (3, 3), 3.2); F.seg((3, 5), (4.9, 5), 3.2)
     F.dashed((3, 5), (3, 0)); F.dashed((3, 5), (0, 5))
     fdot(F, (0, 3)); fdot(F, (3, 5)); odot(F, (0, 0)); odot(F, (3, 3))
     F.lab((3, 0), '3', 'ct', 0, 8); F.lab((0, 3), '3', 'rc', -8, 0); F.lab((0, 5), '5', 'rc', -8, 0)
     F.lab((3.2, 5.6), 'y=f(x)', 'lc', 0, 0)
     ox = 9.0
-    F.svg.append('<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="#000" stroke-width="2" marker-end="url(#ar)"/>' % (F.P(ox - 3.6, 0) + F.P(ox + 5.6, 0)))
-    F.svg.append('<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="#000" stroke-width="2" marker-end="url(#ar)"/>' % (F.P(ox, -1.3) + F.P(ox, 6.3)))
-    F.lab((ox + 5.6, 0), 'x', 'rt', 0, 6); F.lab((ox, 6.3), 'y', 'rt', -6, 2); F.pt((ox, 0), 'O', 'rt', -6, 4)
+    axes2(F, ox, ox - 3.6, ox + 5.6, -1.3, 6.3); F.pt((ox, 0), 'O', 'rt', -6, 4)
     g = lambda t: 3 - t * t / 3
     plot(F, lambda x: g(x - ox), ox - 3.4, ox + 3)
     plot(F, lambda x: 1.7 * math.sqrt(max(x - ox - 3, 0)), ox + 3, ox + 5.2)
@@ -340,9 +343,7 @@ def g32g():
 # ── 52번 문제(두 그래프) ──────────────────
 def g52():
     F = Frame((-2.3, 8.4), (-1.7, 2.4), 60, 60, (16, 16, 16, 16))
-    F.svg.append('<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="#000" stroke-width="2" marker-end="url(#ar)"/>' % (F.P(-2.2, 0) + F.P(2.4, 0)))
-    F.svg.append('<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="#000" stroke-width="2" marker-end="url(#ar)"/>' % (F.P(0, -1.6) + F.P(0, 2.3)))
-    F.lab((2.4, 0), 'x', 'rt', 0, 6); F.lab((0, 2.3), 'y', 'rt', -6, 2); O(F, 'rt', -6, 4)
+    axes2(F, 0, -2.2, 2.4, -1.6, 2.3); O(F, 'rt', -6, 4)
     F.seg((-2.0, 1.0), (-1, 0), 3.2); F.seg((1, 0), (2.0, 1.0), 3.2)
     plot(F, lambda x: 0.3 - 1.3 * x * x, -1, 1)
     F.dashed((-1, 0), (-1, -1)); F.dashed((-1, -1), (1, -1)); F.dashed((1, -1), (1, 0))
@@ -350,9 +351,7 @@ def g52():
     F.lab((-1, 0), '-1', 'rb', -4, -4); F.lab((1, 0), '1', 'lb', 4, -4); F.lab((0, -1), '-1', 'rt', -4, 6)
     F.lab((0.9, 1.45), 'y=f(x)', 'lc', 0, 0)
     ox = 5.0
-    F.svg.append('<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="#000" stroke-width="2" marker-end="url(#ar)"/>' % (F.P(ox - 2.2, 0) + F.P(ox + 2.1, 0)))
-    F.svg.append('<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="#000" stroke-width="2" marker-end="url(#ar)"/>' % (F.P(ox, -1.6) + F.P(ox, 2.3)))
-    F.lab((ox + 2.1, 0), 'x', 'rt', 0, 6); F.lab((ox, 2.3), 'y', 'rt', -6, 2); F.pt((ox, 0), 'O', 'lt', 4, 4)
+    axes2(F, ox, ox - 2.2, ox + 2.1, -1.6, 2.3); F.pt((ox, 0), 'O', 'lt', 4, 4)
     F.seg((ox - 2.0, 1), (ox - 1, 1), 3.2); F.seg((ox - 1, -1), (ox + 1, 1), 3.2); F.seg((ox + 1, 1), (ox + 2.0, 1), 3.2)
     F.dashed((ox - 1, 1), (ox - 1, -1)); F.dashed((ox - 1, 1), (ox, 1)); F.dashed((ox + 1, 1), (ox + 1, 0)); F.dashed((ox, 1), (ox + 1, 1)); F.dashed((ox - 1, -1), (ox, -1))
     fdot(F, (ox - 1, 1)); odot(F, (ox - 1, -1))

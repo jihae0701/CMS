@@ -23,6 +23,8 @@ for k,(fn,w) in rep.items():
         p=m.group(0)
         if 'binaryItemIDRef="%s"'%k not in p: return p
         cw=int(re.search(r'<hp:curSz width="(\d+)"',p).group(1))
+        if cw==0:   # 한글에서 다시 저장하면 curSz가 0(=원래 크기)으로 남는다 → 실제 크기 sz를 쓴다
+            cw=int(re.search(r'<hp:sz width="(\d+)"',p).group(1))
         W=w or cw; H=round(W*ph/pw)
         p=re.sub(r'<hp:orgSz [^>]*/>','<hp:orgSz width="%d" height="%d"/>'%(W,H),p)
         p=re.sub(r'<hp:curSz [^>]*/>','<hp:curSz width="%d" height="%d"/>'%(W,H),p)
