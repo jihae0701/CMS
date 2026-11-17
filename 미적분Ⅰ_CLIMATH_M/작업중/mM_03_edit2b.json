@@ -1,0 +1,16 @@
+[
+{
+"op": "eq",
+"n": 49,
+"part": "q",
+"old": "A= LEFT { a left| lim _{x `->` a} LEFT { f(x)-f(a) RIGHT } =0,~-1<a<6 RIGHT } ,",
+"new": "A= LEFT { a left| lim _{x `->` a} LEFT { f(x)-f(a) RIGHT } =0,~-1<a<6 RIGHT }"
+},
+{
+"op": "append",
+"n": 49,
+"part": "q",
+"after_eq": "A= LEFT { a left| lim _{x `->` a} LEFT { f(x)-f(a) RIGHT } =0,~-1<a<6 RIGHT }",
+"text": ","
+}
+]

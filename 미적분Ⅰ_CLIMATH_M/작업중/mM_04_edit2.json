@@ -1,0 +1,27 @@
+[
+{
+"op": "text_eq",
+"n": 10,
+"part": "sol",
+"old": " ④",
+"pre": " ",
+"eq": "sqrt {5}",
+"post": ""
+},
+{
+"op": "text_eq",
+"n": 55,
+"part": "sol",
+"old": "[정답] ③",
+"pre": " [정답] ",
+"eq": "16",
+"post": ""
+},
+{
+"op": "text",
+"n": 56,
+"part": "sol",
+"old": " ㉤<hp:lineBreak/>㉢, ㉤에서 ",
+"new": " ㉣<hp:lineBreak/>㉢, ㉣에서 "
+}
+]

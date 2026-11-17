@@ -1,0 +1,757 @@
+[
+{
+"op": "eq",
+"n": 55,
+"part": "sol",
+"old": "f LEFT ( x RIGHT ) {cases{x&LEFT ( LEFT | x RIGHT | ge 1 RIGHT )#-3x  ^{2} +x+3&LEFT ( LEFT | x RIGHT | <1 RIGHT )}}",
+"new": "f LEFT ( x RIGHT ) = {cases{x&LEFT ( LEFT | x RIGHT | ge 1 RIGHT )#-3x  ^{2} +x+3&LEFT ( LEFT | x RIGHT | <1 RIGHT )}}"
+},
+{
+"op": "text",
+"n": 13,
+"part": "q",
+"old": "합은?",
+"new": "합을 구하시오."
+},
+{
+"op": "del_para",
+"n": 13,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 13,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 13,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 13,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 13,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 13,
+"part": "sol",
+"old": " [정답] ①",
+"pre": " [정답] ",
+"eq": "26",
+"post": ""
+},
+{
+"op": "text",
+"n": 14,
+"part": "q",
+"old": "값은?",
+"new": "값을 구하시오."
+},
+{
+"op": "del_para",
+"n": 14,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 14,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 14,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 14,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 14,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 14,
+"part": "sol",
+"old": " [정답] ⑤",
+"pre": " [정답] ",
+"eq": "- {19} over {4}",
+"post": ""
+},
+{
+"op": "text",
+"n": 16,
+"part": "q",
+"old": "값은?",
+"new": "값을 구하시오."
+},
+{
+"op": "del_para",
+"n": 16,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 16,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 16,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 16,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 16,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 16,
+"part": "sol",
+"old": " [정답] ④",
+"pre": " [정답] ",
+"eq": "9",
+"post": ""
+},
+{
+"op": "text",
+"n": 21,
+"part": "q",
+"old": "합은?",
+"new": "합을 구하시오."
+},
+{
+"op": "del_para",
+"n": 21,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 21,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 21,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 21,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 21,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 21,
+"part": "sol",
+"old": " [정답] ③",
+"pre": " [정답] ",
+"eq": "5",
+"post": ""
+},
+{
+"op": "text",
+"n": 27,
+"part": "q",
+"old": "값은?",
+"new": "값을 구하시오."
+},
+{
+"op": "del_para",
+"n": 27,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 27,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 27,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 27,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 27,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 27,
+"part": "sol",
+"old": " [정답] ③",
+"pre": " [정답] ",
+"eq": "7",
+"post": ""
+},
+{
+"op": "text",
+"n": 30,
+"part": "q",
+"old": "최댓값은?",
+"new": "최댓값을 구하시오."
+},
+{
+"op": "del_para",
+"n": 30,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 30,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 30,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 30,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 30,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 30,
+"part": "sol",
+"old": " [정답] ②",
+"pre": " [정답] ",
+"eq": "-3",
+"post": ""
+},
+{
+"op": "text",
+"n": 32,
+"part": "q",
+"old": "값은?",
+"new": "값을 구하시오."
+},
+{
+"op": "del_para",
+"n": 32,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 32,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 32,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 32,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 32,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 32,
+"part": "sol",
+"old": " [정답] ②",
+"pre": " [정답] ",
+"eq": "3",
+"post": ""
+},
+{
+"op": "text",
+"n": 36,
+"part": "q",
+"old": "극댓값은?",
+"new": "극댓값을 구하시오."
+},
+{
+"op": "del_para",
+"n": 36,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 36,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 36,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 36,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 36,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 36,
+"part": "sol",
+"old": " [정답] ⑤",
+"pre": " [정답] ",
+"eq": "10",
+"post": ""
+},
+{
+"op": "text",
+"n": 40,
+"part": "q",
+"old": "개수는?",
+"new": "개수를 구하시오."
+},
+{
+"op": "del_para",
+"n": 40,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 40,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 40,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 40,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 40,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 40,
+"part": "sol",
+"old": " [정답] ③",
+"pre": " [정답] ",
+"eq": "11",
+"post": ""
+},
+{
+"op": "text",
+"n": 51,
+"part": "q",
+"old": "값은?",
+"new": "값을 구하시오."
+},
+{
+"op": "del_para",
+"n": 51,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 51,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 51,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 51,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 51,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 51,
+"part": "sol",
+"old": " [정답] ⑤",
+"pre": " [정답] ",
+"eq": "3",
+"post": ""
+},
+{
+"op": "text",
+"n": 53,
+"part": "q",
+"old": "합은?",
+"new": "합을 구하시오."
+},
+{
+"op": "del_para",
+"n": 53,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 53,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 53,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 53,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 53,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 53,
+"part": "sol",
+"old": " [정답] ④",
+"pre": " [정답] ",
+"eq": "2",
+"post": ""
+},
+{
+"op": "text",
+"n": 55,
+"part": "q",
+"old": "값은?",
+"new": "값을 구하시오."
+},
+{
+"op": "del_para",
+"n": 55,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 55,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 55,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 55,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 55,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 55,
+"part": "sol",
+"old": " [정답] ③",
+"pre": " [정답] ",
+"eq": "{49} over {12}",
+"post": ""
+},
+{
+"op": "text",
+"n": 61,
+"part": "q",
+"old": "값은?",
+"new": "값을 구하시오."
+},
+{
+"op": "del_para",
+"n": 61,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 61,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 61,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 61,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 61,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 61,
+"part": "sol",
+"old": " [정답] ①",
+"pre": " [정답] ",
+"eq": "7",
+"post": ""
+},
+{
+"op": "del_para",
+"n": 10,
+"part": "sol",
+"anchor": "^그래프는 ⟦x=3⟧에서"
+},
+{
+"op": "eq",
+"n": 18,
+"part": "sol",
+"old": "f`'(t)=it-3t^{2}+3=it-3",
+"new": "f`'(t)=it-3t^{2}+3"
+},
+{
+"op": "eq",
+"n": 18,
+"part": "sol",
+"old": "{x}",
+"new": "{t}"
+},
+{
+"op": "eq",
+"n": 18,
+"part": "sol",
+"old": "{f` prime (x)}",
+"new": "{f` prime (t)}"
+},
+{
+"op": "eq",
+"n": 18,
+"part": "sol",
+"old": "{f(x)}",
+"new": "{f(t)}"
+},
+{
+"op": "eq",
+"n": 19,
+"part": "sol",
+"old": "S``'(t)=0`",
+"new": "S`'(t)=0`"
+},
+{
+"op": "eq",
+"n": 21,
+"part": "sol",
+"old": "g LEFT ( t RIGHT ) = it-2t  ^{3} +t  ^{2} +2",
+"new": "g LEFT ( t RIGHT ) = it-2t  ^{3} +3t  ^{2} +2"
+},
+{
+"op": "eq",
+"n": 21,
+"part": "sol",
+"old": "+",
+"new": "-",
+"first": true
+},
+{
+"op": "eq",
+"n": 21,
+"part": "sol",
+"old": "g LEFT ( x RIGHT )",
+"new": "g LEFT ( t RIGHT )"
+},
+{
+"op": "eq",
+"n": 22,
+"part": "sol",
+"old": "P",
+"new": "rm P"
+},
+{
+"op": "eq",
+"n": 51,
+"part": "sol",
+"old": "f`' LEFT ( x RIGHT ) 3x  ^{2} +2ax+ LEFT ( 12-a  ^{2} RIGHT ) ge 0",
+"new": "f`' LEFT ( x RIGHT ) =3x  ^{2} +2ax+ LEFT ( 12-a  ^{2} RIGHT ) ge 0"
+},
+{
+"op": "text",
+"n": 59,
+"part": "q",
+"old": "어두운 부분",
+"new": "색칠한 부분"
+},
+{
+"op": "eq",
+"n": 61,
+"part": "sol",
+"old": "=LEFT ( 2- {2} over {3} a^{2}  RIGHT )LEFT ( {a} over {3} -1 RIGHT )",
+"new": "=LEFT ( 2- {2} over {3} a RIGHT )^{2} LEFT ( {a} over {3} -1 RIGHT )"
+},
+{
+"op": "text",
+"n": 63,
+"part": "sol",
+"old": "일 대 ",
+"new": "일 때 "
+}
+]

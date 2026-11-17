@@ -24,7 +24,7 @@ def texts(path):
             break
         def t(spans):
             z = ''.join(x[a:b] for a, b in spans)
-            z = re.sub(r'<hp:script>(.*?)</hp:script>', lambda m: '⟦' + m.group(1) + '⟧', z, flags=re.S)
+            z = re.sub(r'<hp:script\b[^>]*>(.*?)</hp:script>', lambda m: '⟦' + m.group(1) + '⟧', z, flags=re.S)
             z = re.sub(r'<hp:pic (?:(?!</hp:pic>).)*</hp:pic>', '[그림]', z, flags=re.S)
             z = re.sub(r'<(?!/?hp:t\b)[^>]+>', '', z)
             z = re.sub(r'</?hp:t>', '', z)

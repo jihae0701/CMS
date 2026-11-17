@@ -1,0 +1,33 @@
+[
+{
+"op": "del_para",
+"n": 46,
+"part": "sol",
+"anchor": ">풀이전략"
+},
+{
+"op": "del_para",
+"n": 46,
+"part": "sol",
+"anchor": ">문제풀이"
+},
+{
+"op": "del_para",
+"n": 59,
+"part": "sol",
+"anchor": ">풀이전략"
+},
+{
+"op": "del_para",
+"n": 59,
+"part": "sol",
+"anchor": ">문제풀이"
+},
+{
+"op": "eq",
+"n": 19,
+"part": "sol",
+"old": "THEREFORE f'(-1)+f'(2)=7+13=20\r\n",
+"new": "THEREFORE f'(-1)+f'(2)=7+13=20"
+}
+]
