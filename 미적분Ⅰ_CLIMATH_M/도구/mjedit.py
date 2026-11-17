@@ -54,7 +54,19 @@ class Ed:
         self.ops.append({'op': 'del_para', 'n': n, 'part': 'q', 'anchor': '^①'})
         for c in '②③④⑤':
             self.ops.append({'op': 'del_para', 'n': n, 'part': 'q', 'anchor': '^' + c, 'optional': True})
-        self.ops.append({'op': 'text_eq', 'n': n, 'part': 'sol', 'old': sol_old or (' [정답] ' + mark), 'pre': ' [정답] ', 'eq': value, 'post': ''})
+        old, pre = sol_old or (' [정답] ' + mark), ' [정답] '
+        if not sol_old:   # 정답 줄 글 조각이 ' [정답] '·'④'처럼 나뉜 경우
+            try:
+                s, e = H.paras_in(self.x, H.region(self.x, n, 'sol'))[0]
+                frags = [html.unescape(m.group(1)) for m in H.TPAT.finditer(self.x, s, e)]
+                if old not in frags:
+                    for cand, pr in ((mark, ''), (' ' + mark, ' '), (mark + ' ', ''), (' ' + mark + ' ', ' ')):
+                        if cand in frags:
+                            old, pre = cand, pr
+                            break
+            except Exception:
+                pass
+        self.ops.append({'op': 'text_eq', 'n': n, 'part': 'sol', 'old': old, 'pre': pre, 'eq': value, 'post': ''})
 
     def run(self, save_json=None):
         if save_json:

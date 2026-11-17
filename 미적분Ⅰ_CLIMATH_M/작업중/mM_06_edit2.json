@@ -1,0 +1,78 @@
+[
+{
+"op": "eq",
+"n": 21,
+"part": "q",
+"old": "rmcm^2 /초",
+"new": "rm cm^2"
+},
+{
+"op": "append",
+"n": 21,
+"part": "q",
+"after_eq": "rm cm^2",
+"text": "/초"
+},
+{
+"op": "eq",
+"n": 22,
+"part": "sol",
+"old": "= {pi} over {50} (t-100)^2 (t+10)`````(단, ``0 leq t leq 100)",
+"new": "= {pi} over {50} (t-100)^2 (t+10)"
+},
+{
+"op": "append",
+"n": 22,
+"part": "sol",
+"after_eq": "= {pi} over {50} (t-100)^2 (t+10)",
+"text": " (단, 0 leq t leq 100)"
+},
+{
+"op": "text_eq",
+"n": 22,
+"part": "sol",
+"old": "0 leq t leq 100",
+"pre": "",
+"eq": "0 leq t leq 100",
+"post": "",
+"sub": true
+},
+{
+"op": "eq",
+"n": 36,
+"part": "q",
+"old": "a`rmcm^3 /초",
+"new": "a`rm cm^3"
+},
+{
+"op": "append",
+"n": 36,
+"part": "q",
+"after_eq": "a`rm cm^3",
+"text": "/초"
+},
+{
+"op": "eq",
+"n": 36,
+"part": "sol",
+"old": "{40} over {3} pi times 9=120 pi``(rmcm^3 /초)",
+"new": "{40} over {3} pi times 9=120 pi"
+},
+{
+"op": "append",
+"n": 36,
+"part": "sol",
+"after_eq": "{40} over {3} pi times 9=120 pi",
+"text": " (rm cm^3/초)"
+},
+{
+"op": "text_eq",
+"n": 36,
+"part": "sol",
+"old": "rm cm^3",
+"pre": "",
+"eq": "rm cm^3",
+"post": "",
+"sub": true
+}
+]

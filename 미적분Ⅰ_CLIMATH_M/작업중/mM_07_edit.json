@@ -1,0 +1,669 @@
+[
+{
+"op": "eq",
+"n": 11,
+"part": "sol",
+"old": "2+1+2= it-k+2k+1\r\n",
+"new": "2+1+2= it-k+2k+1"
+},
+{
+"op": "text",
+"n": 13,
+"part": "q",
+"old": "값은?",
+"new": "값을 구하시오."
+},
+{
+"op": "del_para",
+"n": 13,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 13,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 13,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 13,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 13,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 13,
+"part": "sol",
+"old": " [정답] ②",
+"pre": " [정답] ",
+"eq": "45",
+"post": ""
+},
+{
+"op": "text",
+"n": 18,
+"part": "q",
+"old": "값은?",
+"new": "값을 구하시오."
+},
+{
+"op": "del_para",
+"n": 18,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 18,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 18,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 18,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 18,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 18,
+"part": "sol",
+"old": " [정답] ⑤",
+"pre": " [정답] ",
+"eq": "64",
+"post": ""
+},
+{
+"op": "text",
+"n": 21,
+"part": "q",
+"old": "값은?",
+"new": "값을 구하시오."
+},
+{
+"op": "del_para",
+"n": 21,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 21,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 21,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 21,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 21,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 21,
+"part": "sol",
+"old": " [정답] ①",
+"pre": " [정답] ",
+"eq": "-6",
+"post": ""
+},
+{
+"op": "text",
+"n": 27,
+"part": "q",
+"old": "값은?",
+"new": "값을 구하시오."
+},
+{
+"op": "del_para",
+"n": 27,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 27,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 27,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 27,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 27,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 27,
+"part": "sol",
+"old": " [정답] ④",
+"pre": " [정답] ",
+"eq": "{1} over {6}",
+"post": ""
+},
+{
+"op": "text",
+"n": 28,
+"part": "q",
+"old": "값은?",
+"new": "값을 구하시오."
+},
+{
+"op": "del_para",
+"n": 28,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 28,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 28,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 28,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 28,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 28,
+"part": "sol",
+"old": " [정답] ①",
+"pre": " [정답] ",
+"eq": "-2",
+"post": ""
+},
+{
+"op": "text",
+"n": 32,
+"part": "q",
+"old": "값은?",
+"new": "값을 구하시오."
+},
+{
+"op": "del_para",
+"n": 32,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 32,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 32,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 32,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 32,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 32,
+"part": "sol",
+"old": " [정답] ①",
+"pre": " [정답] ",
+"eq": "-2",
+"post": ""
+},
+{
+"op": "text",
+"n": 34,
+"part": "q",
+"old": "값은?",
+"new": "값을 구하시오."
+},
+{
+"op": "del_para",
+"n": 34,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 34,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 34,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 34,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 34,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 34,
+"part": "sol",
+"old": " [정답] ⑤",
+"pre": " [정답] ",
+"eq": "10",
+"post": ""
+},
+{
+"op": "text",
+"n": 37,
+"part": "q",
+"old": "값은?",
+"new": "값을 구하시오."
+},
+{
+"op": "del_para",
+"n": 37,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 37,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 37,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 37,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 37,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 37,
+"part": "sol",
+"old": " [정답] ④",
+"pre": " [정답] ",
+"eq": "47",
+"post": ""
+},
+{
+"op": "text",
+"n": 38,
+"part": "q",
+"old": "합은?",
+"new": "합을 구하시오."
+},
+{
+"op": "del_para",
+"n": 38,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 38,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 38,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 38,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 38,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 38,
+"part": "sol",
+"old": " [정답] ⑤",
+"pre": " [정답] ",
+"eq": "125",
+"post": ""
+},
+{
+"op": "text",
+"n": 13,
+"part": "sol",
+"old": "[해설] ",
+"new": ""
+},
+{
+"op": "text",
+"n": 37,
+"part": "sol",
+"old": "[해설] ",
+"new": ""
+},
+{
+"op": "text",
+"n": 38,
+"part": "sol",
+"old": "[해설] ",
+"new": ""
+},
+{
+"op": "del_para",
+"n": 17,
+"part": "sol",
+"anchor": "[해설]",
+"exact": true
+},
+{
+"op": "del_para",
+"n": 18,
+"part": "sol",
+"anchor": "[해설]",
+"exact": true
+},
+{
+"op": "del_para",
+"n": 32,
+"part": "sol",
+"anchor": "[해설]",
+"exact": true
+},
+{
+"op": "text",
+"n": 24,
+"part": "q",
+"old": "일 때, 다음 중 ",
+"new": "일 때, "
+},
+{
+"op": "text",
+"n": 24,
+"part": "q",
+"old": "을 나타낸 것은?",
+"new": "을 n에 대한 식으로 나타내시오."
+},
+{
+"op": "text_eq",
+"n": 24,
+"part": "q",
+"old": "n에",
+"pre": "",
+"eq": "n",
+"post": "에",
+"sub": true
+},
+{
+"op": "del_para",
+"n": 24,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 24,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 24,
+"part": "sol",
+"old": " [정답] ②",
+"pre": " [정답] ",
+"eq": "n",
+"post": ""
+},
+{
+"op": "eq",
+"n": 27,
+"part": "sol",
+"old": "f(x)= int {x ^{3} -2x} over {x+2} dx+ int {2x-1} over {x+2} dx",
+"new": "f(x)= int {x ^{3} -2x} over {x-1} dx+ int {2x-1} over {x-1} dx"
+},
+{
+"op": "eq",
+"n": 27,
+"part": "sol",
+"old": "= int {(x-1)(x^2 +x+1)} over {x-1}",
+"new": "= int {(x-1)(x^2 +x+1)} over {x-1} dx"
+},
+{
+"op": "eq",
+"n": 34,
+"part": "sol",
+"old": "f`'(0)= lim _{h `->` 0} {f(0-h)-f(0)} over {h} = lim _{h `->` 0} {f(h)} over {h} =6",
+"new": "f`'(0)= lim _{h `->` 0} {f(0+h)-f(0)} over {h} = lim _{h `->` 0} {f(h)} over {h} =6"
+},
+{
+"op": "eq",
+"n": 37,
+"part": "sol",
+"old": "f LEFT ( -1=4 RIGHT )",
+"new": "f LEFT ( -1 RIGHT ) =4"
+},
+{
+"op": "text",
+"n": 37,
+"part": "sol",
+"old": "애서",
+"new": "에서"
+},
+{
+"op": "eq",
+"n": 37,
+"part": "sol",
+"old": "f LEFT ( 2 RIGHT ) =48+32+24-24+15=47",
+"new": "f LEFT ( 2 RIGHT ) =48+32-24-24+15=47"
+},
+{
+"op": "eq",
+"n": 38,
+"part": "sol",
+"old": "a int {LEFT ( {1} over {4} x ^{4} -x ^{3} -2x ^{2} +12x RIGHT )} +C",
+"new": "=a LEFT ( {1} over {4} x ^{4} -x ^{3} -2x ^{2} +12x RIGHT ) +C"
+},
+{
+"op": "append",
+"n": 38,
+"part": "sol",
+"after_eq": "= {45} over {4} a+C=61",
+"text": "   …… ㉡"
+},
+{
+"op": "eq",
+"n": 38,
+"part": "sol",
+"old": "f LEFT ( x RIGHT ) =x  ^{4} -x  ^{3} -8x  ^{2} +48x+16",
+"new": "f LEFT ( x RIGHT ) =x  ^{4} -4x  ^{3} -8x  ^{2} +48x+16"
+},
+{
+"op": "text",
+"n": 39,
+"part": "q",
+"old": "값은?",
+"new": "값을 구하시오."
+},
+{
+"op": "del_para",
+"n": 39,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 39,
+"part": "q",
+"anchor": "^④"
+},
+{
+"op": "eq",
+"n": 40,
+"part": "q",
+"old": "lim _{n `->` inf} { f(x)} over {2x^2 + 10 }",
+"new": "lim _{x `->` inf} { f(x)} over {2x^2 + 10 }"
+},
+{
+"op": "eq",
+"n": 40,
+"part": "sol",
+"old": "THEREFORE ` lim _{n `->` inf} {f(x)} over {2x ^{2} +10} = lim _{n `->` inf} {60x ^{2} +24x+6} over {2x ^{2} +10} =30",
+"new": "THEREFORE ` lim _{x `->` inf} {f(x)} over {2x ^{2} +10} = lim _{x `->` inf} {60x ^{2} +24x+6} over {2x ^{2} +10} =30"
+},
+{
+"op": "eq",
+"n": 47,
+"part": "q",
+"old": "int { LEFT { f(x) +4 } RIGHT } dx = xf(x) + 2 x^3 - 4 x^2",
+"new": "int { LEFT { f(x) +4x RIGHT } } dx = xf(x) + 2 x^3 - 4 x^2"
+},
+{
+"op": "eq",
+"n": 49,
+"part": "q",
+"old": "int {xf``'(x)dx= {2} over {3} x ^{3}} +x ^{2}",
+"new": "int {xf`'(x)} dx= {2} over {3} x ^{3} +x ^{2}"
+},
+{
+"op": "del_para",
+"n": 49,
+"part": "sol",
+"anchor": "Step 1 미분을"
+},
+{
+"op": "del_para",
+"n": 49,
+"part": "sol",
+"anchor": "Step 2 곱의"
+}
+]

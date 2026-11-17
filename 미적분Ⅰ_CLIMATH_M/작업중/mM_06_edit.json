@@ -1,0 +1,406 @@
+[
+{
+"op": "eq",
+"n": 8,
+"part": "sol",
+"old": "f LEFT =( x RIGHT ) x  ^{3} +2ax-2`",
+"new": "f LEFT ( x RIGHT ) =x  ^{3} +2ax-2`"
+},
+{
+"op": "eq",
+"n": 12,
+"part": "q",
+"old": "{f(x)= {1} over {2} x^3 - {9} over {2} x^2  + 10x}{{from^2021^09^평가원^중}}",
+"new": "f(x)= {1} over {2} x^3 - {9} over {2} x^2 + 10x"
+},
+{
+"op": "eq",
+"n": 12,
+"part": "sol",
+"old": "(0 ,````           0)\n",
+"new": "(0,~0)"
+},
+{
+"op": "eq",
+"n": 13,
+"part": "q",
+"old": "f`' LEFT ( x RIGHT ) ＜0",
+"new": "f`' LEFT ( x RIGHT ) <0"
+},
+{
+"op": "eq",
+"n": 13,
+"part": "sol",
+"old": "f`' LEFT ( x RIGHT ) ＜0",
+"new": "f`' LEFT ( x RIGHT ) <0"
+},
+{
+"op": "eq",
+"n": 13,
+"part": "sol",
+"old": "f`' LEFT ( x RIGHT ) =4x  ^{2} LEFT ( x-k RIGHT ) ~ LEFT ( THEREFORE ~k＞0 RIGHT )",
+"new": "f`' LEFT ( x RIGHT ) =4x  ^{2} LEFT ( x-k RIGHT ) ~ LEFT ( because ~k>0 RIGHT )"
+},
+{
+"op": "text",
+"n": 13,
+"part": "q",
+"old": "값은?",
+"new": "값을 구하시오."
+},
+{
+"op": "del_para",
+"n": 13,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 13,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 13,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 13,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 13,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 13,
+"part": "sol",
+"old": " [정답] ⑤",
+"pre": " [정답] ",
+"eq": "{2} over {3}",
+"post": ""
+},
+{
+"op": "eq",
+"n": 20,
+"part": "sol",
+"old": "rmbar AP``:``bar PR = bar AB``:``bar BS",
+"new": "bar{rm AP} ``:`` bar{rm PR} = bar{rm AB} ``:`` bar{rm BS}"
+},
+{
+"op": "eq",
+"n": 20,
+"part": "sol",
+"old": "LEFT ( 12t-t^2 RIGHT )``:``rmbar PR = 36``:``20",
+"new": "LEFT ( 12t-t^2 RIGHT ) ``:`` bar{rm PR} =36``:``20"
+},
+{
+"op": "eq",
+"n": 20,
+"part": "sol",
+"old": "THEREFORE````{rmbar PR} = 5 over 9 LEFT ( 12t - t^2  RIGHT )",
+"new": "THEREFORE```` bar{rm PR} = 5 over 9 LEFT ( 12t - t^2  RIGHT )"
+},
+{
+"op": "eq",
+"n": 20,
+"part": "sol",
+"old": "=rmbar PQ = bar PR + bar RQ",
+"new": "= bar{rm PQ} = bar{rm PR} + bar{rm RQ}"
+},
+{
+"op": "eq",
+"n": 21,
+"part": "q",
+"old": "rmbarAB =barBC =2`cm,~angleB=90°",
+"new": "bar{rm AB} = bar{rm BC} =2`rm cm,~ angle rm B=90 DEG"
+},
+{
+"op": "eq",
+"n": 21,
+"part": "sol",
+"old": "S``'(t)=6t+5",
+"new": "S`'(t)=6t+5"
+},
+{
+"op": "eq",
+"n": 21,
+"part": "sol",
+"old": "S``'(t)=29",
+"new": "S`'(4)=29"
+},
+{
+"op": "text",
+"n": 21,
+"part": "q",
+"old": "변화율은?",
+"new": "변화율을 구하시오."
+},
+{
+"op": "del_para",
+"n": 21,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 21,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 21,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 21,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 21,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 21,
+"part": "sol",
+"old": " [정답] ②",
+"pre": " [정답] ",
+"eq": "29",
+"post": ""
+},
+{
+"op": "eq",
+"n": 22,
+"part": "sol",
+"old": "= piover50 (t-100)^2 (t+10)`````(단, ``0 leq t leq 100)",
+"new": "= {pi} over {50} (t-100)^2 (t+10)`````(단, ``0 leq t leq 100)"
+},
+{
+"op": "eq",
+"n": 25,
+"part": "sol",
+"old": "f(x)=x^3 +3x^3 -9x+1",
+"new": "f(x)=x^3 +3x^2 -9x+1"
+},
+{
+"op": "text",
+"n": 25,
+"part": "q",
+"old": "합은?",
+"new": "합을 구하시오."
+},
+{
+"op": "del_para",
+"n": 25,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 25,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 25,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 25,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 25,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 25,
+"part": "sol",
+"old": " [정답] ②",
+"pre": " [정답] ",
+"eq": "0",
+"post": ""
+},
+{
+"op": "text",
+"n": 26,
+"part": "q",
+"old": "값은?",
+"new": "값을 구하시오."
+},
+{
+"op": "del_para",
+"n": 26,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 26,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 26,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 26,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 26,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 26,
+"part": "sol",
+"old": " [정답] ④",
+"pre": " [정답] ",
+"eq": "10",
+"post": ""
+},
+{
+"op": "text",
+"n": 35,
+"part": "q",
+"old": "양이 방향",
+"new": "양의 방향"
+},
+{
+"op": "eq",
+"n": 43,
+"part": "q",
+"old": "x^n+1 -(n+1)x+2 ge k",
+"new": "x^{n+1} -(n+1)x+2 ge k"
+},
+{
+"op": "eq",
+"n": 43,
+"part": "sol",
+"old": "f(x)=x^n+1 -(n+1)x+2",
+"new": "f(x)=x^{n+1} -(n+1)x+2"
+},
+{
+"op": "eq",
+"n": 43,
+"part": "sol",
+"old": "x^n+1 -(n+1)x+2 ge k",
+"new": "x^{n+1} -(n+1)x+2 ge k"
+},
+{
+"op": "text",
+"n": 43,
+"part": "q",
+"old": "값은?",
+"new": "값을 구하시오."
+},
+{
+"op": "del_para",
+"n": 43,
+"part": "q",
+"anchor": "^①"
+},
+{
+"op": "del_para",
+"n": 43,
+"part": "q",
+"anchor": "^②",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 43,
+"part": "q",
+"anchor": "^③",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 43,
+"part": "q",
+"anchor": "^④",
+"optional": true
+},
+{
+"op": "del_para",
+"n": 43,
+"part": "q",
+"anchor": "^⑤",
+"optional": true
+},
+{
+"op": "text_eq",
+"n": 43,
+"part": "sol",
+"old": " [정답] ④",
+"pre": " [정답] ",
+"eq": "12",
+"post": ""
+},
+{
+"op": "eq",
+"n": 47,
+"part": "sol",
+"old": "S``'(t)= {27} over {8} t^2",
+"new": "S`'(t)= {27} over {8} t^2"
+},
+{
+"op": "eq",
+"n": 47,
+"part": "sol",
+"old": "S``' {left({2root3}} over {9} right)= {27} over {8} times {left({2root3}} over {9} right)^2 = {1} over {2}",
+"new": "S`' LEFT ( {2 sqrt {3}} over {9} RIGHT ) = {27} over {8} times LEFT ( {2 sqrt {3}} over {9} RIGHT )^2 = {1} over {2}"
+},
+{
+"op": "eq",
+"n": 50,
+"part": "sol",
+"old": "f`'(x)=4x^2 -12x+8",
+"new": "f`'(x)=4x^3 -12x+8"
+}
+]
