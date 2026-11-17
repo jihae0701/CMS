@@ -1,0 +1,134 @@
+{
+"image2": {
+"n": 13,
+"part": "sol",
+"href": "BinData/image2.bmp",
+"w": 11025,
+"d": 0.0,
+"c_n": 13,
+"c_part": "sol",
+"c_href": "BinData/image3.bmp",
+"f_href": "BinData/image3.png",
+"f_w": 10000,
+"redrawn": true
+},
+"image3": {
+"n": 14,
+"part": "sol",
+"href": "BinData/image3.bmp",
+"w": 10920,
+"d": 0.0,
+"c_n": 14,
+"c_part": "sol",
+"c_href": "BinData/image4.bmp",
+"f_href": "BinData/image4.png",
+"f_w": 10000,
+"redrawn": true
+},
+"image4": {
+"n": 14,
+"part": "sol",
+"href": "BinData/image4.bmp",
+"w": 11310,
+"d": 0.0,
+"c_n": 14,
+"c_part": "sol",
+"c_href": "BinData/image5.bmp",
+"f_href": "BinData/image5.png",
+"f_w": 10000,
+"redrawn": true
+},
+"image5": {
+"n": 18,
+"part": "q",
+"href": "BinData/image5.gif",
+"w": 4281,
+"d": 0.0,
+"c_n": 17,
+"c_part": "q",
+"c_href": "BinData/image6.gif",
+"f_href": "BinData/image6.gif",
+"f_w": 4281,
+"redrawn": false
+},
+"image6": {
+"n": 33,
+"part": "q",
+"href": "BinData/image6.bmp",
+"w": 9322,
+"d": 0.0,
+"c_n": 25,
+"c_part": "q",
+"c_href": "BinData/image7.bmp",
+"f_href": "BinData/image7.png",
+"f_w": 9500,
+"redrawn": true
+},
+"image7": {
+"n": 36,
+"part": "q",
+"href": "BinData/image7.bmp",
+"w": 12463,
+"d": 0.0,
+"c_n": 27,
+"c_part": "q",
+"c_href": "BinData/image8.bmp",
+"f_href": "BinData/image8.png",
+"f_w": 10000,
+"redrawn": true
+},
+"image8": {
+"n": 37,
+"part": "q",
+"href": "BinData/image8.bmp",
+"w": 12240,
+"d": 0.0,
+"c_n": 28,
+"c_part": "q",
+"c_href": "BinData/image9.bmp",
+"f_href": "BinData/image9.png",
+"f_w": 10000,
+"redrawn": true
+},
+"image9": {
+"n": 51,
+"part": "q",
+"href": "BinData/image9.bmp",
+"w": 10404,
+"d": 0.0,
+"c_n": 42,
+"c_part": "q",
+"c_href": "BinData/image10.bmp",
+"f_href": "BinData/image10.png",
+"f_w": 10000,
+"redrawn": true
+},
+"image10": {
+"n": 56,
+"part": "sol",
+"href": "BinData/image10.png",
+"w": 4800,
+"d": 65.3
+},
+"image12": {
+"n": 58,
+"part": "q",
+"href": "BinData/image12.bmp",
+"w": 21064,
+"d": 40.9
+},
+"image11": {
+"n": 58,
+"part": "sol",
+"href": "BinData/image11.bmp",
+"w": 18611,
+"d": 65.2
+},
+"image14": {
+"n": 59,
+"part": "sol",
+"href": "BinData/image14.bmp",
+"w": 8940,
+"d": 119.3
+}
+}
