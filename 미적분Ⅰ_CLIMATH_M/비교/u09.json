@@ -1,0 +1,1077 @@
+{
+"C": [
+{
+"n": 1,
+"step": "1",
+"q": "다음 등식을 만족시키는 함수 y=f LEFT ( x RIGHT ) ` 를 구하시오.⑴ f LEFT ( x RIGHT ) =2x-4 int _{0} ^{1} {f LEFT ( x RIGHT ) dx} ⑵ f LEFT ( x RIGHT ) =2+ int _{0} ^{1} {xf LEFT ( t RIGHT ) dt}",
+"ans": "⑴  bold{f LEFT ( x RIGHT ) =2x- {4} over",
+"sol_len": 780
+},
+{
+"n": 2,
+"step": "1",
+"q": "다음 등식을 만족시키는 함수 y=f LEFT ( x RIGHT ) ` 를 구하시오.⑴ f LEFT ( x RIGHT ) =3x ^{2} -2x+2 int _{0} ^{1} {f LEFT ( x RIGHT ) dx} ⑵ f LEFT ( x RIGHT ) =it-3x ^{2} +2x int _{-1} ^{1} {f LEFT ( t RIGHT ) dt} 02정적분으로 정의된 함개념묶음 개체입니다.⑴ int_a^x f(t)``dt=g(x) 꼴 RARROW 양변을 x 에 대하여 미분하고 int_a^a f(t)``dt=0 임을 이용한다.⑵ int_a^x (x-t)f(t)``dt=g(x) 꼴 RARROW int_a^x (x-t)f(t)``dt=x int_a^x f(t)``dt-int_a^x tf(t)``dt 로 변형한 후 양변을 x 에 대하여 미분한다. [그림] 두 상수 a , b 에 대하여⑴ d overdx int_a^x f(t)``dt=f(x) ⑵ d overdx int_x^x+a f(t)``dt=f(x+a)-f(x) ⑶ d overdx int_x+a ^x+b f(t)``dt=f(x+b)-f(x+a) 사각형입니다.",
+"ans": "⑴  bold{f LEFT ( x RIGHT ) =3x ^{2} -2x",
+"sol_len": 1012
+},
+{
+"n": 3,
+"step": "1",
+"q": "미분가능한 함수 y=f LEFT ( x RIGHT ) ` 가 수식입니다. int _{1} ^{x} {f LEFT ( t RIGHT ) dt=xf LEFT ( x RIGHT ) -2x ^{3} +3x ^{2} -2`}를 항상 만족시킬 때, 함수 y=f LEFT ( x RIGHT ) ` 를 구하시오.",
+"ans": "bold{f LEFT ( x RIGHT ) =3x ^{2} -6x+4 주",
+"sol_len": 618
+},
+{
+"n": 4,
+"step": "1",
+"q": "-1LEQ{x}LEQ1` 에서 함수 f LEFT ( x RIGHT ) = int _{x} ^{x+1} {LEFT ( t ^{2} -t RIGHT ) dt`} 의 최댓값과 최솟값을 구하시오.",
+"ans": "최댓값  bold{ {5} over {6} , 최솟값  bold{- {1",
+"sol_len": 950
+},
+{
+"n": 5,
+"step": "1",
+"q": "임의의 실수 x 에 대하여 다음 등식을 만족시키는 다항함수 y=f LEFT ( x RIGHT ) ` 를 구하시오. (단, a 는 상수이다.)수식입니다. int _{1} ^{x} {LEFT ( x-t RIGHT ) f LEFT ( t RIGHT ) dt=x ^{3} +ax ^{2} -5x+3}",
+"ans": "bold{f LEFT ( x RIGHT ) =6x+2 수식입니다. int",
+"sol_len": 771
+},
+{
+"n": 6,
+"step": "1",
+"q": "미분가능한 함수 y=f LEFT ( x RIGHT ) ` 에 대하여 f LEFT ( x RIGHT ) =x ^{3} +ax ^{2} + int _{3} ^{x} {LEFT ( t ^{2} +2t+2 RIGHT ) dt`} 가 성립한다. 다항식 f LEFT ( x RIGHT ) ` 가 x-3` 으로 나누어떨어질 때, f`' LEFT ( 1 RIGHT ) ` 의 값을 구하시오. (단, a 는 상수이다.)",
+"ans": "bold2  f LEFT ( x RIGHT ) 가  x-3 으로 나누어떨",
+"sol_len": 407
+},
+{
+"n": 7,
+"step": "1",
+"q": "미분가능한 함수 y=f LEFT ( x RIGHT ) ` 에 대하여 xf LEFT ( x RIGHT ) =2x ^{3} + int _{1} ^{x} {f LEFT ( t RIGHT ) dt} 가 항상 성립할 때, f LEFT ( 3 RIGHT ) ` 의 값을 구하시오.",
+"ans": "bold26 주어진 식의 양변을  x 에 대하여 미분하면 f LEFT (",
+"sol_len": 482
+},
+{
+"n": 8,
+"step": "1",
+"q": "다항함수 f(x) 가 x^2 f(x)=4x^5 +x^4 + 2 int_1^x tf(t)dt 를 만족시킬 때, 3f(0) 의 값은?① -11 ② -12 ③ -13 ④ -14 ⑤ -15",
+"ans": "① x  ^{2} f(x)=4x  ^{5} +x  ^{4} +2  int",
+"sol_len": 537
+},
+{
+"n": 9,
+"step": "1",
+"q": "함수 f LEFT ( x RIGHT ) = int _{0} ^{x} {LEFT ( 3t ^{2} -3 RIGHT ) dt`} 의 극댓값과 극솟값을 구하시오.",
+"ans": "극댓값 :  bold2 , 극솟값 :  bold-2  f LEFT ( x",
+"sol_len": 1104
+},
+{
+"n": 10,
+"step": "1",
+"q": "임의의 실수 x 에 대하여 다음 등식을 만족시키는 다항함수 y=f LEFT ( x RIGHT ) ` 를 구하시오.수식입니다. int _{1} ^{x} {LEFT ( x-t RIGHT ) f LEFT ( t RIGHT ) dt=2x ^{3} -x ^{2} -4x+3}03정적분으로 정의된 함수의 극한개념묶음 개체입니다.⑴ lim_{x->0}1overx int_0^x f(t)``dt=f(0) ⑵ lim_{x->0}1overx int_a^x+a f(t)``dt=f(a) ⑶ lim_{x->a}1overx-a int_a^x f(t)``dt=f(a) [그림] f(x) 의 한 부정적분을 F(x) 라 하면⑵ lim_{x->0}1overx int_a^x+a f(t)``dt =lim_{x->0}{F(a+x)-F(a)}overx =F``prime(a)=f(a) ⑶ lim_{x->a}1overx-a int_a^x f(t)``dt =lim_{x->a}{F(x)-F(a)}overx-a =F``prime(a)=f(a) 사각형입니다.",
+"ans": "bold{12x-2 주어진 등식의 좌변을 정리하면수식입니다. int _{",
+"sol_len": 627
+},
+{
+"n": 11,
+"step": "1",
+"q": "다음 극한값을 구하시오.⑴ lim _{h->0} {{1} over {h} int _{2} ^{2+h} {LEFT ( 6x ^{2} -2x+1 RIGHT ) dx}} ⑵ f LEFT ( x RIGHT ) =x ^{10} -5x ^{4} +3x+2` 일 때, lim _{x->1} {{1} over {x-1} int _{1} ^{x} {f LEFT ( t RIGHT ) dt}}",
+"ans": "⑴  bold21 ⑵  bold1 ⑴  f LEFT ( x RIGHT )",
+"sol_len": 791
+},
+{
+"n": 12,
+"step": "1",
+"q": "다음 극한값을 구하시오.⑴ lim _{x->0} {{1} over {x} int _{2} ^{2+2x} {LEFT ( t+1 RIGHT ) ^{3} dt}} ⑵ f LEFT ( x RIGHT ) =x ^{4} -2x ^{2} +1` 일 때, lim _{x->1} {{1} over {x-1} int _{1} ^{x ^{2}} {f LEFT ( t RIGHT ) dt}} 유형별 학습하기STEP 2사각형입니다.묶음 개체입니다.01정적분을 포함한 함수유형묶음 개체입니다.",
+"ans": "⑴  bold54 ⑵  bold0 ⑴  f LEFT ( t RIGHT )",
+"sol_len": 933
+},
+{
+"n": 13,
+"step": "2",
+"q": "함수 f(x)=2x+ int _{0} ^{2} {f(t)dt} 일 [그림] 때, f(2) 의 값은?① 0 ② 2 ③ 4 ④ 6 ⑤ 8",
+"ans": "①수식입니다. int _{0} ^{2} {} f(t)dt=k ( k 는",
+"sol_len": 235
+},
+{
+"n": 14,
+"step": "2",
+"q": "함수 f(x) = 12over7 x^2 -2x int _{ 1} ^{ 2} { f(x)dx}+ LEFT { int _{ 1} ^{ 2} { f(x)dx} RIGHT }^2 일 때, 5 int_1^2 f(x)dx 의 값은?① 10 ② 15 ③ 20 ④ 25 ⑤ 30",
+"ans": "① int_1^2 f(x)dx=a  ( a 는 상수)로 놓으면수식입니다.",
+"sol_len": 342
+},
+{
+"n": 15,
+"step": "2",
+"q": "두 함수 f(x) , g(x) 가 f(x)=3x^2 + int_0^1 (2x+1)f(t)dt , g(x)=x+5 일 때, 부등식 f(x)를 만족시키는 정수 x 의 개수는?① 0 ② 1 ③ 2 ④ 3 ⑤ 4 02정적분으로 정의된 함수⑴유형묶음 개체입니다.",
+"ans": "③ f(x)=3x^2 +int_0^1 (2x+1)f(t) 에서 f(x)=",
+"sol_len": 389
+},
+{
+"n": 16,
+"step": "2",
+"q": "다항함수 f(x) 가 모든 실수 x 에 대하여수식입니다. int _{-1} ^{x} {f(t)dt} = {1} over {3} x ^{3} - {1} over {2} x ^{2} -2x를 만족시킬 때, 함수 y=f(x) 의 그래프가 x 축과 만나는 모든 점의 x 좌표의 곱은?① -2 ② -1 ③ 0 ④ 1 ⑤ 2",
+"ans": "①수식입니다. int _{-1} ^{x} {f(t)dt} = {1} ov",
+"sol_len": 244
+},
+{
+"n": 17,
+"step": "2",
+"q": "함수 f(x)=int_1^x (4t^3 - t^2 +3)dt 일 때, f` prime (1)+f(1) 의 값은?① 2 ② 4 ③ 6 ④ 8 ⑤ 10",
+"ans": "③ f(x)= int_1^x (4t^3 -t^2 +3)dt 의 양변을",
+"sol_len": 193
+},
+{
+"n": 18,
+"step": "2",
+"q": "다항함수 f(x) 가 모든 실수 x 에 대하여 int_1^x f(t)dt=x^3 +2ax^2 -ax 를 만족시킬 때, f(2) 의 값은? (단, a 는 상수이다.)① 5 ② 6 ③ 7 ④ 8 ⑤ 9",
+"ans": "①수식입니다. int _{1} ^{x} {f(t)dt} =x  ^{3}",
+"sol_len": 195
+},
+{
+"n": 19,
+"step": "2",
+"q": "다항함수 f(x) 가 모든 실수 x 에 대하여 int_a^x f(t)dt=2x^3 -5x^2 +2x 를 만족시킬 때, f(a) 의 값은? (단, a 는 0 이 아닌 정수이다.)① 5 ② 6 ③ 7 ④ 8 ⑤ 9",
+"ans": "②수식입니다. int _{a} ^{x} {f(t)dt} =2x  ^{3}",
+"sol_len": 295
+},
+{
+"n": 20,
+"step": "2",
+"q": "다항함수 f(x) 가 모든 실수 x 에 대하여 수식입니다. int _{1} ^{x} {} `f(t)dt=xf(x)-3x^4 +2x ^2 을 만족시킬 때, f(0) 의 값은?① 1 ② 2 ③ 3 ④ 4 ⑤ 5",
+"ans": "①수식입니다. int _{1} ^{x} {} `f(t)dt=xf(x)-3",
+"sol_len": 442
+},
+{
+"n": 21,
+"step": "2",
+"q": "다항함수 y=f LEFT ( x RIGHT ) ` 에 대하여수식입니다. int _{1} ^{x} {xf LEFT ( t RIGHT ) dt=2x ^{3} +ax ^{2} +1+ int _{1} ^{x} {tf LEFT ( t RIGHT ) dt}}가 성립할 때, 상수 a 에 대하여 f LEFT ( 1 RIGHT ) +a 의 값을 구하시오.03정적분으로 정의된 함수⑵유형묶음 개체입니다.",
+"ans": "bold3 수식입니다. int _{1} ^{x} {xf LEFT ( t",
+"sol_len": 601
+},
+{
+"n": 22,
+"step": "2",
+"q": "다항함수 f(x) 가수식입니다. int _{0} ^{x} {} (x-t)f(t) dt = 1 over 6 x^4 + 2 over 3 x^3 + 1 over 2 x ^2을 만족시킬 때, 함수 f(x) 의 최솟값은?① -3 ② -2 ③ -1 ④ 0 ⑤ 1",
+"ans": "③수식입니다. int _{0} ^{x} {} (x-t)f(t) dt =",
+"sol_len": 475
+},
+{
+"n": 23,
+"step": "2",
+"q": "다항함수 f(x) 가 수식입니다.int_0^x (x-t)f(t)dt= 1over3 x^3 + 1over4 x^2 을 만족시킬 때, f(3) 의 값은?① 5 ② 11over2 ③ 6 ④ 13over2 ⑤ 7 04정적분으로 정의된 함수의 극한유형묶음 개체입니다.",
+"ans": "bold{2} 주어진 식의 좌변을 정리하면 int_a^x (x-t)f(t",
+"sol_len": 339
+},
+{
+"n": 24,
+"step": "2",
+"q": "함수 f(x)=x^3 -3x^2 -3x-1 일 때, lim _{ x→ -1} 1 over{x^2 -1} int _{ -1} ^{ x} f(t)dt 의 값은?① -2 ② - 1over2 ③ 0 ④ 1over2 ⑤ 1",
+"ans": "⑤ f(x)=x  ^{3} -3x  ^{2} -3x-1 의 부정적분 중",
+"sol_len": 299
+},
+{
+"n": 25,
+"step": "2",
+"q": "lim _{x -> 2} {{1} over {x ^{2} -4}} int _{2} ^{x} {} (t ^{2} +3t-2)dt 의 값을 구하시오.",
+"ans": "bold{2} 수식입니다. f(x)=x^2 +3x-2로 놓고  f(x)",
+"sol_len": 387
+},
+{
+"n": 26,
+"step": "2",
+"q": "미분가능한 함수 f(x) 가 f(1)=2 , f` prime (1)=3 을 만족시킬 때, lim _{x -> 1} {{1} over {x-1}} int _{1} ^{x ^{2}} {LEFT { f(t) RIGHT } ^{2} f` prime (t)dt} 의 값은?① 21 ② 22 ③ 23 ④ 24 ⑤ 25",
+"ans": "④ LEFT { f(t) RIGHT }  ^{2} f` prime (t)",
+"sol_len": 436
+},
+{
+"n": 27,
+"step": "2",
+"q": "lim _{h -> 0} {{1} over {h}} int _{0} ^{10h} {|``x-10``|`dx} 의 값은?① -100 ② -10 ③ 0 ④ 10 ⑤ 100",
+"ans": "⑤ f(x)=|`x-10`| 으로 놓고  f(x) 의 부정적분 중 하나를",
+"sol_len": 204
+},
+{
+"n": 28,
+"step": "2",
+"q": "lim _{ h→0} {1overh } int _{ 2-h} ^{2+2h } {(x^2 +ax+1)dx=21 } 을 만족시키는 상수 a 의 값은?① 0 ② 1over4 ③ 수식입니다. 1over3 ④ 1over2 ⑤ 1",
+"ans": "⑤ f(x)=x^2 +ax+1 로 놓고  f(x) 의 부정적분 중 하나를",
+"sol_len": 333
+},
+{
+"n": 29,
+"step": "2",
+"q": "함수 `f(x)= int _{0} ^{x} {} (3t-1)^3 dt 일 때, lim _{h -> 0} {{1} over {h ^{2} +2h}} int _{1-h} ^{1+2h} {f(t)dt} 의 값은?① {7} over {8} ② {9} over {8} ③ {11} over {8} ④ {13} over {8} ⑤ 수식입니다. 15over8단원 마무리 하기STEP 3사각형입니다.묶음 개체입니다.",
+"ans": "⑤ f(x) 의 부정적분 중 하나를  F(x) 라고 하면 lim _{h",
+"sol_len": 636
+},
+{
+"n": 30,
+"step": "3",
+"q": "다항함수 f(x) 가 모든 실수 x 에 대하여 수식입니다. int _{0} ^{x} {} f(t)dt=x ^{3} +x ^{2} -x int _{0} ^{2} {} f(t)dt를 만족시킬 때, f(-2) 의 값은?① 4 ② 6 ③ 8 ④ 10 ⑤ 12",
+"ans": "① int_0 ^2 f(t)dt = k  ( k 는 상수)라 하면수식입니",
+"sol_len": 225
+},
+{
+"n": 31,
+"step": "3",
+"q": "모든 실수 x` 에 대하여 int_a ^x (x-t)f(t)dt = 2over3 x^3 -3x^2 +4x-1 을 만족시킬 때, f(2) 의 값을 구하시오. (단, a` 는 상수이다.)",
+"ans": "bold{2} 주어진 식의 좌변을 정리하면 int_a^x (x-t)f(t",
+"sol_len": 339
+},
+{
+"n": 32,
+"step": "3",
+"q": "함수 f(x)= int_0 ^x (t-2)(t-a)dt` 가 x=2 에서 극솟값 2over3 을 가질 때, 극댓값을 구하시오.",
+"ans": "bold{5over6} 주어진 식의 양변을 미분하면 f`'(x)= (x-",
+"sol_len": 503
+},
+{
+"n": 33,
+"step": "3",
+"q": "0 le x le 5 일 때, f(x)= int_-3 ^x (3- left| t right| )dt` 의 최댓값을 구하시오.",
+"ans": "bold{9}  f(x)= int_-3 ^x (3- left| t rig",
+"sol_len": 424
+},
+{
+"n": 34,
+"step": "3",
+"q": "이 [그림] 차함수 y=f(x) 의 그래프가 그림과 같다.함수 g(x)= int_x ^x+2 f(t)dt` 가 x=a` 에서 최솟값을 가질 때, 양수 a` 의 값을 구하시오.",
+"ans": "bold{4}  y=f(x) 의 그래프에서 f(x)= k(x-3)(x-7",
+"sol_len": 325
+},
+{
+"n": 35,
+"step": "3",
+"q": "다항함수 f` 에 대하여 등식 int_1 ^x (4t+5)f(t)dt = 3(x+2) int_1 ^x f(t)dt , f(0)=3 이 항상 성립할 때, f(3) 의 값을 구하시오.",
+"ans": "bold{12} 주어진 식의 양변을  x` 에 대하여 미분하면 (4x+5",
+"sol_len": 535
+},
+{
+"n": 36,
+"step": "3",
+"q": "함수 f(x)= 3x^2 +2x-4 일 때, lim_{x`->`1} 1over {x-1} int_1 ^{x^3} f(t)dt` 의 값을 구하시오.",
+"ans": "bold{3}  f(t)=3t^2 +2t-4 이므로  f(t) 의 한 부",
+"sol_len": 324
+},
+{
+"n": 37,
+"step": "3",
+"q": "다항함수 f` 에 대하여 f`'(x)=3x^2 -8x-3 이고 lim_{x`->`2} int_2 ^x f(t)dt=it-10 일 때, f(1) 의 값을 구하시오.9. 정적분으로 정의된 함수 [정답] ⑴ bold{f LEFT ( x RIGHT ) =2x- {4} over {5} ⑵ bold{f LEFT ( x RIGHT ) =4x+2 [정답] ⑴ bold{f LEFT ( x RIGHT ) =3x ^{2} -2x ⑵ bold{f LEFT ( x RIGHT ) =it-3x ^{2} -4x [정답] bold{f LEFT ( x RIGHT ) =3x ^{2} -6x+4 [정답] 최댓값 bold{ {5} over {6} , 최솟값 bold{- {1} over {6} [정답] bold{f LEFT ( x RIGHT ) =6x+2 [정답] bold2 [정답] bold26 [정답] ① [정답] 극댓값 : bold2 , 극솟값 : bold-2 [정답] bold{12x-2 [정답] ⑴ bold21 ⑵ bold1 [정답] ⑴ bold54 ⑵ bold0 [정답] ① [정답] ① [정답] ③ [정답] ① [정답] ③ [정답] ① [정답] ② [정답] ① [정답] bold3 [정답] ③ [정답] bold{2} [정답] ⑤ [정답] bold{2} [정답] ④ [정답] ⑤ [정답] ⑤ [정답] ⑤ [정답] ① [정답] bold{2} [정답] bold{5over6} [정답] bold{9} [정답] bold{4} [정답] bold{12} [정답] bold{3} [정답] bold{-2}",
+"ans": "bold{-2}  f(t) 의 한 부정적분을  F(t) 라 하면 lim_",
+"sol_len": 390
+}
+],
+"M": [
+{
+"n": 1,
+"step": "1",
+"q": "다음 등식을 만족시키는 함수 y=f LEFT ( x RIGHT ) ` 를 구하시오.⑴ f LEFT ( x RIGHT ) =2x-4 int _{0} ^{1} {f LEFT ( x RIGHT ) dx} ⑵ f LEFT ( x RIGHT ) =2+ int _{0} ^{1} {xf LEFT ( t RIGHT ) dt}",
+"ans": "⑴ 수식입니다. {f LEFT ( x RIGHT ) =2x- {4} ov",
+"sol_len": 782
+},
+{
+"n": 2,
+"step": "1",
+"q": "다음 등식을 만족시키는 함수 y=f LEFT ( x RIGHT ) ` 를 구하시오.⑴ f LEFT ( x RIGHT ) =3x ^{2} -2x+2 int _{0} ^{1} {f LEFT ( x RIGHT ) dx} ⑵ f LEFT ( x RIGHT ) =it-3x ^{2} +2x int _{-1} ^{1} {f LEFT ( t RIGHT ) dt} 02정적분으로 정의된 함수개념묶음 개체입니다.⑴ int_a^x f(t)``dt=g(x) 꼴 RARROW 양변을 x 에 대하여 미분하고 int_a^a f(t)``dt=0 임을 이용한다.⑵ int_a^x (x-t)f(t)``dt=g(x) 꼴 RARROW int_a^x (x-t)f(t)``dt=x int_a^x f(t)``dt-int_a^x tf(t)``dt 로 변형한 후 양변을 x 에 대하여 미분한다. [그림] 두 상수 a , b 에 대하여⑴ d overdx int_a^x f(t)``dt=f(x) ⑵ d overdx int_x^x+a f(t)``dt=f(x+a)-f(x) ⑶ d overdx int_x+a ^x+b f(t)``dt=f(x+b)-f(x+a) 사각형입니다.",
+"ans": "⑴ 수식입니다. {f LEFT ( x RIGHT ) =3x ^{2} -2",
+"sol_len": 1014
+},
+{
+"n": 3,
+"step": "1",
+"q": "미분가능한 함수 y=f LEFT ( x RIGHT ) ` 가 수식입니다. int _{1} ^{x} {f LEFT ( t RIGHT ) dt=xf LEFT ( x RIGHT ) -2x ^{3} +3x ^{2} -2`}를 항상 만족시킬 때, 함수 y=f LEFT ( x RIGHT ) ` 를 구하시오.",
+"ans": "수식입니다. {f LEFT ( x RIGHT ) =3x ^{2} -6x+",
+"sol_len": 572
+},
+{
+"n": 4,
+"step": "1",
+"q": "-1LEQ{x}LEQ1` 에서 함수 f LEFT ( x RIGHT ) = int _{x} ^{x+1} {LEFT ( t ^{2} -t RIGHT ) dt`} 의 최댓값과 최솟값을 구하시오.",
+"ans": "최댓값 수식입니다. { {5} over {6}, 최솟값 수식입니다. {-",
+"sol_len": 952
+},
+{
+"n": 5,
+"step": "1",
+"q": "임의의 실수 x 에 대하여 다음 등식을 만족시키는 다항함수 y=f LEFT ( x RIGHT ) ` 를 구하시오. (단, a 는 상수이다.)수식입니다. int _{1} ^{x} {LEFT ( x-t RIGHT ) f LEFT ( t RIGHT ) dt=x ^{3} +ax ^{2} -5x+3}",
+"ans": "수식입니다. {f LEFT ( x RIGHT ) =6x+2수식입니다. i",
+"sol_len": 772
+},
+{
+"n": 6,
+"step": "1",
+"q": "미분가능한 함수 y=f LEFT ( x RIGHT ) ` 에 대하여 f LEFT ( x RIGHT ) =x ^{3} +ax ^{2} + int _{3} ^{x} {LEFT ( t ^{2} +2t+2 RIGHT ) dt`} 가 성립한다. 다항식 f LEFT ( x RIGHT ) ` 가 x-3` 으로 나누어떨어질 때, f`' LEFT ( 1 RIGHT ) ` 의 값을 구하시오. (단, a 는 상수이다.)",
+"ans": "bold2  f LEFT ( x RIGHT ) 가  x-3 으로 나누어떨",
+"sol_len": 407
+},
+{
+"n": 7,
+"step": "1",
+"q": "미분가능한 함수 y=f LEFT ( x RIGHT ) ` 에 대하여 xf LEFT ( x RIGHT ) =2x ^{3} + int _{1} ^{x} {f LEFT ( t RIGHT ) dt} 가 항상 성립할 때, f LEFT ( 3 RIGHT ) ` 의 값을 구하시오.",
+"ans": "수식입니다. 26주어진 식의 양변을  x 에 대하여 미분하면 f LEFT",
+"sol_len": 483
+},
+{
+"n": 8,
+"step": "1",
+"q": "다항함수 f(x) 가 x^2 f(x)=4x^5 +x^4 + 2 int_1^x tf(t)dt 를 만족시킬 때, 3f(0) 의 값은?① -11 ② -12 ③ -13 ④ -14 ⑤ -15",
+"ans": "① x  ^{2} f(x)=4x  ^{5} +x  ^{4} +2  int",
+"sol_len": 537
+},
+{
+"n": 9,
+"step": "1",
+"q": "임의의 실수 x 에 대하여 다음 등식을 만족시키는 다항함수 수식입니다. f LEFT ( x RIGHT ) `를 구하시오.수식입니다. int _{1} ^{x} {LEFT ( x-t RIGHT ) f LEFT ( t RIGHT ) dt=2x ^{3} -x ^{2} -4x+3}04정적분을 포함한 함수의 개형유형묶음 개체입니다.",
+"ans": "수식입니다. {12x-2주어진 등식의 좌변을 정리하면수식입니다. int",
+"sol_len": 628
+},
+{
+"n": 10,
+"step": "1",
+"q": "함수 f LEFT ( x RIGHT ) = int _{0} ^{x} {LEFT ( 3t ^{2} -3 RIGHT ) dt`} 의 극댓값과 극솟값을 구하시오.",
+"ans": "극댓값 수식입니다. 2, 극솟값 수식입니다. -2 f LEFT ( x R",
+"sol_len": 1103
+},
+{
+"n": 11,
+"step": "1",
+"q": "실수 a 에 대하여 함수 f LEFT ( x RIGHT ) 는 f LEFT ( x RIGHT ) = {cases{3x ^{2} +3x+a&&LEFT ( x이다. 함수 g LEFT ( x RIGHT ) = int _{-4} ^{x} {} f LEFT ( t RIGHT ) dt 가 x=2 에서 극솟값을 가질 때, 함수 g LEFT ( x RIGHT ) 의 극댓값은? [4점]① rm 18 ② rm 20 ③ rm 22 ④ rm 24 ⑤ rm 26",
+"ans": "⑤ g  LEFT ( x  RIGHT ) = int _{-4} ^{x}",
+"sol_len": 818
+},
+{
+"n": 12,
+"step": "1",
+"q": "실수 전체의 집합에서 미분가능한 함수 f LEFT ( x RIGHT )` 가 모든 실수 x` 에 대하여 LEFT { f LEFT ( x RIGHT ) RIGHT } ^{2} =2 int _{3} ^{x} {} LEFT ( t ^{2} +2t RIGHT ) f LEFT ( t RIGHT ) `dt 를 만족시킬 때, int _{-3} ^{0} {} f LEFT ( x RIGHT ) `dx` 의 최댓값을 수식입니다.M , 최솟값을 m` 이라 하자. M` -m` 의 값을 구하시오.03정적분으로 정의된 함수의 극한개념묶음 개체입니다.⑴ lim_{x->0}1overx int_0^x f(t)``dt=f(0) ⑵ lim_{x->0}1overx int_a^x+a f(t)``dt=f(a) ⑶ lim_{x->a}1overx-a int_a^x f(t)``dt=f(a) [그림] f(x) 의 한 부정적분을 F(x) 라 하면⑵ lim_{x->0}1overx int_a^x+a f(t)``dt =lim_{x->0}{F(a+x)-F(a)}overx =F``prime(a)=f(a) ⑶ lim_{x->a}1overx-a int_a^x f(t)``dt =lim_{x->a}{F(x)-F(a)}overx-a =F``prime(a)=f(a) 사각형입니다.",
+"ans": "54  LEFT { f LEFT ( x RIGHT ) RIGHT } ^{",
+"sol_len": 2702
+},
+{
+"n": 13,
+"step": "1",
+"q": "다음 극한값을 구하시오.⑴ lim _{h->0} {{1} over {h} int _{2} ^{2+h} {LEFT ( 6x ^{2} -2x+1 RIGHT ) dx}} ⑵ f LEFT ( x RIGHT ) =x ^{10} -5x ^{4} +3x+2` 일 때, lim _{x->1} {{1} over {x-1} int _{1} ^{x} {f LEFT ( t RIGHT ) dt}}",
+"ans": "⑴  bold21 ⑵  bold1 ⑴  f LEFT ( x RIGHT )",
+"sol_len": 791
+},
+{
+"n": 14,
+"step": "1",
+"q": "다음 극한값을 구하시오.⑴ lim _{x->0} {{1} over {x} int _{2} ^{2+2x} {LEFT ( t+1 RIGHT ) ^{3} dt}} ⑵ f LEFT ( x RIGHT ) =x ^{4} -2x ^{2} +1` 일 때, lim _{x->1} {{1} over {x-1} int _{1} ^{x ^{2}} {f LEFT ( t RIGHT ) dt}} 유형별 학습하기STEP 2사각형입니다.묶음 개체입니다.01정적분을 포함한 함수유형묶음 개체입니다.",
+"ans": "⑴ 수식입니다. 54⑵ 수식입니다. 0⑴  f LEFT ( t RIGHT",
+"sol_len": 935
+},
+{
+"n": 15,
+"step": "2",
+"q": "함수 f(x)=2x+ int _{0} ^{2} {f(t)dt} 일 [그림] 때, f(2) 의 값은?① 0 ② 2 ③ 4 ④ 6 ⑤ 8",
+"ans": "①수식입니다. int _{0} ^{2} {} f(t)dt=k ( k 는",
+"sol_len": 235
+},
+{
+"n": 16,
+"step": "2",
+"q": "함수 f(x) = 12over7 x^2 -2x int _{ 1} ^{ 2} { f(x)dx}+ LEFT { int _{ 1} ^{ 2} { f(x)dx} RIGHT }^2 일 때, 5 int_1^2 f(x)dx 의 값은?① 10 ② 15 ③ 20 ④ 25 ⑤ 30",
+"ans": "① int_1^2 f(x)dx=a  ( a 는 상수)로 놓으면수식입니다.",
+"sol_len": 342
+},
+{
+"n": 17,
+"step": "2",
+"q": "두 함수 f(x) , g(x) 가 f(x)=3x^2 + int_0^1 (2x+1)f(t)dt , g(x)=x+5 일 때, 부등식 f(x)를 만족시키는 정수 x 의 개수는?① 0 ② 1 ③ 2 ④ 3 ⑤ 4",
+"ans": "③ f(x)=3x^2 +int_0^1 (2x+1)f(t) 에서 f(x)=",
+"sol_len": 389
+},
+{
+"n": 18,
+"step": "2",
+"q": "두 연속함수 f LEFT ( x RIGHT ) , g LEFT ( x RIGHT ) 가 f LEFT ( x RIGHT ) = it -3x ^{2} +x+ int _{-1} ^{0} {g LEFT ( t RIGHT ) `dt} g LEFT ( x RIGHT ) =4x ^{3} - int _{0} ^{2} {f LEFT ( t RIGHT ) `dt} 를 만족시킬 때, f LEFT ( 0 RIGHT ) g LEFT ( 0 RIGHT ) 의 값을 구하시오.02정적분으로 정의된 함수⑴유형묶음 개체입니다.",
+"ans": "{40} over {9}  int _{-1} ^{0} {g LEFT (",
+"sol_len": 832
+},
+{
+"n": 19,
+"step": "2",
+"q": "다항함수 f(x) 가 모든 실수 x 에 대하여수식입니다. int _{-1} ^{x} {f(t)dt} = {1} over {3} x ^{3} - {1} over {2} x ^{2} -2x를 만족시킬 때, 함수 y=f(x) 의 그래프가 x 축과 만나는 모든 점의 x 좌표의 곱은?① -2 ② -1 ③ 0 ④ 1 ⑤ 2",
+"ans": "①수식입니다. int _{-1} ^{x} {f(t)dt} = {1} ov",
+"sol_len": 244
+},
+{
+"n": 20,
+"step": "2",
+"q": "다항함수 f(x) 가 모든 실수 x 에 대하여 int_a^x f(t)dt=2x^3 -5x^2 +2x 를 만족시킬 때, f(a) 의 값은? (단, a 는 0 이 아닌 정수이다.)① 5 ② 6 ③ 7 ④ 8 ⑤ 9",
+"ans": "②수식입니다. int _{a} ^{x} {f(t)dt} =2x  ^{3}",
+"sol_len": 295
+},
+{
+"n": 21,
+"step": "2",
+"q": "다항함수 f(x) 가 모든 실수 x 에 대하여 수식입니다. int _{1} ^{x} {} `f(t)dt=xf(x)-3x^4 +2x ^2 을 만족시킬 때, f(0) 의 값은?① 1 ② 2 ③ 3 ④ 4 ⑤ 5",
+"ans": "①수식입니다. int _{1} ^{x} {} `f(t)dt=xf(x)-3",
+"sol_len": 442
+},
+{
+"n": 22,
+"step": "2",
+"q": "다항함수 f(x) 가 수식입니다.int_0^x (x-t)f(t)dt= 1over3 x^3 + 1over4 x^2 을 만족시킬 때, f(3) 의 값은?① 5 ② 11over2 ③ 6 ④ 13over2 ⑤ 7 03정적분으로 정의된 함수⑵유형묶음 개체입니다.",
+"ans": "수식입니다. {2}주어진 식의 좌변을 정리하면 int_a^x (x-t)f",
+"sol_len": 340
+},
+{
+"n": 23,
+"step": "2",
+"q": "다항함수 f(x) 가수식입니다. int _{0} ^{x} {} (x-t)f(t) dt = 1 over 6 x^4 + 2 over 3 x^3 + 1 over 2 x ^2을 만족시킬 때, 함수 f(x) 의 최솟값은?① -3 ② -2 ③ -1 ④ 0 ⑤ 1",
+"ans": "③수식입니다. int _{0} ^{x} {} (x-t)f(t) dt =",
+"sol_len": 475
+},
+{
+"n": 24,
+"step": "2",
+"q": "함수 f` ( x ) = int _{1} ^{x} {6( t ^{2} - 2pt )} dt 의 -1` le x le 1 에서의 최댓값, 최솟값의 차가 4 일 때, 양수 p 의 최댓값은?① {1} over {3} ② {1} over {2} ③ {2} over {3} ④ 1 ⑤ 2",
+"ans": "① f(1)=0 ,  f` prime (x)=6x ^{2} -12px 이",
+"sol_len": 987
+},
+{
+"n": 25,
+"step": "2",
+"q": "이차함수 y=f LEFT ( x RIGHT ) 의 그래프가 그림과 같다. 함수 g LEFT ( x RIGHT ) 에 대하여 g LEFT ( x RIGHT ) = int _{1} ^{x+2} {f LEFT ( t RIGHT ) `dt} 가 성립할 때, 함수 g LEFT ( x RIGHT ) 의 극댓값과 극솟값의 합을 구하고, 그 과정을 서술하시오. [그림]",
+"ans": "{22} over {3}  f LEFT ( x RIGHT ) =ax LE",
+"sol_len": 2632
+},
+{
+"n": 26,
+"step": "2",
+"q": "이차함수 y= f(x) 의 그래프가 그림과 같을 때, 함수 g(x)= int _{x} ^{x+1} {f(t)`dt} 는 x=a 에서 최솟값을 갖는다. 실수 a 의 값은? [그림] ① - 1 over2 ② 0 ③ 1 over2 ④ 1 ⑤ 3 over2 04정적분으로 정의된 함수의 극한유형묶음 개체입니다.",
+"ans": "③ f(x)=k(x+1)(x-3)=k (x^2 -2x-3)  ( k>0",
+"sol_len": 920
+},
+{
+"n": 27,
+"step": "2",
+"q": "함수 f(x)=x^3 -3x^2 -3x-1 일 때, lim _{ x→ -1} 1 over{x^2 -1} int _{ -1} ^{ x} f(t)dt 의 값은?① -2 ② - 1over2 ③ 0 ④ 1over2 ⑤ 1",
+"ans": "⑤ f(x)=x  ^{3} -3x  ^{2} -3x-1 의 부정적분 중",
+"sol_len": 299
+},
+{
+"n": 28,
+"step": "2",
+"q": "lim _{x -> 2} {{1} over {x ^{2} -4}} int _{2} ^{x} {} (t ^{2} +3t-2)dt 의 값을 구하시오.",
+"ans": "bold{2} 수식입니다. f(x)=x^2 +3x-2로 놓고  f(x)",
+"sol_len": 387
+},
+{
+"n": 29,
+"step": "2",
+"q": "미분가능한 함수 f(x) 가 f(1)=2 , f` prime (1)=3 을 만족시킬 때, lim _{x -> 1} {{1} over {x-1}} int _{1} ^{x ^{2}} {LEFT { f(t) RIGHT } ^{2} f` prime (t)dt} 의 값은?① 21 ② 22 ③ 23 ④ 24 ⑤ 25",
+"ans": "④ LEFT { f(t) RIGHT }  ^{2} f` prime (t)",
+"sol_len": 436
+},
+{
+"n": 30,
+"step": "2",
+"q": "lim _{h -> 0} {{1} over {h}} int _{0} ^{10h} {|``x-10``|`dx} 의 값은?① -100 ② -10 ③ 0 ④ 10 ⑤ 100",
+"ans": "⑤ f(x)=|`x-10`| 으로 놓고  f(x) 의 부정적분 중 하나를",
+"sol_len": 204
+},
+{
+"n": 31,
+"step": "2",
+"q": "lim _{ h→0} {1overh } int _{ 2-h} ^{2+2h } {(x^2 +ax+1)dx=21 } 을 만족시키는 상수 a 의 값은?① 0 ② 1over4 ③ 수식입니다. 1over3 ④ 1over2 ⑤ 1",
+"ans": "⑤ f(x)=x^2 +ax+1 로 놓고  f(x) 의 부정적분 중 하나를",
+"sol_len": 333
+},
+{
+"n": 32,
+"step": "2",
+"q": "함수 `f(x)= int _{0} ^{x} {} (3t-1)^3 dt 일 때, lim _{h -> 0} {{1} over {h ^{2} +2h}} int _{1-h} ^{1+2h} {f(t)dt} 의 값은?① {7} over {8} ② {9} over {8} ③ {11} over {8} ④ {13} over {8} ⑤ 수식입니다. 15over8단원 마무리 하기STEP 3사각형입니다.묶음 개체입니다.",
+"ans": "⑤ f(x) 의 부정적분 중 하나를  F(x) 라고 하면 lim _{h",
+"sol_len": 636
+},
+{
+"n": 33,
+"step": "3",
+"q": "함수 f LEFT ( x RIGHT ) =x ^{3} +ax ^{2} -2 가수식입니다. int _{2} ^{x} {LEFT { {d} over {dt} f LEFT ( t RIGHT ) RIGHT } `dt= {d} over {dx} int _{0} ^{x} {f LEFT ( t RIGHT ) `dt}}를 만족시킬 때, 상수 a 의 값은?① - {5} over {2} ② -2 ③ - {3} over {2} ④ -1 ⑤ - {1} over {2}",
+"ans": "③수식입니다. int _{2} ^{x} {LEFT { {d} over {",
+"sol_len": 381
+},
+{
+"n": 34,
+"step": "3",
+"q": "다항함수 f LEFT ( x RIGHT ) 가 lim _{x` rarrow `1} {`} {int _{1} ^{x} {f LEFT ( t RIGHT ) `dt-f LEFT ( x RIGHT )}} over {x ^{2} -1} =2 를 만족시킬 때, f` prime LEFT ( 1 RIGHT ) 의 값은?① -4 ② -3 ③ -2 ④ -1 ⑤ 0",
+"ans": "① lim _{x` rarrow `1} {`} {int _{1} ^{x}",
+"sol_len": 1328
+},
+{
+"n": 35,
+"step": "3",
+"q": "다항함수 f(x) 가 모든 실수 x 에 대하여 수식입니다. int _{0} ^{x} {} f(t)dt=x ^{3} +x ^{2} -x int _{0} ^{2} {} f(t)dt를 만족시킬 때, f(-2) 의 값은?① 4 ② 6 ③ 8 ④ 10 ⑤ 12",
+"ans": "① int_0 ^2 f(t)dt = k  ( k 는 상수)라 하면수식입니",
+"sol_len": 225
+},
+{
+"n": 36,
+"step": "3",
+"q": "모든 실수 x` 에 대하여 int_a ^x (x-t)f(t)dt = 2over3 x^3 -3x^2 +4x-1 을 만족시킬 때, f(2) 의 값을 구하시오. (단, a` 는 상수이다.)",
+"ans": "bold{2} 주어진 식의 좌변을 정리하면 int_a^x (x-t)f(t",
+"sol_len": 339
+},
+{
+"n": 37,
+"step": "3",
+"q": "함수 f(x)= int_0 ^x (t-2)(t-a)dt` 가 x=2 에서 극솟값 2over3 을 가질 때, 극댓값을 구하시오.",
+"ans": "bold{5over6} 주어진 식의 양변을 미분하면 f`'(x)= (x-",
+"sol_len": 503
+},
+{
+"n": 38,
+"step": "3",
+"q": "0 le x le 5 일 때, f(x)= int_-3 ^x (3- left| t right| )dt` 의 최댓값을 구하시오.",
+"ans": "bold{9}  f(x)= int_-3 ^x (3- left| t rig",
+"sol_len": 424
+},
+{
+"n": 39,
+"step": "3",
+"q": "이 [그림] 차함수 y=f(x) 의 그래프가 그림과 같다.함수 g(x)= int_x ^x+2 f(t)dt` 가 x=a` 에서 최솟값을 가질 때, 양수 a` 의 값을 구하시오.",
+"ans": "]  bold{4}  y=f(x) 의 그래프에서 f(x)= k(x-3)(",
+"sol_len": 327
+},
+{
+"n": 40,
+"step": "3",
+"q": "다항함수 f` 에 대하여 등식 int_1 ^x (4t+5)f(t)dt = 3(x+2) int_1 ^x f(t)dt , f(0)=3 이 항상 성립할 때, f(3) 의 값을 구하시오.",
+"ans": "bold{12} 주어진 식의 양변을  x` 에 대하여 미분하면 (4x+5",
+"sol_len": 535
+},
+{
+"n": 41,
+"step": "3",
+"q": "함수 f(x) , g(x) 에 대하여 f(x)+ int _{1} ^{x} {xg(t)dt} =x ^{3} +4x ^{2} -2x g(x)=2x+ int _{0} ^{1} {f(t)dt} 일 때, g(2) 의 값을 구하시오.",
+"ans": "5   f(x)+ int _{1} ^{x} {xg(t)dt} =x ^{3",
+"sol_len": 831
+},
+{
+"n": 42,
+"step": "3",
+"q": "최고차항의 계수가 양수인 두 다항함수 f(x),~g(x) 가 임의의 실수 x 에 대하여 다음 조건을 만족시킨다.(가) 수식입니다. int _{1} ^{x} {g(t)dt} =f(x)+8x(나) f` prime (x)g` prime (x)=18x ^{3} +54x ^{2} +36x f(2)+g(2) 의 값을 구하시오.",
+"ans": "40 조건 (가)의 식에  x=1 을 대입하면 f`(1)=-8     C",
+"sol_len": 583
+},
+{
+"n": 43,
+"step": "3",
+"q": "사차함수 g(x) 가 g(1)>0 , g(x)= int _{0} ^{x} {f`prime(t)dt} 를 만족시킬 때, 함수 y= LEFT | `f`' LEFT ( x RIGHT ) ` RIGHT | 의 그래프가 다음과 같다. [그림] 보 기사각형입니다.에서 옳은 것만을 있는 대로 고른 것은? [그림] ㄱ. g` prime (1)>0 ㄴ. 함수 g(x) 의 극솟값은 음수이다. ㄷ. 집합 LEFT { `k`` LEFT | `` int _{-1} ^{x} {g prime LEFT ( x RIGHT ) dx=0`,~k` 는 실수 LEFT. pile{`#`} RIGHT } 의 원소는 3 개이다.① ㄱ② ㄱ, ㄴ ③ ㄱ, ㄷ④ ㄴ, ㄷ⑤ ㄱ, ㄴ, ㄷ",
+"ans": "③ g(x)= int _{0} ^{x} {f`prime(t)dt} 에서",
+"sol_len": 602
+},
+{
+"n": 44,
+"step": "3",
+"q": "상수함수가 아닌 다항함수 f LEFT ( x RIGHT ) 가 다음 조건을 만족시킨다.(가) 2 int_{-1}^{x}{f LEFT ( t RIGHT )}`dt = LEFT ( x+1 RIGHT )left{f LEFT ( x RIGHT )+f LEFT ( -1 RIGHT )right} (나) 함수 g LEFT ( x RIGHT )=int_{a}^{x}{ LEFT ( t-2 RIGHT )f LEFT ( t RIGHT )}`dt 의 그래프와 x 축이 접하도록 하는 실수 a 의 개수는 1 이다. f LEFT ( 0 RIGHT )=2 일 때, int_{0}^{4}{f LEFT ( x RIGHT )}`dx 의 값은?① -{ 1} over { 2} ② -{ 1} over { 4} ③ 0 ④ { 1} over { 4} ⑤ { 1} over { 2}",
+"ans": "③조건 (가)에서  2int _{ -1} ^{ x} {f LEFT ( t",
+"sol_len": 1183
+},
+{
+"n": 45,
+"step": "3",
+"q": "실수 {a}{{from^2020^11^대수능고3나^5}} ( a>1 )에 대하여 함수 f LEFT ( x RIGHT ) 를 f LEFT ( x RIGHT ) = LEFT ( x+1 RIGHT ) LEFT ( x-1 RIGHT ) LEFT ( x-a RIGHT ) 라 하자. 함수 g LEFT ( x RIGHT ) =x ^{2} int _{0} ^{x} {} f LEFT ( t RIGHT ) dt- int _{0} ^{x} {} t ^{2} f LEFT ( t RIGHT ) dt 가 오직 하나의 극값을 갖도록 하는 a 의 최댓값은? ① {9 sqrt {2}} over {8} ② {3 sqrt {6}} over {4} ③ {3 sqrt {2}} over {2} ④ sqrt {6} ⑤ 2 sqrt {2} 9. 정적분으로 정의된 함수",
+"ans": "④ f(x)=(x+1)(x-1)(x-a)` 의 그래프의 개형은 다음과 같",
+"sol_len": 1066
+}
+],
+"match": [
+{
+"m": 1,
+"mstep": "1",
+"c": 1,
+"cstep": "1",
+"r": 1.0,
+"mq": "다음 등식을 만족시키는 함수 y=f LEFT ( x RIGHT ) ` 를 구하시오.⑴ f LEFT ( x RIGHT ) =2x-4 int _{0} ^{1} {f LEFT ( x RIGHT ) dx} ⑵ f LEFT ( x RIGHT ) =2+ int _{0} ^{1} {xf LEFT (",
+"cq": "다음 등식을 만족시키는 함수 y=f LEFT ( x RIGHT ) ` 를 구하시오.⑴ f LEFT ( x RIGHT ) =2x-4 int _{0} ^{1} {f LEFT ( x RIGHT ) dx} ⑵ f LEFT ( x RIGHT ) =2+ int _{0} ^{1} {xf LEFT (",
+"msol": 782,
+"csol": 780
+},
+{
+"m": 2,
+"mstep": "1",
+"c": 2,
+"cstep": "1",
+"r": 1.0,
+"mq": "다음 등식을 만족시키는 함수 y=f LEFT ( x RIGHT ) ` 를 구하시오.⑴ f LEFT ( x RIGHT ) =3x ^{2} -2x+2 int _{0} ^{1} {f LEFT ( x RIGHT ) dx} ⑵ f LEFT ( x RIGHT ) =it-3x ^{2} +2x int",
+"cq": "다음 등식을 만족시키는 함수 y=f LEFT ( x RIGHT ) ` 를 구하시오.⑴ f LEFT ( x RIGHT ) =3x ^{2} -2x+2 int _{0} ^{1} {f LEFT ( x RIGHT ) dx} ⑵ f LEFT ( x RIGHT ) =it-3x ^{2} +2x int",
+"msol": 1014,
+"csol": 1012
+},
+{
+"m": 3,
+"mstep": "1",
+"c": 3,
+"cstep": "1",
+"r": 1.0,
+"mq": "미분가능한 함수 y=f LEFT ( x RIGHT ) ` 가 수식입니다. int _{1} ^{x} {f LEFT ( t RIGHT ) dt=xf LEFT ( x RIGHT ) -2x ^{3} +3x ^{2} -2`}를 항상 만족시킬 때, 함수 y=f LEFT ( x RIGHT ) ` 를",
+"cq": "미분가능한 함수 y=f LEFT ( x RIGHT ) ` 가 수식입니다. int _{1} ^{x} {f LEFT ( t RIGHT ) dt=xf LEFT ( x RIGHT ) -2x ^{3} +3x ^{2} -2`}를 항상 만족시킬 때, 함수 y=f LEFT ( x RIGHT ) ` 를",
+"msol": 572,
+"csol": 618
+},
+{
+"m": 4,
+"mstep": "1",
+"c": 4,
+"cstep": "1",
+"r": 1.0,
+"mq": "-1LEQ{x}LEQ1` 에서 함수 f LEFT ( x RIGHT ) = int _{x} ^{x+1} {LEFT ( t ^{2} -t RIGHT ) dt`} 의 최댓값과 최솟값을 구하시오.",
+"cq": "-1LEQ{x}LEQ1` 에서 함수 f LEFT ( x RIGHT ) = int _{x} ^{x+1} {LEFT ( t ^{2} -t RIGHT ) dt`} 의 최댓값과 최솟값을 구하시오.",
+"msol": 952,
+"csol": 950
+},
+{
+"m": 5,
+"mstep": "1",
+"c": 5,
+"cstep": "1",
+"r": 1.0,
+"mq": "임의의 실수 x 에 대하여 다음 등식을 만족시키는 다항함수 y=f LEFT ( x RIGHT ) ` 를 구하시오. (단, a 는 상수이다.)수식입니다. int _{1} ^{x} {LEFT ( x-t RIGHT ) f LEFT ( t RIGHT ) dt=x ^{3} +ax ^{2} -5x",
+"cq": "임의의 실수 x 에 대하여 다음 등식을 만족시키는 다항함수 y=f LEFT ( x RIGHT ) ` 를 구하시오. (단, a 는 상수이다.)수식입니다. int _{1} ^{x} {LEFT ( x-t RIGHT ) f LEFT ( t RIGHT ) dt=x ^{3} +ax ^{2} -5x",
+"msol": 772,
+"csol": 771
+},
+{
+"m": 6,
+"mstep": "1",
+"c": 6,
+"cstep": "1",
+"r": 1.0,
+"mq": "미분가능한 함수 y=f LEFT ( x RIGHT ) ` 에 대하여 f LEFT ( x RIGHT ) =x ^{3} +ax ^{2} + int _{3} ^{x} {LEFT ( t ^{2} +2t+2 RIGHT ) dt`} 가 성립한다. 다항식 f LEFT ( x RIGHT ) ` 가 x",
+"cq": "미분가능한 함수 y=f LEFT ( x RIGHT ) ` 에 대하여 f LEFT ( x RIGHT ) =x ^{3} +ax ^{2} + int _{3} ^{x} {LEFT ( t ^{2} +2t+2 RIGHT ) dt`} 가 성립한다. 다항식 f LEFT ( x RIGHT ) ` 가 x",
+"msol": 407,
+"csol": 407
+},
+{
+"m": 7,
+"mstep": "1",
+"c": 7,
+"cstep": "1",
+"r": 1.0,
+"mq": "미분가능한 함수 y=f LEFT ( x RIGHT ) ` 에 대하여 xf LEFT ( x RIGHT ) =2x ^{3} + int _{1} ^{x} {f LEFT ( t RIGHT ) dt} 가 항상 성립할 때, f LEFT ( 3 RIGHT ) ` 의 값을 구하시오.",
+"cq": "미분가능한 함수 y=f LEFT ( x RIGHT ) ` 에 대하여 xf LEFT ( x RIGHT ) =2x ^{3} + int _{1} ^{x} {f LEFT ( t RIGHT ) dt} 가 항상 성립할 때, f LEFT ( 3 RIGHT ) ` 의 값을 구하시오.",
+"msol": 483,
+"csol": 482
+},
+{
+"m": 8,
+"mstep": "1",
+"c": 8,
+"cstep": "1",
+"r": 1.0,
+"mq": "다항함수 f(x) 가 x^2 f(x)=4x^5 +x^4 + 2 int_1^x tf(t)dt 를 만족시킬 때, 3f(0) 의 값은?① -11 ② -12 ③ -13 ④ -14 ⑤ -15",
+"cq": "다항함수 f(x) 가 x^2 f(x)=4x^5 +x^4 + 2 int_1^x tf(t)dt 를 만족시킬 때, 3f(0) 의 값은?① -11 ② -12 ③ -13 ④ -14 ⑤ -15",
+"msol": 537,
+"csol": 537
+},
+{
+"m": 9,
+"mstep": "1",
+"c": 5,
+"cstep": "1",
+"r": 0.75,
+"mq": "임의의 실수 x 에 대하여 다음 등식을 만족시키는 다항함수 수식입니다. f LEFT ( x RIGHT ) `를 구하시오.수식입니다. int _{1} ^{x} {LEFT ( x-t RIGHT ) f LEFT ( t RIGHT ) dt=2x ^{3} -x ^{2} -4x+3}04정적분을 포",
+"cq": "임의의 실수 x 에 대하여 다음 등식을 만족시키는 다항함수 y=f LEFT ( x RIGHT ) ` 를 구하시오. (단, a 는 상수이다.)수식입니다. int _{1} ^{x} {LEFT ( x-t RIGHT ) f LEFT ( t RIGHT ) dt=x ^{3} +ax ^{2} -5x",
+"msol": 628,
+"csol": 771
+},
+{
+"m": 10,
+"mstep": "1",
+"c": 9,
+"cstep": "1",
+"r": 1.0,
+"mq": "함수 f LEFT ( x RIGHT ) = int _{0} ^{x} {LEFT ( 3t ^{2} -3 RIGHT ) dt`} 의 극댓값과 극솟값을 구하시오.",
+"cq": "함수 f LEFT ( x RIGHT ) = int _{0} ^{x} {LEFT ( 3t ^{2} -3 RIGHT ) dt`} 의 극댓값과 극솟값을 구하시오.",
+"msol": 1103,
+"csol": 1104
+},
+{
+"m": 11,
+"mstep": "1",
+"c": 8,
+"cstep": "1",
+"r": 0.46,
+"mq": "실수 a 에 대하여 함수 f LEFT ( x RIGHT ) 는 f LEFT ( x RIGHT ) = {cases{3x ^{2} +3x+a&&LEFT ( x이다. 함수 g LEFT ( x RIGHT ) = int _{-4} ^{x} {} f LEFT ( t RIGHT ) dt 가 x=2 ",
+"cq": "다항함수 f(x) 가 x^2 f(x)=4x^5 +x^4 + 2 int_1^x tf(t)dt 를 만족시킬 때, 3f(0) 의 값은?① -11 ② -12 ③ -13 ④ -14 ⑤ -15",
+"msol": 818,
+"csol": 537
+},
+{
+"m": 12,
+"mstep": "1",
+"c": 10,
+"cstep": "1",
+"r": 0.81,
+"mq": "실수 전체의 집합에서 미분가능한 함수 f LEFT ( x RIGHT )` 가 모든 실수 x` 에 대하여 LEFT { f LEFT ( x RIGHT ) RIGHT } ^{2} =2 int _{3} ^{x} {} LEFT ( t ^{2} +2t RIGHT ) f LEFT ( t RIGHT ",
+"cq": "임의의 실수 x 에 대하여 다음 등식을 만족시키는 다항함수 y=f LEFT ( x RIGHT ) ` 를 구하시오.수식입니다. int _{1} ^{x} {LEFT ( x-t RIGHT ) f LEFT ( t RIGHT ) dt=2x ^{3} -x ^{2} -4x+3}03정적분으로 정의된 ",
+"msol": 2702,
+"csol": 627
+},
+{
+"m": 13,
+"mstep": "1",
+"c": 11,
+"cstep": "1",
+"r": 1.0,
+"mq": "다음 극한값을 구하시오.⑴ lim _{h->0} {{1} over {h} int _{2} ^{2+h} {LEFT ( 6x ^{2} -2x+1 RIGHT ) dx}} ⑵ f LEFT ( x RIGHT ) =x ^{10} -5x ^{4} +3x+2` 일 때, lim _{x->1} {{1} ",
+"cq": "다음 극한값을 구하시오.⑴ lim _{h->0} {{1} over {h} int _{2} ^{2+h} {LEFT ( 6x ^{2} -2x+1 RIGHT ) dx}} ⑵ f LEFT ( x RIGHT ) =x ^{10} -5x ^{4} +3x+2` 일 때, lim _{x->1} {{1} ",
+"msol": 791,
+"csol": 791
+},
+{
+"m": 14,
+"mstep": "1",
+"c": 12,
+"cstep": "1",
+"r": 1.0,
+"mq": "다음 극한값을 구하시오.⑴ lim _{x->0} {{1} over {x} int _{2} ^{2+2x} {LEFT ( t+1 RIGHT ) ^{3} dt}} ⑵ f LEFT ( x RIGHT ) =x ^{4} -2x ^{2} +1` 일 때, lim _{x->1} {{1} over {x-",
+"cq": "다음 극한값을 구하시오.⑴ lim _{x->0} {{1} over {x} int _{2} ^{2+2x} {LEFT ( t+1 RIGHT ) ^{3} dt}} ⑵ f LEFT ( x RIGHT ) =x ^{4} -2x ^{2} +1` 일 때, lim _{x->1} {{1} over {x-",
+"msol": 935,
+"csol": 933
+},
+{
+"m": 15,
+"mstep": "2",
+"c": 13,
+"cstep": "2",
+"r": 1.0,
+"mq": "함수 f(x)=2x+ int _{0} ^{2} {f(t)dt} 일 [그림] 때, f(2) 의 값은?① 0 ② 2 ③ 4 ④ 6 ⑤ 8",
+"cq": "함수 f(x)=2x+ int _{0} ^{2} {f(t)dt} 일 [그림] 때, f(2) 의 값은?① 0 ② 2 ③ 4 ④ 6 ⑤ 8",
+"msol": 235,
+"csol": 235
+},
+{
+"m": 16,
+"mstep": "2",
+"c": 14,
+"cstep": "2",
+"r": 1.0,
+"mq": "함수 f(x) = 12over7 x^2 -2x int _{ 1} ^{ 2} { f(x)dx}+ LEFT { int _{ 1} ^{ 2} { f(x)dx} RIGHT }^2 일 때, 5 int_1^2 f(x)dx 의 값은?① 10 ② 15 ③ 20 ④ 25 ⑤ 30",
+"cq": "함수 f(x) = 12over7 x^2 -2x int _{ 1} ^{ 2} { f(x)dx}+ LEFT { int _{ 1} ^{ 2} { f(x)dx} RIGHT }^2 일 때, 5 int_1^2 f(x)dx 의 값은?① 10 ② 15 ③ 20 ④ 25 ⑤ 30",
+"msol": 342,
+"csol": 342
+},
+{
+"m": 17,
+"mstep": "2",
+"c": 15,
+"cstep": "2",
+"r": 0.88,
+"mq": "두 함수 f(x) , g(x) 가 f(x)=3x^2 + int_0^1 (2x+1)f(t)dt , g(x)=x+5 일 때, 부등식 f(x)를 만족시키는 정수 x 의 개수는?① 0 ② 1 ③ 2 ④ 3 ⑤ 4",
+"cq": "두 함수 f(x) , g(x) 가 f(x)=3x^2 + int_0^1 (2x+1)f(t)dt , g(x)=x+5 일 때, 부등식 f(x)를 만족시키는 정수 x 의 개수는?① 0 ② 1 ③ 2 ④ 3 ⑤ 4 02정적분으로 정의된 함수⑴유형묶음 개체입니다.",
+"msol": 389,
+"csol": 389
+},
+{
+"m": 18,
+"mstep": "2",
+"c": 15,
+"cstep": "2",
+"r": 0.58,
+"mq": "두 연속함수 f LEFT ( x RIGHT ) , g LEFT ( x RIGHT ) 가 f LEFT ( x RIGHT ) = it -3x ^{2} +x+ int _{-1} ^{0} {g LEFT ( t RIGHT ) `dt} g LEFT ( x RIGHT ) =4x ^{3} - int ",
+"cq": "두 함수 f(x) , g(x) 가 f(x)=3x^2 + int_0^1 (2x+1)f(t)dt , g(x)=x+5 일 때, 부등식 f(x)를 만족시키는 정수 x 의 개수는?① 0 ② 1 ③ 2 ④ 3 ⑤ 4 02정적분으로 정의된 함수⑴유형묶음 개체입니다.",
+"msol": 832,
+"csol": 389
+},
+{
+"m": 19,
+"mstep": "2",
+"c": 16,
+"cstep": "2",
+"r": 1.0,
+"mq": "다항함수 f(x) 가 모든 실수 x 에 대하여수식입니다. int _{-1} ^{x} {f(t)dt} = {1} over {3} x ^{3} - {1} over {2} x ^{2} -2x를 만족시킬 때, 함수 y=f(x) 의 그래프가 x 축과 만나는 모든 점의 x 좌표의 곱은?① -2 ②",
+"cq": "다항함수 f(x) 가 모든 실수 x 에 대하여수식입니다. int _{-1} ^{x} {f(t)dt} = {1} over {3} x ^{3} - {1} over {2} x ^{2} -2x를 만족시킬 때, 함수 y=f(x) 의 그래프가 x 축과 만나는 모든 점의 x 좌표의 곱은?① -2 ②",
+"msol": 244,
+"csol": 244
+},
+{
+"m": 20,
+"mstep": "2",
+"c": 19,
+"cstep": "2",
+"r": 1.0,
+"mq": "다항함수 f(x) 가 모든 실수 x 에 대하여 int_a^x f(t)dt=2x^3 -5x^2 +2x 를 만족시킬 때, f(a) 의 값은? (단, a 는 0 이 아닌 정수이다.)① 5 ② 6 ③ 7 ④ 8 ⑤ 9",
+"cq": "다항함수 f(x) 가 모든 실수 x 에 대하여 int_a^x f(t)dt=2x^3 -5x^2 +2x 를 만족시킬 때, f(a) 의 값은? (단, a 는 0 이 아닌 정수이다.)① 5 ② 6 ③ 7 ④ 8 ⑤ 9",
+"msol": 295,
+"csol": 295
+},
+{
+"m": 21,
+"mstep": "2",
+"c": 20,
+"cstep": "2",
+"r": 1.0,
+"mq": "다항함수 f(x) 가 모든 실수 x 에 대하여 수식입니다. int _{1} ^{x} {} `f(t)dt=xf(x)-3x^4 +2x ^2 을 만족시킬 때, f(0) 의 값은?① 1 ② 2 ③ 3 ④ 4 ⑤ 5",
+"cq": "다항함수 f(x) 가 모든 실수 x 에 대하여 수식입니다. int _{1} ^{x} {} `f(t)dt=xf(x)-3x^4 +2x ^2 을 만족시킬 때, f(0) 의 값은?① 1 ② 2 ③ 3 ④ 4 ⑤ 5",
+"msol": 442,
+"csol": 442
+},
+{
+"m": 22,
+"mstep": "2",
+"c": 23,
+"cstep": "2",
+"r": 0.97,
+"mq": "다항함수 f(x) 가 수식입니다.int_0^x (x-t)f(t)dt= 1over3 x^3 + 1over4 x^2 을 만족시킬 때, f(3) 의 값은?① 5 ② 11over2 ③ 6 ④ 13over2 ⑤ 7 03정적분으로 정의된 함수⑵유형묶음 개체입니다.",
+"cq": "다항함수 f(x) 가 수식입니다.int_0^x (x-t)f(t)dt= 1over3 x^3 + 1over4 x^2 을 만족시킬 때, f(3) 의 값은?① 5 ② 11over2 ③ 6 ④ 13over2 ⑤ 7 04정적분으로 정의된 함수의 극한유형묶음 개체입니다.",
+"msol": 340,
+"csol": 339
+},
+{
+"m": 23,
+"mstep": "2",
+"c": 22,
+"cstep": "2",
+"r": 1.0,
+"mq": "다항함수 f(x) 가수식입니다. int _{0} ^{x} {} (x-t)f(t) dt = 1 over 6 x^4 + 2 over 3 x^3 + 1 over 2 x ^2을 만족시킬 때, 함수 f(x) 의 최솟값은?① -3 ② -2 ③ -1 ④ 0 ⑤ 1",
+"cq": "다항함수 f(x) 가수식입니다. int _{0} ^{x} {} (x-t)f(t) dt = 1 over 6 x^4 + 2 over 3 x^3 + 1 over 2 x ^2을 만족시킬 때, 함수 f(x) 의 최솟값은?① -3 ② -2 ③ -1 ④ 0 ⑤ 1",
+"msol": 475,
+"csol": 475
+},
+{
+"m": 24,
+"mstep": "2",
+"c": 17,
+"cstep": "2",
+"r": 0.47,
+"mq": "함수 f` ( x ) = int _{1} ^{x} {6( t ^{2} - 2pt )} dt 의 -1` le x le 1 에서의 최댓값, 최솟값의 차가 4 일 때, 양수 p 의 최댓값은?① {1} over {3} ② {1} over {2} ③ {2} over {3} ④ 1 ⑤ 2",
+"cq": "함수 f(x)=int_1^x (4t^3 - t^2 +3)dt 일 때, f` prime (1)+f(1) 의 값은?① 2 ② 4 ③ 6 ④ 8 ⑤ 10",
+"msol": 987,
+"csol": 193
+},
+{
+"m": 25,
+"mstep": "2",
+"c": 34,
+"cstep": "3",
+"r": 0.65,
+"mq": "이차함수 y=f LEFT ( x RIGHT ) 의 그래프가 그림과 같다. 함수 g LEFT ( x RIGHT ) 에 대하여 g LEFT ( x RIGHT ) = int _{1} ^{x+2} {f LEFT ( t RIGHT ) `dt} 가 성립할 때, 함수 g LEFT ( x RIGHT ",
+"cq": "이 [그림] 차함수 y=f(x) 의 그래프가 그림과 같다.함수 g(x)= int_x ^x+2 f(t)dt` 가 x=a` 에서 최솟값을 가질 때, 양수 a` 의 값을 구하시오.",
+"msol": 2632,
+"csol": 325
+},
+{
+"m": 26,
+"mstep": "2",
+"c": 23,
+"cstep": "2",
+"r": 0.58,
+"mq": "이차함수 y= f(x) 의 그래프가 그림과 같을 때, 함수 g(x)= int _{x} ^{x+1} {f(t)`dt} 는 x=a 에서 최솟값을 갖는다. 실수 a 의 값은? [그림] ① - 1 over2 ② 0 ③ 1 over2 ④ 1 ⑤ 3 over2 04정적분으로 정의된 함수의 극한유형",
+"cq": "다항함수 f(x) 가 수식입니다.int_0^x (x-t)f(t)dt= 1over3 x^3 + 1over4 x^2 을 만족시킬 때, f(3) 의 값은?① 5 ② 11over2 ③ 6 ④ 13over2 ⑤ 7 04정적분으로 정의된 함수의 극한유형묶음 개체입니다.",
+"msol": 920,
+"csol": 339
+},
+{
+"m": 27,
+"mstep": "2",
+"c": 24,
+"cstep": "2",
+"r": 1.0,
+"mq": "함수 f(x)=x^3 -3x^2 -3x-1 일 때, lim _{ x→ -1} 1 over{x^2 -1} int _{ -1} ^{ x} f(t)dt 의 값은?① -2 ② - 1over2 ③ 0 ④ 1over2 ⑤ 1",
+"cq": "함수 f(x)=x^3 -3x^2 -3x-1 일 때, lim _{ x→ -1} 1 over{x^2 -1} int _{ -1} ^{ x} f(t)dt 의 값은?① -2 ② - 1over2 ③ 0 ④ 1over2 ⑤ 1",
+"msol": 299,
+"csol": 299
+},
+{
+"m": 28,
+"mstep": "2",
+"c": 25,
+"cstep": "2",
+"r": 1.0,
+"mq": "lim _{x -> 2} {{1} over {x ^{2} -4}} int _{2} ^{x} {} (t ^{2} +3t-2)dt 의 값을 구하시오.",
+"cq": "lim _{x -> 2} {{1} over {x ^{2} -4}} int _{2} ^{x} {} (t ^{2} +3t-2)dt 의 값을 구하시오.",
+"msol": 387,
+"csol": 387
+},
+{
+"m": 29,
+"mstep": "2",
+"c": 26,
+"cstep": "2",
+"r": 1.0,
+"mq": "미분가능한 함수 f(x) 가 f(1)=2 , f` prime (1)=3 을 만족시킬 때, lim _{x -> 1} {{1} over {x-1}} int _{1} ^{x ^{2}} {LEFT { f(t) RIGHT } ^{2} f` prime (t)dt} 의 값은?① 21 ② 22 ③ 2",
+"cq": "미분가능한 함수 f(x) 가 f(1)=2 , f` prime (1)=3 을 만족시킬 때, lim _{x -> 1} {{1} over {x-1}} int _{1} ^{x ^{2}} {LEFT { f(t) RIGHT } ^{2} f` prime (t)dt} 의 값은?① 21 ② 22 ③ 2",
+"msol": 436,
+"csol": 436
+},
+{
+"m": 30,
+"mstep": "2",
+"c": 27,
+"cstep": "2",
+"r": 1.0,
+"mq": "lim _{h -> 0} {{1} over {h}} int _{0} ^{10h} {|``x-10``|`dx} 의 값은?① -100 ② -10 ③ 0 ④ 10 ⑤ 100",
+"cq": "lim _{h -> 0} {{1} over {h}} int _{0} ^{10h} {|``x-10``|`dx} 의 값은?① -100 ② -10 ③ 0 ④ 10 ⑤ 100",
+"msol": 204,
+"csol": 204
+},
+{
+"m": 31,
+"mstep": "2",
+"c": 28,
+"cstep": "2",
+"r": 1.0,
+"mq": "lim _{ h→0} {1overh } int _{ 2-h} ^{2+2h } {(x^2 +ax+1)dx=21 } 을 만족시키는 상수 a 의 값은?① 0 ② 1over4 ③ 수식입니다. 1over3 ④ 1over2 ⑤ 1",
+"cq": "lim _{ h→0} {1overh } int _{ 2-h} ^{2+2h } {(x^2 +ax+1)dx=21 } 을 만족시키는 상수 a 의 값은?① 0 ② 1over4 ③ 수식입니다. 1over3 ④ 1over2 ⑤ 1",
+"msol": 333,
+"csol": 333
+},
+{
+"m": 32,
+"mstep": "2",
+"c": 29,
+"cstep": "2",
+"r": 1.0,
+"mq": "함수 `f(x)= int _{0} ^{x} {} (3t-1)^3 dt 일 때, lim _{h -> 0} {{1} over {h ^{2} +2h}} int _{1-h} ^{1+2h} {f(t)dt} 의 값은?① {7} over {8} ② {9} over {8} ③ {11} over {8}",
+"cq": "함수 `f(x)= int _{0} ^{x} {} (3t-1)^3 dt 일 때, lim _{h -> 0} {{1} over {h ^{2} +2h}} int _{1-h} ^{1+2h} {f(t)dt} 의 값은?① {7} over {8} ② {9} over {8} ③ {11} over {8}",
+"msol": 636,
+"csol": 636
+},
+{
+"m": 33,
+"mstep": "3",
+"c": 8,
+"cstep": "1",
+"r": 0.53,
+"mq": "함수 f LEFT ( x RIGHT ) =x ^{3} +ax ^{2} -2 가수식입니다. int _{2} ^{x} {LEFT { {d} over {dt} f LEFT ( t RIGHT ) RIGHT } `dt= {d} over {dx} int _{0} ^{x} {f LEFT ( t RI",
+"cq": "다항함수 f(x) 가 x^2 f(x)=4x^5 +x^4 + 2 int_1^x tf(t)dt 를 만족시킬 때, 3f(0) 의 값은?① -11 ② -12 ③ -13 ④ -14 ⑤ -15",
+"msol": 381,
+"csol": 537
+},
+{
+"m": 34,
+"mstep": "3",
+"c": 30,
+"cstep": "3",
+"r": 0.59,
+"mq": "다항함수 f LEFT ( x RIGHT ) 가 lim _{x` rarrow `1} {`} {int _{1} ^{x} {f LEFT ( t RIGHT ) `dt-f LEFT ( x RIGHT )}} over {x ^{2} -1} =2 를 만족시킬 때, f` prime LEFT ( 1 RI",
+"cq": "다항함수 f(x) 가 모든 실수 x 에 대하여 수식입니다. int _{0} ^{x} {} f(t)dt=x ^{3} +x ^{2} -x int _{0} ^{2} {} f(t)dt를 만족시킬 때, f(-2) 의 값은?① 4 ② 6 ③ 8 ④ 10 ⑤ 12",
+"msol": 1328,
+"csol": 225
+},
+{
+"m": 35,
+"mstep": "3",
+"c": 30,
+"cstep": "3",
+"r": 1.0,
+"mq": "다항함수 f(x) 가 모든 실수 x 에 대하여 수식입니다. int _{0} ^{x} {} f(t)dt=x ^{3} +x ^{2} -x int _{0} ^{2} {} f(t)dt를 만족시킬 때, f(-2) 의 값은?① 4 ② 6 ③ 8 ④ 10 ⑤ 12",
+"cq": "다항함수 f(x) 가 모든 실수 x 에 대하여 수식입니다. int _{0} ^{x} {} f(t)dt=x ^{3} +x ^{2} -x int _{0} ^{2} {} f(t)dt를 만족시킬 때, f(-2) 의 값은?① 4 ② 6 ③ 8 ④ 10 ⑤ 12",
+"msol": 225,
+"csol": 225
+},
+{
+"m": 36,
+"mstep": "3",
+"c": 31,
+"cstep": "3",
+"r": 1.0,
+"mq": "모든 실수 x` 에 대하여 int_a ^x (x-t)f(t)dt = 2over3 x^3 -3x^2 +4x-1 을 만족시킬 때, f(2) 의 값을 구하시오. (단, a` 는 상수이다.)",
+"cq": "모든 실수 x` 에 대하여 int_a ^x (x-t)f(t)dt = 2over3 x^3 -3x^2 +4x-1 을 만족시킬 때, f(2) 의 값을 구하시오. (단, a` 는 상수이다.)",
+"msol": 339,
+"csol": 339
+},
+{
+"m": 37,
+"mstep": "3",
+"c": 32,
+"cstep": "3",
+"r": 1.0,
+"mq": "함수 f(x)= int_0 ^x (t-2)(t-a)dt` 가 x=2 에서 극솟값 2over3 을 가질 때, 극댓값을 구하시오.",
+"cq": "함수 f(x)= int_0 ^x (t-2)(t-a)dt` 가 x=2 에서 극솟값 2over3 을 가질 때, 극댓값을 구하시오.",
+"msol": 503,
+"csol": 503
+},
+{
+"m": 38,
+"mstep": "3",
+"c": 33,
+"cstep": "3",
+"r": 1.0,
+"mq": "0 le x le 5 일 때, f(x)= int_-3 ^x (3- left| t right| )dt` 의 최댓값을 구하시오.",
+"cq": "0 le x le 5 일 때, f(x)= int_-3 ^x (3- left| t right| )dt` 의 최댓값을 구하시오.",
+"msol": 424,
+"csol": 424
+},
+{
+"m": 39,
+"mstep": "3",
+"c": 34,
+"cstep": "3",
+"r": 1.0,
+"mq": "이 [그림] 차함수 y=f(x) 의 그래프가 그림과 같다.함수 g(x)= int_x ^x+2 f(t)dt` 가 x=a` 에서 최솟값을 가질 때, 양수 a` 의 값을 구하시오.",
+"cq": "이 [그림] 차함수 y=f(x) 의 그래프가 그림과 같다.함수 g(x)= int_x ^x+2 f(t)dt` 가 x=a` 에서 최솟값을 가질 때, 양수 a` 의 값을 구하시오.",
+"msol": 327,
+"csol": 325
+},
+{
+"m": 40,
+"mstep": "3",
+"c": 35,
+"cstep": "3",
+"r": 1.0,
+"mq": "다항함수 f` 에 대하여 등식 int_1 ^x (4t+5)f(t)dt = 3(x+2) int_1 ^x f(t)dt , f(0)=3 이 항상 성립할 때, f(3) 의 값을 구하시오.",
+"cq": "다항함수 f` 에 대하여 등식 int_1 ^x (4t+5)f(t)dt = 3(x+2) int_1 ^x f(t)dt , f(0)=3 이 항상 성립할 때, f(3) 의 값을 구하시오.",
+"msol": 535,
+"csol": 535
+},
+{
+"m": 41,
+"mstep": "3",
+"c": 30,
+"cstep": "3",
+"r": 0.62,
+"mq": "함수 f(x) , g(x) 에 대하여 f(x)+ int _{1} ^{x} {xg(t)dt} =x ^{3} +4x ^{2} -2x g(x)=2x+ int _{0} ^{1} {f(t)dt} 일 때, g(2) 의 값을 구하시오.",
+"cq": "다항함수 f(x) 가 모든 실수 x 에 대하여 수식입니다. int _{0} ^{x} {} f(t)dt=x ^{3} +x ^{2} -x int _{0} ^{2} {} f(t)dt를 만족시킬 때, f(-2) 의 값은?① 4 ② 6 ③ 8 ④ 10 ⑤ 12",
+"msol": 831,
+"csol": 225
+},
+{
+"m": 42,
+"mstep": "3",
+"c": 20,
+"cstep": "2",
+"r": 0.45,
+"mq": "최고차항의 계수가 양수인 두 다항함수 f(x),~g(x) 가 임의의 실수 x 에 대하여 다음 조건을 만족시킨다.(가) 수식입니다. int _{1} ^{x} {g(t)dt} =f(x)+8x(나) f` prime (x)g` prime (x)=18x ^{3} +54x ^{2} +36x f(2",
+"cq": "다항함수 f(x) 가 모든 실수 x 에 대하여 수식입니다. int _{1} ^{x} {} `f(t)dt=xf(x)-3x^4 +2x ^2 을 만족시킬 때, f(0) 의 값은?① 1 ② 2 ③ 3 ④ 4 ⑤ 5",
+"msol": 583,
+"csol": 442
+},
+{
+"m": 43,
+"mstep": "3",
+"c": 16,
+"cstep": "2",
+"r": 0.32,
+"mq": "사차함수 g(x) 가 g(1)>0 , g(x)= int _{0} ^{x} {f`prime(t)dt} 를 만족시킬 때, 함수 y= LEFT | `f`' LEFT ( x RIGHT ) ` RIGHT | 의 그래프가 다음과 같다. [그림] 보 기사각형입니다.에서 옳은 것만을 있는 대로 고른 ",
+"cq": "다항함수 f(x) 가 모든 실수 x 에 대하여수식입니다. int _{-1} ^{x} {f(t)dt} = {1} over {3} x ^{3} - {1} over {2} x ^{2} -2x를 만족시킬 때, 함수 y=f(x) 의 그래프가 x 축과 만나는 모든 점의 x 좌표의 곱은?① -2 ②",
+"msol": 602,
+"csol": 244
+},
+{
+"m": 44,
+"mstep": "3",
+"c": 14,
+"cstep": "2",
+"r": 0.44,
+"mq": "상수함수가 아닌 다항함수 f LEFT ( x RIGHT ) 가 다음 조건을 만족시킨다.(가) 2 int_{-1}^{x}{f LEFT ( t RIGHT )}`dt = LEFT ( x+1 RIGHT )left{f LEFT ( x RIGHT )+f LEFT ( -1 RIGHT )right} ",
+"cq": "함수 f(x) = 12over7 x^2 -2x int _{ 1} ^{ 2} { f(x)dx}+ LEFT { int _{ 1} ^{ 2} { f(x)dx} RIGHT }^2 일 때, 5 int_1^2 f(x)dx 의 값은?① 10 ② 15 ③ 20 ④ 25 ⑤ 30",
+"msol": 1183,
+"csol": 342
+},
+{
+"m": 45,
+"mstep": "3",
+"c": 15,
+"cstep": "2",
+"r": 0.35,
+"mq": "실수 {a}{{from^2020^11^대수능고3나^5}} ( a>1 )에 대하여 함수 f LEFT ( x RIGHT ) 를 f LEFT ( x RIGHT ) = LEFT ( x+1 RIGHT ) LEFT ( x-1 RIGHT ) LEFT ( x-a RIGHT ) 라 하자. 함수 g LE",
+"cq": "두 함수 f(x) , g(x) 가 f(x)=3x^2 + int_0^1 (2x+1)f(t)dt , g(x)=x+5 일 때, 부등식 f(x)를 만족시키는 정수 x 의 개수는?① 0 ② 1 ③ 2 ④ 3 ⑤ 4 02정적분으로 정의된 함수⑴유형묶음 개체입니다.",
+"msol": 1066,
+"csol": 389
+}
+]
+}

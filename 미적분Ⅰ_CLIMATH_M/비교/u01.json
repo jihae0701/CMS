@@ -1,0 +1,1843 @@
+{
+"C": [
+{
+"n": 1,
+"step": "1",
+"q": "다음 중 옳지 않은 것은?① lim_x→4 x-1 over { root x -1 } =3 ② lim _{x -> -1} {} {x ^{10} +x-2} over {x-1}= it-1 ③ lim_x→0 1 over {x^2 +1 } =1 ④ lim _{x -> 1} {} (x ^{2} +1)(x-3) =it-4 ⑤ lim_x→2 LEFT ( x + 1over x RIGHT ) = 5 over 2",
+"ans": "②①은 옳다. lim_x→4 {x-1} over { root x -1 }",
+"sol_len": 344
+},
+{
+"n": 2,
+"step": "1",
+"q": "그래프를 이용하여 다음 극한을 조사하시오.⑴ lim _{ x->3 } {{x^2 -9} overx-3} ⑵ lim _{ x->2 } {root2x+1 } ⑶ lim _{ x->1 } {left{ 1 over {(x-1)^2} +3 right}}",
+"ans": "⑴  bold6  ⑵  boldroot5  ⑶  bold inf ⑴  f",
+"sol_len": 592
+},
+{
+"n": 3,
+"step": "1",
+"q": "다음 극한을 조사하시오.⑴ lim _{ x->inf } {(x^2 +3x-2) } ⑵ lim _{x ->inf } {root2x-1 } ⑶ lim _{ x->-inf } {left( 1 over x^2 -1right) } 02우극한과 좌극한개념묶음 개체입니다.  우극한과 좌극한⑴ 우극한 x 가 a 보다 큰 값을 가지면서, 즉 a 의 오른쪽에서 한없이 a 에 가까워지는 것을 x` -> `a+ 으로 나타낸다. 이때 f(x) 가 일정한 값 alpha 에 한없이 가까워지면 lim_x->a+ f(x) = alpha , f(x) 가 한없이 커지거나 작아지면 lim _{x rarrow a+} {} f(x)=inf , lim _{x rarrow a+} {} f(x)= it- INF 로 나타낸다.⑵ 좌극한 x 가 a 보다 작은 값을 가지면서, 즉 a 의 왼쪽에서 한없이 a 에 가까워지는 것을 x`` -> ``a- 으로 나타낸다. 이때 f(x) 가 일정한 값 alpha 에 한없이 가까워지면 lim_x->a- f(x) = alpha , f(x) 가 한없이 커지거나 작아지면 lim _{x rarrow a-} {} f(x)= INF , lim _{x rarrow a-} {} f(x)= it - INF 로 나타낸다.⑶ lim _{x rarrow a+} {} f(x)= lim _{x rarrow a-} {} f(x)=alpha 이면 lim _{x rarrow a} {} f(x)=alpha 로 존재하고, lim_x->a+ f(x)!= lim_x->a- f(x) 이면 lim_x->a f(x) 가 존재하지 않는다. 우극한과 좌극한을 따로 계산해야 하는 경우대부분의 경우 극한 문제는 항상 (우극한)=(좌극한)이므로 따로 구할 필요가 없으나 구간에 따라 함수의 식이 다른 함수, 다항함수가 아닌 유리함수, 절댓값을 포함하는 함수 등의 경우에는 우극한과 좌극한이 같지 않는 경우가 있으므로 따로 계산해야 한다.사각형입니다.",
+"ans": "⑴  boldinf  ⑵  boldinf  ⑶  bold{-1 ⑴  f(",
+"sol_len": 498
+},
+{
+"n": 4,
+"step": "1",
+"q": "함 [그림] 수 y=f(x) 의 그래프가 그림과 같을 때, 다음 값을 구하시오.⑴ lim _{x ->0- } {f(x) } ⑵ lim _{x ->1+ } {f(x) } ⑶ lim _{x ->-2 } {f(x) } ⑷ f(2)",
+"ans": "⑴  bold-1  ⑵  bold2  ⑶ 극한값은 존재하지 않는다. ⑷",
+"sol_len": 508
+},
+{
+"n": 5,
+"step": "1",
+"q": "두 함수 y=f(x) , y=g(x) 의 그래프가 그림과 같을 때, 다음 극한값을 구하시오. [그림] ⑴ lim _{ x->1- } {f(x) }+ lim _{ x->1+ } {g(x) } ⑵ lim _{ x->-2+ } {f(x) }times lim _{ x->1+ } {g(x) } ⑶ lim _{ x->1- } {f(x-2) }+ lim _{ x->1- } {g(x) }",
+"ans": "⑴  bold{-2  ⑵  bold{-1  ⑶  bold{1 ⑴  x``",
+"sol_len": 650
+},
+{
+"n": 6,
+"step": "1",
+"q": "[그림] 정의역이 left{x left | -2 le x le 1 right} 인 함수 y=f(x) 의 그래프가 그림과 같을 때, lim _{ x->-1-} f(x)+ lim _{ x->0+} f(x)+ lim _{ x->1-} f(x)} { } } { } } { } 의 값은?① 1 ② 2 ③ 3 ④ 4 ⑤ 5",
+"ans": "④ lim _{ x->-1-}f(x)=0} { } ,  lim _{ x-",
+"sol_len": 190
+},
+{
+"n": 7,
+"step": "1",
+"q": "함수 f(x)= {cases{eqalign{x ^{2} -4x+a# }&eqalign{(x1)}}} 에 대하여 lim _{x -> 1-} {} f(x)= it-2 , lim _{x -> 1+} {} f(x)=2 일 때, `a-b 의 값은?(단, a , b 는 상수이다.)① -3 ② -2 ③ -1 ④ 1 ⑤ 2",
+"ans": "② lim _{x -> 1-} {} f(x)= lim _{x -> 1-}",
+"sol_len": 159
+},
+{
+"n": 8,
+"step": "1",
+"q": "[그림] 그림은 정의역이 left{x| a le x 인 함수 y= f(x) 의 그래프이다. 이 그래프에 대한 설명으로 보 기사각형입니다.에서 옳은 것만을 있는 대로 고르시오. [그림] ㄱ. x=b 일 때, 함숫값은 존재하고 극한값은 존재하지 않는다.ㄴ. x=c 일 때, 함숫값이 존재한다.ㄷ. 이 함수의 최댓값은 f(d) 이다.ㄹ. x=d 일 때, 좌극한과 우극한이 일치하지 않는다.",
+"ans": "ㄱ, ㄴ, ㄹㄱ.  x=b 일 때, 함숫값은 존재하고 좌극한값과 우극한값",
+"sol_len": 176
+},
+{
+"n": 9,
+"step": "1",
+"q": "다음 극한을 조사하시오. (단, left[ x right] 는 x 보다 크지 않은 최대의 정수이다.)⑴ lim _{ x-> 1} {x-1over{left|x-1right|} } ⑵ lim _{x ->1 } {left[2x+1 right]}",
+"ans": "⑴ 극한값은 존재하지 않는다.⑵ 극한값은 존재하지 않는다.⑴ (ⅰ)  x",
+"sol_len": 592
+},
+{
+"n": 10,
+"step": "1",
+"q": "다음 중 극한값 중 가장 큰 것은? (단, [`x`] 는 x 보다 크지 않은 최대의 정수이다.)① lim_ x→0- x over{ [`x`] ② lim _{x -> 0+} {} {[`x`]} over x ③ lim _{x -> 0-} {} {[`x-1`]} over {x-1} ④ lim _{x -> 0+} {} {x-1} over {[`x-1`]} ⑤ lim _{x -> 0+} {} {x-2} over {[`x-2`]} 03함수의 극한에 대한 성질개념묶음 개체입니다.lim_x->a f(x) = alpha , lim_x->a g(x) = beta ( alpha , beta 는 실수)일 때, 다음이 성립한다.⑴ lim_x->a kf(x) = k lim_x->a f(x) = k alpha (단, k 는 상수)⑵ lim_x->a left{f(x) +- g(x) right } = lim_x->a f(x) +- lim_x->a g(x) = alpha+- beta (복부호 동순)⑶ lim_x->a f(x) g(x) = lim_x->a f(x) cdot lim_x->a g(x) = alphabeta ⑷ lim_x->a f(x) over g(x) = {lim_x->a f(x)} over { lim_x->a g(x)} = alpha over beta (단, g(x)!=0 , beta!=0 )사각형입니다.",
+"ans": "③먼저 가우스 기호를 처리한 후 극한값을 구한다.①  -1일 때  [`x",
+"sol_len": 543
+},
+{
+"n": 11,
+"step": "1",
+"q": "두 함수 y=f(x),~y=g(x) 에 대하여 다음을 구하시오.⑴ lim _{ x->1 } {f(x)} =3,~ lim _{ x-> 1} {g(x) }=2 일 때, lim _{ x->1 } {left{3f(x)+f(x)g(x)right} } 의 값⑵ lim _{ x->0 } {f(x)} =2,~ lim _{ x-> 0} {left{4f(x)-g(x)right} }=4 일 때, lim _{ x->0 } {{2f(x)+3g(x)}over{3f(x)-g(x)} } 의 값",
+"ans": "⑴  bold15  ⑵  bold8 ⑴  lim_x->1{left{3f(",
+"sol_len": 459
+},
+{
+"n": 12,
+"step": "1",
+"q": "두 함수 f(x) , g(x) 에 대하여 lim _{x->`a} {f(x)=5} , lim _{x->`a} {`left{2f(x)-3g(x)right}=4} 일 때, lim _{x->`a} {`g(x)} 의 값을 구하시오.04 {0} over {0} 꼴의 극한값의 계산개념묶음 개체입니다. {bold{x` rarrow ` a }} 일 때 함수의 극한을 구하는 방법⑴ 다항함수 f(x) 에 대하여 lim_x->a f(x) = f(a) ⑵ lim _{x rarrow a} {} f(x) =alpha , lim _{x rarrow a} {} g(x) =beta 일 때, ① beta!=0 이면 lim _{x-> a} {{f(x)} over {g(x)} = {alpha } over {beta }} ② beta=0 , alpha!=0 이면 극한값은 존재하지 않는다. ③ beta=0 , alpha =0 일 때, 즉 0 over0 꼴의 계산 - f(x) , g(x) 가 모두 다항함수이면 인수분해한다. - f(x) 또는 g(x) 가 무리식이면 무리식의 켤레를 분모·분자에 곱한 후 식의 정리한다. beta=0 , alpha =0 이 되게 하는 인수를 약분한 후 x 에 a 를 대입하여 극한을 구한다. 사각형입니다.",
+"ans": "2  2f(x)-3g(x)=h(x) 로 놓으면  lim_ x→a h(x)",
+"sol_len": 212
+},
+{
+"n": 13,
+"step": "1",
+"q": "다음 극한값을 구하시오.⑴ lim _{ x->1 } {{x^2 +5x-6}overx-1 } ⑵ lim _{ x->0 } {{root1+x -1} overx} ⑶ lim _{ x->1 } {{x^2 -1}over {rootx+3 -2} } ⑷ lim _{ x->0 } {1overx left( 2 overx+2 -1 right) }",
+"ans": "⑴  bold7  ⑵  bold{1over2  ⑶  bold8 ⑷  bo",
+"sol_len": 680
+},
+{
+"n": 14,
+"step": "1",
+"q": "다음 극한값을 구하시오.⑴ lim _{ x->2 } {{x^3 -8}over{x-2} } ⑵ lim _{ x->0 } {x^2 over {1-root1-x^2} } ⑶ lim _{ x->-1 } {x+1over{root{3}ofx +1} }",
+"ans": "⑴  bold12  ⑵  bold{2  ⑶  bold{3 ⑴  lim _",
+"sol_len": 812
+},
+{
+"n": 15,
+"step": "1",
+"q": "lim _{x -> 2} {} {x ^{4} -16} over {x-2} 의 값은?① 2 ② 4 ③ 8 ④ 16 ⑤ 32",
+"ans": "⑤ lim _{x -> 2} {} {x  ^{4} -16} over {x",
+"sol_len": 144
+},
+{
+"n": 16,
+"step": "1",
+"q": "lim _{x -> 0} {} {sqrt {1-x} - sqrt {1+x}} over {sqrt {4+x} - sqrt {4-x}} 의 값은?① -4 ② -2 ③ 0 ④ 2 ⑤ 4",
+"ans": "② lim _{x -> 0} {} {sqrt {1-x} - sqrt {1",
+"sol_len": 331
+},
+{
+"n": 17,
+"step": "1",
+"q": "lim _{x -> 1} {} {1} over {x-1} LEFT ( {x ^{2} `+5} over {x+1} -3 RIGHT ) 의 값은?① - {1} over {2} ② - {1} over {4} ③ 0 ④ {1} over {4} ⑤ {1} over {2} 05 {INF } over {inf} 꼴의 극한값의 계산개념묶음 개체입니다. {x` rarrow ` INF }}일 때 함수의 극한을 구하는 방법 lim _{x->inf }{1overx}= 0 임을 이용하여 계산하다. ⑴ inf over inf 꼴 분모의 최고차항으로 분모, 분자를 각각 나눈다.① (분모의 차수) = (분자의 차수)일 때, 최고차항의 계수를 비교한다.② (분모의 차수) (분자의 차수)일 때, inf 또는 -inf ③ (분모의 차수) > (분자의 차수)일 때, 0 ⑵ inf-inf 꼴 다항식일 때, 최고차항으로 묶는다. 무리식일 때, 무리식의 켤레를 분모·분자에 곱한 후 식을 정리하면 inf overinf 꼴로 바뀐다.⑶ x rarrow `-INF 일 때 -x= t 로 치환하여 t->inf 일 때로 바뀌어 극한을 구한다.사각형입니다.",
+"ans": "① lim _{x -> `1} {} {1} over {x-1} LEFT",
+"sol_len": 297
+},
+{
+"n": 18,
+"step": "1",
+"q": "다음 극한값을 구하시오.⑴ lim _{ x->inf } {{4x^2 +x-2}over{3x^2 +2} } ⑵ lim _{ x `-> `inf } {{3x^2 -x}over{2x^3 +1} } ⑶ lim _{ x->inf } {3x+5 over{root{x^2 +2}-3} }",
+"ans": "⑴  bold{4 over3  ⑵  bold0    ⑶  bold3  ⑴",
+"sol_len": 464
+},
+{
+"n": 19,
+"step": "1",
+"q": "다음 극한을 조사하시오.⑴ lim _{ x->inf } {(x^3 -x^2 +2x-3) } ⑵ lim _{ x->inf } {(root{x^2 +5x}-x) } ⑶ lim _{ x->-inf } {1over{root{x^2 -x}+x} }",
+"ans": "⑴  boldinf  ⑵  bold{5over2  ⑶  bold2 ⑴ 최",
+"sol_len": 678
+},
+{
+"n": 20,
+"step": "1",
+"q": "lim _{x `rarrow` INF } {} sqrt {x} ( sqrt {x+2} - sqrt {x} ) 의 값은?① 1 ② 2 ③ 3 ④ 4 ⑤ 5",
+"ans": "① lim_{x →  inf} rootx (rootx+2 -rootx )",
+"sol_len": 194
+},
+{
+"n": 21,
+"step": "1",
+"q": "lim from {x`-> `inf} ( sqrt { x^2 +2x`+2} - sqrt { x^2 -2x`-2}) 의 값은?① 1 ② 2 ③ 3 ④ 4 ⑤ 5",
+"ans": "②lim from {x`-> `inf} ( sqrt { x^2 +2x`+",
+"sol_len": 308
+},
+{
+"n": 22,
+"step": "1",
+"q": "lim _{x` rarrow `- INF } {LEFT ( sqrt {x ^{2} +2x} +x RIGHT )} 의 값은?① -2 ② -1 ③ 0 ④ 1 ⑤ 2",
+"ans": "② -x=t 로 치환하면 x`` rarrow `- INF 일 때 t``",
+"sol_len": 421
+},
+{
+"n": 23,
+"step": "1",
+"q": "lim _{x` rarrow `- INF } {} ` {2x} over{sqrt {x ^{2} +1} +3x} 의 값은?① -1 ② 1 over2 ③ 2over3 ④ 1 ⑤ 2",
+"ans": "④ -x=t 로 치환하면 x`` rarrow `- INF 일 때 t``",
+"sol_len": 401
+},
+{
+"n": 24,
+"step": "1",
+"q": "함수 f(x) 에 대하여 lim _{x` rarrow ` INF } {} LEFT { x-f(x) RIGHT } =2 일 때, lim _{x` rarrow ` INF } {} {sqrt {x+3} - sqrt {f(x)}} over {sqrt {x+2} - sqrt {f(x)}} 의 값은?① -1 ② 1 over2 ③ 1 ④ {5} over {4} ⑤ 2 06함수의 극한의 대소 관계개념묶음 개체입니다. lim_x->a f(x) = alpha , lim_x->a g(x) = beta ( alpha , beta 는 실수)일 때, 다음이 성립한다.⑴ f(x) le g(x) 이면 alpha le beta 이다.⑵ f(x) le h(x) le g(x) 이고 alpha = beta 이면 lim_x->a h(x) =alpha 이다. 사각형입니다.",
+"ans": "④ x-f(x)=g(x) 로 치환하면 lim _{x` rarrow ` I",
+"sol_len": 1021
+},
+{
+"n": 25,
+"step": "1",
+"q": "다음 물음에 답하시오.⑴ 임의의 양의 실수 x 에 대하여 함수 y=f(x) 가 4x over{3x^2 +x+2}를 만족시킬 때, lim _{ x->inf } {xf(x) } 의 값을 구하시오.⑵ x!=2 인 모든 실수 x 에 대하여 함수 y=f(x) 가 x^2 -4를 만족시킬 때, lim _{ x->2 } {f(x)overx-2 } 의 값을 구하시오.",
+"ans": "⑴  bold{4over3  ⑵  bold4 ⑴  x>0 이므로 주어진",
+"sol_len": 390
+},
+{
+"n": 26,
+"step": "1",
+"q": "모든 실수 x 에 대하여 함수 y=f(x) 가 x^2 -3x-2 을 만족시킬 때, lim _{ x->inf } {f(x)overx^2 } 의 값을 구하시오.",
+"ans": "bold1  x``->``inf 일 때,  x!=0 이므로 각 변을 x^",
+"sol_len": 184
+},
+{
+"n": 27,
+"step": "1",
+"q": "함수 f(x) 가 x>1 인 모든 실수 x 에 대하여 5x ^{3} -x ^{2} +x-3을 만족시킬 때, lim _{x -> INF } {{ f(x) +2x+1} over {x^3 +5}} 의 값을 구하시오.",
+"ans": "5  5x  ^{3} -x  ^{2} +x-3에서 {(5x  ^{3} -",
+"sol_len": 334
+},
+{
+"n": 28,
+"step": "1",
+"q": "모든 실수 x 에 대하여 함수 f(x) 가 2x-1을 만족시킬 때, lim_ x→inf {left{ f(x) right}^2 } over {x^2 +1 의 값은?① 0 ② 2 ③ 4 ④ 6 ⑤ 8",
+"ans": "③x ``→`` inf 일 때  2x-1>0 이므로  2x-1의 각 변을",
+"sol_len": 327
+},
+{
+"n": 29,
+"step": "1",
+"q": "모든 실수 x 에 대하여 함수 f LEFT ( x RIGHT ) 가 -5x ^{2} +8x-3 LEQ f LEFT ( x RIGHT ) LEQ x ^{2} -4x+3 을 만족시킬 때, lim _{x `rarrow `1} {{f LEFT ( x RIGHT )} over {x-1}} 의 값은?① -2 ② -1 ③ 0 ④ 1 ⑤ 2 유형별 학습하기STEP 2사각형입니다.묶음 개체입니다.01합성함수의 극한유형묶음 개체입니다.",
+"ans": "① -5x  ^{2} +8x-3 LEQ f LEFT ( x RIGHT )",
+"sol_len": 1069
+},
+{
+"n": 30,
+"step": "2",
+"q": "두 함수 y=f(x),~y=g(x) 의 그래프가 그림과 같을 때, 다음 극한값을 구하시오. [그림] ⑴ lim _{ x->3- } {f(g(x)) } ⑵ lim _{ x->0- } {f(g(x)) } ⑶ lim _{ x->0+ } {g(f(x)) }",
+"ans": "⑴  bold3  ⑵  bold3  ⑶  bold3 ⑴  g(x)=t 로",
+"sol_len": 315
+},
+{
+"n": 31,
+"step": "2",
+"q": "정의역이 LEFT { x`left |`0 LEQ x LEQ 4 RIGHT } 인 함수 y=f(x) 의 그래프가 다음 그림과 같다. [그림] lim _{x -> 0+} {} f(f(x))+ lim _{x -> 2+} {} f(f(x)) 의 값은?① 1 ② 2 ③ 3 ④ 4 ⑤ 5",
+"ans": "⑤ f(x)=t 로 놓으면  lim _{x -> 0+} {} f(f(x)",
+"sol_len": 172
+},
+{
+"n": 32,
+"step": "2",
+"q": "두 함수 y=f(x) , y=g(x) 의 그래프가 다음 그림과 같다. [그림] [그림] 보 기사각형입니다.에서 옳은 것을 모두 고른 것은? [그림] ㄱ. lim _{x -> 0} {} f(f(x))=0 ㄴ. lim _{x -> 0} {} g (f(x))=1 ㄷ. lim _{x -> 0} {} f(g(x))=0 ① ㄱ ② ㄴ ③ ㄱ, ㄴ④ ㄱ, ㄷ ⑤ ㄱ, ㄴ, ㄷ",
+"ans": "③ㄱ은 옳다. f(x)=t 로 놓으면 lim_x→0- f( f(x))=l",
+"sol_len": 322
+},
+{
+"n": 33,
+"step": "2",
+"q": "x y rmO 1 y=f(x) 2 3 3 2 1 묶음 개체입니다.함수 y=f LEFT ( x RIGHT ) 의 그래프가 오른쪽 그림과 같을 때, 옳은 것만을 보 기사각형입니다.에서 있는 대로 고른 것은? [그림] ㄱ. lim _{x` rarrow `1+} {f LEFT ( x RIGHT ) f LEFT ( 1-x RIGHT )} =0 ㄴ. lim _{x` rarrow ` INF } `{f LEFT ( {3x+1} over {x-1} RIGHT )} =1 ㄷ. lim _{x` rarrow `- INF } {f LEFT ( {2x+1} over {2x} RIGHT )} =1 ① ㄱ② ㄴ③ ㄱ, ㄷ④ ㄴ, ㄷ⑤ ㄱ, ㄴ, ㄷ02함수의 극한의 성질유형묶음 개체입니다.",
+"ans": "③ㄱ.  lim _{x` -> `1+} {f LEFT ( x RIGHT",
+"sol_len": 595
+},
+{
+"n": 34,
+"step": "2",
+"q": "함수 y=f(x) 에 대하여 lim _{ x->0 } {f(x) overx }=1 일 때, lim _{ x->0 } {{x^2 +2f(x)}over{7x-3f(x)} } 의 값을 구하시오.",
+"ans": "bold{1 over2  lim _{ x->0 } {{x^2 +2f(x)",
+"sol_len": 209
+},
+{
+"n": 35,
+"step": "2",
+"q": "두 함수 y=f(x),~y=g(x) 가 lim _{ x->1 } {f(x) }=inf,~ lim _{ x->1 } {left{3f(x)-g(x)right}=2 } 를 만족시킬 때, lim _{ x->1 } {{f(x)-2g(x)}over{2f(x)-g(x)} } 의 값을 구하시오.",
+"ans": "bold{5  3f(x)-g(x)=h(x) 로 놓으면 g(x)=3f(x)",
+"sol_len": 699
+},
+{
+"n": 36,
+"step": "2",
+"q": "lim _{x -> `inf} {` {f(x)} over {x} =alpha} 일 때, lim _{x->`inf} {` {-5f(x)+1} over {2f(x)-3}} 의 값은?(단, alpha 는 0 이 아닌 실수이다.)① - {5} over {2} ② - {1} over {2} ③ {1} over {2} ④ {5} over {2} ⑤ {9} over {2}",
+"ans": "①주어진 식의 분자, 분모를  x 로 나누면 lim _{x->`inf}",
+"sol_len": 228
+},
+{
+"n": 37,
+"step": "2",
+"q": "두 다항함수 f(x) , g(x) 가 다음 조건을 만족시킨다.(가) `f(x)+9g(x)=x ^{2} `g(x) (나) lim _{x -> 3} {} {f(x)} over {x-3} =18 이때, lim _{x->`3} {`g(x)} 의 값은?① 1 ② 2 ③ 3 ④ 4 ⑤ 5",
+"ans": "③조건 ㈎에서  `f(x)+9g(x)=x  ^2`g(x)} 이므로 g(x",
+"sol_len": 309
+},
+{
+"n": 38,
+"step": "2",
+"q": "함수 f(x) 가 lim _{x -> 1} {} {f(x-1)} over {x-1} =5 을 만족시킬 때, lim _{x -> 0} {} {5x+f(x)} over {x ^{2`} -2f(x)} 의 값은?① -1 ② - {1} over {2} ③ 0 ④ {1} over {2} ⑤ 1",
+"ans": "① x-1=t 로 놓으면   x`` -> ``1 일 때  t`` -> `",
+"sol_len": 282
+},
+{
+"n": 39,
+"step": "2",
+"q": "두 함수 f(x) , g(x) 가 lim _{x `rarrow ` INF } {} f(x)= INF , lim _{x` rarrow ` INF } {} LEFT { 3f(x)-2g(x) RIGHT } =2 을 만족할 때, lim _{x `rarrow ` INF } {} {f(x)+4g(x)} over {-8f(x)+6g(x)} ` 의 값은?① - 1 over8 ② - 1 over2 ③ 2 over3④ 7⑤ 8 03미정계수의 결정유형묶음 개체입니다.",
+"ans": "④ 3f LEFT ( x RIGHT ) -2g LEFT ( x RIGHT",
+"sol_len": 773
+},
+{
+"n": 40,
+"step": "2",
+"q": "다음 식을 만족시키는 두 상수 a,~b 의 값을 구하시오.⑴ lim _{ x->1 } {{x^2 +ax+b}overx-1 }=3 ⑵ lim _{ x->2 } {{a rootx+2 -4}overx-2 }=b",
+"ans": "⑴  bold{a=1,~b=-2  ⑵  bold{a=2, ~b= 1ove",
+"sol_len": 695
+},
+{
+"n": 41,
+"step": "2",
+"q": "다항함수 y=f(x) 가 다음 조건을 만족시킨다.(가) lim _{ x->1 } {f(x)over{x^2 -1} }=1 (나) lim _{ x->inf } {f(x)over{x^2 -1} }=2 다항식 f(x) 를 구하시오.",
+"ans": "bold{f(x)=2x(x-1)  lim_x->1{f(x)over{x^2",
+"sol_len": 414
+},
+{
+"n": 42,
+"step": "2",
+"q": "두 상수 a , b 에 대하여 lim _{x -> INF } {} { ax^3 + bx^ 2 + 2x + 5 } over { 2x ^ 2 - 3x +4 } =6 이 성립할 때, a+b 의 값은?① 6 ② 12 ③ 18 ④ 24 ⑤ 30",
+"ans": "②주어진 극한이  0 이 아닌 값에 수렴하므로  a=0 이때, 극한값은",
+"sol_len": 164
+},
+{
+"n": 43,
+"step": "2",
+"q": "lim _{ x->inf } {(root{x^2 +ax}-root{x^2 -ax}) }=5 일 때, 상수 a 의 값을 구하시오.",
+"ans": "5",
+"sol_len": 9
+},
+{
+"n": 44,
+"step": "2",
+"q": "두 상수 a , b 에 대하여 lim _{x -> -1`} {} {x ^{2} +(a+1)x+a} over {x ^{2} -b} =3 이 성립할 때, a+b 의 값은?① -8 ② -4 ③ - 1 over2④ - 1 over 4 ⑤ - 1over 8",
+"ans": "② lim _{x -> `-1} {` {x  ^{2} +(a+1)x+a}",
+"sol_len": 314
+},
+{
+"n": 45,
+"step": "2",
+"q": "두 상수 a , b 에 대하여 lim_x→1 { root {3x +a} - root {x+3} } over {x^2 -1 }=b 가 성립할 때, ab 의 값은?① 16 ② 4 ③ 1 ④ 1 over4 ⑤ 1over 16",
+"ans": "④ lim _{x->`1} {` {sqrt {3x+a} - sqrt {x",
+"sol_len": 432
+},
+{
+"n": 46,
+"step": "2",
+"q": "두 상수 a , b 에 대하여 lim_x→2 LEFT ( a over 2-x - b over {4-x^2 } RIGHT ) =1 이 성립할 때, ab 의 값은?① 24 ② 32 ③ 48 ④ 56 ⑤ 64",
+"ans": "⑤lim_ x→2 LEFT (  a over 2-x - b over {4",
+"sol_len": 388
+},
+{
+"n": 47,
+"step": "2",
+"q": "다항식 f(x) 가 lim_x→inf { x ^2 - 3x +2 } over f(x) = 3 , lim _{x -> 2} {} {2x ^{2} -7x+6} over {f(x)} = 1over 2 을 만족시킬 때, f(5) 의 값은?① 8 ② 9 ③ 10 ④ 11 ⑤ 12",
+"ans": "②(ⅰ)  lim_ x→inf {x^2 - 3x + 2 } over f(",
+"sol_len": 455
+},
+{
+"n": 48,
+"step": "2",
+"q": "다항함수 f(x) 가 다음 조건을 만족시킬 때, `f(1) 의 값을 구하시오.(가) lim _{x -> INF } {} {f(x)-3x ^{3}} over {x ^{2}} =2 (나) lim _{x -> 0} {} {f(x)} over {x} =2 단원 마무리 하기STEP 3사각형입니다.묶음 개체입니다.",
+"ans": "7 조건 ㈎에서  lim _{x ->  INF } {} {f(x)-3x",
+"sol_len": 529
+},
+{
+"n": 49,
+"step": "3",
+"q": "보 기사각형입니다.에서 극한값이 존재하는 것만을 있는 대로 고르시오. (단, [x] 는 x 보다 크지 않은 최대의 정수이다.) [그림] ㄱ. lim _{x rarrow 2-} {{x-2} over {left| x-2 right| }} ㄴ. lim _{ x->0} x^2over{ left |x right|} { } ㄷ. lim _{ x->1} [x] } { } ㄹ. lim _{ x->1+} [3-2x]} { }",
+"ans": "ㄱ, ㄴ, ㄹㄱ.  x일 때,  |x-2|  = -(x-2) 이므로 li",
+"sol_len": 618
+},
+{
+"n": 50,
+"step": "3",
+"q": "함수 f(x)= cases{ x^2 +2x ~&( left |x right |ge1)# ax+b ~&( left |x right |에 대하여 극한값 lim _{ x->-1} f(x)} { } 와 lim _{ x->1} f(x)} { } 가 존재하도록 두 상수 a,~b 의 값을 정할 때, f left(1over2 right) 의 값을 구하시오.",
+"ans": "bold2 극한값  lim _{ x->-1} f(x) 가 존재하므로  l",
+"sol_len": 427
+},
+{
+"n": 51,
+"step": "3",
+"q": "함수의 극한에 대하여 보 기사각형입니다.에서 옳은 것을 모두 고른 것은? [그림] ㄱ. lim _{x -> `a} {`f(x)} , lim _{x->`a} {`g(x)} 의 값이 모두 존재하지 않으면 lim _{x -> `a} {` LEFT { f(x)+g(x) RIGHT }} 의 값도 존재하지 않는다.ㄴ. lim _{x->`a} {`left{f(x)-g(x)right}=0} 이면 lim _{x->`a} {`f(x)} 와 lim _{x->`a} {`g(x)} 의 값이 각각 존재한다.ㄷ. lim _{x->`a} {`left{f(x)+g(x)right}} 와 lim _{x->`a} {`left{f(x)-g(x)right}} 의 값이각각 존재하면 lim _{x->`a} {`f(x)} 의 값도 존재한다.① ㄱ ② ㄷ ③ ㄱ, ㄴ④ ㄴ, ㄷ ⑤ ㄱ, ㄷ",
+"ans": "②ㄱ은 옳지 않다.(반례)  f(x)= {LEFT | `x` RIGHT",
+"sol_len": 1053
+},
+{
+"n": 52,
+"step": "3",
+"q": "두 함수 y=f(x) , y= g(x) 의 그래프가 그림과 같을 때, lim _{ x->1-} f(g(x)) = a} { } , lim _{ x->1+} f(g(x)) = b} { } , lim _{ x->-1+} g(f(x))= c 이다. 이때, a+b+c 의 값을 구하시오. [그림]",
+"ans": "bold{-2}  g(x)=t 로 치환하면  x->1- 일 때,  t->",
+"sol_len": 355
+},
+{
+"n": 53,
+"step": "3",
+"q": "lim _{x -> a} {{x ^{3} -a ^{3}} over {x-a}} =3 일 때, lim _{x -> a} {{x ^{3} -ax ^2`+a ^2`x` -a ^{3}} over {x-a}} 의 값은? (단, a>0 )① 1 ② 2 ③ 3 ④ 4 ⑤ 5",
+"ans": "② lim _{x -> a} {{x  ^{3} -a  ^{3}} over",
+"sol_len": 404
+},
+{
+"n": 54,
+"step": "3",
+"q": "함수 f(x)= root{a-x }+b 에 대하여 lim _{ x->0} x over f(x) = it - 6} { } 일 때, 두 상수 a,~ b 의 값을 구하시오.",
+"ans": "bold{a=9, ~b=-3}  x->0 일 때, (분자) ->0 이고,",
+"sol_len": 482
+},
+{
+"n": 55,
+"step": "3",
+"q": "함수 y=f(x) 에 대하여 lim _{ x->2} f(x-2)over {x^2 -2x}= 5} { } 일 때, lim _{ x->0} f(x)overx} { } 의 값은?① 2 ② 4 ③ 6 ④ 8 ⑤ 10",
+"ans": "⑤ lim _{ x->2} f(x-2)over {x^2 - 2x} =5}",
+"sol_len": 453
+},
+{
+"n": 56,
+"step": "3",
+"q": "양의 실수 전체의 집합에서 정의된 함수 y=f(x) 가 3x^2 + ax le f(x) le 4x^2 +ax 를 만족시키고, lim _{ x->0+} f(x)over3x = 4} { } 일 때, 상수 a 의 값을 구하시오.",
+"ans": "bold12 3x^2 + ax le  f(x)le  4x^2 + ax 에",
+"sol_len": 474
+},
+{
+"n": 57,
+"step": "3",
+"q": "삼차함수 y= f(x) 가 lim _{ x->1}f(x)over x-1 = 2} { } , lim _{ x->2} f(x)over x-2 = it -4} { } 를 만족시킬 때, f(-2) 의 값을 구하시오.",
+"ans": "bold48 조건에서  f(1)=f(2)=0 이므로  f(x)=(x-1)",
+"sol_len": 335
+},
+{
+"n": 58,
+"step": "3",
+"q": "다항함수 y=f(x) 가 lim _{ x->0+} {x^3 f left( 1overx right) -1}over {x^3 +x} = 5} { } , lim _{ x->1} f(x)over {x^2 +x-2} = 1over3} { } 을 만족시킬 때, f(2) 의 값을 구하시오.",
+"ans": "bold10  lim _{ x->0+} {x^3  f left(1over",
+"sol_len": 1053
+},
+{
+"n": 59,
+"step": "3",
+"q": "[그림] 곡선 y= x^2 위의 점 rmP it (x,~x^2 ) 에 대하여 A(x) 를 rmO(0,~0) , rmP it (x,~x^2 ) , rmQ it(1,~0) 을 꼭짓점으로 하는 삼각형의 넓이라 하고, B(x) 를 rmO(0,~0) , rm P it (x,~x^2 ) , rmR(0,~3) 을 꼭짓점으로 하는 삼각형의 넓이라 할 때, lim _{ x->0+} {2x B(x)}over A(x)} { } 의 값을 구하시오. (단, x>0 )1. 함수의 극한",
+"ans": "bold6  A(x)= 1over2 times1 times  x^2 =",
+"sol_len": 196
+}
+],
+"M": [
+{
+"n": 1,
+"step": "1",
+"q": "다음 중 옳지 않은 것은?① lim_x→4 x-1 over { root x -1 } =3 ② lim _{x -> -1} {} {x ^{10} +x-2} over {x-1}= it-1 ③ lim_x→0 1 over {x^2 +1 } =1 ④ lim _{x -> 1} {} (x ^{2} +1)(x-3) =it-4 ⑤ lim_x→2 LEFT ( x + 1over x RIGHT ) = 5 over 2",
+"ans": "",
+"sol_len": 348
+},
+{
+"n": 2,
+"step": "1",
+"q": "그래프를 이용하여 다음 극한을 조사하시오.⑴ lim _{ x->3 } {{x^2 -9} overx-3} ⑵ lim _{ x->2 } {root2x+1 } ⑶ lim _{ x->1 } {left{ 1 over {(x-1)^2} +3 right}}",
+"ans": "",
+"sol_len": 596
+},
+{
+"n": 3,
+"step": "1",
+"q": "다음 극한을 조사하시오.⑴ lim _{ x->inf } {(x^2 +3x-2) } ⑵ lim _{x ->inf } {root2x-1 } ⑶ lim _{ x->-inf } {left( 1 over x^2 -1right) } 02우극한과 좌극한개념묶음 개체입니다.  우극한과 좌극한⑴ 우극한 x 가 a 보다 큰 값을 가지면서, 즉 a 의 오른쪽에서 한없이 a 에 가까워지는 것을 x` -> `a+ 으로 나타낸다. 이때 f(x) 가 일정한 값 alpha 에 한없이 가까워지면 lim_x->a+ f(x) = alpha , f(x) 가 한없이 커지거나 작아지면 lim _{x rarrow a+} {} f(x)=inf , 수식입니다.lim _{x rarrow a+} {} f(x)= it- INF 로 나타낸다.⑵ 좌극한 x 가 a 보다 작은 값을 가지면서, 즉 a 의 왼쪽에서 한없이 a 에 가까워지는 것을 x`` -> ``a- 으로 나타낸다. 이때 f(x) 가 일정한 값 alpha 에 한없이 가까워지면 lim_x->a- f(x) = alpha , f(x) 가 한없이 커지거나 작아지면 수식입니다.lim _{x rarrow a-} {} f(x)= INF , 수식입니다.lim _{x rarrow a-} {} f(x)= it - INF 로 나타낸다.⑶ lim _{x rarrow a+} {} f(x)= lim _{x rarrow a-} {} f(x)=alpha 이면 lim _{x rarrow a} {} f(x)=alpha 로 존재하고, lim_x->a+ f(x)!= lim_x->a- f(x) 이면 lim_x->a f(x) 가 존재하지 않는다. 우극한과 좌극한을 따로 계산해야 하는 경우대부분의 경우 극한 문제는 항상 (우극한)=(좌극한)이므로 따로 구할 필요가 없으나 구간에 따라 함수의 식이 다른 함수, 다항함수가 아닌 유리함수, 절댓값을 포함하는 함수 등의 경우에는 우극한과 좌극한이 같지 않는 경우가 있으므로 따로 계산해야 한다.사각형입니다.",
+"ans": "",
+"sol_len": 496
+},
+{
+"n": 4,
+"step": "1",
+"q": "함 [그림] 수 y=f(x) 의 그래프가 그림과 같을 때, 다음 값을 구하시오.⑴ lim _{x ->0- } {f(x) } ⑵ lim _{x ->1+ } {f(x) } ⑶ lim _{x ->-2 } {f(x) } ⑷ f(2)",
+"ans": "",
+"sol_len": 506
+},
+{
+"n": 5,
+"step": "1",
+"q": "[그림] 정의역이 left{x left | -2 le x le 1 right} 인 함수 y=f(x) 의 그래프가 그림과 같을 때, lim _{ x->-1-} f(x)+ lim _{ x->0+} f(x)+ lim _{ x->1-} f(x)} { } } { } } { } 의 값은?① 1 ② 2 ③ 3 ④ 4 ⑤ 5",
+"ans": "",
+"sol_len": 194
+},
+{
+"n": 6,
+"step": "1",
+"q": "함수 f(x)= {cases{eqalign{x ^{2} -4x+a# }&eqalign{(x1)}}} 에 대하여 lim _{x -> 1-} {} f(x)= it-2 , lim _{x -> 1+} {} f(x)=2 일 때, `a-b 의 값은?(단, a , b 는 상수이다.)① -3 ② -2 ③ -1 ④ 1 ⑤ 2 03함수의 극한에 대한 성질개념묶음 개체입니다.수식입니다.lim_x->a f(x) = alpha , lim_x->a g(x) = beta ( alpha , beta 는 실수)일 때, 다음이 성립한다.⑴ lim_x->a kf(x) = k lim_x->a f(x) = k alpha (단, k 는 상수)⑵ lim_x->a left{f(x) +- g(x) right } = lim_x->a f(x) +- lim_x->a g(x) = alpha+- beta (복부호 동순)⑶ lim_x->a f(x) g(x) = lim_x->a f(x) cdot lim_x->a g(x) = alphabeta ⑷ lim_x->a f(x) over g(x) = {lim_x->a f(x)} over { lim_x->a g(x)} = alpha over beta (단, 수식입니다.g(x)!=0 , beta!=0 )사각형입니다.",
+"ans": "",
+"sol_len": 157
+},
+{
+"n": 7,
+"step": "1",
+"q": "두 함수 y=f(x),~y=g(x) 에 대하여 다음을 구하시오.⑴ lim _{ x->1 } {f(x)} =3,~ lim _{ x-> 1} {g(x) }=2 일 때, lim _{ x->1 } {left{3f(x)+f(x)g(x)right} } 의 값⑵ lim _{ x->0 } {f(x)} =2,~ lim _{ x-> 0} {left{4f(x)-g(x)right} }=4 일 때, lim _{ x->0 } {{2f(x)+3g(x)}over{3f(x)-g(x)} } 의 값",
+"ans": "",
+"sol_len": 457
+},
+{
+"n": 8,
+"step": "1",
+"q": "함수 y=f(x) 에 대하여 lim _{ x->0 } {f(x) overx }=1 일 때, lim _{ x->0 } {{x^2 +2f(x)}over{7x-3f(x)} } 의 값을 구하시오.",
+"ans": "",
+"sol_len": 207
+},
+{
+"n": 9,
+"step": "1",
+"q": "두 함수 y=f(x),~y=g(x) 가 lim _{ x->1 } {f(x) }=inf,~ lim _{ x->1 } {left{3f(x)-g(x)right}=2 } 를 만족시킬 때, lim _{ x->1 } {{f(x)-2g(x)}over{2f(x)-g(x)} } 의 값을 구하시오.",
+"ans": "",
+"sol_len": 697
+},
+{
+"n": 10,
+"step": "1",
+"q": "두 다항함수 f(x) , g(x) 가 다음 조건을 만족시킨다.(가) `f(x)+9g(x)=x ^{2} `g(x) (나) lim _{x -> 3} {} {f(x)} over {x-3} =18 이때, lim _{x->`3} {`g(x)} 의 값은?① 1 ② 2 ③ 3 ④ 4 ⑤ 5",
+"ans": "",
+"sol_len": 313
+},
+{
+"n": 11,
+"step": "1",
+"q": "함수 f(x) 가 lim _{x -> 1} {} {f(x-1)} over {x-1} =5 을 만족시킬 때, lim _{x -> 0} {} {5x+f(x)} over {x ^{2`} -2f(x)} 의 값은?① -1 ② - {1} over {2} ③ 0 ④ {1} over {2} ⑤ 1 04절댓값 기호를 포함한 함수의 극한개념묶음 개체입니다.",
+"ans": "",
+"sol_len": 280
+},
+{
+"n": 12,
+"step": "1",
+"q": "함수 f(x)= {x+2 LEFT | x RIGHT | +3} over {2x+ LEFT | x RIGHT | +1} 일 때, 수렴하는 것만을 보 기사각형입니다.에서 있는 대로 고른 것은? [그림] ㄱ. lim _{x` rarrow `1} {f(x)} ㄴ. lim _{x`-> `-1} {f(x)} ㄷ. lim _{x `rarrow ` INF } {f(x)} ㄹ. lim _{x `rarrow `- INF } {f(x)} ① ㄱ, ㄷ② ㄱ, ㄹ③ ㄴ, ㄷ④ ㄱ, ㄴ, ㄹ⑤ ㄱ, ㄷ, ㄹ",
+"ans": "",
+"sol_len": 811
+},
+{
+"n": 13,
+"step": "1",
+"q": "함수 f(x)= {LEFT | x-2 RIGHT |} over {x-2} 에 대하여 다음 중 옳은 것은?① f(2)=0 ② lim _{x `rarrow` 0} {`f(x)} =1 ③ lim _{x` rarrow `2-} {`f(x)} = it -1 ④ lim _{x `rarrow` 2} {`f(x)} =1 ⑤ 수식입니다.lim _{x` rarrow ` INF } {`f(x)} = INF",
+"ans": "",
+"sol_len": 346
+},
+{
+"n": 14,
+"step": "1",
+"q": "함수 수식입니다.f(x)= {2x- LEFT | x RIGHT |} over {2x+ LEFT | x RIGHT |} 에 대하여수식입니다.lim _{x `rarrow `0-} {} f(x)= alpha , 수식입니다.lim _{x` rarrow `0+} {} f(x)= beta 일 때, 수식입니다.alpha beta 의 값은?① -2 ② -1 ③ 0 ④ 1 ⑤ 2 05가우스 기호를 포함한 함수의 극한개념묶음 개체입니다.",
+"ans": "",
+"sol_len": 227
+},
+{
+"n": 15,
+"step": "1",
+"q": "다음 극한의 조사하고, 극한값이 존재하면 그 값을 구하시오. (단, LEFT [ x RIGHT ] 는 x 보다 크지 않은 최대의 정수이다.)⑴ 수식입니다.lim _{x `rarrow `0+} {{LEFT [ x RIGHT ]} over {x}} ⑵ 수식입니다.lim _{x` rarrow` 0-} {{LEFT [ x RIGHT ]} over {x}} ⑶ 수식입니다.lim _{x`rarrow `0+} {{LEFT [ x-1 RIGHT ]} over {x-1}} ⑷ 수식입니다.lim _{x` rarrow `2} {LEFT [ -x ^{2} +4x-4 RIGHT ]}",
+"ans": "",
+"sol_len": 581
+},
+{
+"n": 16,
+"step": "1",
+"q": "다음 중 옳지 않은 것은? (단, LEFT [ x RIGHT ] 는 x 보다 크지 않은 최대의 정수이다.)① lim _{x` rarrow `3-} {LEFT [ x ^{2} RIGHT ] =8} ② lim _{x` rarrow `3-} {LEFT [ x RIGHT ] ^{2} =4} ③ lim _{x` rarrow `2+} {{LEFT [ x-2 RIGHT ]} over {x-2}} =0 ④ lim _{x` rarrow `2-} {{LEFT [ x-2 RIGHT ]} over {x-2}} = it -inf ⑤ lim _{x` rarrow `2-} {{LEFT [ 3x RIGHT ]} over {LEFT [ x-2 RIGHT ]} = it -5}",
+"ans": "",
+"sol_len": 565
+},
+{
+"n": 17,
+"step": "1",
+"q": "함수 f(x)= left [ x right] ^{2} +a left [ x right] 에 대하여 등식 lim _{x` rarrow `3+} {} `f(x)= lim _{x` rarrow `3-} {} `f(x) 가 성립할 때, 상수 a 의 값은? (단, LEFT [ x RIGHT ] 는 x 보다 크지 않은 최대의 정수이다.) ① -1 ② -2 ③ -3 ④ -4 ⑤ -5",
+"ans": "",
+"sol_len": 381
+},
+{
+"n": 18,
+"step": "1",
+"q": "lim _{x` rarrow `n} {{LEFT [ x RIGHT ] ^{2} +2x} over {LEFT [ x RIGHT ]}} 의 값이 존재하도록 하는 자연수 n 의 값은? (단, LEFT [ x RIGHT ] 는 x 보다 크지 않은 최대의 정수이다.)① 1 ② 2 ③ 3 ④ 4 ⑤ 5",
+"ans": "",
+"sol_len": 399
+},
+{
+"n": 19,
+"step": "1",
+"q": "함수 f(x)= LEFT [ x right] ^{2} -(ax+b) LEFT [ x RIGHT ] RIGHT . 에 대하여 lim _{x` rarrow `n}` f(x) 가 항상 존재하도록 하는 두 상수 a , b 의 값은? (단, LEFT [ x RIGHT ] 는 x 보다 크지 않은 최대의 정수이다.) ① a=it-1 , b=it-2 ② a=it-1 , b= it -1 ③ a=1 , b=0 ④ a=2 , b=it-1 ⑤ a=2 , b=0 06합성함수의 극한개념묶음 개체입니다.",
+"ans": "",
+"sol_len": 492
+},
+{
+"n": 20,
+"step": "1",
+"q": "두 함수 y=f(x),~y=g(x) 의 그래프가 그림과 같을 때, 다음 극한값을 구하시오. [그림] ⑴ lim _{ x->3- } {f(g(x)) } ⑵ lim _{ x->0- } {f(g(x)) } ⑶ lim _{ x->0+ } {g(f(x)) }",
+"ans": "",
+"sol_len": 313
+},
+{
+"n": 21,
+"step": "1",
+"q": "함수 f(x) 의 그래프가 다음 그림과 같다.수식입니다.x 수식입니다.1 수식입니다.y 수식입니다.rmO y=f(x) 수식입니다.1 2 -1 -2 묶음 개체입니다. lim _{x `rarrow` -1} {LEFT { f(x-1)+f(1-x) RIGHT }} 의 값은?① -1 ② 0 ③ 1 ④ 2 ⑤ 3",
+"ans": "",
+"sol_len": 212
+},
+{
+"n": 22,
+"step": "1",
+"q": "두 함수 y=f(x) , y=g(x) 의 그래프가 다음 그림과 같을 때, 옳은 것만을 보 기사각형입니다.에서 있는 대로 고른 것은?수식입니다.x 수식입니다.1 수식입니다.y 수식입니다.rmO 수식입니다.y=f(x) -1 수식입니다.1 -1 묶음 개체입니다. 수식입니다.x 수식입니다.1 수식입니다.y 수식입니다.rmO 수식입니다.y=g(x) -1 수식입니다.1 -1 묶음 개체입니다. [그림] ㄱ. lim _{x` rarrow `-1+} {f(2x+1)= it -1} ㄴ. lim _{x` rarrow ` INF } {}` g LEFT ( {x+1} over {x} RIGHT ) =0 ㄷ. lim _{x` rarrow `1-} {(f CIRC g)(x)=} lim _{x` rarrow `1+} {(g CIRC f)(x)} ① ㄱ② ㄴ③ ㄷ④ ㄱ, ㄴ⑤ ㄱ, ㄷ",
+"ans": "",
+"sol_len": 311
+},
+{
+"n": 23,
+"step": "1",
+"q": "x y rmO 1 y=f(x) 2 3 3 2 1 묶음 개체입니다.함수 y=f LEFT ( x RIGHT ) 의 그래프가 오른쪽 그림과 같을 때, 옳은 것만을 보 기사각형입니다.에서 있는 대로 고른 것은? [그림] ㄱ. lim _{x` rarrow `1+} {f LEFT ( x RIGHT ) f LEFT ( 1-x RIGHT )} =0 ㄴ. lim _{x` rarrow ` INF } `{f LEFT ( {3x+1} over {x-1} RIGHT )} =1 ㄷ. lim _{x` rarrow `- INF } {f LEFT ( {2x+1} over {2x} RIGHT )} =1 ① ㄱ② ㄴ③ ㄱ, ㄷ④ ㄴ, ㄷ⑤ ㄱ, ㄴ, ㄷ07 {0} over {0} 꼴의 극한값의 계산개념묶음 개체입니다. {bold{x` rarrow ` a }} 일 때 함수의 극한을 구하는 방법⑴ 다항함수 f(x) 에 대하여 lim_x->a f(x) = f(a) ⑵ lim _{x rarrow a} {} f(x) =alpha , lim _{x rarrow a} {} g(x) =beta 일 때, ① beta!=0 이면 lim _{x-> a} {{f(x)} over {g(x)} = {alpha } over {beta }} ② beta=0 , alpha!=0 이면 극한값은 존재하지 않는다. ③ beta=0 , alpha =0 일 때, 즉 0 over0 꼴의 계산 - f(x) , g(x) 가 모두 다항함수이면 인수분해한다. - f(x) 또는 g(x) 가 무리식이면 무리식의 켤레를 분모·분자에 곱한 후 식의 정리한다. beta=0 , alpha =0 이 되게 하는 인수를 약분한 후 x 에 a 를 대입하여 극한을 구한다. 사각형입니다.",
+"ans": "",
+"sol_len": 592
+},
+{
+"n": 24,
+"step": "1",
+"q": "다음 극한값을 구하시오.⑴ lim _{ x->1 } {{x^2 +5x-6}overx-1 } ⑵ lim _{ x->0 } {{root1+x -1} overx} ⑶ lim _{ x->1 } {{x^2 -1}over {rootx+3 -2} } ⑷ lim _{ x->0 } {1overx left( 2 overx+2 -1 right) }",
+"ans": "",
+"sol_len": 664
+},
+{
+"n": 25,
+"step": "1",
+"q": "다음 극한값을 구하시오.⑴ lim _{ x->2 } {{x^3 -8}over{x-2} } ⑵ lim _{ x->0 } {x^2 over {1-root1-x^2} } ⑶ lim _{ x->-1 } {x+1over{root{3}ofx +1} }",
+"ans": "",
+"sol_len": 810
+},
+{
+"n": 26,
+"step": "1",
+"q": "최고차항의 계수가 1인 두 삼차함수 f(x),~ g(x) 가 다음 조건을 만족시킨다.(가) g(1)=0 (나) lim_{x`->`k} f(x) over g(x) =k(k-1)``` (k=0,~ 1,~ 2,~ 3) g(4) 의 값을 구하시오.",
+"ans": "",
+"sol_len": 834
+},
+{
+"n": 27,
+"step": "1",
+"q": "최고차항의 계수가 1 인 이차함수 f(x) 가 lim _{x` -> `0} {} {f(x+k)-2x} over {f(x+k)+2x} = {2} over {3} 를 만족시킨다. 방정식 f(x)=0 의 두 근을 alpha ,~ beta` 라 할 때, 수식입니다.left| `alpha - beta` right | 의 값을 구하시오. (단, alpha 는 상수이다.) 08 {INF } over {inf} 꼴의 극한값의 계산개념묶음 개체입니다. {bold{x` rarrow ` INF }} 일 때 함수의 극한을 구하는 방법 lim _{x->inf }{1overx}= 0 임을 이용하여 계산하다. ⑴ inf over inf 꼴 분모의 최고차항으로 분모, 분자를 각각 나눈다.① (분모의 차수) = (분자의 차수)일 때, 최고차항의 계수를 비교한다.② (분모의 차수) (분자의 차수)일 때, inf 또는 -inf ③ (분모의 차수) > (분자의 차수)일 때, 0 ⑵ inf-inf 꼴 다항식일 때, 최고차항으로 묶는다. 무리식일 때, 무리식의 켤레를 분모·분자에 곱한 후 식을 정리하면 inf overinf 꼴로 바뀐다.⑶ 수식입니다.x rarrow `-INF 일 때 -x= t 로 치환하여 t->inf 일 때로 바뀌어 극한을 구한다.사각형입니다.",
+"ans": "",
+"sol_len": 885
+},
+{
+"n": 28,
+"step": "1",
+"q": "다음 극한값을 구하시오.⑴ lim _{ x->inf } {{4x^2 +x-2}over{3x^2 +2} } ⑵ lim _{ x->inf } {{3x^2 -x}over{2x^3 +1} } ⑶ lim _{ x->inf } {3x+5 over{root{x^2 +2}-3} }",
+"ans": "",
+"sol_len": 468
+},
+{
+"n": 29,
+"step": "1",
+"q": "다음 극한을 조사하시오.⑴ lim _{ x->inf } {(x^3 -x^2 +2x-3) } ⑵ lim _{ x->inf } {(root{x^2 +5x}-x) } ⑶ lim _{ x->-inf } {1over{root{x^2 -x}+x} }",
+"ans": "",
+"sol_len": 676
+},
+{
+"n": 30,
+"step": "1",
+"q": "lim _{x `rarrow` INF } {} sqrt {x} ( sqrt {x+2} - sqrt {x} ) 의 값은?① 1 ② 2 ③ 3 ④ 4 ⑤ 5",
+"ans": "",
+"sol_len": 203
+},
+{
+"n": 31,
+"step": "1",
+"q": "수식입니다.lim _{x` rarrow `- INF } {} ` {2x} over{sqrt {x ^{2} +1} +3x} 의 값은?① -1 ② 1 over2 ③ 2over3 ④ 1 ⑤ 2",
+"ans": "",
+"sol_len": 422
+},
+{
+"n": 32,
+"step": "1",
+"q": "함수 f(x) 에 대하여 lim _{x` rarrow ` INF } {} LEFT { x-f(x) RIGHT } =2 일 때, lim _{x` rarrow ` INF } {} {sqrt {x+3} - sqrt {f(x)}} over {sqrt {x+2} - sqrt {f(x)}} 의 값은?① -1 ② 1 over2 ③ 1 ④ {5} over {4} ⑤ 2",
+"ans": "",
+"sol_len": 1018
+},
+{
+"n": 33,
+"step": "1",
+"q": "자연수 n 에 대하여 f(n)= lim _{x `rarrow ` INF } {} {3x ^{n} -x ^{3} +2} over {x ^{n} +x ^{3}} 일 때, sum _{k=1} ^{10} f(k) 의 값은?① 8 ② 10 ③ 12 ④ 16 ⑤ 20",
+"ans": "",
+"sol_len": 745
+},
+{
+"n": 34,
+"step": "1",
+"q": "자연수 n 에 대하여 lim _{x-> INF } {{x ^{n} ( sqrt {x ^{4} +1} -x ^{2} )} over {sqrt {x ^{2} +x} -x} = alpha } 일 때,수식입니다.n+ alpha 의 값은? (단, 수식입니다.alpha 는 0 이 아닌 실수이다.)① 1 ② 3 ③ 5 ④ 7 ⑤ 9 09함수의 극한의 대소 관계개념묶음 개체입니다. lim_x->a f(x) = alpha , lim_x->a g(x) = beta ( alpha , 수식입니다.beta 는 실수)일 때, 다음이 성립한다.⑴ 수식입니다.f(x) le g(x) 이면 alpha le beta 이다.⑵ f(x) le h(x) le g(x) 이고 alpha = beta 이면 lim_x->a h(x) =alpha 이다. 사각형입니다.",
+"ans": "",
+"sol_len": 536
+},
+{
+"n": 35,
+"step": "1",
+"q": "다음 물음에 답하시오.⑴ 임의의 양의 실수 x 에 대하여 함수 y=f(x) 가 4x over{3x^2 +x+2}를 만족시킬 때, lim _{ x->inf } {xf(x) } 의 값을 구하시오.⑵ x!=2 인 모든 실수 x 에 대하여 함수 y=f(x) 가 x^2 -4를 만족시킬 때, lim _{ x->2 } {f(x)overx-2 } 의 값을 구하시오.",
+"ans": "",
+"sol_len": 388
+},
+{
+"n": 36,
+"step": "1",
+"q": "모든 실수 x 에 대하여 함수 y=f(x) 가 x^2 -3x-2 을 만족시킬 때, lim _{ x->inf } {f(x)overx^2 } 의 값을 구하시오.",
+"ans": "",
+"sol_len": 188
+},
+{
+"n": 37,
+"step": "1",
+"q": "함수 f(x) 가 x>1 인 모든 실수 x 에 대하여 5x ^{3} -x ^{2} +x-3을 만족시킬 때, lim _{x -> INF } {{ f(x) +2x+1} over {x^3 +5}} 의 값을 구하시오.",
+"ans": "",
+"sol_len": 332
+},
+{
+"n": 38,
+"step": "1",
+"q": "모든 실수 x 에 대하여 함수 f(x) 가 2x-1을 만족시킬 때, lim_ x→inf {left{ f(x) right}^2 } over {x^2 +1 의 값은?① 0 ② 2 ③ 4 ④ 6 ⑤ 8",
+"ans": "",
+"sol_len": 349
+},
+{
+"n": 39,
+"step": "1",
+"q": "모든 실수 x 에 대하여 함수 f LEFT ( x RIGHT ) 가 -5x ^{2} +8x-3 LEQ f LEFT ( x RIGHT ) LEQ x ^{2} -4x+3 을 만족시킬 때, lim _{x `rarrow `1} {{f LEFT ( x RIGHT )} over {x-1}} 의 값은?① -2 ② -1 ③ 0 ④ 1 ⑤ 2 유형별 학습하기STEP 2사각형입니다.묶음 개체입니다.01함수의 극한유형묶음 개체입니다.",
+"ans": "",
+"sol_len": 1066
+},
+{
+"n": 40,
+"step": "2",
+"q": "lim _{x -> 0} {} {sqrt {1-x} - sqrt {1+x}} over {sqrt {4+x} - sqrt {4-x}} 의 값은?① -4 ② -2 ③ 0 ④ 2 ⑤ 4",
+"ans": "",
+"sol_len": 329
+},
+{
+"n": 41,
+"step": "2",
+"q": "lim _{x -> 1} {} {1} over {x-1} LEFT ( {x ^{5`} `+5} over {x+1} -3 RIGHT ) 의 값은?① - {1} over {2} ② - {1} over {4} ③ 0④ {1} over {4} ⑤ {1} over {2}",
+"ans": "",
+"sol_len": 295
+},
+{
+"n": 42,
+"step": "2",
+"q": "수식입니다.lim from {x`-> `inf} ( sqrt { x^2 +2x`+2} - sqrt { x^2 -2x`-2}) 의 값은?① 1 ② 2 ③ 3 ④ 4 ⑤ 5",
+"ans": "",
+"sol_len": 317
+},
+{
+"n": 43,
+"step": "2",
+"q": "lim _{x` rarrow `- INF } {LEFT ( sqrt {x ^{2} +2x} +x RIGHT )} 의 값은?① -2 ② -1 ③ 0 ④ 1 ⑤ 2 02미정계수의 결정유형묶음 개체입니다.",
+"ans": "",
+"sol_len": 430
+},
+{
+"n": 44,
+"step": "2",
+"q": "다음 식을 만족시키는 두 상수 a,~b 의 값을 구하시오.⑴ lim _{ x->1 } {{x^2 +ax+b}overx-1 }=3 ⑵ lim _{ x->2 } {{a rootx+2 -4}overx-2 }=b",
+"ans": "",
+"sol_len": 693
+},
+{
+"n": 45,
+"step": "2",
+"q": "다항함수 y=f(x) 가 다음 조건을 만족시킨다.(가) lim _{ x->1 } {f(x)over{x^2 -1} }=1 (나) lim _{ x->inf } {f(x)over{x^2 -1} }=2 다항식 f(x) 를 구하시오.",
+"ans": "",
+"sol_len": 418
+},
+{
+"n": 46,
+"step": "2",
+"q": "두 상수 a , b 에 대하여 lim _{x -> INF } {} { ax^3 + bx^ 2 + 2x + 5 } over { 2x ^ 2 - 3x +4 } =6 이 성립할 때, a+b 의 값은?① 6 ② 수식입니다.12 ③ 18 ④ 수식입니다.24 ⑤ 30",
+"ans": "",
+"sol_len": 162
+},
+{
+"n": 47,
+"step": "2",
+"q": "두 상수 a , b 에 대하여 lim _{x -> -1`} {} {x ^{2} +(a+1)x+a} over {x ^{2} -b} =3 이 성립할 때, a+b 의 값은?① -8 ② -4 ③ 수식입니다. - 1 over2④ - 1 over 4 ⑤ - 1over 8",
+"ans": "",
+"sol_len": 336
+},
+{
+"n": 48,
+"step": "2",
+"q": "두 상수 a , b 에 대하여 lim_x→1 { root {3x +a} - root {x+3} } over {x^2 -1 }=b 가 성립할 때, ab 의 값은?① 16 ② 4 ③ 1 ④ 1 over4 ⑤ 수식입니다. 1over 16",
+"ans": "",
+"sol_len": 460
+},
+{
+"n": 49,
+"step": "2",
+"q": "두 상수 a , b 에 대하여 lim_x→2 LEFT ( a over 2-x - b over {4-x^2 } RIGHT ) =1 이 성립할 때, ab 의 값은?① 수식입니다.24 ② 수식입니다.32 ③ 48 ④ 수식입니다.56 ⑤ 64 03극한과 함수의 결정유형묶음 개체입니다.",
+"ans": "",
+"sol_len": 404
+},
+{
+"n": 50,
+"step": "2",
+"q": "다항식 f(x) 가 lim_x→inf { x ^2 - 3x +2 } over f(x) = 3 , lim _{x -> 2} {} {2x ^{2} -7x+6} over {f(x)} = 1over 2 을 만족시킬 때, f(5) 의 값은?① 8 ② 9 ③ 10 ④ 11 ⑤ 12",
+"ans": "",
+"sol_len": 489
+},
+{
+"n": 51,
+"step": "2",
+"q": "다항함수 f(x) 가 다음 조건을 만족시킬 때, `f(1) 의 값을 구하시오.(가) lim _{x -> INF } {} {f(x)-3x ^{3}} over {x ^{2}} =2 (나) lim _{x -> 0} {} {f(x)} over {x} =2",
+"ans": "",
+"sol_len": 533
+},
+{
+"n": 52,
+"step": "2",
+"q": "다항함수 f(x) 에 대하여 lim_{x`->`1} f(x) over {x^2 -1} =2 일 때, lim_{x`->`-1} f(x+2) over { x^2 -1} 의 값은?① -2 ② -1 ③ 0 ④ 1 ⑤ 2",
+"ans": "",
+"sol_len": 464
+},
+{
+"n": 53,
+"step": "2",
+"q": "다항함수 f(x) 가 lim_{x`->`0} f(x) over x =1 ,~ lim_{x`->`1} f(x) over x-1 =2 를 만족시킬 때, 보 기사각형입니다.]에서 옳은 것만을 있는 대로 고른 것은? [그림] ㄱ. f( f(1))=0 ㄴ. lim_{x`->`1} {left { f(x) right } ^2} over x(x-1) =2 ㄷ. 수식입니다.lim_{x`->`1} f(x-1) over {x^2 –1}= 1 over 2 ① ㄱ② ㄴ③ ㄱ, ㄴ④ ㄱ, ㄷ⑤ ㄱ, ㄴ, ㄷ04극한의 성질유형묶음 개체입니다.",
+"ans": "",
+"sol_len": 756
+},
+{
+"n": 54,
+"step": "2",
+"q": "함수의 극한에 대하여 보 기사각형입니다.에서 옳은 것을 모두 고른 것은? [그림] ㄱ. lim _{x -> `a} {`f(x)} , lim _{x->`a} {`g(x)} 의 값이 모두 존재하지 않으면 lim _{x -> `a} {` LEFT { f(x)+g(x) RIGHT }} 의 값도 존재하지 않는다.ㄴ. lim _{x->`a} {`left{f(x)-g(x)right}=0} 이면 lim _{x->`a} {`f(x)} 와 lim _{x->`a} {`g(x)} 의 값이 각각 존재한다.ㄷ. lim _{x->`a} {`left{f(x)+g(x)right}} 와 lim _{x->`a} {`left{f(x)-g(x)right}} 의 값이각각 존재하면 lim _{x->`a} {`f(x)} 의 값도 존재한다.① ㄱ ② ㄷ ③ ㄱ, ㄴ④ ㄴ, ㄷ ⑤ ㄱ, ㄷ",
+"ans": "",
+"sol_len": 1075
+},
+{
+"n": 55,
+"step": "2",
+"q": "실수 전체의 집합에서 정의된 두 함수 f(x),~ g(x) 에 대하여 보 기사각형입니다.에서 옳은 것만을 있는 대로 고른 것은? [그림] ㄱ. lim_{ x`->`a} f(x),~ lim_{x`->`a} f(x)g(x) 의 값이 모두 존재하면 lim _{x`->`a } g(x) 의 값도 존재한다.ㄴ. lim_{x`->`a} g(x),~ lim_{x`->`a} f(x) over g(x) 의 값이 모두 존재하면 lim _{x`->`a} f(x) 의 값도 존재한다.ㄷ. lim_{x`->`a} f(x),~ lim_{x`->`a} f(x) over g(x) 의 값이 모두 존재하면 | lim_{x`->`a} g(x) 의 값도 존재한다.① ㄱ② ㄴ③ ㄷ④ ㄱ, ㄴ⑤ ㄱ, ㄴ, ㄷ 05그래프를 이용한 함수의 극한유형묶음 개체입니다.",
+"ans": "",
+"sol_len": 607
+},
+{
+"n": 56,
+"step": "2",
+"q": "두 함수 y=f(x),~ y=g(x) 의 그래프가 그림과 같을 때, 보 기사각형입니다.에서 옳은 것만을 있는 대로 고른 것은? [그림] [그림] ㄱ. lim_{x`->`0} f(g(x))=1 ㄴ. f left ( lim_{x`->`0 }g(x) right ) =1 ㄷ. 수식입니다.lim_{x`->`0} g( f(x))=g left ( lim_{x`->`0} f(x) right ) ① ㄱ② ㄴ③ ㄱ, ㄷ④ ㄴ, ㄷ⑤ ㄱ, ㄴ, ㄷ",
+"ans": "",
+"sol_len": 600
+},
+{
+"n": 57,
+"step": "2",
+"q": "두 함수 y=f(x) , y= g(x) 의 그래프가 그림과 같을 때, lim _{ x->1-} f(g(x)) = a} { } , lim _{ x->1+} f(g(x)) = b} { } , lim _{ x->-1+} g(f(x))= c 이다. 이때, a+b+c 의 값을 구하시오. [그림]",
+"ans": "",
+"sol_len": 353
+},
+{
+"n": 58,
+"step": "2",
+"q": "함수 y=f(x) 의 그래프가 그림과 같을 때, 수식입니다.lim_{x`->`inf } f left ( { 2x^2 +1 } over { x^2 +2} right ) 의 값을 구하시오. [그림]",
+"ans": "",
+"sol_len": 298
+},
+{
+"n": 59,
+"step": "2",
+"q": "함수 y=f(x) 의 그래프가 그림과 같다. [그림] 수식입니다.lim_{x`->`inf } f left ( x-1 over x+2 right ) +lim_{x`->`-inf} f left ( {2x^2 -x} over { x^2 +3} right ) 의 값을 구하시오.06함수의 활용유형묶음 개체입니다.",
+"ans": "",
+"sol_len": 572
+},
+{
+"n": 60,
+"step": "2",
+"q": "수식입니다.x rmO 수식입니다.y y= sqrt {x} rmA 1 l 묶음 개체입니다.오른쪽 그림과 같이 함수 y= rootx` 의 그래프 위의 점 {rmA} it(t,~root t ) 에 대하여 선분 rmOA` 의 수직이등분선 l` 의 x 절편과 y 절편을 각각 f(t) , g(t) 라고 할 때, lim _{ t`->`inf} {f(t) - g(t) }over{f(t) + g(t)` 의 값은?① -2 ② -1 ③ 0` ④ 1` ⑤ 2`",
+"ans": "",
+"sol_len": 596
+},
+{
+"n": 61,
+"step": "2",
+"q": "rmO rmQ rm P y x y=x ^{2} f(t) 묶음 개체입니다.오른쪽 그림과 같이 곡선 y=x ^{2} 위의 점 rm P( it t,~t ^{2} ) 에 대하여 rm bar OP = bar OQ`` 를 만족할 때, 직선 rm PQ` 와 y 축의 교점의 y 좌표를 f(t) 라 하자. 이때 lim _{t` rarrow `0} {} `f(t) 의 값은? (단, 점 rm Q 의 x 좌표는 양수이다.)① -2 ② -1 ③ 0` ④ 1` ⑤ 2`",
+"ans": "",
+"sol_len": 973
+},
+{
+"n": 62,
+"step": "2",
+"q": "수식입니다.x rmO 수식입니다.y r rmA (0,~1) rmB(itt,~0) 묶음 개체입니다.오른쪽 그림과 같이 세 점 {rm A}(0 ,~1) , {rm O}(0,~0 ) , rm B it (t,~0) 을 꼭짓점으로 하는 삼각형 {rm AOB} 에 내접하는 원이 있다. 점 {rm B} 가 x 축을 따라 원점에 한없이 가까워질 때, 삼각형 {rm AOB} 에 내접하는 원의 반지름의 길이 r 에 대하여 lim _{ t`->`0+} {{2r} over {t} } 의 값은? (단, t>0 )① 1 ② 3 ③ 5 ④ 7 ⑤ 9",
+"ans": "",
+"sol_len": 422
+},
+{
+"n": 63,
+"step": "2",
+"q": "rmO rmA rm P(it x,~y) rmH y x 묶음 개체입니다.오른쪽 그림과 같이 중심이 rmA(0,~6) 이고 반지름의 길이가 2 인 원에 외접하고 x 축에 접하는 원의 중심을 {rmP}( itx,~y) 라 하자. 점 rmP 에서 y 축에 내린 수선의 발을 rmH 라 할 때, lim _{x` rarrow `INF } {{{bar{rm PH it}} ` ^{2}} over {{bar{rm PA it}}}} 의 값은? ① 8 ② 10 ③ 14 ④ 16 ⑤ 24 단원 마무리 하기STEP 3사각형입니다.묶음 개체입니다.",
+"ans": "",
+"sol_len": 435
+},
+{
+"n": 64,
+"step": "3",
+"q": "다항함수 f(x) 와 함수 g(x) 가 다음 조건을 만족시킨다.(가) x일 때, f(x)-g(x) = x^3 -1 (나) x>0 일 때, f(x) +g(x) = x^2 -2x+5 (다) lim _{x` rarrow `0-} {g LEFT ( x RIGHT )} - lim _{x` rarrow `0+} {g LEFT ( x RIGHT )} =4 lim _{x` rarrow `0} {} `f LEFT ( x RIGHT ) 의 값은? ① 0 ② 1 ③ 2 ④ 3 ⑤ 4",
+"ans": "",
+"sol_len": 669
+},
+{
+"n": 65,
+"step": "3",
+"q": "두 함수 f(x),```g(x) 의 그래프가 그림과 같을 때, 보 기사각형입니다.에서 옳은 것만을 있는 대로 고른 것은? [그림] [그림] ㄱ. lim _{x-> 1+} {f(x)g(x)=-1} ㄴ. lim _{x-> 1-} {LEFT { f(x)+g(-x) RIGHT } =1} ㄷ. lim _{x-> 0} {f(x+1)g(1-x)=-1} ① ㄱ② ㄴ③ ㄱ, ㄷ④ ㄴ, ㄷ⑤ ㄱ, ㄴ, ㄷ",
+"ans": "",
+"sol_len": 876
+},
+{
+"n": 66,
+"step": "3",
+"q": "함수 f(x) 가 lim_{x`->`1} (x+1) f(x)=1 을 만족시킬 때, lim_{x`->`1} (2x^2 +1) f(x)=a 이다. 20a 의 값을 구하시오.",
+"ans": "",
+"sol_len": 337
+},
+{
+"n": 67,
+"step": "3",
+"q": "함수 f(x)= cases{ x^2 +2x ~&( left |x right |ge1)# ax+b ~&( left |x right |에 대하여 극한값 lim _{ x->-1} f(x)} { } 와 lim _{ x->1} f(x)} { } 가 존재하도록 두 상수 a,~b 의 값을 정할 때, f left(1over2 right) 의 값을 구하시오.",
+"ans": "",
+"sol_len": 437
+},
+{
+"n": 68,
+"step": "3",
+"q": "두 함수 f(x),```g(x) 에 대하여 lim _{x-> INF } {f(x)= INF ,```` lim _{x-> INF } {{f(x)+g(x)} over {f(x)-g(x)} =3}} 이다. lim _{x-> INF } {{2f(x)-g(x)} over {f(x)+2g(x)} = {q} over {p}} 일 때, p+q 의 값은?(단, f(x)!=g(x) 이고, p 와 q 는 서로소인 자연수이다.)① 3 ② 5 ③ 7 ④ 9 ⑤ 11",
+"ans": "",
+"sol_len": 556
+},
+{
+"n": 69,
+"step": "3",
+"q": "0le x le 2 에서 정의된 함수 f(x)` 가 f(x)= lim _{t` rarrow `INF } {{t(x ^{2} -x)+1} over {sqrt {t ^{2} +x}}} 이다. 함수 f(x)` 의 최댓값 M , 최솟값 m 이라 할 때, 2Mm 의 값은?① 2` ② 1 ③ 0 ④ -1` ⑤ -2`",
+"ans": "",
+"sol_len": 402
+},
+{
+"n": 70,
+"step": "3",
+"q": "양의 실수 전체의 집합에서 정의된 함수 f(x) 가 3x^2 + ax le f(x) le 4x^2 +ax 를 만족시키고, lim _{ x->0+} f(x)over3x = 4} { } 일 때, 상수 a 의 값을 구하시오.",
+"ans": "",
+"sol_len": 490
+},
+{
+"n": 71,
+"step": "3",
+"q": "다항함수 f(x) 가 lim_{x`->`0} f(x) over x =3,~ lim_{x`->`1} f(x) over x-1 =2 를 만족시킬 때, lim_{x`->`1} {f(f(x))} over {2x^2 - 3x+1} 의 값을 구하시오.",
+"ans": "",
+"sol_len": 387
+},
+{
+"n": 72,
+"step": "3",
+"q": "다항함수 수식입니다. f(x)가 lim _{ x->0+} {x^3 f left( 1overx right) -1}over {x^3 +x} = 5} { } , lim _{ x->1} f(x)over {x^2 +x-2} = 1over3} { } 을 만족시킬 때, f(2) 의 값을 구하시오.",
+"ans": "",
+"sol_len": 1093
+},
+{
+"n": 73,
+"step": "3",
+"q": "다항함수 g(x) 에 대하여 lim_{x`->`1 } {g(x)-2x} overx-1 의 값이 존재한다. 다항함수 f(x) 가 f(x)+x-1=(x^2 -1)g(x) 를 만족시킬 때, lim_{x`->`1} {f(x) g(x) } over {x^2 - 1} 의 값을 구하시오.",
+"ans": "",
+"sol_len": 456
+},
+{
+"n": 74,
+"step": "3",
+"q": "함수 f(x)=x ^{2} -2x-1 에 대하여 방정식 f(x)=0 의 서로 다른 두 실근을 수식입니다.alpha ,```` beta 라 할 때, lim _{x-> alpha } {{f(x)f(-x)} over {x- alpha }} + lim _{x-> beta } {{f(x)f(-x)} over {x- beta }} 의 값은?① 32 ② 34 ③ 36 ④ 38 ⑤ 40",
+"ans": "",
+"sol_len": 1069
+},
+{
+"n": 75,
+"step": "3",
+"q": "두 다항함수 f(x),~ g(x) 가 다음 조건을 만족시킨다.(가) lim_{x`->`inf} {f(x)-2g(x)} over x^2 =1 (나) lim_{x`->`inf } {f(x)+3g(x)} over x^3 =1 수식입니다.lim_{x`->`inf} { f(x)+g(x)} over x^3 의 값은?① 1 over 5 ② 2 over 5 ③ 3 over 5 ④ 4 over 5 ⑤ 1",
+"ans": "",
+"sol_len": 565
+},
+{
+"n": 76,
+"step": "3",
+"q": "최고차항의 계수가 1 인 이차함수 f(x) 가 lim _{x`rarrow `a} {{f(x)-(x-a)} over {f(x)+(x-a)}} = {3} over {5} 을 만족시킨다. 방정식 f(x)=0 의 두 근을 수식입니다.alpha , 수식입니다.beta 라 할 때, LEFT | alpha - beta RIGHT | 의 값은? (단, a 는 상수이다.)① 1 ② 2 ③ 3 ④ 4 ⑤ 5",
+"ans": "",
+"sol_len": 985
+},
+{
+"n": 77,
+"step": "3",
+"q": "삼차함수 f(x)=x ^{3} +ax ^{2} +bx+1 과 이차항의 계수가 1 인 이차함수 g(x) 가 다음 조건을 만족시킬 때, g(x) 를 구하시오. (단, a,``b 는 상수이다.)(가) g(1)=0 (나) lim _{x-> 1} {{f(x)} over {g(x)} =0,```` lim _{x-> 2} {{g(x)} over {f(x)} =2}}",
+"ans": "",
+"sol_len": 849
+},
+{
+"n": 78,
+"step": "3",
+"q": "그림과 같이 곡선 y=x^2 위의 점 {\\P} it (t,~ t^2 )```(t>0) 에 대하여 x 축 위의 점 rm Q , y 축 위의 점 rm R 가 다음 조건을 만족시킨다.(가) 삼각형 rm POQ 는 rm {bar{rmPO}} = {bar{rmPQ}} 인 이등변삼각형이다.(나) 삼각형 rm PRO 는 rm {bar{rmRO}} = {bar{rmRP}} 인 이등변삼각형이다.삼각형 rm POQ 와 삼각형 rm PRO 의 넓이를 각각 S``(t),~ T``(t) 라 할 때, lim_{t`->`0+} {T``(t)-S``(t)} over t 의 값은? (단, rm O 는 원점이다.) [그림] ① 1 over 8 ② 1 over 4 ③ 3 over 8 ④ 1 over 2 ⑤ 5 over 8",
+"ans": "",
+"sol_len": 738
+},
+{
+"n": 79,
+"step": "3",
+"q": "실수 a 에 대하여 두 함수 수식입니다.g LEFT ( x RIGHT ) = {cases{- {1} over {2} x```````& LEFT ( x LEQ 0 RIGHT )#{1} over {2} x+1```& LEFT ( x`>0 RIGHT ) , h(x)= x^2 +a 의 그래프의 서로 다른 교점의 개수를 f LEFT ( a RIGHT ) 라 하자. lim _{a `rarrow` k+} {} f(a) != lim _{a `rarrow` k-} {} f(a) 를 만족하는 모든 실수 k 의 개수는 n , 그 값들의 합은 m 일 때, n+m 의 값은?① 25 over8 ② 33 over8 ③ 41 over8 ④ 49 over8 ⑤ 57 over8 1. 함수의 극한",
+"ans": "",
+"sol_len": 784
+}
+],
+"match": [
+{
+"m": 1,
+"mstep": "1",
+"c": 1,
+"cstep": "1",
+"r": 1.0,
+"mq": "다음 중 옳지 않은 것은?① lim_x→4 x-1 over { root x -1 } =3 ② lim _{x -> -1} {} {x ^{10} +x-2} over {x-1}= it-1 ③ lim_x→0 1 over {x^2 +1 } =1 ④ lim _{x -> 1} {} (x ^{2} +",
+"cq": "다음 중 옳지 않은 것은?① lim_x→4 x-1 over { root x -1 } =3 ② lim _{x -> -1} {} {x ^{10} +x-2} over {x-1}= it-1 ③ lim_x→0 1 over {x^2 +1 } =1 ④ lim _{x -> 1} {} (x ^{2} +",
+"msol": 348,
+"csol": 344
+},
+{
+"m": 2,
+"mstep": "1",
+"c": 2,
+"cstep": "1",
+"r": 1.0,
+"mq": "그래프를 이용하여 다음 극한을 조사하시오.⑴ lim _{ x->3 } {{x^2 -9} overx-3} ⑵ lim _{ x->2 } {root2x+1 } ⑶ lim _{ x->1 } {left{ 1 over {(x-1)^2} +3 right}}",
+"cq": "그래프를 이용하여 다음 극한을 조사하시오.⑴ lim _{ x->3 } {{x^2 -9} overx-3} ⑵ lim _{ x->2 } {root2x+1 } ⑶ lim _{ x->1 } {left{ 1 over {(x-1)^2} +3 right}}",
+"msol": 596,
+"csol": 592
+},
+{
+"m": 3,
+"mstep": "1",
+"c": 3,
+"cstep": "1",
+"r": 1.0,
+"mq": "다음 극한을 조사하시오.⑴ lim _{ x->inf } {(x^2 +3x-2) } ⑵ lim _{x ->inf } {root2x-1 } ⑶ lim _{ x->-inf } {left( 1 over x^2 -1right) } 02우극한과 좌극한개념묶음 개체입니다.  우극한과 좌극한⑴ 우극",
+"cq": "다음 극한을 조사하시오.⑴ lim _{ x->inf } {(x^2 +3x-2) } ⑵ lim _{x ->inf } {root2x-1 } ⑶ lim _{ x->-inf } {left( 1 over x^2 -1right) } 02우극한과 좌극한개념묶음 개체입니다.  우극한과 좌극한⑴ 우극",
+"msol": 496,
+"csol": 498
+},
+{
+"m": 4,
+"mstep": "1",
+"c": 4,
+"cstep": "1",
+"r": 1.0,
+"mq": "함 [그림] 수 y=f(x) 의 그래프가 그림과 같을 때, 다음 값을 구하시오.⑴ lim _{x ->0- } {f(x) } ⑵ lim _{x ->1+ } {f(x) } ⑶ lim _{x ->-2 } {f(x) } ⑷ f(2)",
+"cq": "함 [그림] 수 y=f(x) 의 그래프가 그림과 같을 때, 다음 값을 구하시오.⑴ lim _{x ->0- } {f(x) } ⑵ lim _{x ->1+ } {f(x) } ⑶ lim _{x ->-2 } {f(x) } ⑷ f(2)",
+"msol": 506,
+"csol": 508
+},
+{
+"m": 5,
+"mstep": "1",
+"c": 6,
+"cstep": "1",
+"r": 1.0,
+"mq": "[그림] 정의역이 left{x left | -2 le x le 1 right} 인 함수 y=f(x) 의 그래프가 그림과 같을 때, lim _{ x->-1-} f(x)+ lim _{ x->0+} f(x)+ lim _{ x->1-} f(x)} { } } { } } { } 의 값은?① 1 ②",
+"cq": "[그림] 정의역이 left{x left | -2 le x le 1 right} 인 함수 y=f(x) 의 그래프가 그림과 같을 때, lim _{ x->-1-} f(x)+ lim _{ x->0+} f(x)+ lim _{ x->1-} f(x)} { } } { } } { } 의 값은?① 1 ②",
+"msol": 194,
+"csol": 190
+},
+{
+"m": 6,
+"mstep": "1",
+"c": 10,
+"cstep": "1",
+"r": 0.77,
+"mq": "함수 f(x)= {cases{eqalign{x ^{2} -4x+a# }&eqalign{(x1)}}} 에 대하여 lim _{x -> 1-} {} f(x)= it-2 , lim _{x -> 1+} {} f(x)=2 일 때, `a-b 의 값은?(단, a , b 는 상수이다.)① -3 ② -2",
+"cq": "다음 중 극한값 중 가장 큰 것은? (단, [`x`] 는 x 보다 크지 않은 최대의 정수이다.)① lim_ x→0- x over{ [`x`] ② lim _{x -> 0+} {} {[`x`]} over x ③ lim _{x -> 0-} {} {[`x-1`]} over {x-1} ④ lim",
+"msol": 157,
+"csol": 543
+},
+{
+"m": 7,
+"mstep": "1",
+"c": 11,
+"cstep": "1",
+"r": 1.0,
+"mq": "두 함수 y=f(x),~y=g(x) 에 대하여 다음을 구하시오.⑴ lim _{ x->1 } {f(x)} =3,~ lim _{ x-> 1} {g(x) }=2 일 때, lim _{ x->1 } {left{3f(x)+f(x)g(x)right} } 의 값⑵ lim _{ x->0 } {f(x)}",
+"cq": "두 함수 y=f(x),~y=g(x) 에 대하여 다음을 구하시오.⑴ lim _{ x->1 } {f(x)} =3,~ lim _{ x-> 1} {g(x) }=2 일 때, lim _{ x->1 } {left{3f(x)+f(x)g(x)right} } 의 값⑵ lim _{ x->0 } {f(x)}",
+"msol": 457,
+"csol": 459
+},
+{
+"m": 8,
+"mstep": "1",
+"c": 34,
+"cstep": "2",
+"r": 1.0,
+"mq": "함수 y=f(x) 에 대하여 lim _{ x->0 } {f(x) overx }=1 일 때, lim _{ x->0 } {{x^2 +2f(x)}over{7x-3f(x)} } 의 값을 구하시오.",
+"cq": "함수 y=f(x) 에 대하여 lim _{ x->0 } {f(x) overx }=1 일 때, lim _{ x->0 } {{x^2 +2f(x)}over{7x-3f(x)} } 의 값을 구하시오.",
+"msol": 207,
+"csol": 209
+},
+{
+"m": 9,
+"mstep": "1",
+"c": 35,
+"cstep": "2",
+"r": 1.0,
+"mq": "두 함수 y=f(x),~y=g(x) 가 lim _{ x->1 } {f(x) }=inf,~ lim _{ x->1 } {left{3f(x)-g(x)right}=2 } 를 만족시킬 때, lim _{ x->1 } {{f(x)-2g(x)}over{2f(x)-g(x)} } 의 값을 구하시오.",
+"cq": "두 함수 y=f(x),~y=g(x) 가 lim _{ x->1 } {f(x) }=inf,~ lim _{ x->1 } {left{3f(x)-g(x)right}=2 } 를 만족시킬 때, lim _{ x->1 } {{f(x)-2g(x)}over{2f(x)-g(x)} } 의 값을 구하시오.",
+"msol": 697,
+"csol": 699
+},
+{
+"m": 10,
+"mstep": "1",
+"c": 37,
+"cstep": "2",
+"r": 1.0,
+"mq": "두 다항함수 f(x) , g(x) 가 다음 조건을 만족시킨다.(가) `f(x)+9g(x)=x ^{2} `g(x) (나) lim _{x -> 3} {} {f(x)} over {x-3} =18 이때, lim _{x->`3} {`g(x)} 의 값은?① 1 ② 2 ③ 3 ④ 4 ⑤ 5",
+"cq": "두 다항함수 f(x) , g(x) 가 다음 조건을 만족시킨다.(가) `f(x)+9g(x)=x ^{2} `g(x) (나) lim _{x -> 3} {} {f(x)} over {x-3} =18 이때, lim _{x->`3} {`g(x)} 의 값은?① 1 ② 2 ③ 3 ④ 4 ⑤ 5",
+"msol": 313,
+"csol": 309
+},
+{
+"m": 11,
+"mstep": "1",
+"c": 38,
+"cstep": "2",
+"r": 0.88,
+"mq": "함수 f(x) 가 lim _{x -> 1} {} {f(x-1)} over {x-1} =5 을 만족시킬 때, lim _{x -> 0} {} {5x+f(x)} over {x ^{2`} -2f(x)} 의 값은?① -1 ② - {1} over {2} ③ 0 ④ {1} over {2} ⑤ 1 0",
+"cq": "함수 f(x) 가 lim _{x -> 1} {} {f(x-1)} over {x-1} =5 을 만족시킬 때, lim _{x -> 0} {} {5x+f(x)} over {x ^{2`} -2f(x)} 의 값은?① -1 ② - {1} over {2} ③ 0 ④ {1} over {2} ⑤ 1",
+"msol": 280,
+"csol": 282
+},
+{
+"m": 12,
+"mstep": "1",
+"c": 33,
+"cstep": "2",
+"r": 0.6,
+"mq": "함수 f(x)= {x+2 LEFT | x RIGHT | +3} over {2x+ LEFT | x RIGHT | +1} 일 때, 수렴하는 것만을 보 기사각형입니다.에서 있는 대로 고른 것은? [그림] ㄱ. lim _{x` rarrow `1} {f(x)} ㄴ. lim _{x`-> `-1} ",
+"cq": "x y rmO 1 y=f(x) 2 3 3 2 1 묶음 개체입니다.함수 y=f LEFT ( x RIGHT ) 의 그래프가 오른쪽 그림과 같을 때, 옳은 것만을 보 기사각형입니다.에서 있는 대로 고른 것은? [그림] ㄱ. lim _{x` rarrow `1+} {f LEFT ( x RIGHT",
+"msol": 811,
+"csol": 595
+},
+{
+"m": 13,
+"mstep": "1",
+"c": 34,
+"cstep": "2",
+"r": 0.4,
+"mq": "함수 f(x)= {LEFT | x-2 RIGHT |} over {x-2} 에 대하여 다음 중 옳은 것은?① f(2)=0 ② lim _{x `rarrow` 0} {`f(x)} =1 ③ lim _{x` rarrow `2-} {`f(x)} = it -1 ④ lim _{x `rarrow` 2}",
+"cq": "함수 y=f(x) 에 대하여 lim _{ x->0 } {f(x) overx }=1 일 때, lim _{ x->0 } {{x^2 +2f(x)}over{7x-3f(x)} } 의 값을 구하시오.",
+"msol": 346,
+"csol": 209
+},
+{
+"m": 14,
+"mstep": "1",
+"c": 7,
+"cstep": "1",
+"r": 0.47,
+"mq": "함수 수식입니다.f(x)= {2x- LEFT | x RIGHT |} over {2x+ LEFT | x RIGHT |} 에 대하여수식입니다.lim _{x `rarrow `0-} {} f(x)= alpha , 수식입니다.lim _{x` rarrow `0+} {} f(x)= beta 일 때,",
+"cq": "함수 f(x)= {cases{eqalign{x ^{2} -4x+a# }&eqalign{(x1)}}} 에 대하여 lim _{x -> 1-} {} f(x)= it-2 , lim _{x -> 1+} {} f(x)=2 일 때, `a-b 의 값은?(단, a , b 는 상수이다.)① -3 ② -2",
+"msol": 227,
+"csol": 159
+},
+{
+"m": 15,
+"mstep": "1",
+"c": 9,
+"cstep": "1",
+"r": 0.54,
+"mq": "다음 극한의 조사하고, 극한값이 존재하면 그 값을 구하시오. (단, LEFT [ x RIGHT ] 는 x 보다 크지 않은 최대의 정수이다.)⑴ 수식입니다.lim _{x `rarrow `0+} {{LEFT [ x RIGHT ]} over {x}} ⑵ 수식입니다.lim _{x` rarrow",
+"cq": "다음 극한을 조사하시오. (단, left[ x right] 는 x 보다 크지 않은 최대의 정수이다.)⑴ lim _{ x-> 1} {x-1over{left|x-1right|} } ⑵ lim _{x ->1 } {left[2x+1 right]}",
+"msol": 581,
+"csol": 592
+},
+{
+"m": 16,
+"mstep": "1",
+"c": 1,
+"cstep": "1",
+"r": 0.46,
+"mq": "다음 중 옳지 않은 것은? (단, LEFT [ x RIGHT ] 는 x 보다 크지 않은 최대의 정수이다.)① lim _{x` rarrow `3-} {LEFT [ x ^{2} RIGHT ] =8} ② lim _{x` rarrow `3-} {LEFT [ x RIGHT ] ^{2} =4} ③",
+"cq": "다음 중 옳지 않은 것은?① lim_x→4 x-1 over { root x -1 } =3 ② lim _{x -> -1} {} {x ^{10} +x-2} over {x-1}= it-1 ③ lim_x→0 1 over {x^2 +1 } =1 ④ lim _{x -> 1} {} (x ^{2} +",
+"msol": 565,
+"csol": 344
+},
+{
+"m": 17,
+"mstep": "1",
+"c": 7,
+"cstep": "1",
+"r": 0.48,
+"mq": "함수 f(x)= left [ x right] ^{2} +a left [ x right] 에 대하여 등식 lim _{x` rarrow `3+} {} `f(x)= lim _{x` rarrow `3-} {} `f(x) 가 성립할 때, 상수 a 의 값은? (단, LEFT [ x RIGHT ] ",
+"cq": "함수 f(x)= {cases{eqalign{x ^{2} -4x+a# }&eqalign{(x1)}}} 에 대하여 lim _{x -> 1-} {} f(x)= it-2 , lim _{x -> 1+} {} f(x)=2 일 때, `a-b 의 값은?(단, a , b 는 상수이다.)① -3 ② -2",
+"msol": 381,
+"csol": 159
+},
+{
+"m": 18,
+"mstep": "1",
+"c": 20,
+"cstep": "1",
+"r": 0.48,
+"mq": "lim _{x` rarrow `n} {{LEFT [ x RIGHT ] ^{2} +2x} over {LEFT [ x RIGHT ]}} 의 값이 존재하도록 하는 자연수 n 의 값은? (단, LEFT [ x RIGHT ] 는 x 보다 크지 않은 최대의 정수이다.)① 1 ② 2 ③ 3 ④ 4 ",
+"cq": "lim _{x `rarrow` INF } {} sqrt {x} ( sqrt {x+2} - sqrt {x} ) 의 값은?① 1 ② 2 ③ 3 ④ 4 ⑤ 5",
+"msol": 399,
+"csol": 194
+},
+{
+"m": 19,
+"mstep": "1",
+"c": 7,
+"cstep": "1",
+"r": 0.38,
+"mq": "함수 f(x)= LEFT [ x right] ^{2} -(ax+b) LEFT [ x RIGHT ] RIGHT . 에 대하여 lim _{x` rarrow `n}` f(x) 가 항상 존재하도록 하는 두 상수 a , b 의 값은? (단, LEFT [ x RIGHT ] 는 x 보다 크지 않은 ",
+"cq": "함수 f(x)= {cases{eqalign{x ^{2} -4x+a# }&eqalign{(x1)}}} 에 대하여 lim _{x -> 1-} {} f(x)= it-2 , lim _{x -> 1+} {} f(x)=2 일 때, `a-b 의 값은?(단, a , b 는 상수이다.)① -3 ② -2",
+"msol": 492,
+"csol": 159
+},
+{
+"m": 20,
+"mstep": "1",
+"c": 30,
+"cstep": "2",
+"r": 1.0,
+"mq": "두 함수 y=f(x),~y=g(x) 의 그래프가 그림과 같을 때, 다음 극한값을 구하시오. [그림] ⑴ lim _{ x->3- } {f(g(x)) } ⑵ lim _{ x->0- } {f(g(x)) } ⑶ lim _{ x->0+ } {g(f(x)) }",
+"cq": "두 함수 y=f(x),~y=g(x) 의 그래프가 그림과 같을 때, 다음 극한값을 구하시오. [그림] ⑴ lim _{ x->3- } {f(g(x)) } ⑵ lim _{ x->0- } {f(g(x)) } ⑶ lim _{ x->0+ } {g(f(x)) }",
+"msol": 313,
+"csol": 315
+},
+{
+"m": 21,
+"mstep": "1",
+"c": 6,
+"cstep": "1",
+"r": 0.46,
+"mq": "함수 f(x) 의 그래프가 다음 그림과 같다.수식입니다.x 수식입니다.1 수식입니다.y 수식입니다.rmO y=f(x) 수식입니다.1 2 -1 -2 묶음 개체입니다. lim _{x `rarrow` -1} {LEFT { f(x-1)+f(1-x) RIGHT }} 의 값은?① -1 ② 0 ③ ",
+"cq": "[그림] 정의역이 left{x left | -2 le x le 1 right} 인 함수 y=f(x) 의 그래프가 그림과 같을 때, lim _{ x->-1-} f(x)+ lim _{ x->0+} f(x)+ lim _{ x->1-} f(x)} { } } { } } { } 의 값은?① 1 ②",
+"msol": 212,
+"csol": 190
+},
+{
+"m": 22,
+"mstep": "1",
+"c": 32,
+"cstep": "2",
+"r": 0.4,
+"mq": "두 함수 y=f(x) , y=g(x) 의 그래프가 다음 그림과 같을 때, 옳은 것만을 보 기사각형입니다.에서 있는 대로 고른 것은?수식입니다.x 수식입니다.1 수식입니다.y 수식입니다.rmO 수식입니다.y=f(x) -1 수식입니다.1 -1 묶음 개체입니다. 수식입니다.x 수식입니다.1 ",
+"cq": "두 함수 y=f(x) , y=g(x) 의 그래프가 다음 그림과 같다. [그림] [그림] 보 기사각형입니다.에서 옳은 것을 모두 고른 것은? [그림] ㄱ. lim _{x -> 0} {} f(f(x))=0 ㄴ. lim _{x -> 0} {} g (f(x))=1 ㄷ. lim _{x -> 0}",
+"msol": 311,
+"csol": 322
+},
+{
+"m": 23,
+"mstep": "1",
+"c": 12,
+"cstep": "1",
+"r": 0.73,
+"mq": "x y rmO 1 y=f(x) 2 3 3 2 1 묶음 개체입니다.함수 y=f LEFT ( x RIGHT ) 의 그래프가 오른쪽 그림과 같을 때, 옳은 것만을 보 기사각형입니다.에서 있는 대로 고른 것은? [그림] ㄱ. lim _{x` rarrow `1+} {f LEFT ( x RIGHT",
+"cq": "두 함수 f(x) , g(x) 에 대하여 lim _{x->`a} {f(x)=5} , lim _{x->`a} {`left{2f(x)-3g(x)right}=4} 일 때, lim _{x->`a} {`g(x)} 의 값을 구하시오.04 {0} over {0} 꼴의 극한값의 계산개념묶음 개체입니다",
+"msol": 592,
+"csol": 212
+},
+{
+"m": 24,
+"mstep": "1",
+"c": 13,
+"cstep": "1",
+"r": 1.0,
+"mq": "다음 극한값을 구하시오.⑴ lim _{ x->1 } {{x^2 +5x-6}overx-1 } ⑵ lim _{ x->0 } {{root1+x -1} overx} ⑶ lim _{ x->1 } {{x^2 -1}over {rootx+3 -2} } ⑷ lim _{ x->0 } {1overx lef",
+"cq": "다음 극한값을 구하시오.⑴ lim _{ x->1 } {{x^2 +5x-6}overx-1 } ⑵ lim _{ x->0 } {{root1+x -1} overx} ⑶ lim _{ x->1 } {{x^2 -1}over {rootx+3 -2} } ⑷ lim _{ x->0 } {1overx lef",
+"msol": 664,
+"csol": 680
+},
+{
+"m": 25,
+"mstep": "1",
+"c": 14,
+"cstep": "1",
+"r": 1.0,
+"mq": "다음 극한값을 구하시오.⑴ lim _{ x->2 } {{x^3 -8}over{x-2} } ⑵ lim _{ x->0 } {x^2 over {1-root1-x^2} } ⑶ lim _{ x->-1 } {x+1over{root{3}ofx +1} }",
+"cq": "다음 극한값을 구하시오.⑴ lim _{ x->2 } {{x^3 -8}over{x-2} } ⑵ lim _{ x->0 } {x^2 over {1-root1-x^2} } ⑶ lim _{ x->-1 } {x+1over{root{3}ofx +1} }",
+"msol": 810,
+"csol": 812
+},
+{
+"m": 26,
+"mstep": "1",
+"c": 37,
+"cstep": "2",
+"r": 0.55,
+"mq": "최고차항의 계수가 1인 두 삼차함수 f(x),~ g(x) 가 다음 조건을 만족시킨다.(가) g(1)=0 (나) lim_{x`->`k} f(x) over g(x) =k(k-1)``` (k=0,~ 1,~ 2,~ 3) g(4) 의 값을 구하시오.",
+"cq": "두 다항함수 f(x) , g(x) 가 다음 조건을 만족시킨다.(가) `f(x)+9g(x)=x ^{2} `g(x) (나) lim _{x -> 3} {} {f(x)} over {x-3} =18 이때, lim _{x->`3} {`g(x)} 의 값은?① 1 ② 2 ③ 3 ④ 4 ⑤ 5",
+"msol": 834,
+"csol": 309
+},
+{
+"m": 27,
+"mstep": "1",
+"c": 17,
+"cstep": "1",
+"r": 0.79,
+"mq": "최고차항의 계수가 1 인 이차함수 f(x) 가 lim _{x` -> `0} {} {f(x+k)-2x} over {f(x+k)+2x} = {2} over {3} 를 만족시킨다. 방정식 f(x)=0 의 두 근을 alpha ,~ beta` 라 할 때, 수식입니다.left| `alpha - b",
+"cq": "lim _{x -> 1} {} {1} over {x-1} LEFT ( {x ^{2} `+5} over {x+1} -3 RIGHT ) 의 값은?① - {1} over {2} ② - {1} over {4} ③ 0 ④ {1} over {4} ⑤ {1} over {2} 05 {INF } ove",
+"msol": 885,
+"csol": 297
+},
+{
+"m": 28,
+"mstep": "1",
+"c": 18,
+"cstep": "1",
+"r": 1.0,
+"mq": "다음 극한값을 구하시오.⑴ lim _{ x->inf } {{4x^2 +x-2}over{3x^2 +2} } ⑵ lim _{ x->inf } {{3x^2 -x}over{2x^3 +1} } ⑶ lim _{ x->inf } {3x+5 over{root{x^2 +2}-3} }",
+"cq": "다음 극한값을 구하시오.⑴ lim _{ x->inf } {{4x^2 +x-2}over{3x^2 +2} } ⑵ lim _{ x `-> `inf } {{3x^2 -x}over{2x^3 +1} } ⑶ lim _{ x->inf } {3x+5 over{root{x^2 +2}-3} }",
+"msol": 468,
+"csol": 464
+},
+{
+"m": 29,
+"mstep": "1",
+"c": 19,
+"cstep": "1",
+"r": 1.0,
+"mq": "다음 극한을 조사하시오.⑴ lim _{ x->inf } {(x^3 -x^2 +2x-3) } ⑵ lim _{ x->inf } {(root{x^2 +5x}-x) } ⑶ lim _{ x->-inf } {1over{root{x^2 -x}+x} }",
+"cq": "다음 극한을 조사하시오.⑴ lim _{ x->inf } {(x^3 -x^2 +2x-3) } ⑵ lim _{ x->inf } {(root{x^2 +5x}-x) } ⑶ lim _{ x->-inf } {1over{root{x^2 -x}+x} }",
+"msol": 676,
+"csol": 678
+},
+{
+"m": 30,
+"mstep": "1",
+"c": 20,
+"cstep": "1",
+"r": 1.0,
+"mq": "lim _{x `rarrow` INF } {} sqrt {x} ( sqrt {x+2} - sqrt {x} ) 의 값은?① 1 ② 2 ③ 3 ④ 4 ⑤ 5",
+"cq": "lim _{x `rarrow` INF } {} sqrt {x} ( sqrt {x+2} - sqrt {x} ) 의 값은?① 1 ② 2 ③ 3 ④ 4 ⑤ 5",
+"msol": 203,
+"csol": 194
+},
+{
+"m": 31,
+"mstep": "1",
+"c": 23,
+"cstep": "1",
+"r": 1.0,
+"mq": "수식입니다.lim _{x` rarrow `- INF } {} ` {2x} over{sqrt {x ^{2} +1} +3x} 의 값은?① -1 ② 1 over2 ③ 2over3 ④ 1 ⑤ 2",
+"cq": "lim _{x` rarrow `- INF } {} ` {2x} over{sqrt {x ^{2} +1} +3x} 의 값은?① -1 ② 1 over2 ③ 2over3 ④ 1 ⑤ 2",
+"msol": 422,
+"csol": 401
+},
+{
+"m": 32,
+"mstep": "1",
+"c": 38,
+"cstep": "2",
+"r": 0.62,
+"mq": "함수 f(x) 에 대하여 lim _{x` rarrow ` INF } {} LEFT { x-f(x) RIGHT } =2 일 때, lim _{x` rarrow ` INF } {} {sqrt {x+3} - sqrt {f(x)}} over {sqrt {x+2} - sqrt {f(x)}} 의 값",
+"cq": "함수 f(x) 가 lim _{x -> 1} {} {f(x-1)} over {x-1} =5 을 만족시킬 때, lim _{x -> 0} {} {5x+f(x)} over {x ^{2`} -2f(x)} 의 값은?① -1 ② - {1} over {2} ③ 0 ④ {1} over {2} ⑤ 1",
+"msol": 1018,
+"csol": 282
+},
+{
+"m": 33,
+"mstep": "1",
+"c": 22,
+"cstep": "1",
+"r": 0.5,
+"mq": "자연수 n 에 대하여 f(n)= lim _{x `rarrow ` INF } {} {3x ^{n} -x ^{3} +2} over {x ^{n} +x ^{3}} 일 때, sum _{k=1} ^{10} f(k) 의 값은?① 8 ② 10 ③ 12 ④ 16 ⑤ 20",
+"cq": "lim _{x` rarrow `- INF } {LEFT ( sqrt {x ^{2} +2x} +x RIGHT )} 의 값은?① -2 ② -1 ③ 0 ④ 1 ⑤ 2",
+"msol": 745,
+"csol": 421
+},
+{
+"m": 34,
+"mstep": "1",
+"c": 24,
+"cstep": "1",
+"r": 0.76,
+"mq": "자연수 n 에 대하여 lim _{x-> INF } {{x ^{n} ( sqrt {x ^{4} +1} -x ^{2} )} over {sqrt {x ^{2} +x} -x} = alpha } 일 때,수식입니다.n+ alpha 의 값은? (단, 수식입니다.alpha 는 0 이 아닌 실수이다.)",
+"cq": "함수 f(x) 에 대하여 lim _{x` rarrow ` INF } {} LEFT { x-f(x) RIGHT } =2 일 때, lim _{x` rarrow ` INF } {} {sqrt {x+3} - sqrt {f(x)}} over {sqrt {x+2} - sqrt {f(x)}} 의 값",
+"msol": 536,
+"csol": 1021
+},
+{
+"m": 35,
+"mstep": "1",
+"c": 25,
+"cstep": "1",
+"r": 1.0,
+"mq": "다음 물음에 답하시오.⑴ 임의의 양의 실수 x 에 대하여 함수 y=f(x) 가 4x over{3x^2 +x+2}를 만족시킬 때, lim _{ x->inf } {xf(x) } 의 값을 구하시오.⑵ x!=2 인 모든 실수 x 에 대하여 함수 y=f(x) 가 x^2 -4를 만족시킬 때, li",
+"cq": "다음 물음에 답하시오.⑴ 임의의 양의 실수 x 에 대하여 함수 y=f(x) 가 4x over{3x^2 +x+2}를 만족시킬 때, lim _{ x->inf } {xf(x) } 의 값을 구하시오.⑵ x!=2 인 모든 실수 x 에 대하여 함수 y=f(x) 가 x^2 -4를 만족시킬 때, li",
+"msol": 388,
+"csol": 390
+},
+{
+"m": 36,
+"mstep": "1",
+"c": 26,
+"cstep": "1",
+"r": 1.0,
+"mq": "모든 실수 x 에 대하여 함수 y=f(x) 가 x^2 -3x-2 을 만족시킬 때, lim _{ x->inf } {f(x)overx^2 } 의 값을 구하시오.",
+"cq": "모든 실수 x 에 대하여 함수 y=f(x) 가 x^2 -3x-2 을 만족시킬 때, lim _{ x->inf } {f(x)overx^2 } 의 값을 구하시오.",
+"msol": 188,
+"csol": 184
+},
+{
+"m": 37,
+"mstep": "1",
+"c": 27,
+"cstep": "1",
+"r": 1.0,
+"mq": "함수 f(x) 가 x>1 인 모든 실수 x 에 대하여 5x ^{3} -x ^{2} +x-3을 만족시킬 때, lim _{x -> INF } {{ f(x) +2x+1} over {x^3 +5}} 의 값을 구하시오.",
+"cq": "함수 f(x) 가 x>1 인 모든 실수 x 에 대하여 5x ^{3} -x ^{2} +x-3을 만족시킬 때, lim _{x -> INF } {{ f(x) +2x+1} over {x^3 +5}} 의 값을 구하시오.",
+"msol": 332,
+"csol": 334
+},
+{
+"m": 38,
+"mstep": "1",
+"c": 28,
+"cstep": "1",
+"r": 1.0,
+"mq": "모든 실수 x 에 대하여 함수 f(x) 가 2x-1을 만족시킬 때, lim_ x→inf {left{ f(x) right}^2 } over {x^2 +1 의 값은?① 0 ② 2 ③ 4 ④ 6 ⑤ 8",
+"cq": "모든 실수 x 에 대하여 함수 f(x) 가 2x-1을 만족시킬 때, lim_ x→inf {left{ f(x) right}^2 } over {x^2 +1 의 값은?① 0 ② 2 ③ 4 ④ 6 ⑤ 8",
+"msol": 349,
+"csol": 327
+},
+{
+"m": 39,
+"mstep": "1",
+"c": 29,
+"cstep": "1",
+"r": 0.99,
+"mq": "모든 실수 x 에 대하여 함수 f LEFT ( x RIGHT ) 가 -5x ^{2} +8x-3 LEQ f LEFT ( x RIGHT ) LEQ x ^{2} -4x+3 을 만족시킬 때, lim _{x `rarrow `1} {{f LEFT ( x RIGHT )} over {x-1}} 의 값",
+"cq": "모든 실수 x 에 대하여 함수 f LEFT ( x RIGHT ) 가 -5x ^{2} +8x-3 LEQ f LEFT ( x RIGHT ) LEQ x ^{2} -4x+3 을 만족시킬 때, lim _{x `rarrow `1} {{f LEFT ( x RIGHT )} over {x-1}} 의 값",
+"msol": 1066,
+"csol": 1069
+},
+{
+"m": 40,
+"mstep": "2",
+"c": 16,
+"cstep": "1",
+"r": 1.0,
+"mq": "lim _{x -> 0} {} {sqrt {1-x} - sqrt {1+x}} over {sqrt {4+x} - sqrt {4-x}} 의 값은?① -4 ② -2 ③ 0 ④ 2 ⑤ 4",
+"cq": "lim _{x -> 0} {} {sqrt {1-x} - sqrt {1+x}} over {sqrt {4+x} - sqrt {4-x}} 의 값은?① -4 ② -2 ③ 0 ④ 2 ⑤ 4",
+"msol": 329,
+"csol": 331
+},
+{
+"m": 41,
+"mstep": "2",
+"c": 38,
+"cstep": "2",
+"r": 0.62,
+"mq": "lim _{x -> 1} {} {1} over {x-1} LEFT ( {x ^{5`} `+5} over {x+1} -3 RIGHT ) 의 값은?① - {1} over {2} ② - {1} over {4} ③ 0④ {1} over {4} ⑤ {1} over {2}",
+"cq": "함수 f(x) 가 lim _{x -> 1} {} {f(x-1)} over {x-1} =5 을 만족시킬 때, lim _{x -> 0} {} {5x+f(x)} over {x ^{2`} -2f(x)} 의 값은?① -1 ② - {1} over {2} ③ 0 ④ {1} over {2} ⑤ 1",
+"msol": 295,
+"csol": 282
+},
+{
+"m": 42,
+"mstep": "2",
+"c": 21,
+"cstep": "1",
+"r": 1.0,
+"mq": "수식입니다.lim from {x`-> `inf} ( sqrt { x^2 +2x`+2} - sqrt { x^2 -2x`-2}) 의 값은?① 1 ② 2 ③ 3 ④ 4 ⑤ 5",
+"cq": "lim from {x`-> `inf} ( sqrt { x^2 +2x`+2} - sqrt { x^2 -2x`-2}) 의 값은?① 1 ② 2 ③ 3 ④ 4 ⑤ 5",
+"msol": 317,
+"csol": 308
+},
+{
+"m": 43,
+"mstep": "2",
+"c": 22,
+"cstep": "1",
+"r": 0.83,
+"mq": "lim _{x` rarrow `- INF } {LEFT ( sqrt {x ^{2} +2x} +x RIGHT )} 의 값은?① -2 ② -1 ③ 0 ④ 1 ⑤ 2 02미정계수의 결정유형묶음 개체입니다.",
+"cq": "lim _{x` rarrow `- INF } {LEFT ( sqrt {x ^{2} +2x} +x RIGHT )} 의 값은?① -2 ② -1 ③ 0 ④ 1 ⑤ 2",
+"msol": 430,
+"csol": 421
+},
+{
+"m": 44,
+"mstep": "2",
+"c": 40,
+"cstep": "2",
+"r": 1.0,
+"mq": "다음 식을 만족시키는 두 상수 a,~b 의 값을 구하시오.⑴ lim _{ x->1 } {{x^2 +ax+b}overx-1 }=3 ⑵ lim _{ x->2 } {{a rootx+2 -4}overx-2 }=b",
+"cq": "다음 식을 만족시키는 두 상수 a,~b 의 값을 구하시오.⑴ lim _{ x->1 } {{x^2 +ax+b}overx-1 }=3 ⑵ lim _{ x->2 } {{a rootx+2 -4}overx-2 }=b",
+"msol": 693,
+"csol": 695
+},
+{
+"m": 45,
+"mstep": "2",
+"c": 41,
+"cstep": "2",
+"r": 1.0,
+"mq": "다항함수 y=f(x) 가 다음 조건을 만족시킨다.(가) lim _{ x->1 } {f(x)over{x^2 -1} }=1 (나) lim _{ x->inf } {f(x)over{x^2 -1} }=2 다항식 f(x) 를 구하시오.",
+"cq": "다항함수 y=f(x) 가 다음 조건을 만족시킨다.(가) lim _{ x->1 } {f(x)over{x^2 -1} }=1 (나) lim _{ x->inf } {f(x)over{x^2 -1} }=2 다항식 f(x) 를 구하시오.",
+"msol": 418,
+"csol": 414
+},
+{
+"m": 46,
+"mstep": "2",
+"c": 42,
+"cstep": "2",
+"r": 1.0,
+"mq": "두 상수 a , b 에 대하여 lim _{x -> INF } {} { ax^3 + bx^ 2 + 2x + 5 } over { 2x ^ 2 - 3x +4 } =6 이 성립할 때, a+b 의 값은?① 6 ② 수식입니다.12 ③ 18 ④ 수식입니다.24 ⑤ 30",
+"cq": "두 상수 a , b 에 대하여 lim _{x -> INF } {} { ax^3 + bx^ 2 + 2x + 5 } over { 2x ^ 2 - 3x +4 } =6 이 성립할 때, a+b 의 값은?① 6 ② 12 ③ 18 ④ 24 ⑤ 30",
+"msol": 162,
+"csol": 164
+},
+{
+"m": 47,
+"mstep": "2",
+"c": 44,
+"cstep": "2",
+"r": 1.0,
+"mq": "두 상수 a , b 에 대하여 lim _{x -> -1`} {} {x ^{2} +(a+1)x+a} over {x ^{2} -b} =3 이 성립할 때, a+b 의 값은?① -8 ② -4 ③ 수식입니다. - 1 over2④ - 1 over 4 ⑤ - 1over 8",
+"cq": "두 상수 a , b 에 대하여 lim _{x -> -1`} {} {x ^{2} +(a+1)x+a} over {x ^{2} -b} =3 이 성립할 때, a+b 의 값은?① -8 ② -4 ③ - 1 over2④ - 1 over 4 ⑤ - 1over 8",
+"msol": 336,
+"csol": 314
+},
+{
+"m": 48,
+"mstep": "2",
+"c": 45,
+"cstep": "2",
+"r": 1.0,
+"mq": "두 상수 a , b 에 대하여 lim_x→1 { root {3x +a} - root {x+3} } over {x^2 -1 }=b 가 성립할 때, ab 의 값은?① 16 ② 4 ③ 1 ④ 1 over4 ⑤ 수식입니다. 1over 16",
+"cq": "두 상수 a , b 에 대하여 lim_x→1 { root {3x +a} - root {x+3} } over {x^2 -1 }=b 가 성립할 때, ab 의 값은?① 16 ② 4 ③ 1 ④ 1 over4 ⑤ 1over 16",
+"msol": 460,
+"csol": 432
+},
+{
+"m": 49,
+"mstep": "2",
+"c": 46,
+"cstep": "2",
+"r": 0.87,
+"mq": "두 상수 a , b 에 대하여 lim_x→2 LEFT ( a over 2-x - b over {4-x^2 } RIGHT ) =1 이 성립할 때, ab 의 값은?① 수식입니다.24 ② 수식입니다.32 ③ 48 ④ 수식입니다.56 ⑤ 64 03극한과 함수의 결정유형묶음 개체입니다.",
+"cq": "두 상수 a , b 에 대하여 lim_x→2 LEFT ( a over 2-x - b over {4-x^2 } RIGHT ) =1 이 성립할 때, ab 의 값은?① 24 ② 32 ③ 48 ④ 56 ⑤ 64",
+"msol": 404,
+"csol": 388
+},
+{
+"m": 50,
+"mstep": "2",
+"c": 47,
+"cstep": "2",
+"r": 1.0,
+"mq": "다항식 f(x) 가 lim_x→inf { x ^2 - 3x +2 } over f(x) = 3 , lim _{x -> 2} {} {2x ^{2} -7x+6} over {f(x)} = 1over 2 을 만족시킬 때, f(5) 의 값은?① 8 ② 9 ③ 10 ④ 11 ⑤ 12",
+"cq": "다항식 f(x) 가 lim_x→inf { x ^2 - 3x +2 } over f(x) = 3 , lim _{x -> 2} {} {2x ^{2} -7x+6} over {f(x)} = 1over 2 을 만족시킬 때, f(5) 의 값은?① 8 ② 9 ③ 10 ④ 11 ⑤ 12",
+"msol": 489,
+"csol": 455
+},
+{
+"m": 51,
+"mstep": "2",
+"c": 48,
+"cstep": "2",
+"r": 0.86,
+"mq": "다항함수 f(x) 가 다음 조건을 만족시킬 때, `f(1) 의 값을 구하시오.(가) lim _{x -> INF } {} {f(x)-3x ^{3}} over {x ^{2}} =2 (나) lim _{x -> 0} {} {f(x)} over {x} =2",
+"cq": "다항함수 f(x) 가 다음 조건을 만족시킬 때, `f(1) 의 값을 구하시오.(가) lim _{x -> INF } {} {f(x)-3x ^{3}} over {x ^{2}} =2 (나) lim _{x -> 0} {} {f(x)} over {x} =2 단원 마무리 하기STEP 3사각형입니다",
+"msol": 533,
+"csol": 529
+},
+{
+"m": 52,
+"mstep": "2",
+"c": 34,
+"cstep": "2",
+"r": 0.66,
+"mq": "다항함수 f(x) 에 대하여 lim_{x`->`1} f(x) over {x^2 -1} =2 일 때, lim_{x`->`-1} f(x+2) over { x^2 -1} 의 값은?① -2 ② -1 ③ 0 ④ 1 ⑤ 2",
+"cq": "함수 y=f(x) 에 대하여 lim _{ x->0 } {f(x) overx }=1 일 때, lim _{ x->0 } {{x^2 +2f(x)}over{7x-3f(x)} } 의 값을 구하시오.",
+"msol": 464,
+"csol": 209
+},
+{
+"m": 53,
+"mstep": "2",
+"c": 33,
+"cstep": "2",
+"r": 0.56,
+"mq": "다항함수 f(x) 가 lim_{x`->`0} f(x) over x =1 ,~ lim_{x`->`1} f(x) over x-1 =2 를 만족시킬 때, 보 기사각형입니다.]에서 옳은 것만을 있는 대로 고른 것은? [그림] ㄱ. f( f(1))=0 ㄴ. lim_{x`->`1} {left { ",
+"cq": "x y rmO 1 y=f(x) 2 3 3 2 1 묶음 개체입니다.함수 y=f LEFT ( x RIGHT ) 의 그래프가 오른쪽 그림과 같을 때, 옳은 것만을 보 기사각형입니다.에서 있는 대로 고른 것은? [그림] ㄱ. lim _{x` rarrow `1+} {f LEFT ( x RIGHT",
+"msol": 756,
+"csol": 595
+},
+{
+"m": 54,
+"mstep": "2",
+"c": 51,
+"cstep": "3",
+"r": 1.0,
+"mq": "함수의 극한에 대하여 보 기사각형입니다.에서 옳은 것을 모두 고른 것은? [그림] ㄱ. lim _{x -> `a} {`f(x)} , lim _{x->`a} {`g(x)} 의 값이 모두 존재하지 않으면 lim _{x -> `a} {` LEFT { f(x)+g(x) RIGHT }} 의 값도",
+"cq": "함수의 극한에 대하여 보 기사각형입니다.에서 옳은 것을 모두 고른 것은? [그림] ㄱ. lim _{x -> `a} {`f(x)} , lim _{x->`a} {`g(x)} 의 값이 모두 존재하지 않으면 lim _{x -> `a} {` LEFT { f(x)+g(x) RIGHT }} 의 값도",
+"msol": 1075,
+"csol": 1053
+},
+{
+"m": 55,
+"mstep": "2",
+"c": 51,
+"cstep": "3",
+"r": 0.32,
+"mq": "실수 전체의 집합에서 정의된 두 함수 f(x),~ g(x) 에 대하여 보 기사각형입니다.에서 옳은 것만을 있는 대로 고른 것은? [그림] ㄱ. lim_{ x`->`a} f(x),~ lim_{x`->`a} f(x)g(x) 의 값이 모두 존재하면 lim _{x`->`a } g(x) 의 값도",
+"cq": "함수의 극한에 대하여 보 기사각형입니다.에서 옳은 것을 모두 고른 것은? [그림] ㄱ. lim _{x -> `a} {`f(x)} , lim _{x->`a} {`g(x)} 의 값이 모두 존재하지 않으면 lim _{x -> `a} {` LEFT { f(x)+g(x) RIGHT }} 의 값도",
+"msol": 607,
+"csol": 1053
+},
+{
+"m": 56,
+"mstep": "2",
+"c": 32,
+"cstep": "2",
+"r": 0.78,
+"mq": "두 함수 y=f(x),~ y=g(x) 의 그래프가 그림과 같을 때, 보 기사각형입니다.에서 옳은 것만을 있는 대로 고른 것은? [그림] [그림] ㄱ. lim_{x`->`0} f(g(x))=1 ㄴ. f left ( lim_{x`->`0 }g(x) right ) =1 ㄷ. 수식입니다.lim",
+"cq": "두 함수 y=f(x) , y=g(x) 의 그래프가 다음 그림과 같다. [그림] [그림] 보 기사각형입니다.에서 옳은 것을 모두 고른 것은? [그림] ㄱ. lim _{x -> 0} {} f(f(x))=0 ㄴ. lim _{x -> 0} {} g (f(x))=1 ㄷ. lim _{x -> 0}",
+"msol": 600,
+"csol": 322
+},
+{
+"m": 57,
+"mstep": "2",
+"c": 52,
+"cstep": "3",
+"r": 1.0,
+"mq": "두 함수 y=f(x) , y= g(x) 의 그래프가 그림과 같을 때, lim _{ x->1-} f(g(x)) = a} { } , lim _{ x->1+} f(g(x)) = b} { } , lim _{ x->-1+} g(f(x))= c 이다. 이때, a+b+c 의 값을 구하시오. [그림]",
+"cq": "두 함수 y=f(x) , y= g(x) 의 그래프가 그림과 같을 때, lim _{ x->1-} f(g(x)) = a} { } , lim _{ x->1+} f(g(x)) = b} { } , lim _{ x->-1+} g(f(x))= c 이다. 이때, a+b+c 의 값을 구하시오. [그림]",
+"msol": 353,
+"csol": 355
+},
+{
+"m": 58,
+"mstep": "2",
+"c": 26,
+"cstep": "1",
+"r": 0.66,
+"mq": "함수 y=f(x) 의 그래프가 그림과 같을 때, 수식입니다.lim_{x`->`inf } f left ( { 2x^2 +1 } over { x^2 +2} right ) 의 값을 구하시오. [그림]",
+"cq": "모든 실수 x 에 대하여 함수 y=f(x) 가 x^2 -3x-2 을 만족시킬 때, lim _{ x->inf } {f(x)overx^2 } 의 값을 구하시오.",
+"msol": 298,
+"csol": 184
+},
+{
+"m": 59,
+"mstep": "2",
+"c": 57,
+"cstep": "3",
+"r": 0.56,
+"mq": "함수 y=f(x) 의 그래프가 그림과 같다. [그림] 수식입니다.lim_{x`->`inf } f left ( x-1 over x+2 right ) +lim_{x`->`-inf} f left ( {2x^2 -x} over { x^2 +3} right ) 의 값을 구하시오.06함수의 활용유",
+"cq": "삼차함수 y= f(x) 가 lim _{ x->1}f(x)over x-1 = 2} { } , lim _{ x->2} f(x)over x-2 = it -4} { } 를 만족시킬 때, f(-2) 의 값을 구하시오.",
+"msol": 572,
+"csol": 335
+},
+{
+"m": 60,
+"mstep": "2",
+"c": 55,
+"cstep": "3",
+"r": 0.35,
+"mq": "수식입니다.x rmO 수식입니다.y y= sqrt {x} rmA 1 l 묶음 개체입니다.오른쪽 그림과 같이 함수 y= rootx` 의 그래프 위의 점 {rmA} it(t,~root t ) 에 대하여 선분 rmOA` 의 수직이등분선 l` 의 x 절편과 y 절편을 각각 f(t) , g(t)",
+"cq": "함수 y=f(x) 에 대하여 lim _{ x->2} f(x-2)over {x^2 -2x}= 5} { } 일 때, lim _{ x->0} f(x)overx} { } 의 값은?① 2 ② 4 ③ 6 ④ 8 ⑤ 10",
+"msol": 596,
+"csol": 453
+},
+{
+"m": 61,
+"mstep": "2",
+"c": 59,
+"cstep": "3",
+"r": 0.31,
+"mq": "rmO rmQ rm P y x y=x ^{2} f(t) 묶음 개체입니다.오른쪽 그림과 같이 곡선 y=x ^{2} 위의 점 rm P( it t,~t ^{2} ) 에 대하여 rm bar OP = bar OQ`` 를 만족할 때, 직선 rm PQ` 와 y 축의 교점의 y 좌표를 f(t) 라 하",
+"cq": "[그림] 곡선 y= x^2 위의 점 rmP it (x,~x^2 ) 에 대하여 A(x) 를 rmO(0,~0) , rmP it (x,~x^2 ) , rmQ it(1,~0) 을 꼭짓점으로 하는 삼각형의 넓이라 하고, B(x) 를 rmO(0,~0) , rm P it (x,~x^2 ) , rmR",
+"msol": 973,
+"csol": 196
+},
+{
+"m": 62,
+"mstep": "2",
+"c": 59,
+"cstep": "3",
+"r": 0.39,
+"mq": "수식입니다.x rmO 수식입니다.y r rmA (0,~1) rmB(itt,~0) 묶음 개체입니다.오른쪽 그림과 같이 세 점 {rm A}(0 ,~1) , {rm O}(0,~0 ) , rm B it (t,~0) 을 꼭짓점으로 하는 삼각형 {rm AOB} 에 내접하는 원이 있다. 점 {rm ",
+"cq": "[그림] 곡선 y= x^2 위의 점 rmP it (x,~x^2 ) 에 대하여 A(x) 를 rmO(0,~0) , rmP it (x,~x^2 ) , rmQ it(1,~0) 을 꼭짓점으로 하는 삼각형의 넓이라 하고, B(x) 를 rmO(0,~0) , rm P it (x,~x^2 ) , rmR",
+"msol": 422,
+"csol": 196
+},
+{
+"m": 63,
+"mstep": "2",
+"c": 29,
+"cstep": "1",
+"r": 0.31,
+"mq": "rmO rmA rm P(it x,~y) rmH y x 묶음 개체입니다.오른쪽 그림과 같이 중심이 rmA(0,~6) 이고 반지름의 길이가 2 인 원에 외접하고 x 축에 접하는 원의 중심을 {rmP}( itx,~y) 라 하자. 점 rmP 에서 y 축에 내린 수선의 발을 rmH 라 할 때, ",
+"cq": "모든 실수 x 에 대하여 함수 f LEFT ( x RIGHT ) 가 -5x ^{2} +8x-3 LEQ f LEFT ( x RIGHT ) LEQ x ^{2} -4x+3 을 만족시킬 때, lim _{x `rarrow `1} {{f LEFT ( x RIGHT )} over {x-1}} 의 값",
+"msol": 435,
+"csol": 1069
+},
+{
+"m": 64,
+"mstep": "3",
+"c": 37,
+"cstep": "2",
+"r": 0.57,
+"mq": "다항함수 f(x) 와 함수 g(x) 가 다음 조건을 만족시킨다.(가) x일 때, f(x)-g(x) = x^3 -1 (나) x>0 일 때, f(x) +g(x) = x^2 -2x+5 (다) lim _{x` rarrow `0-} {g LEFT ( x RIGHT )} - lim _{x` rar",
+"cq": "두 다항함수 f(x) , g(x) 가 다음 조건을 만족시킨다.(가) `f(x)+9g(x)=x ^{2} `g(x) (나) lim _{x -> 3} {} {f(x)} over {x-3} =18 이때, lim _{x->`3} {`g(x)} 의 값은?① 1 ② 2 ③ 3 ④ 4 ⑤ 5",
+"msol": 669,
+"csol": 309
+},
+{
+"m": 65,
+"mstep": "3",
+"c": 32,
+"cstep": "2",
+"r": 0.77,
+"mq": "두 함수 f(x),```g(x) 의 그래프가 그림과 같을 때, 보 기사각형입니다.에서 옳은 것만을 있는 대로 고른 것은? [그림] [그림] ㄱ. lim _{x-> 1+} {f(x)g(x)=-1} ㄴ. lim _{x-> 1-} {LEFT { f(x)+g(-x) RIGHT } =1} ㄷ. ",
+"cq": "두 함수 y=f(x) , y=g(x) 의 그래프가 다음 그림과 같다. [그림] [그림] 보 기사각형입니다.에서 옳은 것을 모두 고른 것은? [그림] ㄱ. lim _{x -> 0} {} f(f(x))=0 ㄴ. lim _{x -> 0} {} g (f(x))=1 ㄷ. lim _{x -> 0}",
+"msol": 876,
+"csol": 322
+},
+{
+"m": 66,
+"mstep": "3",
+"c": 34,
+"cstep": "2",
+"r": 0.63,
+"mq": "함수 f(x) 가 lim_{x`->`1} (x+1) f(x)=1 을 만족시킬 때, lim_{x`->`1} (2x^2 +1) f(x)=a 이다. 20a 의 값을 구하시오.",
+"cq": "함수 y=f(x) 에 대하여 lim _{ x->0 } {f(x) overx }=1 일 때, lim _{ x->0 } {{x^2 +2f(x)}over{7x-3f(x)} } 의 값을 구하시오.",
+"msol": 337,
+"csol": 209
+},
+{
+"m": 67,
+"mstep": "3",
+"c": 50,
+"cstep": "3",
+"r": 1.0,
+"mq": "함수 f(x)= cases{ x^2 +2x ~&( left |x right |ge1)# ax+b ~&( left |x right |에 대하여 극한값 lim _{ x->-1} f(x)} { } 와 lim _{ x->1} f(x)} { } 가 존재하도록 두 상수 a,~b 의 값을 정할 때,",
+"cq": "함수 f(x)= cases{ x^2 +2x ~&( left |x right |ge1)# ax+b ~&( left |x right |에 대하여 극한값 lim _{ x->-1} f(x)} { } 와 lim _{ x->1} f(x)} { } 가 존재하도록 두 상수 a,~b 의 값을 정할 때,",
+"msol": 437,
+"csol": 427
+},
+{
+"m": 68,
+"mstep": "3",
+"c": 35,
+"cstep": "2",
+"r": 0.47,
+"mq": "두 함수 f(x),```g(x) 에 대하여 lim _{x-> INF } {f(x)= INF ,```` lim _{x-> INF } {{f(x)+g(x)} over {f(x)-g(x)} =3}} 이다. lim _{x-> INF } {{2f(x)-g(x)} over {f(x)+2g(x)} ",
+"cq": "두 함수 y=f(x),~y=g(x) 가 lim _{ x->1 } {f(x) }=inf,~ lim _{ x->1 } {left{3f(x)-g(x)right}=2 } 를 만족시킬 때, lim _{ x->1 } {{f(x)-2g(x)}over{2f(x)-g(x)} } 의 값을 구하시오.",
+"msol": 556,
+"csol": 699
+},
+{
+"m": 69,
+"mstep": "3",
+"c": 22,
+"cstep": "1",
+"r": 0.51,
+"mq": "0le x le 2 에서 정의된 함수 f(x)` 가 f(x)= lim _{t` rarrow `INF } {{t(x ^{2} -x)+1} over {sqrt {t ^{2} +x}}} 이다. 함수 f(x)` 의 최댓값 M , 최솟값 m 이라 할 때, 2Mm 의 값은?① 2` ② 1 ③ 0 ",
+"cq": "lim _{x` rarrow `- INF } {LEFT ( sqrt {x ^{2} +2x} +x RIGHT )} 의 값은?① -2 ② -1 ③ 0 ④ 1 ⑤ 2",
+"msol": 402,
+"csol": 421
+},
+{
+"m": 70,
+"mstep": "3",
+"c": 56,
+"cstep": "3",
+"r": 0.99,
+"mq": "양의 실수 전체의 집합에서 정의된 함수 f(x) 가 3x^2 + ax le f(x) le 4x^2 +ax 를 만족시키고, lim _{ x->0+} f(x)over3x = 4} { } 일 때, 상수 a 의 값을 구하시오.",
+"cq": "양의 실수 전체의 집합에서 정의된 함수 y=f(x) 가 3x^2 + ax le f(x) le 4x^2 +ax 를 만족시키고, lim _{ x->0+} f(x)over3x = 4} { } 일 때, 상수 a 의 값을 구하시오.",
+"msol": 490,
+"csol": 474
+},
+{
+"m": 71,
+"mstep": "3",
+"c": 34,
+"cstep": "2",
+"r": 0.66,
+"mq": "다항함수 f(x) 가 lim_{x`->`0} f(x) over x =3,~ lim_{x`->`1} f(x) over x-1 =2 를 만족시킬 때, lim_{x`->`1} {f(f(x))} over {2x^2 - 3x+1} 의 값을 구하시오.",
+"cq": "함수 y=f(x) 에 대하여 lim _{ x->0 } {f(x) overx }=1 일 때, lim _{ x->0 } {{x^2 +2f(x)}over{7x-3f(x)} } 의 값을 구하시오.",
+"msol": 387,
+"csol": 209
+},
+{
+"m": 72,
+"mstep": "3",
+"c": 58,
+"cstep": "3",
+"r": 0.99,
+"mq": "다항함수 수식입니다. f(x)가 lim _{ x->0+} {x^3 f left( 1overx right) -1}over {x^3 +x} = 5} { } , lim _{ x->1} f(x)over {x^2 +x-2} = 1over3} { } 을 만족시킬 때, f(2) 의 값을 구하시오.",
+"cq": "다항함수 y=f(x) 가 lim _{ x->0+} {x^3 f left( 1overx right) -1}over {x^3 +x} = 5} { } , lim _{ x->1} f(x)over {x^2 +x-2} = 1over3} { } 을 만족시킬 때, f(2) 의 값을 구하시오.",
+"msol": 1093,
+"csol": 1053
+},
+{
+"m": 73,
+"mstep": "3",
+"c": 35,
+"cstep": "2",
+"r": 0.6,
+"mq": "다항함수 g(x) 에 대하여 lim_{x`->`1 } {g(x)-2x} overx-1 의 값이 존재한다. 다항함수 f(x) 가 f(x)+x-1=(x^2 -1)g(x) 를 만족시킬 때, lim_{x`->`1} {f(x) g(x) } over {x^2 - 1} 의 값을 구하시오.",
+"cq": "두 함수 y=f(x),~y=g(x) 가 lim _{ x->1 } {f(x) }=inf,~ lim _{ x->1 } {left{3f(x)-g(x)right}=2 } 를 만족시킬 때, lim _{ x->1 } {{f(x)-2g(x)}over{2f(x)-g(x)} } 의 값을 구하시오.",
+"msol": 456,
+"csol": 699
+},
+{
+"m": 74,
+"mstep": "3",
+"c": 55,
+"cstep": "3",
+"r": 0.44,
+"mq": "함수 f(x)=x ^{2} -2x-1 에 대하여 방정식 f(x)=0 의 서로 다른 두 실근을 수식입니다.alpha ,```` beta 라 할 때, lim _{x-> alpha } {{f(x)f(-x)} over {x- alpha }} + lim _{x-> beta } {{f(x)f(-x",
+"cq": "함수 y=f(x) 에 대하여 lim _{ x->2} f(x-2)over {x^2 -2x}= 5} { } 일 때, lim _{ x->0} f(x)overx} { } 의 값은?① 2 ② 4 ③ 6 ④ 8 ⑤ 10",
+"msol": 1069,
+"csol": 453
+},
+{
+"m": 75,
+"mstep": "3",
+"c": 37,
+"cstep": "2",
+"r": 0.67,
+"mq": "두 다항함수 f(x),~ g(x) 가 다음 조건을 만족시킨다.(가) lim_{x`->`inf} {f(x)-2g(x)} over x^2 =1 (나) lim_{x`->`inf } {f(x)+3g(x)} over x^3 =1 수식입니다.lim_{x`->`inf} { f(x)+g(x)} ove",
+"cq": "두 다항함수 f(x) , g(x) 가 다음 조건을 만족시킨다.(가) `f(x)+9g(x)=x ^{2} `g(x) (나) lim _{x -> 3} {} {f(x)} over {x-3} =18 이때, lim _{x->`3} {`g(x)} 의 값은?① 1 ② 2 ③ 3 ④ 4 ⑤ 5",
+"msol": 565,
+"csol": 309
+},
+{
+"m": 76,
+"mstep": "3",
+"c": 38,
+"cstep": "2",
+"r": 0.41,
+"mq": "최고차항의 계수가 1 인 이차함수 f(x) 가 lim _{x`rarrow `a} {{f(x)-(x-a)} over {f(x)+(x-a)}} = {3} over {5} 을 만족시킨다. 방정식 f(x)=0 의 두 근을 수식입니다.alpha , 수식입니다.beta 라 할 때, LEFT | a",
+"cq": "함수 f(x) 가 lim _{x -> 1} {} {f(x-1)} over {x-1} =5 을 만족시킬 때, lim _{x -> 0} {} {5x+f(x)} over {x ^{2`} -2f(x)} 의 값은?① -1 ② - {1} over {2} ③ 0 ④ {1} over {2} ⑤ 1",
+"msol": 985,
+"csol": 282
+},
+{
+"m": 77,
+"mstep": "3",
+"c": 41,
+"cstep": "2",
+"r": 0.51,
+"mq": "삼차함수 f(x)=x ^{3} +ax ^{2} +bx+1 과 이차항의 계수가 1 인 이차함수 g(x) 가 다음 조건을 만족시킬 때, g(x) 를 구하시오. (단, a,``b 는 상수이다.)(가) g(1)=0 (나) lim _{x-> 1} {{f(x)} over {g(x)} =0,````",
+"cq": "다항함수 y=f(x) 가 다음 조건을 만족시킨다.(가) lim _{ x->1 } {f(x)over{x^2 -1} }=1 (나) lim _{ x->inf } {f(x)over{x^2 -1} }=2 다항식 f(x) 를 구하시오.",
+"msol": 849,
+"csol": 414
+},
+{
+"m": 78,
+"mstep": "3",
+"c": 37,
+"cstep": "2",
+"r": 0.22,
+"mq": "그림과 같이 곡선 y=x^2 위의 점 {\\P} it (t,~ t^2 )```(t>0) 에 대하여 x 축 위의 점 rm Q , y 축 위의 점 rm R 가 다음 조건을 만족시킨다.(가) 삼각형 rm POQ 는 rm {bar{rmPO}} = {bar{rmPQ}} 인 이등변삼각형이다.(나) ",
+"cq": "두 다항함수 f(x) , g(x) 가 다음 조건을 만족시킨다.(가) `f(x)+9g(x)=x ^{2} `g(x) (나) lim _{x -> 3} {} {f(x)} over {x-3} =18 이때, lim _{x->`3} {`g(x)} 의 값은?① 1 ② 2 ③ 3 ④ 4 ⑤ 5",
+"msol": 738,
+"csol": 309
+},
+{
+"m": 79,
+"mstep": "3",
+"c": 39,
+"cstep": "2",
+"r": 0.27,
+"mq": "실수 a 에 대하여 두 함수 수식입니다.g LEFT ( x RIGHT ) = {cases{- {1} over {2} x```````& LEFT ( x LEQ 0 RIGHT )#{1} over {2} x+1```& LEFT ( x`>0 RIGHT ) , h(x)= x^2 +a 의 그래프의",
+"cq": "두 함수 f(x) , g(x) 가 lim _{x `rarrow ` INF } {} f(x)= INF , lim _{x` rarrow ` INF } {} LEFT { 3f(x)-2g(x) RIGHT } =2 을 만족할 때, lim _{x `rarrow ` INF } {} {f(x)+4g(",
+"msol": 784,
+"csol": 773
+}
+]
+}
