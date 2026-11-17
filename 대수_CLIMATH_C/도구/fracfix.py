@@ -46,7 +46,7 @@ def grp_left(s, i):
 
 def _chain(s, a):
     """'root{4}of{…}'처럼 앞에 '{…}' 명령 묶음이 붙어 있으면 그 명령까지 한 덩어리로"""
-    while a > 0 and s[a - 1] == '}':
+    while a > 0 and s[a - 1] == '}' and s.startswith('of', a):
         d = 0
         for k in range(a - 1, -1, -1):
             if s[k] == '}':
