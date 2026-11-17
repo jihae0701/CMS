@@ -16,7 +16,9 @@ for info, data in items:
             sc = html.unescape(sm.group(2))
             new = re.sub(r'lim _\{eqalign\{([^{}#]*)#\r?\n\}\}', r'lim _{\1}', sc)
             new = re.sub(r'(lim _\{[^{}]*\})\s*\{\s*\}\s*', r'\1 ', new)
+            new = re.sub(r'\b(int|oint|sum|prod)\s*_\s*\{\s*\}\s*\^\s*\{\s*\}\s*', r'\1 ', new)   # 부정적분 int _{} ^{} → int
             new = re.sub(r'\s*\{\s*\}(?=\s*(\}|$|=|\s))', '', new)
+            new = re.sub(r'\b(int|oint|sum|prod)\s*_\s*\^\s*', r'\1 ', new)
             if new != sc:
                 new = re.sub(r'  +', ' ', new).strip(); plan.append((m, sm, new))
         EQ = eqstyle.sizes([p[2] for p in plan]) if plan else {}
