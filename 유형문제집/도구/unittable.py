@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-"""공통수학1 단원표·단원별 문항 수를 수정 가능한 한글 파일(HWPX)로 만든다.
+"""공통수학1, 2 단원표·단원별 문항 수를 수정 가능한 한글 파일(HWPX)로 만든다(2026-11-17 공통수학2 더함).
 python unittable.py <출력.hwpx>
-- 문항 수와 번호는 기본서(기본서/*.hwpx)·유형서(공통수학1/*.hwpx)의 미주 번호를 직접 읽어 센다.
+- 문항 수와 번호는 기본서(기본서/*.hwpx, 공통수학2/기본서/*.hwpx)·유형서(공통수학1/*.hwpx, 공통수학2/유형서/*.hwpx)의 미주 번호를 직접 읽어 센다.
   유형서 시작 번호는 미주 번호 매기기(endNotePr newNum)에서 읽는다(8·9단원 사용자 수정본은 이 값으로 번호가 이어진다).
 - 틀(글꼴·문단 모양)은 조립제법_표.hwpx를 쓰고, 가운데 정렬 문단·굵은 글자·회색 머리 칸 모양을 덧붙인다.
 """
@@ -27,10 +27,28 @@ UNITS = [  # (대단원, 단원 번호, 단원명, 기본서 파일, 유형서 �
 ]
 
 
+UNITS2 = [  # 공통수학2 (대단원, 단원 번호, 단원명, 기본서 파일, 유형서 파일)
+    ("Ⅰ. 도형의 방정식", 1, "평면좌표", "1. 평면좌표", "01_평면좌표"),
+    ("Ⅰ. 도형의 방정식", 2, "직선의 방정식", "2. 직선의 방정식", "02_직선의 방정식"),
+    ("Ⅰ. 도형의 방정식", 3, "원의 방정식", "3. 원의 방정식", "03_원의 방정식"),
+    ("Ⅰ. 도형의 방정식", 4, "도형의 이동", "4. 도형의 이동", "04_도형의 이동"),
+    ("Ⅱ. 집합과 명제", 5, "집합의 뜻과 표현", "5. 집합의 뜻과 표현", "05_집합의 뜻과 표현"),
+    ("Ⅱ. 집합과 명제", 6, "집합의 연산", "6. 집합의 연산", "06_집합의 연산"),
+    ("Ⅱ. 집합과 명제", 7, "명제", "7. 명제", "07_명제"),
+    ("Ⅱ. 집합과 명제", 8, "절대부등식", "8. 절대부등식", "08_절대부등식"),
+    ("Ⅲ. 함수와 그래프", 9, "함수", "9. 함수", "09_함수"),
+    ("Ⅲ. 함수와 그래프", 10, "합성함수와 역함수", "10. 합성함수와 역함수", "10_합성함수와 역함수"),
+    ("Ⅲ. 함수와 그래프", 11, "유리식과 유리함수", "11. 유리식과 유리함수", "11_유리식과 유리함수"),
+    ("Ⅲ. 함수와 그래프", 12, "무리식과 무리함수", "12. 무리식과 무리함수", "12_무리식과 무리함수"),
+]
+
+
 def count(path):
+    """문항 수(미주 수)와 시작 번호. 시작 번호는 미주 번호 바꾸기(newNum)가 있으면 그것, 없으면 미주 모양의 시작 번호"""
     x = zipfile.ZipFile(path).read("Contents/section0.xml").decode("utf-8")
     n = len(re.findall(r'<hp:autoNum num="\d+" numType="ENDNOTE"', x))
-    start = int(re.search(r"<hp:endNotePr>.*?<hp:numbering [^>]*newNum=\"(\d+)\"", x, re.S).group(1))
+    ctl = re.findall(r'<hp:newNum num="(\d+)" numType="ENDNOTE"', x)
+    start = int(ctl[0]) if ctl else int(re.search(r"<hp:endNotePr>.*?<hp:numbering [^>]*newNum=\"(\d+)\"", x, re.S).group(1))
     return n, start
 
 
@@ -112,36 +130,43 @@ def table(rows, widths, spans):
 
 
 # ---------------------------------------------------------------- 자료
-data = []
-for big, no, name, bfile, yfile in UNITS:
-    bn, bs = count(os.path.join(ROOT, "기본서", bfile + ".hwpx"))
-    yn, ys = count(os.path.join(ROOT, "공통수학1", yfile + ".hwpx"))
-    data.append((big, no, name, bn, bs, yn, ys))
-for a, b in zip(data, data[1:]):          # 번호가 끊김 없이 이어지는지 확인
-    assert a[4] + a[3] == b[4] and a[6] + a[5] == b[6], (a, b)
+def book(units, bdir, ydir):
+    data = []
+    for big, no, name, bfile, yfile in units:
+        bn, bs = count(os.path.join(bdir, bfile + ".hwpx"))
+        yn, ys = count(os.path.join(ydir, yfile + ".hwpx"))
+        data.append((big, no, name, bn, bs, yn, ys))
+    for a, b in zip(data, data[1:]):          # 번호가 끊김 없이 이어지는지 확인
+        assert a[4] + a[3] == b[4] and a[6] + a[5] == b[6], (a, b)
+    rows = [["대단원", "단원", "기본서 문항 수", "기본서 번호", "유형서 문항 수", "유형서 번호"]]
+    spans = {}
+    for k, (big, no, name, bn, bs, yn, ys) in enumerate(data):
+        first_of_big = k == 0 or data[k - 1][0] != big
+        if first_of_big:
+            spans[(len(rows), 0)] = (sum(1 for d in data if d[0] == big), 1)
+        rows.append([big if first_of_big else None, "%d. %s" % (no, name), str(bn), "%03d~%03d" % (bs, bs + bn - 1),
+                     str(yn), "%03d~%03d" % (ys, ys + yn - 1)])
+    TB = sum(d[3] for d in data)
+    TY = sum(d[5] for d in data)
+    rows.append(["합계", None, str(TB), "%03d~%03d" % (1, TB), str(TY), "%03d~%03d" % (1, TY)])
+    spans[(len(rows) - 1, 0)] = (1, 2)
+    return data, rows, spans, TB, TY
 
-rows = [["대단원", "단원", "기본서 문항 수", "기본서 번호", "유형서 문항 수", "유형서 번호"]]
-spans = {}
-for k, (big, no, name, bn, bs, yn, ys) in enumerate(data):
-    first_of_big = k == 0 or data[k - 1][0] != big
-    if first_of_big:
-        span = sum(1 for d in data if d[0] == big)
-        spans[(len(rows), 0)] = (span, 1)
-    rows.append([big if first_of_big else None, "%d. %s" % (no, name), str(bn), "%03d~%03d" % (bs, bs + bn - 1),
-                 str(yn), "%03d~%03d" % (ys, ys + yn - 1)])
-TB = sum(d[3] for d in data)
-TY = sum(d[5] for d in data)
-rows.append(["합계", None, str(TB), "%03d~%03d" % (1, TB), str(TY), "%03d~%03d" % (1, TY)])
-spans[(len(rows) - 1, 0)] = (1, 2)
+
 widths = [8300, 13890, 6500, 6500, 6500, 6500]           # 합 48190 = 쪽 너비 59528 − 왼쪽·오른쪽 여백
-
-body = (first + para("공통수학1 단원표와 단원별 문항 수", PP_C, CP_T) + para("")
-        + table(rows, widths, spans) + para("")
-        + para("· 기본서와 유형서의 문항 번호는 각각 1단원부터 끊김 없이 이어진다(기본서 %d문항, 유형서 %d문항)." % (TB, TY)))
+d1, r1, s1, TB1, TY1 = book(UNITS, os.path.join(ROOT, "기본서"), os.path.join(ROOT, "공통수학1"))
+d2, r2, s2, TB2, TY2 = book(UNITS2, os.path.join(ROOT, "공통수학2", "기본서"), os.path.join(ROOT, "공통수학2", "유형서"))
+TITLE = "공통수학1, 2 단원표와 단원별 문항 수"
+body = (first + para(TITLE, PP_C, CP_T) + para("")
+        + para("공통수학1", 0, CP_B) + table(r1, widths, s1) + para("")
+        + para("공통수학2", 0, CP_B) + table(r2, widths, s2) + para("")
+        + para("· 기본서와 유형서의 문항 번호는 권마다 1단원부터 끊김 없이 이어진다(공통수학1 기본서 %d문항, 유형서 %d문항 / 공통수학2 기본서 %d문항, 유형서 %d문항)." % (TB1, TY1, TB2, TY2))
+        + para("· CMS 스토리 라이트는 유형서와 문항 수·번호가 같다(단원 종합 문제의 일부 문항만 다름)."))
 sec_new = body + "</hs:sec>"          # body의 첫 부분(first)에 이미 xml 머리와 <hs:sec>가 들어 있다
 files["Contents/section0.xml"] = sec_new.encode("utf-8")
 if "Preview/PrvText.txt" in files:
-    files["Preview/PrvText.txt"] = "공통수학1 단원표와 단원별 문항 수".encode("utf-8")
+    files["Preview/PrvText.txt"] = TITLE.encode("utf-8")
+data = d1 + d2
 
 out = sys.argv[1]
 with zipfile.ZipFile(out, "w") as w:
@@ -151,4 +176,4 @@ with zipfile.ZipFile(out, "w") as w:
         w.writestr(info, files[n])
 for d in data:
     print(d)
-print("기본서", TB, "유형서", TY, "->", out)
+print("공통수학1 기본서", TB1, "유형서", TY1, "/ 공통수학2 기본서", TB2, "유형서", TY2, "->", out)
