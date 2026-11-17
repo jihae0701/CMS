@@ -20,6 +20,7 @@ for i in zi.infolist():
 zo.close(); shutil.move(t, p); print('바탕쪽 미적분Ⅰ→대수', c, '로고', href)
 PY
 python3 fontfix.py $F "$BASE"
+python3 anscut.py $F "${n#0}. $name"
 python3 limfix.py $F u_dC/${u}_lim.json
 python3 eqauto.py $F u_dC/${u}_eq.json
 python3 fracfix.py $F u_dC/${u}_frac.json
@@ -27,6 +28,8 @@ python3 glue2.py $F | tail -1
 python3 emptygrp.py $F
 python3 eqauto.py $F u_dC/${u}_eq2.json
 python3 negsub.py $F
+python3 symfix.py $F
+python3 supfix.py $F
 python3 style_ida.py $F | tail -1; python3 space_before_eq.py $F | tail -1; python3 setglue.py $F | tail -1; python3 fix_lsa.py $F $F | tail -1
 python3 wordfix.py $F | tail -1
 python3 ansnorm.py $F 2>&1 | tail -2
