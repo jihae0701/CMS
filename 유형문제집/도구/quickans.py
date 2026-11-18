@@ -114,11 +114,13 @@ head = files["Contents/header.xml"].decode("utf-8")
 def add_item(head, tag, plural, src_id, fn):
     m = re.search(r'<hh:%s id="%s".*?</hh:%s>' % (tag, src_id, tag), head, re.S)
     cnt = int(re.search(r'<hh:%s itemCnt="(\d+)"' % plural, head).group(1))
-    new = fn(re.sub(r'id="%s"' % src_id, 'id="%d"' % cnt, m.group(0), count=1))
+    # 새 id = 지금 가장 큰 id + 1 (borderFill은 id가 1부터라 itemCnt를 쓰면 마지막 틀 항목과 id가 겹쳐 — 번호 칸 분홍 음영이 틀의 회색 칸으로 보였음, 2026-11-18 고침)
+    nid_ = max(int(x) for x in re.findall(r'<hh:%s id="(\d+)"' % tag, head)) + 1
+    new = fn(re.sub(r'id="%s"' % src_id, 'id="%d"' % nid_, m.group(0), count=1))
     end = head.index("</hh:%s>" % plural)
     head = head[:end] + new + head[end:]
     head = re.sub(r'<hh:%s itemCnt="\d+"' % plural, '<hh:%s itemCnt="%d"' % (plural, cnt + 1), head, count=1)
-    return head, cnt
+    return head, nid_
 
 
 # 2026-11-18 사용자 편집본(공통수학1 기본서 빠른 정답) 모양으로 통일:
@@ -137,6 +139,15 @@ def bfill(x, l, r, t, b, fill=None):
         x = x.replace("</hh:borderFill>", '<hc:fillBrush><hc:winBrush faceColor="%s" hatchColor="#000000" alpha="0"/></hc:fillBrush></hh:borderFill>' % fill)
     return x
 
+
+# 2026-11-18 사용자 '기본서 공통수학1 기준으로': 틀에 HY울릉도M이 없으면(공통수학2 유형서·라이트) 글꼴 목록 끝에 더함
+HY = ('<hh:font id="%d" face="HY울릉도M" type="TTF" isEmbedded="0"><hh:typeInfo familyType="FCAT_GOTHIC" weight="6" proportion="0" contrast="0" '
+      'strokeVariation="1" armStyle="1" letterform="1" midline="1" xHeight="1"/></hh:font>')
+for lang in ("HANGUL", "LATIN", "HANJA", "JAPANESE", "OTHER", "SYMBOL", "USER"):
+    m = re.search(r'(<hh:fontface lang="%s" fontCnt=")(\d+)(">)(.*?)(</hh:fontface>)' % lang, head, re.S)
+    if 'face="HY울릉도M"' not in m.group(4):
+        n = int(m.group(2))
+        head = head[:m.start()] + m.group(1) + str(n + 1) + m.group(3) + m.group(4) + HY % n + m.group(5) + head[m.end():]
 
 FONTS = {}
 for lang in ("HANGUL", "LATIN", "HANJA", "JAPANESE", "OTHER", "SYMBOL", "USER"):
