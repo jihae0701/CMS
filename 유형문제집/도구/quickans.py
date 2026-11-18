@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 """빠른 정답 파일 만들기 (2026-11-16 사용자 '기본서와 유형서 올린거 빠른 정답 파일을 만드는데, 각각 맞는 문서form에다가 만들어,
 공통수학1, 2 기본서 유형서 총 4개의 파일로').
-python quickans.py <책: c1b|c1y|c2b|c2y|c1l|c2l> <출력.hwpx>   (c1l·c2l: CMS 스토리 라이트, 틀은 라이트 1단원 파일)
+python quickans.py <책: c1b|c1y|c2b|c2y|c1l|c2l> <출력.hwpx> [시작 쪽 번호]   (c1l·c2l: CMS 스토리 라이트, 틀은 라이트 1단원 파일)
+- 2026-11-18: 1단원 파일 첫 문단의 꼬리말(쪽 번호) 컨트롤을 그대로 옮김(전에는 꼬리말 안의 쪽 번호 컨트롤 때문에 잘려 빠졌음).
+  시작 쪽 번호를 주면 첫 문단에 쪽 번호 새로 시작(그 번호)을 넣음 — 인디자인 책에서 빠른 정답 쪽 번호를 이어 찍을 때(공통수학1 유형서 245).
 - 정답은 단원 파일(완성본)의 미주 첫 줄('󰂼' 또는 '[정답]' 뒤)을 그대로 옮긴다. 수식은 수식 개체를 그대로 복사한다.
 - 문항 번호는 미주 번호(미주 번호 매기기 시작값 + 차례)다.
 - 틀(문서 form)은 그 책의 1단원 파일: 쪽 크기·여백·2단·바탕쪽(머리말 띠·쪽 번호)·글꼴·글자/문단 모양을 그대로 쓰고,
@@ -21,6 +23,7 @@ BOOKS = {
 }
 FALLBACK = {"c1l": "c1y", "c2l": "c2y"}   # 라이트를 아직 만들지 않은 단원(공통수학2 7·8단원)은 유형서와 같으므로 유형서 파일에서 읽는다
 book, out = sys.argv[1:3]
+START = int(sys.argv[3]) if len(sys.argv) > 3 else None
 TITLE, DIR, PAT = BOOKS[book]
 units = []
 for f in sorted(os.listdir(DIR)):
@@ -184,10 +187,18 @@ for n in list(files):
 
 sec = files["Contents/section0.xml"].decode("utf-8")
 i0 = sec.index("<hp:p ")
-p0 = sec[i0:sec.index("</hp:p>", i0) + 7]
+_d, _j = 0, i0                                    # 맨 위 첫 문단 전체(꼬리말 안의 문단까지 포함해 짝을 맞춤)
+for _m in re.finditer(r"<hp:p [^>]*>|</hp:p>", sec[i0:]):
+    _d += 1 if _m.group(0).startswith("<hp:p ") else -1
+    if _d == 0:
+        _j = i0 + _m.end()
+        break
+p0 = sec[i0:_j]
 run0 = re.match(r"<hp:p [^>]*><hp:run [^>]*>", p0).group(0)
 keep = re.search(r"<hp:secPr\b.*?</hp:secPr>", p0, re.S).group(0)
-keep += "".join(m.group(0) for m in re.finditer(r"<hp:ctrl>(?:(?!</hp:ctrl>).)*?<hp:(?:colPr|footer|header|pageNum)\b.*?</hp:ctrl>", p0, re.S))
+keep += "".join(m.group(0) for m in re.finditer(r"<hp:ctrl><hp:(?:colPr|pageNum)\b(?:(?!</hp:ctrl>).)*</hp:ctrl>|<hp:ctrl><hp:(footer|header)\b.*?</hp:\1></hp:ctrl>", p0, re.S))
+if START:
+    keep += '<hp:ctrl><hp:newNum num="%d" numType="PAGE"/></hp:ctrl>' % START
 first = sec[:i0] + run0 + keep + "<hp:t/></hp:run></hp:p>"
 NID = [3100000000]
 
