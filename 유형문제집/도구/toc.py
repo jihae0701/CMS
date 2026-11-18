@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """공통수학2 유형서 합본 목차 (2026-11-17 사용자 '위에파일 기준으로 목차만들어줘' — 사용자가 올린 합본 PDF 12개 기준 쪽 번호).
-python toc.py <출력.hwpx> [--full] [--c1]   (기본은 단원명과 쪽만, --full이면 유형까지)
+python toc.py <출력.hwpx> [--full] [--c1] [--b]   (--c1: 공통수학1, --b: 기본서)   (기본은 단원명과 쪽만, --full이면 유형까지)
 - 쪽 번호는 toc_c2y.json(합본 PDF에서 유형 제목이 처음 나오는 쪽을 찾은 값; 8단원 '절대부등식'은 쪽 머리말과 겹쳐 손으로 147쪽).
 - 틀은 공통수학2 유형서 1단원 파일(쪽 크기·2단·바탕쪽·글꼴), 바탕쪽 단원 이름 자리에 '목차'.
 - 대단원 줄, 단원 줄(굵게, 연한 색 칸), 유형 줄(들여 씀)을 선 없는 표(이름 | 쪽)로.
@@ -8,8 +8,16 @@ python toc.py <출력.hwpx> [--full] [--c1]   (기본은 단원명과 쪽만, --
 import sys, os, re, zipfile, json
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
-BOOK = "c1y" if "--c1" in sys.argv else "c2y"
-if BOOK == "c2y":
+BOOK = ("c1" if "--c1" in sys.argv else "c2") + ("b" if "--b" in sys.argv else "y")
+if BOOK == "c1b":                            # 기본서(2026-11-18): 합본 PDF가 없어 쪽 번호는 비워 둠
+    TPL = os.path.join(ROOT, "기본서", "1. 다항식의 연산과 항등식.hwpx")
+    BIG = {1: "Ⅰ. 다항식", 4: "Ⅱ. 방정식과 부등식", 10: "Ⅲ. 경우의 수", 12: "Ⅳ. 행렬"}
+    SUB, UNIT1 = "공통수학1 기본서 (CLIMATH ⓜ)", "다항식의 연산과 항등식"
+elif BOOK == "c2b":
+    TPL = os.path.join(ROOT, "공통수학2", "기본서", "1. 평면좌표.hwpx")
+    BIG = {1: "Ⅰ. 도형의 방정식", 5: "Ⅱ. 집합과 명제", 9: "Ⅲ. 함수와 그래프"}
+    SUB, UNIT1 = "공통수학2 기본서 (CLIMATH ⓜ)", "평면좌표"
+elif BOOK == "c2y":
     TPL = os.path.join(ROOT, "공통수학2", "유형서", "01_평면좌표.hwpx")
     BIG = {1: "Ⅰ. 도형의 방정식", 5: "Ⅱ. 집합과 명제", 9: "Ⅲ. 함수와 그래프"}
     SUB, UNIT1 = "공통수학2 유형서 (CMS Story)", "평면좌표"
@@ -61,7 +69,7 @@ head, CP_N = add_item(head, "charPr", "charProperties", "0", lambda x: x.replace
 files["Contents/header.xml"] = head.encode("utf-8")
 for n in list(files):
     if re.match(r"Contents/masterpage\d+\.xml", n):
-        files[n] = files[n].decode("utf-8").replace("<hp:t>%s</hp:t>" % UNIT1, "<hp:t>목차</hp:t>").encode("utf-8")
+        files[n] = files[n].decode("utf-8").replace("<hp:t>%s</hp:t>" % UNIT1, "<hp:t>목차</hp:t>").replace("<hp:t>1.</hp:t>", "<hp:t></hp:t>").encode("utf-8")
 
 sec = files["Contents/section0.xml"].decode("utf-8")
 i0 = sec.index("<hp:p ")
@@ -122,7 +130,7 @@ for no, title, p0_, items in DATA:
             body.append(table(rows_all)); body.append(para("", PP_L, CP_N)); rows_all = []
         body.append(para(BIG[no], PP_L, CP_BIG))
     if SIMPLE:
-        rows_all.append(("%02d  %s" % (no, title), p0_, "plain"))
+        rows_all.append(((("%d. %s") if BOOK.endswith("b") else "%02d  %s") % (no, title), p0_, "plain"))   # 기본서는 '1. 단원명'(바탕쪽과 같게)
         continue
     rows = [("%02d  %s" % (no, title), p0_, True)] + [(n, p, False) for n, p in items]
     body.append(table(rows))
