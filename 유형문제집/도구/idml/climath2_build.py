@@ -24,6 +24,11 @@ UNITS = {"2": ["평면좌표", "직선의 방정식", "원의 방정식", "도�
                "여러 가지 방정식", "이차부등식", "연립부등식", "경우의 수와 순열", "조합", "행렬"]}[BOOK[1]]
 # 링크 파일 이름 = 사용자 PDF 이름(기본서 '1. 평면좌표.pdf', 유형서 '01 평면좌표.pdf'), 단원명은 PDF 머리말과 같게
 FILES = [("%02d %s.pdf" if YU else "%d. %s.pdf") % (i + 1, u) for i, u in enumerate(UNITS)]
+# 2026-11-18 사용자 수정본(유형서 공통수학1 IDML)을 따름: 유형서 링크 이름은 밑줄('01_다항식의_연산과_항등식.pdf', '06_이차함수의_최대_최소.pdf'),
+# 단원 표지 색은 주황(RGB 243 134 35). 기본서는 보라(145 102 165).
+if YU:
+    FILES = [re.sub(r"[ ·]", "_", f[:-4]) + ".pdf" for f in FILES]
+COVER_RGB = "243 134 35" if YU else "145 102 165"
 OFF = 10.0
 PW, PH = 595.2755905509999, 807.8740157480315
 SPREAD_DY = 987.8740157480315
@@ -214,9 +219,9 @@ for i, left_num in enumerate(range(2, TOTAL + 1, 2)):
 
 # ---- 색·글꼴
 g = T("Resources/Graphic.xml")
-g = g.replace("<Color ", '<Color Self="Color/%s" Model="Process" Space="RGB" ColorValue="145 102 165" ColorOverride="Normal" ConvertToHsb="false" '
+g = g.replace("<Color ", '<Color Self="Color/%s" Model="Process" Space="RGB" ColorValue="%s" ColorOverride="Normal" ConvertToHsb="false" '
               'AlternateSpace="NoAlternateColor" AlternateColorValue="" Name="$ID/" ColorEditable="true" ColorRemovable="true" Visible="false" '
-              'SwatchCreatorID="7937" SwatchColorGroupReference="n" />\n\t<Color ' % PURPLE, 1)
+              'SwatchCreatorID="7937" SwatchColorGroupReference="n" />\n\t<Color ' % (PURPLE, COVER_RGB), 1)
 files["Resources/Graphic.xml"] = g.encode("utf-8")
 fx, fc = T("Resources/Fonts.xml"), C("Resources/Fonts.xml")
 add = ""
