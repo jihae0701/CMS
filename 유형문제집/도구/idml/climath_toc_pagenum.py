@@ -3,8 +3,7 @@
 python climath_toc_pagenum.py <입력.idml> <출력.idml>
 - 1쪽 '이 책의 차례' 아래에 차례 글상자: 단원명 + 시작 쪽(대단원 없음). 시작 쪽은 문서에서 단원 표지 글상자('1 다항식의 연산과 항등식' 등)가
   놓인 쪽 이름(Page Name)을 직접 읽는다. 단원명은 우리 기본서 단원명을 쓴다(표지 '10 경우의 순열'은 '경우의 수와 순열'로).
-- 쪽 번호: 마스터 'A-마스터'의 왼쪽·오른쪽 쪽 아래 가운데에 자동 쪽 번호 글상자. 새 레이어 '쪽 번호'를 맨 위에 두어
-  쪽마다 놓인 PDF 그림 위에 보이게 한다.
+- 쪽 번호: 쪽마다 아래 가운데에 자동 쪽 번호 글상자(그 쪽의 PDF 위에). 마스터에 넣은 판은 PDF의 흰 바탕에 가려 보이지 않았음.
 """
 import sys, re, zipfile, os
 
@@ -14,7 +13,7 @@ files = {n: z.read(n) for n in z.namelist()}
 dec = lambda n: files[n].decode("utf-8")
 UNITS = {1: "다항식의 연산과 항등식", 2: "나머지정리", 3: "인수분해", 4: "복소수와 이차방정식", 5: "이차함수와 이차방정식의 관계",
          6: "이차함수의 최대, 최소", 7: "여러 가지 방정식", 8: "이차부등식", 9: "연립부등식", 10: "경우의 수와 순열", 11: "조합", 12: "행렬"}
-FONT, LAYER = "HY울릉도M", "uqL1"
+FONT = "HY울릉도M"
 
 # ---------------------------------------------------------------- 단원 시작 쪽 읽기
 dm = dec("designmap.xml")
@@ -77,31 +76,35 @@ s = dec(sp1)
 s = s.replace("</Spread>", frame("uqF1", "uqT1", "ue9", 297.64 - W / 2, 30, 297.64 + W / 2, 365) + "</Spread>", 1)
 files[sp1] = s.encode("utf-8")
 
-# ---------------------------------------------------------------- 쪽 번호(마스터)
+# ---------------------------------------------------------------- 쪽 번호
+# 처음에는 마스터(맨 위 레이어)에 넣었으나, 쪽마다 놓인 PDF가 아래쪽을 흰색으로 덮어 보이지 않았다(사용자 확인 2026-11-18).
+# 그래서 쪽마다 직접, 그 쪽의 PDF보다 뒤(위)에 자동 쪽 번호 글상자를 놓는다. 쪽을 옮겨도 번호는 자동으로 바뀐다.
 pn = ('<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/$ID/NormalParagraphStyle" Justification="CenterAlign">'
       '<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]" FillColor="Color/Black" FontStyle="Regular" PointSize="11">'
       '<Properties><AppliedFont type="string">%s</AppliedFont></Properties><Content><?ACE 18?></Content></CharacterStyleRange></ParagraphStyleRange>' % FONT)
-files["Stories/Story_uqP1.xml"] = story("uqP1", pn).encode("utf-8")
-files["Stories/Story_uqP2.xml"] = story("uqP2", pn).encode("utf-8")
-ms = dec("MasterSpreads/MasterSpread_uf3.xml")
-Y0, Y1 = 403.94 - 30, 403.94 - 12            # 쪽 아래 가장자리에서 12~30pt 위
-ms = ms.replace("</MasterSpread>", frame("uqF2", "uqP1", LAYER, -297.64 - 30, Y0, -297.64 + 30, Y1, "CenterAlign")
-                + frame("uqF3", "uqP2", LAYER, 297.64 - 30, Y0, 297.64 + 30, Y1, "CenterAlign") + "</MasterSpread>", 1)
-files["MasterSpreads/MasterSpread_uf3.xml"] = ms.encode("utf-8")
+new_stories = []
+k = 0
+for f in re.findall(r'<idPkg:Spread src="([^"]+)"', dm):
+    s = files[f].decode("utf-8")
+    add = []
+    for p in re.findall(r"<Page [^>]*>", s):
+        y0, x0, y1, x1 = map(float, re.search(r'GeometricBounds="([^"]+)"', p).group(1).split())
+        tx, ty = map(float, re.search(r'ItemTransform="([^"]+)"', p).group(1).split()[4:6])
+        cx, bottom = tx + (x0 + x1) / 2, ty + y1
+        k += 1
+        sid, fid = "u1fa%03x" % k, "u1fb%03x" % k
+        files["Stories/Story_%s.xml" % sid] = story(sid, pn).encode("utf-8")
+        new_stories.append(sid)
+        add.append(frame(fid, sid, "ue9", cx - 30, bottom - 30, cx + 30, bottom - 12, "CenterAlign"))
+    s = s.replace("</Spread>", "".join(add) + "</Spread>", 1)      # 쪽의 다른 개체(PDF)보다 뒤에 = 위에 보임
+    files[f] = s.encode("utf-8")
+print("쪽 번호 글상자", k)
 
-# ---------------------------------------------------------------- designmap: 스토리·레이어 등록
-dm = re.sub(r'(StoryList=")([^"]*)"', lambda m: '%s%s uqT1 uqP1 uqP2"' % (m.group(1), m.group(2)), dm, count=1)
+# ---------------------------------------------------------------- designmap: 스토리 등록
+dm = re.sub(r'(StoryList=")([^"]*)"', lambda m: '%s%s %s"' % (m.group(1), m.group(2), " ".join(["uqT1"] + new_stories)), dm, count=1)
 last_story = list(re.finditer(r'<idPkg:Story src="[^"]+" />', dm))[-1]
-dm = dm[:last_story.end()] + '<idPkg:Story src="Stories/Story_uqT1.xml" /><idPkg:Story src="Stories/Story_uqP1.xml" /><idPkg:Story src="Stories/Story_uqP2.xml" />' + dm[last_story.end():]
-lay = re.search(r"<Layer [^>]*>", dm)
-newlay = re.sub(r'Self="[^"]+"', 'Self="%s"' % LAYER, lay.group(0))
-newlay = re.sub(r'Name="[^"]+"', 'Name="쪽 번호"', newlay)
-end_l = dm.index("</Layer>", lay.start()) + len("</Layer>")
-body_l = dm[lay.end():end_l]
-dm = dm[:lay.start()] + newlay + body_l + dm[lay.start():]          # 맨 위 레이어(목록 앞)
+dm = dm[:last_story.end()] + "".join('<idPkg:Story src="Stories/Story_%s.xml" />' % x for x in ["uqT1"] + new_stories) + dm[last_story.end():]
 files["designmap.xml"] = dm.encode("utf-8")
-dm_ok = files["designmap.xml"].decode()
-assert dm_ok.count('<Layer ') == 2
 
 with zipfile.ZipFile(out, "w") as w:
     names = z.namelist() + [n for n in files if n not in z.namelist()]
