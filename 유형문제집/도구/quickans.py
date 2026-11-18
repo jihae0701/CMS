@@ -40,7 +40,7 @@ if book in FALLBACK:
             print("라이트 없음 → 유형서에서:", f)
 units.sort()
 assert [u[0] for u in units] == list(range(1, 13)), [u[0] for u in units]
-NAME_FIX = {"이차함수의 최대 최소": "이차함수의 최대, 최소"}
+NAME_FIX = {"이차함수의 최대 최소": "이차함수의 최대·최소"}   # 2026-11-18 사용자: 책 머리말과 같게 '최대·최소'
 
 # ---------------------------------------------------------------- 정답 읽기
 EQ = re.compile(r"<hp:equation\b.*?</hp:equation>", re.S)
