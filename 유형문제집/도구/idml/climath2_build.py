@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 """기본서 공통수학2 CLIMATH(m) IDML 만들기 (2026-11-18).
-python climath2_build.py <공통수학2 틀.idml> <공통수학1 v2.idml> <단원 PDF 폴더> <출력.idml>
+python climath2_build.py <공통수학2 틀.idml> <공통수학1 v2.idml> <단원 PDF 폴더> <출력.idml> [c2b|c2y|c1y]
+- c1y·c2y(유형서, 2026-11-18 사용자 '유형서는 PDF 자체에 쪽 번호가 있으니 쪽 번호 넣는 작업만 빼고', '기본서와 같은 틀 사용'):
+  쪽 번호 글상자 없음, 링크 파일 '01 평면좌표.pdf' 꼴(사용자 파일 이름), 링크 폴더 …/유형서/,
+  B4(257×364mm) PDF를 기본서 PDF와 같은 너비(595.22pt)로 줄여(약 81.6%) 쪽 위에 맞춤 → 높이 약 842.6pt(기본서 A4 PDF와 같음), 인쇄된 쪽 번호(아래에서 약 75pt)는 쪽 안에 들어옴.
 - 틀: 사용자가 준 'CLIMATH(m) 공통수학2.indd' IDML(바인더1.pdf 264쪽을 쪽마다 놓은 것). 1쪽 펼침면(쪽 uf1, 섹션 시작)과 마스터·스타일은 그대로 두고
   나머지 펼침면은 새로 만든다.
 - 사용자 지시: 바인더1.pdf 대신 단원별 PDF('N. 단원명.pdf', 사용자 파일 이름 그대로), 1쪽은 PDF 없이 흰 쪽에 '이 책의 차례'와 차례만(3번),
@@ -13,9 +16,14 @@ import sys, os, re, zipfile, subprocess
 from urllib.parse import quote
 
 tpl, c1, pdfdir, out = sys.argv[1:5]
-UNITS = ["평면좌표", "직선의 방정식", "원의 방정식", "도형의 이동", "집합의 뜻과 표현", "집합의 연산",
-         "명제", "절대부등식", "함수", "합성함수와 역함수", "유리함수", "무리함수"]
-FILES = ["%d. %s.pdf" % (i + 1, u) for i, u in enumerate(UNITS)]
+BOOK = sys.argv[5] if len(sys.argv) > 5 else "c2b"
+YU = BOOK.endswith("y")                                   # 유형서: 쪽 번호 없음
+UNITS = {"2": ["평면좌표", "직선의 방정식", "원의 방정식", "도형의 이동", "집합의 뜻과 표현", "집합의 연산",
+               "명제", "절대부등식", "함수", "합성함수와 역함수", "유리함수", "무리함수"],
+         "1": ["다항식의 연산과 항등식", "나머지정리", "인수분해", "복소수와 이차방정식", "이차함수와 이차방정식의 관계", "이차함수의 최대·최소",
+               "여러 가지 방정식", "이차부등식", "연립부등식", "경우의 수와 순열", "조합", "행렬"]}[BOOK[1]]
+# 링크 파일 이름 = 사용자 PDF 이름(기본서 '1. 평면좌표.pdf', 유형서 '01 평면좌표.pdf'), 단원명은 PDF 머리말과 같게
+FILES = [("%02d %s.pdf" if YU else "%d. %s.pdf") % (i + 1, u) for i, u in enumerate(UNITS)]
 OFF = 10.0
 PW, PH = 595.2755905509999, 807.8740157480315
 SPREAD_DY = 987.8740157480315
@@ -36,6 +44,10 @@ def npages(p):
 
 counts = [npages(os.path.join(pdfdir, "u%02d.pdf" % (i + 1))) for i in range(12)]
 sizes = [os.path.getsize(os.path.join(pdfdir, "u%02d.pdf" % (i + 1))) for i in range(12)]
+def psize(p):
+    o = subprocess.check_output(["pdfinfo", p]).decode()
+    return tuple(map(float, re.search(r"Page size:\s+([\d.]+) x ([\d.]+)", o).groups()))
+psz = [psize(os.path.join(pdfdir, "u%02d.pdf" % (i + 1))) for i in range(12)]
 
 # 쪽 배치: 1=차례, 단원마다 짝수 표지 + 홀수부터 본문(+필요하면 빈 쪽)
 plan = {1: ("toc",)}
@@ -109,6 +121,9 @@ rect_tpl = re.search(r"<Rectangle .*?</Rectangle>", s2, re.S).group(0)
 rect_tpl = re.sub(r"<MetadataPacketPreference>.*?</MetadataPacketPreference>\s*", "", rect_tpl, flags=re.S)
 head_tpl = s2[:s2.index("<Page ")]
 link_dir = re.search(r'LinkResourceURI="(file:[^"]*/)[^"/]*"', rect_tpl).group(1)
+if YU:                                                     # 사용자: '공통수학1 유형서 PDF 위치 H:/…/공통수학1_기본서_유형서/유형서/'
+    link_dir = link_dir.replace(quote("/기본서/"), quote("/유형서/"))
+link_dir = link_dir.replace(quote("공통수학2_기본서_유형서"), quote("공통수학%s_기본서_유형서" % BOOK[1]))
 PAGE_TY = -403.93700787401576
 
 def page_xml(num, left):
@@ -125,6 +140,15 @@ def rect_xml(u, k, left):
     x = re.sub(r'<Link Self="[^"]+"', '<Link Self="%s"' % nid(), x, count=1)
     x = re.sub(r'(<Rectangle [^>]*ItemTransform=")[^"]+"', lambda m: m.group(1) + "1 0 0 1 %s 17.062992125984238\"" % ("-297.66560519943744" if left else "297.6099853515625"), x, count=1)
     x = re.sub(r'PageNumber="\d+"', 'PageNumber="%d"' % k, x, count=1)
+    w, h = psz[u]
+    if abs(w - 595.22) > 0.5 or abs(h - 842) > 0.5:          # 크기가 다른 PDF(유형서 B4): 너비 595.22pt로 줄여 쪽 위에 맞춤
+        sc = 595.219970703125 / w
+        hw, hh = 297.6099853515625, h * sc / 2
+        x = re.sub(r'<PathPointType Anchor="(-?)297.6099853515625 (-?)421" LeftDirection="-?297.6099853515625 -?421" RightDirection="-?297.6099853515625 -?421" />',
+                   lambda m: '<PathPointType Anchor="{0}{1} {2}{3}" LeftDirection="{0}{1} {2}{3}" RightDirection="{0}{1} {2}{3}" />'.format(m.group(1), hw, m.group(2), hh), x)
+        x = re.sub(r'(<Rectangle [^>]*ItemTransform="1 0 0 1 \S+ )\S+"', lambda m: m.group(1) + repr(PAGE_TY + hh) + '"', x, count=1)
+        x = re.sub(r'(<PDF [^>]*ItemTransform=")[^"]+"', lambda m: m.group(1) + "%r 0 0 %r %r %r\"" % (sc, sc, -hw, -hh), x, count=1)
+        x = re.sub(r'<GraphicBounds [^>]*/>', '<GraphicBounds Left="0" Top="0" Right="%g" Bottom="%g" />' % (w, h), x, count=1)
     x = re.sub(r'LinkResourceURI="[^"]+"', 'LinkResourceURI="%s%s"' % (link_dir, quote(FILES[u])), x, count=1)
     x = re.sub(r'LinkImportStamp="file (\d+) \d+"', lambda m: 'LinkImportStamp="file %s %d"' % (m.group(1), sizes[u]), x, count=1)
     x = re.sub(r'LinkResourceSize="[^"]+"', 'LinkResourceSize="0~%x"' % sizes[u], x, count=1)
@@ -156,11 +180,11 @@ def cover_items(u):
 def page_items(num, left):
     kind = plan[num]
     if kind[0] == "pdf":
-        return rect_xml(kind[1], kind[2], left) + pn_frame(left)
+        return rect_xml(kind[1], kind[2], left) + ("" if YU else pn_frame(left))
     if kind[0] == "cover":
         return cover_items(kind[1])
     if kind[0] == "blank":
-        return pn_frame(left)
+        return "" if YU else pn_frame(left)
     return ""
 
 # ---- 1쪽 펼침면: PDF 지우고 제목·차례
@@ -206,6 +230,8 @@ files["Resources/Fonts.xml"] = fx.encode("utf-8")
 # ---- designmap
 dm = re.sub(r'(<idPkg:Spread src="[^"]+" />\s*)+',
             lambda m: "".join('<idPkg:Spread src="%s" />\n\t' % x for x in [f1] + new_spreads), dm, count=1)
+if YU:                                                     # 문서 이름(틀은 'CLIMATH(m) 공통수학2.indd')
+    dm = re.sub(r'(<Document [^>]*?) Name="[^"]*"', lambda m: m.group(1) + ' Name="%s"' % (os.path.splitext(os.path.basename(out))[0] + ".indd"), dm, count=1)
 dm = re.sub(r'(<Section Self="[^"]+" )Length="\d+" AlternateLayoutLength="\d+"', r'\1Length="%d" AlternateLayoutLength="%d"' % (TOTAL, TOTAL), dm, count=1)
 sl = re.search(r'StoryList="([^"]*)"', dm).group(1).split() + new_stories
 dm = re.sub(r'StoryList="[^"]*"', 'StoryList="%s"' % " ".join(sl), dm, count=1)
