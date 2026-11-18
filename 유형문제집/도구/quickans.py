@@ -80,8 +80,12 @@ def answers(path):
                     if v.strip():
                         out_t.append(("t", v.strip()))
                 continue
-            out_t.append((k_, v.strip() if k_ == "t" else v))
-        out_t = [t for t in out_t if not (t[0] == "t" and not t[1])]
+            out_t.append((k_, v))
+        out_t = [t for t in out_t if not (t[0] == "t" and not t[1].strip())]
+        if out_t and out_t[0][0] == "t":            # 앞뒤 빈칸만 지우고, 글자와 수식 사이 빈칸은 그대로(사용자 편집본)
+            out_t[0] = ("t", out_t[0][1].lstrip())
+        if out_t and out_t[-1][0] == "t":
+            out_t[-1] = ("t", out_t[-1][1].rstrip())
         res.append((st + k, out_t))
     return res
 
@@ -114,27 +118,60 @@ def add_item(head, tag, plural, src_id, fn):
     return head, cnt
 
 
-def solid(x, fill=None):
-    x = re.sub(r'<hh:(left|right|top|bottom)Border type="[A-Z_]+" width="[^"]+" color="[^"]+"/>',
-               lambda m: '<hh:%sBorder type="SOLID" width="0.12 mm" color="#7F8C99"/>' % m.group(1), x)
+# 2026-11-18 사용자 편집본(공통수학1 기본서 빠른 정답) 모양으로 통일:
+#  번호 칸 연분홍(#F4DEEE)·회색 0.12 mm 선, 번호 글자 13pt 굵게 #800000(HY울릉도M), 정답 칸 왼쪽·오른쪽 검은 0.2 mm·위아래 회색 0.12 mm(마지막 줄 아래는 검은 0.2 mm),
+#  정답 글자 10pt 나눔명조 검정, 정답 수식 10pt, 표 바깥 검은 0.2 mm·표 위 여백 566, 단원 줄 13pt 굵게 검정(HY울릉도M),
+#  제목 줄 없이 단원마다 새 단에서 시작(단 나누기), 정답 안 글자와 수식 사이 띄어쓰기 그대로.
+GRAY, BLACK = ("0.12 mm", "#7F8C99"), ("0.2 mm", "#000000")
+
+
+def bfill(x, l, r, t, b, fill=None):
+    for side, (w_, c_) in (("left", l), ("right", r), ("top", t), ("bottom", b)):
+        x = re.sub(r'<hh:%sBorder type="[A-Z_]+" width="[^"]+" color="[^"]+"/>' % side,
+                   '<hh:%sBorder type="SOLID" width="%s" color="%s"/>' % (side, w_, c_), x)
     x = re.sub(r"<hc:fillBrush>.*?</hc:fillBrush>", "", x, flags=re.S)
     if fill:
-        x = x.replace("</hh:borderFill>", '<hc:fillBrush><hc:winBrush faceColor="%s" hatchColor="#999999" alpha="0"/></hc:fillBrush></hh:borderFill>' % fill)
+        x = x.replace("</hh:borderFill>", '<hc:fillBrush><hc:winBrush faceColor="%s" hatchColor="#000000" alpha="0"/></hc:fillBrush></hh:borderFill>' % fill)
     return x
 
 
-head, BF_CELL = add_item(head, "borderFill", "borderFills", "1", lambda x: solid(x))
-head, BF_HEAD = add_item(head, "borderFill", "borderFills", "1", lambda x: solid(x, "#E8EEF6"))
+FONTS = {}
+for lang in ("HANGUL", "LATIN", "HANJA", "JAPANESE", "OTHER", "SYMBOL", "USER"):
+    ff = re.search(r'<hh:fontface lang="%s".*?</hh:fontface>' % lang, head, re.S).group(0)
+    FONTS[lang.lower()] = {n: i for i, n in re.findall(r'<hh:font id="(\d+)" face="([^"]+)"', ff)}
+
+
+def fontref(names):
+    for nm in names:
+        if all(nm in FONTS[l] for l in FONTS):
+            return '<hh:fontRef %s/>' % " ".join('%s="%s"' % (l, FONTS[l][nm]) for l in ("hangul", "latin", "hanja", "japanese", "other", "symbol", "user"))
+    return None
+
+
+def cpr(x, height, color, bold, fonts):
+    x = re.sub(r'height="\d+"', 'height="%d"' % height, x, count=1)
+    x = re.sub(r'textColor="[^"]+"', 'textColor="%s"' % color, x, count=1)
+    x = x.replace("<hh:bold/>", "").replace("<hh:italic/>", "")
+    if bold:
+        x = x.replace("<hh:underline", "<hh:bold/><hh:underline", 1)
+    fr = fontref(fonts)
+    if fr:
+        x = re.sub(r"<hh:fontRef [^>]*/>", fr, x, count=1)
+    return x
+
+
+TITLE_FONTS = ["HY울릉도M", "나눔스퀘어 ExtraBold", "나눔스퀘어 Bold"]      # HY울릉도M이 없는 틀(공통수학2 유형서)은 나눔스퀘어
+head, BF_NUM = add_item(head, "borderFill", "borderFills", "1", lambda x: bfill(x, GRAY, GRAY, GRAY, GRAY, "#F4DEEE"))
+head, BF_NUM0 = add_item(head, "borderFill", "borderFills", "1", lambda x: bfill(x, GRAY, GRAY, GRAY, GRAY))
+head, BF_ANS = add_item(head, "borderFill", "borderFills", "1", lambda x: bfill(x, BLACK, BLACK, GRAY, GRAY))
+head, BF_ANSL = add_item(head, "borderFill", "borderFills", "1", lambda x: bfill(x, BLACK, BLACK, GRAY, BLACK))
+head, BF_TBL = add_item(head, "borderFill", "borderFills", "1", lambda x: bfill(x, BLACK, BLACK, BLACK, BLACK))
 head, PP_C = add_item(head, "paraPr", "paraProperties", "0",
-                      lambda x: x.replace('horizontal="JUSTIFY"', 'horizontal="CENTER"').replace('value="160"', 'value="130"'))
-head, PP_L = add_item(head, "paraPr", "paraProperties", "0", lambda x: x.replace('value="160"', 'value="150"'))
-head, CP_N = add_item(head, "charPr", "charProperties", "0",
-                      lambda x: x.replace('height="1000"', 'height="900"', 1).replace("<hh:underline", "<hh:bold/><hh:underline"))
-head, CP_A = add_item(head, "charPr", "charProperties", "0", lambda x: x.replace('height="1000"', 'height="950"', 1))
-head, CP_U = add_item(head, "charPr", "charProperties", "0",
-                      lambda x: x.replace('height="1000"', 'height="1150"', 1).replace("<hh:underline", "<hh:bold/><hh:underline"))
-head, CP_T = add_item(head, "charPr", "charProperties", "0",
-                      lambda x: x.replace('height="1000"', 'height="2000"', 1).replace("<hh:underline", "<hh:bold/><hh:underline"))
+                      lambda x: re.sub(r'(<hh:lineSpacing type="PERCENT" value=")\d+', r'\g<1>130', x.replace('horizontal="JUSTIFY"', 'horizontal="CENTER"')))
+head, PP_L = add_item(head, "paraPr", "paraProperties", "0", lambda x: re.sub(r'(<hh:lineSpacing type="PERCENT" value=")\d+', r'\g<1>150', x))
+head, CP_N = add_item(head, "charPr", "charProperties", "0", lambda x: cpr(x, 1300, "#800000", True, TITLE_FONTS))
+head, CP_A = add_item(head, "charPr", "charProperties", "0", lambda x: cpr(x, 1000, "#000000", False, ["나눔명조"]))
+head, CP_U = add_item(head, "charPr", "charProperties", "0", lambda x: cpr(x, 1300, "#000000", True, TITLE_FONTS))
 files["Contents/header.xml"] = head.encode("utf-8")
 
 # 바탕쪽: 단원 번호·이름 자리에 '빠른 정답'
@@ -170,6 +207,12 @@ EQID = [3200000000]
 def eqfix(e):
     EQID[0] += 1
     e = re.sub(r'(<hp:equation\b[^>]*?\bid=")\d+', lambda m: m.group(1) + str(EQID[0]), e, count=1)
+    bu = int(re.search(r'baseUnit="(\d+)"', e).group(1))
+    if bu != 1000:                                  # 정답 수식은 10pt로(사용자 편집본)
+        k0 = 1000 / bu
+        e = re.sub(r'baseUnit="\d+"', 'baseUnit="1000"', e, count=1)
+        e = re.sub(r'<hp:sz width="(\d+)" widthRelTo="ABSOLUTE" height="(\d+)"',
+                   lambda q: '<hp:sz width="%d" widthRelTo="ABSOLUTE" height="%d"' % (int(int(q.group(1)) * k0), int(int(q.group(2)) * k0)), e, count=1)
     m = re.search(r'<hp:sz width="(\d+)" widthRelTo="ABSOLUTE" height="(\d+)"', e)
     avail = W // NCOL - 450
     if m and int(m.group(1)) > avail:              # 칸보다 넓은 수식은 글자 크기를 줄여 칸에 맞춘다
@@ -193,12 +236,12 @@ def para(inner, pp, cp=None):
     return '<hp:p id="%s" paraPrIDRef="%d" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">%s</hp:p>' % (nid(), pp, inner)
 
 
-def cell(r, c, inner, w, h, head_):
+def cell(r, c, inner, w, h, bf):
     return ('<hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="%d">'
             '<hp:subList id="" textDirection="HORIZONTAL" lineWrap="BREAK" vertAlign="CENTER" linkListIDRef="0" linkListNextIDRef="0" textWidth="0" textHeight="0" hasTextRef="0" hasNumRef="0">'
             '%s</hp:subList><hp:cellAddr colAddr="%d" rowAddr="%d"/><hp:cellSpan colSpan="1" rowSpan="1"/>'
             '<hp:cellSz width="%d" height="%d"/><hp:cellMargin left="141" right="141" top="141" bottom="141"/></hp:tc>'
-            % (BF_HEAD if head_ else BF_CELL, inner, c, r, w, h))
+            % (bf, inner, c, r, w, h))
 
 
 NCOL = 3
@@ -208,29 +251,35 @@ CW = W // NCOL
 
 def table(items):
     trs, r = [], 0
+    nrow = (len(items) + NCOL - 1) // NCOL
     for k in range(0, len(items), NCOL):
         chunk = items[k:k + NCOL]
         while len(chunk) < NCOL:
             chunk.append(None)
-        tr1 = "".join(cell(r, c, para("%03d" % it[0] if it else "", PP_C, CP_N), CW, 1300, True) for c, it in enumerate(chunk))
-        tr2 = "".join(cell(r + 1, c, para(runs(it[1], CP_A) if it else '<hp:run charPrIDRef="%d"><hp:t/></hp:run>' % CP_A, PP_C), CW, 1800, False)
-                      for c, it in enumerate(chunk))
+        last = (k // NCOL == nrow - 1)
+        tr1 = "".join(cell(r, c, para("%03d" % it[0] if it else "", PP_C, CP_N), CW, 1300, BF_NUM if it else BF_NUM0) for c, it in enumerate(chunk))
+        tr2 = "".join(cell(r + 1, c, para(runs(it[1], CP_A) if it else '<hp:run charPrIDRef="%d"><hp:t/></hp:run>' % CP_A, PP_C), CW, 1800,
+                           (BF_TBL if not it else (BF_ANSL if last else BF_ANS))) for c, it in enumerate(chunk))
         trs += ["<hp:tr>%s</hp:tr>" % tr1, "<hp:tr>%s</hp:tr>" % tr2]
         r += 2
     tbl = ('<hp:tbl id="%s" zOrder="0" numberingType="TABLE" textWrap="TOP_AND_BOTTOM" textFlow="BOTH_SIDES" lock="0" dropcapstyle="None" pageBreak="CELL" repeatHeader="0" rowCnt="%d" colCnt="%d" cellSpacing="0" borderFillIDRef="%d" noAdjust="0">'
            '<hp:sz width="%d" widthRelTo="ABSOLUTE" height="%d" heightRelTo="ABSOLUTE" protect="0"/>'
            '<hp:pos treatAsChar="1" affectLSpacing="0" flowWithText="1" allowOverlap="0" holdAnchorAndSO="0" vertRelTo="PARA" horzRelTo="PARA" vertAlign="TOP" horzAlign="LEFT" vertOffset="0" horzOffset="0"/>'
-           '<hp:outMargin left="0" right="0" top="0" bottom="0"/><hp:inMargin left="141" right="141" top="141" bottom="141"/>%s</hp:tbl>'
-           % (nid(), r, NCOL, BF_CELL, CW * NCOL, (1300 + 1800) * (r // 2), "".join(trs)))
+           '<hp:outMargin left="0" right="0" top="566" bottom="0"/><hp:inMargin left="141" right="141" top="141" bottom="141"/>%s</hp:tbl>'
+           % (nid(), r, NCOL, BF_TBL, CW * NCOL, (1300 + 1800) * (r // 2), "".join(trs)))
     return para('<hp:run charPrIDRef="%d">%s<hp:t/></hp:run>' % (CP_A, tbl), PP_C)
 
 
-body = [para("%s 빠른 정답" % TITLE, PP_C, CP_T), para("", PP_L, CP_A)]
+body = []
 total = 0
-for no, name, a in data:
-    body.append(para("%d. %s  (%03d~%03d)" % (no, name, a[0][0], a[-1][0]), PP_L, CP_U))
+for k, (no, name, a) in enumerate(data):
+    u = "%d. %s  (%03d~%03d)" % (no, name, a[0][0], a[-1][0])
+    if k == 0:                                   # 첫 단원 줄은 구역 정의가 든 첫 문단에(사용자 편집본처럼 제목 줄 없음)
+        first = first.replace("<hp:t/></hp:run></hp:p>", '</hp:run><hp:run charPrIDRef="%d"><hp:t>%s</hp:t></hp:run></hp:p>' % (CP_U, esc(u)), 1)
+        first = re.sub(r'(<hp:p [^>]*paraPrIDRef=")\d+', lambda m: m.group(1) + str(PP_L), first, count=1)
+    else:                                        # 단원마다 새 단에서 시작
+        body.append(para(u, PP_L, CP_U).replace('columnBreak="0"', 'columnBreak="1"', 1))
     body.append(table(a))
-    body.append(para("", PP_L, CP_A))
     total += len(a)
 files["Contents/section0.xml"] = (first + "".join(body) + "</hs:sec>").encode("utf-8")
 if "Preview/PrvText.txt" in files:
