@@ -104,6 +104,40 @@ def strip_line(line):
     return line
 
 
+# 2026-11-19 사용자 '정답의 모든 숫자는 수식으로 써 줘' — 정답 속 글자 숫자('󰂼 7', '160만 원', '(1) 336')를 수식 개체로. (1)·⑴ 같은 따름 번호는 그대로.
+# 새 수식 크기(10pt): 숫자만 든 수식을 재어 보면 한 자리 477, 음수 부호 +890, 높이 1023, baseLine 85(워크북 숫자 수식 900여 개 중앙값).
+EQ_TPL = ('<hp:equation id="0" zOrder="0" numberingType="EQUATION" textWrap="TOP_AND_BOTTOM" textFlow="BOTH_SIDES" lock="0" dropcapstyle="None" '
+          'version="Equation Version 60" baseLine="85" textColor="#000000" baseUnit="1000" lineMode="CHAR" font="HancomEQN">'
+          '<hp:sz width="%d" widthRelTo="ABSOLUTE" height="1023" heightRelTo="ABSOLUTE" protect="0"/>'
+          '<hp:pos treatAsChar="1" affectLSpacing="0" flowWithText="1" allowOverlap="0" holdAnchorAndSO="0" vertRelTo="PARA" horzRelTo="PARA" '
+          'vertAlign="TOP" horzAlign="LEFT" vertOffset="0" horzOffset="0"/><hp:outMargin left="56" right="56" top="0" bottom="0"/>'
+          '<hp:shapeComment>수식입니다.</hp:shapeComment><hp:script>%s</hp:script></hp:equation>')
+NUM = re.compile(r"(?<![0-9A-Za-z.(])([-−]?)(\d+(?:\.\d+)?)(?![0-9A-Za-z)])|(?<=\()(\d+)(?=\))")   # 한글이 붙어도('160만') 숫자는 수식
+NUM_CNT = [0]
+
+
+def num2eq(line):
+    out = []
+    for k, v in line:
+        if k != "t" or not re.search(r"\d", html.unescape(v)):
+            out.append((k, v))
+            continue
+        t, pos = html.unescape(v), 0
+        for m in NUM.finditer(t):
+            if m.group(3) is not None:                      # (1) 따름 번호
+                continue
+            if m.start() > pos:
+                out.append(("t", html.escape(t[pos:m.start()], quote=False)))
+            sc = ("-" if m.group(1) else "") + m.group(2)
+            w = 477 * sum(c.isdigit() for c in sc) + (890 if m.group(1) else 0) + (240 if "." in sc else 0)
+            out.append(("eq", EQ_TPL % (w, sc)))
+            NUM_CNT[0] += 1
+            pos = m.end()
+        if pos < len(t):
+            out.append(("t", html.escape(t[pos:], quote=False)))
+    return out
+
+
 def answer(en, where):
     ps = re.findall(r"<hp:p\b[^>]*>.*?</hp:p>", en, re.S)
     # 미주 안 문단은 겹치지 않음(글상자 등 안 문단은 없다고 봄) — 첫 문단에서 표시 찾기
@@ -160,6 +194,7 @@ def answer(en, where):
                 out_lines.append(s)
         if stop:
             break
+    out_lines = [num2eq(ln) for ln in out_lines]
     others = [x for ln in out_lines for x in ln if x[0] == "other"]
     if others:
         print("정답 안에 그림·표 등:", where, len(others))
@@ -237,7 +272,7 @@ src_cp = re.search(r'<hp:endNote .*?<hp:run charPrIDRef="(\d+)"><hp:ctrl><hp:aut
 head, CP_A = add_item(head, "charPr", "charProperties", src_cp,
                       lambda x: re.sub(r'height="\d+"', 'height="1000"', x, count=1).replace("<hh:bold/>", "").replace("<hh:italic/>", ""))
 # 'N.' 뒤 탭(19pt 자리) → '󰂼 '(15pt) 뒤 34pt에서 정답 시작, 내어쓰기 34pt로 둘째 줄(따름 문제 (2)…)도 (1)과 같은 자리
-TABPOS, HANG = 1900, 3400
+TABPOS, HANG = (1900, 3400) if BOOK == "c1c" else (2400, 3900)   # 2026-11-19 사용자 '100번 이후 칸 띄기가 넓고' — 워크북은 세 자리 번호('100.' 20pt)가 들어가게
 TAB_ITEM = ('<hp:switch><hp:case hp:required-namespace="http://www.hancom.co.kr/hwpml/2016/HwpUnitChar"><hh:tabItem pos="%d" type="LEFT" leader="NONE" unit="HWPUNIT"/></hp:case>'
             '<hp:default><hh:tabItem pos="%d" type="LEFT" leader="NONE"/></hp:default></hp:switch>' % (TABPOS, TABPOS * 2))
 TP_A = max(int(x) for x in re.findall(r'<hh:tabPr id="(\d+)"', head)) + 1          # 탭 모양(빈 꼴 <hh:tabPr …/>가 있어 add_item 대신 직접)
@@ -334,6 +369,8 @@ W_COL = (72852 - 4535 - 4535 - 2267 - 2268) // 2       # 단 너비(쪽 너비 �
 
 
 def eqfix(e):
+    # 2026-11-19 사용자 '수식에 bold가 남아 있는 경우가 있어' — 미주 정답 수식의 bold/BOLD를 뺌(빠른 정답은 보통 굵기)
+    e = re.sub(r"(<hp:script[^>]*>)(.*?)(</hp:script>)", lambda m: m.group(1) + re.sub(r"(?i)\bbold\b\s*", "", m.group(2)) + m.group(3), e, count=1, flags=re.S)
     EQID[0] += 1
     e = re.sub(r'(<hp:equation\b[^>]*?\bid=")\d+', lambda m: m.group(1) + str(EQID[0]), e, count=1)
     bu = int(re.search(r'baseUnit="(\d+)"', e).group(1))
@@ -389,4 +426,4 @@ with zipfile.ZipFile(OUT, "w") as w:
         info.compress_type = zipfile.ZIP_STORED if n == "mimetype" else zipfile.ZIP_DEFLATED
         w.writestr(info, files[n])
 multi = sum(1 for _, _, a in data for _, ls in a if len(ls) > 1)
-print("단원", len(data), "문항", total, "여러 줄 정답", multi, "->", OUT)
+print("단원", len(data), "문항", total, "여러 줄 정답", multi, "글자 숫자 → 수식", NUM_CNT[0], "->", OUT)
