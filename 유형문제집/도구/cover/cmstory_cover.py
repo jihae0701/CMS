@@ -183,7 +183,7 @@ def logo(img, box, align, rot=0, pad=6):
     X = x1 + 1 - w if align == "right" else round(cx - w / 2)
     Y = round(cy - h / 2)
     img.paste(lg, (int(X), int(Y)), lg)
-    print("  로고: CREVERSE %s → cms 교과 (%d, %d, %d, %d)" % (box, X, Y, X + w - 1, Y + h - 1))
+    print("  로고: CREVERSE %s → cms 로고 (%d, %d, %d, %d)" % (box, X, Y, X + w - 1, Y + h - 1))
     return img
 
 
