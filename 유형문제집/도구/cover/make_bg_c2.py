@@ -111,3 +111,12 @@ Image.fromarray(cut("spine", BK, X0)).save(os.path.join(outdir, "wrap_spine.png"
 Image.fromarray(cut("front", X0, WT)).save(os.path.join(outdir, "wrap_front.png"))
 Image.fromarray(wrap).save(os.path.join(outdir, "wrap_all.png"))
 print("펼친 띠", wrap.shape, "큰 리본 오른쪽으로", SHIFT, "px")
+
+# ================================================================ 앞표지 확정(2026-11-19)
+# 사용자: '책등에 이어지게 하지 말자'(책등·뒤표지는 리본 없는 색 띠) → '작은 그래픽이 앞표지 아래 나오도록 다시 수정', '큰 그래픽이 오른쪽으로 이동한 것은 좋아'.
+# 큰 리본: 오른쪽으로 150px(그대로). 작은 리본: 시안 B(0.58배·50°, 뒤집지 않음)를 앞표지 왼쪽 아래 구석에 — 앞표지 안에서 보이게.
+Df = np.zeros((BH, BW, 3), np.float32)
+Df[:, max(0, -st):max(0, -st) + srcD.shape[1]] = srcD[:, :BW - max(0, -st)]
+place(Df, RIB, **variants["B"])
+Image.fromarray((fb + Df).clip(0, 255).astype(np.uint8)).save(os.path.join(outdir, "front_final.png"))
+print("앞표지 확정 바탕: 큰 리본 +150px, 작은 리본 시안 B")
