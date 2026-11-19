@@ -4,6 +4,8 @@ python cmstory_cover.py <앞표지.jpg> <책등.jpg> <뒤(가운데 로고).jpg>
 - 사용자: 'CMStory 기출+변형 미적분 Ⅰ' 표지 이미지 3장(2000×2000)을 주고 '이걸 공통수학1, 2 만들어줘'.
 - 파란 글자 '미적분 Ⅰ'(앞표지·뒤·책등)을 지우고 같은 자리·같은 글씨 기준선에 '공통수학1'/'공통수학2'를 Pretendard Bold로 씀
   (원래 글씨와 Pretendard Bold의 '미적분 Ⅰ'를 겹쳐 크기·기준선을 맞춘 뒤 같은 크기로). 앞표지는 오른쪽 끝, 뒤·책등은 시작점을 원래와 같게.
+- 사용자 '크레버스 로고 빼고 이걸로해줘': CREVERSE 로고(앞표지 오른쪽 아래·로고면 아래 가운데·책등 아래)를 지우고 cms 교과 로고를 같은 높이로
+  (앞표지는 오른쪽 끝 맞춤, 로고면은 가운데, 책등은 시계 방향으로 돌려 가운데).
 - 책등의 '고2' → '고1'(Pretendard Medium, 검정). 나머지(CMStory 글자·C 고리·CLIMATH 띠·CREVERSE 로고·'기출+변형')는 그대로.
 """
 import os, sys
@@ -11,6 +13,7 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
 front, spine, back, fdir, outdir = sys.argv[1:6]
+LOGO = sys.argv[6] if len(sys.argv) > 6 else None          # 2026-11-19 사용자 'CREVERSE 로고 빼고 이걸로' — cms 교과 로고(PNG, 투명 바탕)
 FONT = lambda w: os.path.join(fdir, "Pretendard-%s.otf" % w)
 os.makedirs(outdir, exist_ok=True)
 
@@ -90,16 +93,43 @@ def place(img, old_text, new_text, box, kind, weight, rot=0, align="left", pad=5
     return out
 
 
+def logo(img, box, align, rot=0, pad=6):
+    if not LOGO:
+        return img
+    lg = Image.open(LOGO).convert("RGBA")
+    al = np.asarray(lg)[..., 3]
+    ys, xs = np.nonzero(al > 10)
+    lg = lg.crop((xs.min(), ys.min(), xs.max() + 1, ys.max() + 1))
+    if rot:
+        lg = lg.rotate(rot, expand=True)
+    x0, y0, x1, y1 = box
+    if not rot:
+        h = y1 - y0 + 1; w = round(lg.width * h / lg.height)
+    else:
+        w = x1 - x0 + 1; h = round(lg.height * w / lg.width)
+    lg = lg.resize((w, h), Image.LANCZOS)
+    ImageDraw.Draw(img).rectangle((x0 - pad, y0 - pad, x1 + pad, y1 + pad), fill=(255, 255, 255))
+    cy = (y0 + y1) / 2; cx = (x0 + x1) / 2
+    X = x1 + 1 - w if align == "right" else round(cx - w / 2)
+    Y = round(cy - h / 2)
+    img.paste(lg, (int(X), int(Y)), lg)
+    print("  로고: CREVERSE %s → cms 교과 (%d, %d, %d, %d)" % (box, X, Y, X + w - 1, Y + h - 1))
+    return img
+
+
 for n in (1, 2):
     name = "공통수학%d" % n
     print(name)
     im = Image.open(front).convert("RGB")
     im = place(im, "미적분 Ⅰ", name, (1400, 250, 1880, 450), "blue", "Bold", align="right")
+    im = logo(im, (1634, 1823, 1833, 1862), "right")
     im.save(os.path.join(outdir, "CMStory_%s_앞표지.png" % name))
     im = Image.open(back).convert("RGB")
     im = place(im, "미적분 Ⅰ", name, (1100, 800, 1450, 960), "blue", "Bold")
+    im = logo(im, (895, 1762, 1095, 1800), "center")
     im.save(os.path.join(outdir, "CMStory_%s_로고면.png" % name))
     im = Image.open(spine).convert("RGB")
     im = place(im, "미적분 Ⅰ", name, (500, 930, 600, 1100), "blue", "Bold", rot=-90)
     im = place(im, "고2", "고1", (500, 860, 620, 930), "dark", "Medium", rot=-90, pad=3)
+    im = logo(im, (530, 1665, 566, 1852), "center", rot=-90)
     im.save(os.path.join(outdir, "CMStory_%s_책등.png" % name))
