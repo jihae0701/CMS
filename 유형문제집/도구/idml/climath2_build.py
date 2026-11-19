@@ -28,7 +28,7 @@ FILES = [("%02d %s.pdf" if YU else "%d. %s.pdf") % (i + 1, u) for i, u in enumer
 # 단원 표지 색은 주황(RGB 243 134 35). 기본서는 보라(145 102 165).
 if YU:
     FILES = [re.sub(r"[ ·]", "_", f[:-4]) + ".pdf" for f in FILES]
-COVER_RGB = "243 134 35" if YU else "145 102 165"
+COVER_RGB = {"c1y": "243 134 35", "c2y": "32 123 77"}.get(BOOK, "145 102 165")   # 2026-11-19: 유형서는 그 책 메인색(표지와 같게) — 공통수학1 주황, 공통수학2 초록 #207B4D
 OFF = 10.0
 PW, PH = 595.2755905509999, 807.8740157480315
 SPREAD_DY = 987.8740157480315
