@@ -3,7 +3,7 @@
 python climath_cover_logo.py <앞표지> <책등> <앞 로고(cms 고등부)> <책등 로고(cms)> <출력 앞표지> <출력 책등>
 - 사용자: CLIMATH(m) 공통수학1 표지 이미지(앞표지 1474×2000, 책등 1414×2000, 뒤표지)를 주고
   '크레버스 로고만 cms 로고로 변경, 앞표지는 cms 고등부, 책등은 cms (유형서와 동일한 크기로 넣기)'.
-- 크기는 CMStory 유형서 표지(높이 2000px)와 같은 픽셀 크기: 앞표지 cms 고등부 로고 높이 40px, 책등 cms 로고 폭(글자 높이) 29px.
+- 크기는 CMStory 유형서 표지(높이 2000px)와 같은 픽셀 크기: 앞표지 cms 고등부 로고 높이 40px, 책등 cms 로고 폭(글자 높이) 29px → 사용자 요청으로 책등 위 CLIMATH 'C'와 같은 19px.
   위치는 CREVERSE 로고의 가운데. CREVERSE 자리는 둘레 바탕색으로 지움. 뒤표지에는 CREVERSE가 없어 바꾸지 않음.
 """
 import sys
@@ -43,4 +43,5 @@ def put_logo(img, search, path, size, rot=0, pad=6):
 im = Image.open(front).convert("RGB")
 put_logo(im, (600, 1760, 900, 1860), logo_f, 40).save(out_f)
 im = Image.open(spine).convert("RGB")
-put_logo(im, (1300, 1700, 1414, 1920), logo_s, 29, rot=-90).save(out_s)
+# 2026-11-19 사용자 '책등 cms 크기를 위의 CLIMATH 글씨 크기와 같게(c끼리 비교)': 책등 위 CLIMATH의 'C' 글자 높이 19px(1355~1373) = cms 'c' 높이(로고 글자 높이)
+put_logo(im, (1300, 1700, 1414, 1920), logo_s, 19, rot=-90).save(out_s)
