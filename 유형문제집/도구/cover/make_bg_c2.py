@@ -117,6 +117,15 @@ print("펼친 띠", wrap.shape, "큰 리본 오른쪽으로", SHIFT, "px")
 # 큰 리본: 오른쪽으로 150px(그대로). 작은 리본: 시안 B(0.58배·50°, 뒤집지 않음)를 앞표지 왼쪽 아래 구석에 — 앞표지 안에서 보이게.
 Df = np.zeros((BH, BW, 3), np.float32)
 Df[:, max(0, -st):max(0, -st) + srcD.shape[1]] = srcD[:, :BW - max(0, -st)]
-place(Df, RIB, **variants["B"])
+# 2026-11-19 사용자 '왼쪽 작은 것도 아주 살짝 오른쪽으로, 그래픽이 끊긴 부분이 없도록': 50px 오른쪽(cx 120 → 170).
+# 오른쪽으로 옮기면 리본 위쪽의 가는 실 같은 선(리본과 떨어진 유리 테두리 한 가닥)이 왼쪽 위로 삐져나와 끊긴 듯 보여서, 작은 리본에서는 그 가는 선을 지움
+# (리본 부분 마스크를 25px로 열어(opening) 굵은 몸통만 남기고 부드럽게).
+rm = (np.abs(RIB).sum(axis=2) > 6).astype(np.uint8) * 255
+body = cv2.morphologyEx(rm, cv2.MORPH_OPEN, np.ones((25, 25), np.uint8))
+body = cv2.dilate(body, np.ones((9, 9), np.uint8))
+body = cv2.GaussianBlur(body.astype(np.float32) / 255.0, (0, 0), 3)
+RIB_SMALL = RIB * body[..., None]
+vB = dict(variants["B"]); vB["cx"] = 170
+place(Df, RIB_SMALL, **vB)
 Image.fromarray((fb + Df).clip(0, 255).astype(np.uint8)).save(os.path.join(outdir, "front_final.png"))
 print("앞표지 확정 바탕: 큰 리본 +150px, 작은 리본 시안 B")
