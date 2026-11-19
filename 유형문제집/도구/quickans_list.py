@@ -328,7 +328,15 @@ for n in list(files):
         mx = files[n].decode("utf-8")
         mx = mx.replace("<hp:t>%s</hp:t>" % UNITS[0], "<hp:t>빠른 정답</hp:t>").replace("<hp:t>1.</hp:t>", "<hp:t></hp:t>")
         mx = mx.replace("<hp:t>1. %s</hp:t>" % UNITS[0], "<hp:t>빠른 정답</hp:t>")          # 워크북 바탕쪽은 '1. 다항식의 연산' 한 덩어리
+        # 워크북 짝수 쪽 바탕쪽 제목은 문단 번호 매기기('1.' 자동) → '1. 빠른 정답'으로 나왔음(사용자 PDF 2026-11-19) → 번호 없는 문단 모양으로
+        for mm_ in list(re.finditer(r'<hp:p [^>]*paraPrIDRef="(\d+)"[^>]*>(?:(?!<hp:p ).)*?<hp:t>빠른 정답</hp:t>', mx, re.S)):
+            ppx = re.search(r'<hh:paraPr id="%s".*?</hh:paraPr>' % mm_.group(1), head, re.S).group(0)
+            if '<hh:heading type="NUMBER"' in ppx or '<hh:heading type="OUTLINE"' in ppx:
+                head, pp_new = add_item(head, "paraPr", "paraProperties", mm_.group(1),
+                                        lambda x: re.sub(r'<hh:heading type="\w+" idRef="\d+" level="\d+"/>', '<hh:heading type="NONE" idRef="0" level="0"/>', x))
+                mx = mx.replace(mm_.group(0), mm_.group(0).replace('paraPrIDRef="%s"' % mm_.group(1), 'paraPrIDRef="%d"' % pp_new, 1), 1)
         files[n] = mx.encode("utf-8")
+files["Contents/header.xml"] = head.encode("utf-8")
 
 # 첫 문단(구역 정의·단 정의·꼬리말)
 i0 = sec.index("<hp:p ")
@@ -370,7 +378,7 @@ W_COL = (72852 - 4535 - 4535 - 2267 - 2268) // 2       # 단 너비(쪽 너비 �
 
 def eqfix(e):
     # 2026-11-19 사용자 '수식에 bold가 남아 있는 경우가 있어' — 미주 정답 수식의 bold/BOLD를 뺌(빠른 정답은 보통 굵기)
-    e = re.sub(r"(<hp:script[^>]*>)(.*?)(</hp:script>)", lambda m: m.group(1) + re.sub(r"(?i)\bbold\b\s*", "", m.group(2)) + m.group(3), e, count=1, flags=re.S)
+    e = re.sub(r"(<hp:script[^>]*>)(.*?)(</hp:script>)", lambda m: m.group(1) + re.sub(r"(?i)\bbold(?![a-z])\s*", "", m.group(2)) + m.group(3), e, count=1, flags=re.S)
     EQID[0] += 1
     e = re.sub(r'(<hp:equation\b[^>]*?\bid=")\d+', lambda m: m.group(1) + str(EQID[0]), e, count=1)
     bu = int(re.search(r'baseUnit="(\d+)"', e).group(1))
