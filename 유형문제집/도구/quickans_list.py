@@ -332,8 +332,14 @@ for n in list(files):
         for mm_ in list(re.finditer(r'<hp:p [^>]*paraPrIDRef="(\d+)"[^>]*>(?:(?!<hp:p ).)*?<hp:t>빠른 정답</hp:t>', mx, re.S)):
             ppx = re.search(r'<hh:paraPr id="%s".*?</hh:paraPr>' % mm_.group(1), head, re.S).group(0)
             if '<hh:heading type="NUMBER"' in ppx or '<hh:heading type="OUTLINE"' in ppx:
-                head, pp_new = add_item(head, "paraPr", "paraProperties", mm_.group(1),
-                                        lambda x: re.sub(r'<hh:heading type="\w+" idRef="\d+" level="\d+"/>', '<hh:heading type="NONE" idRef="0" level="0"/>', x))
+                # 새 문단 모양을 더한 판은 한글에서 안 열렸음(사용자 2026-11-19 '워크북 빠른 정답 파일이 안 열려') →
+                # 머리에 이미 있는, 번호만 없고 나머지가 같은 문단 모양을 씀(워크북 3~14단원 바탕쪽이 쓰는 134번)
+                key = lambda x: re.sub(r'<hh:paraPr id="\d+"', "", re.sub(r"<hh:heading[^>]*/>", "", x))
+                same = [q.group(1) for q in re.finditer(r'<hh:paraPr id="(\d+)".*?</hh:paraPr>', head, re.S)
+                        if key(q.group(0)) == key(ppx) and '<hh:heading type="NONE"' in q.group(0)]
+                if not same:
+                    raise SystemExit("번호 없는 같은 문단 모양이 머리에 없음: paraPr %s" % mm_.group(1))
+                pp_new = int(same[0])
                 mx = mx.replace(mm_.group(0), mm_.group(0).replace('paraPrIDRef="%s"' % mm_.group(1), 'paraPrIDRef="%d"' % pp_new, 1), 1)
         files[n] = mx.encode("utf-8")
 files["Contents/header.xml"] = head.encode("utf-8")
@@ -378,7 +384,11 @@ W_COL = (72852 - 4535 - 4535 - 2267 - 2268) // 2       # 단 너비(쪽 너비 �
 
 def eqfix(e):
     # 2026-11-19 사용자 '수식에 bold가 남아 있는 경우가 있어' — 미주 정답 수식의 bold/BOLD를 뺌(빠른 정답은 보통 굵기)
-    e = re.sub(r"(<hp:script[^>]*>)(.*?)(</hp:script>)", lambda m: m.group(1) + re.sub(r"(?i)\bbold(?![a-z])\s*", "", m.group(2)) + m.group(3), e, count=1, flags=re.S)
+    def _clean(sc):
+        sc = re.sub(r"(?i)\bbold(?![a-z])\s*", "", sc)
+        d = sc.count("{") - sc.count("}")              # 미주 수식에 'bold{37'처럼 닫는 괄호가 없던 것 → 짝 맞춤
+        return sc + "}" * d if d > 0 else sc
+    e = re.sub(r"(<hp:script[^>]*>)(.*?)(</hp:script>)", lambda m: m.group(1) + _clean(m.group(2)) + m.group(3), e, count=1, flags=re.S)
     EQID[0] += 1
     e = re.sub(r'(<hp:equation\b[^>]*?\bid=")\d+', lambda m: m.group(1) + str(EQID[0]), e, count=1)
     bu = int(re.search(r'baseUnit="(\d+)"', e).group(1))
