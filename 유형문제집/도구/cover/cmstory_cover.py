@@ -123,9 +123,11 @@ def tagline(img, w1, plus, w2, align, pad=4):
     f = ImageFont.truetype(FONT("SemiBold"), round(size, 1))
     mo, _ = render("변형", f, 0); ob = ink_box(np.asarray(mo) > 128)
     mn, _ = render("유형", f, 0); nb = ink_box(np.asarray(mn) > 128)
-    dy = w2[1] - ob[1]                                                     # 기준선: 원래 '변형'과 같게
+    # 2026-11-19 사용자 '미묘하게 줄 안 맞는 것도 수정'(아는체는 '안 바꿀게'): '기출'도 원래 화소 대신 같은 글꼴·같은 기준선으로 씀
+    mg, _ = render("기출", f, 0); gb = ink_box(np.asarray(mg) > 128)
+    dy = w2[1] - ob[1]                                                     # 기준선: 원래 '변형'과 같게(두 낱말 모두)
     wn = nb[2] - nb[0] + 1
-    W1, WP = w1[2] - w1[0] + 1, plus[2] - plus[0] + 1
+    W1, WP = gb[2] - gb[0] + 1, plus[2] - plus[0] + 1
     total = wn + g1 + WP + g2 + W1
     if align == "right":
         left = w2[2] - total + 1
@@ -141,14 +143,15 @@ def tagline(img, w1, plus, w2, align, pad=4):
     def put(block, x, y):
         H_, W_ = block.shape[:2]
         a[y:y + H_, x:x + W_] = np.minimum(a[y:y + H_, x:x + W_], block)
-    put(pl, xs_plus, plus[1]); put(gi, xs_gi, w1[1])
-    # 유형 쓰기
-    mk = np.asarray(mn).astype(float) / 255.0
-    ox = xs_new - nb[0]
-    H_, W_ = mk.shape
-    sub = a[dy:dy + H_, ox:ox + W_]
-    m3 = mk[:sub.shape[0], :sub.shape[1]][..., None]
-    a[dy:dy + H_, ox:ox + W_] = sub * (1 - m3) + col * m3
+    put(pl, xs_plus, plus[1])
+    # 유형·기출 쓰기(같은 기준선)
+    for mask, bb_, x_ in ((mn, nb, xs_new), (mg, gb, xs_gi)):
+        mk = np.asarray(mask).astype(float) / 255.0
+        ox = x_ - bb_[0]
+        H_, W_ = mk.shape
+        sub = a[dy:dy + H_, ox:ox + W_]
+        m3 = mk[:sub.shape[0], :sub.shape[1]][..., None]
+        a[dy:dy + H_, ox:ox + W_] = sub * (1 - m3) + col * m3
     print("  유형+기출: 유형 %d~%d, + %d~%d, 기출 %d~%d (크기 %.1f)" % (xs_new, xs_new + wn - 1, xs_plus, xs_plus + WP - 1, xs_gi, xs_gi + W1 - 1, size))
     return Image.fromarray(a.clip(0, 255).astype(np.uint8))
 
