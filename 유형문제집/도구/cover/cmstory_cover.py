@@ -144,7 +144,7 @@ def tagline(img, w1, plus, w2, align, pad=4):
     return Image.fromarray(a.clip(0, 255).astype(np.uint8))
 
 
-MAIN = {1: (243, 134, 35), 2: (32, 123, 77)}
+MAIN = {1: (243, 123, 15), 2: (32, 123, 77)}   # 공통수학1: #F38623에서 채도만 0.86 → 0.94(같은 색상·밝기) — 2026-11-19 사용자 '공수1 메인주황 채도 조금 높여'
 BLUE = np.array((52, 114, 253), float)
 
 
