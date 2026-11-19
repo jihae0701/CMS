@@ -46,6 +46,19 @@ def supersample(draw_fn, w, h, S=4):
     return np.asarray(big.resize((w, h), Image.LANCZOS)).astype(float) / 255.0
 
 
+PAPER = 240        # 2026-11-19 사용자 '워크북들은 흰색 부분들이 아주 연한 회색이 되게': 색 띠 밖 흰 종이 → #F0F0F0
+
+
+def paper(img, band):
+    """워크북: 색 띠(band = (x0, y0, x1, y1), 끝 포함 안 함) 밖을 240/255로 곱함 — 흰색 → 아주 연한 회색, 검은 로고는 그대로(가장자리 부드러움 유지)"""
+    a = np.asarray(img.convert("RGB")).astype(float)
+    keep = a.copy()
+    a = a * (PAPER / 255.0)
+    x0, y0, x1, y1 = band
+    a[y0:y1, x0:x1] = keep[y0:y1, x0:x1]
+    return Image.fromarray(a.round().clip(0, 255).astype(np.uint8))
+
+
 for n, kind, pic in BOOKS:
     art = Image.open(os.path.join(ODIR, pic)).convert("RGB")
     A = np.asarray(art).astype(int)
@@ -64,6 +77,8 @@ for n, kind, pic in BOOKS:
     py = round((Y1 - Y0) / 2 - ccy * SCALE)
     band.paste(sm, (px, py))
     fr.paste(band, (0, Y0))
+    if kind == "워크북":
+        fr = paper(fr, (0, Y0, fr.width, Y1))
     fr.save(os.path.join(CDIR, tag + "_앞표지.png"))
 
     # ---------------------------------------------------------------- 책등
@@ -112,10 +127,15 @@ for n, kind, pic in BOOKS:
     hh, ww = bm.shape
     reg = sp[by0:by0 + hh, bx0:bx0 + ww]
     sp[by0:by0 + hh, bx0:bx0 + ww] = reg * (1 - bm[..., None]) + BLACK * bm[..., None]
-    Image.fromarray(sp.clip(0, 255).astype(np.uint8)).save(os.path.join(CDIR, tag + "_책등.png"))
+    spi = Image.fromarray(sp.clip(0, 255).astype(np.uint8))
+    if kind == "워크북":
+        spi = paper(spi, (SX0, SY0, SX1, SY1))
+    spi.save(os.path.join(CDIR, tag + "_책등.png"))
     print(tag, "바탕", bg, "앞 그림 %.2f배 (%d, %d)" % (SCALE, px, py + Y0), "책등 상자", (bx0, by0, bx0 + ww - 1, by0 + hh - 1))
 
     # ---------------------------------------------------------------- 뒤표지
     bk = Image.open(os.path.join(ODIR, "CLIMATH_공통수학1_뒤표지.jpg")).convert("RGB")
     ImageDraw.Draw(bk).rectangle((1172, 256, 1473, 1661), fill=bg)
+    if kind == "워크북":
+        bk = paper(bk, (1172, 256, 1474, 1662))
     bk.save(os.path.join(CDIR, tag + "_뒤표지.png"))
