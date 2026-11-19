@@ -12,6 +12,7 @@ python cmstory_cover.py <앞표지.jpg> <책등.jpg> <뒤(가운데 로고).jpg>
 - 사용자 '기출 +변형 대신 유형+기출'(앞표지·로고면): 원래 '기출'과 '+'는 그 화소를 그대로 옮기고 '유형'만 Pretendard SemiBold로 씀
   (원래 '변형'과 같은 크기·기준선으로 맞춤). 순서 '유형 + 기출', 낱말 사이 간격은 원래대로. 앞표지는 오른쪽 끝 맞춤, 로고면은 왼쪽 끝 맞춤.
 - 책등의 '고2' → '고1'(Pretendard Medium, 검정) — 2026-11-19 사용자 요청으로 학년 표시는 없애고 책 이름을 그 자리(시작 883px)로 올림.
+- 유형서 라이트(8번째 인수 = 필기체 글꼴): 책등의 책 이름 뒤에 얇은 필기체 'Lite'(Sacramento, 메인색)를 더한 책등을 따로 저장.
 - 책등 띠의 '기출모음집' → '유형문제집'(흰 글씨 Pretendard SemiBold, 같은 크기·시작점), 책등의 cms 로고만 80%(가운데 그대로). 나머지(CMStory 글자·C 고리·CLIMATH 띠·CREVERSE 로고·'기출+변형')는 그대로.
 """
 import os, sys
@@ -19,6 +20,7 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
 front, spine, back, fdir, outdir = sys.argv[1:6]
+SCRIPT = sys.argv[8] if len(sys.argv) > 8 else None       # 2026-11-19 사용자 '유형서 라이트 표지는 책등에만, 공통수학1 뒤에 얇고 필기체 같은 Lite' — 필기체 글꼴(Sacramento)
 LOGO_SPINE = sys.argv[7] if len(sys.argv) > 7 else None   # 2026-11-19 사용자 '책등은 cms 로고 다른 걸로' — 책등 전용 로고(없으면 LOGO)
 LOGO = sys.argv[6] if len(sys.argv) > 6 else None          # 2026-11-19 사용자 'CREVERSE 로고 빼고 이걸로' — cms 교과 로고(PNG, 투명 바탕)
 FONT = lambda w: os.path.join(fdir, "Pretendard-%s.otf" % w)
@@ -156,6 +158,30 @@ def tagline(img, w1, plus, w2, align, pad=4):
     return Image.fromarray(a.clip(0, 255).astype(np.uint8))
 
 
+def lite_mark(img, color, gap=10, k=1.15):
+    """책등의 '공통수학N' 바로 뒤(아래)에 얇은 필기체 'Lite'. 크기: 'Lite' 잉크 높이 = 책 이름 글자 높이 × 1.15, 아랫선(책등에서 왼쪽 끝)을 책 이름과 맞춤"""
+    a = np.asarray(img).astype(float)
+    x0, y0, x1, y1 = 500, 860, 600, 1300
+    m = np.abs(a[y0:y1, x0:x1] - np.array(color, float)).sum(axis=2) < 60
+    ys, xs = np.nonzero(m)
+    bx = (x0 + xs.min(), y0 + ys.min(), x0 + xs.max(), y0 + ys.max())
+    h = bx[2] - bx[0] + 1
+    size = 60.0
+    for _ in range(3):
+        f = ImageFont.truetype(SCRIPT, size); bb = f.getbbox("Lite"); size *= h * k / (bb[3] - bb[1])
+    f = ImageFont.truetype(SCRIPT, size); bb = f.getbbox("Lite")
+    mk = Image.new("L", (bb[2] + 20, bb[3] + 20), 0)
+    ImageDraw.Draw(mk).text((10, 10), "Lite", font=f, fill=255)
+    mk = mk.rotate(-90, expand=True)
+    lb = ink_box(np.asarray(mk) > 128)
+    X, Y = bx[0] - lb[0], bx[3] + gap - lb[1]
+    m3 = np.asarray(mk).astype(float)[..., None] / 255.0
+    H_, W_ = m3.shape[:2]
+    a[Y:Y + H_, X:X + W_] = a[Y:Y + H_, X:X + W_] * (1 - m3) + np.array(color, float) * m3
+    print("  Lite: 책 이름 %s 뒤 (%d, %d, %d, %d), 크기 %.1f" % (bx, X + lb[0], Y + lb[1], X + lb[2], Y + lb[3], size))
+    return Image.fromarray(a.clip(0, 255).astype(np.uint8))
+
+
 MAIN = {1: (243, 123, 15), 2: (32, 123, 77)}   # 공통수학1: #F38623에서 채도만 0.86 → 0.94(같은 색상·밝기) — 2026-11-19 사용자 '공수1 메인주황 채도 조금 높여'
 BLUE = np.array((52, 114, 253), float)
 
@@ -224,3 +250,5 @@ for n in (1, 2):
     im = recolor(im, MAIN[n])
     im = logo(im, (530, 1665, 566, 1852), "center", rot=-90, scale=0.8, path=LOGO_SPINE)
     im.save(os.path.join(outdir, "CMStory_%s_책등.png" % name))
+    if SCRIPT:                                                     # 유형서 라이트: 책등만 다름(앞표지·로고면은 유형서와 같음)
+        lite_mark(im, MAIN[n]).save(os.path.join(outdir, "CMStory_%s_라이트_책등.png" % name))
