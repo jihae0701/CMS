@@ -2,7 +2,7 @@
 """cms 교과 로고 → cms 고등부 로고 (2026-11-19).
 python cms_logo_godeungbu.py <cms_교과_로고.png> <Pretendard 폴더> <출력.png>
 - 사용자: 'cms 로고에서 교과 대신 고등부라 쓰고 음영 크기 적당히 조절, 음영 부분 아주 짙은 회색, m 부분 파랑 부분 테두리 검정 안에 흰색으로'.
-- m의 파란 획(#00AAE7): 안은 흰색, 둘레는 검정 테두리(원본 1200px 기준 7px).
+- m의 파란 획(#00AAE7): 안은 흰색, 둘레는 테두리(원본 1200px 기준 7px) — 처음 검정, 사용자 요청으로 'cms' 글자 회색 #414042.
 - 오른쪽 둥근 음영(알약 모양): 아주 짙은 회색 #232323, 글자 '고등부'(흰색, Pretendard Bold, 원래 '교과'와 같은 글자 높이),
   음영 높이·둥근 정도·좌우 여백은 원래와 같게 두고 너비만 세 글자에 맞게 늘림. 'cms'의 회색(#414042)은 그대로.
 """
@@ -22,8 +22,9 @@ hard = ((wc > 0.5) & (al > 128)).astype(np.uint8) * 255
 R = 7
 inner = Image.fromarray(hard, "L").filter(ImageFilter.MinFilter(2 * R + 1)).filter(ImageFilter.GaussianBlur(1.0))
 E = np.asarray(inner).astype(float) / 255.0                                     # 1 = 안쪽(흰색), 0 = 테두리(검정)
-target = E[..., None] * 255.0                                                   # 흰색~검정
 gray = np.array((65.0, 64.0, 66.0))
+# 2026-11-19 사용자 '로고 m 테두리 주변과 어우러지게 짙은 회색으로': 테두리 = 'cms' 글자와 같은 회색 #414042
+target = E[..., None] * 255.0 + (1 - E[..., None]) * gray                     # 흰색~회색 테두리
 mix = wc[..., None] * target + (1 - wc[..., None]) * gray
 sel = wc > 0.02
 rgb2 = rgb.copy()
