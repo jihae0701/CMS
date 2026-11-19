@@ -6,6 +6,9 @@ python cmstory_cover.py <앞표지.jpg> <책등.jpg> <뒤(가운데 로고).jpg>
   (원래 글씨와 Pretendard Bold의 '미적분 Ⅰ'를 겹쳐 크기·기준선을 맞춘 뒤 같은 크기로). 앞표지는 오른쪽 끝, 뒤·책등은 시작점을 원래와 같게.
 - 사용자 '크레버스 로고 빼고 이걸로해줘': CREVERSE 로고(앞표지 오른쪽 아래·로고면 아래 가운데·책등 아래)를 지우고 cms 교과 로고를 같은 높이로
   (앞표지는 오른쪽 끝 맞춤, 로고면은 가운데, 책등은 시계 방향으로 돌려 가운데).
+- 사용자 '파랑 대신에 색깔은 각 유형서 메인색을 써': 파란 부분(책 이름 글자·C 고리·책등 띠)을 유형서 머리말의 '고1' 상자 색으로 —
+  공통수학1 #F38623(주황, 사용자 IDML 단원 표지 색과 같음), 공통수학2 #207B4D(초록). 화소마다 흰색·파랑(52,114,253)·검정의 섞임으로 풀어
+  파랑 몫만 메인색으로 바꿈(흰 글자·검은 글자·회색 그림자는 그대로, 고리의 옅은 선은 옅은 메인색).
 - 책등의 '고2' → '고1'(Pretendard Medium, 검정). 나머지(CMStory 글자·C 고리·CLIMATH 띠·CREVERSE 로고·'기출+변형')는 그대로.
 """
 import os, sys
@@ -93,6 +96,25 @@ def place(img, old_text, new_text, box, kind, weight, rot=0, align="left", pad=5
     return out
 
 
+MAIN = {1: (243, 134, 35), 2: (32, 123, 77)}
+BLUE = np.array((52, 114, 253), float)
+
+
+def recolor(img, target):
+    a = np.asarray(img).astype(float) - 255.0
+    u, v = BLUE - 255.0, np.array((-255.0, -255.0, -255.0))
+    M = np.stack([u, v], axis=1)                                   # 3×2
+    coef = np.linalg.lstsq(M, a.reshape(-1, 3).T, rcond=None)[0]    # 2×N: 파랑 몫 b, 검정 몫 k
+    b, k = np.clip(coef[0], 0, None), np.clip(coef[1], 0, None)
+    blue = b > 0.02
+    fit = (M @ np.stack([b, k])).T
+    resid = a.reshape(-1, 3) - fit
+    new = np.outer(b, np.array(target, float) - 255.0) + np.outer(k, v) + resid * (~blue)[:, None]
+    out = a.reshape(-1, 3).copy()
+    out[blue] = new[blue]
+    return Image.fromarray((out.reshape(a.shape) + 255.0).clip(0, 255).astype(np.uint8))
+
+
 def logo(img, box, align, rot=0, pad=6):
     if not LOGO:
         return img
@@ -122,14 +144,17 @@ for n in (1, 2):
     print(name)
     im = Image.open(front).convert("RGB")
     im = place(im, "미적분 Ⅰ", name, (1400, 250, 1880, 450), "blue", "Bold", align="right")
+    im = recolor(im, MAIN[n])
     im = logo(im, (1634, 1823, 1833, 1862), "right")
     im.save(os.path.join(outdir, "CMStory_%s_앞표지.png" % name))
     im = Image.open(back).convert("RGB")
     im = place(im, "미적분 Ⅰ", name, (1100, 800, 1450, 960), "blue", "Bold")
+    im = recolor(im, MAIN[n])
     im = logo(im, (895, 1762, 1095, 1800), "center")
     im.save(os.path.join(outdir, "CMStory_%s_로고면.png" % name))
     im = Image.open(spine).convert("RGB")
     im = place(im, "미적분 Ⅰ", name, (500, 930, 600, 1100), "blue", "Bold", rot=-90)
     im = place(im, "고2", "고1", (500, 860, 620, 930), "dark", "Medium", rot=-90, pad=3)
+    im = recolor(im, MAIN[n])
     im = logo(im, (530, 1665, 566, 1852), "center", rot=-90)
     im.save(os.path.join(outdir, "CMStory_%s_책등.png" % name))
