@@ -19,6 +19,7 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
 front, spine, back, fdir, outdir = sys.argv[1:6]
+LOGO_SPINE = sys.argv[7] if len(sys.argv) > 7 else None   # 2026-11-19 사용자 '책등은 cms 로고 다른 걸로' — 책등 전용 로고(없으면 LOGO)
 LOGO = sys.argv[6] if len(sys.argv) > 6 else None          # 2026-11-19 사용자 'CREVERSE 로고 빼고 이걸로' — cms 교과 로고(PNG, 투명 바탕)
 FONT = lambda w: os.path.join(fdir, "Pretendard-%s.otf" % w)
 os.makedirs(outdir, exist_ok=True)
@@ -171,10 +172,11 @@ def recolor(img, target):
     return Image.fromarray((out.reshape(a.shape) + 255.0).clip(0, 255).astype(np.uint8))
 
 
-def logo(img, box, align, rot=0, pad=6, scale=1.0):
-    if not LOGO:
+def logo(img, box, align, rot=0, pad=6, scale=1.0, path=None):
+    path = path or LOGO
+    if not path:
         return img
-    lg = Image.open(LOGO).convert("RGBA")
+    lg = Image.open(path).convert("RGBA")
     al = np.asarray(lg)[..., 3]
     ys, xs = np.nonzero(al > 10)
     lg = lg.crop((xs.min(), ys.min(), xs.max() + 1, ys.max() + 1))
@@ -217,5 +219,5 @@ for n in (1, 2):
     im = place(im, "미적분 Ⅰ", name, (500, 930, 600, 1100), "blue", "Bold", rot=-90, start=883)   # 옛 '고2' 자리에서 시작
     im = place(im, "기출모음집", "유형문제집", (520, 220, 580, 360), "white", "SemiBold", rot=-90, pad=3)
     im = recolor(im, MAIN[n])
-    im = logo(im, (530, 1665, 566, 1852), "center", rot=-90, scale=0.8)
+    im = logo(im, (530, 1665, 566, 1852), "center", rot=-90, scale=0.8, path=LOGO_SPINE)
     im.save(os.path.join(outdir, "CMStory_%s_책등.png" % name))
