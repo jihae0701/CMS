@@ -134,7 +134,8 @@ if YU:                                                     # 사용자: '공통�
     link_dir = link_dir.replace(quote("/기본서/"), quote("/유형서/"))
 link_dir = link_dir.replace(quote("공통수학2_기본서_유형서"), quote("공통수학%s_기본서_유형서" % BOOK[1]))
 if BOOK == "c1c":                                          # 사용자 자료 폴더(탐색기 화면): E:\…\2027 예비고1 교재\CLIMATH 공통수학1 (C) 2027년\
-    link_dir = link_dir.replace(quote("공통수학2_기본서_유형서/기본서/"), quote("CLIMATH 공통수학1 (C) 2027년/")).replace("file:H:/", "file:E:/")
+    link_dir = link_dir.replace(quote("공통수학1_기본서_유형서/기본서/"), quote("CLIMATH 공통수학1 (C) 2027년/")).replace("file:H:/", "file:E:/")
+    # 2026-11-19 고침: 135행에서 이미 공통수학1로 바뀐 뒤라 '공통수학2_…'로 찾으면 폴더가 안 바뀌었음(링크가 공통수학1 기본서 폴더를 가리켰음)
 PAGE_TY = -403.93700787401576
 
 def page_xml(num, left):
