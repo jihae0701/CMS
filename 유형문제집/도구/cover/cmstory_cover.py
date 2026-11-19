@@ -11,7 +11,8 @@ python cmstory_cover.py <앞표지.jpg> <책등.jpg> <뒤(가운데 로고).jpg>
   파랑 몫만 메인색으로 바꿈(흰 글자·검은 글자·회색 그림자는 그대로, 고리의 옅은 선은 옅은 메인색).
 - 사용자 '기출 +변형 대신 유형+기출'(앞표지·로고면): 원래 '기출'과 '+'는 그 화소를 그대로 옮기고 '유형'만 Pretendard SemiBold로 씀
   (원래 '변형'과 같은 크기·기준선으로 맞춤). 순서 '유형 + 기출', 낱말 사이 간격은 원래대로. 앞표지는 오른쪽 끝 맞춤, 로고면은 왼쪽 끝 맞춤.
-- 책등의 '고2' → '고1'(Pretendard Medium, 검정). 나머지(CMStory 글자·C 고리·CLIMATH 띠·CREVERSE 로고·'기출+변형')는 그대로.
+- 책등의 '고2' → '고1'(Pretendard Medium, 검정) — 2026-11-19 사용자 요청으로 학년 표시는 없애고 책 이름을 그 자리(시작 883px)로 올림.
+- 책등 띠의 '기출모음집' → '유형문제집'(흰 글씨 Pretendard SemiBold, 같은 크기·시작점), 책등의 cms 로고만 80%(가운데 그대로). 나머지(CMStory 글자·C 고리·CLIMATH 띠·CREVERSE 로고·'기출+변형')는 그대로.
 """
 import os, sys
 import numpy as np
@@ -34,6 +35,8 @@ def find(img, box, kind):
     s = a[y0:y1, x0:x1]
     if kind == "blue":
         m = (s[..., 2] > 200) & (s[..., 0] < 120) & (s[..., 1] < 160)
+    elif kind == "white":
+        m = s.min(axis=2) > 200
     else:
         m = s.sum(axis=2) < 300
     bx = ink_box(m)
@@ -53,8 +56,11 @@ def render(text, font, rot):
     return m, origin
 
 
-def place(img, old_text, new_text, box, kind, weight, rot=0, align="left", pad=5):
+def place(img, old_text, new_text, box, kind, weight, rot=0, align="left", pad=5, start=None):
+    """start: 책등(rot)에서 새 글자 시작(위) 높이를 따로 줄 때"""
     (bx, col) = find(img, box, kind)
+    _a = np.asarray(img.convert("RGB")).astype(int)[box[1]:box[3], box[0]:box[2]]
+    bg = (255, 255, 255) if kind != "white" else tuple(int(v) for v in np.median(_a[_a.min(axis=2) < 180], axis=0))   # 흰 글자는 띠 색으로 지움
     h = (bx[3] - bx[1] + 1) if not rot else (bx[2] - bx[0] + 1)          # 글자 높이(책등은 가로 폭)
     # 크기: Pretendard로 그린 옛 글자의 잉크 높이가 원래와 같도록
     size = 100
@@ -77,13 +83,15 @@ def place(img, old_text, new_text, box, kind, weight, rot=0, align="left", pad=5
     else:
         dx = bx[2] - ob[2]                              # 글자 위쪽이 오른쪽(시계 방향): 오른쪽 끝 맞춤
         dy = bx[1] - ob[1]                              # 시작(위) 맞춤
+        if start is not None:
+            dy = start - ob[1]
     m_new, o_new = render(new_text, f, rot)
     nb = ink_box(np.asarray(m_new) > 128)
     if not rot and align == "right":                    # 오른쪽 맞춤: 새 글자 오른쪽 끝을 원래 오른쪽 끝에
         dx = bx[2] - nb[2]
     # 지우기
     d = ImageDraw.Draw(img)
-    d.rectangle((bx[0] - pad, bx[1] - pad, bx[2] + pad, bx[3] + pad), fill=(255, 255, 255))
+    d.rectangle((bx[0] - pad, bx[1] - pad, bx[2] + pad, bx[3] + pad), fill=bg)
     # 쓰기
     a = np.asarray(img).astype(float)
     mk = np.asarray(m_new).astype(float) / 255.0
@@ -163,7 +171,7 @@ def recolor(img, target):
     return Image.fromarray((out.reshape(a.shape) + 255.0).clip(0, 255).astype(np.uint8))
 
 
-def logo(img, box, align, rot=0, pad=6):
+def logo(img, box, align, rot=0, pad=6, scale=1.0):
     if not LOGO:
         return img
     lg = Image.open(LOGO).convert("RGBA")
@@ -177,6 +185,7 @@ def logo(img, box, align, rot=0, pad=6):
         h = y1 - y0 + 1; w = round(lg.width * h / lg.height)
     else:
         w = x1 - x0 + 1; h = round(lg.height * w / lg.width)
+    w, h = round(w * scale), round(h * scale)
     lg = lg.resize((w, h), Image.LANCZOS)
     ImageDraw.Draw(img).rectangle((x0 - pad, y0 - pad, x1 + pad, y1 + pad), fill=(255, 255, 255))
     cy = (y0 + y1) / 2; cx = (x0 + x1) / 2
@@ -203,8 +212,10 @@ for n in (1, 2):
     im = logo(im, (895, 1762, 1095, 1800), "center")
     im.save(os.path.join(outdir, "CMStory_%s_로고면.png" % name))
     im = Image.open(spine).convert("RGB")
-    im = place(im, "미적분 Ⅰ", name, (500, 930, 600, 1100), "blue", "Bold", rot=-90)
-    im = place(im, "고2", "고1", (500, 860, 620, 930), "dark", "Medium", rot=-90, pad=3)
+    # 2026-11-19 사용자 '책등 고1 표시 없애고 공통수학 글씨 위로 올리고 / 기출모음집 대신 유형문제집 / 책등의 cms 로고만 80%로 축소'
+    ImageDraw.Draw(im).rectangle((535, 880, 556, 916), fill=(255, 255, 255))          # '고2' 지움(고1 표시 없음)
+    im = place(im, "미적분 Ⅰ", name, (500, 930, 600, 1100), "blue", "Bold", rot=-90, start=883)   # 옛 '고2' 자리에서 시작
+    im = place(im, "기출모음집", "유형문제집", (520, 220, 580, 360), "white", "SemiBold", rot=-90, pad=3)
     im = recolor(im, MAIN[n])
-    im = logo(im, (530, 1665, 566, 1852), "center", rot=-90)
+    im = logo(im, (530, 1665, 566, 1852), "center", rot=-90, scale=0.8)
     im.save(os.path.join(outdir, "CMStory_%s_책등.png" % name))
