@@ -22,6 +22,10 @@ UNITS = {"2": ["평면좌표", "직선의 방정식", "원의 방정식", "도�
                "명제", "절대부등식", "함수", "합성함수와 역함수", "유리함수", "무리함수"],
          "1": ["다항식의 연산과 항등식", "나머지정리", "인수분해", "복소수와 이차방정식", "이차함수와 이차방정식의 관계", "이차함수의 최대·최소",
                "여러 가지 방정식", "이차부등식", "연립부등식", "경우의 수와 순열", "조합", "행렬"]}[BOOK[1]]
+if BOOK == "c1c":   # 2026-11-19 CLIMATH ⓒ 공통수학1 (14단원, 사용자 단원 PDF 머리말·파일 이름)
+    UNITS = ["다항식의 연산", "항등식", "나머지정리", "인수분해", "복소수", "이차함수와 이차방정식의 관계", "이차함수의 최대·최소",
+             "고차방정식", "연립방정식", "연립부등식과 이차부등식", "연립이차부등식", "순열", "조합", "행렬"]
+NU = len(UNITS)
 # 링크 파일 이름 = 사용자 PDF 이름(기본서 '1. 평면좌표.pdf', 유형서 '01 평면좌표.pdf'), 단원명은 PDF 머리말과 같게
 FILES = [("%02d %s.pdf" if YU else "%d. %s.pdf") % (i + 1, u) for i, u in enumerate(UNITS)]
 # 2026-11-18 사용자 수정본(유형서 공통수학1 IDML)을 따름: 유형서 링크 이름은 밑줄('01_다항식의_연산과_항등식.pdf', '06_이차함수의_최대_최소.pdf'),
@@ -47,12 +51,12 @@ def npages(p):
     o = subprocess.check_output(["pdfinfo", p]).decode()
     return int(re.search(r"Pages:\s+(\d+)", o).group(1))
 
-counts = [npages(os.path.join(pdfdir, "u%02d.pdf" % (i + 1))) for i in range(12)]
-sizes = [os.path.getsize(os.path.join(pdfdir, "u%02d.pdf" % (i + 1))) for i in range(12)]
+counts = [npages(os.path.join(pdfdir, "u%02d.pdf" % (i + 1))) for i in range(NU)]
+sizes = [os.path.getsize(os.path.join(pdfdir, "u%02d.pdf" % (i + 1))) for i in range(NU)]
 def psize(p):
     o = subprocess.check_output(["pdfinfo", p]).decode()
     return tuple(map(float, re.search(r"Page size:\s+([\d.]+) x ([\d.]+)", o).groups()))
-psz = [psize(os.path.join(pdfdir, "u%02d.pdf" % (i + 1))) for i in range(12)]
+psz = [psize(os.path.join(pdfdir, "u%02d.pdf" % (i + 1))) for i in range(NU)]
 
 # 쪽 배치: 1=차례, 단원마다 짝수 표지 + 홀수부터 본문(+필요하면 빈 쪽)
 plan = {1: ("toc",)}
@@ -129,6 +133,8 @@ link_dir = re.search(r'LinkResourceURI="(file:[^"]*/)[^"/]*"', rect_tpl).group(1
 if YU:                                                     # 사용자: '공통수학1 유형서 PDF 위치 H:/…/공통수학1_기본서_유형서/유형서/'
     link_dir = link_dir.replace(quote("/기본서/"), quote("/유형서/"))
 link_dir = link_dir.replace(quote("공통수학2_기본서_유형서"), quote("공통수학%s_기본서_유형서" % BOOK[1]))
+if BOOK == "c1c":                                          # 사용자 자료 폴더(탐색기 화면): E:\…\2027 예비고1 교재\CLIMATH 공통수학1 (C) 2027년\
+    link_dir = link_dir.replace(quote("공통수학2_기본서_유형서/기본서/"), quote("CLIMATH 공통수학1 (C) 2027년/")).replace("file:H:/", "file:E:/")
 PAGE_TY = -403.93700787401576
 
 def page_xml(num, left):
@@ -198,7 +204,7 @@ s1 = T(f1)
 s1 = re.sub(r"\s*<Rectangle .*?</Rectangle>", "", s1, flags=re.S)
 st_title, fid_title, st_toc, fid_toc = nid(), nid(), nid(), nid()
 add_story(clone_story("u128", st_title), st_title)
-lines = "<Br />".join("<Content>%d. %s\t%d</Content>" % (i + 1, esc(UNITS[i]), starts[i]) for i in range(12))
+lines = "<Br />".join("<Content>%d. %s\t%d</Content>" % (i + 1, esc(UNITS[i]), starts[i]) for i in range(NU))
 add_story(clone_story("u13e", st_toc, lines), st_toc)
 s1 = s1.replace("</Spread>", clone_frame(fr_title, fid_title, st_title) + clone_frame(fr_toc, fid_toc, st_toc) + "</Spread>", 1)
 files[f1] = s1.encode("utf-8")
@@ -235,7 +241,7 @@ files["Resources/Fonts.xml"] = fx.encode("utf-8")
 # ---- designmap
 dm = re.sub(r'(<idPkg:Spread src="[^"]+" />\s*)+',
             lambda m: "".join('<idPkg:Spread src="%s" />\n\t' % x for x in [f1] + new_spreads), dm, count=1)
-if YU:                                                     # 문서 이름(틀은 'CLIMATH(m) 공통수학2.indd')
+if YU or BOOK == "c1c":                                    # 문서 이름(틀은 'CLIMATH(m) 공통수학2.indd')
     dm = re.sub(r'(<Document [^>]*?) Name="[^"]*"', lambda m: m.group(1) + ' Name="%s"' % (os.path.splitext(os.path.basename(out))[0] + ".indd"), dm, count=1)
 dm = re.sub(r'(<Section Self="[^"]+" )Length="\d+" AlternateLayoutLength="\d+"', r'\1Length="%d" AlternateLayoutLength="%d"' % (TOTAL, TOTAL), dm, count=1)
 sl = re.search(r'StoryList="([^"]*)"', dm).group(1).split() + new_stories
@@ -254,4 +260,4 @@ with zipfile.ZipFile(out, "w") as w:
         info.compress_type = zipfile.ZIP_STORED if n == "mimetype" else zipfile.ZIP_DEFLATED
         w.writestr(info, files[n])
 print("펼침면", 1 + len(new_spreads), "새 스토리", len(new_stories), "->", out)
-print("차례:", [(i + 1, UNITS[i], starts[i]) for i in range(12)])
+print("차례:", [(i + 1, UNITS[i], starts[i]) for i in range(NU)])

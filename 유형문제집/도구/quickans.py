@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """빠른 정답 파일 만들기 (2026-11-16 사용자 '기본서와 유형서 올린거 빠른 정답 파일을 만드는데, 각각 맞는 문서form에다가 만들어,
 공통수학1, 2 기본서 유형서 총 4개의 파일로').
-python quickans.py <책: c1b|c1y|c2b|c2y|c1l|c2l> <출력.hwpx> [시작 쪽 번호]   (c1l·c2l: CMS 스토리 라이트, 틀은 라이트 1단원 파일)
+python quickans.py <책: c1b|c1y|c2b|c2y|c1l|c2l|c1c> <출력.hwpx> [시작 쪽 번호]   (c1l·c2l: CMS 스토리 라이트, 틀은 라이트 1단원 파일)
 - 2026-11-18: 1단원 파일 첫 문단의 꼬리말(쪽 번호) 컨트롤을 그대로 옮김(전에는 꼬리말 안의 쪽 번호 컨트롤 때문에 잘려 빠졌음).
   시작 쪽 번호를 주면 첫 문단에 쪽 번호 새로 시작(그 번호)을 넣음 — 인디자인 책에서 빠른 정답 쪽 번호를 이어 찍을 때(공통수학1 유형서 245).
 - 정답은 단원 파일(완성본)의 미주 첫 줄('󰂼' 또는 '[정답]' 뒤)을 그대로 옮긴다. 수식은 수식 개체를 그대로 복사한다.
@@ -20,7 +20,10 @@ BOOKS = {
     "c2y": ("공통수학2 유형서", os.path.join(ROOT, "공통수학2", "유형서"), r"^(\d\d)_(.+)\.hwpx$"),
     "c1l": ("공통수학1 유형서 라이트", os.path.join(ROOT, "스토리라이트", "공통수학1"), r"^(\d\d)_(.+)\.hwpx$"),
     "c2l": ("공통수학2 유형서 라이트", os.path.join(ROOT, "스토리라이트", "공통수학2"), r"^(\d\d)_(.+)\.hwpx$"),
+    "c1c": ("CLIMATH(c) 공통수학1", os.path.join(ROOT, "CLIMATH_c", "공통수학1"), r"^(\d+)\. (.+)\.hwpx$"),   # 2026-11-19: 14단원, 단원마다 문항 번호 1부터
 }
+NUNIT = {"c1c": 14}
+PER_UNIT = {"c1c"}                        # 문항 번호가 단원마다 1부터 다시 시작하는 책(번호 이어짐 검사 안 함)
 FALLBACK = {"c1l": "c1y", "c2l": "c2y"}   # 라이트를 아직 만들지 않은 단원(공통수학2 7·8단원)은 유형서와 같으므로 유형서 파일에서 읽는다
 book, out = sys.argv[1:3]
 START = int(sys.argv[3]) if len(sys.argv) > 3 else None
@@ -39,7 +42,7 @@ if book in FALLBACK:
             units.append((int(m.group(1)), m.group(2).replace("_", " "), os.path.join(D2, f)))
             print("라이트 없음 → 유형서에서:", f)
 units.sort()
-assert [u[0] for u in units] == list(range(1, 13)), [u[0] for u in units]
+assert [u[0] for u in units] == list(range(1, NUNIT.get(book, 12) + 1)), [u[0] for u in units]
 NAME_FIX = {"이차함수의 최대 최소": "이차함수의 최대·최소",
             "유리식과 유리함수": "유리함수", "무리식과 무리함수": "무리함수"}   # 2026-11-18 사용자: 책 차례·표지·PDF 머리말과 같게   # 2026-11-18 사용자: 책 머리말과 같게 '최대·최소'
 
@@ -57,6 +60,8 @@ def answers(path):
         p = re.search(r"<hp:p\b.*?</hp:p>", en, re.S).group(0)
         p = p[p.index("</hp:ctrl>") + len("</hp:ctrl>"):] if "</hp:ctrl>" in p else p
         p = re.sub(r"<hp:linesegarray>.*?</hp:linesegarray>", "", p, flags=re.S)
+        # 2026-11-19 CLIMATH(c) 6단원 19번: 정답 표시가 글자 '󰂼' 대신 그림(정답.png) → 그 그림을 표시로 읽음(원본은 안 고침)
+        p = re.sub(r"<hp:pic\b(?:(?!</hp:pic>).)*?정답\.png(?:(?!</hp:pic>).)*</hp:pic>", "<hp:t>󰂼</hp:t>", p, flags=re.S)
         toks = []
         for m in re.finditer(r"<hp:t>(.*?)</hp:t>|<hp:t/>|(<hp:equation\b.*?</hp:equation>)|<hp:lineBreak/>", p, re.S):
             if m.group(0) == "<hp:lineBreak/>":
@@ -99,6 +104,7 @@ for no, name, path in units:
     a = answers(path)
     data.append((no, NAME_FIX.get(name, name), a))
 for (n1, _, a1), (n2, _, a2) in zip(data, data[1:]):
+    if book in PER_UNIT: break
     assert a1[-1][0] + 1 == a2[0][0], ("번호가 이어지지 않음", n1, a1[-1][0], n2, a2[0][0])
 for no, name, a in data:
     for n, t in a:
