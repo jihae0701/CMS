@@ -15,6 +15,8 @@ import cv2
 from PIL import Image, ImageDraw, ImageFont
 
 front, spine, back, newbg, pdir, rfont, outdir = sys.argv[1:8]
+FRONT_BG = sys.argv[8] if len(sys.argv) > 8 else None      # 2026-11-19: 앞표지 띠 바탕을 따로 짠 그림(make_bg_c2.py, 띠 크기)
+SUFFIX = sys.argv[9] if len(sys.argv) > 9 else ""
 os.makedirs(outdir, exist_ok=True)
 BLACK = np.array((14.0, 16.0, 16.0))
 WHITE = np.array((252.0, 252.0, 252.0))
@@ -144,7 +146,7 @@ if shift:
     alpha[ty0:ty1, tx0 + shift:tx1 + shift] = np.maximum(alpha[ty0:ty1, tx0 + shift:tx1 + shift], ta)
     F[ty0:ty1, tx0 + shift:tx1 + shift] = np.where((ta > 0)[..., None], tF, F[ty0:ty1, tx0 + shift:tx1 + shift])
 print("  '2' 크기 %.1f, 제목 가운데 맞춤 %+dpx (줄 가운데 %.1f)" % (size, shift, line_c))
-newband = compose(bg_fill(W, H, "right"), alpha, F)
+newband = compose(np.asarray(Image.open(FRONT_BG).convert("RGB")).astype(float)[:H, :W] if FRONT_BG else bg_fill(W, H, "right"), alpha, F)
 SS = 4
 for (x0, y0, x1, y1) in RULES:
     pw, ph = (x1 - x0 + 7) * SS, (y1 - y0 + 7) * SS
@@ -156,7 +158,7 @@ for (x0, y0, x1, y1) in RULES:
     reg = newband[yy0:yy0 + sm.shape[0], xx0:xx0 + sm.shape[1]]
     newband[yy0:yy0 + sm.shape[0], xx0:xx0 + sm.shape[1]] = reg * (1 - a_) + sm[..., :3] * a_
 im[Y0:Y1] = newband
-Image.fromarray(im.clip(0, 255).astype(np.uint8)).save(os.path.join(outdir, "CLIMATH_공통수학2_앞표지.png"))
+Image.fromarray(im.clip(0, 255).astype(np.uint8)).save(os.path.join(outdir, "CLIMATH_공통수학2_앞표지%s.png" % SUFFIX))
 FRONT_LEFT_TOP = newband[5, 2]
 
 # ================================================================ 책등
