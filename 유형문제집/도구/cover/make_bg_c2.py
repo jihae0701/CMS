@@ -75,3 +75,39 @@ for name, v in variants.items():
     Image.fromarray(out).save(os.path.join(outdir, "bg_%s.png" % name))
     print(name, v)
 Image.fromarray((Bb + Db).clip(0, 255).astype(np.uint8)).save(os.path.join(outdir, "bg_0.png"))   # 비교용: 큰 리본만
+
+# ================================================================ 시안 B 확정판(2026-11-19): 펼친 표지(뒤표지 띠 | 책등 | 앞표지)
+# 사용자: 'B가 더 마음에 들어, 그래픽이 전반적으로 오른쪽으로 좀 더(큰 그래픽 윗부분이 조금 잘리겠지), 왼쪽 아래 작은 그래픽은 잘 연장해서 책등과 뒤표지까지'.
+# - 한 장으로 이어 붙인 띠(뒤표지 띠 302 + 책등 236 + 앞표지 1474 = 2012 × 1406)에 그려서 세 조각으로 자름 → 이음매에서 그림이 이어짐.
+# - 큰 리본: 오른쪽으로 150px(앞표지 폭의 약 10%) 옮김 → 오른쪽 위가 조금 더 잘림.
+# - 작은 리본: 시안 B와 같은 모양(뒤집지 않음)을 0.75배·75°로 길게 눕혀, 뒤표지 띠 왼쪽 끝에서 들어와 책등 위로 휘고 앞표지 왼쪽 아래로 내려가
+#   아래 가장자리 밖으로 나가게(잘린 두 끝이 모두 띠 밖). 바탕은 앞표지 띠 왼쪽 끝 세로 색을 뒤표지·책등 쪽으로 이어 씀.
+BK, SP = 302, 236
+X0 = BK + SP
+WT = X0 + BW
+SHIFT = 150
+Bs = cv2.resize(B, (SW, SH), interpolation=cv2.INTER_AREA)
+Ds = cv2.resize(delta, (SW, SH), interpolation=cv2.INTER_AREA)
+# 띠 윗선이 원래 그림에서 뒤표지 256·책등 261·앞표지 260으로 조금씩 달라, 펼친 띠는 실제 높이(y 256~1666)로 그려 각자 자리에서 자름
+TOP = {"back": 256, "spine": 261, "front": 260}
+Y0w = min(TOP.values())
+HC = BH + max(TOP.values()) - Y0w
+fo = TOP["front"] - Y0w
+bgw = np.zeros((HC, WT, 3), np.float32)
+Dw = np.zeros_like(bgw)
+fb = Bs[:, off:off + BW]
+bgw[fo:fo + BH, X0:] = fb
+bgw[:fo, X0:] = fb[:1]
+bgw[fo + BH:, X0:] = fb[-1:]
+bgw[:, :X0] = bgw[:, X0:X0 + 1]
+st = off - SHIFT
+srcD = Ds[:, max(0, st):st + BW]
+Dw[fo:fo + BH, X0 + max(0, -st):X0 + max(0, -st) + srcD.shape[1]] = srcD[:, :BW - max(0, -st)]
+place(Dw, RIB, s=0.75 * sc, ang=75, cx=X0 - 150, cy=1260 + fo, flip=False)
+wrap = (bgw + Dw).clip(0, 255).astype(np.uint8)
+cut = lambda k, x0, x1: wrap[TOP[k] - Y0w:TOP[k] - Y0w + BH, x0:x1]
+Image.fromarray(cut("back", 0, BK)).save(os.path.join(outdir, "wrap_back.png"))
+Image.fromarray(cut("spine", BK, X0)).save(os.path.join(outdir, "wrap_spine.png"))
+Image.fromarray(cut("front", X0, WT)).save(os.path.join(outdir, "wrap_front.png"))
+Image.fromarray(wrap).save(os.path.join(outdir, "wrap_all.png"))
+print("펼친 띠", wrap.shape, "큰 리본 오른쪽으로", SHIFT, "px")

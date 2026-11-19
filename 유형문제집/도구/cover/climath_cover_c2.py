@@ -17,6 +17,8 @@ from PIL import Image, ImageDraw, ImageFont
 front, spine, back, newbg, pdir, rfont, outdir = sys.argv[1:8]
 FRONT_BG = sys.argv[8] if len(sys.argv) > 8 else None      # 2026-11-19: 앞표지 띠 바탕을 따로 짠 그림(make_bg_c2.py, 띠 크기)
 SUFFIX = sys.argv[9] if len(sys.argv) > 9 else ""
+SPINE_BG = sys.argv[10] if len(sys.argv) > 10 else None    # 책등·뒤표지 띠 바탕(펼친 표지에서 잘라 낸 것)
+BACK_BG = sys.argv[11] if len(sys.argv) > 11 else None
 os.makedirs(outdir, exist_ok=True)
 BLACK = np.array((14.0, 16.0, 16.0))
 WHITE = np.array((252.0, 252.0, 252.0))
@@ -202,7 +204,7 @@ sub = (slice(Y, Y + hh), slice(X, X + ww))
 alpha[sub] = np.maximum(alpha[sub], m2)
 F[sub] = BLACK
 print("  책등 '2' 크기 %.1f → (%d, %d, %d, %d)" % (size, SX0 + X + b2[0], SY0 + Y + b2[1], SX0 + X + b2[2], SY0 + Y + b2[3]))
-im[SY0:SY1, SX0:SX1] = compose(bg_strip(SX1 - SX0, SY1 - SY0), alpha, F)
+im[SY0:SY1, SX0:SX1] = compose(np.asarray(Image.open(SPINE_BG).convert("RGB")).astype(float) if SPINE_BG else bg_strip(SX1 - SX0, SY1 - SY0), alpha, F)
 Image.fromarray(im.clip(0, 255).astype(np.uint8)).save(os.path.join(outdir, "CLIMATH_공통수학2_책등.png"))
 
 # ================================================================ 뒤표지
@@ -210,6 +212,6 @@ im = np.asarray(Image.open(back).convert("RGB")).astype(float)
 BY0, BY1, BX0, BX1 = 256, 1662, 1172, 1474
 band = im[BY0:BY1, BX0:BX1].copy()
 alpha, F = separate(band)
-im[BY0:BY1, BX0:BX1] = compose(bg_strip(BX1 - BX0, BY1 - BY0), alpha, F)
+im[BY0:BY1, BX0:BX1] = compose(np.asarray(Image.open(BACK_BG).convert("RGB")).astype(float) if BACK_BG else bg_strip(BX1 - BX0, BY1 - BY0), alpha, F)
 Image.fromarray(im.clip(0, 255).astype(np.uint8)).save(os.path.join(outdir, "CLIMATH_공통수학2_뒤표지.png"))
 print("뒤표지 띠", (BX0, BY0, BX1, BY1), "앞에 놓인 것", int((alpha > 0.5).sum()), "화소")
