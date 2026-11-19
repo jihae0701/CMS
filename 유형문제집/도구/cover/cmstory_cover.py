@@ -9,6 +9,8 @@ python cmstory_cover.py <앞표지.jpg> <책등.jpg> <뒤(가운데 로고).jpg>
 - 사용자 '파랑 대신에 색깔은 각 유형서 메인색을 써': 파란 부분(책 이름 글자·C 고리·책등 띠)을 유형서 머리말의 '고1' 상자 색으로 —
   공통수학1 #F38623(주황, 사용자 IDML 단원 표지 색과 같음), 공통수학2 #207B4D(초록). 화소마다 흰색·파랑(52,114,253)·검정의 섞임으로 풀어
   파랑 몫만 메인색으로 바꿈(흰 글자·검은 글자·회색 그림자는 그대로, 고리의 옅은 선은 옅은 메인색).
+- 사용자 '기출 +변형 대신 유형+기출'(앞표지·로고면): 원래 '기출'과 '+'는 그 화소를 그대로 옮기고 '유형'만 Pretendard SemiBold로 씀
+  (원래 '변형'과 같은 크기·기준선으로 맞춤). 순서 '유형 + 기출', 낱말 사이 간격은 원래대로. 앞표지는 오른쪽 끝 맞춤, 로고면은 왼쪽 끝 맞춤.
 - 책등의 '고2' → '고1'(Pretendard Medium, 검정). 나머지(CMStory 글자·C 고리·CLIMATH 띠·CREVERSE 로고·'기출+변형')는 그대로.
 """
 import os, sys
@@ -96,6 +98,52 @@ def place(img, old_text, new_text, box, kind, weight, rot=0, align="left", pad=5
     return out
 
 
+def tagline(img, w1, plus, w2, align, pad=4):
+    """'기출 + 변형' → '유형 + 기출'. w1·plus·w2 = 원래 '기출'·'+'·'변형'의 잉크 상자 (x0, y0, x1, y1)"""
+    a = np.asarray(img).astype(float)
+    blk = lambda b: a[b[1]:b[3] + 1, b[0]:b[2] + 1].copy()
+    gi, pl = blk(w1), blk(plus)
+    g1, g2 = plus[0] - w1[2] - 1, w2[0] - plus[2] - 1                   # 원래 간격(기출↔+, +↔변형)
+    # '유형' 크기: Pretendard SemiBold '변형' 잉크 높이를 원래 '변형'과 같게
+    h = w2[3] - w2[1] + 1
+    size = 50.0
+    for _ in range(3):
+        f = ImageFont.truetype(FONT("SemiBold"), size)
+        ob = ink_box(np.asarray(render("변형", f, 0)[0]) > 128)
+        size = size * h / (ob[3] - ob[1] + 1)
+    f = ImageFont.truetype(FONT("SemiBold"), round(size, 1))
+    mo, _ = render("변형", f, 0); ob = ink_box(np.asarray(mo) > 128)
+    mn, _ = render("유형", f, 0); nb = ink_box(np.asarray(mn) > 128)
+    dy = w2[1] - ob[1]                                                     # 기준선: 원래 '변형'과 같게
+    wn = nb[2] - nb[0] + 1
+    W1, WP = w1[2] - w1[0] + 1, plus[2] - plus[0] + 1
+    total = wn + g1 + WP + g2 + W1
+    if align == "right":
+        left = w2[2] - total + 1
+    else:
+        left = w1[0]
+    xs_new, xs_plus, xs_gi = left, left + wn + g1, left + wn + g1 + WP + g2
+    col = np.median(gi[gi.sum(axis=2) < 300], axis=0)
+    # 지우기
+    X0 = min(w1[0], xs_new) - pad; X1 = max(w2[2], xs_gi + W1 - 1) + pad
+    Y0 = min(w1[1], plus[1], w2[1]) - pad; Y1 = max(w1[3], plus[3], w2[3]) + pad
+    a[Y0:Y1 + 1, X0:X1 + 1] = 255
+    # 기출·+ 옮기기(어두운 쪽 남기기)
+    def put(block, x, y):
+        H_, W_ = block.shape[:2]
+        a[y:y + H_, x:x + W_] = np.minimum(a[y:y + H_, x:x + W_], block)
+    put(pl, xs_plus, plus[1]); put(gi, xs_gi, w1[1])
+    # 유형 쓰기
+    mk = np.asarray(mn).astype(float) / 255.0
+    ox = xs_new - nb[0]
+    H_, W_ = mk.shape
+    sub = a[dy:dy + H_, ox:ox + W_]
+    m3 = mk[:sub.shape[0], :sub.shape[1]][..., None]
+    a[dy:dy + H_, ox:ox + W_] = sub * (1 - m3) + col * m3
+    print("  유형+기출: 유형 %d~%d, + %d~%d, 기출 %d~%d (크기 %.1f)" % (xs_new, xs_new + wn - 1, xs_plus, xs_plus + WP - 1, xs_gi, xs_gi + W1 - 1, size))
+    return Image.fromarray(a.clip(0, 255).astype(np.uint8))
+
+
 MAIN = {1: (243, 134, 35), 2: (32, 123, 77)}
 BLUE = np.array((52, 114, 253), float)
 
@@ -144,11 +192,13 @@ for n in (1, 2):
     print(name)
     im = Image.open(front).convert("RGB")
     im = place(im, "미적분 Ⅰ", name, (1400, 250, 1880, 450), "blue", "Bold", align="right")
+    im = tagline(im, (1550, 190, 1644, 242), (1681, 197, 1714, 229), (1733, 192, 1815, 238), "right")
     im = recolor(im, MAIN[n])
     im = logo(im, (1634, 1823, 1833, 1862), "right")
     im.save(os.path.join(outdir, "CMStory_%s_앞표지.png" % name))
     im = Image.open(back).convert("RGB")
     im = place(im, "미적분 Ⅰ", name, (1100, 800, 1450, 960), "blue", "Bold")
+    im = tagline(im, (818, 765, 874, 795), (887, 768, 905, 787), (917, 765, 966, 792), "left")
     im = recolor(im, MAIN[n])
     im = logo(im, (895, 1762, 1095, 1800), "center")
     im.save(os.path.join(outdir, "CMStory_%s_로고면.png" % name))
