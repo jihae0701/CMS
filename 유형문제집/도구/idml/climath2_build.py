@@ -18,11 +18,13 @@ from urllib.parse import quote
 tpl, c1, pdfdir, out = sys.argv[1:5]
 BOOK = sys.argv[5] if len(sys.argv) > 5 else "c2b"
 YU = BOOK.endswith("y")                                   # 유형서: 쪽 번호 없음
+WB = BOOK == "c1w"   # 2026-11-19 CLIMATH(c) 공통수학1 워크북: '연보라 페이지 필요 없음. 목차와 빠른 정답만' — 단원 표지 없음, 쪽 번호는 PDF에 인쇄됨
+NOPN = YU or WB
 UNITS = {"2": ["평면좌표", "직선의 방정식", "원의 방정식", "도형의 이동", "집합의 뜻과 표현", "집합의 연산",
                "명제", "절대부등식", "함수", "합성함수와 역함수", "유리함수", "무리함수"],
          "1": ["다항식의 연산과 항등식", "나머지정리", "인수분해", "복소수와 이차방정식", "이차함수와 이차방정식의 관계", "이차함수의 최대·최소",
                "여러 가지 방정식", "이차부등식", "연립부등식", "경우의 수와 순열", "조합", "행렬"]}[BOOK[1]]
-if BOOK == "c1c":   # 2026-11-19 CLIMATH ⓒ 공통수학1 (14단원, 사용자 단원 PDF 머리말·파일 이름)
+if BOOK in ("c1c", "c1w"):   # 2026-11-19 CLIMATH ⓒ 공통수학1 (14단원, 사용자 단원 PDF 머리말·파일 이름)
     UNITS = ["다항식의 연산", "항등식", "나머지정리", "인수분해", "복소수", "이차함수와 이차방정식의 관계", "이차함수의 최대·최소",
              "고차방정식", "연립방정식", "연립부등식과 이차부등식", "연립이차부등식", "순열", "조합", "행렬"]
 NU = len(UNITS)
@@ -32,6 +34,8 @@ FILES = [("%02d %s.pdf" if YU else "%d. %s.pdf") % (i + 1, u) for i, u in enumer
 # 단원 표지 색은 주황(RGB 243 134 35). 기본서는 보라(145 102 165).
 if YU:   # 사용자 실제 파일 이름(탐색기 화면, 2026-11-19): 공통수학1은 모두 밑줄, 공통수학2는 번호 뒤만 밑줄('02_직선의 방정식.pdf')
     FILES = [(re.sub(r"[ ·]", "_", f[:-4]) if BOOK == "c1y" else re.sub(r"^(\d\d) ", r"\1_", f[:-4])) + ".pdf" for f in FILES]
+if WB:   # <PDF 폴더>에 wb.pdf(워크북 전체, 인쇄 쪽 2~)와 quick.pdf(워크북 빠른 정답, 인쇄 쪽 81~)
+    FILES = ["CLIMATH(c)_공통수학1_워크북.pdf", "CLIMATH(c)_공통수학1_워크북_빠른정답.pdf"]
 COVER_RGB = {"c1y": "243 134 35", "c2y": "32 123 77"}.get(BOOK, "145 102 165")   # 2026-11-19: 유형서는 그 책 메인색(표지와 같게) — 공통수학1 주황, 공통수학2 초록 #207B4D
 OFF = 10.0
 PW, PH = 595.2755905509999, 807.8740157480315
@@ -51,12 +55,13 @@ def npages(p):
     o = subprocess.check_output(["pdfinfo", p]).decode()
     return int(re.search(r"Pages:\s+(\d+)", o).group(1))
 
-counts = [npages(os.path.join(pdfdir, "u%02d.pdf" % (i + 1))) for i in range(NU)]
-sizes = [os.path.getsize(os.path.join(pdfdir, "u%02d.pdf" % (i + 1))) for i in range(NU)]
+SRC = [os.path.join(pdfdir, x) for x in ("wb.pdf", "quick.pdf")] if WB else [os.path.join(pdfdir, "u%02d.pdf" % (i + 1)) for i in range(NU)]
+counts = [npages(x) for x in SRC]
+sizes = [os.path.getsize(x) for x in SRC]
 def psize(p):
     o = subprocess.check_output(["pdfinfo", p]).decode()
     return tuple(map(float, re.search(r"Page size:\s+([\d.]+) x ([\d.]+)", o).groups()))
-psz = [psize(os.path.join(pdfdir, "u%02d.pdf" % (i + 1))) for i in range(NU)]
+psz = [psize(x) for x in SRC]
 
 # 쪽 배치: 1=차례, 단원마다 짝수 표지 + 홀수부터 본문(+필요하면 빈 쪽)
 plan = {1: ("toc",)}
@@ -71,6 +76,25 @@ for u, n in enumerate(counts):
     if n % 2 == 0:
         plan[p] = ("blank",); p += 1
 TOTAL = p - 1
+if WB:
+    # 워크북: 1쪽 차례, 2쪽부터 워크북 PDF(인쇄된 쪽 번호 2~가 책 쪽과 같음), 빠른 정답은 홀수 쪽부터(사이 빈 쪽), 단원 표지 없음
+    import pymupdf
+    plan, p = {1: ("toc",)}, 2
+    for k in range(counts[0]):
+        plan[p] = ("pdf", 0, k + 1); p += 1
+    if p % 2 == 0:
+        plan[p] = ("blank",); p += 1
+    QSTART = p
+    for k in range(counts[1]):
+        plan[p] = ("pdf", 1, k + 1); p += 1
+    TOTAL = p - 1
+    d = pymupdf.open(SRC[0])
+    starts = [i + 2 for i, pg in enumerate(d) if "STEP 1" in [l.strip() for l in pg.get_text().split("\n")]]   # 단원 첫 쪽 = 'STEP 1' 쪽
+    assert len(starts) == NU, starts
+    pn0 = [l.strip() for l in d[0].get_text().split("\n") if re.fullmatch(r"\d{1,3}", l.strip())]
+    assert pn0 and int(pn0[0]) == 2, ("워크북 첫 쪽 인쇄 번호가 2가 아님", pn0)
+    q0 = [l.strip() for l in pymupdf.open(SRC[1])[0].get_text().split("\n") if re.fullmatch(r"\d{1,3}", l.strip())]
+    assert q0 and int(q0[0]) == QSTART, ("빠른 정답 첫 쪽 인쇄 번호", q0, "책 쪽", QSTART)
 if TOTAL % 2 == 0:
     plan[TOTAL + 1] = ("blank",); TOTAL += 1
 print("총 쪽수", TOTAL, "표지 쪽", starts, "빈 쪽", [k for k, v in plan.items() if v[0] == "blank"])
@@ -133,7 +157,7 @@ link_dir = re.search(r'LinkResourceURI="(file:[^"]*/)[^"/]*"', rect_tpl).group(1
 if YU:                                                     # 사용자: '공통수학1 유형서 PDF 위치 H:/…/공통수학1_기본서_유형서/유형서/'
     link_dir = link_dir.replace(quote("/기본서/"), quote("/유형서/"))
 link_dir = link_dir.replace(quote("공통수학2_기본서_유형서"), quote("공통수학%s_기본서_유형서" % BOOK[1]))
-if BOOK == "c1c":                                          # 사용자 자료 폴더(탐색기 화면): E:\…\2027 예비고1 교재\CLIMATH 공통수학1 (C) 2027년\
+if BOOK in ("c1c", "c1w"):                                # 사용자 자료 폴더(탐색기 화면): E:\…\2027 예비고1 교재\CLIMATH 공통수학1 (C) 2027년\
     link_dir = link_dir.replace(quote("공통수학1_기본서_유형서/기본서/"), quote("CLIMATH 공통수학1 (C) 2027년/")).replace("file:H:/", "file:E:/")
     # 2026-11-19 고침: 135행에서 이미 공통수학1로 바뀐 뒤라 '공통수학2_…'로 찾으면 폴더가 안 바뀌었음(링크가 공통수학1 기본서 폴더를 가리켰음)
 PAGE_TY = -403.93700787401576
@@ -192,11 +216,11 @@ def cover_items(u):
 def page_items(num, left):
     kind = plan[num]
     if kind[0] == "pdf":
-        return rect_xml(kind[1], kind[2], left) + ("" if YU else pn_frame(left))
+        return rect_xml(kind[1], kind[2], left) + ("" if NOPN else pn_frame(left))
     if kind[0] == "cover":
         return cover_items(kind[1])
     if kind[0] == "blank":
-        return "" if YU else pn_frame(left)
+        return "" if NOPN else pn_frame(left)
     return ""
 
 # ---- 1쪽 펼침면: PDF 지우고 제목·차례
@@ -206,6 +230,8 @@ s1 = re.sub(r"\s*<Rectangle .*?</Rectangle>", "", s1, flags=re.S)
 st_title, fid_title, st_toc, fid_toc = nid(), nid(), nid(), nid()
 add_story(clone_story("u128", st_title), st_title)
 lines = "<Br />".join("<Content>%d. %s\t%d</Content>" % (i + 1, esc(UNITS[i]), starts[i]) for i in range(NU))
+if WB:
+    lines += "<Br /><Content>빠른 정답\t%d</Content>" % QSTART
 add_story(clone_story("u13e", st_toc, lines), st_toc)
 s1 = s1.replace("</Spread>", clone_frame(fr_title, fid_title, st_title) + clone_frame(fr_toc, fid_toc, st_toc) + "</Spread>", 1)
 files[f1] = s1.encode("utf-8")
@@ -242,7 +268,7 @@ files["Resources/Fonts.xml"] = fx.encode("utf-8")
 # ---- designmap
 dm = re.sub(r'(<idPkg:Spread src="[^"]+" />\s*)+',
             lambda m: "".join('<idPkg:Spread src="%s" />\n\t' % x for x in [f1] + new_spreads), dm, count=1)
-if YU or BOOK == "c1c":                                    # 문서 이름(틀은 'CLIMATH(m) 공통수학2.indd')
+if YU or BOOK in ("c1c", "c1w"):                           # 문서 이름(틀은 'CLIMATH(m) 공통수학2.indd')
     dm = re.sub(r'(<Document [^>]*?) Name="[^"]*"', lambda m: m.group(1) + ' Name="%s"' % (os.path.splitext(os.path.basename(out))[0] + ".indd"), dm, count=1)
 dm = re.sub(r'(<Section Self="[^"]+" )Length="\d+" AlternateLayoutLength="\d+"', r'\1Length="%d" AlternateLayoutLength="%d"' % (TOTAL, TOTAL), dm, count=1)
 sl = re.search(r'StoryList="([^"]*)"', dm).group(1).split() + new_stories
@@ -261,4 +287,4 @@ with zipfile.ZipFile(out, "w") as w:
         info.compress_type = zipfile.ZIP_STORED if n == "mimetype" else zipfile.ZIP_DEFLATED
         w.writestr(info, files[n])
 print("펼침면", 1 + len(new_spreads), "새 스토리", len(new_stories), "->", out)
-print("차례:", [(i + 1, UNITS[i], starts[i]) for i in range(NU)])
+print("차례:", [(i + 1, UNITS[i], starts[i]) for i in range(NU)] + ([("빠른 정답", QSTART)] if WB else []))
