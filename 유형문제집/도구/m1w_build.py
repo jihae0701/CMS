@@ -23,7 +23,7 @@ UNITS = ["다항식의 연산과 항등식", "나머지정리", "인수분해", 
          "여러 가지 방정식", "이차부등식", "연립부등식", "경우의 수와 순열", "조합", "행렬"]
 OUT = sys.argv[1]
 SEL = [int(a) for a in sys.argv[2:]] or [u for u in range(1, 13) if os.path.exists(os.path.join(QDIR, "u%02d.py" % u))]
-BLANK_A, BLANK_B = 16, 3          # 한 단의 첫 문항 뒤 빈 줄, 둘째 문항 뒤 빈 줄(그다음 문항은 단 나누기)
+# 2026-11-20 사용자 수정본: 문항마다 빈 줄 45~48줄 → 한 단에 1문항. 여기서는 문항마다 단 나누기(빈 줄 없음)로 같은 모양을 만듦.
 
 
 def load(u):
@@ -90,10 +90,11 @@ def _w(t):
             j += 1; continue
         if tk == "~": out.append((.3, 1))
         elif tk == "`": out.append((.1, 1))
-        elif re.fullmatch(r"[A-Za-z]+", tk): out.append((.5 * len(tk), 1))
-        elif tk.isdigit(): out.append((.5, 1))
-        elif tk in "+-=<>": out.append((.85, 1))
-        elif tk in "()[]|": out.append((.35, 1))
+        elif re.fullmatch(r"[A-Za-z]+", tk): out.append((.48 * len(tk), 1))
+        elif tk.isdigit(): out.append((.477, 1))
+        elif tk in "+-": out.append((1.03 if out else .89, 1))      # 한글이 다시 잰 크기(사용자 수정본, 11pt): 식 안 ±는 약 1130, 앞 부호 약 980
+        elif tk in "=<>": out.append((1.17, 1))
+        elif tk in "()[]|": out.append((.38, 1))
         elif tk in ",.:;": out.append((.3, 1))
         elif tk in "#&": pass
         else: out.append((.9 if ord(tk) > 0x2000 else .5, 1))
@@ -104,15 +105,22 @@ def _w(t):
 def eq(script):
     EQID[0] += 1
     s = script.strip()
+    s = re.sub(r"=\s*-(?=\s*[\w{(])", "= it-", s)               # 사용자 수정본: 등호 뒤 음수는 = it-2 꼴
     if "cases" in s or "matrix" in s:
         rows = s.count("#") + 1
         w, hl = _w(re.sub(r"cases|pmatrix|matrix|bmatrix", "", s).replace("#", " ").replace("&", " ")), rows
         w = w / max(1, rows) * 1.2 + 1.0
     else:
         w, hl = _w(s)
-    W = int(w * 1100) + 120
-    H = int(1150 * hl) if hl > 1 else 1125
-    base = 85 if hl <= 1 else int(100 * (0.5 + 0.35 / hl))
+    W = int(w * 1100) + 112
+    if hl > 1.5:                                                 # 분수: 높이 2580, 기준선 65(한글 값)
+        H, base = int(2580 * hl / 2), 65
+    elif "^" in s and "_" not in s:
+        H, base = 1313, 87
+    elif "_" in s:
+        H, base = 1350, 71
+    else:
+        H, base = 1125, 85
     return EQ_TPL % (EQID[0], base, W, H, html.escape(s, quote=False))
 
 
@@ -211,13 +219,11 @@ for j, u in enumerate(SEL):
         q = pr["q"]
         if pr.get("steps"):
             q = q.rstrip()
-        col = "col" if (i and i % 2 == 0) else ""
+        col = "col" if i else ""
         body.append('<hp:p id="%s" paraPrIDRef="35" styleIDRef="0" pageBreak="0" columnBreak="%s" merged="0"><hp:run charPrIDRef="27"><hp:ctrl>%s</hp:ctrl></hp:run>'
                     '<hp:run charPrIDRef="26">%s</hp:run></hp:p>' % (nid(), "1" if col else "0", endnote(pr["ans"], pr["sol"]), runs_of(q)))
         for k, st in enumerate(pr.get("steps") or [], 1):
             body.append(para("34", "26", runs_of("(%d) %s" % (k, st))))
-        for _ in range(BLANK_A if i % 2 == 0 else BLANK_B):
-            body.append(para("34", "26", ""))
         total += 1
     files["Contents/section%d.xml" % j] = ("".join(body) + "</hs:sec>").encode("utf-8")
 
