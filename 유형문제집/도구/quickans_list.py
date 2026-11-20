@@ -23,12 +23,17 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 DIR = os.path.join(ROOT, "CLIMATH_c", "공통수학1")
 ARGS = sys.argv[1:]
-BOOK = ARGS.pop(0) if ARGS and ARGS[0] in ("c1c", "c1w") else "c1c"
+BOOK = ARGS.pop(0) if ARGS and ARGS[0] in ("c1c", "c1w", "m1w") else "c1c"
 OUT = ARGS[0]
 START = int(ARGS[1]) if len(ARGS) > 1 else None
 WB = os.path.join(ROOT, "CLIMATH_c", "공통수학1_워크북", "CLIMATH(c)_공통수학1_워크북.hwpx")
 UNITS = ["다항식의 연산", "항등식", "나머지정리", "인수분해", "복소수", "이차함수와 이차방정식의 관계", "이차함수의 최대·최소",
          "고차방정식", "연립방정식", "연립부등식과 이차부등식", "연립이차부등식", "순열", "조합", "행렬"]
+C_UNIT1 = UNITS[0]                                         # 본책 1단원 파일 이름(단원 띠·본책 틀)
+if BOOK == "m1w":   # 2026-11-20 CLIMATH(m) 공통수학1 워크북(사용자 '빠른 정답 만들어 줘'): 12단원, 미주 번호 1~158 이어짐, 정답 표시 '정답'
+    WB = os.path.join(ROOT, "CLIMATH_m", "공통수학1_워크북", "CLIMATH(m)_공통수학1_워크북.hwpx")
+    UNITS = ["다항식의 연산과 항등식", "나머지정리", "인수분해", "복소수와 이차방정식", "이차함수와 이차방정식의 관계", "이차함수의 최대, 최소",
+             "여러 가지 방정식", "이차부등식", "연립부등식", "경우의 수와 순열", "조합", "행렬"]
 MARK = "󰂼"
 MARKS = re.compile(r"󰂼|\[정답\]|정답|답\.")           # 본책 '󰂼', 워크북 '정답'·'[정답]'·'답.'(184번)
 MARK_PICS = ["image27"]                                    # 워크북의 '정답' 상자 그림
@@ -214,15 +219,15 @@ for u, name in enumerate(UNITS, 1):
         nums = [int(re.search(r'<hp:autoNum num="(\d+)" numType="ENDNOTE"', en).group(1)) for en in ens]
     data.append((u, name, [(n, answer(en, "%d단원 %d번" % (u, n))) for n, en in zip(nums, ens)]))
 allnums = [n for _, _, a in data for n, _ in a]
-assert allnums == (list(range(1, len(allnums) + 1)) if BOOK == "c1w" else allnums), "미주 번호가 이어지지 않음"
+assert allnums == (list(range(1, len(allnums) + 1)) if BOOK in ("c1w", "m1w") else allnums), "미주 번호가 이어지지 않음"
 
 # ---------------------------------------------------------------- 틀
-MAIN1 = os.path.join(DIR, "1. %s.hwpx" % UNITS[0])
+MAIN1 = os.path.join(DIR, "1. %s.hwpx" % C_UNIT1)
 TPL = MAIN1 if BOOK == "c1c" else WB
 z = zipfile.ZipFile(TPL)
 files = {n: z.read(n) for n in z.namelist()}
 NAMES = list(z.namelist())
-if BOOK == "c1w":                                           # 첫 구역(1단원)과 그 바탕쪽(0·1)만 남김
+if BOOK in ("c1w", "m1w"):                                           # 첫 구역(1단원)과 그 바탕쪽(0·1)만 남김
     drop = [n for n in NAMES if (re.match(r"Contents/section(\d+)\.xml$", n) and n != "Contents/section0.xml")
             or (re.match(r"Contents/masterpage(\d+)\.xml$", n) and int(re.search(r"\d+", n).group(0)) > 1)]
     for n in drop:
@@ -235,7 +240,7 @@ if BOOK == "c1w":                                           # 첫 구역(1단원
         hpf = re.sub(r'<opf:itemref idref="%s" [^>]*/>' % iid, "", hpf)
     files["Contents/content.hpf"] = hpf.encode("utf-8")
 head = files["Contents/header.xml"].decode("utf-8")
-if BOOK == "c1w":
+if BOOK in ("c1w", "m1w"):
     head = re.sub(r'secCnt="\d+"', 'secCnt="1"', head, count=1)
 sec = files["Contents/section0.xml"].decode("utf-8")
 msec = zipfile.ZipFile(MAIN1).read("Contents/section0.xml").decode("utf-8")       # 단원 띠는 본책 1단원 파일에서
@@ -437,7 +442,7 @@ for k, (u, name, ans) in enumerate(data):
     total += len(ans)
 files["Contents/section0.xml"] = ("".join(body) + "</hs:sec>").encode("utf-8")
 if "Preview/PrvText.txt" in files:
-    files["Preview/PrvText.txt"] = ("CLIMATH(c) 공통수학1 %s빠른 정답" % ("워크북 " if BOOK == "c1w" else "")).encode("utf-8")
+    files["Preview/PrvText.txt"] = ("CLIMATH(%s) 공통수학1 %s빠른 정답" % ("m" if BOOK == "m1w" else "c", "워크북 " if BOOK in ("c1w", "m1w") else "")).encode("utf-8")
 with zipfile.ZipFile(OUT, "w") as w:
     for n in NAMES:
         info = zipfile.ZipInfo(n, date_time=(1980, 1, 1, 0, 0, 0))
