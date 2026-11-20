@@ -182,6 +182,29 @@ first = re.sub(r"<hp:t>[^<]*</hp:t>", "<hp:t/>", first)
 en_open = re.search(r"<hp:endNote [^>]*><hp:subList [^>]*>", sec0).group(0)
 autonum = re.search(r'<hp:ctrl><hp:autoNum num="\d+" numType="ENDNOTE">.*?</hp:ctrl>', sec0, re.S).group(0)
 NID = [3600000000]
+# ---- 본책 그림 가져오기: 문항의 fig=(기본서 단원 번호, 찾을 글) → 그 글 뒤 첫 그림(hp:pic)을 복사해 문제 아래에 넣음(2026-11-20, 10단원 365번 색칠 영역 그림)
+sys.path.insert(0, os.path.join(HERE, "guide"))
+from files import units as _units
+FIGN = [0]
+NEWBIN = []
+
+
+def fig_para(fig):
+    u, key = fig
+    bf = _units(1)[u - 1][2]
+    zz = zipfile.ZipFile(bf)
+    ss = zz.read("Contents/section0.xml").decode("utf-8")
+    pic = re.search(r"<hp:pic\b.*?</hp:pic>", ss[ss.index(key):], re.S).group(0)
+    ref = re.search(r'binaryItemIDRef="([^"]+)"', pic).group(1)
+    item = re.search(r'<opf:item id="%s" href="([^"]+)" media-type="([^"]+)"' % ref, zz.read("Contents/content.hpf").decode("utf-8"))
+    FIGN[0] += 1
+    nidx = "m1wfig%d" % FIGN[0]
+    ext = os.path.splitext(item.group(1))[1]
+    NEWBIN.append(("BinData/%s%s" % (nidx, ext), zz.read(item.group(1)), nidx, item.group(2)))
+    pic = pic.replace('binaryItemIDRef="%s"' % ref, 'binaryItemIDRef="%s"' % nidx)
+    pic = re.sub(r'(<hp:pic\b[^>]*?\bid=")\d+', lambda m: m.group(1) + str(3700000000 + FIGN[0]), pic, count=1)
+    pic = re.sub(r'(<hp:pic\b[^>]*?\binstid=")\d+', lambda m: m.group(1) + str(3710000000 + FIGN[0]), pic, count=1)
+    return '<hp:p id="%s" paraPrIDRef="34" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0"><hp:run charPrIDRef="26">%s<hp:t/></hp:run></hp:p>' % (str(3720000000 + FIGN[0]), pic)
 
 
 def nid():
@@ -225,12 +248,22 @@ for j, u in enumerate(SEL):
         col = "col" if i else ""
         body.append('<hp:p id="%s" paraPrIDRef="35" styleIDRef="0" pageBreak="0" columnBreak="%s" merged="0"><hp:run charPrIDRef="27"><hp:ctrl>%s</hp:ctrl></hp:run>'
                     '<hp:run charPrIDRef="26">%s</hp:run></hp:p>' % (nid(), "1" if col else "0", endnote(pr["ans"], pr["sol"]), runs_of(q)))
+        if pr.get("fig"):
+            body.append(fig_para(pr["fig"]))
         for k, st in enumerate(pr.get("steps") or [], 1):
             body.append(para("34", "26", ""))                      # 2026-11-20 사용자 '괄호 문제마다 한 줄씩 띄어 줘'
             body.append(para("34", "26", runs_of("(%d) %s" % (k, st))))
         total += 1
     files["Contents/section%d.xml" % j] = ("".join(body) + "</hs:sec>").encode("utf-8")
 
+if NEWBIN:                                                   # 가져온 그림을 BinData와 content.hpf에 등록
+    hpf = files["Contents/content.hpf"].decode("utf-8")
+    add = "".join('<opf:item id="%s" href="%s" media-type="%s" isEmbeded="1"/>' % (iid, path, mt) for path, data, iid, mt in NEWBIN)
+    hpf = hpf.replace("</opf:manifest>", add + "</opf:manifest>", 1)
+    files["Contents/content.hpf"] = hpf.encode("utf-8")
+    for path, data, iid, mt in NEWBIN:
+        files[path] = data
+        NAMES.append(path)
 with zipfile.ZipFile(OUT, "w") as w:
     for n in NAMES:
         info = zipfile.ZipInfo(n, date_time=(1980, 1, 1, 0, 0, 0))
