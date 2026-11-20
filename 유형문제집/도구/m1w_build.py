@@ -189,7 +189,30 @@ FIGN = [0]
 NEWBIN = []
 
 
+PIC_TPL = ('<hp:pic id="%d" zOrder="0" numberingType="PICTURE" textWrap="TOP_AND_BOTTOM" textFlow="BOTH_SIDES" lock="0" dropcapstyle="None" href="" groupLevel="0" instid="%d" reverse="0">'
+           '<hp:offset x="0" y="0"/><hp:orgSz width="%d" height="%d"/><hp:curSz width="%d" height="%d"/><hp:flip horizontal="0" vertical="0"/>'
+           '<hp:rotationInfo angle="0" centerX="%d" centerY="%d" rotateimage="0"/><hp:renderingInfo><hc:transMatrix e1="1" e2="0" e3="0" e4="0" e5="1" e6="0"/>'
+           '<hc:scaMatrix e1="1" e2="0" e3="0" e4="0" e5="1" e6="0"/><hc:rotMatrix e1="1" e2="0" e3="0" e4="0" e5="1" e6="0"/></hp:renderingInfo>'
+           '<hc:img binaryItemIDRef="%s" bright="0" contrast="0" effect="REAL_PIC" alpha="0"/><hp:imgRect><hc:pt0 x="0" y="0"/><hc:pt1 x="%d" y="0"/>'
+           '<hc:pt2 x="%d" y="%d"/><hc:pt3 x="0" y="%d"/></hp:imgRect><hp:imgClip left="0" right="%d" top="0" bottom="%d"/><hp:inMargin left="0" right="0" top="0" bottom="0"/>'
+           '<hp:imgDim dimwidth="%d" dimheight="%d"/><hp:effects/><hp:sz width="%d" widthRelTo="ABSOLUTE" height="%d" heightRelTo="ABSOLUTE" protect="0"/>'
+           '<hp:pos treatAsChar="1" affectLSpacing="0" flowWithText="1" allowOverlap="0" holdAnchorAndSO="0" vertRelTo="PARA" horzRelTo="PARA" vertAlign="TOP" horzAlign="LEFT" vertOffset="0" horzOffset="0"/>'
+           '<hp:outMargin left="0" right="0" top="0" bottom="0"/><hp:shapeComment>그림입니다.</hp:shapeComment></hp:pic>')
+
+
 def fig_para(fig):
+    if fig[0] == "file":                                     # 새로 그린 그림 파일(png): ("file", 문항 폴더 기준 경로, 너비 HWPUNIT)
+        from PIL import Image
+        path = os.path.join(os.path.dirname(QDIR), fig[1])
+        pw, ph = Image.open(path).size
+        Wd = fig[2]
+        Hd = int(Wd * ph / pw)
+        FIGN[0] += 1
+        nidx = "m1wfig%d" % FIGN[0]
+        NEWBIN.append(("BinData/%s.png" % nidx, open(path, "rb").read(), nidx, "image/png"))
+        pic = PIC_TPL % (3700000000 + FIGN[0], 3710000000 + FIGN[0], Wd, Hd, Wd, Hd, Wd // 2, Hd // 2, nidx, Wd, Wd, Hd, Hd,
+                         pw * 75, ph * 75, pw * 75, ph * 75, Wd, Hd)
+        return '<hp:p id="%s" paraPrIDRef="34" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0"><hp:run charPrIDRef="26">%s<hp:t/></hp:run></hp:p>' % (str(3720000000 + FIGN[0]), pic)
     u, key = fig
     bf = _units(1)[u - 1][2]
     zz = zipfile.ZipFile(bf)
