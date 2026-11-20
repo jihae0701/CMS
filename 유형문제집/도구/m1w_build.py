@@ -209,8 +209,10 @@ def endnote(ans, sol):
 
 
 total = 0
+MAP = []                                                      # (단원, 워크북 번호, 본책 번호)
 for j, u in enumerate(SEL):
-    probs = load(u)
+    probs = load(u)[:16]                                      # 2026-11-20 사용자 '단원당 16까지, 초과하면 뒤 문제를 버려'
+    MAP.extend((u, ENO[0] + i + 1, pr["src"]) for i, pr in enumerate(probs))
     f = first
     f = re.sub(r'<hp:masterPage idRef="masterpage\d+"/>\s*<hp:masterPage idRef="masterpage\d+"/>',
                '<hp:masterPage idRef="masterpage%d"/><hp:masterPage idRef="masterpage%d"/>' % (2 * j, 2 * j + 1), f, count=1)
@@ -223,6 +225,7 @@ for j, u in enumerate(SEL):
         body.append('<hp:p id="%s" paraPrIDRef="35" styleIDRef="0" pageBreak="0" columnBreak="%s" merged="0"><hp:run charPrIDRef="27"><hp:ctrl>%s</hp:ctrl></hp:run>'
                     '<hp:run charPrIDRef="26">%s</hp:run></hp:p>' % (nid(), "1" if col else "0", endnote(pr["ans"], pr["sol"]), runs_of(q)))
         for k, st in enumerate(pr.get("steps") or [], 1):
+            body.append(para("34", "26", ""))                      # 2026-11-20 사용자 '괄호 문제마다 한 줄씩 띄어 줘'
             body.append(para("34", "26", runs_of("(%d) %s" % (k, st))))
         total += 1
     files["Contents/section%d.xml" % j] = ("".join(body) + "</hs:sec>").encode("utf-8")
@@ -233,3 +236,5 @@ with zipfile.ZipFile(OUT, "w") as w:
         info.compress_type = zipfile.ZIP_STORED if n == "mimetype" else zipfile.ZIP_DEFLATED
         w.writestr(info, files[n])
 print("단원", SEL, "문항", total, "->", OUT)
+with open(os.path.splitext(OUT)[0] + "_대응표.tsv", "w", encoding="utf-8") as f:
+    f.write("단원\t워크북 번호\t본책 번호\n" + "".join("%d\t%d\t%d\n" % m for m in MAP))
