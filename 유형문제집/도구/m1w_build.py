@@ -108,7 +108,8 @@ def eq(script):
     s = re.sub(r"=\s*-(?=\s*[\w{(])", "= it-", s)               # 사용자 수정본: 등호 뒤 음수는 = it-2 꼴
     if "cases" in s or "matrix" in s:
         rows = s.count("#") + 1
-        w, hl = _w(re.sub(r"cases|pmatrix|matrix|bmatrix", "", s).replace("#", " ").replace("&", " ")), rows
+        w, _ = _w(re.sub(r"cases|pmatrix|matrix|bmatrix", "", s).replace("#", " ").replace("&", " "))
+        hl = rows
         w = w / max(1, rows) * 1.2 + 1.0
     else:
         w, hl = _w(s)
