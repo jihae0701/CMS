@@ -375,4 +375,12 @@ with zipfile.ZipFile(OUT, "w") as w:
         info = zipfile.ZipInfo(nm, date_time=(1980, 1, 1, 0, 0, 0))
         info.compress_type = zipfile.ZIP_STORED if nm == "mimetype" else zipfile.ZIP_DEFLATED
         w.writestr(info, files[nm])
+# 다시 그린 그림으로 바꾸기(그림 규칙: PNG 1픽셀 = 6.4 HWPUNIT, 폭은 cNN.py의 PICS)
+PICS = getattr(U, "PICS", {})
+if PICS:
+    import subprocess
+    bm = kd_unit(KD_UNIT)[2]
+    reps = ["%s=%s@%d" % (bm[k], os.path.join(ROOT, f), w) for k, (f, w) in PICS.items() if k in bm]
+    if reps:
+        subprocess.run([sys.executable, os.path.join(ROOT, "그림규칙", "math-figure-rules", "hwpx_swapimg.py"), OUT, OUT] + reps, check=True)
 print("단원", UNIT, U.NAME, "문항", n, "(STEP1 %d, STEP2 %d, STEP3 %d)" % (sum(map(len, U.STEP1)), sum(map(len, U.STEP2)), len(U.STEP3)), "그림", len(BIN), "->", OUT)
