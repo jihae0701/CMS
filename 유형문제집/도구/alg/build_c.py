@@ -1,0 +1,350 @@
+# -*- coding: utf-8 -*-
+"""CLIMATH(m) 대수 단원 — CLIMATH(c) 대수 서식·개념·유형 분류로 만들기 (2026-11-24).
+python build_c.py <단원 번호> <출력.hwpx>
+- 틀: CLIMATH_c/대수/<단원>.hwpx (CLIMATH(c) 대수 완성본). 표지·STEP 상자·개념 상자(개념 정리 글 포함)·유형 상자·바탕쪽·끝 쪽을 그대로 쓰고,
+  문항만 바꿔 넣음. 문항 번호는 틀의 문단 번호(머리 번호)가 매김.
+- 문항 자료: CLIMATH_m/대수/문항/cNN.py — STEP1[개념별 목록], STEP2[유형별 목록(+NEW_TYPES 추가 유형)], STEP3[목록].
+  · no=N  : 올림포스 고난도 대수(자료/고난도/0K_*.hwpx, 단원 kd_unit) N번 — 문제·수식·그림·해설을 옮김(객관식은 mc=True만 남기고 단답형으로).
+  · on/src + q·choices·ans·sol : 글로 쓴 문항(유형ON·내신 변형·모의고사) — 수식은 $…$.
+- 미주: 틀과 같이 ' [정답] 답' + 풀이 문단(문단 1·글자 25).
+"""
+import sys, os, re, zipfile, html, importlib.util
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(HERE))
+sys.path.insert(0, HERE)
+from kd import load as kd_load, en_paras, plain
+sys.path.insert(0, os.path.join(HERE, "..", "guide"))
+from extract import top_paras
+
+UNIT, OUT = int(sys.argv[1]), sys.argv[2]
+spec = importlib.util.spec_from_file_location("c", os.path.join(ROOT, "CLIMATH_m", "대수", "문항", "c%02d.py" % UNIT))
+U = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(U)
+TPL = os.path.join(ROOT, "CLIMATH_c", "대수", U.TEMPLATE)
+KD_UNIT = getattr(U, "KD_UNIT", 1)
+
+tz = zipfile.ZipFile(TPL)
+files = {n: tz.read(n) for n in tz.namelist()}
+names = list(tz.namelist())
+ts = files["Contents/section0.xml"].decode("utf-8")
+TP = top_paras(ts)
+HEAD, TAIL_XML = ts[:ts.index(TP[0])], ts[ts.rindex(TP[-1]) + len(TP[-1]):]
+
+
+def is_box(p):
+    return "<hp:rect" in p or "<hp:container" in p
+
+
+def box_text(p):
+    return plain(p).strip()
+
+
+EN_IDX = [i for i, p in enumerate(TP) if "<hp:endNote " in p]
+I_STEP1 = next(i for i, p in enumerate(TP) if is_box(p) and box_text(p).startswith("개념 익히기"))
+I_STEP2 = next(i for i, p in enumerate(TP) if is_box(p) and box_text(p).startswith("유형별 학습하기"))
+I_STEP3 = next(i for i, p in enumerate(TP) if is_box(p) and box_text(p).startswith("단원 마무리"))
+CONCEPTS = [i for i, p in enumerate(TP[:I_STEP2]) if i > I_STEP1 and is_box(p) and re.match(r"^\d\d", box_text(p)) and "개념" in box_text(p)[:60]]
+TYPES = [i for i, p in enumerate(TP) if I_STEP2 < i < I_STEP3 and is_box(p) and re.match(r"^\d\d", box_text(p))]
+LAST_EN = EN_IDX[-1]
+I_TAIL = next(i for i in range(LAST_EN + 1, len(TP)) if 'pageBreak="1"' in TP[i][:250] or 'columnBreak="1"' in TP[i][:250] or is_box(TP[i]))
+EN_HEAD = re.search(r"<hp:endNote [^>]*>", ts).group(0)
+SUBLIST = re.search(r"<hp:endNote [^>]*>(<hp:subList [^>]*>)", ts).group(1)
+AUTONUM = re.search(r"<hp:ctrl><hp:autoNum [^>]*numType=\"ENDNOTE\">.*?</hp:ctrl>", ts, re.S).group(0)
+assert len(CONCEPTS) == len(U.STEP1), (len(CONCEPTS), len(U.STEP1))
+
+CNT = {"eq": 2100000000, "pic": 2200000000, "inst": 2300000000, "p": 2400000000, "en": 0, "bin": 0}
+def nxt(k):
+    CNT[k] += 1
+    return CNT[k]
+BIN = []
+
+
+def renum(x, srcz=None, binmap=None):
+    x = re.sub(r'(<hp:equation id=")\d+"', lambda m: m.group(1) + str(nxt("eq")) + '"', x)
+    x = re.sub(r'(<hp:(?:pic|container|rect|polygon|line|ellipse|tbl) id=")(\d+)"', lambda m: m.group(1) + (str(nxt("pic")) if m.group(2) != "0" else "0") + '"', x)
+    x = re.sub(r'(instid=")\d+"', lambda m: m.group(1) + str(nxt("inst")) + '"', x)
+    if srcz is not None:
+        def b(m):
+            old = m.group(1)
+            if old not in binmap:
+                hpf = srcz.read("Contents/content.hpf").decode("utf-8")
+                it = re.search(r'<opf:item id="%s" href="([^"]+)" media-type="([^"]+)"' % re.escape(old), hpf)
+                ext = os.path.splitext(it.group(1))[1]
+                new = "algc%d_%d" % (UNIT, nxt("bin"))
+                BIN.append((new, "BinData/%s%s" % (new, ext), srcz.read(it.group(1)), it.group(2)))
+                binmap[old] = new
+            return 'binaryItemIDRef="%s"' % binmap[old]
+        x = re.sub(r'binaryItemIDRef="([^"]+)"', b, x)
+    return x
+
+
+def clean(p):
+    p = re.sub(r"<hp:linesegarray>.*?</hp:linesegarray>", "", p, flags=re.S)
+    return renum(p)
+
+
+# ---------------------------------------------------------------- 수식(글로 쓴 문항)
+EQ_SRC = open(os.path.join(ROOT, "도구", "m1w_build.py"), encoding="utf-8").read()
+a, b = EQ_SRC.index("EQ_TPL = ("), EQ_SRC.index("# ---------------------------------------------------------------- 틀")
+G = {"re": re, "html": html}
+exec(EQ_SRC[a:b], G)
+G["EQID"][0] = 2600000000
+
+
+def runs_of(text):
+    out = []
+    for k, part in enumerate(re.split(r"\$", text)):
+        if k % 2:
+            if part.strip():
+                out.append(G["eq"](part))
+        elif part:
+            out.append("<hp:t>%s</hp:t>" % html.escape(part, quote=False))
+    return "".join(out)
+
+
+# ---------------------------------------------------------------- 문단
+def para(pp, cp, inner, style="2"):
+    return ('<hp:p id="%d" paraPrIDRef="%s" styleIDRef="%s" pageBreak="0" columnBreak="0" merged="0"><hp:run charPrIDRef="%s">%s</hp:run></hp:p>'
+            % (nxt("p"), pp, style, cp, inner or "<hp:t/>"))
+
+
+def endnote(ans_xml, sol_xml):
+    CNT["en"] += 1
+    head = re.sub(r'number="\d+"', 'number="%d"' % CNT["en"], EN_HEAD, count=1)
+    head = re.sub(r'instId="\d+"', 'instId="%d"' % (2500000000 + CNT["en"]), head, count=1)
+    an = re.sub(r'num="\d+"', 'num="%d"' % CNT["en"], AUTONUM, count=1)
+    first = ('<hp:p id="2147483648" paraPrIDRef="1" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0"><hp:run charPrIDRef="25">%s<hp:t> [정답] </hp:t>%s</hp:run></hp:p>' % (an, ans_xml))
+    sols = "".join('<hp:p id="2147483648" paraPrIDRef="1" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0"><hp:run charPrIDRef="25">%s</hp:run></hp:p>' % (s or "<hp:t/>") for s in sol_xml)
+    return head + SUBLIST + first + sols + "</hp:subList></hp:endNote>"
+
+
+def en_para(en):
+    return '<hp:p id="2147483648" paraPrIDRef="69" styleIDRef="2" pageBreak="0" columnBreak="0" merged="0"><hp:run charPrIDRef="60"><hp:ctrl>%s</hp:ctrl><hp:t/></hp:run></hp:p>' % en
+
+
+def q_para(qp, inner):
+    t = re.sub(r"<[^>]+>", "", inner).strip()
+    return para("34" if t.startswith("(단") else qp, "1", inner)
+
+
+# ---------------------------------------------------------------- 고난도 문항
+TOK = re.compile(r"<hp:tbl .*?</hp:tbl>|<hp:pic .*?</hp:pic>|<hp:endNote .*?</hp:endNote>|<hp:equation .*?</hp:equation>|<hp:t>(.*?)</hp:t>|<hp:t/>", re.S)
+
+
+def tokens(p):
+    out = []
+    for m in TOK.finditer(p):
+        g = m.group(0)
+        if g.startswith("<hp:tbl"): out.append(("tbl", g))
+        elif g.startswith("<hp:pic"): out.append(("pic", g))
+        elif g.startswith("<hp:endNote"): continue
+        elif g.startswith("<hp:equation"): out.append(("eq", g))
+        elif m.group(1) is not None:
+            t = re.sub(r"<hp:(?!lineBreak|tab)[^>]*/?>", "", m.group(1))
+            if t: out.append(("t", t))
+    return out
+
+
+def tbl_lines(tbl):
+    rows = []
+    for tc in re.findall(r"<hp:tc .*?</hp:tc>", tbl, re.S):
+        sub = tc[tc.index("<hp:subList"):]
+        for p in top_paras(sub[sub.index(">") + 1:]):
+            tk = tokens(p)
+            if any(k != "t" or v.strip() for k, v in tk):
+                rows.append(tk)
+    return rows
+
+
+def xml_of(tk, z, binmap):
+    return "".join("<hp:t>%s</hp:t>" % v if k == "t" else renum(v, z, binmap) for k, v in tk)
+
+
+def batchim(ch):
+    o = ord(ch) - 0xAC00
+    return 0 <= o < 11172 and o % 28 != 0
+
+
+FIXED = [("있는 대로 고른 것은?", "있는 대로 고르시오."), ("나타낸 것은?", "나타내시오."), ("간단히 한 것은?", "간단히 하시오."), ("구한 것은?", "구하시오.")]
+
+
+def to_short(t):
+    for a_, b_ in FIXED:
+        if a_ in t:
+            return t.replace(a_, b_, 1)
+    m = re.search(r"(\S*?)(은|는)\?", t)
+    if not m:
+        return t
+    w = m.group(1)
+    return t[:m.start()] + w + ("을" if batchim(w[-1] if w else "것") else "를") + " 구하시오." + t[m.end():]
+
+
+def choice_map(choice_paras):
+    seq = []
+    for p in choice_paras:
+        seq += tokens(p)
+    cur, res = None, {}
+    for k, v in seq:
+        if k == "t":
+            for x in re.split(r"([①②③④⑤])", re.sub(r"<hp:tab[^>]*/>", " ", v)):
+                if x and x in "①②③④⑤":
+                    cur = "①②③④⑤".index(x) + 1; res[cur] = []
+                elif cur and x.strip():
+                    res[cur].append(("t", x.strip()))
+        elif cur:
+            res[cur].append((k, v))
+    return res
+
+
+SRC = {}
+
+
+def kd_unit(u):
+    if u not in SRC:
+        d = os.path.join(ROOT, "CLIMATH_m", "대수", "자료", "고난도")
+        path = os.path.join(d, next(f for f in os.listdir(d) if f.startswith("%02d_" % u) and f.endswith(".hwpx")))
+        items, z = kd_load(path)
+        SRC[u] = ({it["no"]: it for it in items}, z, {})
+    return SRC[u]
+
+
+def num_eq(tk):
+    return [("eq", G["eq"](v.strip())) if k == "t" and re.fullmatch(r"\s*-?[\d.]+\s*", v) else (k, v) for k, v in tk]
+
+
+def kd_problem(pr, qp, blanks):
+    items, z, binmap = kd_unit(pr.get("unit", KD_UNIT))
+    it = items[pr["no"]]
+    stem = [[(k, v) for k, v in tokens(p) if not (k == "t" and v.strip() == "서술형 문제")] for p in it["paras"]]
+    stem = [s for s in stem if s]
+    enp = en_paras(it["en"])
+    first = tokens(enp[0])
+    ftxt = "".join(v for k, v in first if k == "t")
+    m = re.search(r"\[정답\]\s*([①②③④⑤])", ftxt)
+    mc = bool(it["choices"]) and pr.get("mc", False)
+    if it["choices"] and not mc:
+        done = False
+        for s in reversed(stem):
+            for j in range(len(s) - 1, -1, -1):
+                if s[j][0] == "t" and "?" in s[j][1]:
+                    s[j] = ("t", to_short(s[j][1])); done = True; break
+            if done: break
+        ans = choice_map(it["choices"])["①②③④⑤".index(m.group(1)) + 1]
+    elif it["choices"]:
+        ans = [("t", m.group(1))]
+    else:
+        ans, seen = [], False
+        for k, v in first:
+            if k == "t" and "[정답]" in v:
+                seen = True; v = v.split("[정답]", 1)[1].strip()
+                if v: ans.append(("t", v))
+            elif seen:
+                ans.append((k, v))
+    ans = num_eq(ans)
+    sols = []
+    for p in enp[1:]:
+        tk = tokens(p)
+        if any(k == "tbl" for k, _ in tk):
+            tb = next(v for k, v in tk if k == "tbl")
+            if "채점" in plain(tb):
+                continue
+            sols += [xml_of(r, z, binmap) for r in tbl_lines(tb)]
+            tk = [(k, v) for k, v in tk if k != "tbl"]
+            if not any(k != "t" or v.strip() for k, v in tk):
+                continue
+        if all(k == "t" for k, _ in tk) and re.fullmatch(r"[…\.·\s]*[❶❷❸❹❺]\s*", "".join(v for _, v in tk)):
+            continue
+        sols.append(xml_of(tk, z, binmap))
+    while sols and not re.search(r"<hp:t>[^<]*\S|<hp:equation|<hp:pic", sols[-1]):
+        sols.pop()
+    out = [en_para(endnote(xml_of(ans, z, binmap), sols))]
+    for s in stem:
+        cur = []
+        def flush():
+            if cur:
+                out.append(q_para(qp, xml_of(cur, z, binmap))); cur.clear()
+        for k, v in s:
+            if k == "pic":
+                flush(); out.append(para("11", "1", renum(v, z, binmap)))
+            elif k == "tbl":
+                flush()
+                for row in tbl_lines(v):
+                    txt = html.unescape("".join(x for k2, x in row if k2 == "t")).replace(" ", "")
+                    if txt in ("<보기>", "〈보기〉"):
+                        out.append(para("11", "1", "<hp:t>〈보기〉</hp:t>"))
+                    else:
+                        out.append(q_para(qp, xml_of(row, z, binmap)))
+            else:
+                cur.append((k, v))
+        flush()
+    if mc:
+        for p in it["choices"]:
+            out.append(para("8", "1", xml_of(tokens(p), z, binmap)))
+    out += [para(qp, "1", "") for _ in range(blanks)]
+    return out
+
+
+def text_problem(pr, qp, blanks):
+    out = [en_para(endnote(runs_of(pr["ans"]), [runs_of(l) for l in pr["sol"]]))]
+    for l in pr["q"]:
+        out.append(q_para(qp, runs_of(l)))
+    for l in pr.get("choices") or []:
+        out.append(para("8", "1", runs_of(l)))
+    out += [para(qp, "1", "") for _ in range(blanks)]
+    return out
+
+
+def problem(pr, qp, blanks):
+    return kd_problem(pr, qp, blanks) if "no" in pr else text_problem(pr, qp, blanks)
+
+
+# ---------------------------------------------------------------- 유형 상자(새 유형은 마지막 유형 상자 복제)
+def type_box_new(no, name):
+    b = TP[TYPES[-1]]
+    ts_ = re.findall(r"<hp:t>[^<]*</hp:t>", b)
+    b = b.replace(ts_[0], "<hp:t>%02d</hp:t>" % no, 1)
+    # 이름은 둘째 글 조각부터 '유형' 앞까지 → 하나로
+    names_ = [x for x in ts_[1:] if x != "<hp:t>유형</hp:t>"]
+    b = b.replace(names_[0], "<hp:t>%s</hp:t>" % html.escape(name, quote=False), 1)
+    for x in names_[1:]:
+        b = b.replace(x, "<hp:t/>", 1)
+    b = re.sub(r"<hp:equation .*?</hp:equation>", "", b, flags=re.S)
+    return clean(b)
+
+
+# ---------------------------------------------------------------- 조립
+body = [clean(p) if i else p for i, p in enumerate(TP[:I_STEP1 + 1])]
+n = 0
+for k, probs in enumerate(U.STEP1):
+    ci = CONCEPTS[k]
+    first_en = next(i for i in EN_IDX if i > ci)
+    body += [clean(p) for p in TP[ci:first_en] if not ("<hp:endNote " in p)]
+    for pr in probs:
+        body += problem(pr, "26", 8); n += 1
+body.append(clean(TP[I_STEP2]))
+for k, probs in enumerate(U.STEP2):
+    if k < len(TYPES):
+        body.append(clean(TP[TYPES[k]]))
+    else:
+        body.append(type_box_new(k + 1, U.NEW_TYPES[k + 1]))
+    for pr in probs:
+        body += problem(pr, "63", 10); n += 1
+body.append(clean(TP[I_STEP3]))
+for pr in U.STEP3:
+    body += problem(pr, "63", 13); n += 1
+body += [clean(p) for p in TP[I_TAIL:]]
+
+files["Contents/section0.xml"] = (HEAD + "".join(body) + TAIL_XML).encode("utf-8")
+if BIN:
+    hpf = files["Contents/content.hpf"].decode("utf-8")
+    hpf = hpf.replace("</opf:manifest>", "".join('<opf:item id="%s" href="%s" media-type="%s" isEmbeded="1"/>' % (i, p, mt) for i, p, d, mt in BIN) + "</opf:manifest>", 1)
+    files["Contents/content.hpf"] = hpf.encode("utf-8")
+    for i, p, d, mt in BIN:
+        files[p] = d; names.append(p)
+with zipfile.ZipFile(OUT, "w") as w:
+    for nm in names:
+        info = zipfile.ZipInfo(nm, date_time=(1980, 1, 1, 0, 0, 0))
+        info.compress_type = zipfile.ZIP_STORED if nm == "mimetype" else zipfile.ZIP_DEFLATED
+        w.writestr(info, files[nm])
+print("단원", UNIT, U.NAME, "문항", n, "(STEP1 %d, STEP2 %d, STEP3 %d)" % (sum(map(len, U.STEP1)), sum(map(len, U.STEP2)), len(U.STEP3)), "그림", len(BIN), "->", OUT)
