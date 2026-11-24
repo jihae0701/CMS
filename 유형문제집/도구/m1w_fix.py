@@ -112,6 +112,12 @@ def new_endnote(en, item):
     return head + "".join(ps) + "</hp:subList></hp:endNote>"
 
 
+# 사용자가 고치라고 한 문제 글(2026-11-24): 70번 (1) '이차함수 f(x)의 축' → '이차함수의 축'
+TEXT_FIX = [
+    (5, r'(<hp:p [^>]*>)(<hp:run charPrIDRef="\d+"><hp:t>\(1\) 이차함수 </hp:t><hp:equation [^>]*>(?:(?!</hp:equation>).)*?<hp:script>f\(x\)</hp:script></hp:equation><hp:t>의 축의 위치에 따라 )',
+     lambda m: m.group(1) + re.sub(r"<hp:t>\(1\) 이차함수 </hp:t>.*?<hp:t>의 축의 위치에 따라 ", "<hp:t>(1) 이차함수의 축의 위치에 따라 ", m.group(2), flags=re.S)),
+]
+
 z = zipfile.ZipFile(SRC)
 files = {n: z.read(n) for n in z.namelist()}
 nsec = len([n for n in files if re.match(r"Contents/section\d+\.xml$", n)])
@@ -143,7 +149,17 @@ for k in range(nsec):
             out.append('<hp:p id="%d" paraPrIDRef="34" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0"><hp:run charPrIDRef="25">%s</hp:run></hp:p>'
                        % (3990000020 + t, runs_of("(%d) %s" % (t, st))))
         # 다음 단원 미주 번호가 1 늘어난 것을 위해 N은 그대로 이어짐(위 new_endnote에서 +1)
-    files[name] = (head_xml + "".join(out) + tail_xml).encode("utf-8")
+    body = "".join(out)
+    for sec_k, pat, rep in TEXT_FIX:
+        if sec_k == k:
+            body, nsub = re.subn(pat, rep, body, count=1, flags=re.S)
+            assert nsub == 1, pat
+            j = body.index("이차함수의 축의 위치에 따라")          # 고친 문단의 줄 배치 정보는 지워 한글이 다시 잡게 함
+            e = body.index("</hp:p>", j)
+            seg = body.rfind("<hp:linesegarray>", j, e)
+            if seg > 0:
+                body = body[:seg] + body[body.index("</hp:linesegarray>", seg) + len("</hp:linesegarray>"):]
+    files[name] = (head_xml + body + tail_xml).encode("utf-8")
 assert idx == len(F), (idx, len(F))
 
 with zipfile.ZipFile(OUT, "w") as w:
