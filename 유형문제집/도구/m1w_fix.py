@@ -113,10 +113,55 @@ def new_endnote(en, item):
 
 
 # 사용자가 고치라고 한 문제 글(2026-11-24): 70번 (1) '이차함수 f(x)의 축' → '이차함수의 축'
-TEXT_FIX = [
+TEXT_FIX = [   # (구역, 찾을 글(정규식), 바꿀 글, 고친 뒤 그 문단에 있는 글)
     (5, r'(<hp:p [^>]*>)(<hp:run charPrIDRef="\d+"><hp:t>\(1\) 이차함수 </hp:t><hp:equation [^>]*>(?:(?!</hp:equation>).)*?<hp:script>f\(x\)</hp:script></hp:equation><hp:t>의 축의 위치에 따라 )',
-     lambda m: m.group(1) + re.sub(r"<hp:t>\(1\) 이차함수 </hp:t>.*?<hp:t>의 축의 위치에 따라 ", "<hp:t>(1) 이차함수의 축의 위치에 따라 ", m.group(2), flags=re.S)),
+     lambda m: m.group(1) + re.sub(r"<hp:t>\(1\) 이차함수 </hp:t>.*?<hp:t>의 축의 위치에 따라 ", "<hp:t>(1) 이차함수의 축의 위치에 따라 ", m.group(2), flags=re.S),
+     "이차함수의 축의 위치에 따라"),
+    # 2026-11-24 사용자 '나머지 네 뜻대로 고쳐 줘'(89·108·109번 수식은 그대로)
+    (0, re.escape("의 값을 구하하시오."), "의 값을 구하시오.", "의 값을 구하시오."),                                   # 8번 (3)
+    (1, r"(나누었을 때의 나머지)를 (</hp:t><hp:equation (?:(?!</hp:equation>).)*?<hp:script>R\(x\)</hp:script></hp:equation><hp:t>)을 구하는",
+     r"\1 \2를 구하는", "R(x)</hp:script></hp:equation><hp:t>를 구하는"),                                             # 29번
+    (7, re.escape("의 최고항의 계수를"), "의 최고차항의 계수를", "의 최고차항의 계수를"),                               # 97번 (1)
+    (7, re.escape("다다음 물음에"), "다음 물음에", "라 할 때, 다음 물음에"),                                             # 99번
+    (10, re.escape("경우의 수를 구하시오. 다음 물음에 답하시오."), "경우의 수를 구하는 과정이다. 다음 물음에 답하시오.",
+     "경우의 수를 구하는 과정이다."),                                                                                   # 127번
 ]
+
+
+def drop_lineseg(body, mark):
+    """mark가 든 문단의 줄 배치 정보를 지움(한글이 다시 잡게)"""
+    j = body.index(mark)
+    e = body.index("</hp:p>", j)
+    seg = body.rfind("<hp:linesegarray>", j, e)
+    if seg > 0:
+        body = body[:seg] + body[body.index("</hp:linesegarray>", seg) + len("</hp:linesegarray>"):]
+    return body
+
+
+def fix_problem_braces(p):
+    """문제·단계 글 수식의 보이는 괄호 묶음 → left { … right } (사용자 허락, 2026-11-24). 수식 너비도 고침"""
+    ens = re.findall(r"<hp:endNote .*?</hp:endNote>", p, re.S)
+    q = p
+    for t, en in enumerate(ens):
+        q = q.replace(en, "\x00%d\x00" % t)
+    changed = [False]
+    def one(m):
+        sc = html.unescape(m.group(3))
+        new = fix_braces(sc)
+        if new == sc:
+            return m.group(0)
+        changed[0] = True
+        w = int(m.group(2)) + int((g["_w"](new)[0] - g["_w"](sc)[0]) * 1100)
+        return m.group(1).replace('width="%s"' % m.group(2), 'width="%d"' % w, 1) + "<hp:script>%s</hp:script>" % html.escape(new, quote=False)
+    q = re.sub(r'(<hp:equation [^>]*>(?:(?!</hp:equation>).)*?<hp:sz width="(\d+)"(?:(?!</hp:equation>).)*?)<hp:script>([^<]*)</hp:script>', one, q, flags=re.S)
+    if changed[0]:
+        i = q.rfind("<hp:linesegarray>")                     # 문단 끝(바깥) 줄 배치 정보만 지움
+        if i > 0 and q.endswith("</hp:linesegarray></hp:p>"):
+            q = q[:i] + "</hp:p>"
+    for t, en in enumerate(ens):
+        q = q.replace("\x00%d\x00" % t, en)
+    return q
+
 
 z = zipfile.ZipFile(SRC)
 files = {n: z.read(n) for n in z.namelist()}
@@ -136,7 +181,7 @@ for k in range(nsec):
             assert len(ens) == 1, idx
             EN_TPL = EN_TPL or (ens[0], p)
             p = p.replace(ens[0], new_endnote(ens[0], F[idx]))
-        out.append(p)
+        out.append(fix_problem_braces(p))
     if k == 4:                                                 # 5단원 끝에 새 문항(한 단에 1문항: 단 나누기)
         en_src, p_src = EN_TPL
         prob_en = new_endnote(en_src, NEW5)
@@ -150,15 +195,11 @@ for k in range(nsec):
                        % (3990000020 + t, runs_of("(%d) %s" % (t, st))))
         # 다음 단원 미주 번호가 1 늘어난 것을 위해 N은 그대로 이어짐(위 new_endnote에서 +1)
     body = "".join(out)
-    for sec_k, pat, rep in TEXT_FIX:
+    for sec_k, pat, rep, mark in TEXT_FIX:
         if sec_k == k:
             body, nsub = re.subn(pat, rep, body, count=1, flags=re.S)
             assert nsub == 1, pat
-            j = body.index("이차함수의 축의 위치에 따라")          # 고친 문단의 줄 배치 정보는 지워 한글이 다시 잡게 함
-            e = body.index("</hp:p>", j)
-            seg = body.rfind("<hp:linesegarray>", j, e)
-            if seg > 0:
-                body = body[:seg] + body[body.index("</hp:linesegarray>", seg) + len("</hp:linesegarray>"):]
+            body = drop_lineseg(body, mark)
     files[name] = (head_xml + body + tail_xml).encode("utf-8")
 assert idx == len(F), (idx, len(F))
 
