@@ -119,8 +119,35 @@ def endnote(ans_xml, sol_xml):
     return head + SUBLIST + first + sols + "</hp:subList></hp:endNote>"
 
 
-def en_para(en):
-    return '<hp:p id="2147483648" paraPrIDRef="69" styleIDRef="2" pageBreak="0" columnBreak="0" merged="0"><hp:run charPrIDRef="60"><hp:ctrl>%s</hp:ctrl><hp:t/></hp:run></hp:p>' % en
+# ---------------------------------------------------------------- 모의고사 출처(CMStory처럼 번호 문단 오른쪽 끝, 예: 2025년 6월 고2 19번)
+HDR = files["Contents/header.xml"].decode("utf-8")
+
+
+def _add(kind, tag, xml_of_id):
+    """header의 hh:<tag> 목록 끝에 하나 더(새 id), itemCnt 늘림"""
+    global HDR
+    m = re.search(r'<hh:%s itemCnt="(\d+)"' % kind, HDR)
+    nid = int(m.group(1))
+    HDR = HDR[:m.start()] + '<hh:%s itemCnt="%d"' % (kind, nid + 1) + HDR[m.end():]
+    end = HDR.index("</hh:%s>" % kind)
+    HDR = HDR[:end] + xml_of_id(nid) + HDR[end:]
+    return str(nid)
+
+
+SRC_TAB = _add("tabProperties", "tabPr", lambda i: '<hh:tabPr id="%d" autoTabLeft="0" autoTabRight="0"><hp:switch><hp:case hp:required-namespace="http://www.hancom.co.kr/hwpml/2016/HwpUnitChar"><hh:tabItem pos="29620" type="RIGHT" leader="NONE" unit="HWPUNIT"/></hp:case><hp:default><hh:tabItem pos="59240" type="RIGHT" leader="NONE"/></hp:default></hp:switch></hh:tabPr>' % i)
+_p69 = re.search(r'<hh:paraPr id="69" .*?</hh:paraPr>', HDR, re.S).group(0)
+SRC_PARA = _add("paraProperties", "paraPr", lambda i: re.sub(r'tabPrIDRef="\d+"', 'tabPrIDRef="%s"' % SRC_TAB, _p69.replace('id="69"', 'id="%d"' % i, 1), count=1))
+_c1 = re.search(r'<hh:charPr id="1" .*?</hh:charPr>', HDR, re.S).group(0)
+SRC_CHAR = _add("charProperties", "charPr", lambda i: re.sub(r'textColor="#[0-9A-Fa-f]+"', 'textColor="#315F97"', _c1.replace('id="1"', 'id="%d"' % i, 1).replace('height="1000"', 'height="900"', 1), count=1))
+
+
+def en_para(en, src=None):
+    if not src:
+        return '<hp:p id="2147483648" paraPrIDRef="69" styleIDRef="2" pageBreak="0" columnBreak="0" merged="0"><hp:run charPrIDRef="60"><hp:ctrl>%s</hp:ctrl><hp:t/></hp:run></hp:p>' % en
+    tab = max(1000, 29620 - 3000 - 900 * len(src))
+    return ('<hp:p id="2147483648" paraPrIDRef="%s" styleIDRef="2" pageBreak="0" columnBreak="0" merged="0"><hp:run charPrIDRef="60"><hp:ctrl>%s</hp:ctrl></hp:run>'
+            '<hp:run charPrIDRef="60"><hp:t><hp:tab width="%d" leader="0" type="2"/></hp:t></hp:run><hp:run charPrIDRef="%s"><hp:t>%s</hp:t></hp:run></hp:p>'
+            % (SRC_PARA, en, tab, SRC_CHAR, html.escape(src, quote=False)))
 
 
 def q_para(qp, inner):
@@ -286,7 +313,7 @@ def kd_problem(pr, qp, blanks):
 
 
 def text_problem(pr, qp, blanks):
-    out = [en_para(endnote(runs_of(pr["ans"]), [runs_of(l) for l in pr["sol"]]))]
+    out = [en_para(endnote(runs_of(pr["ans"]), [runs_of(l) for l in pr["sol"]]), pr.get("mock") if isinstance(pr.get("mock"), str) else None)]
     for l in pr["q"]:
         out.append(q_para(qp, runs_of(l)))
     for l in pr.get("choices") or []:
@@ -335,6 +362,7 @@ for pr in U.STEP3:
     body += problem(pr, "63", 13); n += 1
 body += [clean(p) for p in TP[I_TAIL:]]
 
+files["Contents/header.xml"] = HDR.encode("utf-8")
 files["Contents/section0.xml"] = (HEAD + "".join(body) + TAIL_XML).encode("utf-8")
 if BIN:
     hpf = files["Contents/content.hpf"].decode("utf-8")
