@@ -52,18 +52,18 @@ def bis_lab(F, v, p, q, tex, r):
     F.labels.append((X + bx / n * r, Y + by / n * r, tex, 22, "cc"))
 
 
-def base32(F, A, B, C, D, E):
+def base32(F, A, B, C, D, E, dlab=(0, 8)):
     tri(F, A, B, C); F.seg(C, D); F.seg(D, E)
     right_mark(F, C, A, B, 0.28); right_mark(F, D, C, B, 0.22); right_mark(F, E, D, B, 0.22)
     F.pt(A, "A", "rc", -10, 0); F.pt(B, "B", "lc", 10, 0); F.pt(C, "C", "cb", 0, -8)
-    F.pt(D, "D", "ct", 0, 8); F.pt(E, "E", "lb", 4, -8)
+    F.pt(D, "D", "ct", dlab[0], dlab[1]); F.pt(E, "E", "lb", 4, -8)
 
 
 def fig_k32():
     A, B, C, D, E = _k32()
-    F = geo((-0.9, 6.5), (-2.35, 2.65), 52, (34, 30, 34, 20))
-    base32(F, A, B, C, D, E)
-    dim_arc(F, A, C, r"\sqrt[3]{2}", -1, 22); dim_arc(F, A, B, r"\sqrt[3]{54}", 1, 100)
+    F = geo((-0.9, 6.5), (-1.3, 2.65), 52, (34, 30, 34, 20))
+    base32(F, A, B, C, D, E, (12, 1))                     # D는 AB에 붙이고 살짝 오른쪽(사용자)
+    dim_arc(F, A, C, r"\sqrt[3]{2}", -1, 22); dim_arc(F, A, B, r"\sqrt[3]{54}", 1, 0, minr=0.16)   # 아래 호는 곡률을 낮춤(사용자, 선분 길이의 0.16배 — D 글자와 8px 이상)
     return F.render()
 
 

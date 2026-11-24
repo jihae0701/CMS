@@ -31,7 +31,7 @@ def right_mark(F, v, p, q, k=0.06):
                  % (F.P(*p1) + F.P(*p2) + F.P(*p3)))
 
 
-def dim_arc(F, p, q, label, side, bulge=16, size=20, gap=6, cut=True):
+def dim_arc(F, p, q, label, side, bulge=16, size=20, gap=6, cut=True, minr=0.2):
     """선분 pq의 길이 표시: side 쪽(화면 법선 방향 +1/-1)으로 휜 점선 호.
     점선의 가운데를 끊고 그 자리에 길이를 쓴다(사용자 요청, 모든 그림). cut=False는 예전 모양(호 바깥에 글자)."""
     import math
@@ -39,7 +39,7 @@ def dim_arc(F, p, q, label, side, bulge=16, size=20, gap=6, cut=True):
     mx, my = (x1 + x2) / 2, (y1 + y2) / 2
     dx, dy = x2 - x1, y2 - y1
     n = math.hypot(dx, dy)
-    bulge = max(bulge, 0.2 * n)        # 선분 길이의 0.2배 이상 휘게(사용자 요청: 점선을 더 휘게)
+    bulge = max(bulge, minr * n)       # 선분 길이의 0.2배 이상 휘게(사용자 요청: 점선을 더 휘게). 긴 선분에서 사용자가 곡률을 낮추라 하면 minr을 줄임
     nx, ny = -dy / n * side, dx / n * side
     cx, cy = mx + nx * 2 * bulge, my + ny * 2 * bulge
     if cut:
