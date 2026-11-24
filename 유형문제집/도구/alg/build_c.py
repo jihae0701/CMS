@@ -312,10 +312,35 @@ def kd_problem(pr, qp, blanks):
     return out
 
 
+def new_pic(png, W):
+    """새로 그린 PNG를 그림 개체로(고난도 자료의 첫 그림 개체를 본뜸). 폭 W(HWPUNIT), 높이는 PNG 비율 — 그림 규칙 1픽셀=6.4"""
+    from PIL import Image
+    items, z, binmap = kd_unit(KD_UNIT)
+    src = "".join(z.read(n).decode("utf-8") for n in z.namelist() if re.match(r"Contents/section\d+\.xml", n))
+    p = re.search(r"<hp:pic\b.*?</hp:pic>", src, re.S).group(0)
+    new = "algc%d_%d" % (UNIT, nxt("bin"))
+    data = open(os.path.join(ROOT, png), "rb").read()
+    BIN.append((new, "BinData/%s.png" % new, data, "image/png"))
+    pw, ph = Image.open(os.path.join(ROOT, png)).size
+    H = round(W * ph / pw)
+    p = re.sub(r'binaryItemIDRef="[^"]+"', 'binaryItemIDRef="%s"' % new, p)
+    p = re.sub(r'<hp:orgSz [^>]*/>', '<hp:orgSz width="%d" height="%d"/>' % (W, H), p)
+    p = re.sub(r'<hp:curSz [^>]*/>', '<hp:curSz width="%d" height="%d"/>' % (W, H), p)
+    p = re.sub(r'centerX="\d+" centerY="\d+"', 'centerX="%d" centerY="%d"' % (W // 2, H // 2), p)
+    p = re.sub(r'<hc:scaMatrix [^>]*/>', '<hc:scaMatrix e1="1" e2="0" e3="0" e4="0" e5="1" e6="0"/>', p)
+    p = re.sub(r'<hp:imgRect>.*?</hp:imgRect>', '<hp:imgRect><hc:pt0 x="0" y="0"/><hc:pt1 x="%d" y="0"/><hc:pt2 x="%d" y="%d"/><hc:pt3 x="0" y="%d"/></hp:imgRect>' % (W, W, H, H), p, flags=re.S)
+    p = re.sub(r'<hp:imgClip [^>]*/>', '<hp:imgClip left="0" right="%d" top="0" bottom="%d"/>' % (W, H), p)
+    p = re.sub(r'<hp:imgDim [^>]*/>', '<hp:imgDim dimwidth="%d" dimheight="%d"/>' % (W, H), p)
+    p = re.sub(r'(<hp:sz width=")\d+(" widthRelTo="ABSOLUTE" height=")\d+(")', lambda q: q.group(1) + str(W) + q.group(2) + str(H) + q.group(3), p)
+    return para("11", "1", renum(p))
+
+
 def text_problem(pr, qp, blanks):
     out = [en_para(endnote(runs_of(pr["ans"]), [runs_of(l) for l in pr["sol"]]), pr.get("mock") if isinstance(pr.get("mock"), str) else None)]
     for l in pr["q"]:
         out.append(q_para(qp, runs_of(l)))
+    if pr.get("pic"):
+        out.append(new_pic(*pr["pic"]))
     for l in pr.get("choices") or []:
         out.append(para("8", "1", runs_of(l)))
     out += [para(qp, "1", "") for _ in range(blanks)]
