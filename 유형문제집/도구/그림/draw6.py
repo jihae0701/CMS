@@ -31,7 +31,7 @@ def right_mark(F, v, p, q, k=0.06):
                  % (F.P(*p1) + F.P(*p2) + F.P(*p3)))
 
 
-def dim_arc(F, p, q, label, side, bulge=16, size=20, gap=6, cut=True, minr=0.2):
+def dim_arc(F, p, q, label, side, bulge=16, size=20, gap=6, cut=True, minr=0.2, chars=None):
     """선분 pq의 길이 표시: side 쪽(화면 법선 방향 +1/-1)으로 휜 점선 호.
     점선의 가운데를 끊고 그 자리에 길이를 쓴다(사용자 요청, 모든 그림). cut=False는 예전 모양(호 바깥에 글자)."""
     import math
@@ -43,7 +43,7 @@ def dim_arc(F, p, q, label, side, bulge=16, size=20, gap=6, cut=True, minr=0.2):
     nx, ny = -dy / n * side, dx / n * side
     cx, cy = mx + nx * 2 * bulge, my + ny * 2 * bulge
     if cut:
-        arcs, (lx, ly) = cut_arc(x1, y1, cx, cy, x2, y2, label, size)
+        arcs, (lx, ly) = cut_arc(x1, y1, cx, cy, x2, y2, label, size, chars=chars)   # chars: 보이는 글자 수(∛54처럼 TeX가 길 때 끊는 길이를 글자에 맞춤)
         F.svg += arcs
         F.labels.append((lx, ly, label, size, "cc", "dim"))
         return

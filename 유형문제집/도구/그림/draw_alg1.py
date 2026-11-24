@@ -62,8 +62,8 @@ def base32(F, A, B, C, D, E, dlab=(0, 8)):
 def fig_k32():
     A, B, C, D, E = _k32()
     F = geo((-0.9, 6.5), (-1.3, 2.65), 52, (34, 30, 34, 20))
-    base32(F, A, B, C, D, E, (12, 1))                     # D는 AB에 붙이고 살짝 오른쪽(사용자)
-    dim_arc(F, A, C, r"\sqrt[3]{2}", -1, 22); dim_arc(F, A, B, r"\sqrt[3]{54}", 1, 0, minr=0.16)   # 아래 호는 곡률을 낮춤(사용자, 선분 길이의 0.16배 — D 글자와 8px 이상)
+    base32(F, A, B, C, D, E, (18, 0))                     # D는 AB에 붙이고 살짝 오른쪽(사용자)
+    dim_arc(F, A, C, r"\sqrt[3]{2}", -1, 22); dim_arc(F, A, B, r"\sqrt[3]{54}", 1, 0, minr=0.14, chars=4)   # 사용자: 곡률 0.14, 점선을 글자 가까이까지
     return F.render()
 
 
