@@ -5,7 +5,7 @@ python alg_wb_build.py <출력.hwpx> [단원 번호 …]   (빼면 문항 파일
   단원별 문제 수 20~25', 서식 = CLIMATH(c) 워크북 서식, 내신 기출은 원문 그대로(모의고사만 숫자 변형).
 - 문항: CLIMATH_m/대수/워크북/문항/wNN.py — STEP1, STEP2 (각각 dict(src, q=[줄…], choices=[줄…], ans, sol=[줄…], pic=(PNG, 폭))). 글 속 $…$는 한글 수식.
 - 틀: CLIMATH(c) 공통수학1 워크북 HWPX(쪽·2단·바탕쪽·글자/문단 모양, STEP 1·STEP 2 상자). 구역 = 단원, 바탕쪽은 1단원 것을 복사해 ⓒ→ⓜ, 과목 '대수', 단원 이름.
-  문제 문단(35, 번호 = 미주 번호, 단원을 넘어 이어짐), 둘째 줄부터(조건·보기) 34, 선택지 68, 그림 34, 풀이 공간 빈 줄(34) 14줄.
+  STEP 상자 없음(2026-11-25 사용자), 문제 문단(35, 번호 = 미주 번호, 단원을 넘어 이어짐), 둘째 줄부터(조건·보기) 34, 선택지 68, 그림 34, 풀이 공간 빈 줄(34) 14줄.
   미주: ' 정답 답'(글자 44) + 풀이(문단 5·글자 45, '$='로 시작하는 줄은 54).
 """
 import sys, os, re, zipfile, html, importlib.util
@@ -73,7 +73,10 @@ for j, u in enumerate(SEL):
 sec0 = files["Contents/section0.xml"].decode("utf-8")
 P0 = top_paras(sec0)
 head_xml = sec0[:sec0.index("<hp:p ")]
-first = re.sub(r"<hp:linesegarray>.*?</hp:linesegarray>", "", P0[0])                          # 구역 정의 + STEP 1 상자
+first = re.sub(r"<hp:linesegarray>.*?</hp:linesegarray>", "", P0[0])                          # 구역 정의(+ STEP 1 상자)
+# 2026-11-25 사용자 'STEP 1, 2 박스는 없애 줘' → 구역 첫 문단의 상자와 글자를 빼고, STEP 2 상자는 넣지 않음(문항 순서는 STEP1 → STEP2 그대로)
+first = re.sub(r"<hp:rect\b.*?</hp:rect>", "", first, flags=re.S)
+first = re.sub(r"<hp:t>[^<]*</hp:t>", "<hp:t/>", first)
 step2 = re.sub(r"<hp:linesegarray>.*?</hp:linesegarray>", "", next(p for p in P0 if "<hp:rect" in p and "STEP 2" in re.sub(r"<[^>]+>", "", p)))
 en_open = re.search(r"<hp:endNote [^>]*><hp:subList [^>]*>", sec0).group(0)
 autonum = re.search(r'<hp:ctrl><hp:autoNum num="\d+" numType="ENDNOTE">.*?</hp:ctrl>', sec0, re.S).group(0)
@@ -148,8 +151,6 @@ for j, u in enumerate(SEL):
                '<hp:masterPage idRef="masterpage%d"/><hp:masterPage idRef="masterpage%d"/>' % (2 * j, 2 * j + 1), first, count=1)
     body = [head_xml + f]
     for st, probs in ((1, M.STEP1), (2, M.STEP2)):
-        if st == 2:
-            body.append(re.sub(r'(<hp:p id=")\d+', lambda q: q.group(1) + nid(), step2, count=1))
         for pr in probs:
             body += problem(pr)
             MAP.append((u, st, ENO[0], pr["src"]))
