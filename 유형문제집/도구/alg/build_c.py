@@ -443,6 +443,10 @@ for pr in U.STEP3:
 body += [clean(p) for p in TP[I_TAIL:]]
 
 files["Contents/header.xml"] = HDR.encode("utf-8")
+# 바탕쪽의 'CLIMATH ⓒ' → 'ⓜ' (2026-11-25 사용자 '바탕쪽에 동그라미 c를 동그라미 m으로')
+for _n in list(files):
+    if re.match(r"Contents/masterpage\d+\.xml$", _n):
+        files[_n] = files[_n].decode("utf-8").replace("<hp:t>ⓒ</hp:t>", "<hp:t>ⓜ</hp:t>").encode("utf-8")
 files["Contents/section0.xml"] = (HEAD + "".join(body) + TAIL_XML).encode("utf-8")
 if BIN:
     hpf = files["Contents/content.hpf"].decode("utf-8")
