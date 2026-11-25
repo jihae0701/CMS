@@ -16,7 +16,7 @@ z = zipfile.ZipFile(SRC)
 root = etree.fromstring(z.read("Contents/section0.xml"))
 HP = "{http://www.hancom.co.kr/hwpml/2011/paragraph}"
 hpf = z.read("Contents/content.hpf").decode()
-IMG = {m.group(1): m.group(2) for m in re.finditer(r'<opf:item id="(image\d+)" href="([^"]+)"', hpf)}
+IMG = {m.group(1): m.group(2) for m in re.finditer(r'<opf:item id="([^"]+)" href="(BinData/[^"]+)"', hpf)}
 
 
 def ln(e):

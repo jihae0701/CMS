@@ -53,6 +53,57 @@ SUBLIST = re.search(r"<hp:endNote [^>]*>(<hp:subList [^>]*>)", ts).group(1)
 AUTONUM = re.search(r"<hp:ctrl><hp:autoNum [^>]*numType=\"ENDNOTE\">.*?</hp:ctrl>", ts, re.S).group(0)
 assert len(CONCEPTS) == len(U.STEP1), (len(CONCEPTS), len(U.STEP1))
 
+
+# ---------------------------------------------------------------- 틀마다 다른 문단·글자 모양 번호 읽기 (2026-11-25)
+# CLIMATH(c) 대수 단원 파일은 단원마다 머리(header)의 모양 번호가 다름(1단원: 문항 번호 문단 69·글자 60·문제 26/63, 2단원: 80·57·17/89 …).
+# 예전에는 1단원 번호를 그대로 써서 2단원 문서의 번호 문단(자동 번호)·문제 글꼴이 틀렸음 → 틀의 문항에서 역할별 번호를 읽어 씀.
+from collections import Counter as _C
+
+
+def _pp(p):
+    return re.match(r'<hp:p [^>]*paraPrIDRef="(\d+)"', p).group(1)
+
+
+def _roles():
+    R = {}
+    for name, (lo, hi) in (("1", (I_STEP1, I_STEP2)), ("2", (I_STEP2, len(TP)))):
+        e = [i for i in EN_IDX if lo < i < hi]
+        R["en" + name] = _C(_pp(TP[i]) for i in e).most_common(1)[0][0]
+        q, ch, dan, qcp = _C(), _C(), _C(), _C()
+        for i in e:
+            j = i + 1
+            while j < len(TP) and not plain(TP[j]).strip() and "<hp:pic" not in TP[j]:
+                j += 1
+            if j < len(TP):
+                q[_pp(TP[j])] += 1
+                qcp.update(re.findall(r'<hp:run charPrIDRef="(\d+)"><hp:t>', TP[j]))
+            for k in range(i + 1, min(i + 40, len(TP))):
+                if "<hp:endNote " in TP[k] or is_box(TP[k]):
+                    break
+                t = plain(TP[k]).strip()
+                if t.startswith("①"):
+                    ch[_pp(TP[k])] += 1
+                elif t.startswith("(단"):
+                    dan[_pp(TP[k])] += 1
+        R["q" + name] = q.most_common(1)[0][0]
+        R["ch" + name] = (ch.most_common(1) or [(R["q" + name],)])[0][0]
+        R["dan" + name] = (dan.most_common(1) or [(None,)])[0][0]
+        R["qcp" + name] = qcp.most_common(1)[0][0]
+    R["encp"] = _C(m for i in EN_IDX for m in re.findall(r'<hp:run charPrIDRef="(\d+)"><hp:ctrl><hp:endNote', TP[i])).most_common(1)[0][0]
+    R["qcp"] = R["qcp1"]
+    hd = files["Contents/header.xml"].decode("utf-8")
+    R["center"] = next(m.group(1) for m in re.finditer(r'<hh:paraPr id="(\d+)" .*?</hh:paraPr>', hd, re.S)
+                       if 'horizontal="CENTER"' in m.group(0) and 'heading type="NONE"' in m.group(0)
+                       and re.search(r'<hc:left value="0"', m.group(0)) and re.search(r'<hc:intent value="0"', m.group(0)))
+    R["dan"] = R["dan2"] or R["dan1"]
+    return R
+
+
+R = _roles()
+R.update(getattr(U, "ROLE_OVERRIDE", {}))                    # 단원 자료에서 고정할 때(1단원: 사용자가 본 판과 같게)
+STEP_NOW = [1]
+print("틀 모양 번호:", R)
+
 CNT = {"eq": 2100000000, "pic": 2200000000, "inst": 2300000000, "p": 2400000000, "en": 0, "bin": 0}
 def nxt(k):
     CNT[k] += 1
@@ -135,24 +186,24 @@ def _add(kind, tag, xml_of_id):
 
 
 SRC_TAB = _add("tabProperties", "tabPr", lambda i: '<hh:tabPr id="%d" autoTabLeft="0" autoTabRight="0"><hp:switch><hp:case hp:required-namespace="http://www.hancom.co.kr/hwpml/2016/HwpUnitChar"><hh:tabItem pos="29620" type="RIGHT" leader="NONE" unit="HWPUNIT"/></hp:case><hp:default><hh:tabItem pos="59240" type="RIGHT" leader="NONE"/></hp:default></hp:switch></hh:tabPr>' % i)
-_p69 = re.search(r'<hh:paraPr id="69" .*?</hh:paraPr>', HDR, re.S).group(0)
-SRC_PARA = _add("paraProperties", "paraPr", lambda i: re.sub(r'tabPrIDRef="\d+"', 'tabPrIDRef="%s"' % SRC_TAB, _p69.replace('id="69"', 'id="%d"' % i, 1), count=1))
-_c1 = re.search(r'<hh:charPr id="1" .*?</hh:charPr>', HDR, re.S).group(0)
-SRC_CHAR = _add("charProperties", "charPr", lambda i: re.sub(r'textColor="#[0-9A-Fa-f]+"', 'textColor="#315F97"', _c1.replace('id="1"', 'id="%d"' % i, 1).replace('height="1000"', 'height="900"', 1), count=1))
+_p69 = re.search(r'<hh:paraPr id="%s" .*?</hh:paraPr>' % R["en2"], HDR, re.S).group(0)
+SRC_PARA = _add("paraProperties", "paraPr", lambda i: re.sub(r'tabPrIDRef="\d+"', 'tabPrIDRef="%s"' % SRC_TAB, _p69.replace('id="%s"' % R["en2"], 'id="%d"' % i, 1), count=1))
+_c1 = re.search(r'<hh:charPr id="%s" .*?</hh:charPr>' % R["qcp"], HDR, re.S).group(0)
+SRC_CHAR = _add("charProperties", "charPr", lambda i: re.sub(r'textColor="#[0-9A-Fa-f]+"', 'textColor="#315F97"', _c1.replace('id="%s"' % R["qcp"], 'id="%d"' % i, 1).replace('height="1000"', 'height="900"', 1), count=1))
 
 
 def en_para(en, src=None):
     if not src:
-        return '<hp:p id="2147483648" paraPrIDRef="69" styleIDRef="2" pageBreak="0" columnBreak="0" merged="0"><hp:run charPrIDRef="60"><hp:ctrl>%s</hp:ctrl><hp:t/></hp:run></hp:p>' % en
+        return '<hp:p id="2147483648" paraPrIDRef="%s" styleIDRef="2" pageBreak="0" columnBreak="0" merged="0"><hp:run charPrIDRef="%s"><hp:ctrl>%s</hp:ctrl><hp:t/></hp:run></hp:p>' % (R["en%d" % min(STEP_NOW[0], 2)], R["encp"], en)
     tab = max(1000, 29620 - 3000 - 900 * len(src))
-    return ('<hp:p id="2147483648" paraPrIDRef="%s" styleIDRef="2" pageBreak="0" columnBreak="0" merged="0"><hp:run charPrIDRef="60"><hp:ctrl>%s</hp:ctrl></hp:run>'
-            '<hp:run charPrIDRef="60"><hp:t><hp:tab width="%d" leader="0" type="2"/></hp:t></hp:run><hp:run charPrIDRef="%s"><hp:t>%s</hp:t></hp:run></hp:p>'
-            % (SRC_PARA, en, tab, SRC_CHAR, html.escape(src, quote=False)))
+    return ('<hp:p id="2147483648" paraPrIDRef="%s" styleIDRef="2" pageBreak="0" columnBreak="0" merged="0"><hp:run charPrIDRef="%s"><hp:ctrl>%s</hp:ctrl></hp:run>'
+            '<hp:run charPrIDRef="%s"><hp:t><hp:tab width="%d" leader="0" type="2"/></hp:t></hp:run><hp:run charPrIDRef="%s"><hp:t>%s</hp:t></hp:run></hp:p>'
+            % (SRC_PARA, R["encp"], en, R["encp"], tab, SRC_CHAR, html.escape(src, quote=False)))
 
 
 def q_para(qp, inner):
     t = re.sub(r"<[^>]+>", "", inner).strip()
-    return para("34" if t.startswith("(단") else qp, "1", inner)
+    return para(R["dan"] if t.startswith("(단") and R["dan"] else qp, R["qcp"], inner)
 
 
 # ---------------------------------------------------------------- 고난도 문항
@@ -293,13 +344,13 @@ def kd_problem(pr, qp, blanks):
                 out.append(q_para(qp, xml_of(cur, z, binmap))); cur.clear()
         for k, v in s:
             if k == "pic":
-                flush(); out.append(para("11", "1", renum(v, z, binmap)))
+                flush(); out.append(para(R["center"], R["qcp"], renum(v, z, binmap)))
             elif k == "tbl":
                 flush()
                 for row in tbl_lines(v):
                     txt = html.unescape("".join(x for k2, x in row if k2 == "t")).replace(" ", "")
                     if txt in ("<보기>", "〈보기〉"):
-                        out.append(para("11", "1", "<hp:t>〈보기〉</hp:t>"))
+                        out.append(para(R["center"], R["qcp"], "<hp:t>〈보기〉</hp:t>"))
                     else:
                         out.append(q_para(qp, xml_of(row, z, binmap)))
             else:
@@ -307,8 +358,8 @@ def kd_problem(pr, qp, blanks):
         flush()
     if mc:
         for p in it["choices"]:
-            out.append(para("8", "1", xml_of(tokens(p), z, binmap)))
-    out += [para(qp, "1", "") for _ in range(blanks)]
+            out.append(para(R["ch%d" % min(STEP_NOW[0], 2)], R["qcp"], xml_of(tokens(p), z, binmap)))
+    out += [para(qp, R["qcp"], "") for _ in range(blanks)]
     return out
 
 
@@ -332,7 +383,7 @@ def new_pic(png, W):
     p = re.sub(r'<hp:imgClip [^>]*/>', '<hp:imgClip left="0" right="%d" top="0" bottom="%d"/>' % (W, H), p)
     p = re.sub(r'<hp:imgDim [^>]*/>', '<hp:imgDim dimwidth="%d" dimheight="%d"/>' % (W, H), p)
     p = re.sub(r'(<hp:sz width=")\d+(" widthRelTo="ABSOLUTE" height=")\d+(")', lambda q: q.group(1) + str(W) + q.group(2) + str(H) + q.group(3), p)
-    return para("11", "1", renum(p))
+    return para(R["center"], R["qcp"], renum(p))
 
 
 def text_problem(pr, qp, blanks):
@@ -342,8 +393,8 @@ def text_problem(pr, qp, blanks):
     if pr.get("pic"):
         out.append(new_pic(*pr["pic"]))
     for l in pr.get("choices") or []:
-        out.append(para("8", "1", runs_of(l)))
-    out += [para(qp, "1", "") for _ in range(blanks)]
+        out.append(para(R["ch%d" % min(STEP_NOW[0], 2)], R["qcp"], runs_of(l)))
+    out += [para(qp, R["qcp"], "") for _ in range(blanks)]
     return out
 
 
@@ -373,18 +424,22 @@ for k, probs in enumerate(U.STEP1):
     first_en = next(i for i in EN_IDX if i > ci)
     body += [clean(p) for p in TP[ci:first_en] if not ("<hp:endNote " in p)]
     for pr in probs:
-        body += problem(pr, "26", 8); n += 1
+        STEP_NOW[0] = 1; body += problem(pr, R["q1"], 8); n += 1
 body.append(clean(TP[I_STEP2]))
 for k, probs in enumerate(U.STEP2):
     if k < len(TYPES):
-        body.append(clean(TP[TYPES[k]]))
+        bx = clean(TP[TYPES[k]])
+        t0 = re.search(r"<hp:t>(\d\d)</hp:t>", bx)               # 유형 번호를 차례대로(CLIMATH(c) 3단원 틀은 '실생활에의 활용'도 06이라 07로)
+        if t0 and t0.group(1) != "%02d" % (k + 1):
+            bx = bx.replace(t0.group(0), "<hp:t>%02d</hp:t>" % (k + 1), 1)
+        body.append(bx)
     else:
         body.append(type_box_new(k + 1, U.NEW_TYPES[k + 1]))
     for pr in probs:
-        body += problem(pr, "63", 10); n += 1
+        STEP_NOW[0] = 2; body += problem(pr, R["q2"], 10); n += 1
 body.append(clean(TP[I_STEP3]))
 for pr in U.STEP3:
-    body += problem(pr, "63", 13); n += 1
+    STEP_NOW[0] = 3; body += problem(pr, R["q2"], 13); n += 1
 body += [clean(p) for p in TP[I_TAIL:]]
 
 files["Contents/header.xml"] = HDR.encode("utf-8")
