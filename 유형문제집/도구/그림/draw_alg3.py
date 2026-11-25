@@ -322,7 +322,23 @@ def m2306():
     return F.render()
 
 
-FIGS = {"alg3_m2306.png": m2306, "alg3_k01s.png": k01s, "alg3_k02s.png": k02s, "alg3_k03s.png": k03s, "alg3_k04.png": k04, "alg3_k16s.png": k16s,
+# ---------------------------------------------------------------- 워크북: 모의 2023 고2 6월 18번 숫자 변형 — y=3^(x+1), y=3^(-x+1), A(-1,1), B(1,1), C(0,3), y=k, y=3k (개형 k=1.45)
+def w2306():
+    k = 1.45; L = math.log(k, 3)
+    A, B, C = (-1, 1), (1, 1), (0, 3)
+    D, E, Fp, G = (L - 1, k), (1 - L, k), (L, 3 * k), (-L, 3 * k)
+    F = Frame((-1.9, 1.9), (-0.5, 5.6), 110, 62, (20, 16, 90, 12)); F.axes(); O(F)
+    F.poly([A, B, E, D], SKY); F.poly([C, Fp, G], SKY)
+    cv(F, lambda x: 3 ** (x + 1), -1.9, 0.55); cv(F, lambda x: 3 ** (-x + 1), -0.55, 1.9)
+    F.seg((-1.9, k), (1.9, k)); F.seg((-1.9, 3 * k), (1.9, 3 * k)); F.seg(A, B); F.seg(G, C); F.seg(C, Fp)
+    for q, nm, a, dx, dy in ((A, "A", "rt", -6, 4), (B, "B", "lt", 6, 4), (C, "C", "lt", 6, 2), (D, "D", "rb", -6, -4), (E, "E", "lb", 6, -4), (Fp, "F", "lb", 6, -4), (G, "G", "rb", -6, -4)):
+        dot(F, q); F.pt(q, nm, a, dx, dy)
+    F.lab((1.9, k), "y=k", "lb", -30, -6); F.lab((1.9, 3 * k), "y=3k", "lb", -40, -6)
+    F.lab((0.55, 3 ** 1.55), "y=3^{x+1}", "lc", 6, 0); F.lab((-0.55, 3 ** 1.55), "y=3^{-x+1}", "rc", -6, 0)
+    return F.render()
+
+
+FIGS = {"alg3_w2306.png": w2306, "alg3_m2306.png": m2306, "alg3_k01s.png": k01s, "alg3_k02s.png": k02s, "alg3_k03s.png": k03s, "alg3_k04.png": k04, "alg3_k16s.png": k16s,
         "alg3_k24s1.png": k24s1, "alg3_k24s2.png": k24s2, "alg3_k24s3.png": k24s3, "alg3_k25.png": (k25, 13000), "alg3_k25s.png": (k25s, 13000),
         "alg3_k26s.png": k26s, "alg3_k27.png": k27, "alg3_k27s.png": k27s, "alg3_k39.png": k39, "alg3_k47s.png": k47s,
         "alg3_k49s.png": k49s, "alg3_k56.png": k56, "alg3_k60.png": k60, "alg3_k61.png": k61, "alg3_k61s.png": k61s, "alg3_on324.png": on324}
