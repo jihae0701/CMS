@@ -3,7 +3,7 @@
 python alg_wb_build.py <출력.hwpx> [단원 번호 …]   (빼면 문항 파일이 있는 단원 모두)
 - 사용자: '지수 로그 워크북 만들자. 유형 골고루, 본책 STEP1 난도 느낌(좀 더 어려워도 됨), 본책의 모의고사 기출문제는 숫자 변형으로 반드시 넣기,
   단원별 문제 수 20~25', 서식 = CLIMATH(c) 워크북 서식, 내신 기출은 원문 그대로(모의고사만 숫자 변형).
-- 문항: CLIMATH_m/대수/워크북/문항/wNN.py — STEP1, STEP2 (각각 dict(src, q=[줄…], choices=[줄…], ans, sol=[줄…], pic=(PNG, 폭))). 글 속 $…$는 한글 수식.
+- 문항: CLIMATH_m/대수/워크북/문항/wNN.py — PROBS(개념·유형 순, 예전 판은 STEP1, STEP2) (각각 dict(src, q=[줄…], choices=[줄…], ans, sol=[줄…], pic=(PNG, 폭))). 글 속 $…$는 한글 수식.
 - 틀: CLIMATH(c) 공통수학1 워크북 HWPX(쪽·2단·바탕쪽·글자/문단 모양, STEP 1·STEP 2 상자). 구역 = 단원, 바탕쪽은 1단원 것을 복사해 ⓒ→ⓜ, 과목 '대수', 단원 이름.
   STEP 상자 없음(2026-11-25 사용자), 문제 문단(35, 번호 = 미주 번호, 단원을 넘어 이어짐), 둘째 줄부터(조건·보기) 34, 선택지 68, 그림 34, 풀이 공간 빈 줄(34) 14줄.
   미주: ' 정답 답'(글자 44) + 풀이(문단 5·글자 45, '$='로 시작하는 줄은 54).
@@ -150,11 +150,11 @@ for j, u in enumerate(SEL):
     f = re.sub(r'<hp:masterPage idRef="masterpage\d+"/>\s*<hp:masterPage idRef="masterpage\d+"/>',
                '<hp:masterPage idRef="masterpage%d"/><hp:masterPage idRef="masterpage%d"/>' % (2 * j, 2 * j + 1), first, count=1)
     body = [head_xml + f]
-    for st, probs in ((1, M.STEP1), (2, M.STEP2)):
-        for pr in probs:
-            body += problem(pr)
-            MAP.append((u, st, ENO[0], pr["src"]))
-            total += 1
+    probs = M.PROBS if hasattr(M, "PROBS") else list(M.STEP1) + list(M.STEP2)   # 2026-11-25 상자 뺀 뒤 한 목록(개념·유형 순)
+    for pr in probs:
+        body += problem(pr)
+        MAP.append((u, ENO[0], pr["src"]))
+        total += 1
     files["Contents/section%d.xml" % j] = ("".join(body) + "</hs:sec>").encode("utf-8")
 
 if NEWBIN:
@@ -171,4 +171,4 @@ with zipfile.ZipFile(OUT, "w") as w:
         w.writestr(info, files[n])
 print("단원", SEL, "문항", total, "->", OUT)
 with open(os.path.splitext(OUT)[0] + "_출처.tsv", "w", encoding="utf-8") as f:
-    f.write("단원\tSTEP\t워크북 번호\t출처\n" + "".join("%d\t%d\t%d\t%s\n" % m for m in MAP))
+    f.write("단원\t워크북 번호\t출처\n" + "".join("%d\t%d\t%s\n" % m for m in MAP))
