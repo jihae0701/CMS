@@ -8,7 +8,7 @@ python climath_cover_m_mi1.py <원본 폴더>   → <원본 폴더>/CLIMATH_m_�
   · 제목 줄(테두리 없는 흰 줄 약 8px, x 357~1031, y 1426·1562) → 공통수학·대수와 같은 줄(흰 4.2px + 테두리, x 455~1020, 가운데 y 1441.65·1577.65).
   · 제목 '미적분 Ⅰ'(흰 글씨, 높이 60px) 모양·크기 그대로 두 줄 사이 가운데(737.8, 1509.65)로 옮김. 지운 자리는 줄마다 평평한 파랑으로 채움.
   · 뒤표지 폭 1414 → 1474(오른쪽 띠 60px 이어 붙여 띠 x 1178~1473).
-  · 옛 아래 제목 줄을 지운 자리로 지나가던 왼쪽 아래 가는 원호는 원에 맞춰(가운데 540.4, 1292.5, 반지름 303.1) 그 구간만 다시 그림.
+  · 옛 아래 제목 줄 밑을 지나가던 왼쪽 아래 가는 원호는 원에 맞춰(가운데 540.4, 1292.5, 반지름 303.1) 전체를 지우고 한 번에 다시 그림(이음매 없게).
 """
 import os, sys
 import numpy as np
@@ -50,15 +50,26 @@ print("제목 잉크", (TX0 + xs.min(), TY0 + ys.min(), TX0 + xs.max(), TY0 + ys
 for (ya, yb) in ((1416, 1436), (1552, 1572)):
     xa, xb = 350 + PADX, 1040 + PADX
     f[ya + 1:yb, xa:xb] = np.median(f[ya + 1:yb, 1100:1200], axis=1)[:, None, :]
-# 왼쪽 아래 가는 원호가 옛 아래 줄 밑을 지나가므로 지운 자리(줄 1553~1571)에 원호를 다시 그림.
-# 원호 = 받은 그림의 가는 흰 선 화소 1219개에 맞춘 원: 가운데 (540.39, 1292.52)(받은 그림 좌표), 반지름 303.08, 선 굵기 약 1.2px.
+# 왼쪽 아래 가는 원호: 옛 아래 줄 밑을 지나가서 줄을 지우면 끊김 → 원호 전체를 지우고(가는 선만 메우기) 같은 원으로 처음부터 끝까지 한 번에 다시 그림
+# (2026-11-26 사용자 '원호 지워졌다가 다시 그린 부분이 끊어진 것처럼 보여' — 구간만 다시 그리면 이음매가 남음).
+# 원 = 받은 그림의 가는 흰 선 화소 1219개에 맞춘 원: 가운데 (540.39, 1292.52)(받은 그림 좌표), 반지름 303.08. 원호 = 원의 왼쪽, y 1008~1594, 끝 x ≤ 527.
+import cv2
 ACX, ACY, AR, AW = 540.39 + PADX, 1292.52, 303.08, 1.2
-ya, yb, S8 = 1553, 1572, 8
-xa, xb = 360 + PADX, 560 + PADX                              # 원호가 있는 왼쪽 부분만(받은 그림 x ≤ 530)
-yy, xx = np.mgrid[ya * S8:yb * S8, xa * S8:xb * S8] / S8 + 0.5 / S8
-ring = (np.abs(np.hypot(xx - ACX, yy - ACY) - AR) <= AW / 2).astype(np.float32)
-ring = ring.reshape(yb - ya, S8, xb - xa, S8).mean(axis=(1, 3))[..., None]
-f[ya:yb, xa:xb] = f[ya:yb, xa:xb] * (1 - ring) + np.array((250.0, 253.0, 255.0)) * ring
+AY0, AY1, AXMAX = 1004, 1598, 526 + PADX            # 아래 꼬리 끝 x 525(받은 그림)
+TOPX = 440 + PADX                                           # 위 끝은 M 글자 흰 테두리(x 441~)에서 멈춤 — 테두리는 건드리지 않음
+gy, gx = np.mgrid[AY0:AY1, int(ACX - AR) - 4:AXMAX]
+on_arc = (gx < ACX) | (gy > ACY)                             # 원의 왼쪽 반(아래 꼬리는 x ≤ 527까지)
+dist = np.abs(np.hypot(gx - ACX, gy - ACY) - AR)
+X0A = int(ACX - AR) - 4
+mask = np.zeros(f.shape[:2], np.uint8)
+keep = ~((gx >= TOPX) & (gy < 1100))
+mask[AY0:AY1, X0A:AXMAX] = ((dist <= 3.5) & on_arc & keep).astype(np.uint8) * 255      # 꼬리가 맞춘 원에서 2px쯤 벗어나 넉넉히
+f = cv2.inpaint(f.clip(0, 255).astype(np.uint8), mask, 3, cv2.INPAINT_TELEA).astype(float)
+S8 = 8
+yy, xx = np.mgrid[AY0 * S8:AY1 * S8, X0A * S8:AXMAX * S8] / S8 + 0.5 / S8
+ring = ((np.abs(np.hypot(xx - ACX, yy - ACY) - AR) <= AW / 2) & ((xx < ACX) | (yy > ACY)) & ~((xx >= TOPX) & (yy < 1100))).astype(np.float32)
+ring = ring.reshape(AY1 - AY0, S8, AXMAX - X0A, S8).mean(axis=(1, 3))[..., None]
+f[AY0:AY1, X0A:AXMAX] = f[AY0:AY1, X0A:AXMAX] * (1 - ring) + np.array((250.0, 253.0, 255.0)) * ring
 # 새 제목 줄
 EDGE = (45, 38, 45); T, HW = 1.45, 4.2; X0W, X1W = 455.3, 1020.3
 for cy in (1441.65, 1577.65):
