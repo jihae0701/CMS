@@ -80,6 +80,12 @@ dx, dy = CX - gcx, CY - gcy
 full = np.zeros(f.shape[:2], np.float32)
 full[TY0:TY1, TX0:TX1] = ta
 full = cv2.warpAffine(full, np.float32([[1, 0, dx], [0, 1, dy]]), (f.shape[1], f.shape[0]), flags=cv2.INTER_LINEAR, borderValue=0)
+# 2026-11-26 사용자 '앞표지 미적분1 검은 테두리 만들기': 흰 글씨 둘레에 검은 테두리 2px((m) 공통수학 제목과 같은 두께) — 4배 세분 표본으로 넓힌 모양
+S4 = 4
+big = cv2.resize(full, (full.shape[1] * S4, full.shape[0] * S4), interpolation=cv2.INTER_LINEAR)
+ol = cv2.dilate((big > 0.5).astype(np.uint8), cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (2 * 2 * S4 + 1, 2 * 2 * S4 + 1)))
+ol = cv2.resize(ol.astype(np.float32), (full.shape[1], full.shape[0]), interpolation=cv2.INTER_AREA)
+f = f * (1 - ol[..., None]) + np.array((14.0, 16.0, 16.0)) * ol[..., None]
 f = f * (1 - full[..., None]) + WHITE * full[..., None]
 print("제목 옮김 (%+.1f, %+.1f)" % (dx, dy))
 sv(f, "CLIMATH_m_미적분1_앞표지.png")
