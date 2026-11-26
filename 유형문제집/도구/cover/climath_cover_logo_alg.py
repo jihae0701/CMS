@@ -15,6 +15,14 @@ from PIL import Image, ImageDraw
 odir, cdir, logo = sys.argv[1:4]
 
 
+def spine_axis(img):
+    """책등 위 CLIMATH 로고(y 60~240)의 어두운 화소 가로 범위 가운데"""
+    a = np.asarray(img.convert("L")).astype(int)
+    W = a.shape[1]
+    c = np.nonzero((a[60:240, W - 150:] < 120).any(0))[0] + W - 150
+    return (c.min() + c.max()) / 2
+
+
 def ink_box(img, box, thr=600):
     a = np.asarray(img.convert("RGB")).astype(int)
     x0, y0, x1, y1 = box
@@ -23,7 +31,8 @@ def ink_box(img, box, thr=600):
     return (x0 + xs.min(), y0 + ys.min(), x0 + xs.max(), y0 + ys.max()), tuple(int(v) for v in a[y0 - 4, x0])
 
 
-def put_logo(img, search, path, size, rot=0, pad=6):
+def put_logo(img, search, path, size, rot=0, pad=6, cx=None):
+    # cx: 가로 가운데(책등은 위 CLIMATH 로고 가운데 — 2026-11-26 사용자 '책등 가운데 정렬 모두 맞춰 줘'; 없으면 옛 CREVERSE 자리 가운데)
     (x0, y0, x1, y1), bg = ink_box(img, search)
     lg = Image.open(path).convert("RGBA")
     al = np.asarray(lg)[..., 3]
@@ -36,7 +45,7 @@ def put_logo(img, search, path, size, rot=0, pad=6):
         h = size; w = round(lg.width * h / lg.height)
     lg = lg.resize((w, h), Image.LANCZOS)
     ImageDraw.Draw(img).rectangle((x0 - pad, y0 - pad, x1 + pad, y1 + pad), fill=bg)
-    X, Y = round((x0 + x1) / 2 - w / 2), round((y0 + y1) / 2 - h / 2)
+    X, Y = round(((x0 + x1) / 2 if cx is None else cx) - w / 2), round((y0 + y1) / 2 - h / 2)
     img.paste(lg, (X, Y), lg)
     print("  CREVERSE (%d, %d, %d, %d) → cms 로고 (%d, %d, %d, %d), 바탕 %s" % (x0, y0, x1, y1, X, Y, X + w - 1, Y + h - 1, bg))
     return img
@@ -46,7 +55,7 @@ for part, search, size, rot in (("앞표지", (560, 1760, 920, 1860), 23, 0), ("
                                 ("뒤표지", (500, 1000, 850, 1120), 23, 0)):
     im = Image.open(os.path.join(odir, "CLIMATH_c_대수_%s.jpg" % part)).convert("RGB")
     print(part)
-    put_logo(im, search, logo, size, rot).save(os.path.join(cdir, "CLIMATH_c_대수_%s.png" % part))
+    put_logo(im, search, logo, size, rot, cx=spine_axis(im) if part == "책등" else None).save(os.path.join(cdir, "CLIMATH_c_대수_%s.png" % part))
 
 
 # ---------------------------------------------------------------- 앞표지 제목 줄: 공통수학 앞표지와 같은 굵기·테두리

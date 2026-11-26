@@ -13,6 +13,14 @@ from PIL import Image, ImageDraw
 front, spine, logo_f, logo_s, out_f, out_s = sys.argv[1:7]
 
 
+def spine_axis(img):
+    """책등 위 CLIMATH 로고(y 60~240)의 어두운 화소 가로 범위 가운데"""
+    a = np.asarray(img.convert("L")).astype(int)
+    W = a.shape[1]
+    c = np.nonzero((a[60:240, W - 150:] < 120).any(0))[0] + W - 150
+    return (c.min() + c.max()) / 2
+
+
 def ink_box(img, box, thr=600):
     a = np.asarray(img.convert("RGB")).astype(int)
     x0, y0, x1, y1 = box
@@ -21,7 +29,8 @@ def ink_box(img, box, thr=600):
     return (x0 + xs.min(), y0 + ys.min(), x0 + xs.max(), y0 + ys.max()), tuple(int(v) for v in a[y0 - 4, x0])
 
 
-def put_logo(img, search, path, size, rot=0, pad=6):
+def put_logo(img, search, path, size, rot=0, pad=6, cx=None):
+    # cx: 가로 가운데(책등은 위 CLIMATH 로고 가운데 — 2026-11-26 사용자 '책등 가운데 정렬 모두 맞춰 줘'; 없으면 옛 CREVERSE 자리 가운데)
     (x0, y0, x1, y1), bg = ink_box(img, search)
     lg = Image.open(path).convert("RGBA")
     al = np.asarray(lg)[..., 3]
@@ -34,7 +43,7 @@ def put_logo(img, search, path, size, rot=0, pad=6):
         h = size; w = round(lg.width * h / lg.height)
     lg = lg.resize((w, h), Image.LANCZOS)
     ImageDraw.Draw(img).rectangle((x0 - pad, y0 - pad, x1 + pad, y1 + pad), fill=bg)
-    X, Y = round((x0 + x1) / 2 - w / 2), round((y0 + y1) / 2 - h / 2)
+    X, Y = round(((x0 + x1) / 2 if cx is None else cx) - w / 2), round((y0 + y1) / 2 - h / 2)
     img.paste(lg, (X, Y), lg)
     print("  CREVERSE (%d, %d, %d, %d) → cms 로고 (%d, %d, %d, %d), 바탕 %s" % (x0, y0, x1, y1, X, Y, X + w - 1, Y + h - 1, bg))
     return img
@@ -45,4 +54,4 @@ im = Image.open(front).convert("RGB")
 put_logo(im, (600, 1760, 900, 1860), logo_s, 23).save(out_f)
 im = Image.open(spine).convert("RGB")
 # 2026-11-19 사용자 '책등 cms 크기를 위의 CLIMATH 글씨 크기와 같게(c끼리 비교)': 책등 위 CLIMATH의 'C' 글자 높이 19px(1355~1373) = cms 'c' 높이(로고 글자 높이)
-put_logo(im, (1300, 1700, 1414, 1920), logo_s, 19, rot=-90).save(out_s)
+put_logo(im, (1300, 1700, 1414, 1920), logo_s, 19, rot=-90, cx=spine_axis(im)).save(out_s)
