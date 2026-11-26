@@ -50,6 +50,17 @@ for y in range(y0, y1):
 # 대수 제목 + 미적분Ⅰ 바탕 / 미적분Ⅰ 제목 + 대수 바탕
 f1 = mi.copy(); f1[y0:y1, x0:x1] = B_mi * (1 - a_alg[..., None]) + BLACK * a_alg[..., None]
 f2 = alg.copy(); f2[y0:y1, x0:x1] = B_alg * (1 - a_mi[..., None]) + BLACK * a_mi[..., None]
+# 2026-11-26 사용자 '색 바뀌는 경계에 흰 줄이 보이는 데가 있는지 확인': 받은 미적분Ⅰ 원본 그림(동그라미)은 가운데 색 경계 x 725에
+# 1px 흰 줄(예: (255, 229, 213))과 그 옆 섞인 화소가 있음 → 줄마다 경계 왼쪽 723~724는 722의 색, 오른쪽 725~727은 728의 색으로 채움
+# (검은 글자·흰 제목 줄이 지나가는 줄은 건드리지 않음)
+for y in range(264, 1666):
+    lc, rc = f1[y, 722].copy(), f1[y, 728].copy()
+    if min(lum(lc[None])[0], lum(rc[None])[0]) < 120 or max(lc.min(), rc.min()) > 240:
+        continue
+    for x in (723, 724):
+        if lum(f1[y, x][None])[0] > 120: f1[y, x] = lc
+    for x in (725, 726, 727):
+        if lum(f1[y, x][None])[0] > 120: f1[y, x] = rc
 sv(f1, "바꿈_CLIMATH_c_대수_앞표지.png"); sv(f2, "바꿈_CLIMATH_c_미적분1_앞표지.png")
 
 # 책등: 색 띠 안 글씨(제목·ⓒ) 바꿔 끼우기
