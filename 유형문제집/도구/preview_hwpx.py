@@ -109,13 +109,15 @@ for p in root:
         n += 1
         src = "".join(c.text or "" for r in p.findall(HP + "run") if r.get("charPrIDRef") == "34" for c in r if ln(c) == "t")
         cb = p.get("columnBreak") == "1"
-        body.append('<div class="q%s"><span class="no">%d</span> <span class="src">%s</span>' % (" cb" if cb else "", n, html.escape(src)))
-        if not src.strip():                      # 기본서: 문제 글이 미주와 같은 문단에 있다
-            import copy
-            q = copy.deepcopy(p)
-            for e in q.iter(HP + "endNote"):
-                e.getparent().remove(e)
-            body.append("<p>%s</p>" % inline(q))
+        import copy
+        q = copy.deepcopy(p)
+        for e in q.iter(HP + "endNote"):
+            e.getparent().remove(e)
+        qt = inline(q) if not src.strip() else ""
+        if qt.strip():                           # 문제 글이 번호(미주)와 같은 문단 → 번호 옆에서 시작, 둘째 줄부터 내어 쓰기
+            body.append('<div class="q hang%s"><span class="no">%d.</span>%s</div>' % (" cb" if cb else "", n, qt))
+        else:
+            body.append('<div class="q%s"><span class="no">%d</span> <span class="src">%s</span></div>' % (" cb" if cb else "", n, html.escape(src)))
         sol = "".join("<p>%s</p>" % inline(sp) for sp in en.find(HP + "subList").findall(HP + "p"))
         sols.append('<div class="s"><b>%d</b> %s</div>' % (n, sol))
         continue
@@ -133,7 +135,7 @@ doc = """<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet"
 .head{border:2px solid #002E68;padding:1.5mm 3mm;font-weight:700;margin:2mm 0;break-after:avoid}
 .banner{background:#ECF2FA;padding:2mm;font-weight:700;margin-bottom:2mm}
 .no{font-weight:800;font-size:13pt;color:#002E68} .src{font-size:8pt;color:#555}
-.q{margin-top:5mm} .cb{break-before:column} .pb{break-before:page}
+.q{margin-top:5mm} .hang{padding-left:2.4em;text-indent:-2.4em} .hang .no{display:inline-block;width:2.4em;text-indent:0} .cb{break-before:column} .pb{break-before:page}
 table.box{border:1px solid #787878;border-collapse:collapse;margin:2mm 0;width:100%%} table.box td{padding:0}
 .inbox{padding:1mm 1.5mm 2mm 1.5mm} .inbox div{padding-left:2.2em;text-indent:-2.2em}
 table.syn{border-collapse:collapse;margin:2mm auto} table.syn td{padding:.5mm 3mm;text-align:center;min-width:8mm} table.pw{border-collapse:collapse;margin:1mm 0 1mm 4mm;display:inline-table;vertical-align:middle} table.pw td{padding:0 1.5mm;text-align:center;white-space:nowrap}
