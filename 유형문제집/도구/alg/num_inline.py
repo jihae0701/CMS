@@ -5,6 +5,8 @@
 - 다음 문단이 그림·표·글상자이거나 '(단'으로 시작하면 붙이지 않음.
 - 붙인 문단이 쓰는 문단번호(1수준)는 '자동 내어 쓰기'(autoIndent=1)로 → 둘째 줄부터 번호 뒤 글자 자리에 맞춤
   (2026-11-26 사용자 '두 번째 줄이 칸 띄기 되었으면' — 1단원 수정본은 autoIndent=0이었음).
+- 붙인 문단의 미주 표시(10pt '2.')를 흰 글자 1pt로 → 번호와 문제 사이가 글자 두 칸쯤 덜 벌어지고 첫 줄·둘째 줄 시작이 맞음
+  (2026-11-26 사용자 '좀 덜 띄어 쓸 수 있어?').
 python num_inline.py <입력.hwpx> <출력.hwpx>
 """
 import re, sys, zipfile
@@ -40,6 +42,7 @@ def convert(s, used=None):
             continue
         body = re.sub(r"^<hp:p [^>]*>", "", LSA.sub("", q))
         en2 = LSA.sub("", en)
+        en2 = re.sub(r'<hp:run charPrIDRef="(\d+)"><hp:ctrl><hp:endNote ', r'<hp:run charPrIDRef="@@TINY\1@@"><hp:ctrl><hp:endNote ', en2, count=1)
         en2 = re.sub(r"</hp:ctrl><hp:t/></hp:run>", "</hp:ctrl></hp:run>", en2)
         en2 = re.sub(r"(</hp:ctrl></hp:run>)<hp:run charPrIDRef=\"\d+\"><hp:t/></hp:run>", r"\1", en2)
         out.append(s[pos:a] + en2 + body + "</hp:p>")
@@ -64,6 +67,21 @@ def auto_indent(h, used):
     return h
 
 
+def tiny(h, sec):
+    """'@@TINY<id>@@' → 글자 모양 <id>를 1pt로 복제한 새 id"""
+    for cid in sorted(set(re.findall(r"@@TINY(\d+)@@", sec))):
+        m = re.search(r'<hh:charPr id="%s" .*?</hh:charPr>' % cid, h, re.S)
+        c = re.search(r'<hh:charProperties itemCnt="(\d+)"', h)
+        nid = int(c.group(1))
+        new = re.sub(r'height="\d+"', 'height="100"', m.group(0).replace('id="%s"' % cid, 'id="%d"' % nid, 1), count=1)
+        new = re.sub(r'textColor="#\w+"', 'textColor="#FFFFFF"', new, count=1)          # 흰 글자(보이지 않게)
+        h = h[:c.start()] + '<hh:charProperties itemCnt="%d"' % (nid + 1) + h[c.end():]
+        e = h.index("</hh:charProperties>")
+        h = h[:e] + new + h[e:]
+        sec = sec.replace("@@TINY%s@@" % cid, str(nid))
+    return h, sec
+
+
 def convert_file(src, dst):
     zi = zipfile.ZipFile(src)
     items = [(i, zi.read(i.filename)) for i in zi.infolist()]
@@ -73,7 +91,11 @@ def convert_file(src, dst):
         if re.match(r"Contents/section\d+\.xml", i.filename):
             x, k = convert(d.decode("utf-8"), used); tot += k; items[j] = (i, x.encode("utf-8"))
     j = next(j for j, (i, _) in enumerate(items) if i.filename == "Contents/header.xml")
-    items[j] = (items[j][0], auto_indent(items[j][1].decode("utf-8"), used).encode("utf-8"))
+    h = auto_indent(items[j][1].decode("utf-8"), used)
+    for k, (i, d) in enumerate(items):
+        if re.match(r"Contents/section\d+\.xml", i.filename):
+            h, x = tiny(h, d.decode("utf-8")); items[k] = (i, x.encode("utf-8"))
+    items[j] = (items[j][0], h.encode("utf-8"))
     with zipfile.ZipFile(dst, "w") as zo:
         for i, d in items:
             zo.writestr(i, d, compress_type=zipfile.ZIP_STORED if i.filename == "mimetype" else zipfile.ZIP_DEFLATED)
