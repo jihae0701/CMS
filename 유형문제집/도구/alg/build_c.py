@@ -470,4 +470,8 @@ if PICS:
     reps = ["%s=%s@%d" % (bm[k], os.path.join(ROOT, f), w) for k, (f, w) in PICS.items() if k in bm]
     if reps:
         subprocess.run([sys.executable, os.path.join(ROOT, "그림규칙", "math-figure-rules", "hwpx_swapimg.py"), OUT, OUT] + reps, check=True)
+# 2026-11-26 사용자(1단원 수정본) '숫자·영문자 수식으로' → 글자 숫자·점 이름(대문자)을 수식으로, 집합 조건 막대 `|` → left |
+from text2eq import convert_file as _t2e
+_t2e_n = _t2e(OUT, OUT)
+print("  글자 숫자·대문자 → 수식", _t2e_n)
 print("단원", UNIT, U.NAME, "문항", n, "(STEP1 %d, STEP2 %d, STEP3 %d)" % (sum(map(len, U.STEP1)), sum(map(len, U.STEP2)), len(U.STEP3)), "그림", len(BIN), "->", OUT)
