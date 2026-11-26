@@ -78,7 +78,8 @@ for cy in (1441.65, 1577.65):
     Wd, Hd = int(X1W + T) + 3 - X0, int(y1 + T) + 3 - Y0
     def mk(a0, b0, a1, b1):
         m = Image.new("L", (Wd * 8, Hd * 8), 0)
-        ImageDraw.Draw(m).rectangle(((a0 - X0) * 8, (b0 - Y0) * 8, (a1 - X0) * 8 - 1, (b1 - Y0) * 8 - 1), fill=255)
+        # 2026-11-26 사용자 '미적분 글씨 위아래 선 검정 테두리 끝부분이 둥근 느낌이 나게': 양 끝을 반원(모서리 반지름 = 높이의 반)으로
+        ImageDraw.Draw(m).rounded_rectangle(((a0 - X0) * 8, (b0 - Y0) * 8, (a1 - X0) * 8 - 1, (b1 - Y0) * 8 - 1), radius=(b1 - b0) * 8 / 2, fill=255)
         return np.asarray(m.resize((Wd, Hd), Image.LANCZOS)).astype(float)[..., None] / 255.0
     o, i = mk(X0W - T, y0 - T, X1W + T, y1 + T), mk(X0W, y0, X1W, y1)
     r = f[Y0:Y0 + Hd, X0:X0 + Wd]
