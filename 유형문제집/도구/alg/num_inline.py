@@ -3,14 +3,16 @@
 - 미주만 있는 번호 문단(출처 글자 없음) 다음의 첫 문제 문단을 번호 문단에 이어 붙임.
 - 모의고사 기출(번호 문단 오른쪽에 출처 '2025년 6월 고2 19번')은 그대로 둠.
 - 다음 문단이 그림·표·글상자이거나 '(단'으로 시작하면 붙이지 않음.
-- 붙인 문단이 쓰는 문단번호(1수준)는 '자동 내어 쓰기'(autoIndent=1)로 → 둘째 줄부터 번호 뒤 글자 자리에 맞춤
-  (2026-11-26 사용자 '두 번째 줄이 칸 띄기 되었으면' — 1단원 수정본은 autoIndent=0이었음).
-- 붙인 문단의 미주 표시(10pt '2.')를 흰 글자 1pt로 → 번호와 문제 사이가 글자 두 칸쯤 덜 벌어지고 첫 줄·둘째 줄 시작이 맞음
-  (2026-11-26 사용자 '좀 덜 띄어 쓸 수 있어?').
+- 둘째 줄부터 내어 쓰기(사용자 '두 번째 줄이 칸 띄기 되었으면').
+  처음엔 문단번호 '자동 내어 쓰기'(autoIndent=1, 번호 뒤 글자 자리)로 했으나 사용자 '내어 쓰기가 좀 적게' →
+  자동 내어 쓰기를 끄고(autoIndent=0) 붙인 문단 모양에 고정 내어 쓰기 HANG을 줌
+  (hp:case 값 = HANG, hp:default 값 = 2×HANG — 이 파일들의 다른 내어 쓰기 문단 모양과 같은 짝).
+  (중간에 미주 표시를 1pt로 줄인 것은 사용자 '아니'로 되돌림.)
 python num_inline.py <입력.hwpx> <출력.hwpx>
 """
 import re, sys, zipfile
 
+HANG = 1500          # 내어 쓰기 폭(HWPUNIT, 1000 ≈ 10pt 글자 하나)
 LSA = re.compile(r"<hp:linesegarray>.*?</hp:linesegarray>", re.S)
 
 
@@ -42,7 +44,6 @@ def convert(s, used=None):
             continue
         body = re.sub(r"^<hp:p [^>]*>", "", LSA.sub("", q))
         en2 = LSA.sub("", en)
-        en2 = re.sub(r'<hp:run charPrIDRef="(\d+)"><hp:ctrl><hp:endNote ', r'<hp:run charPrIDRef="@@TINY\1@@"><hp:ctrl><hp:endNote ', en2, count=1)
         en2 = re.sub(r"</hp:ctrl><hp:t/></hp:run>", "</hp:ctrl></hp:run>", en2)
         en2 = re.sub(r"(</hp:ctrl></hp:run>)<hp:run charPrIDRef=\"\d+\"><hp:t/></hp:run>", r"\1", en2)
         out.append(s[pos:a] + en2 + body + "</hp:p>")
@@ -54,32 +55,21 @@ def convert(s, used=None):
     return "".join(out), n
 
 
-def auto_indent(h, used):
-    """used 문단 모양이 가리키는 문단번호의 1수준 paraHead를 autoIndent=1로"""
+def hang(h, used):
+    """used 문단 모양: 내어 쓰기 HANG, 그 문단번호(1수준)는 자동 내어 쓰기 끔"""
     nums = set()
     for pid in used:
         m = re.search(r'<hh:paraPr id="%s" .*?</hh:paraPr>' % pid, h, re.S)
-        nums |= set(re.findall(r'<hh:heading type="NUMBER" idRef="(\d+)"', m.group(0)))
+        blk = m.group(0)
+        nums |= set(re.findall(r'<hh:heading type="NUMBER" idRef="(\d+)"', blk))
+        blk = re.sub(r'(<hp:case [^>]*><hh:margin>)<hc:intent value="-?\d+"', r'\1<hc:intent value="-%d"' % HANG, blk, count=1)
+        blk = re.sub(r'(<hp:default><hh:margin>)<hc:intent value="-?\d+"', r'\1<hc:intent value="-%d"' % (2 * HANG), blk, count=1)
+        h = h[:m.start()] + blk + h[m.end():]
     for nid in nums:
         m = re.search(r'<hh:numbering id="%s" .*?</hh:numbering>' % nid, h, re.S)
-        blk = re.sub(r'(<hh:paraHead [^>]*level="1"[^>]*?)autoIndent="0"', r'\1autoIndent="1"', m.group(0), count=1)
+        blk = re.sub(r'(<hh:paraHead [^>]*level="1"[^>]*?)autoIndent="1"', r'\1autoIndent="0"', m.group(0), count=1)
         h = h[:m.start()] + blk + h[m.end():]
     return h
-
-
-def tiny(h, sec):
-    """'@@TINY<id>@@' → 글자 모양 <id>를 1pt로 복제한 새 id"""
-    for cid in sorted(set(re.findall(r"@@TINY(\d+)@@", sec))):
-        m = re.search(r'<hh:charPr id="%s" .*?</hh:charPr>' % cid, h, re.S)
-        c = re.search(r'<hh:charProperties itemCnt="(\d+)"', h)
-        nid = int(c.group(1))
-        new = re.sub(r'height="\d+"', 'height="100"', m.group(0).replace('id="%s"' % cid, 'id="%d"' % nid, 1), count=1)
-        new = re.sub(r'textColor="#\w+"', 'textColor="#FFFFFF"', new, count=1)          # 흰 글자(보이지 않게)
-        h = h[:c.start()] + '<hh:charProperties itemCnt="%d"' % (nid + 1) + h[c.end():]
-        e = h.index("</hh:charProperties>")
-        h = h[:e] + new + h[e:]
-        sec = sec.replace("@@TINY%s@@" % cid, str(nid))
-    return h, sec
 
 
 def convert_file(src, dst):
@@ -91,11 +81,7 @@ def convert_file(src, dst):
         if re.match(r"Contents/section\d+\.xml", i.filename):
             x, k = convert(d.decode("utf-8"), used); tot += k; items[j] = (i, x.encode("utf-8"))
     j = next(j for j, (i, _) in enumerate(items) if i.filename == "Contents/header.xml")
-    h = auto_indent(items[j][1].decode("utf-8"), used)
-    for k, (i, d) in enumerate(items):
-        if re.match(r"Contents/section\d+\.xml", i.filename):
-            h, x = tiny(h, d.decode("utf-8")); items[k] = (i, x.encode("utf-8"))
-    items[j] = (items[j][0], h.encode("utf-8"))
+    items[j] = (items[j][0], hang(items[j][1].decode("utf-8"), used).encode("utf-8"))
     with zipfile.ZipFile(dst, "w") as zo:
         for i, d in items:
             zo.writestr(i, d, compress_type=zipfile.ZIP_STORED if i.filename == "mimetype" else zipfile.ZIP_DEFLATED)
