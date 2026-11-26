@@ -5,7 +5,7 @@ python climath_cover_logo_alg.py <원본 폴더> <표지 폴더> <cms 로고>
   공통수학 CLIMATH 표지 규칙(climath_cover_logo.py) 그대로: CREVERSE 로고만 cms(Master Charcoal) 로고로, CREVERSE 자리 가운데, 자리는 둘레 바탕색으로 지움.
   · 앞표지: 높이 23px(위 CLIMATH 'C' 높이) · 책등: 시계 방향 90°, 폭 19px(책등 위 CLIMATH 'C' 높이)
   · 뒤표지: 이 표지는 가운데에 CREVERSE가 있음(공통수학 뒤표지는 CLIMATH) → 같은 규칙으로 cms 로고(앞표지와 같은 23px).
-- 2026-11-26 사용자 '앞표지 대수 위아래 흰 선에 공통수학처럼 테두리 넣어 줘': 공통수학 앞표지 제목 줄처럼 흰 막대 둘레에 짙은 테두리(#2D262D, 두께 1.5px, 막대 바깥쪽)
+- 2026-11-26 사용자 '앞표지 대수 위아래 흰 선에 공통수학처럼 테두리 넣어 줘' → 다시 '굵기도 공통수학과 똑같이'(아래 코드 참고). 처음 판: 공통수학 앞표지 제목 줄처럼 흰 막대 둘레에 짙은 테두리(#2D262D, 두께 1.5px, 막대 바깥쪽)
   — 흰 막대(x 455.3~1020.3, y 1436.9~1446.4 / 1572.9~1582.4, 반 밝기 경계로 잰 값)는 그대로, 4배 세분 표본으로 매끄럽게.
 """
 import os, sys
@@ -49,22 +49,36 @@ for part, search, size, rot in (("앞표지", (560, 1760, 920, 1860), 23, 0), ("
     put_logo(im, search, logo, size, rot).save(os.path.join(cdir, "CLIMATH_c_대수_%s.png" % part))
 
 
-# ---------------------------------------------------------------- 앞표지 제목 줄 테두리 (공통수학 앞표지와 같은 짙은 선)
+# ---------------------------------------------------------------- 앞표지 제목 줄: 공통수학 앞표지와 같은 굵기·테두리
+# 2026-11-26 사용자 '흰 선 공통수학이랑 똑같이 맞춰': 대수 원본 흰 막대(높이 약 9.5px)를 둘레 바탕으로 지우고(위·아래 줄 사이를 열마다 직선 보간),
+# 같은 가운데 높이에 공통수학 제목 줄(잰 값: 흰 4.2px + 위아래 짙은 테두리 1.45px = 7.1px, #2D262D)을 새로 그림. 가로(x 455.3~1020.3, 흰 부분)는 그대로.
 EDGE = (45, 38, 45)
-T = 1.5
-BARS = [(455.3, 1436.9, 1020.3, 1446.4), (455.3, 1572.9, 1020.3, 1582.4)]
+T, HW = 1.45, 4.2
+X0W, X1W = 455.3, 1020.3
+CENTERS = [(1436.9 + 1446.4) / 2, (1572.9 + 1582.4) / 2]
 f = os.path.join(cdir, "CLIMATH_c_대수_앞표지.png")
 a = np.asarray(Image.open(f).convert("RGB")).astype(float)
+for cy in CENTERS:                                         # 원래 흰 막대 지우기
+    ya, yb = int(cy) - 9, int(cy) + 10
+    xa, xb = int(X0W) - 6, int(X1W) + 7
+    top, bot = a[ya, xa:xb].copy(), a[yb, xa:xb].copy()
+    for y in range(ya + 1, yb):
+        t = (y - ya) / (yb - ya)
+        a[y, xa:xb] = top * (1 - t) + bot * t
 S = 8
-for x0, y0, x1, y1 in BARS:
-    X0, Y0 = int(x0 - T) - 2, int(y0 - T) - 2
-    W, H = int(x1 + T) + 3 - X0, int(y1 + T) + 3 - Y0
-    m = Image.new("L", (W * S, H * S), 0)
-    d = ImageDraw.Draw(m)
-    d.rectangle(((x0 - T - X0) * S, (y0 - T - Y0) * S, (x1 + T - X0) * S - 1, (y1 + T - Y0) * S - 1), fill=255)
-    d.rectangle(((x0 - X0) * S, (y0 - Y0) * S, (x1 - X0) * S - 1, (y1 - Y0) * S - 1), fill=0)
-    al = np.asarray(m.resize((W, H), Image.LANCZOS)).astype(float)[..., None] / 255.0
+for cy in CENTERS:
+    y0, y1 = cy - HW / 2, cy + HW / 2
+    X0, Y0 = int(X0W - T) - 2, int(y0 - T) - 2
+    W, H = int(X1W + T) + 3 - X0, int(y1 + T) + 3 - Y0
+    def mask(fn):
+        m = Image.new("L", (W * S, H * S), 0)
+        fn(ImageDraw.Draw(m))
+        return np.asarray(m.resize((W, H), Image.LANCZOS)).astype(float)[..., None] / 255.0
+    outer = mask(lambda d: d.rectangle(((X0W - T - X0) * S, (y0 - T - Y0) * S, (X1W + T - X0) * S - 1, (y1 + T - Y0) * S - 1), fill=255))
+    inner = mask(lambda d: d.rectangle(((X0W - X0) * S, (y0 - Y0) * S, (X1W - X0) * S - 1, (y1 - Y0) * S - 1), fill=255))
     reg = a[Y0:Y0 + H, X0:X0 + W]
-    a[Y0:Y0 + H, X0:X0 + W] = reg * (1 - al) + np.array(EDGE, float) * al
+    reg = reg * (1 - outer) + np.array(EDGE, float) * outer
+    reg = reg * (1 - inner) + 255.0 * inner
+    a[Y0:Y0 + H, X0:X0 + W] = reg
 Image.fromarray(a.round().clip(0, 255).astype(np.uint8)).save(f)
-print("앞표지 제목 줄 테두리", BARS)
+print("앞표지 제목 줄(공통수학 굵기)", CENTERS)
