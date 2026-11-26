@@ -5,6 +5,7 @@ python text2eq.py <입력 hwpx> <출력 hwpx>
   → '내가 숫자 영문자 수식으로 쓴 것도 확인했어?' '응'(남은 곳도 모두 바꾸기).
 - 바꾸는 것: 본문·미주의 글자(hp:t) 속 숫자(정수·소수) → 수식 '8', 대문자 1~4자 낱말(점·도형 이름) → 수식 'rm ABC'.
   그리고 수식 안 집합 조건 막대 `|` → 'left |'(사용자 수정본과 같게).
+- 단위 낱말(kcal·dB·m·mAh·cm·kg …, 홀로 쓰인 것) → 수식 'rm kcal'(2026-11-26 사용자 '맨 앞에 rm 붙여서').
 - 그대로 두는 것: 'Step 1'·'STEP 1'·'(1)' 따름 번호, 모의고사 출처('2023년 11월 고2 14번 [4점]'), 상자(그리기 개체 글상자) 안 글자(개념·유형 상자 머리 등),
   바탕쪽·머리말(이 도구는 section 파일만 고침), 이미 수식인 것.
 - 수식 크기는 사용자 파일에서 한글이 잰 값(11pt): 숫자 한 자 525, 소수점 263, 대문자 A 825·B 750·C 675·D 750·E 675·F 675·G 825·H 825·M 975·N 825·
@@ -26,7 +27,11 @@ def eq(sc, w):
             '<hp:shapeComment>수식입니다.</hp:shapeComment><hp:script>%s</hp:script></hp:equation>') % (rnd.randrange(1, 2 ** 31 - 1), w, sc)
 
 
-TOK = re.compile(r"(?<![0-9A-Za-z.])(\d+(?:\.\d+)?)(?![0-9A-Za-z])|(?<![A-Za-z])([A-Z]{1,4})(?![A-Za-z])")
+# 2026-11-26 사용자 '단위 kcal, dB, m는 수식으로 써, 맨 앞에 rm 붙여서' → 단위 낱말도 수식 'rm kcal'
+UNITS = ["kcal", "mAh", "dB", "km", "cm", "mm", "kg", "mL", "m", "g", "L", "s", "h", "Hz", "W", "V", "A"]
+LOW = dict(a=450, b=525, c=450, d=525, e=450, g=525, h=525, k=525, l=300, m=825, s=450, z=450, L=675, A=825, B=750, H=825, W=1050, V=825)
+TOK = re.compile(r"(?<![0-9A-Za-z.])(\d+(?:\.\d+)?)(?![0-9A-Za-z])|(?<![A-Za-z])(%s)(?![A-Za-z])|(?<![A-Za-z])([A-Z]{1,4})(?![A-Za-z])"
+                 % "|".join(u for u in UNITS if not re.fullmatch(r"[A-Z]+", u)))
 MOCK = re.compile(r"\d{4}년|\d+월\s*고\d|\d+번\s*\[\d+점\]")
 
 
@@ -52,8 +57,11 @@ def conv_text(t):
             v = m.group(1)
             w = 525 * len(v.replace(".", "")) + (263 if "." in v else 0)
             out.append("</hp:t>" + eq(v, w) + "<hp:t>")
+        elif m.group(2):
+            v = m.group(2)                                    # 단위(kcal, dB, m, mAh …) → 'rm kcal'
+            out.append("</hp:t>" + eq("rm " + v, sum(LOW.get(c, 525) for c in v)) + "<hp:t>")
         else:
-            v = m.group(2)
+            v = m.group(3)
             out.append("</hp:t>" + eq("rm " + v, sum(CAP.get(c, 750) for c in v)) + "<hp:t>")
         last = m.end(); n += 1
     out.append(html.escape(t[last:], quote=False))
