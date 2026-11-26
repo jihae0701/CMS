@@ -3,7 +3,7 @@
 python climath_cover_m_wb.py <표지 폴더> <원본 폴더> <Pretendard 폴더>
 - 사용자: 'CLIMATh(m) 공통수학1 워크북 표지 만들어줘'.
 - CLIMATH(m) 공통수학1 표지(앞표지·책등·원본 뒤표지)를 그대로 쓰고, CLIMATH(c) 워크북 표지(climath_cover_series.py)와 같은 표시를 더함:
-  · 앞표지: 'CLI' 제목 위(왼쪽 끝 맞춤)에 '워크북' 상자 — (c) 워크북 그림의 상자처럼 흰 바탕·검은 가는 테두리·검은 글자(Pretendard Regular, 글자 사이 띄움).
+  · 앞표지: (처음엔 'CLI' 위에 '워크북' 상자를 넣었으나 2026-11-26 사용자 '앞표지에 워크북 표시 없애, 책등은 남겨'로 뺌) — (m) 앞표지 그대로 + 종이색.
   · 책등: ⓜ 그대로, 그 아래 둥근 네모 상자 안 '워크북'((c) 워크북 책등과 같은 크기·자리).
   · 뒤표지: 원본 뒤표지(오른쪽 색 띠 = (m) 그라데이션) 그대로.
   · 세 장 모두 색 띠 밖 흰 종이를 #F0F0F0(×240/255)로 — (c) 워크북과 같음.
@@ -58,10 +58,10 @@ ink = np.maximum(supersample(draw_line, BW, BH), supersample(draw_txt, BW, BH))
 reg = a[by0:by0 + BH, X0:X0 + BW]
 reg = reg * (1 - fill[..., None]) + 255.0 * fill[..., None]
 reg = reg * (1 - ink[..., None]) + BLACK * ink[..., None]
-a[by0:by0 + BH, X0:X0 + BW] = reg
+# a[by0:by0 + BH, X0:X0 + BW] = reg   # 2026-11-26 사용자 '앞표지에 워크북 표시 없애, 책등은 남겨' → 앞표지 상자 넣지 않음
 fr = paper(Image.fromarray(a.clip(0, 255).astype(np.uint8)), (0, 260, fr.width, 1666))
 fr.save(os.path.join(CDIR, TAG + "_앞표지.png"))
-print("앞표지 상자", (X0, by0, X0 + BW - 1, by0 + BH - 1))
+print("앞표지: 워크북 상자 없음(색 띠 밖 종이색만)")
 
 # ---------------------------------------------------------------- 책등: ⓜ 아래 둥근 네모 상자 + '워크북'
 sp = np.asarray(Image.open(os.path.join(CDIR, "CLIMATH_공통수학1_책등.png")).convert("RGB")).astype(float)
