@@ -474,4 +474,7 @@ if PICS:
 from text2eq import convert_file as _t2e
 _t2e_n = _t2e(OUT, OUT)
 print("  글자 숫자·대문자 → 수식", _t2e_n)
+# 2026-11-26 사용자 '미주 다음 줄에 문제 시작 → 모의고사 기출 빼고 미주 바로 옆에 문제 시작'
+from num_inline import convert_file as _ni
+print("  번호 줄에 첫 문제 문단 붙임", _ni(OUT, OUT))
 print("단원", UNIT, U.NAME, "문항", n, "(STEP1 %d, STEP2 %d, STEP3 %d)" % (sum(map(len, U.STEP1)), sum(map(len, U.STEP2)), len(U.STEP3)), "그림", len(BIN), "->", OUT)
