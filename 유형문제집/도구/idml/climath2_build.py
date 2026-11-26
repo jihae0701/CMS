@@ -18,7 +18,8 @@ from urllib.parse import quote
 tpl, c1, pdfdir, out = sys.argv[1:5]
 BOOK = sys.argv[5] if len(sys.argv) > 5 else "c2b"
 YU = BOOK.endswith("y")                                   # 유형서: 쪽 번호 없음
-WB = BOOK == "c1w"   # 2026-11-19 CLIMATH(c) 공통수학1 워크북: '연보라 페이지 필요 없음. 목차와 빠른 정답만' — 단원 표지 없음, 쪽 번호는 PDF에 인쇄됨
+WB = BOOK in ("c1w", "m1w")   # m1w(2026-11-26): CLIMATH(m) 공통수학1 워크북 — 사용자 '이 책의 차례를 넣어서 인디자인 파일, PDF 내보내기 (빠른 정답 앞에 한 장 넣기)'.
+# 2026-11-19 CLIMATH(c) 공통수학1 워크북: '연보라 페이지 필요 없음. 목차와 빠른 정답만' — 단원 표지 없음, 쪽 번호는 PDF에 인쇄됨
 NOPN = YU or WB
 UNITS = {"2": ["평면좌표", "직선의 방정식", "원의 방정식", "도형의 이동", "집합의 뜻과 표현", "집합의 연산",
                "명제", "절대부등식", "함수", "합성함수와 역함수", "유리함수", "무리함수"],
@@ -34,8 +35,8 @@ FILES = [("%02d %s.pdf" if YU else "%d. %s.pdf") % (i + 1, u) for i, u in enumer
 # 단원 표지 색은 주황(RGB 243 134 35). 기본서는 보라(145 102 165).
 if YU:   # 사용자 실제 파일 이름(탐색기 화면, 2026-11-19): 공통수학1은 모두 밑줄, 공통수학2는 번호 뒤만 밑줄('02_직선의 방정식.pdf')
     FILES = [(re.sub(r"[ ·]", "_", f[:-4]) if BOOK == "c1y" else re.sub(r"^(\d\d) ", r"\1_", f[:-4])) + ".pdf" for f in FILES]
-if WB:   # <PDF 폴더>에 wb.pdf(워크북 전체, 인쇄 쪽 2~)와 quick.pdf(워크북 빠른 정답, 인쇄 쪽 81~)
-    FILES = ["CLIMATH(c)_공통수학1_워크북.pdf", "CLIMATH(c)_공통수학1_워크북_빠른정답.pdf"]
+if WB:   # <PDF 폴더>에 wb.pdf(워크북 전체, 인쇄 쪽 2~)와 quick.pdf(워크북 빠른 정답, 인쇄 쪽 81~ / m1w 77~)
+    FILES = ["CLIMATH(%s)_공통수학1_워크북.pdf" % BOOK[0], "CLIMATH(%s)_공통수학1_워크북_빠른정답.pdf" % BOOK[0]]
 COVER_RGB = {"c1y": "243 134 35", "c2y": "32 123 77"}.get(BOOK, "145 102 165")   # 2026-11-19: 유형서는 그 책 메인색(표지와 같게) — 공통수학1 주황, 공통수학2 초록 #207B4D
 OFF = 10.0
 PW, PH = 595.2755905509999, 807.8740157480315
@@ -82,14 +83,23 @@ if WB:
     plan, p = {1: ("toc",)}, 2
     for k in range(counts[0]):
         plan[p] = ("pdf", 0, k + 1); p += 1
-    if p % 2 == 0:
+    if BOOK == "m1w":   # 빠른 정답 앞에 한 장: 짝수 쪽에 '빠른 정답' 표지(기본서 단원 표지처럼 보라 글상자 + 글), 빠른 정답은 다음 홀수 쪽부터
+        if p % 2 == 1:
+            plan[p] = ("blank",); p += 1
+        QCOVER = p
+        plan[p] = ("qcover",); p += 1
+    elif p % 2 == 0:
         plan[p] = ("blank",); p += 1
     QSTART = p
     for k in range(counts[1]):
         plan[p] = ("pdf", 1, k + 1); p += 1
     TOTAL = p - 1
     d = pymupdf.open(SRC[0])
-    starts = [i + 2 for i, pg in enumerate(d) if "STEP 1" in [l.strip() for l in pg.get_text().split("\n")]]   # 단원 첫 쪽 = 'STEP 1' 쪽
+    if BOOK == "m1w":   # STEP 상자가 없음 → 쪽 머리 단원 번호('N. 단원명')가 바뀌는 쪽
+        hd = [int(re.search(r"(\d+)\. ?\S", pg.get_text()).group(1)) for pg in d]
+        starts = [i + 2 for i, h in enumerate(hd) if i == 0 or h != hd[i - 1]]
+    else:
+        starts = [i + 2 for i, pg in enumerate(d) if "STEP 1" in [l.strip() for l in pg.get_text().split("\n")]]   # 단원 첫 쪽 = 'STEP 1' 쪽
     assert len(starts) == NU, starts
     pn0 = [l.strip() for l in d[0].get_text().split("\n") if re.fullmatch(r"\d{1,3}", l.strip())]
     assert pn0 and int(pn0[0]) == 2, ("워크북 첫 쪽 인쇄 번호가 2가 아님", pn0)
@@ -219,6 +229,11 @@ def page_items(num, left):
         return rect_xml(kind[1], kind[2], left) + ("" if NOPN else pn_frame(left))
     if kind[0] == "cover":
         return cover_items(kind[1])
+    if kind[0] == "qcover":
+        s_p, f_p, s_t, f_t = nid(), nid(), nid(), nid()
+        add_story(clone_story("u188", s_p), s_p)
+        add_story(clone_story("u19e", s_t, "<Content>빠른 정답</Content>"), s_t)
+        return clone_frame(fr_purple, f_p, s_p) + clone_frame(fr_unit, f_t, s_t)
     if kind[0] == "blank":
         return "" if NOPN else pn_frame(left)
     return ""
@@ -231,7 +246,7 @@ st_title, fid_title, st_toc, fid_toc = nid(), nid(), nid(), nid()
 add_story(clone_story("u128", st_title), st_title)
 lines = "<Br />".join("<Content>%d. %s\t%d</Content>" % (i + 1, esc(UNITS[i]), starts[i]) for i in range(NU))
 if WB:
-    lines += "<Br /><Content>빠른 정답\t%d</Content>" % QSTART
+    lines += "<Br /><Content>빠른 정답\t%d</Content>" % (QCOVER if BOOK == "m1w" else QSTART)   # m1w: 기본서처럼 차례는 빠른 정답 표지 쪽
 add_story(clone_story("u13e", st_toc, lines), st_toc)
 s1 = s1.replace("</Spread>", clone_frame(fr_title, fid_title, st_title) + clone_frame(fr_toc, fid_toc, st_toc) + "</Spread>", 1)
 files[f1] = s1.encode("utf-8")
@@ -268,7 +283,7 @@ files["Resources/Fonts.xml"] = fx.encode("utf-8")
 # ---- designmap
 dm = re.sub(r'(<idPkg:Spread src="[^"]+" />\s*)+',
             lambda m: "".join('<idPkg:Spread src="%s" />\n\t' % x for x in [f1] + new_spreads), dm, count=1)
-if YU or BOOK in ("c1c", "c1w"):                           # 문서 이름(틀은 'CLIMATH(m) 공통수학2.indd')
+if YU or BOOK in ("c1c", "c1w", "m1w"):                           # 문서 이름(틀은 'CLIMATH(m) 공통수학2.indd')
     dm = re.sub(r'(<Document [^>]*?) Name="[^"]*"', lambda m: m.group(1) + ' Name="%s"' % (os.path.splitext(os.path.basename(out))[0] + ".indd"), dm, count=1)
 dm = re.sub(r'(<Section Self="[^"]+" )Length="\d+" AlternateLayoutLength="\d+"', r'\1Length="%d" AlternateLayoutLength="%d"' % (TOTAL, TOTAL), dm, count=1)
 sl = re.search(r'StoryList="([^"]*)"', dm).group(1).split() + new_stories
@@ -287,4 +302,4 @@ with zipfile.ZipFile(out, "w") as w:
         info.compress_type = zipfile.ZIP_STORED if n == "mimetype" else zipfile.ZIP_DEFLATED
         w.writestr(info, files[n])
 print("펼침면", 1 + len(new_spreads), "새 스토리", len(new_stories), "->", out)
-print("차례:", [(i + 1, UNITS[i], starts[i]) for i in range(NU)] + ([("빠른 정답", QSTART)] if WB else []))
+print("차례:", [(i + 1, UNITS[i], starts[i]) for i in range(NU)] + ([("빠른 정답", QCOVER if BOOK == "m1w" else QSTART)] if WB else []))
