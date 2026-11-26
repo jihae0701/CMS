@@ -7,7 +7,8 @@
   처음엔 문단번호 '자동 내어 쓰기'(autoIndent=1, 번호 뒤 글자 자리)로 했으나 사용자 '내어 쓰기가 좀 적게' →
   자동 내어 쓰기를 끄고(autoIndent=0) 붙인 문단 모양에 고정 내어 쓰기 HANG을 줌
   (hp:case 값 = HANG, hp:default 값 = 2×HANG — 이 파일들의 다른 내어 쓰기 문단 모양과 같은 짝).
-  (중간에 미주 표시를 1pt로 줄인 것은 사용자 '아니'로 되돌림.)
+  (중간에 미주 표시를 1pt로 줄인 것은 사용자 '아니'로 되돌렸다가)
+- 사용자 '미주 크기 1로 해' → 본문의 미주 표시(번호 옆 '2.' 같은 미주 글자) 글자 크기를 모두 1pt로(색은 그대로).
 python num_inline.py <입력.hwpx> <출력.hwpx>
 """
 import re, sys, zipfile
@@ -72,6 +73,23 @@ def hang(h, used):
     return h
 
 
+def tiny(h, secs):
+    """본문 미주 표시 run의 글자 모양을 크기 1pt로 복제해 바꿈"""
+    ids = sorted({c for x in secs for c in re.findall(r'<hp:run charPrIDRef="(\d+)"><hp:ctrl><hp:endNote ', x)}, key=int)
+    new = {}
+    for cid in ids:
+        m = re.search(r'<hh:charPr id="%s" .*?</hh:charPr>' % cid, h, re.S)
+        c = re.search(r'<hh:charProperties itemCnt="(\d+)"', h)
+        nid = int(c.group(1))
+        blk = re.sub(r'height="\d+"', 'height="100"', m.group(0).replace('id="%s"' % cid, 'id="%d"' % nid, 1), count=1)
+        h = h[:c.start()] + '<hh:charProperties itemCnt="%d"' % (nid + 1) + h[c.end():]
+        e = h.index("</hh:charProperties>")
+        h = h[:e] + blk + h[e:]
+        new[cid] = str(nid)
+    secs = [re.sub(r'<hp:run charPrIDRef="(\d+)"><hp:ctrl><hp:endNote ', lambda m: '<hp:run charPrIDRef="%s"><hp:ctrl><hp:endNote ' % new[m.group(1)], x) for x in secs]
+    return h, secs
+
+
 def convert_file(src, dst):
     zi = zipfile.ZipFile(src)
     items = [(i, zi.read(i.filename)) for i in zi.infolist()]
@@ -81,7 +99,12 @@ def convert_file(src, dst):
         if re.match(r"Contents/section\d+\.xml", i.filename):
             x, k = convert(d.decode("utf-8"), used); tot += k; items[j] = (i, x.encode("utf-8"))
     j = next(j for j, (i, _) in enumerate(items) if i.filename == "Contents/header.xml")
-    items[j] = (items[j][0], hang(items[j][1].decode("utf-8"), used).encode("utf-8"))
+    h = hang(items[j][1].decode("utf-8"), used)
+    ks = [k for k, (i, _) in enumerate(items) if re.match(r"Contents/section\d+\.xml", i.filename)]
+    h, secs = tiny(h, [items[k][1].decode("utf-8") for k in ks])
+    for k, x in zip(ks, secs):
+        items[k] = (items[k][0], x.encode("utf-8"))
+    items[j] = (items[j][0], h.encode("utf-8"))
     with zipfile.ZipFile(dst, "w") as zo:
         for i, d in items:
             zo.writestr(i, d, compress_type=zipfile.ZIP_STORED if i.filename == "mimetype" else zipfile.ZIP_DEFLATED)
