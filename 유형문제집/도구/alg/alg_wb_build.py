@@ -56,12 +56,15 @@ head = files["Contents/header.xml"].decode("utf-8")
 files["Contents/header.xml"] = re.sub(r'secCnt="\d+"', 'secCnt="%d"' % NU, head, count=1).encode("utf-8")
 files["Preview/PrvText.txt"] = "CLIMATH(m) 대수 워크북".encode("utf-8")
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from drop_mp_whitebox import drop as _drop_wb
 mp0, mp1 = files["Contents/masterpage0.xml"].decode("utf-8"), files["Contents/masterpage1.xml"].decode("utf-8")
 mp0 = re.sub(r'(<hp:p [^>]*paraPrIDRef=")135("[^>]*>(?:(?!<hp:p ).)*?<hp:t>다항식의 연산</hp:t>)', r"\g<1>134\2", mp0, count=1, flags=re.S)
 for j, u in enumerate(SEL):
     title = "%d. %s" % (u, UNITS[u - 1])
     for k, src in ((0, mp0), (1, mp1)):
         m = src.replace("<hp:t>ⓒ</hp:t>", "<hp:t>ⓜ</hp:t>")
+        m = _drop_wb(m)[0]                     # 2026-11-26 바탕쪽 아래 흰 네모(4473×1866) 지움(사용자 1단원 수정본과 같게)
         m = m.replace("<hp:t>다항식의 연산</hp:t>", "<hp:t>%s</hp:t>" % html.escape(title)).replace("<hp:t>1. 다항식의 연산</hp:t>", "<hp:t>%s</hp:t>" % html.escape(title))
         m = m.replace("<hp:t>공통수학1</hp:t>", "<hp:t>대수</hp:t>")
         m = re.sub(r"<hp:t>공통수학</hp:t>(.*?)<hp:t>1</hp:t>", r"<hp:t>대수</hp:t>\1<hp:t/>", m, count=1, flags=re.S)

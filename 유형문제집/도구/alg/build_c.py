@@ -447,6 +447,9 @@ files["Contents/header.xml"] = HDR.encode("utf-8")
 for _n in list(files):
     if re.match(r"Contents/masterpage\d+\.xml$", _n):
         files[_n] = files[_n].decode("utf-8").replace("<hp:t>ⓒ</hp:t>", "<hp:t>ⓜ</hp:t>").encode("utf-8")
+        # 2026-11-26 사용자(1단원 수정본) '바탕쪽 각 페이지 아래 흰 사각형 모두 지웠어' → 흰 네모(4473×1866) 지움
+        from drop_mp_whitebox import drop as _drop_wb
+        files[_n] = _drop_wb(files[_n].decode("utf-8"))[0].encode("utf-8")
 files["Contents/section0.xml"] = (HEAD + "".join(body) + TAIL_XML).encode("utf-8")
 if BIN:
     hpf = files["Contents/content.hpf"].decode("utf-8")
