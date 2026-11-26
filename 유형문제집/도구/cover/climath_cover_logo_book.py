@@ -64,7 +64,10 @@ def spine_axis(img):
 
 
 for part in ("앞표지", "책등", "뒤표지"):
-    im = Image.open(os.path.join(odir, "CLIMATH_%s_%s.jpg" % (tag, part))).convert("RGB")
+    src = os.path.join(odir, "CLIMATH_%s_%s.png" % (tag, part))         # 정리한 원본(png)이 있으면 그것(미적분Ⅰ), 없으면 받은 jpg
+    if not os.path.exists(src):
+        src = src[:-4] + ".jpg"
+    im = Image.open(src).convert("RGB")
     W = im.width
     print(part, im.size)
     if part == "앞표지":
