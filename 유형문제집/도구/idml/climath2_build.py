@@ -83,11 +83,12 @@ if WB:
     plan, p = {1: ("toc",)}, 2
     for k in range(counts[0]):
         plan[p] = ("pdf", 0, k + 1); p += 1
-    if BOOK == "m1w":   # 빠른 정답 앞에 한 장: 짝수 쪽에 '빠른 정답' 표지(기본서 단원 표지처럼 보라 글상자 + 글), 빠른 정답은 다음 홀수 쪽부터
-        if p % 2 == 1:
+    if BOOK == "m1w":   # 빠른 정답 앞에 한 장: 워크북 다음 홀수 쪽(75)에 '빠른 정답' 표지(보라 음영 글상자 + 글, 2026-11-26 사용자 '75쪽에 빠른정답이라고 글씨 쓰고 음영 넣어 줘'),
+        if p % 2 == 0:  # 뒤(76) 빈 쪽, 빠른 정답은 다음 홀수 쪽부터
             plan[p] = ("blank",); p += 1
         QCOVER = p
         plan[p] = ("qcover",); p += 1
+        plan[p] = ("blank",); p += 1
     elif p % 2 == 0:
         plan[p] = ("blank",); p += 1
     QSTART = p
