@@ -93,7 +93,7 @@ STEP1 = [
 STEP2 = [
   # 유형 01 log_a x의 꼴이 반복되는 함수의 최대 최소
   [dict(no=12),
-   dict(on="0333", q=["$angle rm A it =90 DEG$이고 $overline {rm AB} =2 log _{2} `x$, $overline {rm AC} = log _{4} `{16} over {x}$인 삼각형 ABC의 넓이를 $S(x)$라 하자. $S(x)$가 $x=a$에서 최댓값 $M$을 가질 때, $a+M$의 값을 구하시오. (단, $1<x<16$)"],
+   dict(on="0333", q=["$angle rm A it =90 °$이고 $overline {rm AB} =2 log _{2} `x$, $overline {rm AC} = log _{4} `{16} over {x}$인 삼각형 ABC의 넓이를 $S(x)$라 하자. $S(x)$가 $x=a$에서 최댓값 $M$을 가질 때, $a+M$의 값을 구하시오. (단, $1<x<16$)"],
         ans="$6$", sol=["$log _{2} `x=t$라 하면 $1<x<16$에서 $0<t<4$이고 $overline {rm AB} =2t$, $overline {rm AC} = {1} over {2} log _{2} `{16} over {x} = {4-t} over {2}$",
                         "$S(x)= {1} over {2} times 2t times {4-t} over {2} = {t(4-t)} over {2} =- {1} over {2} (t-2)^2 +2$",
                         "$t=2$, 곧 $x=4$일 때 최댓값 $2$를 가지므로 $a=4$, $M=2$",

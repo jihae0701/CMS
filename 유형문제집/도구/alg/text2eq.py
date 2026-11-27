@@ -8,6 +8,7 @@ python text2eq.py <입력 hwpx> <출력 hwpx>
 - 단위 낱말(kcal·dB·m·mAh·cm·kg …, 홀로 쓰인 것) → 수식 'rm kcal'(2026-11-26 사용자 '맨 앞에 rm 붙여서').
 - 그대로 두는 것: 'Step 1'·'STEP 1'·'(1)' 따름 번호, 모의고사 출처('2023년 11월 고2 14번 [4점]'), 상자(그리기 개체 글상자) 안 글자(개념·유형 상자 머리 등),
   바탕쪽·머리말(이 도구는 section 파일만 고침), 이미 수식인 것.
+- 수식 속 각도 'DEG' → 유니코드 00B0 '°'(2026-11-27 사용자 '수식에서 각도를 DEG를 쓰지 않고, 컨트롤 F10 들어가서 유니코드 00B0').
 - 수식 크기는 사용자 파일에서 한글이 잰 값(11pt): 숫자 한 자 525, 소수점 263, 대문자 A 825·B 750·C 675·D 750·E 675·F 675·G 825·H 825·M 975·N 825·
   O 825·P 675·Q 825·R 750·S 600·T 675·U 750·X 750 …(그 밖 750), 높이 1125, baseLine 85.
 """
@@ -105,6 +106,19 @@ def convert(xml):
     return out, total[0]
 
 
+DEG = re.compile(r"(<hp:script>[^<]*?)\s*\bDEG\b")
+
+
+def deg(xml):
+    """수식 속 각도 DEG → °(사용자 파일처럼 '90 DEG' → '90 °')"""
+    n = 0
+    while True:
+        xml, k = DEG.subn(lambda m: m.group(1) + " °", xml)
+        if not k:
+            return xml, n
+        n += k
+
+
 def convert_file(src, dst):
     z = zipfile.ZipFile(src)
     items = [(i, z.read(i.filename)) for i in z.infolist()]
@@ -114,6 +128,7 @@ def convert_file(src, dst):
         for info, data in items:
             if re.match(r"Contents/section\d+\.xml$", info.filename):
                 s, k = convert(data.decode("utf-8")); n += k
+                s, k = deg(s); n += k
                 data = s.encode("utf-8")
             w.writestr(info, data)
     return n
