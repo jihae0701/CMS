@@ -102,14 +102,55 @@ def convert(xml):
 
     out = re.sub(r"<hp:t>(.*?)</hp:t>", rep_t, xml, flags=re.S)
     # 집합 조건 막대: 사용자 수정본처럼 `|` → left | (수식 안)
-    # 2026-11-27: 집합 기호(lbrace·LEFT {)가 있고 막대가 하나뿐인 수식만 — 절댓값 |x-3|(막대 둘)은 그대로
-    def _bar(m):
-        sc = m.group(1)
-        if re.search(r"lbrace|LEFT\s*\{", sc) and sc.count("|") == 1:
-            return "<hp:script>" + sc.replace("`|`", " left | ") + "</hp:script>"
-        return m.group(0)
-    out = re.sub(r"<hp:script>([^<]*)</hp:script>", _bar, out)
+    out, _ = bars(out)
     return out, total[0]
+
+
+OPW = re.compile(r"(times|over|cdot|cdots|le|ge|leq|geq|ne|neq|of|sqrt|root|THEREFORE|therefore|because)$", re.I)
+
+
+def bars_script(sc):
+    """수식 하나의 맨 막대 | → 집합 조건은 'left |', 절댓값은 'left | … right |'(2026-11-27 사용자 '절댓값도 left | x-3 right |').
+    이미 left|·right|인 막대는 그대로. 짝이 안 맞으면 None"""
+    pos = [m.start() for m in re.finditer(r"\|", sc) if not re.search(r"(left|right)$", sc[:m.start()].rstrip(" `~"), re.I)]
+    if not pos:
+        return sc
+    kind = {}
+    rest = pos
+    if re.search(r"lbrace|LEFT\s*\{", sc) and len(pos) % 2 == 1:
+        kind[pos[0]] = "left |"; rest = pos[1:]                # 집합 조건 막대(첫 번째)
+    stack, last = [], None
+    for p in rest:
+        pre = sc[:p].rstrip(" `~")
+        prev = pre[-1:] if pre else ""
+        if not stack or not prev or prev in "=+-*/({[,<>^_!" or OPW.search(pre) or (prev == "|" and last is not None):
+            kind[p] = "left |"; stack.append(p)
+        else:
+            kind[p] = "right |"; stack.pop()
+        last = p
+    if stack:
+        return None
+    out, q = [], 0
+    for p in pos:
+        out.append(sc[q:p]); out.append(" %s " % kind[p]); q = p + 1
+    out.append(sc[q:])
+    return re.sub(r"  +", " ", "".join(out))
+
+
+def bars(xml):
+    """section XML의 수식 막대 바꾸기 → (xml, 바꾼 수식 수, 짝이 안 맞아 둔 수식 목록)"""
+    n, bad = [0], []
+    def f(m):
+        sc = html.unescape(m.group(1))
+        r = bars_script(sc)
+        if r is None:
+            bad.append(sc); return m.group(0)
+        if r == sc:
+            return m.group(0)
+        n[0] += 1
+        return "<hp:script>%s</hp:script>" % html.escape(r, quote=False)
+    xml = re.sub(r"<hp:script>([^<]*)</hp:script>", f, xml)
+    return xml, n[0], bad
 
 
 DEG = re.compile(r"(<hp:script>[^<]*?)\s*(?<![A-Za-z])DEG(?![A-Za-z])")     # '500DEG'처럼 숫자에 붙은 것도
