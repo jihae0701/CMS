@@ -480,4 +480,8 @@ print("  번호 줄에 첫 문제 문단 붙임", _ni(OUT, OUT))
 # 2026-11-27 대수(c) 1단원 사용자 재편집본: 번호 글자 14pt·번호 폭 300, STEP 머리 상자 위 여백 0, 선택지 바로 앞 문단 아래 600
 from layout_c1 import fix as _lay
 print("  편집(번호 14pt 등)", _lay(OUT))
+from endnote_1pt import fix as _en1
+print("  미주 표시 1pt(남은 것)", _en1(OUT))
+from box_top0 import fix as _box0
+print("  상자 위 여백(02부터 0)·선택지 앞 빈 줄", _box0(OUT))
 print("단원", UNIT, U.NAME, "문항", n, "(STEP1 %d, STEP2 %d, STEP3 %d)" % (sum(map(len, U.STEP1)), sum(map(len, U.STEP2)), len(U.STEP3)), "그림", len(BIN), "->", OUT)

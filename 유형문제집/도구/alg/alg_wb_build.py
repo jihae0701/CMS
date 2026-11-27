@@ -175,6 +175,9 @@ with zipfile.ZipFile(OUT, "w") as w:
 # 2026-11-26 사용자 '워크북도 적용': 본책과 같게 글자 숫자·점 이름·단위를 수식으로(text2eq), 집합 조건 막대 `|` → left |
 from text2eq import convert_file as _t2e
 print("  글자 숫자·대문자·단위 → 수식", _t2e(OUT, OUT))
+# 2026-11-27 사용자 '미주 크기 모두 1인지 확인해' → 워크북 미주 표시(3pt)도 1pt로
+from endnote_1pt import fix as _en1
+print("  미주 표시 1pt", _en1(OUT))
 print("단원", SEL, "문항", total, "->", OUT)
 with open(os.path.splitext(OUT)[0] + "_출처.tsv", "w", encoding="utf-8") as f:
     f.write("단원\t워크북 번호\t출처\n" + "".join("%d\t%d\t%s\n" % m for m in MAP))
