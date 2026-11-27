@@ -13,7 +13,7 @@ python num_inline.py <입력.hwpx> <출력.hwpx>
 """
 import re, sys, zipfile
 
-HANG = 1500          # 내어 쓰기 폭(HWPUNIT, 1000 ≈ 10pt 글자 하나)
+HANG = 1600          # 내어 쓰기 폭(HWPUNIT, 1000 ≈ 10pt 글자 하나) — 2026-11-27 사용자 '내어쓰기 16pt'
 LSA = re.compile(r"<hp:linesegarray>.*?</hp:linesegarray>", re.S)
 
 
