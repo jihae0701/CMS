@@ -102,11 +102,17 @@ def convert(xml):
 
     out = re.sub(r"<hp:t>(.*?)</hp:t>", rep_t, xml, flags=re.S)
     # 집합 조건 막대: 사용자 수정본처럼 `|` → left | (수식 안)
-    out = re.sub(r"(<hp:script>[^<]*?)`\|`", lambda m: m.group(1) + " left | ", out)
+    # 2026-11-27: 집합 기호(lbrace·LEFT {)가 있고 막대가 하나뿐인 수식만 — 절댓값 |x-3|(막대 둘)은 그대로
+    def _bar(m):
+        sc = m.group(1)
+        if re.search(r"lbrace|LEFT\s*\{", sc) and sc.count("|") == 1:
+            return "<hp:script>" + sc.replace("`|`", " left | ") + "</hp:script>"
+        return m.group(0)
+    out = re.sub(r"<hp:script>([^<]*)</hp:script>", _bar, out)
     return out, total[0]
 
 
-DEG = re.compile(r"(<hp:script>[^<]*?)\s*\bDEG\b")
+DEG = re.compile(r"(<hp:script>[^<]*?)\s*(?<![A-Za-z])DEG(?![A-Za-z])")     # '500DEG'처럼 숫자에 붙은 것도
 
 
 def deg(xml):

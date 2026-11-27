@@ -2,7 +2,8 @@
 """문단번호(미주) 줄 바로 옆에서 문제 시작 (2026-11-26 사용자).
 - 미주만 있는 번호 문단(출처 글자 없음) 다음의 첫 문제 문단을 번호 문단에 이어 붙임.
 - 모의고사 기출(번호 문단 오른쪽에 출처 '2025년 6월 고2 19번')은 그대로 둠.
-- 다음 문단이 그림·표·글상자이거나 '(단'으로 시작하면 붙이지 않음.
+- 다음 문단이 글자처럼 놓인 그림·표(그림만 있는 문단 등)이거나 '(단'으로 시작하면 붙이지 않음.
+  둘레 배치 그림('오른쪽 그림')·보기 상자가 묶인 문단은 붙임(2026-11-27 대수(c) 적용 때).
 - 둘째 줄부터 내어 쓰기(사용자 '두 번째 줄이 칸 띄기 되었으면').
   처음엔 문단번호 '자동 내어 쓰기'(autoIndent=1, 번호 뒤 글자 자리)로 했으나 사용자 '내어 쓰기가 좀 적게' →
   자동 내어 쓰기를 끄고(autoIndent=0) 붙인 문단 모양에 고정 내어 쓰기 HANG을 줌
@@ -18,9 +19,39 @@ LSA = re.compile(r"<hp:linesegarray>.*?</hp:linesegarray>", re.S)
 
 
 def plain(x):
+    """문단의 바깥 글자만(미주·글상자·표 칸 안 글자 빼고), 수식은 E"""
     x = re.sub(r"<hp:endNote .*?</hp:endNote>", "", x, flags=re.S)
-    x = re.sub(r"<hp:equation .*?</hp:equation>", "E", x, flags=re.S)
+    x = re.sub(r"<hp:drawText.*?</hp:drawText>|<hp:tbl .*?</hp:tbl>|<hp:subList.*?</hp:subList>", "", x, flags=re.S)
+    x = re.sub(r"<hp:equation .*?</hp:equation>", "<hp:t>E</hp:t>", x, flags=re.S)      # 수식만 있는 문단도 글로 셈
     return "".join(re.findall(r"<hp:t>(.*?)</hp:t>", x, re.S))
+
+
+PTAG = re.compile(r"<hp:p\b|</hp:p>")
+
+
+def para_end(s, a):
+    """a에서 시작하는 문단의 닫는 </hp:p> 위치(안쪽 문단 건너뜀)"""
+    d = 0
+    for m in PTAG.finditer(s, a):
+        if m.group(0) == "</hp:p>":
+            d -= 1
+            if d == 0:
+                return m.start()
+        else:
+            d += 1
+    return -1
+
+
+OBJ = re.compile(r"<hp:(pic|tbl)\b")
+
+
+def inline_obj(q):
+    """글자처럼 취급한 그림·표가 있으면 True(그림 줄·표 → 붙이지 않음). 둘레 배치 그림, 글 속 '보 기' 같은 글상자는 괜찮음"""
+    for m in OBJ.finditer(q):
+        pos = re.search(r'<hp:pos treatAsChar="(\d)"', q[m.end():])
+        if pos and pos.group(1) == "1" and not plain(q[:m.start()]).strip():
+            return True                                # 글 앞에 놓인 그림·표(그림 줄·표 줄)
+    return False
 
 
 def convert(s, used=None):
@@ -32,18 +63,24 @@ def convert(s, used=None):
         a = s.rfind("<hp:p ", 0, s.rfind("<hp:endNote ", 0, e))
         pe = s.find("</hp:p>", e)
         en = s[a:pe]
-        if re.sub(r"<[^>]+>", "", re.sub(r"<hp:endNote .*?</hp:endNote>", "", en, flags=re.S)).strip():
-            continue                                   # 출처 글자 있음 = 모의고사
+        if plain(en).strip():                          # (번호 문단에 묶인 그림의 '그림입니다.' 설명은 글로 안 셈)
+            continue                                   # 출처 글자 있음 = 모의고사(또는 이미 붙어 있음)
         qa = pe + len("</hp:p>")
         if not s.startswith("<hp:p ", qa):
             continue
-        qe = s.find("</hp:p>", qa)
+        qe = para_end(s, qa)
         q = s[qa:qe]
-        if "<hp:p " in q[5:] or re.search(r"<hp:(pic|tbl|rect|container|ctrl|drawText)\b", q):
+        drop_to = None
+        if not plain(q).strip() and not re.search(r"<hp:(ctrl|pic|tbl|rect|container|drawText)\b", q) and s.startswith("<hp:p ", qe + 7):
+            drop_to = qe + 7                           # 번호 다음 빈 문단(빈칸뿐)은 지우고 그다음 문단을 붙임
+            qa = drop_to; qe = para_end(s, qa); q = s[qa:qe]
+        if re.search(r"<hp:ctrl>", q) or inline_obj(q):
             continue
-        if plain(q).lstrip().startswith("(단") or not plain(q).strip():
+        t = plain(q).strip()
+        if not t or t.startswith("(단"):
             continue
-        body = re.sub(r"^<hp:p [^>]*>", "", LSA.sub("", q))
+        body = re.sub(r"^<hp:p [^>]*>", "", q)
+        body = re.sub(r"<hp:linesegarray>(?:(?!<hp:linesegarray>).)*?</hp:linesegarray>$", "", body, flags=re.S)
         en2 = LSA.sub("", en)
         en2 = re.sub(r"</hp:ctrl><hp:t/></hp:run>", "</hp:ctrl></hp:run>", en2)
         en2 = re.sub(r"(</hp:ctrl></hp:run>)<hp:run charPrIDRef=\"\d+\"><hp:t/></hp:run>", r"\1", en2)
